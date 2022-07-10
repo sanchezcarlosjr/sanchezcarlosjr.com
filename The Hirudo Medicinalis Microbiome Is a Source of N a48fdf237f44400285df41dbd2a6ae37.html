@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>The Hirudo Medicinalis Microbiome Is a Source of New Antimicrobial Peptides</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a48fdf23-7f44-4002-85df-41dbd2a6ae37" class="page sans"><header><h1 class="page-title">The Hirudo Medicinalis Microbiome Is a Source of New Antimicrobial Peptides</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Journal/Publisher</th><td><span class="selected-value select-value-color-default">International Journal of Molecular Sciences</span></td></tr><tr class="property-row property-row-number"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>Year</th><td>2020</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Authors</th><td>Grafskaia, E., Pavlova, E., Babenko, V. V., Latsis, I., Malakhova, M., Lavrenova, V. Lazarev, V.</td></tr><tr class="property-row property-row-url"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesUrl"><path d="M3.73333,3.86667 L7.46667,3.86667 C8.49613,3.86667 9.33333,4.70387 9.33333,5.73333 C9.33333,6.7628 8.49613,7.6 7.46667,7.6 L6.53333,7.6 C6.01813,7.6 5.6,8.0186 5.6,8.53333 C5.6,9.04807 6.01813,9.46667 6.53333,9.46667 L7.46667,9.46667 C9.5284,9.46667 11.2,7.79507 11.2,5.73333 C11.2,3.6716 9.5284,2 7.46667,2 L3.73333,2 C1.6716,2 0,3.6716 0,5.73333 C0,7.124 0.762067,8.33453 1.88953,8.97713 C1.87553,8.83107 1.86667,8.6836 1.86667,8.53333 C1.86667,7.92013 1.98753,7.33447 2.2036,6.7978 C1.99267,6.4954 1.86667,6.12953 1.86667,5.73333 C1.86667,4.70387 2.70387,3.86667 3.73333,3.86667 Z M12.1095,5.28907 C12.1231,5.4356 12.1333,5.58307 12.1333,5.73333 C12.1333,6.34607 12.0101,6.9294 11.7931,7.46513 C12.0059,7.768 12.1333,8.13573 12.1333,8.53333 C12.1333,9.5628 11.2961,10.4 10.2667,10.4 L6.53333,10.4 C5.50387,10.4 4.66667,9.5628 4.66667,8.53333 C4.66667,7.50387 5.50387,6.66667 6.53333,6.66667 L7.46667,6.66667 C7.98187,6.66667 8.4,6.24807 8.4,5.73333 C8.4,5.2186 7.98187,4.8 7.46667,4.8 L6.53333,4.8 C4.4716,4.8 2.8,6.4716 2.8,8.53333 C2.8,10.59507 4.4716,12.2667 6.53333,12.2667 L10.2667,12.2667 C12.3284,12.2667 14,10.59507 14,8.53333 C14,7.14267 13.2375,5.93167 12.1095,5.28907 Z"></path></svg></span>Link</th><td><a href="https://sci-hub.se/10.3390/ijms21197141" class="url-value">https://sci-hub.se/10.3390/ijms21197141</a></td></tr><tr class="property-row property-row-url"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesUrl"><path d="M3.73333,3.86667 L7.46667,3.86667 C8.49613,3.86667 9.33333,4.70387 9.33333,5.73333 C9.33333,6.7628 8.49613,7.6 7.46667,7.6 L6.53333,7.6 C6.01813,7.6 5.6,8.0186 5.6,8.53333 C5.6,9.04807 6.01813,9.46667 6.53333,9.46667 L7.46667,9.46667 C9.5284,9.46667 11.2,7.79507 11.2,5.73333 C11.2,3.6716 9.5284,2 7.46667,2 L3.73333,2 C1.6716,2 0,3.6716 0,5.73333 C0,7.124 0.762067,8.33453 1.88953,8.97713 C1.87553,8.83107 1.86667,8.6836 1.86667,8.53333 C1.86667,7.92013 1.98753,7.33447 2.2036,6.7978 C1.99267,6.4954 1.86667,6.12953 1.86667,5.73333 C1.86667,4.70387 2.70387,3.86667 3.73333,3.86667 Z M12.1095,5.28907 C12.1231,5.4356 12.1333,5.58307 12.1333,5.73333 C12.1333,6.34607 12.0101,6.9294 11.7931,7.46513 C12.0059,7.768 12.1333,8.13573 12.1333,8.53333 C12.1333,9.5628 11.2961,10.4 10.2667,10.4 L6.53333,10.4 C5.50387,10.4 4.66667,9.5628 4.66667,8.53333 C4.66667,7.50387 5.50387,6.66667 6.53333,6.66667 L7.46667,6.66667 C7.98187,6.66667 8.4,6.24807 8.4,5.73333 C8.4,5.2186 7.98187,4.8 7.46667,4.8 L6.53333,4.8 C4.4716,4.8 2.8,6.4716 2.8,8.53333 C2.8,10.59507 4.4716,12.2667 6.53333,12.2667 L10.2667,12.2667 C12.3284,12.2667 14,10.59507 14,8.53333 C14,7.14267 13.2375,5.93167 12.1095,5.28907 Z"></path></svg></span>Dataset</th><td><a href="grafskayacath@gmail.com" class="url-value">grafskayacath@gmail.com</a></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M7.01356 14.0001C8.8042 14.0001 10.5958 13.3107 11.9575 11.9324C14.681 9.21201 14.6808 4.7603 11.9571 2.04013C9.23336 -0.680043 4.77573 -0.680043 2.05199 2.04013C0.727519 3.36277 0 5.13301 0 6.99553C0 8.8764 0.727811 10.6285 2.05199 11.9509C3.43207 13.3106 5.22243 14.0001 7.01356 14.0001ZM3.72947 7.00914V8.461V8.65543H3.92382H5.34563H8.2794H8.4738V8.461V5.52541V3.37947V3.18502H8.2794H6.82747H6.63307V3.37947V6.81467H3.92382H3.72947V7.00914ZM1.83985 6.99553C1.83985 5.61698 2.38099 4.32597 3.36061 3.3477C5.36746 1.34337 8.64803 1.34062 10.6585 3.33944C10.6613 3.34219 10.6639 3.34494 10.6668 3.3477C12.676 5.3546 12.6763 8.63642 10.6668 10.6434C8.65705 12.6504 5.37031 12.6504 3.36061 10.6434C2.38099 9.66506 1.83985 8.37408 1.83985 6.99553Z"></path></svg></span>Log Date</th><td><time>@January 24, 2021 9:25 PM</time></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Type</th><td><span class="selected-value select-value-color-default">Peer-Review Record</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Technique</th><td></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M0,3 C0,1.34314 1.34326,0 3,0 L11,0 C12.6567,0 14,1.34314 14,3 L14,11 C14,12.6569 12.6567,14 11,14 L3,14 C1.34326,14 0,12.6569 0,11 L0,3 Z M3,1.5 C2.17139,1.5 1.5,2.17157 1.5,3 L1.5,11 C1.5,11.8284 2.17139,12.5 3,12.5 L11,12.5 C11.8286,12.5 12.5,11.8284 12.5,11 L12.5,3 C12.5,2.17157 11.8286,1.5 11,1.5 L3,1.5 Z M2.83252,6.8161 L3.39893,6.27399 L3.57617,6.10425 L3.92334,5.77216 L4.26904,6.10559 L4.44531,6.27582 L5.58398,7.37402 L9.28271,3.81073 L9.45996,3.64008 L9.80664,3.3056 L10.1538,3.63989 L10.3311,3.81067 L10.8936,4.35303 L11.0708,4.52399 L11.4434,4.88379 L11.0708,5.24353 L10.8936,5.41437 L6.1084,10.0291 L5.93115,10.2 L5.58398,10.5344 L5.23682,10.2 L5.05957,10.0292 L2.83057,7.87946 L2.65283,7.70801 L2.27832,7.34674 L2.6543,6.98694 L2.83252,6.8161 Z"></path></svg></span>Dataset Raw</th><td><div class="checkbox checkbox-on"></div></td></tr></tbody></table></header><div class="page-body"><p id="d1fd7cb8-7ef5-4742-8d4d-f1c74e7ef19f" class="">Reviewer 1: Anonymous</p><p id="40ff72e0-98bf-4f8d-b381-7fbe3e229ffb" class="">Reviewer 2: Anonymous</p><p id="cff695dd-3161-4184-8d83-c36b2aa97ddf" class=""><strong>Round 1</strong></p><p id="c4f20a96-e9f3-4ea1-81ee-b3aa72f76b7a" class=""><em>Reviewer 1 Report</em></p><p id="02faa352-20b1-4a48-8593-5f3481421580" class="">In the present paper, the authors analyze the antimicrobial characteristics of six different bacterial peptides, selected after a specific <em>in silico</em> screening analysis conducted on <em>Hirudo medicinalis</em> metagenome. The MIC (minimum inhibitory concentration) of every chosen peptide have been calculated observing the effects on different Gram-negative and Gram-positive bacterial strains and the relative antibacterial role was evaluated by different techniques. Moreover, the cytotoxicity of these amino acid sequences has been tested on McCoy cells. Taken together, the results of these experiments highlight as these putative AMPs show a different antimicrobial activity and cytotoxicity.</p><p id="7c58a6f6-d41c-4cb6-a10b-621085b0e225" class="">In my opinion, although the manuscript is well written, several modifications should be provided before publication.</p><p id="84df2c14-e62e-4e48-92e0-6231788a0cd6" class="">Minor revisions:</p><p id="6e91995c-8ed6-4653-9993-aed63c38554a" class=""><strong>Line 161: </strong>in the text, probably authors refer to Figure 2 and not Figure 3.</p><p id="26ddbbe3-4aaa-4e7d-babb-a27f631ee099" class=""><strong>Line 172: </strong>in the text, probably authors refer to Figure 3 and not Figure 4.</p><p id="a761b3b4-a949-4792-903f-3e67100259f3" class="">Major revisions:</p><ul id="5703f1c9-edb8-4745-b815-c2d81b06af4f" class="bulleted-list"><li style="list-style-type:disc"><strong>Section 2.1.</strong> The authors performed a wide and specific work of selection for determining 65 possible AMPs, using different predictive programs and algorithms and 3D models were created with I-TASSER-MR server. However, authors choose only six peptides and it results difficult to understand why they considered only these. Did the authors select only peptides with α-helical structure after I-TASSER analysis?</li></ul><p id="0650be16-207c-4957-aa48-253d145b14c5" class="">As it is well explained in the introduction, although the most widespread AMPs are amphipathic α-helical peptides, these molecules present many forms. Indeed, the well-known human defensins possess β-sheet structures. In this case, maybe other sequences should be considered among these 65. For this reason, in my opinion this step should be better explained, even in the discussion or in the material and methods section.</p><ul id="7e7cb53c-7807-4fd6-8a71-05f1c785de47" class="bulleted-list"><li style="list-style-type:disc"><strong>Section 2.4. </strong>The cytotoxic effect of AMPs was tested on McCoy cells and evaluated with two different techniques: fluorescent imaging and colorimetric assay. Since these two experimental approaches are well explained in the section of Material and Methods, authors could insert a figure showing the effects obtained with the most significant peptides (in each sense) and of the Melittin control.</li></ul><p id="ec101c8c-b9f3-41d4-a864-4f020b66b083" class="">In the figure S2, cell viability has been tested only on three peptides (Pept_1545, Pept_148 and Pept_84), why the authors did not test also the LHD assay on every peptide? The decision to analyze these derives from the fluorescent results? In this case, Pept_1303 showed a percentage higher than Pept_84.</p><p id="6cc8fc55-9f7c-4f74-ac53-eb261d14247d" class="">Moreover, these experiments revealed as some peptides are significantly less cytotoxic compared with Melittin, used as control. Although, in the discussion, this AMP, deriving from bee venom, is described to possess a nonspecific cytotoxicity and haemolytic activity. In this case, why authors choose proper this molecule as control? If the final score is to discover new AMPs that could be used for the development of therapeutic agents, why they did not observe differences with other AMPs, such as the mentioned PAC-113 or dalbavancin, which are already used in this field and that not present cytotoxicity?</p><ul id="3a10f273-6a08-413d-b7b1-59252e3070d3" class="bulleted-list"><li style="list-style-type:disc"><strong>Section 2.5. </strong>As before, a figure or images should be added, in which bacteria treated with propidium iodide are visible. Also in this case, the most significant conditions could be used.</li></ul><p id="555e0e19-ca3c-4166-8530-5e1477f35458" class="">Moreover, in these experiments, the effect of Pept_148 were evaluated during the kinetics of PI penetration (Figure 2), while no data are reported about the fluorescent result (Figure S3). Why the authors decided to not consider this peptide in the S3 graphs?</p><p id="cb0cc568-ddde-445c-af2a-3e995ce26839" class="">Why the same test has not been conducted on <em>B. haemolyticus</em> in order to compare AMPs effects with SEM results?</p><ul id="90d0a7c8-8ae6-423f-a0a8-2081ed3b3299" class="bulleted-list"><li style="list-style-type:disc"><strong>Section 2.6. </strong>Why the authors decided to perform SEM analyses on the Pept_84, which not seems to show a great effect on <em> subtilis</em> in the PI assay and that possess high cytotoxicity, rather not considering the Pept_148?</li></ul><p id="45aa5db3-798a-4a11-8143-3ee91ce4f370" class="">Moreover, the AMP activity tested in the experiments with PI was calculated using the 2x MIC concentration and after a short period of time. Authors suggested a rapid mechanism of action for the antimicrobial peptides. Based on this experimental concentration and timing, why the authors choose 8 hours before observing SEM results and did not used the same concentration for compare the results?</p><p id="cdbb0eb1-233c-4f21-958e-088e71791b7c" class=""><strong>Discussion</strong></p><p id="77f80bf6-9344-44b7-8b41-3eb13727de15" class="">It seems that these six peptides derive from specific bacterial taxa present in the <em>H. medicinalis</em> microbiome (Aminobacter, Sphingobacteriia and Chitinophagia). Is there a correlation between these precise organisms and AMPs? Have these bacteria a precise role in the Hirudo microbiome? This point should be argument in the discussion.</p><p id="a287a36b-e2e0-4fb2-aaf4-c51d795ae1eb" class="">Other important aspects about AMPs are both the positive surface charge and the hydrophobicity, as explained at line 228. Authors should add some information about these points (considering for example the Boman index), analysing the characteristics of the main peptides (or only of Pept_1545).</p><p id="ffb7af96-000d-439d-817d-dbd6e118ed9c" class=""><em>Author Response</em></p><p id="6ec196c0-6369-4f9c-a878-af7a50a4e0fb" class="">We would like to thank the reviewer for their detailed comments and suggestions for the manuscript. We believe that the comments have identified important areas which required improvement. After completion of the suggested edits, the revised manuscript has benefitted from an improvement in the overall presentation and clarity. The detailed answers on issues as well as the modifications introduced into the revised version of the manuscript are given below. Original reviewer comments in boldface, responses in regular typeface.</p><p id="eb3c6435-3ee9-481f-9ab7-fb8fbea92b41" class=""><strong>In the present paper, the authors analyze the antimicrobial characteristics of six different bacterial peptides, selected after a specific </strong><em><strong>in silico</strong></em><strong> screening analysis conducted on </strong><em><strong>Hirudo medicinalis </strong></em><strong>metagenome. The MIC (minimum inhibitory concentration) of every chosen peptide have been calculated observing the effects on different Gram-negative and Gram-positive bacterial strains and the relative antibacterial role was evaluated by different techniques. Moreover, the cytotoxicity of these amino acid sequences has been tested on McCoy cells. Taken together, the results of these experiments highlight as these putative AMPs show a different antimicrobial activity and cytotoxicity.</strong></p><p id="0f150e55-ad51-4c33-a896-f4b60f6d5308" class=""><strong>In my opinion, although the manuscript is well written, several modifications should be provided before publication.</strong></p><p id="0ed1a0ad-3e24-4c82-a0e1-a66fbf2edfca" class=""><strong>Minor revisions:</strong></p><p id="03487519-a919-4824-a951-2996492f840b" class=""><strong>Line 161: in the text, probably authors refer to Figure 2 and not Figure 3.</strong></p><p id="14f06bf4-1c07-4059-8d5d-9cacd40c94e0" class="">Figure reference was corrected.</p><p id="a28b7917-64a6-4d58-ae28-9bc872408720" class=""><strong>Line 172: in the text, probably authors refer to Figure 3 and not Figure 4.</strong></p><p id="74268f55-7abb-44b4-93ab-71f22dc25bed" class="">Figure reference was corrected.</p><p id="e7a89b89-316d-4306-9baa-dd1532a3158d" class=""><strong>Major revisions:</strong></p><ul id="703b8d23-46ec-4750-9f0b-f5ed84de8f54" class="bulleted-list"><li style="list-style-type:disc"><strong>Section 2.1. The authors performed a wide and specific work of selection for determining 65 possible AMPs, using different predictive programs and algorithms and 3D models were created with I-TASSER-MR server. However, authors choose only six peptides and it results difficult to understand why they considered only these. Did the authors select only peptides with α</strong><strong>helical structure after I-TASSER analysis?</strong></li></ul><p id="d9a89284-9d9d-4f2a-85c7-84337c053302" class=""><strong>As it is well explained in the introduction, although the most widespread AMPs are amphipathic α</strong><strong>-helical peptides, these molecules present many forms. Indeed, the well-known human defensins possess β</strong><strong>-sheet structures. In this case, maybe other sequences should be considered among these 65. For this reason, in my opinion this step should be better explained, even in the discussion or in the material and methods section.</strong></p><p id="7351d3d7-407f-441c-abc0-39f6857e287a" class="">Peptides were chosen not by only their potential effects, but also on their secondary structure. From filtered 65 peptides, we chose 5 peptides with highest antimicrobial propensity scores which can exhibit α–helical structure and additionally 1 peptide with unstructured conformation and high propensity score based on the predictions.</p><p id="938bc41b-f2fe-4222-80ed-23718672376f" class="">The sentences “Overall, as potential AMPs, we identified 6 amino acid sequences (Table 1). Five of these peptides can adopt an α–helical structure under prediction. The leftover peptide is unstructured.” in the Result section were replaced by “According to the secondary structure prediction among filtered 65 peptides with the highest antimicrobial propensity scores the predicted secondary structures were only α–helical or unstructured conformations. From 65 peptides we chose 5 peptides with the highest antimicrobial propensity scores which can exhibit α–helical structure and additionally 1 peptide with unstructured conformation and high propensity score according to the predictions (Table 1).”</p><p id="71554d36-fdda-4d41-b59e-6025b67cd93d" class="">The sentence “As a result, we selected six putative α–helical AMPs.” in the Discussion section was corrected to “As a result, we selected six putative AMPs.”</p><ul id="898b01e8-022e-491a-a4ad-ab940b3b6275" class="bulleted-list"><li style="list-style-type:disc"><strong>Section 2.4. The cytotoxic effect of AMPs was tested on McCoy cells and evaluated with two different techniques: fluorescent imaging and colorimetric assay. Since these two experimental approaches are well explained in the section of Material and Methods, authors could insert a figure showing the effects obtained with the most significant peptides (in each sense) and of the Melittin control.</strong></li></ul><p id="e3dab1a1-15d2-46da-8549-d19276646846" class=""><strong>In the figure S2, cell viability has been tested only on three peptides (Pept_1545, Pept_148 and Pept_84), why the authors did not test also the LHD assay on every peptide? The decision to analyze these derives from the fluorescent results? In this case, Pept_1303 showed a percentage higher than Pept_84.</strong></p><p id="886a6e61-e274-429f-b98c-30bf61148916" class=""><strong>Moreover, these experiments revealed as some peptides are significantly less cytotoxic compared with Melittin, used as control. Although, in the discussion, this AMP, deriving from bee venom, is described to possess a nonspecific cytotoxicity and haemolytic activity. In this case, why authors choose proper this molecule as control? If the final score is to discover new AMPs that could be used for the development of therapeutic agents, why they did not observe differences with other AMPs, such as the mentioned PAC-113 or dalbavancin, which are already used in this field and that not present cytotoxicity?</strong></p><p id="ff5ba265-b8bd-468d-82e4-69e9dbb2da9c" class="">Due to the big amount of original data only the table with information about viability AMP–treated McCoy cells calculated from fluorescent images was presented in the manuscript. Figure S2 showing the effects obtained with the peptides and of the Melittin control were added in the Supplementary section.</p><p id="76d7f69f-0f14-4d12-b582-f545002d7383" class=""><strong>Figure S2</strong>. Effect of AMPs on the survival of McCoy cells. Cells were treated for 24 h with peptides at a final concentration equal to 4× MIC. After staining with calcein AM and ethidium homodimer–1, samples were analysed by fluorescence microscopy. The peptide melittin was used as a positive control. The negative control corresponds to the McCoy cells incubated without peptide (DMEM).</p><p id="51176e22-d2ac-4f0a-bd93-f252f65de1a0" class="">Figure S3 was replaced with the figure showing results for all 6 peptides treatment during 24 hours.</p><p id="0b0e1f1b-9409-41d1-932c-f215ca8944d2" class=""><strong>Figure </strong><strong>S</strong><strong>3.</strong> Viability of AMP–treated McCoy cells measured by LHD assay. Cells were treated for 24 h with peptides at a final concentration equal to 4× MIC. Melittin was used as a negative control. The positive control corresponds to untreated cells (Control). The values are indicated as the mean ± SD (n = 3). Statistically significant differences between the control and experimental groups were determined by the non–parametric Kruskal–Wallis test, *<em>p</em> &lt; 0.05, ***<em>p</em> &lt; 0.005.</p><p id="6cd98094-f7ab-45a2-a958-3271ea1d55b2" class="">As positive control, we could use other AMPs with nontoxic effect, but in our case was used untreated cells that are more demonstrative as we suppose.</p><ul id="872454a0-fe7e-4806-81e8-4f4758f5cb9f" class="bulleted-list"><li style="list-style-type:disc"><strong>Section 2.5. As before, a figure or images should be added, in which bacteria treated with propidium iodide are visible. Also in this case, the most significant conditions could be used.</strong></li></ul><p id="41877874-efa3-40b6-9231-2446888743de" class=""><strong>Moreover, in these experiments, the effect of Pept_148 were evaluated during the kinetics of PI penetration (Figure 2), while no data are reported about the fluorescent result (Figure S3). Why the authors decided to not consider this peptide in the S3 graphs?</strong></p><p id="374467f0-3182-40b6-808f-d206695ca5dd" class=""><strong>Why the same test has not been conducted on </strong><em><strong>B. haemolyticus</strong></em><strong> in order to compare AMPs effects with SEM results?</strong></p><p id="1659f4ff-0564-4d4d-90bc-0aa53ea13f41" class="">There are too many data to be shown in supplementary section that is why we decided to show only data in table that is more informative. Figure S4 showing the effects of the peptides on bacteria treated with propidium iodide was added in the Supplementary section.</p><p id="73d12a00-9337-48ff-995e-f92bdf271eb2" class=""><strong>Figure S4</strong>. Effect of AMPs on the survival of bacterial cells after peptide treatment. B. subtilis (top row) and E. coli (bottom row) were incubated with peptides at a final concentration equal to 2× MIC at 37 °C for 1 h. After staining with PI, samples were analyzed by fluorescence microscopy. The peptide melittin was used as a positive control. The negative control corresponds to the bacteria incubated without peptide (MHB). The size of each individual frame is 222 μm× 222 μm.</p><p id="c07452ea-a80d-4347-815c-62f3cee3a52b" class="">Pept_148 demonstrated low intensity of PI penetration that is why it is difficult to unambiguously defy the fluorescent signal from background and peptide. Due to this fact the results are controversial and didn’t show in the publication. Moreover, we tested two bacteria <em>E. coli</em> and <em>B. subtilis</em>, and peptide pept_148 didn’t exhibit antimicrobial activity against <em>E. coli</em>.</p><ol type="1" id="f03218de-a7c7-4658-98a0-1bf39eb633b6" class="numbered-list" start="1"><li><em>haemolyticus</em>is very pathogenic and, unfortunately, our laboratory doesn’t equip properly (with the fluorescent microscopes and spectrofluorometer in the specials boxes) for that kind of experiments. That’s the reason why these experiments were not conducted.</li></ol><ul id="1a0bdd32-dccb-495f-864a-8caed035cf12" class="bulleted-list"><li style="list-style-type:disc"><strong>Section 2.6. Why the authors decided to perform SEM analyses on the Pept_84, which not seems to show a great effect on </strong><em><strong>subtilis</strong></em><strong> in the PI assay and that possess high cytotoxicity, rather not considering the Pept_148?</strong></li></ul><p id="f5ea367f-4021-4378-beee-a0dca6868821" class=""><strong>Moreover, the AMP activity tested in the experiments with PI was calculated using the 2x MIC concentration and after a short period of time. Authors suggested a rapid mechanism of action for the antimicrobial peptides. Based on this experimental concentration and timing, why the authors choose 8 hours before observing SEM results and did not used the same concentration for compare the results?</strong></p><p id="b6ada971-ea74-4b85-84eb-483e13587654" class="">As we examined the peptide effect on three bacteria by SEM we decided to investigate four peptides that affected all of them. Due to the preparation the SEM samples the concentration of peptides and bacteria were different from the experiments with PI to obtain sample with the cell monolayers. Moreover, in experiments with the kinetics of PI penetration, we used 2*MIC peptide concentration in order to perform experiments more quickly and avoid the possible effects of fluorescent dye fading.</p><p id="659c1cfe-3477-4df5-a0bb-5a823d23cf3f" class=""><strong>Discussion</strong></p><p id="b7f5d806-b4ac-43bc-ac99-420b48e9d55d" class=""><strong>It seems that these six peptides derive from specific bacterial taxa present in the </strong><em><strong>H. medicinalis </strong></em><strong>microbiome (Aminobacter, Sphingobacteriia and Chitinophagia). Is there a correlation between these precise organisms and AMPs? Have these bacteria a precise role in the Hirudo microbiome? This point should be argument in the discussion.</strong></p><p id="a70cf4cf-2aaf-4f14-a0a5-114f0998c869" class=""><strong>Other important aspects about AMPs are both the positive surface charge and the hydrophobicity, as explained at line 228. Authors should add some information about these points (considering for example the Boman index), analysing the characteristics of the main peptides (or only of Pept_1545).</strong></p><p id="acb4f30b-1771-4a76-8a83-0b5d762eb10c" class="">It is difficult to judge the role of these bacteria for the leech organism based only on metagenomic data; this requires additional experiments for a deeper understanding of the interaction between the host and its microbiota, unfortunately this is outside the scope of our study.</p><p id="0c0ff555-6a08-415c-9cfb-e6d142718c5a" class="">The corresponding discussion about specific bacterial taxa present in the <em>H. medicinalis</em> microbiome and their role in organism was added to the revised manuscript in the Discussion section:</p><p id="b16abd14-2639-4645-9626-dc756565ded7" class="">“The selected peptides belong to the two phylums of Gram-negative bacteria <em>Bacteroidetes</em> (<em>Sphingobacteriia</em> and <em>Chitinophagia</em>) and <em>Proteobacteria</em> (<em>Aminobacter</em>), bacteria which are typically members of host-associated microbial communities. The literature data concern only investigations of metagenomic data and individual genomes from soil samples. There is little information on AMPs identified in these bacteria. At the moment only non-ribosomal antimicrobial peptides isolated from marine <em>Proteobacteria</em> has been known [35]. According to the existing observations and studies on the metagenomes of leeches of the genus <em>Hirudo</em> these taxa of microorganisms are common symbionts of leeches. The genus <em>Aminobacter</em> belongs to the order <em>Rhizobiales</em>, representatives of this order are components of the microbiota from the mucus and skin of the leech [36,37]. Representatives of bacteria of the class <em>Sphingobacteriia</em> and <em>Chitinophagia</em> are associated with metagenomes of the skin and excretory system of leeches [37,38]. For example, bacteria from the genus <em>Niabella</em> (Class <em>Chitinophagia</em>) can be found in leech cocoons, during the development of the leech, these bacteria colonize the bladder of the leech [39]. In some cases, representatives of these classes of bacteria were observed in insignificant quantities in various parts of the leech&#x27;s digestive system [40, 41]. Thus, it can be assumed that these bacteria are endosymbionts and use antimicrobial peptides to compete successfully in the process of colonization of certain leech organs.”</p><p id="6d175f5c-d91f-423c-b749-b985b6261540" class="">Information about physical-chemical characteristics of AMPs was added in the Materials and Methods and Supplementary sections.</p><p id="e7e0eac5-5bfd-47aa-a919-56742e2b8781" class=""><strong>Table S2.</strong> The physical-chemical characteristics of AMPs from the <em>H. medicinalis</em> microbiome.</p><div id="d8465e99-1272-4f63-a8d6-c5ec60c3e844" class="collection-content"><h4 class="collection-title"></h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Peptide</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Amino acid sequence</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>Charge</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>(Boman index), kcal/mol</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>Hydrophobic ratio, %</th></tr></thead><tbody><tr id="64bba377-ba6a-48b3-ac40-aa00eff93fb3"><td class="cell-title"><a href="pept_1303%2064bba377ba6a48b3ac40aa00eff93fb3.html">pept_1303</a></td><td class="cell-wfwj">IGRHFKRRNSIWGICWF</td><td class="cell-sP;|">4</td><td class="cell-bqLM">2.14</td><td class="cell-oqeK">47</td></tr><tr id="be0b61b0-1798-43a5-9aa5-2b2590a2f32c"><td class="cell-title"><a href="pept_148%20be0b61b0179843a59aa52b2590a2f32c.html">pept_148</a></td><td class="cell-wfwj">VLIRGLIHMLRGG</td><td class="cell-sP;|">2</td><td class="cell-bqLM">0.05</td><td class="cell-oqeK">53</td></tr><tr id="763b3a8e-6ace-409b-b9a4-6c50b621dd70"><td class="cell-title"><a href="pept_970%20763b3a8e6ace409bb9a46c50b621dd70.html">pept_970</a></td><td class="cell-wfwj">FVKILAKLVNYAKN</td><td class="cell-sP;|">3</td><td class="cell-bqLM">0.04</td><td class="cell-oqeK">57</td></tr><tr id="e82c5f45-b85e-460c-be42-c772acc18399"><td class="cell-title"><a href="pept_1545%20e82c5f45b85e460cbe42c772acc18399.html">pept_1545</a></td><td class="cell-wfwj">FLIGKAIKRKFCLRSVWNA</td><td class="cell-sP;|">5</td><td class="cell-bqLM">0.98</td><td class="cell-oqeK">57</td></tr><tr id="0ed0eb04-4f14-4f01-9699-1b00460edd06"><td class="cell-title"><a href="pept_352%200ed0eb044f144f0196991b00460edd06.html">pept_352</a></td><td class="cell-wfwj">KKGKSFKQLHIIVHLVKSWLRTILTHI</td><td class="cell-sP;|">6</td><td class="cell-bqLM">0.75</td><td class="cell-oqeK">44</td></tr><tr id="3a646518-040e-4cb8-a368-ba9f62d3ec76"><td class="cell-title"><a href="pept_84%203a646518040e4cb8a368ba9f62d3ec76.html">pept_84</a></td><td class="cell-wfwj">IVKRFFRISYKLQSLKIIKGKRTFT</td><td class="cell-sP;|">8</td><td class="cell-bqLM">1.86</td><td class="cell-oqeK">40</td></tr></tbody></table></div><p id="dcd4814b-196f-4a1f-b80b-5958306f04fa" class="">Analysis of physical-chemical characteristics of peptides demonstrated that all peptides have a positive net charge, the value of Boman index is varied from 0.04 to 2.14 and hydrophobic ratio is about 40% and higher. There is no reliable correlation between these parameters and antimicrobial action of peptides [Boman HG. Antibacterial peptides: basic facts and emerging concepts. J Intern Med. 2003;254(3):197-215. doi:10.1046/j.1365-2796.2003.01228.x]. We assume, there is no point in adding such information in the discussion.</p><p id="11671d22-53bd-4336-a20c-8199f6cd1328" class="">The sentences “As a result, we chose 5 peptides with the highest antimicrobial propensity scores which can exhibit α–helical structure and additionally 1 peptide with unstructured conformation and high propensity score according to the predictions. The physicochemical properties of peptides were calculated using an APD3 server for the amino acid composition, hydrophobic ratio, Boman index, and molecular weight [4] (Table S2). “ were added in the Materials and Methods section.</p><p id="25198051-518b-4e8c-bd0c-2a7e560b6946" class="">The corresponding references were added to the revised version of the article.</p><p id="ea993325-7af2-4028-ab0f-b06b4b346097" class="">Author Response File: <a href="https://susy.mdpi.com/user/review/displayFile/13943547/YyfnIQX9?file=author-coverletter&amp;report=8667721"> Author Response.docx</a></p><p id="717ca5de-87d2-4f8f-9d19-4fea83f7e17a" class=""><em>Reviewer 2 Report</em></p><p id="713844c2-ea89-40a2-89b5-572744b081c3" class="">The work <em>&quot;The Hirudo Medicinalis Microbiome Is a Source of New Antimicrobial Peptides&quot;</em> by Grafskaia et al. presents in a clear fashion interesting results regarding antimicrobial activity of peptides whose sequences have been inferred from metagenomic study of <em>Hirudo medicinalis</em> microbiome.</p><p id="3a2f3b98-c694-4fe1-ba15-5e17008503a8" class="">I do not have any objections regarding presentation or interpretation of the results. However a few minor remarks have come to my mind.</p><ol type="1" id="9bbb6035-03a0-4026-83b5-40668e525f7d" class="numbered-list" start="1"><li>In materials and methods there is a significant gap regarding how the final 6 peptides were selected. In the result section there is a transition from 65 to 6 peptides without giving any rationale behind it. Please make it clear in the final manuscript.</li></ol><ol type="1" id="848cc328-fad4-4938-bee6-d3e4e06ed385" class="numbered-list" start="2"><li>As the most active AMPs do not form alpha-helices in the examined conditions, what could be their potential mechanism of action? Is there a possibility they form alpha-helices during interaction with bacterial membranes of concrete species only? Wouldn&#x27;t be relatively easy to obtain liposomes from the examined bacterial species and investigate such a possibility? Could authors deliver such an experiment for the investigated peptides?</li></ol><ol type="1" id="ebbf1dfd-a283-4205-9cba-52837559fd6e" class="numbered-list" start="3"><li>What could be a potential reason for the quite promising peptide 1545 to be highly effective towards <em>S. haemolyticus</em> but completely ineffective towards <em>S. aureus</em>? Could authors include in the manuscript any interpretation of this difference based on available research?</li></ol><ol type="1" id="0bb3eacb-eec1-4da5-ad09-ef2017179a62" class="numbered-list" start="4"><li>Is it possible to suggest how should the peptide 1545 be modified in order to make it effective towards <em>S. aureus</em>? Would it be possible to include such a suggestion or a few in the discussion?</li></ol><p id="abf073c9-be71-42c0-b4bf-bfae188bcc0f" class=""><em>Author Response</em></p><p id="3691f1e6-02ce-485c-a27e-ed46ed2b790f" class="">We would like to thank the reviewer for detailed comments regarding the manuscript. We agree that dataset analysis is not totally clear and we implemented corresponding modifications. Responding on general suggestions we want to underline that our paper discusses the identification and functional analysis of the new antimicrobial peptides of <em>Hirudo medicinalis</em>microbiome. Below you can find the detailed responses to the issues. Original reviewer comments in boldface, responses in regular typeface.</p><p id="72732af8-98f5-43e7-81dc-abd29c7be0db" class=""><strong>The work </strong><em><strong>&quot;The Hirudo Medicinalis Microbiome Is a Source of New Antimicrobial Peptides&quot;</strong></em><strong> by Grafskaia et al. presents in a clear fashion interesting results regarding antimicrobial activity of peptides whose sequences have been inferred from metagenomic study of </strong><em><strong>Hirudo medicinalis </strong></em><strong>microbiome.</strong></p><p id="7522a38f-e1fc-45dc-9159-77cbcbebb07a" class=""><strong>I do not have any objections regarding presentation or interpretation of the results. However a few minor remarks have come to my mind.</strong></p><ol type="1" id="d328e2d2-1e3d-441f-83a0-7a2e5ca11d45" class="numbered-list" start="1"><li><strong>In materials and methods there is a significant gap regarding how the final 6 peptides were selected. In the result section there is a transition from 65 to 6 peptides without giving any rationale behind it. Please make it clear in the final manuscript.</strong></li></ol><p id="069ca7ae-52ab-47ee-a72c-5e23436edb80" class="">The structures of AMPs are various but the majority of known AMPs form α–helix. Among filtered 65 peptides with the highest antimicrobial propensity scores the predicted secondary structures were only α–helical or unstructured conformations. According to our previous paper the highest AMP propensity calculated by predictors doesn’t guarantee the best antimicrobial action. That is why peptides were chosen not by only their potential effects but on secondary structure too. From 65 peptides we chose 5 peptides with the highest antimicrobial propensity scores which can exhibit α–helical structure and additionally 1 peptide with unstructured conformation and high propensity score according to the predictions.</p><p id="a11e2228-c396-442d-a04a-0eb3c093616b" class="">The sentences “Overall, as potential AMPs, we identified 6 amino acid sequences (Table 1). Five of these peptides can adopt an α–helical structure under prediction. The leftover peptide is unstructured.” in the Result section were replaced by “According to the secondary structure prediction among filtered 65 peptides with the highest antimicrobial propensity scores the predicted secondary structures were only α–helical or unstructured conformations. From 65 peptides we chose 5 peptides with the highest antimicrobial propensity scores which can exhibit α–helical structure and additionally 1 peptide with unstructured conformation and high propensity score according to the predictions (Table 1).”</p><p id="bade70fa-6eaa-4a62-8403-67aa49155cd0" class="">The sentence “As a result, we selected six putative α–helical AMPs.” in the Discussion section was corrected to “As a result, we selected six putative AMPs.”</p><ol type="1" id="e6d35dcc-9893-4ebe-bee9-7e199662657f" class="numbered-list" start="1"><li><strong>As the most active AMPs do not form alpha-helices in the examined conditions, what could be their potential mechanism of action? Is there a possibility they form alpha-helices during interaction with bacterial membranes of concrete species only? Wouldn&#x27;t be relatively easy to obtain liposomes from the examined bacterial species and investigate such a possibility? Could authors deliver such an experiment for the investigated peptides?</strong></li></ol><p id="c40bc884-6cb2-46b1-87c7-0e12f39d8cc9" class="">Due to the mechanism of action is dependent on many factors as secondary structure, type of pathogens, environmental conditions and peptide concentration it is difficult to define the actual mechanism of AMP. On our findings, we only can assume that the mechanism of the most active AMP is likely non membranolytic but it must be proved by additional experiments. It is a fair point that the experiments with liposomes of different composition mimicking various bacteria could clarify the precise mechanism of action. In our previous study, we demonstrated that AMPs indeed form alpha-helices in the lipid environment [Grafskaia, E. N.; Nadezhdin, K. D.; Talyzina, I. A.; Polina, N. F.; Podgorny, O. V.; Pavlova, E. R.; Bashkirov, P. V.; Kharlampieva, D. D.; Bobrovsky, P. A.; Latsis, I. A.; Manuvera, V. A.; Babenko, V. V.; Trukhan, V. M.; Arseniev, A. S.; Klinov, D. V.; Lazarev, V. N. Medicinal leech antimicrobial peptides lacking toxicity represent a promising alternative strategy to combat antibiotic–resistant pathogens. Eur. J. Med. Chem. 2019, 180, 143–153. https://doi.org/10.1016/j.ejmech.2019.06.080.]. The AMPs interacted only with anionic lipids mimicking the bacteria but did not effect on zwitterionic vesicles which simulated eukaryotic cell membrane. Moreover, the secondary structure predictions of peptides didn’t take into account the environmental conditions, but that factor has a profound effect on the peptide conformation.</p><ol type="1" id="7226d71d-97a0-4e94-91d0-49d048e2bc72" class="numbered-list" start="1"><li><strong>What could be a potential reason for the quite promising peptide 1545 to be highly effective towards </strong><em><strong>S. haemolyticus</strong></em><strong> but completely ineffective towards </strong><em><strong>S. aureus</strong></em><strong>? Could authors include in the manuscript any interpretation of this difference based on available research?</strong></li></ol><p id="25bfb0c7-eddb-4e8e-9cff-87bf3aefca2b" class="">We assume that the membrane composition of <em>S. haemolyticus</em> and <em>S. aureus</em> differ that results in different interaction with peptide and potential relevance to antibiotic response. Moreover, the considerable plasticity of <em>S. aureus</em> membrane lipid composition affects the response and resistance to various antimicrobial agents [Durham, D.R.; Kloos, W.E. Comparative study of the total cellular fatty acids of Staphylococcus species of human origin. Int. J. Syst. Bateriol. 1978, 28, 223–228, Tiwari, Kiran B et al. “Plasticity of Coagulase-Negative Staphylococcal Membrane Fatty Acid Composition and Implications for Responses to Antimicrobial Agents.” Antibiotics (Basel, Switzerland) vol. 9,5 214. 28 Apr. 2020, doi:10.3390/antibiotics9050214].</p><p id="7fe9c1f0-987d-4f38-927a-767cf2b7a4a7" class="">The sentences “We suppose that the difference between the response of <em>S. haemolyticus</em> and <em>S. aureus</em> to peptides dependent of membrane lipid composition of bacteria. The considerable membrane plasticity of <em>S. aureus </em>can provide antimicrobial resistance to peptides [43,44].” were added in the Discussion section.</p><ol type="1" id="624d497f-6e75-4c67-914c-4c616362bd85" class="numbered-list" start="1"><li><strong>Is it possible to suggest how should the peptide 1545 be modified in order to make it effective towards </strong><em><strong>S. aureus</strong></em><strong>? Would it be possible to include such a suggestion or a few in the discussion?</strong></li></ol><p id="34921457-dbfa-42f9-9d55-6fd5029b0350" class="">After the precise investigation of <em>Staphylococcus</em> membrane composition, it can be possible to define proper amino acid substitution which probably improves the antimicrobial activity. On the other hand, this substitution can change the toxicity of the peptides that should be examined as well.</p><p id="095530d7-8c46-4270-be67-77bf6487f0ec" class="">The corresponding references were added to the revised version of the article.</p><p id="2dc63b75-f115-4ab7-9226-1da2acb1b5a5" class="">Author Response File: <a href="https://susy.mdpi.com/user/review/displayFile/14048281/RBZ9QhSF?file=author-coverletter&amp;report=8752032"> Author Response.docx</a></p></div></article></body></html>

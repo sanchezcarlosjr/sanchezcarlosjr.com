@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Draft genome sequences of Hirudo medicinalis and salivary transcriptome of three closely related medicinal leeches | bioRxiv</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="32ca78e5-4ef9-4910-9015-19be04a6917c" class="page sans"><header><h1 class="page-title">Draft genome sequences of Hirudo medicinalis and salivary transcriptome of three closely related medicinal leeches | bioRxiv</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Journal/Publisher</th><td></td></tr><tr class="property-row property-row-number"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>Year</th><td></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Authors</th><td></td></tr><tr class="property-row property-row-url"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesUrl"><path d="M3.73333,3.86667 L7.46667,3.86667 C8.49613,3.86667 9.33333,4.70387 9.33333,5.73333 C9.33333,6.7628 8.49613,7.6 7.46667,7.6 L6.53333,7.6 C6.01813,7.6 5.6,8.0186 5.6,8.53333 C5.6,9.04807 6.01813,9.46667 6.53333,9.46667 L7.46667,9.46667 C9.5284,9.46667 11.2,7.79507 11.2,5.73333 C11.2,3.6716 9.5284,2 7.46667,2 L3.73333,2 C1.6716,2 0,3.6716 0,5.73333 C0,7.124 0.762067,8.33453 1.88953,8.97713 C1.87553,8.83107 1.86667,8.6836 1.86667,8.53333 C1.86667,7.92013 1.98753,7.33447 2.2036,6.7978 C1.99267,6.4954 1.86667,6.12953 1.86667,5.73333 C1.86667,4.70387 2.70387,3.86667 3.73333,3.86667 Z M12.1095,5.28907 C12.1231,5.4356 12.1333,5.58307 12.1333,5.73333 C12.1333,6.34607 12.0101,6.9294 11.7931,7.46513 C12.0059,7.768 12.1333,8.13573 12.1333,8.53333 C12.1333,9.5628 11.2961,10.4 10.2667,10.4 L6.53333,10.4 C5.50387,10.4 4.66667,9.5628 4.66667,8.53333 C4.66667,7.50387 5.50387,6.66667 6.53333,6.66667 L7.46667,6.66667 C7.98187,6.66667 8.4,6.24807 8.4,5.73333 C8.4,5.2186 7.98187,4.8 7.46667,4.8 L6.53333,4.8 C4.4716,4.8 2.8,6.4716 2.8,8.53333 C2.8,10.59507 4.4716,12.2667 6.53333,12.2667 L10.2667,12.2667 C12.3284,12.2667 14,10.59507 14,8.53333 C14,7.14267 13.2375,5.93167 12.1095,5.28907 Z"></path></svg></span>Link</th><td><a href="https://www.biorxiv.org/content/10.1101/357681v2.full" class="url-value">https://www.biorxiv.org/content/10.1101/357681v2.full</a></td></tr><tr class="property-row property-row-url"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesUrl"><path d="M3.73333,3.86667 L7.46667,3.86667 C8.49613,3.86667 9.33333,4.70387 9.33333,5.73333 C9.33333,6.7628 8.49613,7.6 7.46667,7.6 L6.53333,7.6 C6.01813,7.6 5.6,8.0186 5.6,8.53333 C5.6,9.04807 6.01813,9.46667 6.53333,9.46667 L7.46667,9.46667 C9.5284,9.46667 11.2,7.79507 11.2,5.73333 C11.2,3.6716 9.5284,2 7.46667,2 L3.73333,2 C1.6716,2 0,3.6716 0,5.73333 C0,7.124 0.762067,8.33453 1.88953,8.97713 C1.87553,8.83107 1.86667,8.6836 1.86667,8.53333 C1.86667,7.92013 1.98753,7.33447 2.2036,6.7978 C1.99267,6.4954 1.86667,6.12953 1.86667,5.73333 C1.86667,4.70387 2.70387,3.86667 3.73333,3.86667 Z M12.1095,5.28907 C12.1231,5.4356 12.1333,5.58307 12.1333,5.73333 C12.1333,6.34607 12.0101,6.9294 11.7931,7.46513 C12.0059,7.768 12.1333,8.13573 12.1333,8.53333 C12.1333,9.5628 11.2961,10.4 10.2667,10.4 L6.53333,10.4 C5.50387,10.4 4.66667,9.5628 4.66667,8.53333 C4.66667,7.50387 5.50387,6.66667 6.53333,6.66667 L7.46667,6.66667 C7.98187,6.66667 8.4,6.24807 8.4,5.73333 C8.4,5.2186 7.98187,4.8 7.46667,4.8 L6.53333,4.8 C4.4716,4.8 2.8,6.4716 2.8,8.53333 C2.8,10.59507 4.4716,12.2667 6.53333,12.2667 L10.2667,12.2667 C12.3284,12.2667 14,10.59507 14,8.53333 C14,7.14267 13.2375,5.93167 12.1095,5.28907 Z"></path></svg></span>Dataset</th><td></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M7.01356 14.0001C8.8042 14.0001 10.5958 13.3107 11.9575 11.9324C14.681 9.21201 14.6808 4.7603 11.9571 2.04013C9.23336 -0.680043 4.77573 -0.680043 2.05199 2.04013C0.727519 3.36277 0 5.13301 0 6.99553C0 8.8764 0.727811 10.6285 2.05199 11.9509C3.43207 13.3106 5.22243 14.0001 7.01356 14.0001ZM3.72947 7.00914V8.461V8.65543H3.92382H5.34563H8.2794H8.4738V8.461V5.52541V3.37947V3.18502H8.2794H6.82747H6.63307V3.37947V6.81467H3.92382H3.72947V7.00914ZM1.83985 6.99553C1.83985 5.61698 2.38099 4.32597 3.36061 3.3477C5.36746 1.34337 8.64803 1.34062 10.6585 3.33944C10.6613 3.34219 10.6639 3.34494 10.6668 3.3477C12.676 5.3546 12.6763 8.63642 10.6668 10.6434C8.65705 12.6504 5.37031 12.6504 3.36061 10.6434C2.38099 9.66506 1.83985 8.37408 1.83985 6.99553Z"></path></svg></span>Log Date</th><td><time>@January 24, 2021 8:59 PM</time></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Type</th><td></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Technique</th><td></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M0,3 C0,1.34314 1.34326,0 3,0 L11,0 C12.6567,0 14,1.34314 14,3 L14,11 C14,12.6569 12.6567,14 11,14 L3,14 C1.34326,14 0,12.6569 0,11 L0,3 Z M3,1.5 C2.17139,1.5 1.5,2.17157 1.5,3 L1.5,11 C1.5,11.8284 2.17139,12.5 3,12.5 L11,12.5 C11.8286,12.5 12.5,11.8284 12.5,11 L12.5,3 C12.5,2.17157 11.8286,1.5 11,1.5 L3,1.5 Z M2.83252,6.8161 L3.39893,6.27399 L3.57617,6.10425 L3.92334,5.77216 L4.26904,6.10559 L4.44531,6.27582 L5.58398,7.37402 L9.28271,3.81073 L9.45996,3.64008 L9.80664,3.3056 L10.1538,3.63989 L10.3311,3.81067 L10.8936,4.35303 L11.0708,4.52399 L11.4434,4.88379 L11.0708,5.24353 L10.8936,5.41437 L6.1084,10.0291 L5.93115,10.2 L5.58398,10.5344 L5.23682,10.2 L5.05957,10.0292 L2.83057,7.87946 L2.65283,7.70801 L2.27832,7.34674 L2.6543,6.98694 L2.83252,6.8161 Z"></path></svg></span>Dataset Raw</th><td><div class="checkbox checkbox-off"></div></td></tr></tbody></table></header><div class="page-body"><figure id="e9547743-f043-40a3-8e54-e6d54a0f0b74" class="image"><a href="biorxiv_logo_homepage7-5-small.png"><img style="width:252px" src="biorxiv_logo_homepage7-5-small.png"/></a></figure><p id="653619b9-dd58-4f73-94bd-ee43f106c383" class="">Salivary cell secretion (SCS) plays a critical role in blood feeding by medicinal leeches, making them of use for certain medical purposes even today. We annotated the <em>Hirudo medicinalis</em> genome and performed RNA-seq on salivary cells isolated from three closely related leech species, <em>H. medicinalis, Hirudo orientalis,</em> and <em>Hirudo verbana.</em> Differential expression analysis verified by proteomics identified salivary cell-specific genes, many of which encode previously unknown salivary components. However, the genes encoding known anticoagulants were not differentially expressed in the salivary cells. The function-related analysis of the unique salivary cell genes enabled an update of the concept of interactions between salivary proteins and components of haemostasis. Thus, our study provides one of the most comprehensive knowledge of the genetic fundamentals of the blood-sucking lifestyle in leeches.</p><h2 id="efd5226a-0f8b-463c-8942-e957a8e4dfb1" class="">Introduction</h2><p id="f188c7d7-d2d9-4a38-bfe3-11629204b7eb" class="">The genome sequencing of haematophagous animals and transcriptional profiling of their salivary glands has attracted considerable attention in recent years because many haematophagous species transmit various infectious diseases caused by viruses, bacteria, protozoa, and helminths. The elucidation of the genetic mechanisms that allow haematophagous species to act as vectors of pathogenic organisms [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">1</a>–<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">5</a>] is of great importance for public health care, veterinary medicine, and microbiology. Opposite to other hematophagous species, blood-sucking leeches, belonging to the subclass <em>Hirudinea</em> (true leeches) of the phylum <em>Anelidae,</em> attract interest in regard to the identification of novel bioactive compounds. Blood-sucking leeches and, in particular, medicinal leeches, have been used for bloodletting to treat diverse ailments since ancient times [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">6</a>]. Although the use of live leeches to treat human diseases is not encouraged by current medicine because of the high risk of an undesired outcome, hirudotherapy is still indicated in certain medical conditions. In particular, application of medicinal leeches improves tissue drainage after replantation when the common surgical correction of venous congestion fails or is unfeasible [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">7</a>]. In these cases, hirudotherapy frequently provides beneficial effects because the leech feeding apparatus has evolved to promote the finely tuned inhibition of haemostasis and blood coagulation [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">8</a>, <a href="https://www.biorxiv.org/content/10.1101/357681v2.full">9</a>]. The composition of leech saliva has been shown to play a key role in this inhibition [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">9</a>, <a href="https://www.biorxiv.org/content/10.1101/357681v2.full">10</a>].</p><p id="dc1830e4-5239-4067-aea1-786845f90903" class="">In medicinal leeches, which belong to the group of so-called <em>jawed leeches,</em> saliva is secreted by unicellular salivary glands that reside in the anterior part of the body and are interspersed between the muscle fibres that connect the jaws with the body wall. Each salivary cell extends a single duct from the cell body to the jaw, and the duct ends in a tiny opening between the calcified teeth of the jaw. Medicinal leeches incise the host skin at the feeding site by their jaws and release the salivary cell secretion (SCS) into the wound [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">9</a>]. During one act of blood meal, medicinal leeches partially or completely empty their salivary gland cells [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">11</a>]. However, salivary gland cells replenish their reservoirs with the content of SCS within seven days after blood meal, making a leech to be got ready for another act of blood feeding [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">12</a>]. In addition to its known inhibitory effect on haemostasis and blood coagulation, SCS suppresses inflammation, exhibits analgesic effects, possesses antimicrobial activity, and alters vasodilatory responses, enhancing local blood circulation to facilitate leech feeding. Moreover, some SCS components are thought to preserve the blood from rapid degradation after ingestion.</p><p id="2583962b-a026-4545-aec6-eb6f43f71141" class="">Although transcriptional analysis of the salivary glands of jawless and jawed leeches was attempted [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">13</a>–<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">16</a>] and some SCS components have been characterized and their respective targets in hosts have been identified [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">9</a>], the repertoire of the bioactive saliva components remains largely unknown. Elucidating the SCS composition in medicinal leeches is the key to understanding (i) the molecular mechanisms underlying the orchestrated interaction between the leech SCS and the components of haemostasis, (ii) evolution of the blood feeding lifestyle in leeches, and (iii) genetics of hematophagy. Identification of the unknown bioactive SCS components will facilitate the development of novel pharmacological compounds for treating impaired peripheral blood circulation, venous congestion or microbial infections.</p><p id="b1ec8f4e-1fdc-409a-9d5a-f47733ccf754" class="">In the current study, we performed sequencing, genome assembly and annotation <em>H. medicinalis</em> genome as well as transcriptional profiling of the salivary cells followed by proteomic validation of SCSs of three medicinal leeches, <em>Hirudo medicinalis, Hirudo orientalis,</em> and <em>Hirudo verbana.</em> This study aims to provide a comprehensive map of the genetically encoded components of blood meal-related genes in leeches.</p><h2 id="1b1eb8e8-66a8-4960-b5ab-365c2ccfbb67" class="">Results</h2><h3 id="952581a5-e958-4d57-9aea-ac3125132df1" class="">Genome assembly and annotation</h3><p id="566db91f-b296-410f-89ec-e85947db2780" class="">To assemble the <em>H. medicinalis</em> genome, we extracted DNA from an adult leech. Before being processed, the leach was maintained without feeding for at least two months. We created a set of three shotgun libraries to perform sequencing by using three different platforms (<strong>Supplementary Table 1</strong>). All read datasets were combined, and a single assembly was created by SPAdes [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">17</a>]. The resulting assembly contained 168,624 contigs with an N50 contig length of 12.9 kb (<strong>Supplementary Table 2</strong>).</p><p id="69d2666b-ca47-440a-b0c1-8b8a59f310a4" class="">Preliminary analysis (contigs Blast) revealed the presence of bacterial sequences in the resulting assembly. Therefore, we conducted binning to discriminate the leach contigs (a leech bin). We built a distribution of contigs according to their GC abundance, tetranucleotide frequencies, and read coverage. To increase the binning accuracy, the read coverage was determined by combining the DNA reads with the reads corresponding to a combined transcriptome of <em>H. medicinalis</em> (see below). The discrimination of the eukaryotic and prokaryotic contigs is illustrated in <a href="https://www.biorxiv.org/content/10.1101/357681v2.full"><strong>Fig. 1A/B</strong></a><strong>, Supplementary Table 3</strong> and <strong>Supplementary Data 2</strong>. Additionally, we selected the mitochondrial contigs to assemble the leech mitochondrial genome [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">18</a>].</p><p id="ed4bd960-7164-432b-b7a2-187fbfc24b4b" class="">The eukaryotic contigs underwent a scaffolding procedure using paired reads. Scaffolds were generated using Illumina paired-end and mate-pair read datasets by SSPACE [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">19</a>]. After scaffolding, the assembly consisted of 14,042 sequences with an N50 scaffold length of 98 kb (<strong>Supplementary Tables 4 and 5</strong>). The total length of the genome draft was estimated to be 187.5 Mbp, which corresponds to 85% of the theoretical size of the leech genome (<strong>Supplementary Table 6</strong>). A total of 14,596 protein coding genes were predicted.</p><ul id="a86a33d6-9817-4f19-8f09-7885eb2635a1" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.biorxiv.org/content/biorxiv/early/2019/09/10/357681/F1.large.jpg?download=true">Download figure</a></li></ul><ul id="977c167e-cd43-44de-819a-8634d3ebbbc5" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.biorxiv.org/content/biorxiv/early/2019/09/10/357681/F1.large.jpg">Open in new tab</a></li></ul><p id="aab97340-00ef-4ee2-8299-59de7fb50f2f" class="">Fig. 1.</p><p id="9df9cf70-4943-40d1-b0ad-acb57c21d55b" class="">The <em>H. medicinalis</em> genome binning. <strong>(A)</strong>. 2D-plot showing the contig distribution in coordinates of GC content and coverage by a combination of reads obtained by Ion Proton and Illumina. Contigs are indicated by dots, and the taxonomic affiliation of contigs at the domain level is encoded by colour (green – <em>Bacteria,</em> blue – <em>Eukarya,</em> black – no assignment). The taxonomic affiliation was determined by direct Blastn search against the National Center for Biotechnology Information (NCBI) nt database. The 3D plot showing the contig distribution in coordinates of GC content, read coverage (Proton and Illumina), and host cDNA read coverage is presented in <strong>Supplementary Data 1</strong>. <strong>(B)</strong> <em>H. medicinalis</em> genome contains clusters of blood meal-related genes. The graph shows the exon-intron structure of genes and arrangement of gene clusters in scaffolds on a general scale. The exon arrows indicate the direction of transcription (gray – unknown gene).</p><p id="8b4cc038-edab-4c3d-b0c3-1b883e33f348" class="">Also, we identified new homologs of genes encoding known anticoagulants or blood meal-related proteins. The multiple amino acid alignments for each of these protein families (<strong>Supplementary Figs. 1,2</strong>) Based on the genome sequence data and using known protein sequences, we determined the organization of these genes (<strong>Supplementary Table 7, </strong><a href="https://www.biorxiv.org/content/10.1101/357681v2.full"><strong>Fig1 B</strong></a>.). Positions and lengths of exons and introns were predicted using the respective cDNA and protein sequences as references. In some cases, genes are localized in common scaffolds and form tandems or clusters <a href="https://www.biorxiv.org/content/10.1101/357681v2.full"><strong>Fig1 B</strong></a>.</p><h3 id="4f18a2ce-ef3a-40ac-b312-713fc1149615" class="">mRNA-seq, transcriptome assembly and annotation</h3><p id="b6d6e013-02e9-41db-96bd-f38750f64451" class="">To obtain tissue-specific mRNA samples from three medicinal leech species, <em>H. medicinalis, H. verbana,</em> and <em>H. orientalis,</em> we isolated salivary cells and muscles from the cryosections of the anterior body parts using laser microdissection (<a href="https://www.biorxiv.org/content/10.1101/357681v2.full"><strong>Fig. 2A</strong></a>). Then, we constructed two cDNA libraries with and without normalization for each mRNA sample using the oligo-dT primer and sequenced them on the Ion Torrent PGM (<strong>Supplementary Table 8</strong>). Four read datasets corresponding to the constructed cDNA libraries were used for the <em>de novo</em> assembly of a combined transcriptome for each medicinal leech species using the Trinity RNA assembler [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">20</a>] (<strong>Supplementary Table 9</strong>). We used the combined transcriptomes to map non-normalized tissue-specific reads. Read mapping was necessary to perform consecutive differential expression analysis.</p><p id="cff363a3-9bc8-4e1d-ad07-d40f7df4155c" class="">Gene Ontology (GO) analysis of the detected transcripts was performed using Blast2GO [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">21</a>] and BlastX. The ‘nr’ database served as a reference database. GO analysis demonstrated that all three medicinal leech species had similar transcript distributions across GO categories (<strong>Supplementary Figure 3</strong>). The taxonomy distribution of the closest Blast hits also was similar (<strong>Supplementary Figure 4</strong>). The majority of the identified transcripts were found to match two species of <em>Annelida:</em> 59.8% to <em>H. robusta</em> and 10.7% to <em>C. teleta.</em> This analysis also confirmed the absence of contamination by nonleech transcripts.</p><p id="e9c4a2ea-3bc3-4b19-b9f1-93707b6f92fd" class="">The prediction of coding regions (or open read frames, ORFs) and annotation of transcriptomic data were carried out using Transdecoder and Trinotate. ORFs were translated using the BlastP algorithm, and the protein sequences were annotated by EuKaryotic Orthologous Groups (KOG) classification using the eggNOG database [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">22</a>] (<strong>Supplementary Figure 5</strong>). The KOG classification revealed that all three medicinal leech species have similar transcript distributions across KOG categories. All three medicinal leech species were also found to share the vast majority of their orthologous clusters (<strong>Supplementary Figure 6</strong>).</p><ul id="37c0ba0f-71f3-419f-970c-5e74eeec2c4c" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.biorxiv.org/content/biorxiv/early/2019/09/10/357681/F2.large.jpg?download=true">Download figure</a></li></ul><ul id="2c2e3879-ecb7-486f-8364-62e498eb4448" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.biorxiv.org/content/biorxiv/early/2019/09/10/357681/F2.large.jpg">Open in new tab</a></li></ul><p id="494693c7-8093-463f-8870-116eebd1fbde" class="">Fig. 2</p><p id="bb391759-8f03-475b-8ffe-d64c582edb77" class="">Differential expression analysis of salivary cells. <strong>(A)</strong> Isolation of salivary cells and muscles by laser microdissection. MA plots of differentially expressed genes in the salivary cells and muscles of <em>H. medicinalis</em> for the <em>de novo</em> assembled transcriptome <strong>(B)</strong> and the genome model <strong>(C)</strong>.</p><h3 id="2cff5682-fff9-48c9-9482-a26597c3d1a9" class="">Differential expression analysis</h3><p id="056aadff-1c4d-4b63-a027-f9a4ffca3a89" class="">To estimate the relative expression levels of the transcripts identified in the salivary cells and muscles and to identify transcripts unique to the salivary cells, we mapped the tissue-specific cDNA reads without normalization against the combined transcriptome of each medicinal leech species. We also mapped the tissue-specific cDNA reads of <em>H. medicinalis</em> against its genome assembly. Differentially expressed genes were detected according to a recent protocol [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">23</a>]. To identify genes that are differentially expressed in the salivary cells and muscles, an individual MA plot was constructed for each medicinal leech species using its combined transcriptome (<a href="https://www.biorxiv.org/content/10.1101/357681v2.full"><strong>Fig. 2B</strong></a><strong>, Supplementary Figure 7</strong>). An additional MA was constructed for <em>H. medicinalis</em> using its genome assembly (<a href="https://www.biorxiv.org/content/10.1101/357681v2.full"><strong>Fig. 2C</strong></a>). Genes with a q-value (FDR) &lt; 0.05 were considered to be differentially expressed.</p><p id="0c225b82-801c-47af-a3aa-4dbf7881eb71" class="">We identified 102, 174, and 72 differentially expressed transcripts in the salivary cells of <em>H. medicinalis, H. orientalis,</em> and <em>H. verbana,</em> respectively. Because the three are closely related medicinal leech species, the protein sequences of the differentially expressed transcripts were grouped into orthologous clusters to simplify the subsequent functional analysis. We identified 25 differentially expressed, orthologous clusters shared by three leech species and 44 orthologous clusters shared by at least two leech species (<a href="https://www.biorxiv.org/content/10.1101/357681v2.full"><strong>Fig. 3</strong></a><strong>, Supplementary Tables 10-11</strong>). The majority of sequences in the identified orthologous clusters correspond to hypothetical proteins annotated in the genome of <em>H. robusta</em>. Analysis of conserved domains in the identified orthologous clusters allowed the determination of sequences belonging to known protein families.</p><p id="27392c6b-d6b7-4712-81eb-fe7c10153cf8" class="">We also analysed the differentially expressed genes of <em>H. medicinalis</em> using its genome assembly. The cDNA reads for the salivary cells, muscles, and neural tissue [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">24</a>] (reads were obtained from the Sequence Read Archive (SRA)) were mapped onto the genome assembly. For the neural tissue, we used a read dataset for ganglion 2 because of its localization in the preoral segments. Differential expression analysis identified 42 genes unique to the salivary cells of <em>H. medicinalis</em> (<strong>Supplementary Table 12</strong>).</p><h3 id="7d9d5e1e-fcf1-4c70-97b4-eca6c214b9c3" class="">Proteomics of salivary cell secretion</h3><p id="3fd9dfba-fe79-47ef-b65a-efebae7246b1" class="">For proteomic analysis, we collected SCSs from three medicinal leech species, <em>H. medicinalis, H. orientalis,</em> and <em>H. verbana,</em> which were maintained without feeding for at least two months. The SCSs were collected according to a previously reported method [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">25</a>] with some modifications (see Methods).</p><p id="a293af3d-9805-4300-af66-b657e0050223" class="">The sample preparation method is critical to the resultant repertoire of the identified proteins because the SCS consists of both low- and high-molecular-weight components [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">9</a>] and contains proteinase inhibitors, glycoprotein complexes, and lipids. The latter may form complexes with proteins [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">26</a>]. Therefore, we combined several sample preparation methods and several mass spectrometry techniques to cover the broadest repertoire of the SCS proteins. Proteomic datasets obtained by different sample preparation methods and mass spectrometry techniques were combined to create a final list of the identified proteins for each medicinal leech species.</p><p id="b7448f54-35ad-483c-a763-d59fc9d24112" class="">We identified 189, 86, 344 proteins in the SCSs of <em>H. medicinalis, H. orientalis,</em> and <em>H. verbana,</em> respectively and grouped them into orthologous clusters as described above. All three medicinal leech species were found to share 39 orthologous clusters, and 50 orthologous clusters were shared by at least two species (<a href="https://www.biorxiv.org/content/10.1101/357681v2.full"><strong>Fig. 3</strong></a><strong>, Supplementary Table 13</strong>). Combination of the transcriptomic and proteomic data revealed 25 orthologous clusters of genes unique to the salivary cells (<strong>Supplementary Table 11</strong>). A list of individual components of the leech SCS is given in <a href="https://www.biorxiv.org/content/10.1101/357681v2.full"><strong>Fig. 3</strong></a>. Surprisingly, the expression of genes encoding known SCS anticoagulants and blood meal-related proteins did not differ in salivary cells and in muscles. To validate this finding, we examined the expression of saratin, eglin C, bdellins, hirustasin, destabilase, metallocarboxypeptidase inhibitor, apyrase, and angiotensin converting enzyme (ACE) by the real time PCR of additional, independent tissue-specific cDNA libraries constructed for salivary cells and muscles. The real-time PCR results (data not shown) confirmed this finding. This indicates that genes encoding anticoagulants and blood meal-related proteins are involved not only in the blood feeding, but contribute to other, yet unknown physiological functions.</p><ul id="b5a7cd35-08de-4ba6-8230-9a80461e0f4b" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.biorxiv.org/content/biorxiv/early/2019/09/10/357681/F3.large.jpg?download=true">Download figure</a></li></ul><ul id="8c742026-6abf-4957-9809-c4d4c8c38db7" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.biorxiv.org/content/biorxiv/early/2019/09/10/357681/F3.large.jpg">Open in new tab</a></li></ul><p id="809e9490-94a6-453b-b147-c37d3fcc47a3" class="">Fig. 3.</p><p id="8003fe26-1e3a-4a76-aa6d-16ca23a320fe" class="">Summary of the identified SCS components. The Venn diagrams in the upper panel show the numbers of ortholog clusters identified by differential expression (DE) and proteomic (Prot) analyses across three medicinal leech species. The histogram in the middle panel features the numbers of orthologous clusters identified by the differential expression analysis, proteomic analysis or a combination thereof (DE+Prot). Each bar consists of ortholog clusters identified as known blood feeding-related components (identified), other known proteins (other), and unknown proteins (NA). The pie charts in the lower panel illustrate the abundance of the individual SCS components identified by the differential expression analysis, proteomic analysis or their combination. For details, see <strong>Supplementary Tables 11, 12, and 14</strong>.</p><p id="d90fac78-46db-4a28-9983-8feb8f272797" class="">Below, we characterize SCS components classified into functional groups and describe their possible roles in the hemostasis. The sequences of proteins and their alignment are presented in <strong>Supplementary Figs. 8-23</strong>.</p><p id="58152637-820e-4cbc-8802-ea2f9c83a1f0" class="">The results of this study show that metalloproteases of the M12, M13, and M28 families are the major enzymatic components of the SCS. The M12B (ADAM/reprolysin) peptidases are a large family of disintegrin-like metalloproteinases that have a broad range of functions and are involved in many physiological processes [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">27</a>]. These enzymes are often found in snake venoms while the transcripts are observed in sialotranscriptomes of various hematophagous species [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">28</a>–<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">30</a>]. In haemostasis, secreted proteases of the M12 family can participate in the inhibition of platelet adhesion [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">31</a>, <a href="https://www.biorxiv.org/content/10.1101/357681v2.full">32</a>] and in clot softening due to the degradation of fibrinogen. These proteins exhibit metal-dependent proteolytic activity against extracellular matrix proteins (gelatine, fibrinogen, fibronectin), thereby affecting the regulation of inflammation and immune responses.</p><p id="61504a6e-5b94-47dc-87f7-eec20bef3501" class="">In mammals, proteases of the M13 family are involved in the formation and development of the cardiovascular system and in the regulation of neuropeptides in the central nervous system [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">33</a>]. One of their most important functions is the activation of biologically active peptides, particularly peptides involved in the regulation of blood pressure (angiotensin and bradykinin). In mammals, ACE is an important component of the renin angiotensin system (RAS). ACE is expressed in the sialotranscriptomes of the leech <em>(Theromyzon tessulatum),</em> the cone snail <em>(Conidae),</em> the vampire snail <em>(Colubraria reticulata),</em> and dipteran species <em>(Diptera)</em> [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">34</a>, <a href="https://www.biorxiv.org/content/10.1101/357681v2.full">35</a>].</p><p id="80bede53-6daf-490f-9f33-655882229685" class="">The identified sequences of M28 family exopeptidases belong to the Q-type carboxypeptidases, also known as lysosomal dipeptidases or plasma glutamate carboxypeptidase (PGCP). These peptidases were shown to be involved in the regulation of the metabolism of secreted peptides in the blood plasma and the central nervous system in mammals [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">36</a>]. These enzymes appear to serve to deactivate certain signalling peptides in the blood and are components of haemoglobinolytic systems in haematophagous parasites, playing the role of digestive exopeptidases [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">37</a>]. Notably, leech salivary gland secretions contain carboxypeptidase inhibitors, which presumably prevent the untimely digestion of the blood meal by other types of peptidases [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">9</a>, <a href="https://www.biorxiv.org/content/10.1101/357681v2.full">38</a>].</p><p id="67aaeca8-c87d-4387-a7bd-0b5d7b619b3e" class="">We identified sequences of secreted superoxide dismutase family (SODC, Cu/Zn type) enzymes. This family of metalloproteins is mainly typical of eukaryotes and is involved in free radical inactivation, which retards oxidative processes. In the blood, superoxide dismutase catalyses the conversion of superoxide into molecular oxygen and hydrogen peroxide and prevents the formation of peroxynitrite and hydroxyl radicals [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">39</a>]. Interestingly, peroxynitrite may suppress haemostatic function by the nitration of key procoagulants [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">39</a>, <a href="https://www.biorxiv.org/content/10.1101/357681v2.full">40</a>], while hydrogen peroxide is a key signalling molecule involved in the regulation of many processes (coagulation, thrombosis, fibrinolysis, angiogenesis, and proliferation). In ticks, SODC is presumed to participate in regulating the colonization of the intestinal tract by bacteria, including causative agents of diseases [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">41</a>]. In SCSs, SODC appears to exhibit an antibacterial effect along with other proteins of the innate immune system and prevents unwanted blood oxidation during feeding and digestion. Notably, haem-containing compounds and free iron are involved in the formation of free radicals and the provocation of oxidative stress [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">42</a>].</p><p id="773b162e-6d76-4dc9-8517-25a763bd6288" class="">These enzymes are common in the proteomic and transcriptomic data of haematophagous and venomous animals. The salivary secretions of different leech species are known to contain hyaluronidase (heparinase, orgelase) [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">47</a>]. In the proteome and transcriptome, we found three clusters containing a domain of the glycosyl hydrolase family 79 (O-glycosyl hydrolases). This family includes heparinases, which play an important role in connective tissues. In venoms and salivary gland secretions, these enzymes catalyse the hydrolysis of hyaluronic acid, resulting in the loss of structural integrity of the extracellular matrix and thereby facilitating the penetration of anticoagulants and other active molecules deeper into the tissues [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">48</a>]. In addition, the low-molecular-weight heparin produced by cleavage suppresses and inhibits blood coagulation [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">49</a>].</p><h3 id="a80f5366-d27e-4115-962c-868be7c04853" class="">Proteinase inhibitors</h3><p id="9a97b021-b7a3-48b1-8916-8729955801e8" class="">We identified sequences corresponding to proteinase inhibitor I15 (leech antistasin) <a href="https://www.biorxiv.org/content/10.1101/357681v2.full"><strong>Fig.4</strong></a><strong>.</strong> Proteins of this family are commonly found in blood-sucking leeches and play a key role in the inhibition of blood coagulation. Their main targets are serine proteases participating in haemostasis, such as the factor Xa, kallikrein, plasmin, and thrombin [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">9</a>]. Decorsin, an antistasin from <em>Macrobdella decora,</em> was demonstrated to inhibit platelet aggregation [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">54</a>], and gigastasin from the giant Amazon leech <em>(Hementaria ghilianii)</em> was recently reported to potently inhibit complement C1 [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">55</a>]. Antistasin from <em>Hementeria officinalis</em> is the closest homologue of the sequences identified in our study.</p><ul id="43951e63-80c0-4c2e-9c1b-a74560959e76" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.biorxiv.org/content/biorxiv/early/2019/09/10/357681/F4.large.jpg?download=true">Download figure</a></li></ul><ul id="ca39dc96-3829-4010-a6f3-7d7a719fbae6" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.biorxiv.org/content/biorxiv/early/2019/09/10/357681/F4.large.jpg">Open in new tab</a></li></ul><p id="a61ef945-af7b-4419-9e1e-c122d58d109b" class="">Fig. 4.</p><p id="4e0b285a-d8e4-4742-81bf-68ee52c611ef" class="">Multiple sequences alignment of Antistasin-like transcripts with dual domain antistasin-type protease inhibitors from leeches’ Antistasin <em>(Haementeria officinalis,</em> P15358), Ghilantein <em>(Haementeria ghilianii,</em> P16242) and Eisenstasin II from earthworm <em>(Eisenia andrei,</em> Q5D2M8J. The boxes indicates two antistasins domane. Alignment is generated by MUSCLE algorithm, residues are colored according to ClustalX colour scheme, conserved amino acids are colorized by conservation level (threshold &gt; 50%). Reference sequence are marked purple.</p><p id="980a5d67-e3e1-4c96-b5c3-936a3bf08a09" class="">The cysteine-rich secretory protein/antigen 5/pathogenesis-related 1 proteins (CAP) superfamily includes numerous protein families, particularly cysteine-rich secretory protein (CRISP) <a href="https://www.biorxiv.org/content/10.1101/357681v2.full"><strong>Fig 5A</strong></a>. They are commonly found in the venoms of snakes and other reptiles, and most of them are toxinsy [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">56</a>, <a href="https://www.biorxiv.org/content/10.1101/357681v2.full">57</a>]. In some investigations, CRISPs from haematophagous species were thought to be involved in haemostasis (HP1). The identified sequences show similarity to protein sequences from the haematophagous parasitic nematode <em>Ancylostoma caninum</em> (hookworm), such as the potassium channel blocker AcK1 [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">58</a>] and the possible platelet aggregation inhibitor HPI [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">59</a>], as well as to the snake toxins triflin <em>(Protobothrops flavoviridis)</em> and natrin-1 <em>(Naja atra)</em> [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">60</a>, <a href="https://www.biorxiv.org/content/10.1101/357681v2.full">61</a>]. Among the differentially expressed genes, we identified sequences with a new “Cys-rich” motif <a href="https://www.biorxiv.org/content/10.1101/357681v2.full"><strong>Fig 5B</strong></a>. This group of proteins is characterized by the presence of a signal peptide and two cysteine patterns CX{5,14}CX{7}CX{8}CC{2}C and CX{7,17}CX{9}CX{8}CC{2}C.</p><ul id="01c6d9e7-f856-4f86-80d1-d6030abf9bc5" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.biorxiv.org/content/biorxiv/early/2019/09/10/357681/F5.large.jpg?download=true">Download figure</a></li></ul><ul id="0964250f-aa09-470f-a9a5-35e92c491b19" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.biorxiv.org/content/biorxiv/early/2019/09/10/357681/F5.large.jpg">Open in new tab</a></li></ul><p id="ba2e9661-ed99-4dd6-8e47-a8061f774153" class="">We identified a cystatin sequence only in the proteome of <em>H. verbana.</em> Cystatins are small protein inhibitors of cysteine proteases (cathepsins B, H, C, L, S) [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">63</a>] and are often found in the sialotranscriptomes of various ticks [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">64</a>]. In ticks, cystatins play an important role in processes related to immune response, the regulation of endogenous cysteine proteases involved in the digestion of blood and haem detoxification [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">65</a>]. The nematode <em>Nippostrongylus brasiliensis</em> utilizes cystatins to evade the host immune system [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">66</a>].</p><p id="4e194302-6cb5-48fd-b839-3782de84d338" class="">This domain is present in numerous proteins, including the blood proteins plasminogen and coagulation factor XI [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">67</a>]. The PAN/apple domain of plasma prekallikrein is known to mediate its binding to high-molecular-weight kininogen, and the PAN/apple domain of the factor XI binds to the factors XIIa and IX, platelets, kininogen, and heparin [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">68</a>]. The salivary gland secretion of the leech <em>H. officinalis</em> was found to contain the leech antiplatelet protein (LAPP), which has a PAN domain and is involved in haemostasis. This protein exhibits affinity for collagens I, III, and IV and thereby inhibits collagen-mediated platelet adhesion [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">69</a>].</p><p id="af6f229f-4bd8-4c0b-9ec4-a4bf8066b67f" class="">Fig. 6.</p><p id="9a99dd97-ec9d-483d-944f-7cf25171893f" class="">(A) Amino acid sequences alignment of Eglin-like transcripts with Eglin <em>(Hirudo medicinalis,</em> P01051), hypothetical protein <em>(Helobdella robusta,</em> xp_009019226.1) and chymotrypsin inhibitor homolog from Potato <em>(Solanum tuberosum,</em> P01052). Alignment is generated by MUSCLE algorithm, residues are colored according to ClustalX colour scheme. Identical and conserved residues indicated respectively by asterisk, period and colon. (B) Alignment of PAN domains with leech anti-platelet protein <em>(Haementeria officinalis,</em> Q01747) and putative anti-platelet-like protein <em>(Haementeria vizottoi,</em> A0A0P4VN18). Conserved amino acids are colorized by conservation level (threshold &gt; 75%). Reference sequence are marked purple.</p><p id="9e6bc2fb-ff75-46f1-971b-9c98f37d9968" class="">The highly conserved, multifunctional α2M is involved in the inhibition of a broad range of proteases (serine, cysteine, aspartic, and metalloproteases), interacts with cytokines and hormones, and plays a role in zinc and copper chelation [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">70</a>]. It can act as a plasmin inhibitor, thereby inhibiting fibrinolysis, but in some cases, it inhibits coagulation by inactivating thrombin and kallikrein [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">71</a>]. This protein is believed not only to be involved in leech immune processes but also to be an important component of the salivary gland secretion that enhances anticoagulation processes.</p><h3 id="e3e427cd-e549-4924-bddc-fb658fe6361b" class="">Molecules involved in adhesion</h3><p id="fd11c7f5-cf39-420d-ac5f-15af4e8578c3" class="">Ficolins are a component of the innate immune system and trigger a lectin-dependent pathway of complement activation [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">72</a>]. In invertebrates, ficolins are involved in the recognition of bacterial cell wall components [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">73</a>]. The fibrinogen-like domain is present in proteins with affinity for erythrocytes, <em>e.g.,</em> tachylectin-5A (TL5A). TL5A exhibits strong haemagglutinating and antibacterial activity in the presence of Ca2+ ions [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">74</a>]. In reptile venoms, ficolin-like proteins, ryncolin [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">75</a>] (from <em>Cerberus rynchops)</em> and veficolin-1 (UniProt: E2IYB3) (from <em>Varanus komodoensis),</em> are presumed to trigger platelet aggregation and blood coagulation.</p><p id="de6e6976-006d-4d53-8303-7b350a3b311c" class="">A number of identified sequences contain one or several discoidin motifs (DS), known as the F5/8 type C domain. This domain is present in numerous transmembrane and extracellular proteins, <em>e.g.,</em> neuropilins, neurexin IV, and discoidin domain receptor proteins, and in proteins involved in haemostasis, such as the coagulation factors V and VIII [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">76</a>]. The DS domain plays an important role in the binding of various ligand molecules, including phospholipids and carbohydrates [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">77</a>]. Due to these features, DS-containing proteins are actively involved in cell adhesion, migration, and the proliferation and activation of signalling cascades [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">78</a>]. Leech DS domain-containing proteins appear to act as lectins with high affinity to galactose and may be components of the innate immune system of the leech. In addition, they can bind to collagen or phosphatidylserine on the surface of platelets and the endothelium [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">79</a>] and thus, by competitive inhibition, impair interactions between haemostatic factors.</p><p id="5f0bd808-5dfe-4641-90e9-0becff00c8f2" class="">The low-density lipoprotein receptor (LDLR) family is an important component of the blood plasma and is involved in the recognition and endocytosis of low-density lipoproteins in mammalian blood [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">80</a>]. In contrast to known homologous proteins, these receptors are secretory rather than membrane proteins, and they contain four LDLR class A (cysteine-rich) repeats. Some invertebrates, including segmented worms, are hypothesized to be incapable of the synthesis of cholesterol and steroid hormones, and during feeding, leeches acquire cholesterol mainly from the blood of the host as an exogenous source [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">81</a>]. We posit that this protein may be utilized by the leech for the scavenging and transportation of cholesterol-rich lipoprotein complexes.</p><p id="eb4576cd-64dd-48f3-8932-d94c8c38f487" class="">Proteins that contain the ricin-type beta-trefoil lectin domain have been found in prokaryotes and eukaryotes. In animals, R-type lectins exhibit diverse activities [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">82</a>]. They are present in scavenger receptors (mannose, fucose, collagen receptors), N-acetylgalactosaminyltransferases, haemolytic toxins (CEL-III from <em>Cucumaria echinata)</em> and apoptosis-inducing cytotoxins [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">82</a>, <a href="https://www.biorxiv.org/content/10.1101/357681v2.full">83</a>]. Previously, similar sequences were identified in leech transcriptomes; however, the authors assumed that this molecule has a mitochondrial localization [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">84</a>]. Yet another noteworthy close homologue is the galactose-binding lectin EW29 from the earthworm <em>Lumbricus terrestris.</em> EW29 consists of two homologous domains and has been experimentally demonstrated to exhibit haemagglutinating activity [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">85</a>]. As many known R-type lectins are involved in adhesion and trigger haemolysis [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">82</a>], this molecule is of interest for further study.</p><p id="0c7ee612-5fab-4430-9d46-d2695ae7217e" class="">This domain is present in various plasma proteins: complement factors, integrins, and collagens VI, VII, XII, and XIV [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">86</a>]. One protein identified in the leech proteome is a secreted protein that consists of four copies of the <em>vWFA</em> domain <a href="https://www.biorxiv.org/content/10.1101/357681v2.full"><strong>Fig. 7</strong></a>. The sequence contains several putative recognition sites: the metal ion-dependent adhesion site (MIDAS), the integrin-collagen binding site, and the glycoprotein Ib (GpIb) binding site. According to blast analysis, this domain is homologous to type VI collagen. Considering the domain organization of the protein and the presence of glycoprotein and collagen binding sites, one of the putative mechanisms of action involves binding to the surface of the endothelium or platelets, thereby preventing their interaction with collagen. This binding underlies the competitive inhibition during haemostasis (platelet scavenging) [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">34</a>].</p><ul id="6e4a481d-330a-473f-8a32-42a6d02db777" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.biorxiv.org/content/biorxiv/early/2019/09/10/357681/F7.large.jpg?download=true">Download figure</a></li></ul><ul id="dd205352-df8d-417a-ab58-5f8b80ef0277" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.biorxiv.org/content/biorxiv/early/2019/09/10/357681/F7.large.jpg">Open in new tab</a></li></ul><p id="e7ddf980-9304-4de5-84b1-6b0ed14a4d3a" class="">Fig. 7.</p><p id="962fa51b-066b-4a76-9c51-a23ad0235ca7" class="">Alignment of the hirudo vWFA domains with the human vWFA1 (EAW88814.1) and vWFA1-like <em>(Colubraria reticulata,</em> SPP68597.1). Alignment is generated by MUSCLE algorithm, residues are colored according to ClustalX colour scheme. Identical and conserved residues indicated respectively by asterisk, period and colon. Reference sequence are marked purple.</p><h2 id="6c33800c-4bd7-4a8c-a5c5-693d282fd2b9" class="">Discussion</h2><p id="305c2258-e0ac-40bd-a9df-a0952eef9b8b" class="">Combined analysis of transcriptomic and proteomic data revealed that SCSs of three medicinal leech species, <em>H. medicinalis, Hirudo orientalis,</em> and <em>Hirudo verbena,</em> have a similar composition and to large extent contain many proteins homologous to those that are associated with either blood feeding in various hematophagous animals or have been identified in venoms of the poisonous organisms, such as M12 and M13 proteases, CRISP, Apyrase, ADA, cystatins, hyaluronidase and ficolins. However, we also detected novel salivary proteins, the roles and importance of which in blood feeding have yet to be established such as F5/8 type C domain, LDLR, PAN domain as well as proteins containing vWFD and vWFA domains. Moreover, we also found, somewhat surprisingly, that genes encoding well-characterised components of the medicinal leech SCS, such as hirudin, bdellins, eglins, saratins and destabilases were not differentially expressed in the salivary cells, suggesting that the proteins encoded by these genes support not only blood feeding but also some unknown functions in the leech.</p><p id="0953a8e8-d8c3-49f2-993b-338f62a17352" class="">We also identified new homologs of genes encoding known anticoagulants including antistasins and LAPP but also other blood meal-related proteins such as bdellins A and B3, eglin-C, hirustasin, destabilase, earatin/LAPP and leech DTI in the annotated genome. Interestingly, some of these genes are localized in common scaffolds and form tandems or clusters. This arrangement and the similarity of the genes suggest recent local duplications and many of them as likely to be linage specific. This unique diversity of anticoagulatant genes highlights their specific functional significance for the leech, which has led to their positive selection with subsequent expansion in the genome. It is also notable that almost all of these genes are serine protease inhibitors such as the antistasins, serpins, Kazal-Type Serine Protease Inhibitor, Potato inhibitor I family and hirudins. All of the above protein families are involved in host hemostasis or blood digestion [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">9</a>, <a href="https://www.biorxiv.org/content/10.1101/357681v2.full">84</a>]. They are also the most broadly represented and diverse families in the salivary secret of leeches (<strong>Supplementary Tables 10,11,13</strong>).</p><p id="6c869ec7-6f3f-46e5-a20f-a6da2a517223" class="">It is possible that the initially duplication of some of these genes could be associated with dosage effect related to the amount of the gene product. During the divergence process, it is likely that some of these genes acquired increased specificity for new targets from the blood of various hosts. In the transcriptome data, we found that in most families of anticoagulants and products of blood meal related genes, the only one variant of the gene is expressed and these were the previously known sequences from the NCBI. At the same time, we also identified the expression of several variants of Bdellin B3, Lectin C-type, Destabilase, and three Elastase inhibitor genes (serpins). Gene duplication combined with positive selection is an important mechanism for the creation of new functional role for the existing genes (neofunctionalization) [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">87</a>]. The functional segregation of hirudin and hirudin-like factor genes could be an example of this. The functions of hirudin are well understood, while targets of hirudin-like factors are still not known [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">88</a>, <a href="https://www.biorxiv.org/content/10.1101/357681v2.full">89</a>]. Moreover, the results show that many well known blood meal-related genes are found in single-copies (without duplication) including Saratin, Leech DTI and Carboxy peptidase inhibitor. These gene families have probably very conserved functional activities in blood processing during feeding and we see no signs duplication of within these gene families.</p><p id="4d62fb70-4bb7-47f8-8454-fcbf4ec8dad8" class="">For a long time, thrombin and factor Xa have been thought to be the main targets of components of the leech SCS. However, similar to those of other haematophagous species, the SCS of medicinal leeches were found to contain a complex mixture of molecules that inhibit both secondary and primary. Our findings lead to the suggestion that the action of the SCS components not merely on the key coagulation factors (thrombin and factor Xa) but on the different stages of haemostasis provides synergistic effects. Furthermore, functional analysis of the identified proteins demonstrated that leeches utilize ancient, highly conserved molecules as versatile affectors of the host haemostasis and immunity.</p><p id="60fb0ec9-4013-41f3-97b8-b8a24f1f7a21" class="">Similarity of the SCS compositions in the examined leeches with those of many other blood feeding species favours hypotheses about a convergent evolution of the saliva composition in evolutionary distant hematophagous animals as a result of having to adapt to the same targets in their hosts.</p><p id="d11d53fa-49eb-445c-9621-3c908d2b2185" class="">In the proteome of the SCSs, we found proteins that usually exhibit cytoplasmic or membrane localization, such as calreticulin, calmodulin, thioredoxin, chaperones, tetraspanin transcription factors, and certain ribosomal and cytoskeletal proteins. In contrast to that in jawless leeches [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">90</a>], the mode of the secretion process in jawed leeches remains unknown. The presence of proteins with cytoplasmic or membrane localization appears however to be associated with apocrine secretion in the production of leech saliva.</p><p id="8c41b335-8036-46cb-821f-162b5239cb02" class="">Over all it is interesting that the SCS of the medicinal leeches have been found to contain proteins homologous to others found in a variety of the vertebrate species. These proteins are relatively conserved, and exhibit shared structural and functional features among various species. Some have been shown to be directly or indirectly involved in haemostasis in mammals. These proteins, avoiding interactions with components of the host immune system, could possibly affect the kinetics of biochemical reactions, thereby providing a synergistic effect of the SCS.</p><p id="e578ccb0-f79a-4220-9b2b-0485d1c7c500" class="">In sum, this analysis provides new insights into the role of the genome structure in the regulation of blood feeding-related gene expression and the evolutionary adaptation to the blood-sucking lifestyle. More broadly, the genome annotation performed in our study may serve as a blueprint for future experimentation on the medicinal leech as a model organism and provides a database of sequences encoding the unique bioactive leech proteins for use in developing novel pharmacological compounds.</p><h2 id="08c4dfa6-9125-4f97-ad43-72a6e7da6e10" class="">Methods</h2><h3 id="7698d03f-2ab4-42f9-bcab-3763ec1d45ad" class="">BioProject and raw sequence data</h3><p id="763ab03d-7259-4778-ad5a-edafcb76d29b" class="">The genome assembly was validated by the National Center for Biotechnology Information (NCBI). It was checked for adaptors, primers, gaps, and low-complexity regions. The genome assembly was approved, and the accession numbers MPNW00000000 and BioProject PRJNA257563 were assigned. All genome sequencing data were deposited in the Sequence Read Archive (SRA) with accession numbers (see <strong>Supplementary Table 1</strong>). Raw mRNA-seq data are available as FASTQ files and have been quality-checked and deposited in the SRA with their accession numbers (see <strong>Supplementary Table 9</strong>).</p><h3 id="a3103fe6-2db1-4ee1-a3f0-d159c95fd5f1" class="">Biological samples</h3><p id="9cc6f187-146d-45fc-9193-2e975260d546" class="">Three leech species were provided by HIRUD I.N. Ltd. (Balakovo, Saratov Region, Russia). <em>H. medicinalis, H. verbana,</em> and <em>H. orientalis</em> were collected at a pond near Volkovo, Saratov region, Russia (51°91’03”, 47°34’90”), Lake Manych, Stavropol Krai, Russia (46°01’09”, 43°48’21”), and Lake Divichi, Kura-South Caspian Drainages, Azerbaijan (41°17’40”, 49°04’13”), respectively. Leech species were confirmed by sequencing the regions of the genes encoding nuclear and mitochondrial ribosomal RNA (for details, see <strong>Supplementary Methods</strong>).</p><h3 id="d7c33b79-1013-4bea-9db8-abab4dc3a82b" class="">Genomic DNA extraction, WGS sequencing and genome assembly</h3><p id="a620ffa4-1b39-4e5a-a5bc-39f593a1f1f3" class="">Genomic DNA was extracted from a single adult leech <em>H. medicinalis</em> using the standard technique with slight modifications (for details see <strong>Supplementary Methods</strong>). The extracted DNA was purified (for details, see <strong>Supplementary Methods</strong>), and a set of three shotgun libraries was created.</p><p id="83fd1349-a07e-44ee-8721-a7e6791dca6a" class="">Pure genomic DNA (approx. 1000 ng) was fragmented to a mean size of 200-300 bp using the Covaris S220 System (Covaris, Woburn, Massachusetts, USA). Then, an Ion Xpress™ Plus Fragment Library Kit (Life Technologies) was employed to prepare a barcoded shotgun library. Emulsion PCR was performed using the One Touch system (Life Technologies). Beads were prepared using the One Touch 2 and Template Kit v2, and sequencing was performed using Ion Proton 200 Sequencing Kit v2 and the P1 Ion chip.</p><p id="6278fb30-52e1-40da-8bda-f4c202644cd5" class="">A mate-pair library with 3-6 kb fragments was prepared from pure genomic DNA using Ion TrueMate Library Reagents (Life Technologies). The Ion PGM™ template OT2 400 kit (Life Technologies) was used to conduct emulsion PCR. Sequencing was performed by the Ion Torrent PGM (Life Technologies) genome analyser using the Ion 318 chip and Ion PGM™ Sequencing 400 Kit v2 (Life Technologies) according to the manufacturer’s instructions. To separate non-mate reads and split true mate reads, we used the matePairingSplitReads.py script.</p><p id="c27e2cef-5392-4ff8-91b6-cb80200555d7" class="">A mate-pair library with 8-12 kb fragments was prepared from the pure genomic DNA using the Nextera Mate Pair Library Sample Prep Kit (Illumina) and TruSeq DNA Sample Prep Kit (Illumina) according to the manufacturer’s recommendations. The library was sequenced on the MiSeq platform (Illumina) using a 2 × 150 cycle MiSeq V2 Reagent Kit according to the standard Illumina sequencing protocols. Demultiplexing was performed using bcl2fastq v2.17.1.14 Conversion Software (Illumina). Adaptor sequences were removed from reads during demultiplexing. For trimming and separation of the single-end, paired-end, and mate-pair reads, NxTrim software was used.</p><p id="478e2c9d-6abc-466f-820b-8068634dc664" class="">Read datasets corresponding to the three shotgun libraries were combined, and SPAdes 3.6.0 software [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">17</a>] was used to create a single genome assembly. For eukaryotic contig scaffolding, we used Sspace software [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">19</a>] with the parameters -p 1 -x 0 -l library.txt -s Contigs.fasta -k 2.</p><h3 id="ae5e9cb1-5116-49ac-a557-3ff1cdbd4421" class="">Contigs binning</h3><p id="7dfc8d32-e038-4d90-8486-a422f25c7c82" class="">The k-mer coverage and contig length were taken from the SPAdes assembly information (contig names). GC content was calculated using the infoseq tool built into the EMBOSS package. Contigs with a length less than 500 bp were ignored. The tetranucleotide content was calculated using calc.kmerfreq.pl, and the script is available at [<a href="https://github.com/MadsAlbertsen/miscperlscripts/blob/master/calc.kmerfreq.pl">https://github.com/MadsAlbertsen/miscperlscripts/blob/master/calc.kmerfreq.pl</a>].</p><p id="b1c3496d-e9ae-4ba5-b100-7fefecba6b28" class="">The reads of the individual shotgun libraries and the <em>H. medicinalis</em> cDNA reads (see below) were mapped against the genome assembly by bowtie2 [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">91</a>]. The depth of read coverage for the individual libraries was calculated using BEDTools [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">92</a>]. The taxonomic classification of the contigs was carried out by MEGAN6 [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">93</a>] using the results of BLAST analysis (nr/nt database).</p><p id="b27c1ed6-8d6c-4ca7-82ad-f4e73e2cccc6" class="">Using the R language and the car package, a concentration ellipse was built to confine at least 99% of those contigs against which at least ten cDNA reads had been mapped. To avoid the loss of potential eukaryotic contigs, we also considered the taxonomic affiliation of those contigs against which cDNA reads were not mapped. All contigs that were identified as neither prokaryotic nor eukaryotic but belonged to the ellipse, were assigned to be eukaryotic.</p><h3 id="59039fe2-2291-4b09-8381-b77621f912af" class="">Annotation of a draft genome</h3><p id="81d0023d-853e-4113-83a2-9e6388c65568" class="">To annotate a draft genome, three sets of so-called hints, sequences in the genome that exhibit features of specific gene structures, such as exons, introns, etc., were generated (for details, see <strong>Supplementary Methods</strong>). The first set of hints was generated using sequences from the <em>H. robusta</em> protein coding genes. The second set of hints was generated using contigs corresponding to the <em>de novo</em> transcriptome assembly (see below). The third set of hints was generated using the cDNA reads (see below). All sets of hints were combined, and AUGUSTUS software [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">94</a>] (version 3.7.1) was used for annotation of the draft genome.</p><h3 id="a3329502-1c38-4f50-8e3a-d81649144fd0" class="">Laser microdissection</h3><p id="f6ccb6bb-fdc1-4345-a05b-ff1d1f873ec8" class="">Laser microdissection was applied both to obtain tissue-specific mRNA samples from salivary cells and muscles for subsequent differential expression analysis and to collect different parts of the digestive tract (crop, coeca, intestine) for consecutive metagenomic analysis (for details, see <strong>Supplementary Methods</strong>). Briefly, live leeches were snap frozen in liquid nitrogen. The different parts of the leech bodies were cryosectioned, and slices were attached to membrane slides with the PEN foil (Leica Microsystems, Germany). Slides were stained with methylene blue to reveal salivary cell bodies. Staining was omitted when the parts of the digestive tract were isolated. Tissue collection was performed for three leech species, <em>H. verbana, H. orientalis</em> and <em>H. medicinalis,</em> by a Leica Laser Microdissection System LMD7000 (Leica Microsystems, Germany). Salivary cells and muscles were isolated directly into RNeasy extraction solution for the subsequent extraction of total RNA, and the parts of the digestive tract were isolated directly into ATL buffer from the QIAamp DNA Micro Kit for the subsequent extraction of total DNA.</p><h3 id="8d62dae5-af4e-4315-9548-1d123bbc3e23" class="">cDNA library construction and sequencing</h3><p id="94d9c491-7c94-457d-adab-d90abc0dc13d" class="">Total RNA was extracted from the tissue fragments isolated by laser microdissection using an ExtractRNA Kit (Evrogen, Russia) (for details, see <strong>Supplementary Methods</strong>). Tissue-specific cDNA libraries were created using the Mint-2 cDNA Synthesis Kit (Evrogen, Russia) according to the manufacturer’s instructions. The adapters PlugOligo-3M and CDS-4M were used for cDNA synthesis. The normalization of cDNA was performed using the DNS (duplex-specific nuclease) in accordance with the manufacturer’s protocol (Evrogen, Russia). Normalized and non-normalized cDNA libraries (100 ng of each sample) were fragmented to a mean size of 400-500 bp by using a Covaris S220 System (Covaris, Woburn, Massachusetts, USA). Then, an Ion Xpress Plus Fragment Library Kit (Life Technologies) was employed to prepare barcoded shotgun libraries. To conduct emulsion PCR, an Ion PGM Template OT2 400 Kit (Life Technologies) was utilized. Sequencing was performed by the Ion Torrent PGM (Life Technologies) analyser using Ion 318 chips and Ion PGM sequencing 400 Kit v2 (Life Technologies) in accordance with the manufacturer’s protocol.</p><h3 id="a95a8ffa-23da-400a-8d36-d44e9fd7a97c" class="">Transcriptome assembly and annotation</h3><p id="2e71599e-f886-432f-9c01-19d9cc5ee857" class="">Cutadapt [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">95</a>] v1.9 was applied to trim the adapter sequences used for cDNA synthesis. Prinseq lite [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">96</a>] v.0.20.4 was used to trim reads according to their quality and length. For <em>de novo</em> transcriptome assembly, we used Trinity software [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">20</a>] (version r20131110) with the default parameters. Blast2GO [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">21</a>] was used for Gene Ontology (GO) analysis and the functional annotation of contigs. Local BLAST (BlastX threshold value of e = 1×10-6, matrix BLOSUM-62) and the nr database were used for the grouping and annotation of contigs. MEGAN6 software [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">93</a>] was used to visualize the contig distribution (by KOG/EGGNOG classifications). TransDecoder and Trinotate were applied to identify and annotate ORFs.</p><h3 id="61505d07-c9c6-42fd-a0a8-4d273f38252d" class="">Differential expression analysis</h3><p id="acc82dcc-481e-4824-b4fc-62d2920af821" class="">Differentially expressed genes were detected according to a recent protocol using the Bowtie [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">91</a>], Htseq [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">97</a>] and edgeR [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">98</a>] software packages. Because biological replicates were available only for <em>H. verbana,</em> we applied the dispersion estimates for <em>H. verbana</em> to other leech species. Genes with q-value (FDR) &lt; 0.05 were defined as differentially expressed. To perform differential expression analysis using a genome model, the cDNA reads of <em>H. medicinalis</em> were mapped against the genome assembly using the STAR software [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">99</a>]. In addition to the cDNA reads corresponding to the salivary cells and muscles, we also mapped reads of <em>H. medicinalis</em> ganglion 2 against its genome assembly (SRR799260, SRR799263, SRR799266). The HTSeq software [<a href="https://www.biorxiv.org/content/10.1101/357681v2.full">97</a>] was used to count the number of reads mapped against the annotated genes. For each tissue (salivary cells, muscles, and neural tissue), we established a list in which the numbers of mapped reads corresponded to individual gene IDs by applying the “htseq-count” python script with the default parameters. Unique transcripts corresponding to certain tissues were determined by finding the intersection of these lists.</p><h3 id="e60d5197-5d3e-40f7-8db0-a4d3222925b6" class="">Collection and concentration of the salivary cell secretions</h3><p id="771b9491-d585-456e-b631-aa8b9bc77f2e" class="">To collect SCSs from three medicinal leech species, the bottom of a 15 mL Falcon tube was cut off, and an impermeable membrane (PARAFILM® M) was stretched on the excised end. The tube was filled with saline solution containing 10 mM arginine. A leech bit through the membrane, sucked up the salt solution and emitted its secretion into the saline solution. The saline solution enriched with SCS was continuously stirred and renewed to prevent its ingestion by leech. We collected approximately 10 mL of saline solution containing highly diluted leech SCS. Harvested SCSs were concentrated on a solid-phase extraction Sep-Pak Vac C18 6cc cartridge (Waters, USA) using 0.1% TFA in 70%/30% acetonitrile/water (v/v) as the buffer for elution of the protein fraction. The acetonitrile was evaporated, and the remaining solution was lyophilized. Dry protein powder was stored at −70°C prior to mass spectrometric analysis.</p><h3 id="640cf7e0-0fe6-4a11-8580-35b1fa9a78a5" class="">Digestion of the salivary cell secretions and sample preparation for proteomic analysis</h3><p id="169ed5d3-ffbc-4782-a9c6-99bc12f62ced" class="">Several digestion and preparation methods were applied to each freeze-dried sample of the SCS to cover the broadest possible variety of the salivary proteins. These preparation methods included filter-aided sample preparation (FASP), gel-free trypsin digestion using surfactant RapiGest SF (Waters), and ingel digestion of the protein sample. Detailed descriptions of the preparation methods are presented in the <strong>Supplementary Methods</strong>.</p><h3 id="75158a55-59d4-4d72-92bb-66a5b3710e34" class="">Mass spectrometry and analysis of mass spectra</h3><p id="f914894f-5f4a-4b2a-a0aa-397357ef29ab" class="">Mass spectra were obtained for each prepared protein sample by using three instruments: (i) a TripleTOF 5600+ mass spectrometer with a NanoSpray III ion source (Sciex, USA) coupled to a NanoLC Ultra 2D+ nano-HPLC system (Eksigent, USA), (ii) a Q-Exactive HF mass spectrometer with a nanospray Flex ion source (Thermo Scientific, Germany), and (iii) a Maxis 3G mass spectrometer with an HDC-cell upgrade and an Online NanoElectrospray ion source (Bruker Daltonics GmbH, Germany) coupled to a Dionex Ultimate 3000 (ThermoScientific, USA) HPLC system. The obtained raw mass spectra were converted into noncalibrated peaklists by the appropriate software, and these peaklists were analysed using ProteinPilot 4.5 revision 1656 (ABSciex). The acquisition of the mass spectra and their analysis and peptide identification are described in detail in the <strong>Supplementary Methods</strong>.</p><p id="656759a8-0b83-4a54-a473-7ad9ff9fc4ef" class="">To create a final list of the identified proteins for each medicinal leech species, the combined transcriptomes were translated either by ORF Transdecoder (standard parameters) or by the six-reading-frame method (length filter was ≥30 aa). Then, the protein sequences obtained by both methods were combined and used to establish a referential database of potential SCS proteins for each medicinal leech species. The protein sequences in the referential database that were matched by the peptides identified in an individual peaklist allowed the creation of protein datasets for individual samples. The protein datasets generated for individual samples by using different preparation methods and mass spectrometry techniques were combined to create the final list of the SCS proteins for each medicinal leech species.</p><p id="ecc7fffe-01d7-4849-8243-f5c9b69907df" class="">All of the raw reads generated in this study have been deposited in the NCBI database under BioProject accessions PRJNA257563 and PRJNA256119.</p><h2 id="6c5b19fe-d29b-4cc2-acc7-f86064b0db49" class="">Author contributions</h2><p id="07f1ebc8-09a6-4857-89fb-f1ae49effede" class="">V.N.L., O.V. Podgorny and V.V.B. conceived and designed the experiments. I.P.B., V.A.M., A.S. Kurdyumov, and D.A.S. samples collection. O.V. Podgorny, D.A.S. and V.V.B. laser microdissection.</p><p id="bd22b111-5384-4f5e-b628-02104cfb6c11" class="">V.V.B., D.A.S., and V.N.L. generated DNA and RNA for sequencing. V.V.B., M.T.V. and E.S.K. genome and transcriptome sequencing. V.V.B., A.S. Kasianov, and A.I.M. genome assembly, binning and automated annotation. V.V.B., A.S. Kasianov, and D.V.V. transcriptome assembly and annotation. D.V.V., A.S.N. differential expression analysis. V.G.Z., S.I.K., N.A.A., I. O.B., O.V. Pobeguts, D.S.M and D.V.R. sample preparation and mass spectrometry for proteomic analysis. V.V.B., E.N.G. analyzed results and made the figures. V.V.B. and O.V. Podgorny wrote the paper. I.P.B., M.S.G., V.M.G., H.B.S. and V.N.L. coordinated and revised the paper.</p><h2 id="b099d0b9-f9aa-4125-bfd7-4a9f9c600677" class="">Acknowledgments</h2><p id="a3e3b229-e317-4496-aebc-b58fb60ec111" class=""><em>H. medicinalis</em> genome sequence, assembly and annotation were supported by the Russian Science Foundation (project No17-75-20099).</p><p id="9c595228-8d3a-4220-a1d6-3c3e29f0aba0" class="">Transcriptomic analysis of salivary and muscle cells of <em>H. medicinalis, H. verbana, H. orientalis</em> and proteomic analysis of their salivary cell secretions were supported by the Russian Science Foundation (project No14-14-00696).</p><p id="0d493d20-da5b-4f54-a70c-df84a35b5c55" class="">O.V. Podgorny was partially supported by the IDB RAS Government basic research program, no. 0108-2018-0007. Laser microdissection was performed using equipment of the Core Centrum of Institute of Developmental Biology RAS.</p><p id="a15b7366-9150-4140-b56a-1ff2f9d59278" class="">V.G.Z mass spectrometric measurements were performed using the equipment of “Human Proteome” Core Facility of the Orekhovich Institute of Biomedical Chemistry (Russia) which is supported by Ministry of Education and Science of the Russian Federation (agreement 14.621.21.0017, unique project ID RFMEFI62117X0017)</p><p id="d1af3da7-b674-45d2-b40a-bd948144b512" class="">M.S.G. is grateful to the Russian Science Foundation (grant No. 14-50-00150) for support.</p><p id="a63af6fd-e695-41f2-8e52-92b418e9e18b" class="">We thank, Alexander V. Bazin the director of the company HIRUD I.N. Ltd.</p></div></article></body></html>

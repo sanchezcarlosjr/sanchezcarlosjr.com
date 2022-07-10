@@ -1,0 +1,673 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>7. Analítica</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2d3b0810-dead-4ec8-a2ee-d93ea4f6e7a3" class="page sans"><header><h1 class="page-title">7. Analítica</h1></header><div class="page-body"><nav id="e7153be3-b169-4867-9cc7-1b2e16b01223" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#697c7721-3099-47c3-b1d4-76353ed71c66">1. ¿Por qué medir?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#344a72e9-e331-47af-962a-bb93f2767d48">2. ¿Qué medir?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2f4d37b5-7b6a-40b3-a422-f5cc6ae4b0b5">3. KPI</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0181d853-2552-4158-ac78-55d0a628fafe">4. Métricas básicas</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#41183766-c0e9-4a0f-a08e-e8c3ef088bd5">5. Otras métricas</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#be627df3-333b-4685-93d6-57b7aadf5291">6. Herramientas</a></div></nav><p id="d7cad4d3-a822-4253-be06-ead2a15d9ad1" class="">
+</p><h2 id="697c7721-3099-47c3-b1d4-76353ed71c66" class="">1. ¿Por qué medir?</h2><ul id="b511f339-9250-4bfd-976d-c457b5abf027" class="bulleted-list"><li style="list-style-type:disc">Lo que no se mide no se puede mejorar</li></ul><ul id="24226fdd-58bb-448a-8948-bc01ac4c591e" class="bulleted-list"><li style="list-style-type:disc">Los datos nos dicen si no estamos acercando o no a nuestros objetivos</li></ul><ul id="10d76cfb-a791-4ebb-aa21-df21f1770189" class="bulleted-list"><li style="list-style-type:disc">Como profesional del marketing debes conocer tus números</li></ul><ul id="672f0480-734f-495b-b44b-facfce327848" class="bulleted-list"><li style="list-style-type:disc">El número principal en Marketing es el ROI (Retorno de la inversión)<ul id="6eb9cb66-3470-48b5-9271-f84a912c22bb" class="bulleted-list"><li style="list-style-type:circle">Lo que ganas menos lo que inviertes en marketing, expresado en porcentaje.</li></ul><ul id="219f08ac-e388-4526-8dc0-78d83214c818" class="bulleted-list"><li style="list-style-type:circle">Si compraras billetes de 20 dólares a 10 dólares cada uno, ¿cuántos comprarías?</li></ul><ul id="9cf05841-43d7-42b2-b611-7ddac5c4b437" class="bulleted-list"><li style="list-style-type:circle">Si compraras billetes de 10 dólares a 20 dólares cada uno, ¿cuántos comprarías?</li></ul></li></ul><ul id="2fe172e9-8875-421a-8b0c-ff66dcbaa468" class="bulleted-list"><li style="list-style-type:disc">Aparte del ROI puedes medir otras métricas<ul id="08ee4046-6f5a-42dd-8b32-b6082f946250" class="bulleted-list"><li style="list-style-type:circle">Finanzas</li></ul><ul id="5b45540f-03da-4dcc-b810-9d26858985e7" class="bulleted-list"><li style="list-style-type:circle">Ventas</li></ul><ul id="1dffface-ed45-4a4a-8f2e-a1cce9671970" class="bulleted-list"><li style="list-style-type:circle">Producción</li></ul></li></ul><p id="f25ce62e-30d6-4ba8-8eea-b4f452fbc3c1" class="">
+</p><h2 id="344a72e9-e331-47af-962a-bb93f2767d48" class="">2. ¿Qué medir?</h2><ul id="f3dad25e-06c7-4d20-ac3c-15d102b1e20e" class="toggle"><li><details open=""><summary>Métricas de valor vs las métricas de vanidad (Libro: <code>El método lean startup</code>)</summary><ul id="44af4020-d0a9-4d55-acbc-dada541bf58c" class="bulleted-list"><li style="list-style-type:disc">Métrica de vanidad es la que te hace sentir bien, te levanta el ego, pero no tiene valor real para el negocio<ul id="d76f2531-80de-4fb2-9b27-45243552ab49" class="bulleted-list"><li style="list-style-type:circle">Seguidores en YouTube (o en cualquier red social)</li></ul><ul id="fd821a69-51dc-4cef-9d6c-6f410cb3869b" class="bulleted-list"><li style="list-style-type:circle">Visitas en tu página web</li></ul><ul id="974aefe4-a88b-4cea-bee4-8cebe80ef7ed" class="bulleted-list"><li style="list-style-type:circle">Ventas</li></ul><ul id="44fa6acc-a46e-4065-afe3-7af1a4b35882" class="bulleted-list"><li style="list-style-type:circle">Descargas de tu aplicación</li></ul></li></ul><ul id="15433718-6c30-4227-ae5d-a3969c747e9d" class="bulleted-list"><li style="list-style-type:disc">Métrica de valor<ul id="e7f7077d-1cc3-43eb-aa05-129a46f3a4b9" class="bulleted-list"><li style="list-style-type:circle">Cuantos de estos seguidores visitan y se registran en nuestra página web</li></ul><ul id="2a27fdb0-7f9f-4f92-a702-082f3b08b2f8" class="bulleted-list"><li style="list-style-type:circle">Conversiones en tu página web</li></ul><ul id="60b595e1-cae5-48ab-b94a-fa63cb66faf1" class="bulleted-list"><li style="list-style-type:circle">Margen de ganancia</li></ul><ul id="87001a0d-5085-4d9b-addb-a19cf2748e24" class="bulleted-list"><li style="list-style-type:circle">Usuarios activos</li></ul></li></ul></details></li></ul><ul id="7815f98c-3b04-40fe-a233-8ffddb9841b6" class="toggle"><li><details open=""><summary>OKR (Objective and Key Results, libro <code>Mide lo que importa</code>)</summary><ul id="1340d1d3-a303-4d62-a945-59709e641107" class="bulleted-list"><li style="list-style-type:disc">Métricas de predicción VS <mark class="highlight-yellow_background">Métricas históricas</mark> (libro: <code>Las 4 disciplinas de la ejecución</code>)<ul id="fed50fb9-6459-4e8d-8854-1773cbd07f8c" class="bulleted-list"><li style="list-style-type:circle">Objetivo: Aumentar en 10% las ventas en el primer trimestre de 2020</li></ul><ul id="2541588b-f284-4e05-933f-23ef51a364e9" class="bulleted-list"><li style="list-style-type:circle">Métrica histórica: Las ventas de cada mes</li></ul><ul id="d2137776-2482-4908-87fa-f00dc0fddabf" class="bulleted-list"><li style="list-style-type:circle">Métricas predictivas (¿qué acciones nos harán vender 10% más?)<ul id="c9ef38fe-491d-4c9b-9070-98f3ed0bd2ff" class="bulleted-list"><li style="list-style-type:square">Por lo menos 5 cursos nuevos cada mes.</li></ul><ul id="84b57ff0-c5df-424c-82f9-834ceea90d5d" class="bulleted-list"><li style="list-style-type:square">Atender a los clientes en un máximo de 6 horas. Y resolver sus casos en un máximo de 48h.</li></ul><ul id="e9ce79a5-e189-4d29-8c8e-348ae1a5402d" class="bulleted-list"><li style="list-style-type:square">Subir por lo menos dos videos nuevos de YouTube a la semana con un lead magnet</li></ul><ul id="bdaa5a2f-12f9-43f2-9006-f8cfc4bc5735" class="bulleted-list"><li style="list-style-type:square">Ingresar al menos 100 usuarios nuevos al día</li></ul></li></ul></li></ul></details></li></ul><p id="77fc041b-4fa0-43f3-ac83-a77acbd98da2" class="">
+</p><h2 id="2f4d37b5-7b6a-40b3-a422-f5cc6ae4b0b5" class="">3. KPI</h2><ul id="90bba75e-6013-4209-9410-1ddc86ee7385" class="bulleted-list"><li style="list-style-type:disc">Key performance indicador (indicador clave de desempeño).</li></ul><ul id="b284fed1-ca82-46b6-b68a-97b28764deec" class="bulleted-list"><li style="list-style-type:disc">Depende de la estrategia</li></ul><ul id="09f9e648-9ba7-408e-85b7-449bb77e2529" class="bulleted-list"><li style="list-style-type:disc">Ejemplo (caso EDteam)<ul id="828e8ad7-db02-4d6e-8f0a-a0c351ee261d" class="bulleted-list"><li style="list-style-type:circle">Nuestras ventas están bien, todos los meses llegan muchos clientes nuevos</li></ul><ul id="78079242-cf3f-4aa9-957f-b76cab7f3b59" class="bulleted-list"><li style="list-style-type:circle">Sin embargo los ingresos no suben</li></ul><ul id="35964854-63e5-4822-bbdf-731606be52f5" class="bulleted-list"><li style="list-style-type:circle">Luego de investigar descubrimos que es porque nuestra tasa de retención es bajísima.</li></ul><ul id="c07ebb12-6f97-49ee-a841-471b8882a95c" class="bulleted-list"><li style="list-style-type:circle">Por lo tanto nuestro objetivo es mejorar la retención un 20% en un mes.</li></ul><ul id="44fa375b-cc4f-4b91-b741-00370b176250" class="bulleted-list"><li style="list-style-type:circle">¿Cuál será el KPI para este objetivo?<ul id="1c7d3bcf-04ee-4dd4-b5f0-714f9eac73e3" class="bulleted-list"><li style="list-style-type:square">La tasa de retención</li></ul><ul id="a82f5b5f-ef74-4b16-9d0e-5957cbf1fcc7" class="bulleted-list"><li style="list-style-type:square">Detras de ese KPI están nuestras métricas de predicción</li></ul></li></ul></li></ul><h2 id="0181d853-2552-4158-ac78-55d0a628fafe" class="">4. Métricas básicas</h2><ul id="3468160e-a8da-4e11-a63f-ea026da63374" class="toggle"><li><details open=""><summary>Web</summary><ul id="8c0aeca6-3e37-4528-9c07-6945f4e80d6e" class="bulleted-list"><li style="list-style-type:disc">Visitas diarias</li></ul><ul id="594a62f5-c919-4d0d-a8f8-a21652089240" class="bulleted-list"><li style="list-style-type:disc">Usuarios</li></ul><ul id="9e3e99d7-6acc-4783-8a22-d6352944f977" class="bulleted-list"><li style="list-style-type:disc">Tasa de rebote y tasa de salida</li></ul><ul id="1da60f4e-844e-462f-acab-8afa438597af" class="bulleted-list"><li style="list-style-type:disc">Tiempo de permanencia</li></ul><ul id="e5525e5b-cc5d-4c8a-9be4-21142b59c871" class="bulleted-list"><li style="list-style-type:disc">Páginas más vistas</li></ul><ul id="04991096-1545-46ed-bc33-cbe3a497c933" class="bulleted-list"><li style="list-style-type:disc">Páginas de aterrizaje y páginas de salida</li></ul><ul id="fe86f908-32f3-423d-8e97-d77863ec9143" class="bulleted-list"><li style="list-style-type:disc">Conversiones</li></ul></details></li></ul><ul id="c46cd9ba-49d4-46bd-a217-8d5b2f354bc7" class="toggle"><li><details open=""><summary>Redes sociales</summary><ul id="d5d01929-dc85-4f1c-888a-c3fd9285c5c1" class="bulleted-list"><li style="list-style-type:disc">Cada red social tiene sus propias métricas</li></ul><ul id="33b8954e-471e-44cf-8b52-81f306f60ea1" class="bulleted-list"><li style="list-style-type:disc">Pero hay algunas comunes a todas<ul id="71d7aa15-f012-443c-ad0a-12c196353f05" class="bulleted-list"><li style="list-style-type:circle">Alcance (reach)</li></ul><ul id="4a0cd538-c4d7-40e5-a4f5-ef514b36b41f" class="bulleted-list"><li style="list-style-type:circle">Impresiones</li></ul><ul id="bc894f3c-2fcb-40e4-8d42-6e22bda21481" class="bulleted-list"><li style="list-style-type:circle">Engagement</li></ul><ul id="cf043d59-4ad5-4626-83ae-75331b543841" class="bulleted-list"><li style="list-style-type:circle">Seguidores<ul id="31ccae57-56fa-4354-8b24-f5b3f0294397" class="bulleted-list"><li style="list-style-type:square">Edad, pais</li></ul></li></ul><ul id="1af6d793-d158-499b-8e7a-e078e4d081cb" class="bulleted-list"><li style="list-style-type:circle">Comentarios</li></ul></li></ul><ul id="fb626b4a-7ded-4eb3-bce0-ca5360078e97" class="bulleted-list"><li style="list-style-type:disc">Instagram<ul id="d0fa2fc0-1ca3-4fe9-bdfb-df7d1741b657" class="bulleted-list"><li style="list-style-type:circle">Visitas al perfil</li></ul><ul id="733ffe4c-581e-4c88-a3aa-7e8a70f9eb5d" class="bulleted-list"><li style="list-style-type:circle">Visitas al sitio web</li></ul></li></ul><ul id="c71054d0-f5f3-4a28-977e-30eac7bb9cee" class="bulleted-list"><li style="list-style-type:disc">LinkedIn<ul id="f5eac079-1100-4f71-9069-2af6552b49e6" class="bulleted-list"><li style="list-style-type:circle">Mide la profesion de tus seguidores y los que interactuan con tu contenido</li></ul></li></ul><ul id="b417522c-81d6-44c0-b5bf-c17227d4718c" class="bulleted-list"><li style="list-style-type:disc">YouTube<ul id="1d043e3e-5965-4e55-a5d3-fc1d3511fe03" class="bulleted-list"><li style="list-style-type:circle">CTR (click through ratio)<ul id="c65711bf-8c26-490e-90e0-56e44f81a517" class="bulleted-list"><li style="list-style-type:square">Que porcentaje de personas que ven la miniatura de tu video en recomendados le dan click.</li></ul></li></ul><ul id="f4307105-1bfe-4859-9e92-5e52bb26a526" class="bulleted-list"><li style="list-style-type:circle">Tiempo de visualización</li></ul></li></ul><ul id="7cde8356-a8b8-4f68-a230-4c9857553535" class="bulleted-list"><li style="list-style-type:disc">Facebook<ul id="c5126604-7905-46e8-b6d1-037a46d222f1" class="bulleted-list"><li style="list-style-type:circle">Page views y page previews</li></ul></li></ul><ul id="48f66b09-866a-41c2-a7ca-ec27580f19bf" class="bulleted-list"><li style="list-style-type:disc">Twitter<ul id="3ed11467-c365-44bb-84d3-039367d9c5cd" class="bulleted-list"><li style="list-style-type:circle">Menciones y retuits</li></ul></li></ul></details></li></ul><p id="0613859a-27e6-4f6e-b794-6685fd4cd8f9" class="">
+</p><h2 id="41183766-c0e9-4a0f-a08e-e8c3ef088bd5" class="">5. Otras métricas</h2><ul id="faea31f8-d158-4972-be33-ff73ea9b1a71" class="bulleted-list"><li style="list-style-type:disc">Email marketing<ul id="8a207fc8-f6a0-40b0-be9a-6991d4b8f191" class="bulleted-list"><li style="list-style-type:circle">Tasa de apertura</li></ul><ul id="c778d079-5d0d-472e-ba68-8fb6e8bd7bd7" class="bulleted-list"><li style="list-style-type:circle">Tasa de rebote</li></ul><ul id="097fb44f-62c6-4443-8f2d-70468fcce3cc" class="bulleted-list"><li style="list-style-type:circle">Spam</li></ul><ul id="07e9bb49-5672-406b-8276-d7cb142f533b" class="bulleted-list"><li style="list-style-type:circle">Tiempo de apertura</li></ul><ul id="7f869a42-daf3-412f-9321-09d0eee29d0a" class="bulleted-list"><li style="list-style-type:circle">Tasa de clicks</li></ul></li></ul><ul id="6ed6e16e-ad01-445f-b320-d963ba33142f" class="bulleted-list"><li style="list-style-type:disc">Tests A/B<ul id="1e554e97-2d0c-4e48-8813-47f17c189198" class="bulleted-list"><li style="list-style-type:circle">Correo electrónico<ul id="dd043bbf-bc18-4222-859b-58c13477bce2" class="bulleted-list"><li style="list-style-type:square">Sendinblue</li></ul><ul id="4cf52f6b-1a1b-442d-b2a4-922d52293f2d" class="bulleted-list"><li style="list-style-type:square">Mailchimp</li></ul></li></ul><ul id="1196e2a1-ceb6-4978-acc1-fac2d7a90bdb" class="bulleted-list"><li style="list-style-type:circle">Landing pages<ul id="a99a42a0-1e4d-4ae2-a8c8-df2aee4d14d0" class="bulleted-list"><li style="list-style-type:square">Google Optimize</li></ul><ul id="c4d137bc-33e5-4a37-b777-9633f72cf0bd" class="bulleted-list"><li style="list-style-type:square">Optimizely</li></ul><ul id="7b385b75-31d2-4cd2-9a1e-7d18e8b51198" class="bulleted-list"><li style="list-style-type:square">Hubspot</li></ul><ul id="dcdf3f68-f172-4d3e-b50d-578b57608f29" class="bulleted-list"><li style="list-style-type:square">WordPress</li></ul><ul id="b42b1294-4d18-451c-a149-9d81be35814b" class="bulleted-list"><li style="list-style-type:square">Programadores</li></ul></li></ul></li></ul><ul id="96b17e88-aef3-4dc8-8623-168e149dd476" class="bulleted-list"><li style="list-style-type:disc">Encuestas<ul id="94c7865f-bbee-46e1-a7b8-ad8f4da1cc89" class="bulleted-list"><li style="list-style-type:circle">Surveymonkey</li></ul><ul id="7e776894-70b5-459c-b330-b3e92068cc4b" class="bulleted-list"><li style="list-style-type:circle">Typeform</li></ul><ul id="a106416e-bceb-47f9-87cc-7630e1220a9a" class="bulleted-list"><li style="list-style-type:circle">Google forms</li></ul><ul id="368f864b-d68e-4a0f-8838-bd31467c0f65" class="bulleted-list"><li style="list-style-type:circle">Jotform</li></ul></li></ul><ul id="bee1168d-4697-4b43-82e3-e9a2bb047b5f" class="bulleted-list"><li style="list-style-type:disc">Soporte al cliente<ul id="e47efc37-fa96-4647-b12e-59e00d66fd70" class="bulleted-list"><li style="list-style-type:circle">Helpscout</li></ul><ul id="6572cbed-ce2e-4561-aa19-47ea5a3ace65" class="bulleted-list"><li style="list-style-type:circle">Intercom</li></ul><ul id="7800e3e8-44ae-443f-bec0-913bf5cc2541" class="bulleted-list"><li style="list-style-type:circle">Zendesk</li></ul><ul id="152a7834-2b9d-4f6a-8fbd-fcfadff7f6c6" class="bulleted-list"><li style="list-style-type:circle">Groove</li></ul><ul id="37116224-c578-4465-b334-cfc1e2d9776a" class="bulleted-list"><li style="list-style-type:circle">Zoho desk</li></ul><ul id="99b122fe-f729-4312-9681-1af2b91becb0" class="bulleted-list"><li style="list-style-type:circle">Freshdesk</li></ul></li></ul><h2 id="be627df3-333b-4685-93d6-57b7aadf5291" class="">6. Herramientas</h2><ul id="f2de37a2-c0cf-44cd-b1b6-349d49ee3583" class="bulleted-list"><li style="list-style-type:disc">Google Analytics</li></ul><ul id="f1e51998-c0af-47e4-bf84-26ed1e01e944" class="bulleted-list"><li style="list-style-type:disc">Hotjar</li></ul><ul id="acb9702e-a4d8-429b-b796-85c890411fb1" class="bulleted-list"><li style="list-style-type:disc">Kissmetrics</li></ul><ul id="268a5fb2-120f-4e8c-924c-9bb65081e341" class="bulleted-list"><li style="list-style-type:disc"><a href="http://bit.ly">Bit.ly</a></li></ul><ul id="0341300b-b871-45fb-b85d-e358486eb554" class="bulleted-list"><li style="list-style-type:disc">Hojas de cálculos</li></ul><ul id="ea1375bd-73f3-4ed6-9f74-fdaca8fa0866" class="bulleted-list"><li style="list-style-type:disc">Similarweb</li></ul><ul id="6ae55f1b-5dcc-40ed-947c-e0aea73b45d5" class="bulleted-list"><li style="list-style-type:disc">WordPress</li></ul><ul id="da746a58-c7c7-462f-8694-cf81e93bd9b0" class="bulleted-list"><li style="list-style-type:disc">Hubspot</li></ul><ul id="3b435460-6f39-4d6d-82d4-f201456288ae" class="bulleted-list"><li style="list-style-type:disc">Ubersuggest <a href="https://neilpatel.com/ubersuggest/">https://neilpatel.com/ubersuggest/</a></li></ul><ul id="9dc80f52-a72b-42ab-9a2d-12825bdfb33b" class="bulleted-list"><li style="list-style-type:disc">Google trends</li></ul><ul id="a244f476-94de-44ee-a85d-49d2b243fa3d" class="bulleted-list"><li style="list-style-type:disc">Dashboard<ul id="33cbe599-b786-4182-923f-15c3d145bace" class="bulleted-list"><li style="list-style-type:circle">Google Data Studio</li></ul><ul id="f2ccc298-dfa6-45bd-9d25-6d69ec611fa5" class="bulleted-list"><li style="list-style-type:circle">Zoho Analytics</li></ul><ul id="59a9c8e3-6b4e-46ad-951e-9585cbe0f9e1" class="bulleted-list"><li style="list-style-type:circle">Power Bi (Microsoft)</li></ul></li></ul></div></article></body></html>

@@ -1,0 +1,740 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Relational database</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5021a34e-ca2a-4b6b-8d68-d5c288288e38" class="page sans"><header><h1 class="page-title">Relational database</h1></header><div class="page-body"><nav id="1f84c129-a96a-4c05-9c79-c188a6ea048c" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#576b550d-2750-4250-9408-e60e557915ae">Resources</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#85612f6e-7bbe-4db2-ab10-bcceef4315e5">Key questions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b1be7871-7a4c-4c4a-945e-db3f5ee43310">Why will we use PostgreSQL?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d94e410a-4ded-4fb1-b383-4e9111448dd9">Database relational</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9e7891e3-e12c-4f51-b9e5-0a4708c6cd70">Origins</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bcef4427-7ad4-49ca-99a1-1abe58ecfc6e">Database design</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#41fc7e36-b5de-47a2-ba6b-f31a739195c9">Entity-relationship model</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#985dcec6-26cb-44ef-aa32-cf3e2ffd80ee">Logically structuring data</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e123a848-d7cc-4fd6-944a-ac32d66afc99">Normalization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2e6af36b-a017-4aec-a06c-c6387ce78ff1">Logic schema</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c1ddfabb-d48f-43bb-85a4-9fed73aad896">Wrap-up</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0a5842ec-b02b-48ae-9396-7fc6c9d02635">Bookmark the online PostgreSQL  FAQ and documents</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ae0da033-a454-413f-858e-db881b716ce2">Differences between MATCH FULL, MATCH SIMPLE, and MATCH PARTIAL?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b046a0b7-3794-42cc-a7a8-e51f7132d987">Select all the tables we created (and only those) from pg_class</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a61c0ee6-9d37-47a9-bebc-1ef0061a925a">Physical design</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#715d31fa-ad7d-4e1c-8813-5f1ad6f01d4d">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#46849f96-d753-4948-a63b-62d977bce519">Installation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5bd6a930-4de2-4fa4-9990-5c3dd14adac0">Docker</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#77e8357a-3a4d-41b0-a9dd-2f39e7b1de9a">Docker compose</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#beafe3e6-8b06-447c-81b0-22e3771a0f34">Vagrant</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b09c3acb-fe6a-4493-86b3-b64ae6bf5236">IBM Cloud</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2382088a-ef62-4d88-b899-b5bace28d3e5">PgAdmin</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#740ea322-d75a-4635-b9cb-03aff90246bd">Install extensions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2698336d-832c-40d4-a8a7-ab8c4d396045">SQL</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6d23eb20-45b3-4f88-8862-2bb371c96011">Cheat Sheet</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#09e53ef4-995b-44ef-8300-678e7a1aa476">Relations, CRUD, and Joins</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#93cd9d44-9c37-4408-8118-d2459d9888d1">Worked example: From conceptual design to implementation in PostgreSQL</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bf4ca018-248f-45f9-bd09-8e81fade82d7">Queries</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#907aa6a8-477b-488e-8f3d-347268b29035">Case study</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b39140ee-efcd-48e8-8880-4fb69ba4e6dc">Functions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#98f762ec-698b-4950-aec2-086ecfe82ffe">Stored procedure vs language programming</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e39d5312-f5f0-4feb-881d-96844f417622">Triggers</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#823ed970-f132-48f4-a0be-675fd8b36a4f">Backup</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d7e8a55f-f891-4c17-8a17-8edb9bb76bd3">Seeding</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d8e1a22d-627a-4a6d-b1e4-993d7a66e890">Migrations</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#83f01e44-8502-4573-9f22-d9b99c97b98d">Security</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5fdd3d83-75e3-4a36-a79c-66a35a2668be">Patterns</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#91801070-c77f-4610-8859-2183d9564e63">Save files</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#15e5da89-ca5b-432c-8b4a-07b4a663c6dc">Testing</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#90f744b0-fd7c-4303-b850-e8a8b9234664">Wrap-Up</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0a7c6258-28bb-4aa9-87ab-276d34949198">Strengths</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2211c137-2b89-4207-9759-c9fd1757ea51">Weaknesses</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1f0bd562-0a39-4c18-96e4-3dde164494a1">Worked example</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7760cacf-a99e-4671-aea5-e2aecdee7c11">Architecture</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#09113c97-cbcd-4c1b-8d65-6ed1796575a2">ORM</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#51c0e021-0032-41f3-b451-8d9e4426faa9">Big Query</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7db06bca-1ee7-4f6a-837f-df0eee6b994a">Data Warehouse</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6592b9ef-d8dc-4703-ba43-927f2248217e">ETL</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#141a0fa6-277b-4f11-8aa9-73b90cb52c34">OLAP</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#146d0034-2101-4d43-abec-fb5697358e92">Android Realm</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#93f72496-9419-4b28-9a04-49a7297e9322">Web Storage</a></div></nav><p id="8ed55ff6-58c9-4b97-b17d-bc1b080d0bd4" class="">
+</p><h1 id="576b550d-2750-4250-9408-e60e557915ae" class="">Resources</h1><div id="289ad6ba-bfc6-48af-87f1-68cf7f64a28d" class="collection-content"><h4 class="collection-title">Resources</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Tags</th></tr></thead><tbody><tr id="fe32198a-38a5-400b-a506-75c5ff643b73"><td class="cell-title"><a href="Elmasri,%20R%20and%20Navathe,%20S%202011%20Fundamentals%20of%20dat%20fe32198a38a5400ba50675c5ff643b73.html">Elmasri, R. and Navathe, S. 2011. Fundamentals of database systems. Addison-Wesley.</a></td><td class="cell-vVrF"></td></tr><tr id="43382eea-d30d-41ec-b013-5ffdb76436d6"><td class="cell-title"><a href="Viescas,%20J%20and%20Hernandez,%20M%202008%20SQL%20queries%20for%20m%2043382eead30d41ecb0135ffdb76436d6.html">Viescas, J. and Hernandez, M. 2008. SQL queries for mere mortals. Addison-Wesley.</a></td><td class="cell-vVrF"></td></tr><tr id="2d32443a-b7f9-4539-b2d7-8ddf02c7344e"><td class="cell-title"><a href="Untitled%202d32443ab7f94539b2d78ddf02c7344e.html">Untitled</a></td><td class="cell-vVrF"></td></tr></tbody></table></div><div id="01643040-043c-4616-a730-4dfe6fab137c" class="collection-content"><h4 class="collection-title">Complement</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Tags</th></tr></thead><tbody><tr id="19fbcd93-4f6c-4577-8947-34eea4e254c2"><td class="cell-title"><a href="Karwin,%20B%20and%20Carter,%20J%202014%20SQL%20antipatterns%20Prag%2019fbcd934f6c4577894734eea4e254c2.html">Karwin, B. and Carter, J. 2014. SQL antipatterns. Pragmatic Bookshelf.</a></td><td class="cell-IVtm"></td></tr><tr id="c475ba90-c81a-4abd-ad56-8eed14e4649e"><td class="cell-title"><a href="Untitled%20c475ba90c81a4abdad568eed14e4649e.html">Untitled</a></td><td class="cell-IVtm"></td></tr><tr id="f72d78fc-5ab4-4624-966e-57d7c96bec61"><td class="cell-title"><a href="Untitled%20f72d78fc5ab44624966e57d7c96bec61.html">Untitled</a></td><td class="cell-IVtm"></td></tr><tr id="2966c0e9-7b19-4f9b-8f1f-bb56615fa71a"><td class="cell-title"><a href="Untitled%202966c0e97b194f9b8f1fbb56615fa71a.html">Untitled</a></td><td class="cell-IVtm"></td></tr><tr id="cd9efea5-b86f-4229-a86d-2507850f8a7d"><td class="cell-title"><a href="Untitled%20cd9efea5b86f4229a86d2507850f8a7d.html">Untitled</a></td><td class="cell-IVtm"></td></tr></tbody></table></div><div id="f25e9899-1d83-4c32-b6e8-4024d5b5ae72" class="collection-content"><h4 class="collection-title">Doxography</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Tags</th></tr></thead><tbody><tr id="323cd1d4-9951-4606-bc94-c93d4634ba51"><td class="cell-title"><a href="E%20F%20Codd%20Derivability,%20Redundancy%20and%20Consistency%20%20323cd1d499514606bc94c93d4634ba51.html">E. F. Codd:
+Derivability, Redundancy and Consistency of Relations Stored in Large Data Banks. Research Report / RJ / IBM / San Jose, California RJ599 (1969)
+1962</a></td><td class="cell-f&gt;]["></td></tr><tr id="79dd89f6-b51f-457b-80d4-9e482091f349"><td class="cell-title"><a href="E%20F%20Codd%20A%20Relational%20Model%20of%20Data%20for%20Large%20Shar%2079dd89f6b51f457b80d49e482091f349.html">E. F. Codd:
+A Relational Model of Data for Large Shared Data Banks. Commun. ACM 13(6): 377-387 (1970)</a></td><td class="cell-f&gt;]["></td></tr><tr id="2e12d38b-4540-4af5-a9bd-36aa4cc9b0d5"><td class="cell-title"><a href="E%20F%20Codd%20Normalized%20Data%20Base%20Structure%20A%20Brief%20Tu%202e12d38b45404af5a9bd36aa4cc9b0d5.html">E. F. Codd:
+Normalized Data Base Structure: A Brief Tutorial. Research Report / RJ / IBM / San Jose, California RJ935 (1971)</a></td><td class="cell-f&gt;]["></td></tr><tr id="c17864a5-c3c9-465c-b8b8-851d283f3e03"><td class="cell-title"><a href="E%20F%20Codd%20Further%20Normalization%20of%20the%20Data%20Base%20Re%20c17864a5c3c9465cb8b8851d283f3e03.html">E. F. Codd:
+Further Normalization of the Data Base Relational Model. Research Report / RJ / IBM / San Jose, California RJ909 (1971)</a></td><td class="cell-f&gt;]["></td></tr><tr id="1b7a5193-e2b8-42a4-9a7e-1f1a2c5aaecc"><td class="cell-title"><a href="E%20F%20Codd%20Data%20Base%20Sublanguage%20Founded%20on%20the%20Rela%201b7a5193e2b842a49a7e1f1a2c5aaecc.html">E. F. Codd:
+Data Base Sublanguage Founded on the Relational Calculus. Research Report / RJ / IBM / San Jose, California RJ893 (1971)</a></td><td class="cell-f&gt;]["></td></tr></tbody></table></div><h1 id="85612f6e-7bbe-4db2-ab10-bcceef4315e5" class="">Key questions</h1><h2 id="b1be7871-7a4c-4c4a-945e-db3f5ee43310" class="">Why will we use PostgreSQL?</h2><p id="244b255a-5add-4afe-bbb1-29f74457ef8e" class="">Because It’s commonly understood that all relational databases are the same.</p><p id="aab0f9e1-7213-4111-bb46-166ed6aeacda" class="">
+</p><h1 id="d94e410a-4ded-4fb1-b383-4e9111448dd9" class="">Database relational</h1><p id="fd478d39-59bb-4a83-8388-6515c058e066" class=""><a href="https://github.com/sanchezcarlosjr/uabc/tree/main/src/relational-database">https://github.com/sanchezcarlosjr/uabc/tree/main/src/relational-database</a></p><p id="e0ae9b54-0005-4cc7-bcba-f24b0073440c" class="">A database relational happens to be a <a href="Database%2058565c5d5b4f4e528409f37868b1496f.html">database</a> where his collections are relations -tables-, which has rows and columns and might have relationships with other tables. At this paradigm first, you design the schema, and then you enter data that conforms to the definition of that schema.</p><p id="50a4cd98-6722-4964-a4fc-bd4ea6958752" class="">Example of tables -relations-:</p><figure id="213b0dcc-4230-4be9-a138-806ffa76e65d" class="image"><a href="Untitled%2083.png"><img style="width:575px" src="Untitled%2083.png"/></a><figcaption><a href="https://sites.google.com/site/merasemester/dbm/relational-model">https://sites.google.com/site/merasemester/dbm/relational-model</a></figcaption></figure><h1 id="9e7891e3-e12c-4f51-b9e5-0a4708c6cd70" class="">Origins</h1><ul id="db76cca3-38c9-4cb4-8096-9fa310cf3ac5" class="bulleted-list"><li style="list-style-type:disc"><a href="https://dl.acm.org/doi/10.1145/362384.362685">A relational model of data for large shared data banks. E. F. Codd</a>: Relational algebra.<ul id="094914df-aa9b-443f-9293-79bae4e51d87" class="bulleted-list"><li style="list-style-type:circle">Table from relation.</li></ul><ul id="feb96657-48d9-4953-82bd-2864c8f56800" class="bulleted-list"><li style="list-style-type:circle">Row -a record- from a tuple.</li></ul><ul id="982b1a75-3ca0-455c-95f3-864bbc50b13b" class="bulleted-list"><li style="list-style-type:circle">Projection defines conditions on data you want to retrieve.</li></ul></li></ul><h1 id="bcef4427-7ad4-49ca-99a1-1abe58ecfc6e" class="">Database design</h1><p id="fd0d0643-0255-49e1-bc67-0de84a9068a5" class="">Approaches to developing a logical design of a database are Entity Modelling and Normalization.</p><h2 id="41fc7e36-b5de-47a2-ba6b-f31a739195c9" class="">Entity-relationship model</h2><ul id="0f5fed45-0219-4b10-a26a-d60ce794ac7c" class="bulleted-list"><li style="list-style-type:disc">Entity. A class in which we abstract domain or technical issues and we need to store his objects or instances by the requirements.<p id="51f89795-52d6-4173-a1de-62b072b99fa2" class="">Good examples. Student, Settings. </p><p id="5c6db32a-858c-4441-b403-16620361a7c2" class="">Bad examples. People. Doesn&#x27;t specific. It&#x27;s preferable domain&#x27;s word.</p></li></ul><ul id="6703a6c3-4562-4d4b-a9ca-26c1a568ab2c" class="bulleted-list"><li style="list-style-type:disc">Attribute. A property of an entity.</li></ul><ul id="1a571019-e889-46ac-ba8f-8c7ec0604e3d" class="bulleted-list"><li style="list-style-type:disc">Domain.</li></ul><h2 id="985dcec6-26cb-44ef-aa32-cf3e2ffd80ee" class="">Logically structuring data</h2><h2 id="e123a848-d7cc-4fd6-944a-ac32d66afc99" class="">Normalization</h2><p id="71d5c227-255a-4ec0-9269-8b74277f4190" class="">Normalization is the process of database design concentrating on attributes and dependencies -relationships-, such that meets two requirements: There is no redundancy of data and all the data is stored in only one place.</p><h2 id="2e6af36b-a017-4aec-a06c-c6387ce78ff1" class="">Logic schema</h2><p id="b9eb52fc-603a-495f-8ff1-f15bb45c95e9" class="">UUID vs INT PRIMARY KEY</p><p id="44d13e89-f57e-4a35-84d8-2df4ae1885b2" class="">varchar vs char vs text</p><p id="57f367b3-68ca-4573-b8e6-ccfa3c4a4c4e" class="">
+</p><h2 id="c1ddfabb-d48f-43bb-85a4-9fed73aad896" class="">Wrap-up</h2><table id="5c02dd38-eba9-498b-adc5-ae186eb51115" class="simple-table"><tbody><tr id="ce70ca93-29eb-433c-854d-949fd710c57a"><td id="yQr`" class="" style="width:349px">Definiendum</td><td id="R^it" class="" style="width:349px">Definiens</td></tr><tr id="1d93512f-69f5-4ff7-af15-c7480fe9639f"><td id="yQr`" class="" style="width:349px">Column</td><td id="R^it" class="" style="width:349px"></td></tr><tr id="99a9e8b9-e399-490b-872e-13d6d94d2fe2"><td id="yQr`" class="" style="width:349px">Row</td><td id="R^it" class="" style="width:349px"></td></tr><tr id="c00f9029-6e53-420f-8fa0-e75635c08f10"><td id="yQr`" class="" style="width:349px">Table</td><td id="R^it" class="" style="width:349px"></td></tr><tr id="c9d21ff9-5a8c-410c-99a6-e5d513274789"><td id="yQr`" class="" style="width:349px">Primary key</td><td id="R^it" class="" style="width:349px"></td></tr><tr id="139ae4f3-f3b3-416c-9e1f-4cbca60c0a33"><td id="yQr`" class="" style="width:349px">CRUD</td><td id="R^it" class="" style="width:349px">An acronym that refers to the four basic operations of persistent storage: Create, Read, Update, and Delete (CRUD)</td></tr><tr id="c0fa0a9f-b2c0-4224-a9cd-0b98dfb46269"><td id="yQr`" class="" style="width:349px">SQL</td><td id="R^it" class="" style="width:349px"></td></tr><tr id="443e91ad-10ad-474d-b4bc-47f2c002474d"><td id="yQr`" class="" style="width:349px">JOIN</td><td id="R^it" class="" style="width:349px"></td></tr><tr id="f06fdb88-1a8a-4ddc-a86c-8aae99295d07"><td id="yQr`" class="" style="width:349px">Index</td><td id="R^it" class="" style="width:349px"></td></tr><tr id="ee68ee1e-1b97-4687-b3e1-9b5a638e341f"><td id="yQr`" class="" style="width:349px">B-tree</td><td id="R^it" class="" style="width:349px"></td></tr></tbody></table><h3 id="0a5842ec-b02b-48ae-9396-7fc6c9d02635" class="">Bookmark the online PostgreSQL  FAQ and documents</h3><p id="f38d7e73-c2ff-4d19-9534-6920529892e0" class=""><a href="https://wiki.postgresql.org/wiki/FAQ">FAQ</a></p><p id="99ed817b-9eca-4c4c-bf1a-5145b6e6f399" class=""><a href="https://www.postgresql.org/docs/">https://www.postgresql.org/docs/</a></p><h3 id="ae0da033-a454-413f-858e-db881b716ce2" class="">Differences between MATCH FULL, MATCH SIMPLE, and MATCH PARTIAL?</h3><p id="a3feadd6-cdf4-46ed-b3e7-8c765a4e5572" class=""><a href="https://dba.stackexchange.com/questions/58894/differences-between-match-full-match-simple-and-match-partial">https://dba.stackexchange.com/questions/58894/differences-between-match-full-match-simple-and-match-partial</a></p><h3 id="b046a0b7-3794-42cc-a7a8-e51f7132d987" class="">Select all the tables we created (and only those) from pg_class</h3><p id="7db6f4ec-eb14-4030-860a-40e8b90ec08b" class="">SELECT relname FROM pg_class INNER JOIN pg_namespace ON pg_namespace.oid = relnamespace WHERE nspname = &#x27;public&#x27; AND relkind= &#x27;r&#x27;;</p><p id="accc131e-b731-44cf-8146-87b02be3526c" class="">
+</p><h2 id="a61c0ee6-9d37-47a9-bebc-1ef0061a925a" class="">Physical design</h2><h2 id="715d31fa-ad7d-4e1c-8813-5f1ad6f01d4d" class="">Summary</h2><h1 id="46849f96-d753-4948-a63b-62d977bce519" class="">Installation</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1839a02a-7c44-478e-8d0a-2a89bd1fc675"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">PostgreSQL&#x27;s typical port is 5432 if it is available.</div></figure><h2 id="5bd6a930-4de2-4fa4-9990-5c3dd14adac0" class="">Docker</h2><p id="696ac8bf-0d8f-4721-8c54-1f271df9c1ba" class="">First of all, remember to install <a href="https://docs.docker.com/engine/install/">docker</a>, at this moment I assume you have installed it. Thus when you&#x27;ll need to share volumes.</p><pre id="b43cf6ae-c939-46af-a31f-b248743da838" class="code"><code>docker run --rm -d \
+    --name app \
+    -e POSTGRES_PASSWORD=mysecretpassword \
+    -e PGDATA=/var/lib/postgresql/data/pgdata \
+    -v $(pwd)/backup:/backup \
+    postgres</code></pre><p id="87a0ae69-06ba-4140-bc3d-59c445155f72" class="">To connect psql -terminal to PostgreSQL-, we use exec</p><pre id="75ee3691-4742-491c-ae9e-83e339d17a09" class="code"><code>docker exec -it app psql postgres postgres</code></pre><p id="c743784a-300c-429c-b94b-3d4a100312e8" class="">Otherwise, use pgAdmin, a user interface tool to PostgreSQL.</p><pre id="b5d3438b-2b73-4d5a-b3a6-0337734c9659" class="code"><code>docker run --rm -d \
+    --name app \
+    -e POSTGRES_PASSWORD=mysecretpassword \
+    -p 5432:5432 \
+    postgres</code></pre><p id="826d6d7a-a531-4acb-9691-043f279ee299" class="">Now we&#x27;re going to create a container to pgAdmin.</p><pre id="9d655000-c069-4efa-bd9f-7882826ab2b7" class="code"><code>docker run --name pgadmin \
+-e PGADMIN_DEFAULT_PASSWORRD=mysecretpassword \
+-e PGADMIN_DEFAULT_EMAIL=hello@sanchezcarlosjr.com \
+-e PGADMIN_LISTEN_ADDRESS=0.0.0.0\
+-p 5000:80 \
+-d dpage/pgadmin4</code></pre><h2 id="77e8357a-3a4d-41b0-a9dd-2f39e7b1de9a" class="">Docker compose</h2><p id="f71eb21f-ce2d-47dd-b52a-6ca71c1b8be4" class="">Alternatively, we could combine pgAdmin and PostgreSQL if we use <a href="https://docs.docker.com/compose/">docker-compose</a>.</p><p id="915e110d-b794-420e-9869-76bc785ef93e" class="">Simple example:</p><pre id="85d7daaa-a7a9-4434-b4dd-ed6a5fd33619" class="code"><code>services:
+  postgres:
+    container_name: postgres_app
+    image: postgres
+    hostname: postgres_app
+    ports:
+      - 5432:5432
+    environment:
+       POSTGRES_USER: sanchezcarlosjr
+       POSTGRES_PASSWORD: 123456
+       POSTGRES_DB: app
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin_app
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    ports:
+      - 5000:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@sanchezcarlosjr.com
+      PGADMIN_DEFAULT_PASSWORD: mysecretpassword</code></pre><p id="b4e57db2-109d-4476-9d71-792c7bdeadbc" class="">Download file in your project as docker-compose.yml and run</p><pre id="792756a3-2fd7-4bb8-9618-62aed68ee706" class="code"><code>docker-compose up</code></pre><h2 id="beafe3e6-8b06-447c-81b0-22e3771a0f34" class="">Vagrant</h2><p id="423c3ae4-229e-429f-841b-6a86a59fbc65" class="">Install <a href="https://www.vagrantup.com/">vagrant</a>, download this <a href="https://github.com/sanchezcarlosjr/uabc/blob/main/etc/vpostgresql/Vagrantfile">Vagrantfile</a>, and run</p><pre id="da10591a-9461-42a4-88b2-48b7a906da49" class="code"><code>vagrant up &amp;&amp; vagrant ssh</code></pre><h2 id="b09c3acb-fe6a-4493-86b3-b64ae6bf5236" class="">IBM Cloud</h2><h2 id="2382088a-ef62-4d88-b899-b5bace28d3e5" class="">PgAdmin</h2><p id="4c0fc03b-f756-425c-a5fd-d19a81090a8f" class="">You will be able to visit <a href="http://localhost:5000/">http://localhost:5000/</a> after pgAdmin booting. To sign in write your credentials, in my case <mark class="highlight-teal">postgres@sanchezcarlosjr.com</mark> and <mark class="highlight-teal">mysecretpassword</mark> since docker-compose.yml. At this point, you should be something as</p><figure id="487dd313-117d-46b1-b83d-0933aff2e598" class="image"><a href="Screenshot_from_2021-07-12_14-18-01.png"><img style="width:1360px" src="Screenshot_from_2021-07-12_14-18-01.png"/></a></figure><p id="fa4e8a37-ebc3-48e0-9d63-ce451fab61b5" class="">Right-click over <mark class="highlight-teal">servers</mark> and click <mark class="highlight-teal">server</mark>.</p><figure id="4bdd234f-0dd8-4e14-ab8b-968c74099530" class="image"><a href="Screenshot_from_2021-07-12_14-18-59.png"><img style="width:1360px" src="Screenshot_from_2021-07-12_14-18-59.png"/></a></figure><figure id="42639674-cde9-40ed-966f-ca78b9d44cbe" class="image"><a href="Screenshot_from_2021-07-12_14-21-05.png"><img style="width:1360px" src="Screenshot_from_2021-07-12_14-21-05.png"/></a></figure><p id="6d31c254-8ec7-460d-b031-b6e31d29d014" class="">From variables POSTGRES_USER: <mark class="highlight-teal">sanchezcarlosjr</mark> and POSTGRES_PASSWORD: <mark class="highlight-teal">123456</mark> with hostname <mark class="highlight-teal">postgres_app</mark>.</p><figure id="294811e3-0983-449c-940a-7a57621e55b1" class="image"><a href="Screenshot_from_2021-07-12_16-26-40.png"><img style="width:1360px" src="Screenshot_from_2021-07-12_16-26-40.png"/></a></figure><figure id="b95458f0-81d1-4888-a8b3-6337e14b47a5" class="image"><a href="Screenshot_from_2021-07-12_16-27-28.png"><img style="width:1360px" src="Screenshot_from_2021-07-12_16-27-28.png"/></a></figure><figure id="130081e2-2854-467a-a378-e5e699f9f044" class="image"><a href="Screenshot_from_2021-07-12_16-30-23.png"><img style="width:1360px" src="Screenshot_from_2021-07-12_16-30-23.png"/></a></figure><p id="5c4a7e53-9fed-4c33-a9bc-b90c934ed4c3" class="">Ready! You have installed PostgreSQL and pgAdmin successfully. </p><h3 id="740ea322-d75a-4635-b9cb-03aff90246bd" class="">Install extensions</h3><p id="01ef0766-408c-4420-8774-f15fc992b01a" class="">We need tablefunc, dict_xsyn, fuzzystrmatch, pg_trgm, and cube.</p><p id="4de4f265-2a89-4efb-aa78-535e34cc3079" class=""><a href="https://stackoverflow.com/questions/9025515/how-do-i-import-modules-or-install-extensions-in-postgresql-9-1">How to import extensions</a></p><h1 id="2698336d-832c-40d4-a8a7-ab8c4d396045" class="">SQL</h1><p id="276a0569-23f7-4f60-a883-1360423b78d3" class="">If you use docker, you can into a container:</p><pre id="866ab1f0-d40b-448d-bc60-de2e0d3ed78e" class="code"><code>docker exec -it app bash</code></pre><h2 id="6d23eb20-45b3-4f88-8862-2bb371c96011" class="">Cheat Sheet</h2><p id="14697c04-f4c0-4262-89b4-b27a626bd9a7" class="">All of the databases relational check the SQL standard, but they might change functions, types, triggers, ...</p><p id="0eea8ab8-3aa3-4a55-8fca-cdbb9a0c89be" class=""><a href="https://buggyprogrammer.com/sql-cheatsheet/">SQL Cheat Sheet</a></p><p id="3df82d1e-dc6a-4620-a6a1-3511fdd211d1" class=""><a href="https://devhints.io/mysql">MySql DevHint</a></p><p id="db005775-99c3-4d26-9208-c76ab52301ee" class=""><a href="https://www.postgresqltutorial.com/postgresql-cheat-sheet/">PostreSQL</a></p><h2 id="09e53ef4-995b-44ef-8300-678e7a1aa476" class="">Relations, CRUD, and Joins</h2><p id="1d68b90c-39e1-4793-81cd-2cb46affca80" class="">When you have installed Postgres, you can create a database from Bash with</p><pre id="6f3aeb94-875a-44f2-bca5-1b647fe3e039" class="code"><code>createdb book</code></pre><p id="f3cb70ec-b9f7-46d6-ac45-d8207d6cbe10" class="">The command-line shell to connect with Postgres is psql.</p><pre id="79bd5e59-202b-4594-b448-b7ab17cd3578" class="code"><code>psql book</code></pre><p id="e94ffef8-bafc-46f1-8e21-45e35bd441d3" class="">You can find usage details about each SQL command in the following way:</p><pre id="f32dbfdf-1c0c-41eb-809e-eeff374e080d" class="code"><code>\h CREATE INDEX</code></pre><p id="f98c4388-f19b-4259-88b1-b36248238dd7" class="">Creating a table consists of giving it a name and a list of columns.</p><p id="ac6f3121-69ac-42d6-8bf5-2c265f78729e" class="">The SQL to create a table looks like this:</p><pre id="80af847c-ed16-4b9b-927a-052bc9328b5f" class="code"><code>CREATE TABLE countries (
+	country_code char(2) PRIMARY KEY,
+  country_name varchar(30) UNIQUE
+); </code></pre><p id="d34c961e-f430-486b-886d-e33dad86c41a" class="">If you want to insert data:</p><pre id="f7bc8ae9-e814-4758-86b6-3943de316da6" class="code"><code>INSERT INTO countries(country_code, country_name)
+VALUES (&#x27;us&#x27;, &#x27;United States&#x27;), (&#x27;mx&#x27;, &#x27;Mexico&#x27;),
+(&#x27;au&#x27;, &#x27;Australia&#x27;),
+(&#x27;gb&#x27;, &#x27;United Kingdom&#x27;),
+(&#x27;de&#x27;, &#x27;Germany&#x27;),
+(&#x27;ll&#x27;, &#x27;Loompaland&#x27;);</code></pre><p id="5c227d21-dac1-47a2-bac0-65dbb6917f8a" class="">SQL checks unique key.</p><pre id="1bab216f-fd23-495b-8585-c44a250041d7" class="code"><code>INSERT INTO countries(country_code, country_name)
+VALUES (&#x27;us&#x27;, &#x27;United States&#x27;);</code></pre><pre id="bf987170-443d-4c29-aa50-659f9c966820" class="code"><code>ERROR:  duplicate key value violates unique constraint &quot;countries_pkey&quot;
+DETAIL:  Key (country_code)=(us) already exists.</code></pre><p id="d33c343d-e9fd-426a-8b8f-6e1037766a12" class="">Read all data</p><pre id="5327335b-22a2-4d95-990e-0151ea677839" class="code"><code>SELECT * FROM countries;</code></pre><p id="76368ff8-c2d4-4ffc-b0b2-437a0e9d23af" class="">Remove loop `ll`</p><pre id="ddcee807-89e5-4369-8d08-e33e3c668f16" class="code"><code>DELETE FROM countries WHERE country_code=&#x27;ll&#x27;;</code></pre><p id="d8f548f6-9511-420b-bbe5-c33ec4c366e8" class="">
+</p><p id="e2370217-7631-4aa1-894e-9f97fd8dd3aa" class="">
+</p><p id="8cdc0637-fdb3-4752-af99-a36e14be3a11" class="">
+</p><h1 id="93cd9d44-9c37-4408-8118-d2459d9888d1" class="">Worked example: From conceptual design to implementation in PostgreSQL</h1><ul id="d3c71114-a9b7-4ed3-a084-e02a0ec55c9f" class="toggle"><li><details open=""><summary>Requirements</summary><p id="0eae1806-0755-4bf6-ad1b-2375307e28be" class="">The Agency currently rents out various types of domestic accommodation (flats and houses) to clients. The clients (e.g. students or groups of students) may require 1-year leases or (e.g. families) longer-term lets.</p><p id="9a29235f-c41c-472e-a7e6-6e82a1b01d17" class="">Details are kept on each property and in particular:</p><ul id="ecf784a7-2c35-4b17-b005-3ebd1becdb0e" class="bulleted-list"><li style="list-style-type:disc">Address (this must be searchable by postcode or partial postcode or by district)</li></ul><ul id="7227c9c5-5e6f-4688-8f37-da753d45ea15" class="bulleted-list"><li style="list-style-type:disc">Owner details</li></ul><ul id="863899fb-48ad-4f83-8072-53302ca37517" class="bulleted-list"><li style="list-style-type:disc">Lead tenant details</li></ul><ul id="12947243-4524-40ec-846e-d966b7098c43" class="bulleted-list"><li style="list-style-type:disc">Tenancy start</li></ul><ul id="1841ebee-c24e-4688-8aa4-7730bd2095c8" class="bulleted-list"><li style="list-style-type:disc">Tenancy end</li></ul><ul id="6152d23a-6749-4bae-956c-e37ad14126cf" class="bulleted-list"><li style="list-style-type:disc">Rent</li></ul><ul id="e7a8f3a2-2f5d-4aae-b1fd-11dd211c4d27" class="bulleted-list"><li style="list-style-type:disc">Type of property (flat, detached house, terrace house etc.)</li></ul><ul id="e5a0281f-ef35-4aaf-b1e8-4da5db375ecf" class="bulleted-list"><li style="list-style-type:disc">Furnished/Unfurnished (for Furnished, further details of the furnishings may be kept)</li></ul><ul id="fde6c1b0-c7ba-4889-b1e2-8fe050e84ca8" class="bulleted-list"><li style="list-style-type:disc">Number of bedrooms</li></ul><ul id="671380b1-44b9-4147-a37f-48be500a55c4" class="bulleted-list"><li style="list-style-type:disc">Number of bathrooms</li></ul><ul id="03cf6dae-29b5-4eab-bbbb-16618fb7bc22" class="bulleted-list"><li style="list-style-type:disc">Number of reception rooms</li></ul><p id="dd4723f7-58f6-4188-b964-658e3ed0a1dc" class="">Optionally also:</p><ul id="35276f8f-fdc6-4f06-ad7a-43338d942f23" class="bulleted-list"><li style="list-style-type:disc">A textual description</li></ul><ul id="4f6e1c0e-095b-4739-8a7b-0713b0cb4a4c" class="bulleted-list"><li style="list-style-type:disc">Photographs</li></ul><p id="b2e4cd82-3a9e-4fa4-975a-6415963aa2fc" class="">A history of occupancy needs to be kept including periods were the property is unoccupied.</p><p id="68c8e3af-f12f-48ba-9bb4-0293aaf0b819" class="">In order to make searching for appropriate properties easier, it has been decided that details of individual rooms within a property will also be stored. This will include:</p><ul id="0b6c6c2b-8a2c-4f3f-8f93-ea69d89dbc16" class="bulleted-list"><li style="list-style-type:disc">room type (bedroom/bathroom/kitchen etc.)</li></ul><ul id="4c4f2be3-5010-4ec3-9696-0e5813000d40" class="bulleted-list"><li style="list-style-type:disc">room dimensions (in feet and meters)</li></ul><ul id="a9dbaa03-8948-4f6f-b5d0-d54b129472ed" class="bulleted-list"><li style="list-style-type:disc">heating (e.g. radiator/fire)</li></ul><ul id="0f01ad1a-224b-41f9-844a-d17a6f3b803d" class="bulleted-list"><li style="list-style-type:disc">for kitchens: appliances</li></ul><ul id="694bfa5c-9e42-4888-83e7-f8a8d79d1740" class="bulleted-list"><li style="list-style-type:disc">for bathrooms: fittings</li></ul><ul id="60e7ac41-ca61-455f-a49f-62ed98c2769a" class="bulleted-list"><li style="list-style-type:disc">any special features e.g. patio windows.</li></ul><p id="2c4627c9-f542-4803-9a82-1363347e70c6" class="">The tourist business has started to boom in the area and the Agency wishes to move into the business of holiday lettings. This will involve much shorter lets and a much greater requirement for up to date availability information.</p></details></li></ul><p id="f4ac35a4-5816-4f2f-9f19-42676d7338d5" class="">
+</p><p id="aa22da04-aed5-4bfb-9f4f-811388905424" class="">
+</p><h1 id="bf4ca018-248f-45f9-bd09-8e81fade82d7" class="">Queries</h1><h2 id="907aa6a8-477b-488e-8f3d-347268b29035" class="">Case study</h2><h1 id="b39140ee-efcd-48e8-8880-4fb69ba4e6dc" class="">Functions</h1><h3 id="98f762ec-698b-4950-aec2-086ecfe82ffe" class="">Stored procedure vs language programming</h3><h1 id="e39d5312-f5f0-4feb-881d-96844f417622" class="">Triggers</h1><h1 id="823ed970-f132-48f4-a0be-675fd8b36a4f" class="">Backup</h1><pre id="926f4e24-f8d8-436a-baa9-6e2344ab368d" class="code"><code>mysqldump DATABASE_NAME -p &gt; FILE;</code></pre><p id="8ed20ac8-6645-498a-b410-0a1d3d14e5c6" class="">
+</p><p id="9f99973f-1957-4194-a9fd-1d1ae57d02a2" class="">If you get next error</p><pre id="1c405494-c987-4fbd-b240-8f329b70e006" class="code"><code>mysqldump: Error: &#x27;Access denied; you need (at least one of) the PROCESS privilege(s) for this operation&#x27; when trying to dump tablespaces</code></pre><p id="1279561c-f446-4b97-bd2b-293ce38286e6" class="">You need</p><pre id="f69c9fb4-c758-45d2-908b-af7195151ba9" class="code"><code>mysqldump DATABASE_NAME --no-tablespaces &gt;  BACKUP_NAME;</code></pre><p id="33a82453-0eea-46e8-b9cf-eac4adca28cd" class="">
+</p><p id="f897feaf-9075-42d4-bb08-ac4d90284934" class="">Restore backup</p><pre id="ea16e2fe-4b01-4b3b-920a-150220b9a22e" class="code"><code>mysql -e &quot;CREATE DATABASE al361075_db3&quot; &amp;&amp; mysql al361075_db3 &lt; base.db</code></pre><h1 id="d7e8a55f-f891-4c17-8a17-8edb9bb76bd3" class="">Seeding</h1><h1 id="d8e1a22d-627a-4a6d-b1e4-993d7a66e890" class="">Migrations</h1><h1 id="83f01e44-8502-4573-9f22-d9b99c97b98d" class="">Security</h1><p id="cb12a3a6-c762-4519-9aeb-4df7478e3ea3" class="">
+</p><p id="c02283f9-7aa3-4d93-9c4a-724b21d0d63b" class="">mysql --help | grep &quot;Default options&quot; -A 1</p><pre id="47a8230f-144b-474a-862e-17d477c0cf11" class="code"><code>/etc/my.cnf /etc/mysql/my.cnf ~/.my.cnf</code></pre><p id="06d0832d-380b-480d-b6d5-cb1a2e632478" class="">Use ~/.my.cnf to authenticate app</p><pre id="290de9fa-324e-4684-9b6b-d17b4ea18572" class="code"><code>[client]
+user=&quot;&quot;
+password=&quot;&quot;
+database=&quot;&quot;</code></pre><p id="98832053-66dd-43a7-a170-8f470d85f4e6" class="">
+</p><h1 id="5fdd3d83-75e3-4a36-a79c-66a35a2668be" class="">Patterns</h1><h2 id="91801070-c77f-4610-8859-2183d9564e63" class="">Save files</h2><h1 id="15e5da89-ca5b-432c-8b4a-07b4a663c6dc" class="">Testing</h1><h1 id="90f744b0-fd7c-4303-b850-e8a8b9234664" class="">Wrap-Up</h1><h2 id="0a7c6258-28bb-4aa9-87ab-276d34949198" class="">Strengths</h2><h2 id="2211c137-2b89-4207-9759-c9fd1757ea51" class="">Weaknesses</h2><h1 id="1f0bd562-0a39-4c18-96e4-3dde164494a1" class="">Worked example</h1><p id="8290b295-cf3d-4467-b7b7-ecb2ca704656" class="">
+</p><h1 id="7760cacf-a99e-4671-aea5-e2aecdee7c11" class="">Architecture</h1><h1 id="09113c97-cbcd-4c1b-8d65-6ed1796575a2" class="">ORM</h1><h1 id="51c0e021-0032-41f3-b451-8d9e4426faa9" class="">Big Query</h1><h1 id="7db06bca-1ee7-4f6a-837f-df0eee6b994a" class="">Data Warehouse</h1><h2 id="6592b9ef-d8dc-4703-ba43-927f2248217e" class="">ETL</h2><h2 id="141a0fa6-277b-4f11-8aa9-73b90cb52c34" class="">OLAP</h2><h1 id="146d0034-2101-4d43-abec-fb5697358e92" class="">Android Realm</h1><h1 id="93f72496-9419-4b28-9a04-49a7297e9322" class="">Web Storage</h1><p id="afceec43-9cc9-40d2-bc4f-57d2ec359ef3" class="">
+</p></div></article></body></html>

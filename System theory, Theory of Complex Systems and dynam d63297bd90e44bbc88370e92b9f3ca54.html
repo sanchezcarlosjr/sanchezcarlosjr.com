@@ -1,0 +1,670 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>System theory, Theory of Complex Systems and dynamic systems</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="d63297bd-90e4-4bbc-8837-0e92b9f3ca54" class="page sans"><header><h1 class="page-title">System theory, Theory of Complex Systems and dynamic systems</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Tags</th><td></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M7.01356 14.0001C8.8042 14.0001 10.5958 13.3107 11.9575 11.9324C14.681 9.21201 14.6808 4.7603 11.9571 2.04013C9.23336 -0.680043 4.77573 -0.680043 2.05199 2.04013C0.727519 3.36277 0 5.13301 0 6.99553C0 8.8764 0.727811 10.6285 2.05199 11.9509C3.43207 13.3106 5.22243 14.0001 7.01356 14.0001ZM3.72947 7.00914V8.461V8.65543H3.92382H5.34563H8.2794H8.4738V8.461V5.52541V3.37947V3.18502H8.2794H6.82747H6.63307V3.37947V6.81467H3.92382H3.72947V7.00914ZM1.83985 6.99553C1.83985 5.61698 2.38099 4.32597 3.36061 3.3477C5.36746 1.34337 8.64803 1.34062 10.6585 3.33944C10.6613 3.34219 10.6639 3.34494 10.6668 3.3477C12.676 5.3546 12.6763 8.63642 10.6668 10.6434C8.65705 12.6504 5.37031 12.6504 3.36061 10.6434C2.38099 9.66506 1.83985 8.37408 1.83985 6.99553Z"></path></svg></span>Created</th><td><time>@May 17, 2022 10:55 AM</time></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M7.01356 14.0001C8.8042 14.0001 10.5958 13.3107 11.9575 11.9324C14.681 9.21201 14.6808 4.7603 11.9571 2.04013C9.23336 -0.680043 4.77573 -0.680043 2.05199 2.04013C0.727519 3.36277 0 5.13301 0 6.99553C0 8.8764 0.727811 10.6285 2.05199 11.9509C3.43207 13.3106 5.22243 14.0001 7.01356 14.0001ZM3.72947 7.00914V8.461V8.65543H3.92382H5.34563H8.2794H8.4738V8.461V5.52541V3.37947V3.18502H8.2794H6.82747H6.63307V3.37947V6.81467H3.92382H3.72947V7.00914ZM1.83985 6.99553C1.83985 5.61698 2.38099 4.32597 3.36061 3.3477C5.36746 1.34337 8.64803 1.34062 10.6585 3.33944C10.6613 3.34219 10.6639 3.34494 10.6668 3.3477C12.676 5.3546 12.6763 8.63642 10.6668 10.6434C8.65705 12.6504 5.37031 12.6504 3.36061 10.6434C2.38099 9.66506 1.83985 8.37408 1.83985 6.99553Z"></path></svg></span>Updated</th><td><time>@May 17, 2022 10:57 AM</time></td></tr></tbody></table></header><div class="page-body"><ul id="b6f4b9a5-cc09-481c-a753-6c8583da2d80" class="bulleted-list"><li style="list-style-type:disc">Secure communication systems</li></ul><ul id="fd48e94c-0bb4-4ac0-9dfa-5067aa4b2668" class="bulleted-list"><li style="list-style-type:disc">Communications and encryption</li></ul><ul id="841e7531-f2c8-40dd-a47e-169df89910e8" class="bulleted-list"><li style="list-style-type:disc">Synchronization of complex systems and their applications</li></ul><ul id="8c9237f3-06f6-42be-b333-d510d902d530" class="bulleted-list"><li style="list-style-type:disc">Dynamics of lasers</li></ul><ul id="9523d956-5db5-4572-8163-877a6c7690fc" class="bulleted-list"><li style="list-style-type:disc">Wireless Optical Communications</li></ul><ul id="c68ff247-e8a4-49a4-9357-1c39969eb8d2" class="bulleted-list"><li style="list-style-type:disc">Bifurcations Analysis</li></ul><ul id="e93e0785-4911-4a8b-89bf-53d8bbd6519f" class="bulleted-list"><li style="list-style-type:disc">Dynamic systems in electronic circuits</li></ul><ul id="c2cbbbbb-80dd-41ff-9b7b-0c8c431f408c" class="bulleted-list"><li style="list-style-type:disc">Complex networks</li></ul><ul id="7f937385-5f9a-49cf-ab30-64190ad7d2a6" class="bulleted-list"><li style="list-style-type:disc">Security for Internet of Things (IoT)</li></ul><ul id="5a5b2ece-0518-4db8-a35e-69ee448cc7fb" class="bulleted-list"><li style="list-style-type:disc">Dynamic systems and fractional calculus</li></ul><ul id="6043fe38-ebca-4235-b343-3b3cf2028053" class="bulleted-list"><li style="list-style-type:disc">Chaos and non-linearity</li></ul><ul id="a80e868d-5610-4f5c-bba2-c2b27e62b484" class="bulleted-list"><li style="list-style-type:disc">Non-linear optics</li></ul><ul id="f073c680-e1bf-4cc5-bc25-13734b9098ee" class="bulleted-list"><li style="list-style-type:disc">Computational physics</li></ul><ul id="179fcc5d-3725-458b-ab07-495d6145ff13" class="bulleted-list"><li style="list-style-type:disc">Mathematical programming techniques</li></ul><ul id="b97f4945-a944-4512-a1a9-b29d62f5c223" class="bulleted-list"><li style="list-style-type:disc">Evolutionary algorithms</li></ul><ul id="0e30fce1-7d38-4831-be53-dad46d9081ab" class="bulleted-list"><li style="list-style-type:disc">Genetic programming</li></ul><ul id="abe707c0-8821-464b-bcf5-75438664898d" class="bulleted-list"><li style="list-style-type:disc">Optimization techniques</li></ul><ul id="4c8cc061-ae06-481d-abb1-eb1bc9f4239a" class="bulleted-list"><li style="list-style-type:disc">Single- and multi-objective optimization</li></ul><ul id="38997fb3-db1d-4264-af7f-c072725c8c98" class="bulleted-list"><li style="list-style-type:disc">Stochastic optimization</li></ul><ul id="b94edf81-999a-4cdf-ae68-c8ef9a7345dd" class="bulleted-list"><li style="list-style-type:disc">Robust optimization</li></ul><ul id="019f3c41-9a3c-4dfa-b1ce-3e68da07514a" class="bulleted-list"><li style="list-style-type:disc">Green materials and smart materials</li></ul><ul id="cc7d69d5-5952-43df-8c07-1862838d399c" class="bulleted-list"><li style="list-style-type:disc">Intelligent Production system</li></ul><ul id="6750fca9-0cb8-4252-be93-3e8e807cbf13" class="bulleted-list"><li style="list-style-type:disc">Big Data and Data Mining in Logistics and Supply Chain Management</li></ul><ul id="8ba1292f-e65c-4cd5-b16a-1534a230b04c" class="bulleted-list"><li style="list-style-type:disc">Internet of Things (Iot) in Logistics and Supply Chain Management</li></ul><ul id="6b5ad76f-0cc5-423f-9728-28f270a4cd6b" class="bulleted-list"><li style="list-style-type:disc">Simulation in Logistics and Supply Chain</li></ul><ul id="723bca10-6188-485f-9cad-e42390d0ea71" class="bulleted-list"><li style="list-style-type:disc">Security for biomedical applications and telemedicine</li></ul><ul id="926bc941-0f73-4b74-8f0a-fd7ea8282ca2" class="bulleted-list"><li style="list-style-type:disc">Health monitoring systems</li></ul><ul id="7af09ef3-e171-4da2-a302-58f63681eeff" class="bulleted-list"><li style="list-style-type:disc">Robotics and control</li></ul><ul id="a550645d-2452-4612-bf0d-343fa58cd2da" class="bulleted-list"><li style="list-style-type:disc">Mechatronic systems</li></ul><ul id="bd729d10-c5f4-4a09-9998-39b15e7621ef" class="bulleted-list"><li style="list-style-type:disc">Analysis and development of control systems in real time</li></ul><ul id="358f5801-0910-41fa-be1d-c8220bb2986f" class="bulleted-list"><li style="list-style-type:disc">Modeling and simulation</li></ul><ul id="15f3abab-77e9-49f3-849c-97f8578da6c8" class="bulleted-list"><li style="list-style-type:disc">Digital Predistortion</li></ul><ul id="84055ffd-3969-4cc4-863f-9e127843f0fe" class="bulleted-list"><li style="list-style-type:disc">Artificial Intelligence</li></ul><ul id="1dd27a5b-c01f-4f8d-8d88-60f54af3ab3e" class="bulleted-list"><li style="list-style-type:disc">Artificial neural networks</li></ul><ul id="fd9ba135-51d5-4faf-8bd1-0ead0a8b0a05" class="bulleted-list"><li style="list-style-type:disc">Computer vision and pattern recognition</li></ul><ul id="405fcf9a-4a13-4efa-badc-e9109731a65c" class="bulleted-list"><li style="list-style-type:disc">Machine Learning and Deep Learning applied in Complex Systems</li></ul><ul id="51448c03-f481-49d0-9b29-4f4210f075cd" class="bulleted-list"><li style="list-style-type:disc">Machine Learning for Bioinformatics</li></ul><ul id="d00ba46a-191c-47b5-8d9b-7c35d269248f" class="bulleted-list"><li style="list-style-type:disc">Deep Learning for Medical Diagnosis</li></ul><ul id="38cf1e1f-1999-4ce6-8131-3264d5cdb3c8" class="bulleted-list"><li style="list-style-type:disc">Artificial Intelligence for Nanomaterials predictions</li></ul><ul id="c7c86bd3-f228-480a-b8a0-7cc790e6aae6" class="bulleted-list"><li style="list-style-type:disc">EEG signal processing</li></ul><ul id="b7745066-cf61-4ed5-9677-84977f097b07" class="bulleted-list"><li style="list-style-type:disc">Signal classification</li></ul><ul id="b5da2701-4b35-4f0d-895e-f15005c9215f" class="bulleted-list"><li style="list-style-type:disc">Image classification</li></ul><ul id="4aa8d277-7e27-4369-b87c-32dd73475b75" class="bulleted-list"><li style="list-style-type:disc">Information and telecommunications technologies for e-Health applications</li></ul><ul id="bb4147f7-230f-46f9-b6d8-01549363dc48" class="bulleted-list"><li style="list-style-type:disc">Processing of information for measurement of biometric parameters</li></ul><ul id="10de7f6a-ea4b-4e14-be02-188e8246b0e2" class="bulleted-list"><li style="list-style-type:disc">Manipulation of objects immersed in microfluidics</li></ul><ul id="70673d20-c855-48ca-9727-3b5123c7f39b" class="bulleted-list"><li style="list-style-type:disc">Biomedical and health informatics</li></ul><ul id="b81d2c33-7ff9-4277-81a8-b494bf7238fb" class="bulleted-list"><li style="list-style-type:disc">Machine learning applied to process improvement</li></ul><ul id="53c9319b-aeb8-4dbf-a7c5-76d8cbbaeaa2" class="bulleted-list"><li style="list-style-type:disc">Industry 4.0</li></ul><ul id="bad0f7a0-aac4-4a0d-bb84-d8b071d80321" class="bulleted-list"><li style="list-style-type:disc">Industrial Internet of Things applied to supply chain management</li></ul><ul id="3111c782-0096-4117-95ff-8da96e5b2e45" class="bulleted-list"><li style="list-style-type:disc">Soft computing for sustainability in the manufacturing sector</li></ul><ul id="3ec4377d-3912-4d61-bcae-58a1a939545f" class="bulleted-list"><li style="list-style-type:disc">Green materials and intelligent manufacturing</li></ul><ul id="7b1e0023-5a64-40a9-8720-a8db6505ae4a" class="bulleted-list"><li style="list-style-type:disc">Supply chain management with IoT and AI</li></ul><ul id="7083c0ac-4d96-4b76-873f-7a306835bbef" class="bulleted-list"><li style="list-style-type:disc">Robotic application for safety and sustainability in the workplace</li></ul><ul id="a233c171-a021-4fcd-b10f-b0735fab1bae" class="bulleted-list"><li style="list-style-type:disc">Statistical techniques and methods in quality assurance</li></ul><ul id="cb9a2abc-4667-4c61-82eb-f85fb1e8a6a7" class="bulleted-list"><li style="list-style-type:disc">Information and communications technologies in quality</li></ul><ul id="caec33ce-96b0-4903-a507-95e31563ff75" class="bulleted-list"><li style="list-style-type:disc">Control of underactuated mechanical systems</li></ul><ul id="bf60532f-a5ac-4d2b-9cf3-997834d15b72" class="bulleted-list"><li style="list-style-type:disc">Manipulator robots</li></ul><ul id="abcf0035-bbaa-43ca-b222-91a835c45050" class="bulleted-list"><li style="list-style-type:disc">Robotic vision systems</li></ul><ul id="9396f2b6-3379-40aa-9261-f8f40d824e29" class="bulleted-list"><li style="list-style-type:disc">Embedded systems</li></ul><ul id="0b12d138-5c1d-4b76-8861-0ce548f2ea39" class="bulleted-list"><li style="list-style-type:disc">Biomedical Applications</li></ul><ul id="22d20657-6a6e-4898-b4ab-55ce945fa02f" class="bulleted-list"><li style="list-style-type:disc">Hardware implementation</li></ul><ul id="9ae9de18-a5ec-4584-831c-7fe694f3bf08" class="bulleted-list"><li style="list-style-type:disc">Intelligent Systems</li></ul><ul id="2a5bb7aa-c2b1-4f7a-8f9b-2b523e9679cb" class="bulleted-list"><li style="list-style-type:disc">Path planning for robotic systems</li></ul><p id="b0ff3cec-1965-4fc8-9748-fe0dcee7a921" class="">
+</p></div></article></body></html>

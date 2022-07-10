@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>De novo transcriptome assembly databases for the central nervous system of the medicinal leech | Scientific Data</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a2786566-cd67-45c8-8c08-f542fc887822" class="page sans"><header><h1 class="page-title">De novo transcriptome assembly databases for the central nervous system of the medicinal leech | Scientific Data</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Journal/Publisher</th><td></td></tr><tr class="property-row property-row-number"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>Year</th><td></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Authors</th><td></td></tr><tr class="property-row property-row-url"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesUrl"><path d="M3.73333,3.86667 L7.46667,3.86667 C8.49613,3.86667 9.33333,4.70387 9.33333,5.73333 C9.33333,6.7628 8.49613,7.6 7.46667,7.6 L6.53333,7.6 C6.01813,7.6 5.6,8.0186 5.6,8.53333 C5.6,9.04807 6.01813,9.46667 6.53333,9.46667 L7.46667,9.46667 C9.5284,9.46667 11.2,7.79507 11.2,5.73333 C11.2,3.6716 9.5284,2 7.46667,2 L3.73333,2 C1.6716,2 0,3.6716 0,5.73333 C0,7.124 0.762067,8.33453 1.88953,8.97713 C1.87553,8.83107 1.86667,8.6836 1.86667,8.53333 C1.86667,7.92013 1.98753,7.33447 2.2036,6.7978 C1.99267,6.4954 1.86667,6.12953 1.86667,5.73333 C1.86667,4.70387 2.70387,3.86667 3.73333,3.86667 Z M12.1095,5.28907 C12.1231,5.4356 12.1333,5.58307 12.1333,5.73333 C12.1333,6.34607 12.0101,6.9294 11.7931,7.46513 C12.0059,7.768 12.1333,8.13573 12.1333,8.53333 C12.1333,9.5628 11.2961,10.4 10.2667,10.4 L6.53333,10.4 C5.50387,10.4 4.66667,9.5628 4.66667,8.53333 C4.66667,7.50387 5.50387,6.66667 6.53333,6.66667 L7.46667,6.66667 C7.98187,6.66667 8.4,6.24807 8.4,5.73333 C8.4,5.2186 7.98187,4.8 7.46667,4.8 L6.53333,4.8 C4.4716,4.8 2.8,6.4716 2.8,8.53333 C2.8,10.59507 4.4716,12.2667 6.53333,12.2667 L10.2667,12.2667 C12.3284,12.2667 14,10.59507 14,8.53333 C14,7.14267 13.2375,5.93167 12.1095,5.28907 Z"></path></svg></span>Link</th><td><a href="https://www.nature.com/articles/sdata201515" class="url-value">https://www.nature.com/articles/sdata201515</a></td></tr><tr class="property-row property-row-url"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesUrl"><path d="M3.73333,3.86667 L7.46667,3.86667 C8.49613,3.86667 9.33333,4.70387 9.33333,5.73333 C9.33333,6.7628 8.49613,7.6 7.46667,7.6 L6.53333,7.6 C6.01813,7.6 5.6,8.0186 5.6,8.53333 C5.6,9.04807 6.01813,9.46667 6.53333,9.46667 L7.46667,9.46667 C9.5284,9.46667 11.2,7.79507 11.2,5.73333 C11.2,3.6716 9.5284,2 7.46667,2 L3.73333,2 C1.6716,2 0,3.6716 0,5.73333 C0,7.124 0.762067,8.33453 1.88953,8.97713 C1.87553,8.83107 1.86667,8.6836 1.86667,8.53333 C1.86667,7.92013 1.98753,7.33447 2.2036,6.7978 C1.99267,6.4954 1.86667,6.12953 1.86667,5.73333 C1.86667,4.70387 2.70387,3.86667 3.73333,3.86667 Z M12.1095,5.28907 C12.1231,5.4356 12.1333,5.58307 12.1333,5.73333 C12.1333,6.34607 12.0101,6.9294 11.7931,7.46513 C12.0059,7.768 12.1333,8.13573 12.1333,8.53333 C12.1333,9.5628 11.2961,10.4 10.2667,10.4 L6.53333,10.4 C5.50387,10.4 4.66667,9.5628 4.66667,8.53333 C4.66667,7.50387 5.50387,6.66667 6.53333,6.66667 L7.46667,6.66667 C7.98187,6.66667 8.4,6.24807 8.4,5.73333 C8.4,5.2186 7.98187,4.8 7.46667,4.8 L6.53333,4.8 C4.4716,4.8 2.8,6.4716 2.8,8.53333 C2.8,10.59507 4.4716,12.2667 6.53333,12.2667 L10.2667,12.2667 C12.3284,12.2667 14,10.59507 14,8.53333 C14,7.14267 13.2375,5.93167 12.1095,5.28907 Z"></path></svg></span>Dataset</th><td></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M7.01356 14.0001C8.8042 14.0001 10.5958 13.3107 11.9575 11.9324C14.681 9.21201 14.6808 4.7603 11.9571 2.04013C9.23336 -0.680043 4.77573 -0.680043 2.05199 2.04013C0.727519 3.36277 0 5.13301 0 6.99553C0 8.8764 0.727811 10.6285 2.05199 11.9509C3.43207 13.3106 5.22243 14.0001 7.01356 14.0001ZM3.72947 7.00914V8.461V8.65543H3.92382H5.34563H8.2794H8.4738V8.461V5.52541V3.37947V3.18502H8.2794H6.82747H6.63307V3.37947V6.81467H3.92382H3.72947V7.00914ZM1.83985 6.99553C1.83985 5.61698 2.38099 4.32597 3.36061 3.3477C5.36746 1.34337 8.64803 1.34062 10.6585 3.33944C10.6613 3.34219 10.6639 3.34494 10.6668 3.3477C12.676 5.3546 12.6763 8.63642 10.6668 10.6434C8.65705 12.6504 5.37031 12.6504 3.36061 10.6434C2.38099 9.66506 1.83985 8.37408 1.83985 6.99553Z"></path></svg></span>Log Date</th><td><time>@January 24, 2021 9:22 PM</time></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Type</th><td></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Technique</th><td></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M0,3 C0,1.34314 1.34326,0 3,0 L11,0 C12.6567,0 14,1.34314 14,3 L14,11 C14,12.6569 12.6567,14 11,14 L3,14 C1.34326,14 0,12.6569 0,11 L0,3 Z M3,1.5 C2.17139,1.5 1.5,2.17157 1.5,3 L1.5,11 C1.5,11.8284 2.17139,12.5 3,12.5 L11,12.5 C11.8286,12.5 12.5,11.8284 12.5,11 L12.5,3 C12.5,2.17157 11.8286,1.5 11,1.5 L3,1.5 Z M2.83252,6.8161 L3.39893,6.27399 L3.57617,6.10425 L3.92334,5.77216 L4.26904,6.10559 L4.44531,6.27582 L5.58398,7.37402 L9.28271,3.81073 L9.45996,3.64008 L9.80664,3.3056 L10.1538,3.63989 L10.3311,3.81067 L10.8936,4.35303 L11.0708,4.52399 L11.4434,4.88379 L11.0708,5.24353 L10.8936,5.41437 L6.1084,10.0291 L5.93115,10.2 L5.58398,10.5344 L5.23682,10.2 L5.05957,10.0292 L2.83057,7.87946 L2.65283,7.70801 L2.27832,7.34674 L2.6543,6.98694 L2.83252,6.8161 Z"></path></svg></span>Dataset Raw</th><td><div class="checkbox checkbox-off"></div></td></tr></tbody></table></header><div class="page-body"><figure id="c23ce4f3-1137-4bf8-a4fd-a600b366225a" class="image"><a href="41597_2015_Article_BFsdata201515_Fig1_HTML.jpg"><img style="width:685px" src="41597_2015_Article_BFsdata201515_Fig1_HTML.jpg"/></a></figure><h2 id="048837ab-84d3-4e3c-89f9-8ec58b39c5fe" class="">Abstract</h2><p id="46c73fba-1eb8-4b33-8520-5aea93841dd2" class="">The study of non-model organisms stands to benefit greatly from genetic and genomic data. For a better understanding of the molecular mechanisms driving neuronal development, and to characterize the entire leech Hirudo medicinalis central nervous system (CNS) transcriptome we combined Trinity for de-novo assembly and Illumina HiSeq2000 for RNA-Seq. We present a set of 73,493 de-novo assembled transcripts for the leech, reconstructed from RNA collected, at a single ganglion resolution, from the CNS. This set of transcripts greatly enriches the available data for the leech. Here, we share two databases, such that each dataset allows a different type of search for candidate homologues. The first is the raw set of assembled transcripts. This set allows a sequence-based search. A comprehensive analysis of which revealed 22,604 contigs with high e-values, aligned versus the Swiss-Prot database. This analysis enabled the production of the second database, which includes correlated sequences to annotated transcript names, with the confidence of BLAST best hit.</p><div id="e29957a8-a63b-4cd7-9890-73687c66582e" class="column-list"><div id="34eab249-be2b-40dd-825e-f3855e0c93fb" style="width:50%" class="column"></div><div id="5e41b098-f70f-49f3-b330-e9daa2df965d" style="width:50%" class="column"></div></div><h2 id="b5d51a21-0608-4ed1-b667-28a8fcda32a0" class="">Background &amp; Summary</h2><p id="c85169fa-c6a4-49c8-b28a-269cdef3ef2b" class="">For historic reasons, certain organisms, such as Escherichia coli, Saccharomyces cerevisiae, Arabidopsis thaliana, Caenorhabditis elegans, Drosophila melanogaster, Danio rerio or Mus musculus have gained the status of model organisms, due to their biological attributes and to technical advantages<a href="https://www.nature.com/articles/sdata201515">1</a>. The study of these organisms has benefited from the concerted effort of a large research community allocating vast resources, resulting in a significantly larger body of genetic and genomic information concerning these organisms than any other. However, many other organisms have unique traits that make them valuable models for the study of specific biological processes. Until recently, genetic and genomic information for this latter group was scarce due to limitations of cost and labour intensity.</p><p id="794d2a91-b946-4071-9b49-38243612765e" class="">Next Generation Sequencing (NGS) tools have made the production of genetic and genomic information more accessible. NGS has made such research feasible for the study of all organisms, including those for whom no reference genetic data is available, the so-called non-model organisms<a href="https://www.nature.com/articles/sdata201515">1</a>. Moreover, the innovative approaches to the analysis of these new sequencing data turned previously perceived obstacles into potentially surmountable challenges.</p><p id="f02d92e9-d477-43f3-b23f-e14228a07899" class="">In the study presented here, we chose to focus on the transcriptome of the medicinal leech, Hirudo medicinalis CNS, which is a non-model organism, but serves as a well-studied model in neurobiology, specifically in neuronal development, regeneration and repair<a href="https://www.nature.com/articles/sdata201515">2</a>,<a href="https://www.nature.com/articles/sdata201515">3</a>. The leech CNS is composed of 6 fused ganglia at the head, 21 highly similar body ganglia and 7 fused tail ganglia<a href="https://www.nature.com/articles/sdata201515">4</a>. Each ganglion contains approximately 200 pairs of neurons and is linked to its neighbours by thousands of axons<a href="https://www.nature.com/articles/sdata201515">5</a>. This valuable model offers an interesting platform for use of molecular and cellular scientific methods for the evaluation of the involvement of specific cells in the regenerative processes<a href="https://www.nature.com/articles/sdata201515">6</a>. Previous work has yielded characterization of specific genes in leech CNS<a href="https://www.nature.com/articles/sdata201515">7</a>,<a href="https://www.nature.com/articles/sdata201515">8</a>, and genes of interest were studied using the candidate gene approach<a href="https://www.nature.com/articles/sdata201515">9</a>–<a href="https://www.nature.com/articles/sdata201515">12</a>. Recently, an expression sequence tag (EST) database was constructed and is now available to the scientific community<a href="https://www.nature.com/articles/sdata201515">13</a>. Yet, functional genomic studies in the Hirudo medicinalis are in their infancy<a href="https://www.nature.com/articles/sdata201515">13</a>,<a href="https://www.nature.com/articles/sdata201515">14</a>.</p><p id="26665754-e6cb-4dab-ae11-b57652894670" class="">While several previous studies have shed some light on particular genes and gene expression patterns<a href="https://www.nature.com/articles/sdata201515">13</a>–<a href="https://www.nature.com/articles/sdata201515">15</a>, the full transcriptomic data of the Hirudo medicinalis CNS is still limited. In our related work at Bioinformatics we provided an in-depth spatial regulation analysis of the CNS transcriptome data and showed the potential of combining expression distribution patterns to produce a spatio-transcripto map along the ganglia chain<a href="https://www.nature.com/articles/sdata201515">15</a>. As illustrated in <a href="https://www.nature.com/articles/sdata201515">Fig. 1</a>, we collected RNA from three distinct locations along the leech CNS (ganglia 2, 10 and 19). To achieve the single ganglion resolution, we collected the RNA content of these organs and had to amplify the RNAs, using the NuGEN amplification kit which known to be beneficial in low amounts of RNA<a href="https://www.nature.com/articles/sdata201515">16</a>, before sequencing. In total, we sequenced 221.1 million high-quality short reads 50 bp single-end from the leech CNS. Then, using the de-novo assembly program, Trinity, we reconstructed these reads to produce the first model of the leech CNS transcriptome. By combining those three distinct points along the leech CNS we assumed that our data reveals most of the transcripts that are expressed in steady state of neuronal cells in the leech CNS.</p><p id="831c6fa3-1287-4f07-bfc8-bde8aa589430" class=""><strong>Figure 1: Schematic overview of the study.</strong></p><p id="b6551d1b-3516-456d-8aab-b757e98b1ba5" class="">We collected 12 ganglia in total from the Hirudo medicinalis. Three biological replicates were harvested from ganglia 2, 10 and 19 and 3 technical replicates harvested from ganglion 10. Due to the low initial yield of total RNA we first amplified the RNA using NuGEN kit and then used TruSeq kit to prepare the cDNAs. Next, we sequenced the cDNAs on Illumina HISeq2000 in 50 bp single end (SE) reads. The analysis started with assembling the short reads, using the de-novo assembly program Trinity, and continued with functional analysis and evolutionary relationships analysis using BLASTX.</p><p id="ea5f4164-75b4-49ec-83f9-77cdb763c707" class="">In this Data Descriptor, we provide the full assembly and annotation datasets, aimed at making our data accessible to others for use in their research and for expanding the community understanding of this data. This study complements previous approaches to address similar questions in the leech CNS<a href="https://www.nature.com/articles/sdata201515">9</a>,<a href="https://www.nature.com/articles/sdata201515">10</a>,<a href="https://www.nature.com/articles/sdata201515">17</a>. Sequencing the transcriptome is a prerequisite to the expansion of our knowledge on the nervous systems (physiological and pathological conditions). Utilizing these assembly data through an annotation dataset for these new transcripts may help in the accessibility and understanding of this data. The use of a simple model, the leech CNS, together with a novel assembly and analysis approaches, combine the transcriptome with a spatial configuration, thus producing a novel transcript database of the leech CNS. Furthermore, these leech databases can be used to define the underlying conserved genetic modules controlling the equivalent patterning processes along the CNS as well as serving to cross-validate each other. Similarity, these data will offer insights into the molecular mechanism that underpin the fundamental patterning differences between leech and related organisms.</p><h2 id="73c99b7e-fde5-453e-8ce9-ea627e22d5ba" class="">Methods</h2><p id="741d68dd-5184-495d-b8f7-5647a0d9cf45" class="">These methods have been presented in an abbreviated form in the journal Bioinformatics<a href="https://www.nature.com/articles/sdata201515">15</a>.</p><h3 id="b7e286ee-2207-48b2-a25d-046e7219c324" class="">Animal conditions</h3><p id="fdca1408-50be-4633-8659-72d8206ee8c8" class="">The experiments were performed on the Hirudo medicinalis leech. All leeches were obtained from an adult Hirudo medicinalis colony grown in France at Ricarimpex Farm. Further to the transportation from the farm, leeches were maintained in our animal facility in tanks populated with about 20 leeches in a controlled environment, at 16 °C and 12 h/12 h day/night cycle.</p><h3 id="f86f920a-506c-480b-92a8-3d3b7b906ed4" class="">Experimental design</h3><p id="7ec62314-3711-4c6c-8aa4-799a81997611" class="">Twelve samples with a focus on the Hirudo medicinalis CNS were taken from six different leeches for this experiment. Before use, leeches were placed on ice for 30 min and then dissected dorsally. Three ganglia (2, 10 and 19) were harvested from three leeches (<a href="https://www.nature.com/articles/sdata201515">Fig. 1</a>). For technical replicas, ganglion number 10 was harvested from three additional leeches, pooled together for RNA isolation and separated into three samples for RNA-seq.</p><h3 id="ff119f63-aab9-4f33-b9f4-9b057768183c" class="">CNS/Ganglia collection</h3><p id="22fcba68-4c6c-4187-961a-b8d87093f891" class="">Total RNA was extracted from each ganglion using RNeasy Lipid Tissue (Qiagen). The quality and quantity of each RNA sample was assessed by Agilent’s 100 Bioanalyzer pico chip (<a href="https://www.nature.com/articles/sdata201515">Fig. 2a,b</a>).</p><p id="0c7c9e17-0d72-4b0b-b3e8-9bb3a71b432d" class=""><strong>Figure 2: Bioanalyzer pico chip and DNA 1000 Chip analysis of total RNA output.</strong></p><p id="4fc561fc-0964-4f4a-94d7-1fdbc3ce253a" class="">Representative electropherogram of Bioanalyzer analysis of total RNA integrity from the 2 samples. In (<strong>a</strong>) and (<strong>b</strong>) are the pico chip analysis for 2 representative RNA samples (ganglion 10). The x axis outlines the time in seconds and the y axis provides the fluorescence. The first peak, in the ~22 s represents the ladder. The second peak in ~25 s represents the RNA. The third peak in the ~41 s represents the ribosomal RNA. For our study we selected only RNA samples that were found to have RNA concentration &gt;45 pg/μl. In (<strong>c</strong>) and (<strong>d</strong>) are the DNA 1000 chip for 2 representative amplified cDNAs samples (ganglia 2 and 10, respectively). The first peak, in ~42 is the ladder and from ~60–110 is the cDNA. The distribution of the diagrams is due to the different sizes of the cDNAs after the amplification. All cDNAs showed concentration &gt;72 ng/ul.</p><h3 id="241dfc88-ee33-47d2-873f-5a330ae6d7f6" class="">RNA amplification</h3><p id="eee7523e-66cd-4d07-b575-a5f1ead2c11f" class="">The initial RNA yield was low, requiring amplification of RNAs using a specific kit prior to the use of the mRNA-TruSeq preparation kit. RNA was amplified using Ovation Kit v2.0 (NuGEN) (<a href="https://www.nature.com/articles/sdata201515">Fig. 2c,d</a>). Before amplification, all samples were lyophilized using a SpeedVac instrument and then suspended in 5 μl of nuclease-free water. This was the starting volume of NuGEN kit. Then, (as suggested by NuGEN), the 2 μg (in 100 μl) of cDNAs were fragmented by a Bioruptor instrument 3 cycles of 10 s of sonication and 90 s of pause. Library preparation proceeded with an ‘END-REPAIR’ reaction of NEB kit, then with TruSeq DNA/RNA libraries preparation according to Illumuna protocol. The 12 stock libraries were loaded on a High Sensitivity Chip and quantified on a QuBIT instrument, in order to prepare the two 6-plex pools were separated into two pools. The two pools were quantified (molarity) on Bioanalyzer HighSensitivity as stocks. In order to better balance the single libraries inside the pools, we decide to quantify libraries with qPCR, following the NuGEN suggestion for pool preparation.</p><h3 id="fd4c8262-7c0d-4acc-ab44-9ed8f6ed62ed" class="">Illumina sequencing</h3><p id="d34213ae-9446-40b4-a8ee-f3574a00f94d" class="">The cDNA libraries were generated using messenger RNA-seq (mRNA-seq) assay for transcriptome sequencing on Illumina Hiseq2000 (<a href="https://www.nature.com/articles/sdata201515">Data Citation 1</a> and <a href="https://www.nature.com/articles/sdata201515">Table 1</a>). Three cDNA libraries were generated from the total RNA of ganglion number 19 and three cDNA libraries were generated from the pooled total RNA of ganglion 10 in equal amounts, and sequencing was performed in one lane to generate 50 bp single end (SE) reads. A similar procedure was carried out for ganglia numbers 2 and 10. Library construction and sequencing was performed by a commercial service provider (IGA, Applied Genomics Institute).</p><p id="6d054b0b-d717-47db-9761-068c0b08ee0e" class=""><strong>Table 1 Raw data deposit</strong></p><h3 id="6d65d11e-29a0-46a4-ab45-b6bda38e5968" class="">De novo assembly</h3><p id="2a6ccc31-e995-43e5-bc8e-0236abc8e1cb" class="">Due to the fact that the genome/transcriptome of the Hirudo medicinalis is not available yet, we used de-novo tools for the reconstruction the transcriptome. The tools we used are Trinity<a href="https://www.nature.com/articles/sdata201515">18</a> (version trinityrnaseq_r2012-03-17) and Trans-ABySS<a href="https://www.nature.com/articles/sdata201515">19</a> (version 1.3.2). Here we report only the procedure and the results from Trinity, the full process and considerations can be seen in our analysis paper<a href="https://www.nature.com/articles/sdata201515">15</a>. Trinity has been developed for assembly of short reads using de Bruijn graph algorithm by single k-mer. Trinity was executed in the inchworm method and the minimum contig length set to 200 nucleotides. The other parameters we used are default for Trinity single-end assembly (Trinity.pl—seqType fq—kmer_method inchworm—single seq.input—output seq.output—min_contig_length 200) (<a href="https://www.nature.com/articles/sdata201515">Data Citation 2</a> and <a href="https://www.nature.com/articles/sdata201515">Table 2</a>).</p><p id="76a4d79a-2689-4b5a-8ff9-c2486fa30546" class=""><strong>Table 2 Expression data deposit</strong></p><h3 id="409cee83-7b14-4add-883b-3e5136971c9e" class="">Annotation dataset</h3><p id="2564e12e-350d-426f-9238-48dd2f3aa092" class="">In general, the creation of an annotation dataset is derived from a draft genome or transcriptome<a href="https://www.nature.com/articles/sdata201515">20</a>,<a href="https://www.nature.com/articles/sdata201515">21</a>. For the Hirudo medicinalis none of these are available. Therefore, we used BLASTX (version 2.2.23) to identify sequence conservation and to create an annotated dataset for the 73,493 contigs, generated by Trinity, against Swiss-Prot database downloaded from the National Center for Biotechnology Information (NCBI). We used blast commands setting the minimum e-value to be e−10 for maximal confidence of the contigs (blastall -p blastx -i Trinity.fasta -d Swiss-prot e−10 −o Trinity.fasta.out). Next, to improve the readability of blast output we kept only the first result for each contig by using Linux common command (grep -E ‘Query\=|No\ hits\ found|^gi\|’ Trinity.fasta.blastx.out|grep -A1 ‘Query\=\contig_name’| sed ‘/^--/d’| sed ‘s/path.*//’ | paste - - -d’;’Trinity.fasta.blasx.out.best-hit). Applying the described pipeline has led to a set of reliable annotated contigs (<a href="https://www.nature.com/articles/sdata201515">Data Citation 3</a>).</p><h2 id="fcf838fb-fc5a-44a1-af18-76be85157222" class="">Data Records</h2><p id="8d393bb2-88c8-4dce-a691-1a0823046c5b" class="">In this study we deposited four datasets. The first dataset is the RNA-Seq raw reads (<a href="https://www.nature.com/articles/sdata201515">Data Citation 1</a> and <a href="https://www.nature.com/articles/sdata201515">Table 1</a>). This dataset contains 12 samples in total. Three biological replicates from each ganglia (numbers 2, 10 and 19), and three more technical replicates from ganglion number 10. The second dataset is the expression value of each of the Trinity assembly contigs (<a href="https://www.nature.com/articles/sdata201515">Data Citation 2</a> and <a href="https://www.nature.com/articles/sdata201515">Table 2</a>). The third dataset contains the actual contigs (<a href="https://www.nature.com/articles/sdata201515">Data Citation 2</a> and <a href="https://www.nature.com/articles/sdata201515">Table 3</a>). The fourth dataset is the annotation file (<a href="https://www.nature.com/articles/sdata201515">Data Citation 3</a>). The annotation file is a comma separated value (CSV) format file with all of the annotated contigs generated by Trinity. The annotation file deposited in figshare depository. In general, there are 7 columns. Column #1 is the name of the contig, #2 is the length, #3 is the gi accession number, #4 is the sp accession number, #5 is the entry name, #6 is the BLASTX score and #7 is the e-value. The first two datasets described above (<a href="https://www.nature.com/articles/sdata201515">Data Citation 1</a> and <a href="https://www.nature.com/articles/sdata201515">Table 1</a>, and <a href="https://www.nature.com/articles/sdata201515">Data Citation 2</a> and <a href="https://www.nature.com/articles/sdata201515">Table 2</a>) were previously published in our related work in the journal Bioinformatics<a href="https://www.nature.com/articles/sdata201515">15</a>, and the third dataset in <a href="https://www.nature.com/articles/sdata201515">Data Citation 2</a> (<a href="https://www.nature.com/articles/sdata201515">Table 3</a>) and the forth dataset in <a href="https://www.nature.com/articles/sdata201515">Data Citation 3</a> are the core of this work and have not been published before.</p><p id="e17185a6-fed6-48d4-9c94-81940e5c72aa" class=""><strong>Table 3 Contigs deposit</strong></p><h2 id="aaa4974d-fe14-46a8-8747-7022a95c7759" class="">Technical Validation</h2><h3 id="230910b7-506f-4b51-9c84-54903e2f4f49" class="">CNS collection quality control</h3><p id="7b01d1a8-d454-46a0-a81b-5f2616593d25" class="">Prior to processing, after samples were harvested, we assessed the quality and quantity of each sample using Agilent’s 100 Bioanalyzer pico chip. Only RNA samples which contained a concentration of 45–170 pg/μl were used for this experiment (<a href="https://www.nature.com/articles/sdata201515">Fig. 2a,b</a>). Since the harvesting was only from single ganglions (~400 cells), we expected low concentrations of total RNA.</p><h3 id="1b842096-1b12-4f4b-bd03-a623fca0545f" class="">RNA amplification quality control</h3><p id="554a7a7f-b244-430f-801d-d1c5bc8b36c5" class="">Following amplification, cDNAs were quantified using Nanodrop and Bioanalyzer DNA 1000 Chip (<a href="https://www.nature.com/articles/sdata201515">Fig. 2c,d</a>). After balancing the two pools for a similar total pool volume, we proceeded with the procedure. The first pool volume was 47.2 μl and the second pool was 45.9 μl.</p><h3 id="5d6aa538-542a-40ef-9033-fa7b4de019d8" class="">Sequencing quality control</h3><p id="86f3a60f-b90c-4406-a1cc-03d034c95cf7" class="">We used multiple steps for testing sequencing quality. The first step included a count of total reads and total bases for each of the samples to ensure that the amounts are approximately of the same order of magnitude. These amounts were 10–26 million reads. As a second step, we tested samples to pass FastQC<a href="https://www.nature.com/articles/sdata201515">22</a> for basic statistics as quality estimation, per base sequence quality, per sequence quality score, length distribution and raw reads quality control (<a href="https://www.nature.com/articles/sdata201515">Table 4</a>). As a third step, we estimated the sequencing depth of coverage by estimating the size of the transcriptome. We used the know information on a related organism, Helobdella robusta, which its transcriptome size is estimated to be 29032248 bp (<a href="http://metazoa.ensembl.org/Helobdella_robusta/Info/Annotation/%23assembly">http://metazoa.ensembl.org/Helobdella_robusta/Info/Annotation/#assembly</a>). Thus, we estimated the sequencing depth of coverage to be 11000000000 bases 29032248 =378 (the number of sequenced bases divided by the predicted transcriptome size).</p><p id="37731410-0d2a-40c7-bbe6-8093e87a34c5" class=""><strong>Table 4 Raw reads quality control</strong></p><h3 id="32cc9522-1702-4dd8-b1e9-9cd99995e694" class="">Assembly quality control</h3><p id="855e35b1-953e-49c7-aeb9-a0e7fc51af90" class="">Following the use of Trinity, to make sure that the produced contigs are correct, we compared our model of transcriptome also to Helobdella robusta published transcriptome. We start with comparing basic statistics such as average length of contigs (<a href="https://www.nature.com/articles/sdata201515">Table 4</a>). We calculated the average contig length for the Hirudo medicinalis and we found it to be 1124 (<a href="https://www.nature.com/articles/sdata201515">Table 5</a>), which is very similar to the average transcript size for the Helobdella robusta which is 1239 according to the Joint Genome Institute (<a href="http://genome.jgi-psf.org/Helro1/Helro1.home.html">http://genome.jgi-psf.org/Helro1/Helro1.home.html</a>). Next, we used Bowtie<a href="https://www.nature.com/articles/sdata201515">23</a> to map reads back to the contigs to test the mapping rate for each sample (<a href="https://www.nature.com/articles/sdata201515">Fig. 3a</a>). Finally, we correlated the technical replicates between themselves, which showed a strong correlation (<a href="https://www.nature.com/articles/sdata201515">Fig. 3b</a>) (<a href="https://www.nature.com/articles/sdata201515">Table 3</a>). Moreover, for examining the completeness of the data we tested full-length over the innexin genes family to see if the transcripts are really full without any bias to particular side, and we found that 11 out of the 21 innexin reconstructed perfectly, and the other 10 almost in fully<a href="https://www.nature.com/articles/sdata201515">15</a>. Moreover, for strengthening the completeness evaluation of our data we estimated the transcriptome size according to the EnsemblMetazoa known information of the Helobdella robusta (see above), and found that the number of coding genes for the Helobdella robusta is 23432 which is very similar to the number of contigs with high e-value that when aligning to the Swiss-Prot (<a href="https://www.nature.com/articles/sdata201515">Fig. 3c</a>).</p><p id="0e2da436-ca3d-48b8-9d9b-e150879e01d4" class=""><strong>Table 5 Assembly statistics</strong></p><p id="11ed3407-7566-42b7-afae-8443350dad41" class=""><strong>Figure 3: Quality control at Sample level following sequencing.</strong></p><p id="9feb28ef-ce3d-4cf9-a5d9-f526b2508860" class="">In (<strong>a</strong>) is the samples’ contribution to the assembly. The percentage in the pie chart outlines the percentage that each sample contributed to the reconstruction of the transcriptome dataset. The numbers in the pie chart outline the sample number. Out of all the 73,493 contigs, sample number 5 contributed to reconstruct 5% and sample number 9 contributed 15%. As can be seen in the chart, the percentiles vary from 5 to 15% and the dataset is not biased towards any specific sample. In (<strong>b</strong>) is a scatter plot of the technical replicates expression values for ganglion number 10 to verify that the samples sequenced without bias. The x axis outlines sample number 11 expression values, which represent technical replica number 2. The y axis provides sample number 12 expression values, which represent technical replica number 3. In the top right is the R2 correlation. We also tested the correlation between technical replica 1 to 2 and 1 to 3, and they have also showed strong R2, 0.789 and 0.7845 respectively. In (<strong>c</strong>) is the hits Scores Distribution. The x axis outlines the upper limit of the score. The left y axis provides the frequency, and the right y axis provides the cumulative. Out of the 73,493 transcripts reconstructed by Trinity 22,604 had high e-value hits in the Swiss-Prot database. The blast score gives an indication of the quality of the alignment. As can be seen, most transcripts aligned with a score higher than 50 and only 22 had a score under/equal 50.</p><h3 id="149ab6e6-3d3e-48f3-9e2d-3a66269651fc" class="">Annotation quality control</h3><p id="273369e8-290a-4a5a-b6b4-dab2e1e32260" class="">To ensure the quality of our annotation we set the blast e-value threshold to e−10. We found that the blast scores were high (<a href="https://www.nature.com/articles/sdata201515">Fig. 3c</a>). By counting the number of transcripts that passed the threshold, we saw that the approximate predicted size of the Hirudo medicinalis CNS transcriptome is 22,604. This result is very similar to size of the Helobdella robusta and the Capitella teleta transcriptomes (19,487 and 37,908, respectively).</p><h2 id="22fe2881-aa8f-4100-9cb8-a6e6e6f77aa6" class="">Usage Notes</h2><p id="c5b1642a-fddf-4ed6-8dc6-99f5917df2ac" class="">The data provided in this experimental set can be used for several purposes. First, it is possible to use the raw reads for executing a new experiment, with different analysis approaches. Second, each analysis step can be performed differently as all the technical experimental information is publicly available.</p><h3 id="70b8371d-b2fc-498b-b899-e3f2bb060338" class="">De novo assembly</h3><p id="ed3df0fe-0803-43f6-9e13-739269e4752b" class="">By using our non-redundant set of 73,493 transcripts we generated using Trinity, the search in the dataset for genes of interest can be easily done by homologs using blast, or text based search if using the annotation table. Moreover, the raw reads provided here make it possible to use alternative methods for de novo assembly that may assemble the reads into a different set of transcripts than the ones we constructed. The de novo assembly can be performed using SOAPdenovo-Trans<a href="https://www.nature.com/articles/sdata201515">24</a> or Velvet/Oases<a href="https://www.nature.com/articles/sdata201515">25</a>,<a href="https://www.nature.com/articles/sdata201515">26</a>.</p><h3 id="be9d7f50-78f9-4c9c-b518-eb847f1c7caa" class="">Differential expression</h3><p id="33d057e2-c116-4d86-b8b5-0a3f18105dda" class="">The combination of raw reads and transcripts allows the re-calculation of expression values for each transcript for each sample. There are different approaches for discovering differentially expressed genes. This can be further refined into new groups of genes expressed in each individual ganglion, or combinations of ganglia. This can be performed by using, for example, free Bioconductor packages such as DESeq<a href="https://www.nature.com/articles/sdata201515">27</a> or edgeR<a href="https://www.nature.com/articles/sdata201515">28</a> (<a href="http://www.bioconductor.org/">http://www.bioconductor.org/</a>).</p><h3 id="38994bfc-bed6-4cf5-ac0e-7f9172d8be8c" class="">Downstream analysis</h3><p id="c204ed79-3e25-4e58-902c-263f6a99d6c4" class="">The datasets provided here represented by 3 biological replicates for each condition and technical replicates for one condition. Comparing the ganglia sequenced here to other ganglia to determine the set of genes statistically significantly differentially expressed along the whole CNS, and not only three points.</p><h2 id="9b11326f-95ca-4411-bcb2-a7a71f6888c3" class="">Additional information</h2><p id="481296a5-3392-4699-8c70-99d164ceaf1d" class=""><strong>How to cite this article:</strong> Hibsh, D. et al.  De novo transcriptome assembly databases for the central nervous system of the medicinal leech. Sci. Data 2:150015 doi: 10.1038/sdata.2015.15 (2015).</p><h2 id="0c8f3ba5-63cc-4629-827d-ec7337d304c1" class="">References</h2><h3 id="f02a8646-33fc-418b-aaed-899abedd6bfb" class="">References</h3><ol type="1" id="5784a061-b357-4146-bcd6-2b5fe7c0aadd" class="numbered-list" start="1"><li>Coggeshall, R. E. &amp; Fawcett, D. W. The fine structure of the central nervous system of the leech, Hirudo Medicinalis. J. Neurophysiol. <strong>27</strong>, 229–289 (1964).</li></ol><ol type="1" id="3578968c-5eed-4f05-9e1c-458cc1600189" class="numbered-list" start="2"><li>Meriaux, C. et al. Multiple changes in peptide and lipid expression associated with regeneration in the nervous system of the medicinal leech. PLoS One <strong>6</strong>, 1–20 (2011).</li></ol><ol type="1" id="34617ac7-42df-46ac-886b-4b1f8e3ce005" class="numbered-list" start="3"><li>Wysocka-Diller, J. W., Aisemberg, G. O., Baumgarten, M., Levine, M. &amp; Macagno, E. R. Characterization of a homologue of bithorax-complex genes in the leech Hirudo medicinalis. Nature <strong>341</strong>, 760–763 (1989).</li></ol><ol type="1" id="e0ed9c18-2a23-4104-8cc1-0b0d74f70661" class="numbered-list" start="4"><li>Blackshaw, S. E., Babington, E. J., Emes, R. D., Malek, J. &amp; Wang, W. Z. Identifying genes for neuron survival and axon outgrowth in Hirudo medicinalis. J. Anat. <strong>204</strong>, 13–24 (2004).</li></ol><ol type="1" id="3d19bef3-e833-4689-96bc-60461482bcd8" class="numbered-list" start="5"><li>Macagno, E. R. et al. Construction of a medicinal leech transcriptome database and its application to the identification of leech homologs of neural and innate immune genes. BMC Genomics <strong>11</strong>, 407 (2010).</li></ol><ol type="1" id="1a57813b-ed4e-4a5e-9ac8-cf9774b1768f" class="numbered-list" start="6"><li>Hibsh, D., Schori, H., Efroni, S. &amp; Shefi, O. Spatial regulation dominates gene function in the ganglia chain. Bioinformatics <strong>30</strong>, 310–316 (2014).</li></ol><ol type="1" id="a29d8188-12a9-498e-b799-e412717b9a0b" class="numbered-list" start="7"><li>Shanker, S. et al. Evaluation of commercially available RNA amplification kits for RNA sequencing using very low input amounts of total RNA. J. Biomol. Tech. <strong>26</strong>, 1–15 (2015).</li></ol><ol type="1" id="eae0efd8-acae-4004-9793-850a37e80326" class="numbered-list" start="8"><li>Kenny, N. J., Quah, S., Holland, P. W. H., Tobe, S. S. &amp; Hui, J. H. L. How are comparative genomics and the study of microRNAs changing our views on arthropod endocrinology and adaptations to the environment? Gen. Comp. Endocrinol. <strong>188</strong>, 16–22 (2013).</li></ol><h2 id="a3037132-42fe-4037-87cd-807b09e8f043" class="">Acknowledgements</h2><p id="e7cad21f-d6c3-4002-8805-b05ef7df39c4" class="">The authors wish to thank Shahar Alon for fruitful discussions and invaluable advice, Helit Cohen for her help with experimentation. The Helobdella robusta and Capitella teleta sequence data were produced by the US Department of Energy Joint Genome Institute <a href="http://www.jgi.doe.gov/in">http://www.jgi.doe.gov/in</a> collaboration with the user community. This work was supported (in part) by the EU-FP7 People IRG Marie Curie Grants (239482) (to O.S.) and by the Israel Science Foundation for Individual Research Grants (1403/11) (to O.S.).</p><h2 id="995afa7c-de39-4b23-9eb8-e9456612f7af" class="">Author information</h2><h3 id="40ca94e6-3670-41be-b8e2-33288e71be47" class="">Contributions</h3><p id="f6bc8476-7084-4689-9f99-e545dae8747a" class="">D.H., O.S. and S.E. are responsible for the concept of the research and writing the manuscript. H.S has performed the RNA extraction. D.H. responsible for database and data analyses, deposit the data; all authors reviewed and approved the manuscript.</p><h3 id="305827b1-71f6-4baf-a9b4-b85c36b7d7e9" class="">Corresponding authors</h3><h2 id="7d659803-f540-468d-845b-c6ee24ce47f7" class="">Rights and permissions</h2><p id="a330a5cc-848a-49d1-baf8-acf19483ab90" class="">This work is licensed under a Creative Commons Attribution 4.0 International License. The images or other third party material in this article are included in the article’s Creative Commons license, unless indicated otherwise in the credit line; if the material is not included under the Creative Commons license, users will need to obtain permission from the license holder to reproduce the material. To view a copy of this license, visit <a href="http://creativecommons.org/licenses/by/4.0">http://creativecommons.org/licenses/by/4.0</a> Metadata associated with this Data Descriptor is available at <a href="http://www.nature.com/sdata/">http://www.nature.com/sdata/</a> and is released under the CC0 waiver to maximize reuse.</p><h2 id="e7ee34b8-26c6-4a2c-99c7-87a8a94616a3" class="">About this article</h2><h3 id="336161dd-2492-4153-852d-74fe4dde1698" class="">Cite this article</h3><p id="3f5e5cd2-2460-4b60-83e4-87e5a2bc2495" class="">Hibsh, D., Schori, H., Efroni, S. et al. De novo transcriptome assembly databases for the central nervous system of the medicinal leech. Sci Data <strong>2, </strong>150015 (2015). https://doi.org/10.1038/sdata.2015.15</p><h2 id="2da67286-be82-4e58-bba7-0c05e42bbbaf" class="">Further reading</h2></div></article></body></html>

@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="400px" preserveAspectRatio="none" style="width:520px;height:400px;background:#00000000;" version="1.1" viewBox="0 0 520 400" width="520.8333px" zoomAndPan="magnify"><defs><linearGradient id="g1g8bk9szk00750" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#151515"/><stop offset="100%" stop-color="#000000"/></linearGradient><linearGradient id="g1g8bk9szk00751" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#D3F198"/><stop offset="100%" stop-color="#B5E853"/></linearGradient></defs><g><!--MD5=[ec0ce55baad344de3025d2ffee8adffc]
+entity n1--><g id="elem_n1"><polygon fill="url(#g1g8bk9szk00750)" points="43.2292,40.625,53.6458,30.2083,223.4375,30.2083,223.4375,76.0091,213.0208,86.4258,43.2292,86.4258,43.2292,40.625" style="stroke:#D3F198;stroke-width:1.0416666666666667;"/><line style="stroke:#D3F198;stroke-width:1.0416666666666667;" x1="213.0208" x2="223.4375" y1="40.625" y2="30.2083"/><line style="stroke:#D3F198;stroke-width:1.0416666666666667;" x1="43.2292" x2="213.0208" y1="40.625" y2="40.625"/><line style="stroke:#D3F198;stroke-width:1.0416666666666667;" x1="213.0208" x2="213.0208" y1="40.625" y2="86.4258"/><text fill="#EAEAEA" font-family="&quot;Verdana&quot;" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="128.125" x="64.0625" y="67.8528">Firebase Hosting</text></g><!--MD5=[2e097bb411287f6ed1a33ac9cb2c3661]
+entity n2--><g id="elem_n2"><polygon fill="url(#g1g8bk9szk00750)" points="27.0833,307.2917,37.5,296.875,239.5833,296.875,239.5833,367.6432,229.1667,378.0599,27.0833,378.0599,27.0833,307.2917" style="stroke:#D3F198;stroke-width:1.0416666666666667;"/><line style="stroke:#D3F198;stroke-width:1.0416666666666667;" x1="229.1667" x2="239.5833" y1="307.2917" y2="296.875"/><line style="stroke:#D3F198;stroke-width:1.0416666666666667;" x1="27.0833" x2="229.1667" y1="307.2917" y2="307.2917"/><line style="stroke:#D3F198;stroke-width:1.0416666666666667;" x1="229.1667" x2="229.1667" y1="307.2917" y2="378.0599"/><text fill="#EAEAEA" font-family="&quot;Verdana&quot;" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="160.4167" x="47.9167" y="334.5194">«Version Control System»</text><text fill="#EAEAEA" font-family="&quot;Verdana&quot;" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="108.3333" x="73.9583" y="359.4869">Github and Git</text></g><!--MD5=[0aac872f208ab6f5f7887aae079fb447]
+entity c1--><g id="elem_c1"><rect fill="url(#g1g8bk9szk00751)" height="81.1849" rx="20.8333" ry="20.8333" style="stroke:#D3F198;stroke-width:1.0416666666666667;" width="136.4583" x="348.4375" y="296.875"/><rect fill="url(#g1g8bk9szk00751)" height="10.4167" style="stroke:#D3F198;stroke-width:1.0416666666666667;" width="15.625" x="464.0625" y="302.0833"/><rect fill="url(#g1g8bk9szk00751)" height="2.0833" style="stroke:#D3F198;stroke-width:1.0416666666666667;" width="4.1667" x="461.9792" y="304.1667"/><rect fill="url(#g1g8bk9szk00751)" height="2.0833" style="stroke:#D3F198;stroke-width:1.0416666666666667;" width="4.1667" x="461.9792" y="308.3333"/><text fill="#151515" font-family="&quot;Verdana&quot;" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="42.7083" x="390.1042" y="334.5194">«Web»</text><text fill="#151515" font-family="&quot;Verdana&quot;" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="84.375" x="369.2708" y="359.4869">Application</text></g><!--MD5=[3d2111c8a0a2d14b8769ddc11704380e]
+entity c2--><g id="elem_c2"><rect fill="url(#g1g8bk9szk00751)" height="81.1849" rx="20.8333" ry="20.8333" style="stroke:#D3F198;stroke-width:1.0416666666666667;" width="186.4583" x="323.4375" y="17.7083"/><rect fill="url(#g1g8bk9szk00751)" height="10.4167" style="stroke:#D3F198;stroke-width:1.0416666666666667;" width="15.625" x="489.0625" y="22.9167"/><rect fill="url(#g1g8bk9szk00751)" height="2.0833" style="stroke:#D3F198;stroke-width:1.0416666666666667;" width="4.1667" x="486.9792" y="25"/><rect fill="url(#g1g8bk9szk00751)" height="2.0833" style="stroke:#D3F198;stroke-width:1.0416666666666667;" width="4.1667" x="486.9792" y="29.1667"/><text fill="#151515" font-family="&quot;Verdana&quot;" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="134.375" x="344.2708" y="55.3528">«Backend as service»</text><text fill="#151515" font-family="&quot;Verdana&quot;" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="65.625" x="378.6458" y="80.3202">Firebase</text></g><!--MD5=[d059025e820e0cdd998fdbae60021653]
+reverse link n2 to c1--><g id="link_n2_c1"><path d="M245.2167,337.5 C280.0917,337.5 317.4896,337.5 348.4292,337.5 " fill="none" id="n2-backto-c1" style="stroke:#B5E853;stroke-width:3.125;stroke-dasharray:7.0,7.0;"/><polygon fill="#B5E853" points="239.6427,337.5,249.0177,341.6667,244.851,337.5,249.0177,333.3333,239.6427,337.5" style="stroke:#B5E853;stroke-width:3.125;"/><text fill="#000000" font-family="monospace" font-size="12.5" lengthAdjust="spacing" textLength="7.2917" x="271.0938" y="325.1167">+</text><text fill="#000000" font-family="&quot;Verdana&quot;" font-size="12.5" lengthAdjust="spacing" textLength="45.8333" x="278.3854" y="325.5938">commit</text></g><!--MD5=[c7ea48a60e67f64fd73870c8f0f50f57]
+reverse link c2 to c1--><g id="link_c2_c1"><path d="M416.6667,104.45 C416.6667,157.8427 416.6667,245.9438 416.6667,296.8327 " fill="none" id="c2-backto-c1" style="stroke:#B5E853;stroke-width:3.125;stroke-dasharray:7.0,7.0;"/><polygon fill="#B5E853" points="416.6667,99.074,412.5,108.449,416.6667,104.2823,420.8333,108.449,416.6667,99.074" style="stroke:#B5E853;stroke-width:3.125;"/></g><!--MD5=[156e944ff65bbed7e53e35238d3e7de8]
+reverse link n1 to n2--><g id="link_n1_n2"><path d="M133.3333,92.349 C133.3333,143.4427 133.3333,241.5698 133.3333,296.5747 " fill="none" id="n1-backto-n2" style="stroke:#B5E853;stroke-width:3.125;stroke-dasharray:7.0,7.0;"/><polygon fill="#B5E853" points="133.3333,86.9563,129.1667,96.3313,133.3333,92.1646,137.5,96.3313,133.3333,86.9563" style="stroke:#B5E853;stroke-width:3.125;"/><text fill="#000000" font-family="&quot;Verdana&quot;" font-size="12.5" lengthAdjust="spacing" textLength="59.375" x="188.0208" y="194.9361">«deploy»</text><text fill="#000000" font-family="&quot;Verdana&quot;" font-size="12.5" lengthAdjust="spacing" textLength="4.1667" x="139.5833" y="209.9362"> </text><text fill="#000000" font-family="monospace" font-size="12.5" lengthAdjust="spacing" textLength="7.2917" x="151.0417" y="209.4592">+</text><text fill="#000000" font-family="&quot;Verdana&quot;" font-size="12.5" lengthAdjust="spacing" textLength="141.6667" x="158.3333" y="209.9362">Continous Deployment</text></g><!--MD5=[8ffe64be198557f0c1592f5aac5fae05]
+@startuml
+!theme hacker
+
+skinparam ranksep 150
+
+node "**Firebase Hosting**" as n1
+node "**Github and Git**" <<Version Control System>> as n2
+component "**Application**" <<Web>> as c1
+component "**Firebase**" <<Backend as service>> as c2
+c1 .l.> n2 #text:black : "" +""commit
+c1 .u.> c2
+n2 .u.> n1 #text:black : <<deploy>> \n "" +""Continous Deployment
+@enduml
+
+@startuml
+
+
+
+skinparam BackgroundColor transparent
+skinparam useBetaStyle false
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor transparent
+    FontColor #151515
+    HyperLinkColor $ORANGE
+    LineColor #6d8b32
+    LineThickness 1
+    Margin 10
+    Padding 6
+    Shadowing 0.0
+  }
+  node {
+   Padding 15
+   roundcorner 20
+   BackgroundColor #b5e853-#6d8b32
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  groupHeader {
+    BackgroundColor #6a9fb5
+    FontColor #aa759f
+    FontStyle bold
+  }
+  header {
+    LineThickness 0
+  }
+  referenceHeader {
+    BackgroundColor transparent
+    FontColor #eaeaea
+    FontStyle bold
+  }
+  separator {
+    BackgroundColor $FGCOLOR
+    FontColor transparent
+    FontStyle bold
+  }
+  title {
+	FontSize 20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor  #88b2c4-#6a9fb5
+	FontColor #b5e853
+	BorderColor #6a9fb5
+  }
+  nwdiagDiagram {
+	network {
+			FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853    
+		LineColor #b5e853
+		LineThickness 1.0
+		FontColor #d3f198
+	}
+	server {
+			FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+	}
+	arrow {
+		FontColor #d3f198
+		LineColor #d3f198
+	}
+	group {
+		BackGroundColor #151515
+		LineColor $LIGHT_DARK
+		LineThickness 2.0
+		Margin 5
+		Padding 5
+	}
+  }
+  ganttDiagram {
+	task {
+			FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+		LineColor #b5e853
+		Margin 10
+		Padding 6
+	}
+	note {
+		FontColor $INFO_TEXT
+		LineColor #885E7F
+		BackGroundColor #aa759f
+	}
+	separator {
+		LineColor #6a9fb5
+		BackGroundColor #6a9fb5-#557f91
+		FontColor #fefefe
+	}
+	milestone {
+		FontColor #aa759f
+		FontSize 16
+		FontStyle italic
+		BackGroundColor #6a9fb5
+		LineColor #557f91
+	}
+	timeline {
+		BackgroundColor #6a9fb5
+		FontColor #fefefe
+	}
+	closed {
+		BackgroundColor $WARNING_DARK
+		FontColor #151515
+	}
+  }
+</style>
+skinparam defaultFontName       "Verdana"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           40
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               5
+skinparam ArrowColor            #eaeaea
+skinparam stereotype {
+    CBackgroundColor #557f91
+    CBorderColor #88b2c4
+    ABackgroundColor #a6ba7a
+    ABorderColor $SUCCESS_DARK
+    IBackgroundColor #bd6768
+    IBorderColor $DANGER_DARK
+    EBackgroundColor #f6cc91
+    EBorderColor $WARNING_DARK
+    NBackgroundColor #bb91b2
+    NBorderColor #885E7F
+}
+skinparam title {
+	FontColor	                 #b5e853
+	BorderColor	                 #b5e853
+	FontSize	    	         20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor              #151515-black
+}
+
+
+skinparam legend {
+	BackgroundColor #6a9fb5
+	BorderColor #557f91
+	FontColor #eaeaea
+}
+
+skinparam swimlane {
+	BorderColor #aa759f
+	BorderThickness 2
+	TitleBackgroundColor  #88b2c4-#6a9fb5
+	TitleFontColor #b5e853
+}
+
+
+skinparam activity {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+	BarColor #90a959
+	StartColor #aa759f
+	EndColor #aa759f
+	DiamondBackgroundColor #88b2c4-#6a9fb5
+  	DiamondBorderColor #88b2c4
+  	DiamondFontColor #fefefe
+}
+
+
+skinparam participant {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+	BorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+	FontColor #eaeaea
+}
+
+
+skinparam arrow {
+	Thickness 3
+	Color #b5e853
+	FontColor $FGCOLOR
+}
+
+
+skinparam sequence {
+	BorderColor #b5e853
+	TitleFontColor #b5e853
+	BackgroundColor transparent
+	StartColor #b5e853
+	EndColor #b5e853
+	BoxBackgroundColor transparent
+	BoxBorderColor #eaeaea
+	BoxFontColor #eaeaea
+	DelayFontColor #eaeaea
+	LifeLineBorderColor #6a9fb5
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #557f91
+	GroupBackgroundColor #151515
+	GroupBorderColor #eaeaea
+	GroupFontColor #eaeaea
+	GroupHeaderFontColor #aa759f
+	GroupHeaderBackgroundColor transparent
+	DividerBackgroundColor #eaeaea
+    DividerBorderColor #eaeaea
+    DividerBorderThickness 2
+    DividerFontColor #151515
+	ReferenceBackgroundColor transparent
+	ReferenceBorderColor #eaeaea
+	ReferenceFontColor #eaeaea
+	ReferenceHeaderBackgroundColor #151515
+	StereotypeFontColor #151515
+}
+
+
+skinparam partition {
+	BorderColor #b5e853
+	FontColor #b5e853
+	BackgroundColor #151515-black
+}
+
+
+skinparam collections {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+}
+
+
+skinparam control {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+	FontColor #eaeaea
+}
+
+
+skinparam entity {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+	FontColor #eaeaea
+}
+
+
+skinparam boundary {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+	FontColor #eaeaea
+}
+
+
+skinparam agent {
+	BackgroundColor #f6cc91-#f4bf75
+	BorderColor #f6cc91
+	FontColor #eaeaea
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #bb91b2-#885E7F
+	BorderColor #885E7F
+	FontColor $WHITE
+}
+
+
+skinparam artifact {
+	BackgroundColor #eaeaea
+	BorderColor white
+	FontColor #151515
+}
+
+
+skinparam component {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+}
+
+
+skinparam interface {
+	BackgroundColor  #bd6768-#ac4142
+	BorderColor  #bd6768
+	FontColor #eaeaea
+}
+
+
+skinparam storage {
+	BackgroundColor #f6cc91-#f4bf75
+  	BorderColor #f6cc91
+	FontColor #151515
+}
+
+
+skinparam node {
+	BackgroundColor  #151515-black
+	BorderColor #d3f198
+	FontColor #eaeaea
+}
+
+
+skinparam cloud {
+	BackgroundColor transparent
+	BorderColor #eaeaea
+	FontColor #eaeaea
+}
+
+
+skinparam database {
+	BackgroundColor  #151515-black
+	BorderColor #d3f198
+	FontColor #eaeaea
+}
+
+
+skinparam class {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+	HeaderBackgroundColor #d3f198-#b5e853
+	StereotypeFontColor #eaeaea
+	BorderThickness 1
+	AttributeFontColor #151515
+	AttributeFontSize 11
+}
+
+
+skinparam object {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+	StereotypeFontColor #eaeaea
+	BorderThickness 1
+	AttributeFontColor #151515
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+	BorderThickness 2
+	StereotypeFontColor #b5e853
+}
+
+
+skinparam rectangle {
+	BackgroundColor transparent
+	BorderColor #b5e853
+	BorderThickness 2
+	FontColor #6d8b32
+	StereotypeFontColor #b5e853
+}
+
+
+skinparam package {
+	BackgroundColor #151515
+  	BorderColor #b5e853
+	FontColor #b5e853
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #151515-black
+  	BorderColor #f4bf75
+	FontColor #f4bf75
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #151515-black
+  	BorderColor #aa759f
+	FontColor #aa759f
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+	StartColor #aa759f
+	EndColor #aa759f
+	AttributeFontColor #fefefe
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+}
+
+
+skinparam card {
+	BackgroundColor #bb91b2-#aa759f
+	BorderColor #bb91b2
+	FontColor $INFO_TEXT
+}
+
+
+skinparam file {
+	BackgroundColor #88b2c4-#6a9fb5
+	BorderColor #88b2c4
+	FontColor #eaeaea
+}
+
+
+skinparam stack {
+		FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+}
+
+<style>
+mindmapDiagram, wbsDiagram {
+    element {
+	    	FontColor #151515
+	BorderColor #d3f198
+	BackgroundColor #d3f198-#b5e853
+	}
+	:depth(0) {
+        fontSize 16
+        fontStyle bold
+        fontColor #6a9fb5
+    }
+    :depth(1) {
+        fontSize 14
+        padding 5
+        fontStyle bold
+    }
+    :depth(2) {
+        fontSize 12
+        padding 4
+    }
+    :depth(3) {
+        fontSize 11
+        padding 3
+        fontColor #aa759f
+    }
+
+}
+</style>
+
+
+
+skinparam ranksep 150
+
+node "**Firebase Hosting**" as n1
+node "**Github and Git**" <<Version Control System>> as n2
+component "**Application**" <<Web>> as c1
+component "**Firebase**" <<Backend as service>> as c2
+c1 .l.> n2 #text:black : "" +""commit
+c1 .u.> c2
+n2 .u.> n1 #text:black : <<deploy>> \n "" +""Continous Deployment
+@enduml
+
+PlantUML version 1.2022.4beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

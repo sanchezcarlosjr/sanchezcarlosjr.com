@@ -1,0 +1,717 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Informal logic</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a7e1a71a-cb05-4e18-89f8-e40534363cfb" class="page sans"><header><h1 class="page-title">Informal logic</h1></header><div class="page-body"><nav id="8066842e-9279-4618-bbe7-ec2cb2d51280" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5fd02ca7-4d94-4cf6-9dbe-7a0f4e7c3b98">The basics that make up an argument</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a47bf810-c24d-46ba-9bd3-f9461adb12c0">Logic</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#352fef2e-cea5-48bf-9167-5ae98cdeac71">Argument</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d47bb039-7573-4621-8906-3cd9b9ffe089">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#acbc66b5-b4f9-4f2a-bba3-b07f897dc0f7">Identify an argument</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aa7a1463-227c-4f18-87c5-35472129e780">Typical kinds of nonarguments</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#474f0b73-0198-4f0e-8b5b-668d2adb31fb">Conditional statements</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ede4dfb4-b35c-4069-a161-b6a97986b94e">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0834249f-08e9-4d63-ab14-2dfaa1c32916">Notes.</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e8024e15-a576-4b5e-b61e-24a75c1a34d2">Deduction, Induction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c27d12a4-458a-452b-b774-cf0dfd0dc79b">Deductive argument forms</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2123a567-8210-4331-97bb-f8b42427ae1e">Inductive argument forms</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#54eea353-03b7-44eb-a337-c340781aa639">Validity, Truth, Soundness, Strength, Cogency</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#434f069a-6e81-4827-87a2-1cacea29c25f">Deductive Argument</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5b088453-0734-4f1a-8ac5-f3fa066ba491">Inductive Argument</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#713c3a9c-8067-4abd-befc-d8e93ebee801">Proof methods</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3615dfcc-36d7-4b7d-8e6c-467062e2438c">Counterexample method</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ebbf2f94-cbb4-4503-92b0-aeca5166d842">Axiom vs Law</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f4843fcb-c003-4d9d-bded-994d6c3994b4">Material conditional</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cc2ab832-554d-46d7-9b54-752a1a84a58b">Paradoxes of material implication</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5387b22c-80c3-4348-b14e-57f2af53e4a8">Language: Meaning and Definition</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6bc2acf7-6fc6-4c9b-bc1f-feaab81c1d03">Varieties of meaning</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cb2a3925-3747-4662-817d-6e0926e90341">Disputes</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#13a22987-59d4-434a-aeb0-8f115d30b8e8">The Intension and Extension of terms</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4146c4b0-abd4-416d-84bf-8c91baecb9cc"><strong>How does a term connote a set of attributes?</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4f4ac4de-65dc-4eb6-89f9-0e566390cba4">Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ee6fcefe-bf55-40f6-aeaf-af6a9b187d6e">Reason</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ca4300fc-c666-4b3c-9103-abd0a57820aa">What is Truth?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c6a64306-ec63-42df-b29f-7a16a34a8ca3">Fallacies</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c74c2ee5-bed4-4759-b7b3-86c3028e2e14">Formal logic</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5f5f37b6-7a79-4c77-babf-d91c1a4c3925">Categories</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#17277995-2da3-4927-aaee-f8d2a3606dc2">Deduccion, inducion, abduccion</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#81cb70b1-9a25-4349-8884-f0fc1460d412">Aristotle</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6207a33e-f41c-44c2-8bee-9502bbd5c1f2">Fallacies</a></div></nav><h1 id="5fd02ca7-4d94-4cf6-9dbe-7a0f4e7c3b98" class="">The basics that make up an argument</h1><h2 id="a47bf810-c24d-46ba-9bd3-f9461adb12c0" class="">Logic</h2><p id="fb59db09-0a9a-4b95-bfc4-8737b7a87793" class="">Logic is a formal science that evaluates arguments. Good arguments are those in which premises really do support the conclusion. The argument can be valid or invalid. <strong>Logic</strong> <strong>doesn’t assign truth values.</strong></p><p id="161a6323-eede-4a02-bb43-93b48de436a1" class=""><strong>Syllogistic logic</strong> is a kind of logic in which the fundamental elements are terms, and arguments are evaluated depending on how the terms are arranged in the argument. </p><p id="2871639b-1f95-4244-9e9a-b9e01637a29a" class=""><strong>Modal logic </strong>is a kind of logic that involves such concepts as possibility, necessity, belief, and doubt. </p><h2 id="352fef2e-cea5-48bf-9167-5ae98cdeac71" class="">Argument</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="17064602-a234-42b9-b41e-978e10bc4ec9"><div style="font-size:1.5em"><span class="icon">🏌🏼‍♂️</span></div><div style="width:100%">It does not mean a verbal fight.</div></figure><ul id="08083e92-27fd-4af8-9a08-d7f7ef1ea79e" class="bulleted-list"><li style="list-style-type:disc">The simplest <strong>argument</strong> is a <a href="Discrete%20mathematics%204e8bd1b42bf34309b8c165e2bb6c9ed9.html">statement</a> set (one or more premises and exactly one conclusion). Where the premises (or evidence) provide support for the conclusion. </li></ul><p id="d7e8aa10-0a71-4f45-81fe-984a0cf6a4c5" class="">          <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>r</mi><mi>e</mi><mi>m</mi><mi>i</mi><mi>s</mi><mi>e</mi><mi>s</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi>C</mi><mi>o</mi><mi>n</mi><mi>c</mi><mi>l</mi><mi>u</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">Premises \implies Conclusion</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.70733em;vertical-align:-0.024em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">re</span><span class="mord mathnormal">mi</span><span class="mord mathnormal">ses</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span></span></span></span></span><span>﻿</span></span>.<div class="indented"><ul id="cd06945e-bc2d-4fc8-a3ea-8be404ba43e4" class="bulleted-list"><li style="list-style-type:disc">An inference is the reasoning process expressed by an argument.</li></ul></div></p><ul id="7f42574c-7c8f-4e79-9adb-7f93641022f6" class="toggle"><li><details open=""><summary>Example</summary><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="03eadf47-a030-47f4-9492-49e632f34ad4"><div style="font-size:1.5em"><span class="icon">🏫</span></div><div style="width:100%">All the men are mortal. (Premise Q)
+Plato is a man. (Promise P)
+<strong>Therefore</strong>, Plato is a mortal. (The conclusion indicated by &quot;therefore&quot;)</div></figure><p id="07c188ce-2f48-4162-81ce-71681a2a81f0" class="">The argument is not a good one!</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c55969aa-144a-49eb-bcc8-617c46d562b8"><div style="font-size:1.5em"><span class="icon">🏫</span></div><div style="width:100%">Some men are gay.
+Plato is a man. 
+<strong>Therefore</strong>, Plato is gay.</div></figure><p id="2b49c3ad-8c3e-4c5b-b987-100f7e8695c9" class="">The argument is a bad one!</p></details></li></ul><ul id="51f2e504-9d8e-4057-9d6c-9e25671d8e77" class="toggle"><li><details open=""><summary>The premises set forth reasons or evidence. By elimination, if it is not a conclusion then is a premise.</summary><ul id="e4a9f247-78bc-4ad2-a11f-228af2460aaa" class="toggle"><li><details open=""><summary>Indicators</summary><ul id="b8a0375e-60a9-4166-90b4-64c543993273" class="bulleted-list"><li style="list-style-type:disc">since</li></ul><ul id="342cfcba-5dea-4094-9b5d-dcb400ca1cdd" class="bulleted-list"><li style="list-style-type:disc">as indicated by</li></ul><ul id="f1394580-67ff-4299-b278-dc484865b79c" class="bulleted-list"><li style="list-style-type:disc">because</li></ul><ul id="96c3dd33-6121-4801-94a5-f4550c732a40" class="bulleted-list"><li style="list-style-type:disc">for</li></ul><ul id="34e89f0e-fa06-44a0-b774-41982295c035" class="bulleted-list"><li style="list-style-type:disc">in that</li></ul><ul id="2a1754f2-22fc-4a9e-96d4-55558e2b5188" class="bulleted-list"><li style="list-style-type:disc">may be inferred from</li></ul><ul id="301a0541-9479-4864-a916-ced81ab312f2" class="bulleted-list"><li style="list-style-type:disc">as</li></ul><ul id="6408a9d1-cd48-407b-9dc9-c11f1b8f5fc1" class="bulleted-list"><li style="list-style-type:disc">given that</li></ul><ul id="83ae94a5-3fe7-4475-8b64-5f6bdac935fc" class="bulleted-list"><li style="list-style-type:disc">seeing that</li></ul><ul id="8e07c345-9042-4f19-b516-fa33fb2cccbd" class="bulleted-list"><li style="list-style-type:disc">for the reason that</li></ul><ul id="ee3818a5-e697-4354-acf8-5f7ff533f929" class="bulleted-list"><li style="list-style-type:disc">in as much as</li></ul><ul id="2e10cce2-8803-467d-87a4-981defc167cf" class="bulleted-list"><li style="list-style-type:disc">owing to </li></ul></details></li></ul><ul id="b1335cd0-8a29-4309-ada6-03750f495e92" class="toggle"><li><details open=""><summary>Example</summary></details></li></ul></details></li></ul><ul id="d46fe7e7-c074-4d05-94c4-cea4cf070284" class="toggle"><li><details open=""><summary>The conclusion is the statement that the premises are claimed to support. </summary><ul id="9944e360-df24-4052-9764-e552a51f896f" class="toggle"><li><details open=""><summary>Indicators</summary><ul id="1b93d733-f443-444b-8bb4-81ea723d49ec" class="bulleted-list"><li style="list-style-type:disc">threfore</li></ul><ul id="04421392-fb1c-4df1-b637-d5ddf70a1b69" class="bulleted-list"><li style="list-style-type:disc">wherefore</li></ul><ul id="9f80fba6-49eb-499c-8b90-16029e8ffd3d" class="bulleted-list"><li style="list-style-type:disc">thus</li></ul><ul id="a83cf9b1-1b48-4814-8f75-484204e28e83" class="bulleted-list"><li style="list-style-type:disc">consequently</li></ul><ul id="5a8eda7c-5754-43cd-90f9-c88ffacec12e" class="bulleted-list"><li style="list-style-type:disc">we may infer</li></ul><ul id="9aa7e369-b998-459e-b25c-f426e2622bd4" class="bulleted-list"><li style="list-style-type:disc">so</li></ul><ul id="3275539b-53b6-4fdd-8cfb-515ce349b3b9" class="bulleted-list"><li style="list-style-type:disc">accordingly</li></ul><ul id="204a715b-6b34-4976-a631-f8efa856a4e2" class="bulleted-list"><li style="list-style-type:disc">we may conclude</li></ul><ul id="4112b084-f66b-4cad-8d98-30ad1e65328e" class="bulleted-list"><li style="list-style-type:disc">it must be that</li></ul><ul id="f84b5922-9b2e-4fa5-a3b8-5241f308aeb7" class="bulleted-list"><li style="list-style-type:disc">for this reason</li></ul><ul id="e4ac66ea-e381-41f4-80a9-1e4740df4284" class="bulleted-list"><li style="list-style-type:disc">entails that</li></ul><ul id="772d5ef3-0028-4d07-b25e-e4242b1b21a2" class="bulleted-list"><li style="list-style-type:disc">hence</li></ul><ul id="1dd62cfc-5c60-4405-9cab-965cc8b1f396" class="bulleted-list"><li style="list-style-type:disc">it follows that</li></ul><ul id="2c2f01d8-3640-4c8f-a3bc-c4a876db9fec" class="bulleted-list"><li style="list-style-type:disc">implies that</li></ul><ul id="c980a564-94d2-4dac-b819-4137dc46d1d9" class="bulleted-list"><li style="list-style-type:disc">as as result</li></ul></details></li></ul><ul id="48c48d2a-f92f-41c7-80d5-8efb9863bef3" class="toggle"><li><details open=""><summary>Example</summary></details></li></ul></details></li></ul><ul id="b36d7bbc-18ff-4544-85de-c8e4329a5ae9" class="toggle"><li><details open=""><summary>The reader asks questions about arguments that contain no indicators.</summary><ul id="f2a47552-4946-4ee8-a8a8-dc43f4a37e85" class="bulleted-list"><li style="list-style-type:disc">What try to prove?</li></ul><ul id="f79d9aa4-520a-4dad-a7a1-77c088332540" class="bulleted-list"><li style="list-style-type:disc">What statement follows others?</li></ul><ul id="f6570369-4151-4288-9bd4-09ae514d78b0" class="bulleted-list"><li style="list-style-type:disc">What is the main point?</li></ul></details></li></ul><ul id="1825e678-da67-4121-bc6d-238e72c10900" class="toggle"><li><details open=""><summary>By logical principles, the conclusion is listed after the premises.</summary></details></li></ul><h1 id="d47bb039-7573-4621-8906-3cd9b9ffe089" class="">Worked examples</h1><p id="8d3415ee-03d0-49fb-9f3a-5a5555876392" class="">I. List the premises and conclusion of each argument.</p><ul id="7fdbb371-51ff-498b-ada1-9b6c0f268e60" class="toggle"><li><details open=""><summary>Nivaldo J.Tro, Chemistry: A Molecular Approach,2nd ed.</summary><p id="c1364b3a-0867-48f4-bf43-91e3fd41381c" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">P_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>:  Carbon monoxide molecules happen to be just the right size and shape, and happen to have just the right chemical properties, to fit neatly into cavities within hemoglobin molecules in blood that are normally reserved for oxygen molecules.</p><p id="945ed006-3dd3-4817-bbef-81a04c93e350" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">C:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> Carbon monoxide diminishes the oxygen-carrying capacity of blood.</p><p id="9b55b045-52e4-42aa-acef-493f5334ffdc" class="">
+</p></details></li></ul><ul id="93988eac-7127-4b3c-9931-76458dcbd5ef" class="toggle"><li><details open=""><summary>Avrum Stroll and Richard Popkin, Philosophy and the Human Spirit</summary><p id="5fa2729e-2dee-4712-b060-a8f674f63b05" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><mo>:</mo></mrow><annotation encoding="application/x-tex">P_1:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> The good, according to Plato, is that which furthers a person’s real interests.</p><p id="1c15c1c5-26bc-4a65-9d28-626cd9ed4187" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">C:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span>  Men will seek the good when it is known.</p></details></li></ul><ul id="b74ec884-a93a-4ca2-98aa-9e106b4b66a9" class="toggle"><li><details open=""><summary>Judge Stephanie Kulp Seymour, United States v. Jones</summary><p id="e91b257f-50eb-4e47-bf4c-9be48a1cf2ff" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><mo>:</mo></mrow><annotation encoding="application/x-tex">P_1:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> When individuals voluntarily abandon property, they forfeit any expectation of privacy in it that they might have had.</p><p id="20c269db-99a6-4831-9a7e-609bf19eda71" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">C:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span>  A warrantless search or seizure of abandoned property is not unreasonable under the Fourth Amendment.</p></details></li></ul><ul id="76cb7016-2f72-4255-8d4c-69d72c5e745a" class="toggle"><li><details open=""><summary>U.S. National Institutes of Health, “Your Guide to Healthy Sleep</summary><p id="98b105f7-c1a0-4b04-a2a3-6a7e21cf1f8f" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><mo>:</mo></mrow><annotation encoding="application/x-tex">P_1:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> Studies show that people who are taught mentally challenging tasks do better after a good night’s sleep.</p><p id="0a3a786b-1d28-4ed0-8839-e2ab26d95707" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">P_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>: Other research suggests that sleep is needed for creative problem-solving.</p><p id="b1e2513a-9338-4a0e-ab34-372498796d74" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>3</mn></msub><mo>:</mo></mrow><annotation encoding="application/x-tex">P_3:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> We need sleep to think clearly, react quickly, and create memories.</p><p id="edd863bd-c49d-483f-b926-39b56ac7b642" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">C:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> It really does matter if you get enough sleep.</p></details></li></ul><ul id="562f8403-3329-4879-a611-94c18a2f7e42" class="toggle"><li><details open=""><summary>Walter Mischel and Harriet Mischel, Essentials of Psychology</summary><p id="7a0b8b87-34ee-433c-93d9-88eabe533d52" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><mo>:</mo></mrow><annotation encoding="application/x-tex">P_1:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> Punishment, when speedy and specific, may suppress undesirable behavior.</p><p id="fc846f5e-9d2f-40ae-afb6-85e89bfc83d5" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">P_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>:  Punishment cannot teach or encourage desirable alternatives.</p><p id="23ab1e5f-d54d-4a44-bdb0-5964f4d90699" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">C:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> It is crucial to use positive techniques to model and reinforce appropriate behavior that the person can use in place of the unacceptable response that has to be
+suppressed.</p></details></li></ul><ul id="0561699b-1554-46de-b57a-d62d11cc8677" class="toggle"><li><details open=""><summary>Leon P. Baradat, Political Ideologies, Their Origins and Impact</summary><p id="a1ec3d9f-5fdb-4421-b978-9676126bec55" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><mo>:</mo></mrow><annotation encoding="application/x-tex">P_1:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> Private property helps people define themselves.</p><p id="f34615de-dafb-4bf2-80d8-475b49270762" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>2</mn></msub><mo>:</mo></mrow><annotation encoding="application/x-tex">P_2:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> Private property frees people from mundane cares of daily subsistence.</p><p id="c1b19206-8498-47d1-9435-c23a62bc4719" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>3</mn></msub><mo>:</mo></mrow><annotation encoding="application/x-tex">P_3:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> Private property is finite.</p><p id="372cbf3b-678c-4a2f-9fcb-4e0674d6d27d" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">C:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> No individual should accumulate so much property that others are prevented from accumulating the necessities of life.</p></details></li></ul><ul id="5d96daf9-03c0-4062-b06d-ab298c5d1002" class="toggle"><li><details open=""><summary>John W. Hill and Doris K. Kolb, Chemistry for Changing Times, 7th ed.</summary><p id="e31af883-cb35-482e-9705-b10d3b1338ad" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><mo>:</mo></mrow><annotation encoding="application/x-tex">P_1:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> The nations of planet Earth have acquired nuclear weapons with an explosive power equal to more than a million Hiroshima bombs.</p><p id="eb354776-c438-43dd-9a86-ce50ea9e06c9" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>2</mn></msub><mo>:</mo></mrow><annotation encoding="application/x-tex">P_2:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> Studies suggest that explosion of only half these weapons would produce enough soot, smoke, and dust to blanket the Earth, block out the sun, and bring on a nuclear winter that would threaten the survival of the human race.</p><p id="0b706f99-273d-4ebf-a68a-1ebfc93517b4" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">C:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> Radioactive fallout isn’t the only concern in the aftermath of nuclear explosions.</p></details></li></ul><ul id="eb9c6bf7-24b6-4eeb-8bbd-7c81a6e366df" class="toggle"><li><details open=""><summary>J. John Palen, Social Problems</summary><p id="e39d7479-7f8f-4a78-9973-f0c91918af44" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><mo>:</mo></mrow><annotation encoding="application/x-tex">P_1:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> Antipoverty programs provide jobs for middle-class professionals in social work, penology, and public
+health.</p><p id="a6c9baf1-a0be-4a00-9f23-d2b595298d1a" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">C: </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> Workers’ future advancement is tied to the continued growth of bureaucracies dependent on the existence of poverty</p><p id="0b7a46c1-610d-47bf-9aa0-040604e35daf" class="">
+</p></details></li></ul><p id="a8bba8ed-d685-4a81-999b-eb5bd78ca7a9" class="">II. In most instances, the main conclusion must be rephrased to
+capture the author&#x27;s full intent. Write out what you interpret the main conclusion to be.</p><ul id="c202eefe-a6d4-4e86-a2be-f75a9df7c6b4" class="toggle"><li><details open=""><summary>Michael McDonnell, letter to the editor</summary><p id="dc83fb72-f4ce-4144-a892-58ba1f343431" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">C:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></span><span>﻿</span></span> University administrators are not as interested in amateur athletes themselves as in money.</p><p id="b829fe9d-e040-470b-a1a7-69dc98d09727" class="">
+</p></details></li></ul><ul id="96c68a3e-445d-4d65-bd58-2f0d7545b9de" class="toggle"><li><details open=""><summary>Robert S. Griffith, “Conservative College Press</summary><p id="0ccfcc85-cff8-449c-a46c-703110dd5f2b" class="">Neoconservatives are given by financial success as intellectual stimuli.</p></details></li></ul><h2 id="acbc66b5-b4f9-4f2a-bba3-b07f897dc0f7" class="">Identify an argument</h2><ol type="1" id="12a0bf4c-9f4a-48f7-8bac-9d3df4ed12f2" class="numbered-list" start="1"><li>If <strong>no evidence</strong> is given to prove that such statements are true, then there is <strong>no argument</strong>. </li></ol><ol type="1" id="000a69b9-d74f-4fb4-86d5-fc30b143c15c" class="numbered-list" start="2"><li>If they don&#x27;t support or imply anything, there is no argument. If this passage contains an argument, then these are the premises and that is the conclusion. </li></ol><ol type="1" id="47f0347a-fabc-48a1-a4a0-790902b8b853" class="numbered-list" start="3"><li>If a passage develops a topic but doesn&#x27;t prove that topic, then there is no argument.</li></ol><ol type="1" id="e044bbb7-1254-42a7-836f-38e40971caa5" class="numbered-list" start="4"><li>Keep an eye out for premise and conclusion indicator words.</li></ol><ol type="1" id="4fa410c8-456e-4c9d-b6d9-312502aca8c0" class="numbered-list" start="5"><li>The presence of an inferential relationship between the statements.</li></ol><h2 id="aa7a1463-227c-4f18-87c5-35472129e780" class="">Typical kinds of nonarguments</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c21cd99a-2de1-48dc-9e99-3b6b9dd1e1a2"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">In real-life situations, authors rarely try to prove something is true when everyone already accepts it.</div></figure><ul id="48fab404-bd61-46d3-8deb-1453548f7a09" class="bulleted-list"><li style="list-style-type:disc">Noninferential passages</li></ul><ul id="57a1ff8a-3f7c-40be-be13-17b3503212d3" class="bulleted-list"><li style="list-style-type:disc">Expository passages</li></ul><ul id="665b1e49-ec95-4ed7-a72f-b9f20220e8a3" class="bulleted-list"><li style="list-style-type:disc">Warning</li></ul><ul id="8252acb1-c4af-4b14-ab87-823022a472a2" class="bulleted-list"><li style="list-style-type:disc">Piece of advice</li></ul><ul id="8573b153-2015-4086-b6c1-a44fbf7300b8" class="bulleted-list"><li style="list-style-type:disc">Report</li></ul><ul id="24c72b33-ab0c-49f5-b0b8-9f2de31317f5" class="bulleted-list"><li style="list-style-type:disc">Statement of belief or opinion</li></ul><ul id="10e3d36c-2cee-4fbd-a6fc-f3a23bf91508" class="bulleted-list"><li style="list-style-type:disc">Illustrations. Expressions and Examples intend to show what something means or how it is done.</li></ul><ul id="3b52f6fd-8e77-4e08-be63-528fc0d6ad2e" class="bulleted-list"><li style="list-style-type:disc">Explanations. Every explanation is composed of two components: the explanandum and explanans.</li></ul><table id="4dc8de36-bc9e-4141-b683-83f90f087f25" class="simple-table"><tbody><tr id="8a542878-3e12-44e2-b239-547ffd8cc94f"><td id="hw^B" class="">Argument</td><td id="pjXO" class="">Explanations</td></tr><tr id="2461c7d7-4adc-4806-9f39-6b01ca09a6d7"><td id="hw^B" class="">Premises. It is to prove that conclusion is the case.</td><td id="pjXO" class="">Explanans. It shows why the explanandum is the case, so its purpose is to shed light on the explanandum.</td></tr><tr id="e430ea3b-49ed-4190-88d6-4d496a7842c6"><td id="hw^B" class=""></td><td id="pjXO" class="">Explanandum is an accepted fact.</td></tr></tbody></table><ul id="7aec96fc-bdf5-42f8-977e-229776771652" class="bulleted-list"><li style="list-style-type:disc">Conditional statements. A single conditional statement is not an argument. A conditional statement may serve as either the premise or the conclusion (or both) of an argument. The inferential content of a conditional statement may be expressed to form an argument.</li></ul><h2 id="474f0b73-0198-4f0e-8b5b-668d2adb31fb" class="">Conditional statements</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="30bee6f3-e7ec-4718-b736-f4be29b59bab"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">if ANTECEDENT then CONSEQUENT</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="08bc3d48-0ef8-4f23-9df7-0ce9cf7b65f1"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">CONSEQUENT if ANTECEDENT</div></figure><ul id="947d1a3b-aa53-479c-a947-a0c9ffd3013a" class="bulleted-list"><li style="list-style-type:disc">Sufficient condition. <em>B </em>whenever the occurrence of <em>A </em>is all that is needed for the occurrence of <em>B.  </em></li></ul><p id="f06de303-aeec-4bc6-964b-1c1ec74e792e" class="">If A then B.</p><p id="aa8969cd-03c6-490c-891e-f0b11a112acc" class="">If X is a cat, then X is an animal.</p><ul id="551431d0-1ab2-4ea4-961b-42152cefdca9" class="bulleted-list"><li style="list-style-type:disc">Necessary condition. <em>A </em>cannot occur without the occurrence of <em>B</em>.<em> </em></li></ul><p id="24b1c967-a89d-4c6a-8fd5-2c6ced12656a" class="">If not B then not A.</p><p id="aca8e8b8-69b2-4941-ad7b-1e8567918b9c" class="">If X is not an animal, then X is not a cat.</p><h2 id="ede4dfb4-b35c-4069-a161-b6a97986b94e" class="">Worked examples</h2><p id="866a8721-ed06-46bc-924d-54488953885b" class="">I. Determine which of the following passages are arguments and their conclusion, if it is not, determine the kind of nonargument.</p><ul id="24a3cc6e-4197-4a3e-85a2-f3bafab305ad" class="toggle"><li><details open=""><summary>The turkey vulture is called by that name because its red featherless head resembles the head of a wild turkey.</summary><p id="58b5e2e8-b66f-43ed-bc4e-f39e8ddc7f87" class="">Nonargument; explanation.</p></details></li></ul><ul id="4461aa35-9540-4e15-9d0b-ca06fb38e334" class="toggle"><li><details open=""><summary>A mammal is a vertebrate animal that nurses its offspring. Thus, cats and dogs are mammals, as are sheep, monkeys, rabbits, and bears.</summary><p id="460aa7a0-31fb-4f93-bd88-1af71d32cf10" class="">Nonargument; illustration.</p></details></li></ul><ul id="ab4c9d05-9b79-41f3-b5a5-86ed180b69a3" class="toggle"><li><details open=""><summary>If stem-cell research is restricted, then future cures will not materialize. If future cures do not materialize, then people will die prematurely. Therefore, if stem-cell research is restricted, then people will die prematurely.</summary><p id="999e62c8-8fca-407a-b964-925796181f83" class="">It’s a <strong>hypothetical syllogism </strong>argument and its conclusion is “if stem-cell research is restricted, then people will die prematurely”. </p></details></li></ul><ul id="922d5960-3600-4477-82c5-d63a4e85c654" class="toggle"><li><details open=""><summary>Five college students who were accused of sneaking into the Cincinnati Zoo and trying to ride the camels pleaded no contest to criminal trespass yesterday. The students scaled a fence to get into the zoo and then climbed another fence to get into the camel pit before security officials caught them, zoo officials said. (Newspaper clipping)</summary><p id="a376ec87-1bc4-4a62-b66f-4cbf7ee8616c" class="">Nonargument; report.</p></details></li></ul><ul id="7d040143-eaee-45a6-845a-5c60f776dabb" class="toggle"><li><details open=""><summary>Any unit of length, when cubed, becomes a unit of volume. Thus, the cubic meter, cubic centimeter, and cubic millimeter are all units of volume. (Nivaldo J. Tro, Chemistry: A Molecular Approach, 2nd ed.)</summary><p id="b87d84c6-1365-43fd-bc61-5701dc24aaf0" class="">Nonargument; illustration.</p></details></li></ul><ul id="15775d5f-8756-4cc0-a3cc-1895031c69ab" class="toggle"><li><details open=""><summary>Bear one thing in mind before you begin to write your paper: Famous literary works, especially works regarded as classics, have been thoroughly studied to the point where prevailing opinion on them has assumed the character of orthodoxy. (J. R. McCuen and A. C. Winkler, Readings for Writers, 4th ed.)</summary><p id="b54d5ab0-f62c-45b7-a720-4fce69eaa262" class="">Nonargument; piece of advice.</p></details></li></ul><ul id="b66d7b66-331c-483d-851d-8b8f438381fa" class="toggle"><li><details open=""><summary>For organisms at the sea surface, sinking into deep water usually means death. Plant cells cannot photosynthesize in the dark depths. Fishes and other animals that descend lose contact with the main surface food supply and themselves become food for strange deep-living predators. (David H. Milne, Marine Life and the Sea)</summary><p id="83dd509f-cf62-4d0b-826e-f047ffc50979" class="">Argument and its conclusion is “For organisms at the sea surface, sinking into deep water usually means death”.</p></details></li></ul><ul id="0bc98e89-358a-439e-9f87-a485fcd6e6d1" class="toggle"><li><details open=""><summary>Atoms are the basic building blocks of all matter. They can combine to form molecules, whose properties are generally very different from those of the constituent atoms. Table salt, for example, a simple chemical compound formed from chlorine and sodium, resembles neither the poisonous gas nor the highly reactive metal. (Frank J. Blatt, Principles of Physics, 2nd ed.)</summary><p id="f7aae36e-32e2-48be-990c-e5034f4b6109" class="">Argument and its conclusion is “can combine to form molecules, whose properties are generally very different from those of the constituent atoms ”</p></details></li></ul><ul id="1dd797fe-094b-4b62-8dd0-66fbcc71211d" class="toggle"><li><details open=""><summary>It is usually easy to decide whether or not something is alive. This is because
+living things share many common attributes, such as the capacity to extract
+energy from nutrients to drive their various functions, the power to actively
+respond to changes in their environment, and the ability to grow, to differentiate, and to reproduce. (Donald Voet and Judith G. Voet, Biochemistry, 2nd ed.)</summary><p id="87203a25-5db9-4cc2-bc14-aa173c4f79a6" class="">Nonargument; explanation.</p></details></li></ul><ul id="18bbdf7e-2b47-42e7-a231-a2e94a6523b1" class="toggle"><li><details open=""><summary>A person never becomes truly self-reliant. Even though he deals effectively
+with things, he is necessarily dependent upon those who have taught him to
+do so. They have selected the things he is dependent upon and determined the
+kinds and degrees of dependencies. (B. F. Skinner, Beyond Freedom and Dignity)</summary><p id="2adc5dd3-7b54-430a-913c-d46a9550af9b" class="">Argument and its conclusion is “a person never becomes truly self-reliant.”</p></details></li></ul><ul id="3a04f20f-0327-45be-990a-bb16361ae1b0" class="toggle"><li><details open=""><summary>In areas where rats are a problem, it is very difficult to exterminate them with
+bait poison. That’s because some rats eat enough poison to die but others eat
+only enough to become sick and then learn to avoid that particular poison
+taste in the future. (Rod Plotnik, Introduction to Psychology, 4th ed.)</summary><p id="07e24355-2463-4b9b-98cc-61cdce112fbc" class="">This passage can be either an argument or an explanation. Conclusion: “In areas where rats are a problem, it is very difficult to exterminate them with bait poison”</p></details></li></ul><ul id="e920f10e-a25c-4374-87c4-005684d3a018" class="toggle"><li><details open=""><summary>Nations are made in two ways, by the slow working of history or the galvanic
+force of ideas. Most nations are made the former way, emerging slowly from
+the mist of the past, gradually coalescing within concentric circles of shared
+sympathies, with an accretion of consensual institutions. But a few nations are
+formed and defined by the citizens’ assent to a shared philosophy. (George Will, “Lithuania and South Carolina”)</summary><p id="5114a8a5-c1ee-4346-91e4-e4006c69b98b" class="">Nonargument. Loosely associated statements.</p></details></li></ul><h2 id="0834249f-08e9-4d63-ab14-2dfaa1c32916" class="">Notes.</h2><p id="3469bbc2-0781-4baf-b31d-954b0b60a33d" class="">Aristotle is the father of logic.</p><h1 id="e8024e15-a576-4b5e-b61e-24a75c1a34d2" class="">Deduction, Induction</h1><p id="004830eb-cf02-4902-a7f8-21f24265ce3d" class="">Evaluate a deductive or inductive argument consists of two steps:</p><ul id="7a2a5ee9-9cc3-4126-be4e-cd663d137dc9" class="bulleted-list"><li style="list-style-type:disc">Evaluate the link between premises and conclusion</li></ul><ul id="da6ae420-da7a-4af0-9eea-2b0f3b3c5acb" class="bulleted-list"><li style="list-style-type:disc">Evaluate the truth of the premises</li></ul><h2 id="c27d12a4-458a-452b-b774-cf0dfd0dc79b" class="">Deductive argument forms</h2><p id="4a8173c9-9a91-4d46-bc6f-b3ed61a9af9f" class="">The conclusion follows <em>necessarily</em> from the premises.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a36676b1-8bba-4344-8b34-5e78fa17dda5"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Deductive arguments do not necessarily proceed from general to particular.</div></figure><ul id="2be7b022-ae87-4682-81dd-1e802be25bae" class="bulleted-list"><li style="list-style-type:disc">An argument based on mathematics except for arguments that depended on statistics and probability. </li></ul><p id="77c6617e-17c4-476e-acb7-a3e09cb5c9ee" class="">Despite the name, mathematical induction is a <a href="https://www.siue.edu/~jloreau/courses/math-223/notes/sec-induction.html">deductive argument too.</a></p><ul id="1806003e-7e77-42d0-8a30-cf2a0423399a" class="bulleted-list"><li style="list-style-type:disc">An argument from definition.</li></ul><ul id="6775e355-39a6-48fb-b8a0-de96cef41e42" class="bulleted-list"><li style="list-style-type:disc">A disjunctive syllogism.</li></ul><ul id="45c1fe0e-b49f-4927-a692-de22e8bd26f4" class="bulleted-list"><li style="list-style-type:disc">A hypothetical syllogism.</li></ul><ul id="594f6999-44e5-4f79-ab00-1da456c071a3" class="bulleted-list"><li style="list-style-type:disc">A syllogism.</li></ul><h2 id="2123a567-8210-4331-97bb-f8b42427ae1e" class="">Inductive argument forms</h2><p id="e37d1d7f-727d-486b-b5fd-412c61396725" class="">The conclusion follows <em>probably</em> from the premises. </p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bac26bcf-708a-4177-b4f4-42f492cd9837"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Inductive arguments do not necessarily proceed from the particular to the general.</div></figure><ul id="9fac2f65-2626-4d31-b0bd-f26fa8bba3a8" class="bulleted-list"><li style="list-style-type:disc">A prediction</li></ul><ul id="0362411e-a0f6-492c-bf34-7910ae2fb0a9" class="bulleted-list"><li style="list-style-type:disc">Argument from analogy</li></ul><ul id="6e9d5fc2-914b-40fb-b169-7cd725f6c12d" class="bulleted-list"><li style="list-style-type:disc">A generalization</li></ul><ul id="83aa32df-c3d6-4a3b-86ba-53453ceef6bd" class="bulleted-list"><li style="list-style-type:disc">An argument based on signs</li></ul><ul id="1cbfce3b-d626-4c11-8e89-f3039d65fc5a" class="bulleted-list"><li style="list-style-type:disc">Argument from authority. </li></ul><ul id="37ea85f5-aecf-4268-9c3f-a326b57fe9a3" class="bulleted-list"><li style="list-style-type:disc">A causal inference</li></ul><p id="c48aab07-d787-4d16-b15d-6f9bddb199d4" class="">
+</p><h2 id="54eea353-03b7-44eb-a337-c340781aa639" class="">Validity, Truth, Soundness, Strength, Cogency</h2><p id="85be24f6-fefe-4e3d-92e7-278bded97f4e" class="">Validity is the relationship between premises and conclusion, do premises support the conclusion?</p><h2 id="434f069a-6e81-4827-87a2-1cacea29c25f" class="">Deductive Argument</h2><p id="926f0df0-5f7d-41ba-9dbe-b47b7a356dbd" class="">Deductive arguments are valid, invalid, sound, and unsound.</p><p id="b8b6a04a-be56-4a57-b33c-2a3cc4391993" class="">In a valid deductive argument is impossible to be false given that the premises are true and it’s determined by the argument’s form.  So, any deductive argument having true premises and a false conclusion is invalid.</p><p id="d90642ea-575e-48d0-8a7c-3c8d9fa5476d" class="">A sound argument is a deductive argument that is valid and has all true premises. Otherwise is called an unsound argument. </p><p id="1c93202c-76bc-431e-9b19-081f7d28dc06" class="">Having a superfluous false premise doesn’t change the soundness. </p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="74e7b521-9261-487f-80a4-a61822a60305"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Successful deductive argument = Sound argument = Valid argument + All true premises</div></figure><h2 id="5b088453-0734-4f1a-8ac5-f3fa066ba491" class="">Inductive Argument</h2><p id="42777a42-d9f5-4038-9e32-fd4f4e54283f" class="">It depends on the uniformity of nature - a mathematical induction depends on natural numbers that are uniform by the Well-Ordering property.</p><p id="b34d0030-8d89-41f0-9119-a79290fa635d" class="">Inductive arguments are strong, weak, cogent or uncogent.</p><p id="b2066334-e3e2-4597-a886-118c02adca15" class="">Strong: The conclusion follows the premises.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="07cea526-0bae-48fa-b736-f0e618e8ae54"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Cogent argument = Strong argument + All true premises </div></figure><h1 id="713c3a9c-8067-4abd-befc-d8e93ebee801" class="">Proof methods</h1><h2 id="3615dfcc-36d7-4b7d-8e6c-467062e2438c" class="">Counterexample method</h2><p id="bd0f1dee-d3d5-4362-90f2-e82e0b6972af" class="">
+</p><h2 id="ebbf2f94-cbb4-4503-92b0-aeca5166d842" class="">Axiom vs Law</h2><p id="2ef1bd75-97f6-402c-9351-45523cf6e6eb" class="">Einstein paper. <a href="https://einsteinpapers.press.princeton.edu/vol7-trans/124">https://einsteinpapers.press.princeton.edu/vol7-trans/124</a></p><h1 id="f4843fcb-c003-4d9d-bded-994d6c3994b4" class="">Material conditional</h1><h2 id="cc2ab832-554d-46d7-9b54-752a1a84a58b" class="">Paradoxes of material implication</h2><h1 id="5387b22c-80c3-4348-b14e-57f2af53e4a8" class="">Language: Meaning and Definition</h1><h2 id="6bc2acf7-6fc6-4c9b-bc1f-feaab81c1d03" class="">Varieties of meaning</h2><p id="c14efad5-0bd5-42a3-8e5b-5929634e7d3f" class="">Language has virtually unlimited functions but, in logic particularly, it conveys information or evokes feelings. The first function, chiefly logic concerned, uses <strong>cognitive meaning </strong>terms including “legal”, “most often”, “Georgia”, and so; the second one uses<strong> emotive meaning </strong>terms including “cruel”, “inhuman”, “hapless”, and so forth, statements of this sort very often have both. Since emotive meaning is not mainly concerned with logic, we differentiate the cognitive meaning from the emotive meaning which is a value claim, that is, a claim that something is good, better, or more important than some other thing. We treat these claims as separate statements and as usual, they require evidence to support them. Thus, many writers and speakers use emotive meaning to obscure value claims so the receivers are inclined to swallow them without any evidence.</p><p id="9bf2fe04-c752-41e6-8038-504270fb087a" class="">Cognitive meaning can be defective in two cases affecting the entire statement:</p><ul id="889a2a83-de77-438c-94e1-2980aacf3f23" class="bulleted-list"><li style="list-style-type:disc">A vague expression is one that is impossible to determine whether it applies or not such that it allows a continuous range of interpretations and its meaning is hazy. For example, vague words are “cold”, “wordy”, and “sweet”. Precision depends on the situation&#x27;s demands.</li></ul><ul id="a3560977-ba72-4590-9cb1-06773ce5a796" class="bulleted-list"><li style="list-style-type:disc">An ambiguous expression is one that is interpreted in different ways having one clear meaning in a context such that it allows a discrete range of interpretations. For example, ambiguous words are “light”, “critical”, and “bank”. Precision depends on the situation&#x27;s demands.</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="fd85b2ee-a6d1-4d98-ade6-a864a2ad3fd3"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Fuzzy logic.</div></figure><h3 id="cb2a3925-3747-4662-817d-6e0926e90341" class="">Disputes</h3><p id="0b5e27ff-b04a-4272-8ce4-d2161c70d8a6" class="">Verbal disputes are argument conflicts caused by vagueness and ambiguity between individuals. Unless it is clarified, disputes are never resolved. So they arise over the meaning of language.  </p><p id="a40d2592-2a4c-416f-895b-7b995553c80c" class="">Factual disputes arise over facts and their interpretation.</p><p id="e9b40423-83d5-474b-a685-ee453b97143e" class=""> </p><h2 id="13a22987-59d4-434a-aeb0-8f115d30b8e8" class="">The Intension and Extension of terms</h2><p id="03db1470-dcea-43e6-a47a-7837f2d08cdc" class="">In the previous section, you saw that some argument problems arise about vague or ambiguous terms, and even though logic is the evaluation of arguments, those arguments are cleared up by supplying a definition. So, the study of meaning is closely related to logic.  </p><p id="8a6600a5-03e2-4716-8f7e-8ae1934b664e" class="">
+</p><p id="9444499a-e8cf-4db6-baa3-31ea9961074f" class=""><strong>Where is the argument vagueness or ambiguousness?</strong></p><p id="091e2c33-ef8c-4f5f-900c-d0024fe89663" class="">The basic units of language are words, but your chiefly concern in order to clear up arguments is a <strong>term, </strong>no general words.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="09ba6da4-6096-460b-8725-9b65966adfa2"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">‘Term’ means the subject of a statement. For example, proper names such as The United States, Senate; common names such as animal, house; descriptive phrases such as books in my library, blue things; and mention of a word such as ‘wherever’ (’wherever’ has eight letters).</div></figure><p id="e2e21630-193a-4df0-8a84-00fbff042b71" class="">Terms are not verbs, adverbs, adjectives, prepositions, conjunctions, and nonsyntactic arrangements of words. </p><figure id="049997d8-062b-4602-8053-2509b80f9334" class="image"><a href="Untitled%20112.png"><img style="width:1411px" src="Untitled%20112.png"/></a><figcaption>Cognitive meaning of a term. Logic uses connotation and denotation differently than grammar. </figcaption></figure><figure id="bd606b1e-05ad-497e-ad76-beaa9b89dd1f" class="image"><a href="Untitled%20113.png"><img style="width:1271px" src="Untitled%20113.png"/></a><figcaption>Cognitive meaning example.</figcaption></figure><p id="d4452c54-5ccb-420c-9ad2-80705cd3af78" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5bf67d16-749b-4b69-9ef3-1f12929dcc3e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Null class. </div></figure><p id="4b18dad2-ca0b-4830-8a83-d4b4bfc1ca08" class="">
+</p><h2 id="4146c4b0-abd4-416d-84bf-8c91baecb9cc" class=""><strong>How does a term connote a set of attributes?</strong></h2><p id="1f757544-02cf-4819-86b6-948f19b254bb" class="">There are at least two interpretations: an objective approach and a subjective approach. The objective approach holds that a term connotes essential class member attributes. Conversely, our conventional subjective approach holds that a term connotes common attributes in mentally competent people. It&#x27;s also called conventional connotation. In this approach, connotation and denotation typically remain the same from person to person, but meanwhile, the connotation is stable in time, denotation is not.</p><p id="2f4cf2fc-4554-4e3b-8a14-c800a4ef86d3" class="">
+</p><p id="dd4a0ecf-08ef-4c38-a3db-acf8b220ac0b" class="">
+</p><p id="0061ac4c-f472-4b08-b16c-ff30aaa29d76" class="">
+</p><p id="809d6b94-d524-49f5-adef-6eee471a41e4" class="">
+</p><p id="92a32073-b97e-444f-b545-36c7606b9de2" class="">
+</p><p id="81951567-3ba5-41fb-93da-395c41c44872" class="">
+</p><p id="46a28dc4-26ad-4ce0-8270-471af017fb00" class="">
+</p><h3 id="4f4ac4de-65dc-4eb6-89f9-0e566390cba4" class="">Notes</h3><p id="012409dc-1c6b-4269-8701-fd3404b0d3f6" class=""><a href="https://www.paultaylor.eu/stable/prot.pdf">https://www.paultaylor.eu/stable/prot.pdf</a> writes about sense and reference.</p><p id="1bff670d-0ddb-4699-a4ec-443ab540880d" class="">
+</p><p id="e2e96b71-3437-4877-828e-4ff79e4f45ea" class="">
+</p><p id="7bedda97-d75e-4f77-9715-a1b2b09070ad" class="">
+</p><h1 id="ee6fcefe-bf55-40f6-aeaf-af6a9b187d6e" class="">Reason</h1><blockquote id="b62d5b5c-6b40-4cc3-a79f-e287f8530e4d" class="">“The only definition of rationality that I’ve found that is practically, empirically, and mathematically rigorous is the following:<strong> what is rational is that which allows for survival</strong>. Unlike modern theories by psychosophasters, it maps to the classical way of thinking. Anything that hinders one’s survival at an individual, collective, tribal, or general level is, to me, irrational.” 
+Nassim Nicholas Taleb, Skin in the Game: Hidden Asymmetries in Daily Life</blockquote><h1 id="ca4300fc-c666-4b3c-9103-abd0a57820aa" class="">What is Truth?</h1><p id="06ccc808-10df-4d8d-ba56-7661554c1777" class="">Like beauty, “truth” sometimes depends on the eye of the beholder, and it should not be surprising that what constitutes proof differs among fields. For example, </p><ul id="57f67396-ad82-440b-80a0-188fc6e847ab" class="bulleted-list"><li style="list-style-type:disc">in the judicial system, legal truth is decided by a jury based on the allowable evidence presented at trial. </li></ul><ul id="544e0c3d-6f7c-466d-9143-ec9e76d29e85" class="bulleted-list"><li style="list-style-type:disc">In the business world, authoritative truth is specified by a trusted person or organization, or maybe just your boss. </li></ul><ul id="3bd2d3c1-3509-4a3c-876c-3aca7a8960fb" class="bulleted-list"><li style="list-style-type:disc">In statistics, probable truth is established by statistical analysis of sample data.</li></ul><ul id="210d81ec-4846-40e7-b7bd-752ed3d1dcc5" class="bulleted-list"><li style="list-style-type:disc">In fields such as physics or biology, scientific truth is confirmed by experiments. <blockquote id="98b58660-7cba-4388-8d48-9568ed1aa0f7" class="">Actually, only scientific falsehood can be demonstrated by an experiment—when the experiment fails to behave as predicted. No amount of experimentation can confirm that the next experiment won&#x27;t fail. <strong>No truth, rather theories that accurately predict past, and anticipated future.</strong></blockquote></li></ul><p id="0d104f1d-5d65-4a6f-bdb3-1569e7f78a4b" class="">Eric Lehman, F Thomson Leighton, and Albert R Meyer. Mathematics for Computer Science. revised Wednesday 6th June 2018, 13:43. MIT</p><h1 id="c6a64306-ec63-42df-b29f-7a16a34a8ca3" class="">Fallacies</h1><p id="8ce4ac35-0fae-4b07-9f6c-b690e72effff" class=""><a href="https://en.wikipedia.org/wiki/List_of_fallacies">https://en.wikipedia.org/wiki/List_of_fallacies</a></p><h1 id="c74c2ee5-bed4-4759-b7b3-86c3028e2e14" class="">Formal logic</h1><p id="a0a807c1-0476-4e44-8630-a69bee18354b" class="">Correct thought</p><h1 id="5f5f37b6-7a79-4c77-babf-d91c1a4c3925" class="">Categories</h1><ul id="13431d9d-5cc4-4a9e-bd78-d592ca8dd937" class="bulleted-list"><li style="list-style-type:disc">Quantity<ul id="092624cf-03c4-45be-969b-c34e0de9b3cf" class="bulleted-list"><li style="list-style-type:circle">Unity.  A particular statement that makes a claim about one and exactly one member of a class.</li></ul><ul id="b1d99847-e338-4464-8970-51b899c8852a" class="bulleted-list"><li style="list-style-type:circle">Plurality. A particular statement that makes a claim about some of the members of a class.</li></ul><ul id="68793069-bd63-4ac9-9114-024d1929edeb" class="bulleted-list"><li style="list-style-type:circle">Totality. A general statement that makes a claim about all the members of a class.</li></ul></li></ul><ul id="c6f53786-dd6f-4767-9f3e-de784f338bf2" class="bulleted-list"><li style="list-style-type:disc">Quality<ul id="2d8bcf82-6d38-4fa7-84de-5112a6f8cfaf" class="bulleted-list"><li style="list-style-type:circle">Reality</li></ul><ul id="6fe10548-70e2-47b1-b45f-8b0d0f6af2e8" class="bulleted-list"><li style="list-style-type:circle">Negation</li></ul><ul id="d8e73144-a93e-4b4c-a8d0-ea883568753c" class="bulleted-list"><li style="list-style-type:circle">Limitation</li></ul></li></ul><ul id="9b32f049-1b20-4fdf-ab58-fd84f115cabf" class="bulleted-list"><li style="list-style-type:disc">Relation<ul id="cebf2bf7-0b64-421a-a280-4a553e5c4220" class="bulleted-list"><li style="list-style-type:circle">Inherence and Subsistence (substance and accident)</li></ul><ul id="c30f234c-dcbc-4702-bc82-a879ed955c7a" class="bulleted-list"><li style="list-style-type:circle">Causality and Dependence (cause and effect)</li></ul><ul id="8a36bc4c-b83d-4b0a-b842-3f31992e5cf8" class="bulleted-list"><li style="list-style-type:circle">Community (reciprocity)</li></ul></li></ul><ul id="2502d00d-537b-49db-86c2-dfa4086189f4" class="bulleted-list"><li style="list-style-type:disc">Modality<ul id="fc0719e0-3a4a-4a06-80b3-64a2ae2e600e" class="bulleted-list"><li style="list-style-type:circle">Possibility</li></ul><ul id="8f9a8610-bb50-41b1-a5de-0c6bed540fed" class="bulleted-list"><li style="list-style-type:circle">Existence</li></ul><ul id="97666a08-75c7-4cf1-b8a1-f0a3b5267403" class="bulleted-list"><li style="list-style-type:circle">Necessity</li></ul></li></ul><p id="337de5fe-e75b-4aa1-a136-8442f2369d2f" class="">
+</p><h1 id="17277995-2da3-4927-aaee-f8d2a3606dc2" class="">Deduccion, inducion, abduccion</h1><div id="1fab3696-55ee-4020-a6c8-c91f8322358f" class="collection-content"><h4 class="collection-title">Tipos y ejemplos</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Tipo</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Ejemplo1</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Ejemplo2</th></tr></thead><tbody><tr id="2f1591c6-dcfb-473e-8676-15924710b8bd"><td class="cell-title"><a href="Deduccion%202f1591c6dcfb473e867615924710b8bd.html">Deduccion</a></td><td class="cell-ocKZ">Todos los ratones son roedores.
+Speedy González es un ratón.
+Speedy González es un roedor.</td><td class="cell-HvJ:"></td></tr><tr id="4b4c7b91-fd68-4eb1-8206-1fecb7c7324a"><td class="cell-title"><a href="Induccion%204b4c7b91fd684eb182061fecb7c7324a.html">Induccion</a></td><td class="cell-ocKZ">Speedy González es un ratón.
+Speedy González es un roedor.
+Todos los ratones son roedores.</td><td class="cell-HvJ:"></td></tr><tr id="a32e5465-33a2-42fd-942d-f7fcc31bdd77"><td class="cell-title"><a href="Abduccion%20a32e546533a242fd942df7fcc31bdd77.html">Abduccion</a></td><td class="cell-ocKZ">Speedy González es un roedor.
+Todos los ratones son roedores.
+Speedy González es un ratón.</td><td class="cell-HvJ:"></td></tr></tbody></table></div><p id="f55bd8f8-bdc7-45e7-a861-d3ac7c012555" class=""><div class="indented"><p id="472f8ef6-8bea-4a5b-b03d-c4a683d1c63c" class="">
+</p><figure id="2c78711d-1b0d-453f-bf8e-eb5d0c9fedb9" class="image"><a href="Untitled%20114.png"><img style="width:561px" src="Untitled%20114.png"/></a></figure></div></p><h1 id="81cb70b1-9a25-4349-8884-f0fc1460d412" class="">Aristotle</h1><p id="fc7152ee-be5b-4cd4-88ea-6bd39de78cde" class="">C. Dixon, “The Atlantic,” The Atlantic, Mar. 20, 2017. https://www.theatlantic.com/technology/archive/2017/03/aristotle-computer/518697/ (accessed Sep. 28, 2021).‌</p><ol type="1" id="78f11470-3049-4300-8019-b234eb700be0" class="numbered-list" start="1"><li>Principio de Identidad</li></ol><ol type="1" id="f5b30ac1-7d21-4a59-b1be-52cd22f97b27" class="numbered-list" start="2"><li>Principio de NO contradicción</li></ol><ol type="1" id="edad2d13-5f15-463f-9e27-e1144f81bf06" class="numbered-list" start="3"><li>Principio de Tercero Excluido</li></ol><ol type="1" id="a6b2b6e6-aaf4-4827-9111-9f56c413b698" class="numbered-list" start="4"><li>Principio de la Razón Suficiente.</li></ol><p id="3a7c1b08-4613-4a78-8c35-3cba398b376c" class=""><a href="https://en.wikipedia.org/wiki/Classical_logic">https://en.wikipedia.org/wiki/Classical_logic</a></p><p id="abde5e0f-8ad8-49ac-a3c0-a7aff571c92f" class="">
+</p><h1 id="6207a33e-f41c-44c2-8bee-9502bbd5c1f2" class="">Fallacies</h1><p id="ffcd4d17-e0fb-4817-b8f8-b9861603b503" class=""><a href="https://yourlogicalfallacyis.com/">https://yourlogicalfallacyis.com/</a></p></div></article></body></html>

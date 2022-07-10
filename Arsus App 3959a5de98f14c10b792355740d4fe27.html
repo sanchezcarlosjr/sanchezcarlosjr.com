@@ -1,0 +1,671 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Arsus App</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3959a5de-98f1-4c10-b792-355740d4fe27" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🔖</span></div><h1 class="page-title">Arsus App</h1><table class="properties"><tbody><tr class="property-row property-row-person"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesPerson"><path d="M9.625,10.8465 C8.91187,10.2891 8.12088,9.926 7,9.26013 L7,8.71938 C7.21175,8.47612 7.392,8.176 7.53813,7.83213 C7.94587,7.7315 8.3125,7.33425 8.3125,7 C8.3125,6.51788 8.1095,6.32713 7.8715,6.17137 C7.8715,6.15562 7.875,6.14162 7.875,6.125 C7.875,5.41362 7.4375,3.5 5.25,3.5 C3.0625,3.5 2.625,5.4145 2.625,6.125 C2.625,6.14162 2.6285,6.15562 2.6285,6.17137 C2.3905,6.32713 2.1875,6.51788 2.1875,7 C2.1875,7.33425 2.55413,7.7315 2.96187,7.833 C3.108,8.176 3.28825,8.47612 3.5,8.71938 L3.5,9.26013 C2.37912,9.92513 1.58812,10.2882 0.875,10.8465 C0.041125,11.4984 0,12.4688 0,14 L10.5,14 C10.5,12.4688 10.4589,11.4984 9.625,10.8465 Z M13.125,7.3465 C12.4119,6.78912 11.6209,6.426 10.5,5.76013 L10.5,5.21938 C10.7118,4.97613 10.892,4.676 11.0381,4.33213 C11.4459,4.2315 11.8125,3.83425 11.8125,3.5 C11.8125,3.01787 11.6095,2.82713 11.3715,2.67138 C11.3715,2.65562 11.375,2.64162 11.375,2.625 C11.375,1.91363 10.9375,0 8.75,0 C6.5625,0 6.125,1.9145 6.125,2.625 C6.125,2.64162 6.1285,2.65562 6.1285,2.67138 C6.11188,2.68275 6.09787,2.69588 6.08125,2.70725 C7.83212,3.066 8.59688,4.54825 8.72813,5.74787 C8.97575,6.00863 9.1875,6.39625 9.1875,7 C9.1875,7.60288 8.771,8.20312 8.18388,8.51462 C8.127,8.624 8.06662,8.729 8.00275,8.82962 C8.155,8.91537 8.30025,8.99675 8.44025,9.07463 C9.08075,9.4325 9.63375,9.74137 10.164,10.1561 C10.3022,10.2638 10.4204,10.3801 10.5289,10.4991 L14,10.4991 C14,8.96875 13.9589,7.99837 13.125,7.3465 Z"></path></svg></span>Contribuitors</th><td></td></tr></tbody></table></header><div class="page-body"><nav id="3137e8f4-e37e-487c-ac66-06d2d153b7cd" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3381d0b4-2840-4860-ab6c-3a97f6329c24">Descripción</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8f26b2fe-2cd0-40a3-8320-3916bca19cb7">Características funcionales</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ff0a0313-9be7-4c35-8888-124a13172b0a">Características no funcionales</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6ae84637-3119-442a-a8a1-48be37f00cd9">Interfaz gráfica</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1a71ede1-b7af-4013-a4d8-83e7d671f7f6">Arquitectura</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b0fb96b3-bcc2-4e59-9745-129f0a7cdff5">Planeación</a></div></nav><p id="b4d0a2d3-48c8-43a6-aae1-e7ae3e34b87e" class="">Profesor: <a href="mailto:aomar@uabc.edu.mx">Omar Alvarez Xochihua</a></p><p id="dcec8e89-68a7-41bb-944b-4781322a8c40" class="">Proyecto final: Arsus</p><p id="b74b5746-e264-48ea-b093-404761f28729" class=""><a href="mailto:a361075@uabc.edu.mx">Carlos Eduardo Sánchez Torres</a> (361075)</p><p id="7af8e2dc-1651-43bc-88e6-cdee64df6301" class="">Carlo Alfredo Pano Flores      (362260)</p><p id="174b9e62-662c-40c5-a27f-9f577b671960" class="">Fecha: 14/05/2021</p><h1 id="3381d0b4-2840-4860-ab6c-3a97f6329c24" class="">Descripción</h1><p id="01c48517-09fe-4871-921f-51b887b3bfed" class="">Es una aplicación para celulares Android cuyo objetivo es ser un portafolio personal de proyectos, compartirlo con la comunidad vía open source y otras redes sociales. Al momento de ingresar a la aplicación aparecerá un apartado de noticias, tanto en video como en páginas  web. En la parte superior derecha aparecerá un botón para iniciar sesión con el cual podremos iniciar sesión por medio de una contraseña y correo electrónico propio, o bien por medio de una cuenta en Facebook y Google.</p><p id="8c124185-5400-4b68-b191-27074f2a301a" class="">Ya dentro aparecerá un menú con todas las funciones que estarán implementadas. En el cual estará la aplicación para saber si tu credencial (INE), está todavía vigente y puedas votar. Se abrirá la cámara y tendrás que tomar una foto de tu credencial.</p><p id="f98bb801-c3df-49e9-987a-75a319775b1d" class="">Todo esto estará desarrollado en Android Studio, usando un framework como lo es Flutter, es un sdk desarrollado por Google de código abierto para crear aplicaciones nativas de forma fácil, rápida y sencilla. Usaremos 2captcha, es un un sitio web para resolver captchas, se usará el servicio que ofrecen para resolver los captchas, al momento de por medio de la foto de la credencial sacar el código de identificación de la credencial y el identificador del ciudadano, la página pedirá resolver un captcha y ahí es donde ocupamos 2captcha.</p><p id="eae2c6bb-a8bf-4eb8-960c-ac640444a4a3" class="">Para que los 2 podamos trabajar en paralelo con la aplicación usaremos Git y Github, para que los cambios de código estén conectados entre las 2 computadoras y podremos trabajar en equipo.</p><h1 id="8f26b2fe-2cd0-40a3-8320-3916bca19cb7" class="">Características funcionales</h1><ol type="1" id="611efb4a-6161-4ba9-ba4e-b506c5ff6492" class="numbered-list" start="1"><li>Listado de noticias mas recientes desde una base de datos preparada de antemano desde hace 6 meses, las cuales pueden provenir de YouTube (video), newsletter (titular), NewsApi (titular), Hacker News (titular) y Twitter (tweet).<ol type="a" id="e5cbff08-1a98-4285-94b8-3ea2cc7e83e3" class="numbered-list" start="1"><li>Mostrarse las primeras cinco noticias más recientes.</li></ol><ol type="a" id="611e45a3-4b76-4aff-b6fc-da6a110bc472" class="numbered-list" start="2"><li>Mostrarse las siguientes cinco noticias más recientes.</li></ol><ol type="a" id="de23abde-4e5d-4f27-9ea1-1ff33ffd8826" class="numbered-list" start="3"><li>Dado un usuario anónimo o autenticado Cuando seleccione una noticia, mostrar la noticia desde la aplicación o redirigir a donde sea pertinente.</li></ol></li></ol><ol type="1" id="be34a13c-28b8-4eb0-a6da-d8ef685f2128" class="numbered-list" start="2"><li>Listado de aplicaciones ordenadas por mayor uso desde una base datos, las cuales pueden ser aplicaciones web y páginas de dart.<ol type="a" id="04d4dadc-a7cd-4bab-b59f-133469516821" class="numbered-list" start="1"><li>Dado un usuario autenticado Cuando seleccione una aplicación tipo web embebible Entonces se abre la página embebida.</li></ol><ol type="a" id="e08bd92e-7729-4832-8c16-0d0708207bd0" class="numbered-list" start="2"><li>Dado un usuario autenticado Cuando seleccione una aplicación tipo dart Entonces se ejecuta el código correspondiente.</li></ol></li></ol><ol type="1" id="1108741c-fe8d-4521-af95-6a6aadc7fb64" class="numbered-list" start="3"><li>Autenticar al usuario vía correo electrónico, Facebook y Google usando Firebase.<ol type="a" id="fd33f9a5-3184-4417-8905-894f9fe2f504" class="numbered-list" start="1"><li>Registro e inicio de sesión automático con correo electrónico y contraseña.</li></ol><ol type="a" id="364a9b88-3c59-44e1-99c0-dc5ae020df4a" class="numbered-list" start="2"><li>Registro e inicio de sesión automático con Google.</li></ol><ol type="a" id="84399bad-9ec9-4a27-8e07-ae724d7e5b06" class="numbered-list" start="3"><li>Registro e inicio de sesión automático con Facebook.</li></ol><ol type="a" id="82680f0c-2b35-486a-8595-a808a8300919" class="numbered-list" start="4"><li>Cumplir con medidas de seguridad sobre el uso de token: no compartir claves privadas en repositorios ni sobre el código.</li></ol></li></ol><ol type="1" id="7c7a0b78-20f5-452a-b7f8-711f3c385332" class="numbered-list" start="4"><li>Verificar en la lista nominal del INE si es una credencial vigente.<ol type="a" id="82a3a747-e5a1-467e-904b-80b7e0e017cc" class="numbered-list" start="1"><li>Dado un usuario autenticado Cuando toma una foto a su credencial Entonces válida si puede votar y muestra un screenshot de su estado en la lista nominal. Consideraciones: romper el captcha mediante 2captcha, usar la API Visión de la nube de Google para obtener la información de la API y crear una Cloud Function usando JS y puppeteer para resolver estas tareas. Entregar el resultado en formato JSON: {screenshot: “STORAGE URL”, isValid: true}.</li></ol><ol type="a" id="7d56ddfe-4aee-4445-a7a3-870a2edf6475" class="numbered-list" start="2"><li>Si la credencial es válida, entonces el usuario quiere compartir su resultado.</li></ol></li></ol><ol type="1" id="bb6d346d-494a-4a4f-9d3b-5c3ba5801327" class="numbered-list" start="5"><li>[No prioritario] Listado de medios de contacto desde una base de datos.</li></ol><h1 id="ff0a0313-9be7-4c35-8888-124a13172b0a" class="">Características no funcionales</h1><p id="7296780f-c47b-4ed0-a94e-27353cbaabe5" class="">Entrega de video demo el 31 de mayo.</p><p id="ec479de5-16c7-48e9-85b6-58e8de6c9ca4" class="">Publicar la aplicación en Google Play el 29 de mayo.</p><p id="f6ca0829-c274-49e6-82ac-de483491288a" class="">Cloud Function con 2GB en US-West.</p><p id="b87e082a-d6f1-40ab-b52a-f190ca16a762" class="">Comprar dominio web.</p><h1 id="6ae84637-3119-442a-a8a1-48be37f00cd9" class="">Interfaz gráfica</h1><div id="4aac15d2-084a-47a3-9dc2-f5c002f4869d" class="collection-content"><h4 class="collection-title">Interfaz</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M7.01356 14.0001C8.8042 14.0001 10.5958 13.3107 11.9575 11.9324C14.681 9.21201 14.6808 4.7603 11.9571 2.04013C9.23336 -0.680043 4.77573 -0.680043 2.05199 2.04013C0.727519 3.36277 0 5.13301 0 6.99553C0 8.8764 0.727811 10.6285 2.05199 11.9509C3.43207 13.3106 5.22243 14.0001 7.01356 14.0001ZM3.72947 7.00914V8.461V8.65543H3.92382H5.34563H8.2794H8.4738V8.461V5.52541V3.37947V3.18502H8.2794H6.82747H6.63307V3.37947V6.81467H3.92382H3.72947V7.00914ZM1.83985 6.99553C1.83985 5.61698 2.38099 4.32597 3.36061 3.3477C5.36746 1.34337 8.64803 1.34062 10.6585 3.33944C10.6613 3.34219 10.6639 3.34494 10.6668 3.3477C12.676 5.3546 12.6763 8.63642 10.6668 10.6434C8.65705 12.6504 5.37031 12.6504 3.36061 10.6434C2.38099 9.66506 1.83985 8.37408 1.83985 6.99553Z"></path></svg></span>Created</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Tags</th></tr></thead><tbody><tr id="b7a1c9ee-d805-412b-a3e2-47721db7397f"><td class="cell-title"><a href="Home%20b7a1c9eed805412ba3e247721db7397f.html">Home</a></td><td class="cell-mEA?"><time>@May 21, 2021 12:19 PM</time></td><td class="cell-^xLy"></td></tr><tr id="fca47a4b-acf0-43cb-994c-36c20625a3d7"><td class="cell-title"><a href="Login%20fca47a4bacf043cb994c36c20625a3d7.html">Login</a></td><td class="cell-mEA?"><time>@May 21, 2021 12:19 PM</time></td><td class="cell-^xLy"></td></tr><tr id="19732f36-49f9-460a-863c-9a7f352c06e3"><td class="cell-title"><a href="INE%2019732f3649f9460a863c9a7f352c06e3.html">INE</a></td><td class="cell-mEA?"><time>@May 21, 2021 12:20 PM</time></td><td class="cell-^xLy"></td></tr><tr id="bf536980-3c22-4d64-b87d-acd427aead36"><td class="cell-title"><a href="Photo%20bf5369803c224d64b87dacd427aead36.html">Photo</a></td><td class="cell-mEA?"><time>@May 21, 2021 12:20 PM</time></td><td class="cell-^xLy"></td></tr><tr id="4482cb23-e25a-467c-9c52-88828982580f"><td class="cell-title"><a href="Data%204482cb23e25a467c9c5288828982580f.html">Data</a></td><td class="cell-mEA?"><time>@May 21, 2021 12:20 PM</time></td><td class="cell-^xLy"></td></tr><tr id="5ef11bb3-141e-41d8-8def-1837ed49276a"><td class="cell-title"><a href="INE%205ef11bb3141e41d88def1837ed49276a.html">INE</a></td><td class="cell-mEA?"><time>@May 21, 2021 12:20 PM</time></td><td class="cell-^xLy"></td></tr><tr id="388c4414-61c5-4abc-be9c-9115241131d4"><td class="cell-title"><a href="Apps%20388c441461c54abcbe9c9115241131d4.html">Apps</a></td><td class="cell-mEA?"><time>@May 21, 2021 12:21 PM</time></td><td class="cell-^xLy"></td></tr></tbody></table></div><h1 id="1a71ede1-b7af-4013-a4d8-83e7d671f7f6" class="">Arquitectura</h1><div id="214bd7fc-71b0-4393-8758-87e23d472a54" class="collection-content"><h4 class="collection-title">Arquitectura</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M7.01356 14.0001C8.8042 14.0001 10.5958 13.3107 11.9575 11.9324C14.681 9.21201 14.6808 4.7603 11.9571 2.04013C9.23336 -0.680043 4.77573 -0.680043 2.05199 2.04013C0.727519 3.36277 0 5.13301 0 6.99553C0 8.8764 0.727811 10.6285 2.05199 11.9509C3.43207 13.3106 5.22243 14.0001 7.01356 14.0001ZM3.72947 7.00914V8.461V8.65543H3.92382H5.34563H8.2794H8.4738V8.461V5.52541V3.37947V3.18502H8.2794H6.82747H6.63307V3.37947V6.81467H3.92382H3.72947V7.00914ZM1.83985 6.99553C1.83985 5.61698 2.38099 4.32597 3.36061 3.3477C5.36746 1.34337 8.64803 1.34062 10.6585 3.33944C10.6613 3.34219 10.6639 3.34494 10.6668 3.3477C12.676 5.3546 12.6763 8.63642 10.6668 10.6434C8.65705 12.6504 5.37031 12.6504 3.36061 10.6434C2.38099 9.66506 1.83985 8.37408 1.83985 6.99553Z"></path></svg></span>Created</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Tags</th></tr></thead><tbody><tr id="959c7738-d8c0-4fcd-8585-3cfa2b4ccaf6"><td class="cell-title"><a href="Getting%20started%20959c7738d8c04fcd85853cfa2b4ccaf6.html">Getting started</a></td><td class="cell-f\Y;"><time>@May 21, 2021 12:22 PM</time></td><td class="cell-Yw\n"></td></tr><tr id="764e64b8-947c-42ee-b519-d5a64e0ada69"><td class="cell-title"><a href="Server%20764e64b8947c42eeb519d5a64e0ada69.html">Server</a></td><td class="cell-f\Y;"><time>@May 21, 2021 12:22 PM</time></td><td class="cell-Yw\n"></td></tr><tr id="9b268acb-fd61-477a-b19b-922ecffc254b"><td class="cell-title"><a href="Services%209b268acbfd61477ab19b922ecffc254b.html">Services</a></td><td class="cell-f\Y;"><time>@May 21, 2021 12:22 PM</time></td><td class="cell-Yw\n"></td></tr><tr id="93560bac-f811-4927-9cd9-7f6320856e9a"><td class="cell-title"><a href="Views%2093560bacf81149279cd97f6320856e9a.html">Views</a></td><td class="cell-f\Y;"><time>@May 21, 2021 12:22 PM</time></td><td class="cell-Yw\n"></td></tr></tbody></table></div><p id="6a6b04ad-a392-44f1-bf8b-7d187a2a1824" class="">Todas las páginas siguen el mismo patrón: Markup, Style y WidgetState.</p><h1 id="b0fb96b3-bcc2-4e59-9745-129f0a7cdff5" class="">Planeación</h1><div id="6c20bcc6-52b4-4907-b80b-6ad401df4563" class="collection-content"><h4 class="collection-title">Planeación</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Property</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>17/05/2021</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>18/05/2021</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>19/05/2021</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>20/05/2021</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>21/05/2021</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>22/05/2021</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>23/05/2021</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>24/05/2021</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>25/05/2021</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>26/05/2021</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>27/05/2021</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>28/05/2021</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>29/05/2021</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>30/05/2021</th></tr></thead><tbody><tr id="e8c01412-86cd-4a21-a63e-4314d931d151"><td class="cell-title"><a href="Listado%20de%20noticias%20mas%20recientes%20desde%20una%20base%20d%20e8c0141286cd4a21a63e4314d931d151.html">Listado de noticias mas recientes desde una base de datos preparada de antemano desde hace 6 meses, las cuales pueden provenir de YouTube (video), newsletter (titular), NewsApi (titular), Hacker News (titular) y Twitter (tweet).</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="876ad505-7d71-41e9-8433-4ab531ddd948"><td class="cell-title"><a href="Mostrarse%20las%20primeras%20cinco%20noticias%20ma%CC%81s%20recient%20876ad5057d7141e984334ab531ddd948.html">Mostrarse las primeras cinco noticias más recientes.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="3bdeab21-10d9-4a50-b993-bf6a4589e38c"><td class="cell-title"><a href="Mostrarse%20las%20siguientes%20cinco%20noticias%20ma%CC%81s%20recie%203bdeab2110d94a50b993bf6a4589e38c.html">Mostrarse las siguientes cinco noticias más recientes.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="dada2abe-a786-4a2d-b3a4-e55eb0f1ebb2"><td class="cell-title"><a href="Dado%20un%20usuario%20ano%CC%81nimo%20o%20autenticado%20Cuando%20sele%20dada2abea7864a2db3a4e55eb0f1ebb2.html">Dado un usuario anónimo o autenticado Cuando seleccione una noticia, mostrar la noticia desde la aplicación o redirigir a donde sea pertinente.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="e4e12389-88ed-42cf-a96d-b9b52f6e52b7"><td class="cell-title"><a href="Listado%20de%20aplicaciones%20ordenadas%20por%20mayor%20uso%20de%20e4e1238988ed42cfa96db9b52f6e52b7.html">Listado de aplicaciones ordenadas por mayor uso desde una base datos, las cuales pueden ser aplicaciones web y páginas de dart.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="cceab9fb-cfe5-4753-9e62-517629b22c00"><td class="cell-title"><a href="Dado%20un%20usuario%20autenticado%20Cuando%20seleccione%20una%20%20cceab9fbcfe547539e62517629b22c00.html">Dado un usuario autenticado Cuando seleccione una aplicación tipo web embebible Entonces se abre la página embebida.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="a9cd165b-162d-48d7-842f-7a83d15ae83c"><td class="cell-title"><a href="Dado%20un%20usuario%20autenticado%20Cuando%20seleccione%20una%20%20a9cd165b162d48d7842f7a83d15ae83c.html">Dado un usuario autenticado Cuando seleccione una aplicación tipo dart Entonces se ejecuta el código correspondiente.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="1d7a2700-e5b1-4f11-b24e-784d09dcf753"><td class="cell-title"><a href="Autenticar%20al%20usuario%20vi%CC%81a%20correo%20electro%CC%81nico,%20Fa%201d7a2700e5b14f11b24e784d09dcf753.html">Autenticar al usuario vía correo electrónico, Facebook y Google usando Firebase.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="e84bb3b9-b93b-4acc-8435-1dc56531bb36"><td class="cell-title"><a href="Registro%20e%20inicio%20de%20sesio%CC%81n%20automa%CC%81tico%20con%20corre%20e84bb3b9b93b4acc84351dc56531bb36.html">Registro e inicio de sesión automático con correo electrónico y contraseña.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="f9a1c5b2-c96f-4cfd-a8da-94c20eff7d71"><td class="cell-title"><a href="Registro%20e%20inicio%20de%20sesio%CC%81n%20automa%CC%81tico%20con%20Googl%20f9a1c5b2c96f4cfda8da94c20eff7d71.html">Registro e inicio de sesión automático con Google.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="e79e3ff1-c4ae-4458-8da2-64c8e1bbccb6"><td class="cell-title"><a href="Registro%20e%20inicio%20de%20sesio%CC%81n%20automa%CC%81tico%20con%20Faceb%20e79e3ff1c4ae44588da264c8e1bbccb6.html">Registro e inicio de sesión automático con Facebook.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="ead67cd9-734f-42ce-a6a3-f9615a328a1e"><td class="cell-title"><a href="Cumplir%20con%20medidas%20de%20seguridad%20sobre%20el%20uso%20de%20t%20ead67cd9734f42cea6a3f9615a328a1e.html">Cumplir con medidas de seguridad sobre el uso de token: no compartir claves privadas en repositorios ni sobre el código.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="3066c5d4-1291-4d89-a16a-625b10bacea5"><td class="cell-title"><a href="Verificar%20en%20la%20lista%20nominal%20del%20INE%20si%20es%20una%20cr%203066c5d412914d89a16a625b10bacea5.html">Verificar en la lista nominal del INE si es una credencial vigente.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="3854c0ce-7d96-4236-8f37-fe902aa4d530"><td class="cell-title"><a href="Validar%20INE%203854c0ce7d9642368f37fe902aa4d530.html">Validar INE</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="ce9839b6-5fd3-42e8-9da3-47b7a1097440"><td class="cell-title"><a href="Convertir%20imagen%20a%20objeto%20INE%20(uso%20de%20Google%20Visio%20ce9839b65fd342e89da347b7a1097440.html">Convertir imagen a objeto INE (uso de Google Vision)</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="e533ca2d-cac0-4536-ba17-6195dc9d59b3"><td class="cell-title"><a href="Raspar%20y%20parsear%20la%20informacio%CC%81n%20de%20la%20lista%20nomin%20e533ca2dcac04536ba176195dc9d59b3.html">Raspar y parsear la información de la lista nominal del INE (2captcha y Puppeteer)</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="a4966dcd-d42b-4c6b-9a21-913073c0d573"><td class="cell-title"><a href="Si%20la%20credencial%20es%20va%CC%81lida,%20entonces%20el%20usuario%20q%20a4966dcdd42b4c6b9a21913073c0d573.html">Si la credencial es válida, entonces el usuario quiere compartir su resultado en redes sociales</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="11b80a37-4436-4c9d-8433-fbc930465831"><td class="cell-title"><a href="Si%20la%20credencial%20es%20va%CC%81lida,%20entonces%20el%20usuario%20q%2011b80a3744364c9d8433fbc930465831.html">Si la credencial es válida, entonces el usuario quiere descargar su resultado</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="051a3c13-16ff-487b-a58c-a051c2657b30"><td class="cell-title"><a href="Si%20la%20credencial%20es%20va%CC%81lida,%20entonces%20el%20usuario%20q%20051a3c1316ff487ba58ca051c2657b30.html">Si la credencial es válida, entonces el usuario quiere mandarla al clipboard.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="58d4bb2e-929c-4eea-9e9b-2cf5d7195212"><td class="cell-title"><a href="Mostrar%20imagen%20del%20resultado%20de%20la%20lista%20nominal%20y%2058d4bb2e929c4eea9e9b2cf5d7195212.html">Mostrar imagen del resultado de la lista nominal y un mensaje con respecto al mismo.</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="98db67b7-d1c3-47a4-8f1b-2c753332690b"><td class="cell-title"><a href="Publicar%20video%2098db67b7d1c347a48f1b2c753332690b.html">Publicar video</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="6bb6ee67-7bf6-4853-a2cc-9d2b0995d791"><td class="cell-title"><a href="Subir%20aplicacio%CC%81n%20a%20google%20play%206bb6ee677bf64853a2cc9d2b0995d791.html">Subir aplicación a google play</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="98b32731-2f03-4970-a6e7-635bb6355ac2"><td class="cell-title"><a href="Untitled%2098b327312f034970a6e7635bb6355ac2.html">Untitled</a></td><td class="cell-BmrM">Carlo Pano</td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="0b35b46f-a816-4326-9e8a-1ea1f8ddf5c7"><td class="cell-title"><a href="Untitled%200b35b46fa81643269e8a1ea1f8ddf5c7.html">Untitled</a></td><td class="cell-BmrM">Carlo Sanchez</td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="c4323b1d-46f1-478f-adfc-9b22a2369e32"><td class="cell-title"><a href="Otras%20c4323b1d46f1478fadfc9b22a2369e32.html">Otras</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr><tr id="8584a95e-a141-4ffb-bb00-eef5d310604d"><td class="cell-title"><a href="Dynamic%20Links%208584a95ea1414ffbbb00eef5d310604d.html">Dynamic Links</a></td><td class="cell-BmrM"></td><td class="cell-b_Zm"></td><td class="cell-B:Fo"></td><td class="cell-Bv{c"></td><td class="cell-Ywm_"></td><td class="cell-`GEQ"></td><td class="cell-Xy^\"></td><td class="cell-^mZ_"></td><td class="cell-[C[K"></td><td class="cell-[vta"></td><td class="cell-&lt;qpd"></td><td class="cell-uIh?"></td><td class="cell-rjI~"></td><td class="cell-BYDg"></td></tr></tbody></table></div><p id="cfcc13a5-5027-4cfb-a1f3-1158d7cde178" class="">
+</p><ul id="8c0f13a7-02dc-424a-9785-d1b0219084d8" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Resume <a href="https://fruitionsite.com/">SEO</a> con mi nombre.</span><ul id="c72bc73c-540e-4dcb-9fa1-0aacbf4c11b3" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">De Arsus a SanchezCarlosJR (Carlos Eduardo Sanchez Torres).</span></li></ul></li></ul><ul id="f3481116-06d3-468a-a187-483d19a78c08" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Subir a Google Play.</span></li></ul><ol type="1" id="f092012a-6adb-4837-b2e6-8a87234fe85c" class="numbered-list" start="1"><li>Centralizar blog.</li></ol><ol type="1" id="57bd5729-bfc2-4eb9-b724-0a4a3de6f739" class="numbered-list" start="2"><li>Mejora de desempeno.</li></ol><ol type="1" id="104b303e-61cf-4bbb-b03c-ace46fcb28b4" class="numbered-list" start="3"><li>CURP.</li></ol><p id="10de9045-8359-4235-880a-cf297de4acbc" class="">
+</p></div></article></body></html>

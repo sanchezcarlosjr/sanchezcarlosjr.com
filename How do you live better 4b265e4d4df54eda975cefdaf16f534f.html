@@ -1,0 +1,703 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>How do you live better?</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="4b265e4d-4df5-4eda-975c-efdaf16f534f" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/met_arnold_bocklin_1880.jpg" style="object-position:center 100%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🎁</span></div><h1 class="page-title">How do you live better?</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Tags</th><td></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M7.01356 14.0001C8.8042 14.0001 10.5958 13.3107 11.9575 11.9324C14.681 9.21201 14.6808 4.7603 11.9571 2.04013C9.23336 -0.680043 4.77573 -0.680043 2.05199 2.04013C0.727519 3.36277 0 5.13301 0 6.99553C0 8.8764 0.727811 10.6285 2.05199 11.9509C3.43207 13.3106 5.22243 14.0001 7.01356 14.0001ZM3.72947 7.00914V8.461V8.65543H3.92382H5.34563H8.2794H8.4738V8.461V5.52541V3.37947V3.18502H8.2794H6.82747H6.63307V3.37947V6.81467H3.92382H3.72947V7.00914ZM1.83985 6.99553C1.83985 5.61698 2.38099 4.32597 3.36061 3.3477C5.36746 1.34337 8.64803 1.34062 10.6585 3.33944C10.6613 3.34219 10.6639 3.34494 10.6668 3.3477C12.676 5.3546 12.6763 8.63642 10.6668 10.6434C8.65705 12.6504 5.37031 12.6504 3.36061 10.6434C2.38099 9.66506 1.83985 8.37408 1.83985 6.99553Z"></path></svg></span>Created</th><td><time>@December 12, 2021 12:39 PM</time></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M7.01356 14.0001C8.8042 14.0001 10.5958 13.3107 11.9575 11.9324C14.681 9.21201 14.6808 4.7603 11.9571 2.04013C9.23336 -0.680043 4.77573 -0.680043 2.05199 2.04013C0.727519 3.36277 0 5.13301 0 6.99553C0 8.8764 0.727811 10.6285 2.05199 11.9509C3.43207 13.3106 5.22243 14.0001 7.01356 14.0001ZM3.72947 7.00914V8.461V8.65543H3.92382H5.34563H8.2794H8.4738V8.461V5.52541V3.37947V3.18502H8.2794H6.82747H6.63307V3.37947V6.81467H3.92382H3.72947V7.00914ZM1.83985 6.99553C1.83985 5.61698 2.38099 4.32597 3.36061 3.3477C5.36746 1.34337 8.64803 1.34062 10.6585 3.33944C10.6613 3.34219 10.6639 3.34494 10.6668 3.3477C12.676 5.3546 12.6763 8.63642 10.6668 10.6434C8.65705 12.6504 5.37031 12.6504 3.36061 10.6434C2.38099 9.66506 1.83985 8.37408 1.83985 6.99553Z"></path></svg></span>Updated</th><td><time>@July 10, 2022 2:09 PM</time></td></tr></tbody></table></header><div class="page-body"><p id="c1460711-a96d-4721-bf4e-ff8d8cc2776b" class="">&quot;We receive three educations, one from our parents, one from our schoolmasters, and one from the world. The Third contradicts all that the first two teach us.&quot; - Baron De Montesquieu</p><nav id="0ab5889b-eec7-4187-a6f5-2a6633c37001" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0378b432-6183-4dc0-8218-0b6380c6eb10">Como nacer para vivir bien? Meritocracia.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1a1a90fb-cff5-4167-92c7-ea3ed4fdee9c">Genetica</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6299de8f-69fe-4ac3-8a66-05817673cb9c">Recursos -dinero y poder-</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#446e1e18-9591-4e2e-a705-ce331229c2a8">Ambiente</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9d1cc302-58c7-43ef-9dc7-2b4ae3c36dec">Networking</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6db3e37b-4df4-4335-8e00-8080b2076630"><strong>How To Hunt an Elephant</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#512ad896-2293-4cc9-b025-1cac7d075835">Principios epistemicos</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3dcf12b6-d738-44b4-a654-846b3a969681">Recursos</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#46253f78-ee44-4eef-9776-a309af8fc1ac">Friendship</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#50181dab-bb6e-44d4-9a4a-a2b6aa8e3202">Apply to several jobs, and several universities, ...</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3f8daca2-2c74-48dc-9ad0-04667863908b">Teoria de juegos</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4795fbc9-328d-4fa6-a90f-b09454e22eb6">Etica</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4d32eeba-cd87-46b4-a1e0-7174b7c11ac8">is Specialization for Insects? Fachidiot</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5bf3cb34-3c24-49aa-b518-9a3db318c396">About <a href="https://en.wikipedia.org/wiki/Simple_living"><strong>Simple living</strong></a></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#be5bd1b4-c096-4fd0-b5da-b1d031146131">Sobre el hinduismo, confuncionanismo, budismo, ... y otras practicas New Age</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4139a489-6771-4dde-be0b-5965819ccc94">Sobre politica</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e585b4bc-1151-4f0e-9d9b-97f4cb297f95"><strong>Realpolitik</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aafc2928-9345-4915-bd33-a506581e244e"><strong>Weltpolitik</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ff1e87d1-22fa-4415-949e-736c6080a13d">Liberterian</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#54cf705f-05c5-4efb-8a97-de437e1ddd41"><strong>Republicanism</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dd27a891-016a-4ec0-a41a-5f4855afda8f">Socialism</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cb663e66-171a-4130-aa62-fe81733eca7e"><strong>Darwinismo social?</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#906ab4a3-729c-495f-a768-d9f2a28f2f60">Sobre economia</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9531762c-c15f-490d-8ec2-0db0c08b88e6">Sobre la universidad</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b2d58666-ac06-4cfc-b2a1-25ccef0af520">Recursos por carrera</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0bda9d82-c84a-4f5d-a051-a83a17be1ae2">Dudas filosóficas</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3e8ef7e4-4053-4196-848f-3efb2e43f083">Desemplo por carrera</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#84ee51eb-006e-4713-a5bb-f5bd6f3a9da8">Emprendimiento (Founders)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3c95a699-82b8-4f20-80d9-0eb18b9f82aa">Consejos generales</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2188c2d1-b105-4b8f-a6b6-c5fb8e906450">Contribuye al open source</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e67a6e0f-0aa0-4716-bd15-fc6b9bc4728a">Aprende creando</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18bcb4df-3b18-41be-89cf-ddad20a02d15">Lee</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7a19659c-9caa-4ff5-9906-447e3407bfe5"><strong>¿Se puede ser demasiado viejo para ser un genio? Los grandes descubrimientos se deben hacer antes de los 30 años. Einstein.</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8a30a906-d5e9-410a-b9bb-20f68598dfc1">Sobre el software</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#04336fe8-8f53-44cf-bf09-974921227a99">Newsletter</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a33982c1-5a69-46ce-b9f8-fe35c7c428dc">Wikipedia</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#af1dbcc5-14b7-4795-b93a-03809250f38e">Sobre el corporativismo y el trabajo</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6f32da78-5aec-42b3-9dad-6bfefc87cf69">Salario</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d0551a3b-267c-40ba-abb9-166091804965">HHRR</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a2d1d883-b82e-4f97-a2ad-29765e64cedb">The best profession is</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6115ab40-132e-49d6-8206-f6409d9c3c35">Is the journey the reward?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ab30f4c4-0eb7-4135-a8ac-bf7013e29701">Work gives a man dignity</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#97434b61-9ede-4f96-98fc-b47bcbcb61e2">Sobre aprender lenguajes -latin-</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6101096f-5244-46e7-8ce4-7f5e1c752d70">Existencialismo</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d2901321-43d3-4647-8bf6-f32afa4dd227">Haz lo que quieras</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5f3a8dc3-296c-40ef-9717-66d837abb2e8">Variantes</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f1bcbe50-a728-4b1f-90ab-32464aeb3f4b">Sexo, dinero y drogas</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9439f473-bb18-4d3c-967c-71a068f7c229">Variantes</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#387e7a44-d17c-406e-88a9-fd337a15bfa6">Sexo</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b6bdd532-8b64-4f05-8afd-a66ede0c5cb7">Ser de alto desempeno?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#96e465cc-7e95-413e-a5a1-95bd814b7800">Que es la vida?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#43a1ac25-8360-404f-b1ae-bc8c81dae5d1">Comparaciones</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0c145894-6a6c-4b0a-8ccf-392f717a3355">Sobre el conocimiento o mi propia teoria de las ideas</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e1d2a4e5-a666-43db-9232-11ff7db79ed7">Sobre los deportes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7eac3cc0-7dbc-4c10-8651-bbc917a8f5f2">Sobre la cultura: ¿mito?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aa33eea3-72eb-4b6b-a34e-b05ebe0ae319">Arte, la musica, poesia</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7c567dd9-53d9-404b-afa0-3c772f2e6fda">Work</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1d13ef4a-1cd8-48c9-8f63-805736035ab8">Emigrar</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cddf5a61-2df0-4f3a-b983-865d1c717230">Japon</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#85f19d2c-1ef1-4675-9b8e-87fe74f17b05">Remote work</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7816b129-42e2-4875-b1fa-ce833a1c62e7">Lenguaje</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bef5c922-3093-40fc-89d9-ed95fe15fd2d">Software engineering levels</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bd42a644-843b-4c81-8527-f9a96fc5dd70">Que es aprender? Que libros leer? Que aprender?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2b69dfb9-6f18-4ba4-abe4-a33afbd8f168">Carrera? Soft skills</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ded25a9d-ea0c-4bbc-a1ee-4884bb610417">La autoayuda</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5307720d-4454-4a0a-ae6c-a58ebd5c71eb">Profession and realities</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b2b965a1-85fa-432f-9592-d20e2956303e"><a href="https://www.quora.com/Why-do-so-many-American-college-students-avoid-STEM-majors-considering-that-is-what-leads-to-good-jobs">Why do so many American college students avoid STEM majors, considering that is what leads to good jobs?</a></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#54c3d96e-0a8f-4981-9812-4b0be03e9c64">INCEL</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a50b0917-ae8f-40e7-b68f-fd79558239c9">Hipergamia</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a6a64517-554b-4a7e-9f57-2eeb33160e70">Sobre la pornografia y NO FAP</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1f550525-3c74-4128-94b6-96ca7028b9d4">Referencias</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#839d592f-0a94-45b7-9c90-05745e0dbe97">Por explorar</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#14f57a05-4ad6-48e4-8615-7bb61c361515">Peliculas</a></div></nav><figure id="ce6bd6a3-642a-45a5-b116-593132d07ce1" class="image"><a href="Untitled%2062.png"><img style="width:1024px" src="Untitled%2062.png"/></a><figcaption><a href="https://www.aaronbenitez.com/el-freakonomics-mexicano/">https://www.aaronbenitez.com/el-freakonomics-mexicano/</a></figcaption></figure><p id="d00997ff-88b0-4535-b799-d2f91488c93a" class=""><a href="https://es.quora.com/Qu%C3%A9-consejos-le-dar%C3%ADas-a-un-universitario-en-estos-tiempos">https://es.quora.com/Qué-consejos-le-darías-a-un-universitario-en-estos-tiempos</a></p><ol type="1" id="13c85281-67a7-4236-94a7-f3c97c165ae3" class="numbered-list" start="1"><li>Aprende inglés hasta los niveles más avanzados.</li></ol><ol type="1" id="67821417-eb97-4d68-8fbf-ce52d6636026" class="numbered-list" start="2"><li>Aprende bases de lingüística.</li></ol><ol type="1" id="1fd8c967-838f-445d-86b6-7ea7b9f14bcb" class="numbered-list" start="3"><li>Aprende al menos un lenguaje de computación básico hasta dominarlo, aunque
+nunca vayas a programar en tu vida. Te sugiero empezar con Python que tiene fama de
+ser relativamente simple.</li></ol><ol type="1" id="a5cc19c9-000a-4c53-9205-091e9da7bf76" class="numbered-list" start="4"><li>Aprende a usar los apps más importantes en línea, incluso para diseño.</li></ol><ol type="1" id="b0cb7363-6fc5-4373-8cde-cc3c37b8e4ad" class="numbered-list" start="5"><li>Aprende BIEN matemáticas, estudia todo lo fundamental, hay muchos materiales en línea para estudiarlas. Busca lo más fácil, hasta que lo entiendas. Un posible plan de estudios:<ol type="a" id="d1bb20f8-44d5-43dc-ae1f-9042008d901b" class="numbered-list" start="1"><li>Calculo.</li></ol><ol type="a" id="9c5d2942-3d98-4731-aef2-30f0d8339540" class="numbered-list" start="2"><li>Matematicas discretas.</li></ol><ol type="a" id="25de08c1-1185-4a66-8b52-a67437478588" class="numbered-list" start="3"><li>Probabilidad y estadistica.</li></ol><ol type="a" id="28569c80-7292-48ff-8fac-1dca84bf0cbc" class="numbered-list" start="4"><li>Investigacion de operaciones.</li></ol></li></ol><ol type="1" id="a876b94c-4bf4-4916-998c-59ac0dab9f54" class="numbered-list" start="6"><li>Aprende bases de finanzas, de inversiones, de cómo manejar el dinero y, sobre todo, adquiere un dominio del marketing digital.<p id="589ed698-d52e-4f3e-a6a7-9f989ddaaf27" class="">saber de economía te saca de pobre? No, pero te ayuda a entender las causas de la riqueza y la riqueza en misma.</p><ol type="1" id="aae6fca8-bde2-4848-8d5c-f23bf3cc31aa" class="numbered-list" start="1"><li>Pensiones.</li></ol><ol type="1" id="3f6a150c-55f4-44b1-82b9-eb058b851533" class="numbered-list" start="2"><li>Impuestos.</li></ol><ol type="1" id="f3b3addb-d9f5-4e0c-8f25-585237a3b1f9" class="numbered-list" start="3"><li>Derecho.</li></ol><ol type="1" id="38ba17dc-4c0d-4a06-bacb-3b5eee57534e" class="numbered-list" start="4"><li>Formas de gobierno.</li></ol><ol type="1" id="0736a843-e492-420a-a626-d9d61d44a8f2" class="numbered-list" start="5"><li>Moral y etica.</li></ol></li></ol><ol type="1" id="efd9d9ed-ff8f-4cac-abac-19978d0c4fe7" class="numbered-list" start="7"><li>Aprende todo lo que te encuentres de superación personal, relaciones humanas,
+cómo tratar a otros, la cortesía elemental, lo mismo que la tolerancia
+religiosa.</li></ol><ol type="1" id="18a3f3cb-2a80-4c64-a4b4-ede700b6331a" class="numbered-list" start="8"><li>Estudia y aprende las bases de la filosofía para aplicarlas en tu vida: empieza con los presocráticos y ve avanzando hasta entender a los más
+fundamentales. Sé consciente de tus desacuerdos con ellos, esto es muy
+importante.</li></ol><ol type="1" id="035cbf91-3601-4cb8-9335-e0ac2be47b69" class="numbered-list" start="9"><li>Aprende ciencia política, filosofía política, arte político, y ciencias
+sociales en general. Tienes que conocer al menos sus bases.</li></ol><ol type="1" id="4eea16db-cb21-4e4e-a0dc-87e9746d2554" class="numbered-list" start="10"><li>Aprende lo que es una civilización.</li></ol><ol type="1" id="2daad33f-1046-4407-9e60-d0ea99373880" class="numbered-list" start="11"><li>Aprende todo lo que te encuentres de cómo armar una startup y hacer que sea exitosa.</li></ol><ol type="1" id="96d2bc6d-495e-4100-b58a-5cea0d694cd5" class="numbered-list" start="12"><li>Aprende cómo usar una ruta crítica.</li></ol><ol type="1" id="df92d4c4-eb89-41d8-8393-3e453f453145" class="numbered-list" start="13"><li>Aprende sobre derecho.</li></ol><ol type="1" id="70652056-4098-439b-b8b1-77d67e177a25" class="numbered-list" start="14"><li>Aprende el método científico, cómo usarlo en tu vida diaria, lo mismo que las bases de la ingeniería y la tecnología.</li></ol><ol type="1" id="3a3f71ed-141d-4ca1-aa2b-f43f32bbf28a" class="numbered-list" start="15"><li>Aprende las bases de la literatura, poética, retórica.</li></ol><ol type="1" id="449b401e-0415-4e5b-85c3-77bf3629c7c5" class="numbered-list" start="16"><li>Nunca dejes de estudiar: usa diccionarios, enciclopedias, libros de texto,
+busca todo lo que puedas acerca de los temas que te interesen
+personalmente.</li></ol><ol type="1" id="2180ede9-b943-4e94-b0ad-ef2b4614aaba" class="numbered-list" start="17"><li>Enfonca y deja de hacerte pajas mentales [1], no te inventes peliculas.</li></ol><ol type="1" id="69f3a46a-db4f-454e-bb65-0152a0cc52d5" class="numbered-list" start="18"><li>Aprende sobre salud y sociologia.<ol type="a" id="75d039ec-e0ea-4377-8f42-a6a06182008f" class="numbered-list" start="1"><li>Sexo y enfermedades sexuales. Entiene como funciona tu cuerpo y el contrario.</li></ol><ol type="a" id="ee224e8c-1a05-45d1-9f1a-e8477f34ca8f" class="numbered-list" start="2"><li>¿Poligamia o Monogamia? ¿Cual es mejor? | Tipos de relaciones sexo-afectivas</li></ol><p id="f006b6f5-014d-458d-a13f-972e5e012d40" class="">
+</p></li></ol><h1 id="0378b432-6183-4dc0-8218-0b6380c6eb10" class="">Como nacer para vivir bien? Meritocracia.</h1><p id="25760ba0-8259-4088-bba1-602b0b6b82c5" class="">La carrera comienza incluso desde antes de nacer. Si lees esto quizas ya tienes tus años, espero esto te pueda ayudar entender porque algunos son extraordinarios y otros por mucho que se esfuerzen de manera inteligente o trabajen duro, … no ganan. Las personas que tuvieron suerte (las 3 variables siguientes en mayor o menor medida) al nacer casi por <em>uebos</em> logran cosas exepcionales.</p><p id="5becda41-6288-43b1-b9c3-7cf925cef63b" class=""><a href="https://www.youtube.com/watch?v=QPzQYzDPelo&amp;ab_channel=Elpensamientoenllamas">https://www.youtube.com/watch?v=QPzQYzDPelo&amp;ab_channel=Elpensamientoenllamas</a></p><p id="fecefa38-d014-41cc-98be-07b9cfe1f9f5" class=""><strong>Charles Bukowski.</strong></p><p id="ae5fb887-b8ca-446d-9fd9-c643d5031704" class="">Fyodor Dostoevsky</p><p id="0e26df21-9286-4a16-8216-d3d718aace15" class="">
+</p><p id="d90c9f61-4712-4c4c-ba86-8e3241a22c90" class="">Mapa:</p><ul id="90fe0c43-9824-4434-a818-cf78b4f1e0de" class="bulleted-list"><li style="list-style-type:disc">Conciencia absoluta.</li></ul><ul id="c2c94d38-b79f-41e5-9e15-e0879d846254" class="bulleted-list"><li style="list-style-type:disc">Genios.</li></ul><ul id="ab558ad3-d524-45b6-9839-549dcc30afec" class="bulleted-list"><li style="list-style-type:disc">Héroes.</li></ul><h2 id="1a1a90fb-cff5-4167-92c7-ea3ed4fdee9c" class="">Genetica</h2><p id="7e458273-c787-4c8f-8a06-6216a9a5663b" class="">Para entender lo siguiendo recomiendo Gataca o The Happy World. Aunque el mundo -2022- no ha llegado a esa clase de futuro, la naturaleza le brinda a ciertos individuos capacidades o atributos exepcionales, si bien necesitan cierta disciplina y recursos -dinero- para conseguir el maximo potencial -aunque a veces ni eso necesitan-, un individuo promedio o inferior no puede alcanzarlos por mucha disciplina o recursos que se tengan.</p><p id="93b722f3-57f5-4de7-aae7-bfb962277e94" class=""><a href="https://en.wikipedia.org/wiki/The_Bell_Curve"><strong>The Bell Curve: Intelligence and Class Structure in American Life</strong></a></p><p id="c768cbee-5cf1-4ca9-b1f9-71d0c1f82ed9" class=""><a href="https://www.quora.com/What-does-a-body-builder-with-bad-genetics-look-like/answer/Matt-Chin-5">https://www.quora.com/What-does-a-body-builder-with-bad-genetics-look-like/answer/Matt-Chin-5</a></p><p id="ed9cb01b-8860-44a5-8304-abc0ff8d9b93" class="">Ejemplos en deportes:</p><ul id="48f61251-c1d7-4958-a215-bd8b9ccd63df" class="bulleted-list"><li style="list-style-type:disc">Michael Phelps.</li></ul><ul id="98223756-d2d4-4b2f-8e5a-ddfb55806874" class="bulleted-list"><li style="list-style-type:disc">Micheal Jordan.</li></ul><ul id="b27c4f06-b49c-413c-93c9-58b247b5b477" class="bulleted-list"><li style="list-style-type:disc">Arnold Schwarzenegger</li></ul><p id="315c0593-29be-43e3-a329-9c94cb8ee3b6" class="">Ejemplos en matematicas:</p><ul id="35767709-0bf6-4a69-acab-e1f72d1c176f" class="bulleted-list"><li style="list-style-type:disc">Ramanujan.</li></ul><ul id="f30e5855-f0b5-479c-a618-c99d66d25f1f" class="bulleted-list"><li style="list-style-type:disc">Gauss.</li></ul><ul id="dd5ddbc1-a151-497d-a187-498173ceb46d" class="bulleted-list"><li style="list-style-type:disc">Euler.</li></ul><p id="fe041336-3da5-4571-89ac-5c4228b19dfe" class="">Ejemplos en la industria del sexo:</p><ul id="a6227425-ce7b-4e4e-95ef-97db4993c584" class="bulleted-list"><li style="list-style-type:disc">Mia Khalifa.</li></ul><ul id="ea6aef2c-5866-4a0c-8186-dbb43550fccc" class="bulleted-list"><li style="list-style-type:disc">gem101</li></ul><ul id="280df7a9-765b-4422-b6a5-18a28606d9d2" class="bulleted-list"><li style="list-style-type:disc"></li></ul><h2 id="6299de8f-69fe-4ac3-8a66-05817673cb9c" class="">Recursos -dinero y poder-</h2><p id="04fd042d-09dc-4670-9bae-5b93b4363648" class="">Ya nacieron con el dinero y el poder. Solo necesitan comportarse.  </p><p id="24b8f4f7-9e45-409a-af11-406a31bf3463" class="">Ejemplos:</p><ul id="f393c12c-d38b-4d3e-826d-a4f5f0fda553" class="bulleted-list"><li style="list-style-type:disc">Queen Elizabeth II.</li></ul><ul id="3284067d-06b0-4042-abfc-8168eb4078fd" class="bulleted-list"><li style="list-style-type:disc">Elon Musk.</li></ul><ul id="4fa160e0-7f6a-4ca4-8d8d-95f45378642b" class="bulleted-list"><li style="list-style-type:disc">Marco Aurelio.</li></ul><figure id="376e7a34-e5ed-45d9-9e44-b78bf05556cf"><div class="source"><a href="https://twitter.com/JonErlichman/status/1545189910726037505">https://twitter.com/JonErlichman/status/1545189910726037505</a></div></figure><h2 id="446e1e18-9591-4e2e-a705-ce331229c2a8" class="">Ambiente</h2><p id="5d1c646c-2368-4719-b59b-1cdfac672b9b" class="">Lugar geografico, año -timing-, …</p><p id="0bd56959-910b-4efb-8f8e-3ddac624442a" class="">Ejemplos:</p><ul id="1a4f7b47-dcb1-4da9-8cd6-781e64caa74a" class="bulleted-list"><li style="list-style-type:disc">Steve Jobs.</li></ul><ul id="327ddd1f-8892-4c49-b1ce-62dd58c0e180" class="bulleted-list"><li style="list-style-type:disc">Lenin.</li></ul><p id="1383a6a4-0133-4225-903b-c590e207b725" class="">
+</p><h1 id="9d1cc302-58c7-43ef-9dc7-2b4ae3c36dec" class="">Networking</h1><p id="dd817645-9597-407e-9e4c-d2e3f3eea45c" class=""><a href="https://www.flexjobs.com/blog/post/biggest-job-search-myth-debunked/#:~:text=you%20through%20LinkedIn.-,There%20seems%20to%20be%20a%20vast%20amount%20of%20ways%20in,listings%20are%20never%20made%20public.)">https://www.flexjobs.com/blog/post/biggest-job-search-myth-debunked/#:~:text=you through LinkedIn.-,There seems to be a vast amount of ways in,listings are never made public.)</a></p><h1 id="6db3e37b-4df4-4335-8e00-8080b2076630" class=""><strong>How To Hunt an Elephant</strong></h1><p id="40037578-fa9f-4ef0-bd47-3393703ebac8" class=""><a href="https://www.cl.cam.ac.uk/~fms27/door/elephant.pdf">https://www.cl.cam.ac.uk/~fms27/door/elephant.pdf</a></p><h1 id="512ad896-2293-4cc9-b025-1cac7d075835" class="">Principios epistemicos</h1><ol type="1" id="51166696-74af-4c95-905c-454a9e66897a" class="numbered-list" start="1"><li>Lo que sabes es opinion, hasta que demuestres que es ciencia. </li></ol><ol type="1" id="52f86a2d-77de-42e7-8568-c739c5c635e6" class="numbered-list" start="2"><li>Principio de razonabilidad.<ol type="a" id="bf7bd81c-6727-45c0-a927-55ca8f7cd525" class="numbered-list" start="1"><li>Evidencia.</li></ol><ol type="a" id="d79fd791-9b46-44f7-97b6-dc7ec79c110c" class="numbered-list" start="2"><li>Si lo que sabes es conocimiento, no hay razon para desaprenderlo.</li></ol></li></ol><ol type="1" id="0d352ead-76d1-45a6-8101-5605fe45c4ba" class="numbered-list" start="3"><li>Principio de simpleza.</li></ol><ol type="1" id="cb19b842-548a-4236-adcf-f498bb1c366c" class="numbered-list" start="4"><li>El privilegio de la primera persona: no tienes acceso a los estados mentales de otras personas.</li></ol><ol type="1" id="edcb0af9-11ae-492c-93e8-6e4a7fb3b0b1" class="numbered-list" start="5"><li>Aprender es adquirir conocimiento. No es formar opiniones “criticas” u opiniones a secas. Si pensamos que aprender es un grafo, el problema de aprender es MST, tal que el costo esta determinado por si es o no es conocimiento.</li></ol><ol type="1" id="bea127d7-b144-4b0c-bbaf-3566c159c7a8" class="numbered-list" start="6"><li>Autoridad epistemica.<ol type="a" id="2f9f03bc-0896-4a8d-92bb-969bc3d0418f" class="numbered-list" start="1"><li>Personas o instituciones que sistematicamente han producido resultados excelentes y relevantes en un area. No tu vecino, tu amigo o tu padre, que pueden querer lo mejor para ti, no se sigue que sepan que es eso. </li></ol><ol type="a" id="a11b2f04-47c6-4f22-b769-b49e81e31587" class="numbered-list" start="2"><li>Especialmente seguir a los cientificos y organizaciones de investigacion que sistematicamente han producido conocimiento relevante. Hablo de conocimiento, no opiniones y otra clase de pseuconocimiento. Problema de demarcacion.</li></ol><ol type="a" id="090f709f-fca2-4f18-97be-a94b3b839463" class="numbered-list" start="3"><li><strong>Reliable sources</strong>: <a href="https://en.wikipedia.org/wiki/Wikipedia:No_original_research">https://en.wikipedia.org/wiki/Wikipedia:No_original_research</a></li></ol><p id="9003f794-f0d1-426f-ac08-0a4df10b7139" class="">
+</p><p id="e2ba1355-d278-4063-aa28-3ff3fd8b2b2b" class="">
+</p></li></ol><h2 id="3dcf12b6-d738-44b4-a654-846b3a969681" class="">Recursos</h2><p id="5d5632bc-617c-4fd1-ace5-665d7c5247b5" class="">Es de notar <a href="https://en.wikipedia.org/wiki/Robert_Cialdini"><strong>Influence: The Psychology of Persuasion</strong></a></p><p id="46ef2dc1-fc52-481e-a0e3-fedec68bb093" class=""><a href="https://larrysanger.org/2022/05/if-truth-is-complex-why-is-fact-checking-so-simplistic/">https://larrysanger.org/2022/05/if-truth-is-complex-why-is-fact-checking-so-simplistic/</a></p><p id="180b02b2-a6ac-47cd-a7b2-005d98629f79" class=""><a href="https://www.cia.gov/the-world-factbook/">The CIA World Factbook. </a></p><p id="4e7924e2-2395-405d-8eb7-51b0901f20fd" class=""><a href="https://www.youtube.com/watch?v=GS5B4Le7hhc&amp;ab_channel=InstitutoJuandeMariana">Planificacion social. </a></p><p id="15eb5828-209d-4ac2-9fba-5e213686a163" class=""><a href="https://www.masterclass.com/">https://www.masterclass.com/</a></p><h1 id="46253f78-ee44-4eef-9776-a309af8fc1ac" class="">Friendship</h1><p id="c8898975-96bd-41aa-9295-c49cdb28ae39" class=""><a href="https://open.bu.edu/handle/2144/36016">https://open.bu.edu/handle/2144/36016</a></p><h1 id="50181dab-bb6e-44d4-9a4a-a2b6aa8e3202" class="">Apply to several jobs, and several universities, ...</h1><p id="f056b4ea-0cc2-4e1f-8f5c-7677ff162561" class=""><a href="https://www.youtube.com/watch?v=iUna4cGgn04&amp;ab_channel=FrankStajanoExplains">https://www.youtube.com/watch?v=iUna4cGgn04&amp;ab_channel=FrankStajanoExplains</a></p><h1 id="3f8daca2-2c74-48dc-9ad0-04667863908b" class="">Teoria de juegos</h1><h1 id="4795fbc9-328d-4fa6-a90f-b09454e22eb6" class="">Etica</h1><h2 id="4d32eeba-cd87-46b4-a1e0-7174b7c11ac8" class="">is Specialization for Insects? Fachidiot</h2><p id="a1c94a31-1160-4efc-a06c-2e2b1e8b4c8b" class=""><a href="https://en.wikipedia.org/wiki/Competent_man">https://en.wikipedia.org/wiki/Competent_man</a></p><figure id="a7688c11-6c70-457c-9ddd-16968bf91202" class="image"><a href="Untitled%2063.png"><img style="width:640px" src="Untitled%2063.png"/></a></figure><p id="6b36a22d-376a-410b-83f3-af70384d6ce0" class="">
+</p><h2 id="5bf3cb34-3c24-49aa-b518-9a3db318c396" class="">About <a href="https://en.wikipedia.org/wiki/Simple_living"><strong>Simple living</strong></a></h2><h2 id="be5bd1b4-c096-4fd0-b5da-b1d031146131" class="">Sobre el hinduismo, confuncionanismo, budismo, ... y otras practicas New Age</h2><p id="35915891-6471-40ab-958d-a6f0e783a3b6" class="">Sistemas control de los estados orientales (India, Japon, Vietnam, ...) para justificar la division por castas via el control de conciencia. Los promotores de estas culturas en nuestros paises occidentales adoctrictan para que usted forme parte, casi con total seguridad, de una secta, y tarde o temprano, consuma drogas que son un tipo de soma, y de una gran cooperacion obligatoria. Sea conciente que en los democracias liberales nacen los derechos humanos. Use la razon y la verdad.</p><ul id="2ac3f80b-22fe-419a-bca3-87881d012672" class="bulleted-list"><li style="list-style-type:disc">Vease el Budismo Zen en el Imperio Japones en la segunda guerra mundial.</li></ul><ul id="93646803-896a-465f-828f-d3fe5827f22c" class="bulleted-list"><li style="list-style-type:disc">Vease el El Tibet, el feudalismo y su rey el Dalai Lama -1.6 millones por ano provenientes de la CIA-. <a href="https://www.youtube.com/watch?v=kffbalXTTLo&amp;ab_channel=SideQuest">https://www.youtube.com/watch?v=kffbalXTTLo&amp;ab_channel=SideQuest</a>, <a href="https://www.youtube.com/watch?v=MFOCkdu5p24">https://www.youtube.com/watch?v=MFOCkdu5p24</a>,  <a href="https://youtu.be/TblBobkBWWc?t=1238">https://youtu.be/TblBobkBWWc?t=1238</a></li></ul><ul id="81719d79-7dc2-47a6-a367-2dbe55b6b6d2" class="bulleted-list"><li style="list-style-type:disc">La situacion de Vietnam y los inmigrantes estadounideneses. </li></ul><p id="ff2592b1-b9a8-4ab8-a29a-ee95e9365f1a" class="">Sientete libre de explorar este primer acercamiento:</p><figure id="be0e1891-f53f-4004-9254-2fa2bbf84e44"><div class="source"><a href="https://www.youtube.com/watch?v=vzG32soTAnE">https://www.youtube.com/watch?v=vzG32soTAnE</a></div></figure><p id="67541219-8faa-438d-8da5-8187bbb61cc0" class=""><a href="https://www.youtube.com/watch?v=o3QVAIt3d7U">https://www.youtube.com/watch?v=o3QVAIt3d7U</a></p><p id="86e96ee3-0acd-4227-81a0-71b0a044527e" class=""><a href="https://www.youtube.com/watch?v=xSJr2o-Jk-g">https://www.youtube.com/watch?v=xSJr2o-Jk-g</a></p><p id="6cfc1921-10c6-42af-9733-806b6c01b0ba" class=""><a href="https://www.youtube.com/watch?v=0eFUrVue0ek">https://www.youtube.com/watch?v=0eFUrVue0ek</a></p><p id="665acc89-bedb-4d55-b8a7-0477fabb6f61" class=""><a href="https://www.youtube.com/watch?v=XAPHtHeIlxc">https://www.youtube.com/watch?v=XAPHtHeIlxc</a></p><p id="dd08ea9d-0471-440a-ac7f-01c60e555141" class=""><a href="https://www.youtube.com/watch?v=P5AtEFGiQJ8">https://www.youtube.com/watch?v=P5AtEFGiQJ8</a></p><p id="ae7e788a-47be-4eea-88e5-cea1d7b6638f" class=""><a href="https://www.youtube.com/watch?v=9zVSx2Qwa8g">https://www.youtube.com/watch?v=9zVSx2Qwa8g</a></p><p id="8c0cdb9b-78b3-4801-9b95-f7e49e69c09a" class=""><a href="https://www.youtube.com/watch?v=YnV8aAoPr_w&amp;t=1121s">https://www.youtube.com/watch?v=YnV8aAoPr_w&amp;t=1121s</a></p><h1 id="4139a489-6771-4dde-be0b-5965819ccc94" class="">Sobre politica</h1><h2 id="e585b4bc-1151-4f0e-9d9b-97f4cb297f95" class=""><strong>Realpolitik</strong></h2><h2 id="aafc2928-9345-4915-bd33-a506581e244e" class=""><strong>Weltpolitik</strong></h2><h2 id="ff1e87d1-22fa-4415-949e-736c6080a13d" class="">Liberterian</h2><h2 id="54cf705f-05c5-4efb-8a97-de437e1ddd41" class=""><strong>Republicanism</strong></h2><h2 id="dd27a891-016a-4ec0-a41a-5f4855afda8f" class="">Socialism</h2><h2 id="cb663e66-171a-4130-aa62-fe81733eca7e" class=""><strong>Darwinismo social?</strong></h2><p id="930496b7-04ef-420b-a659-a9126dd41386" class="">Darwin (1871), Parte 1, Cap. V: <em>Natural Selection as affecting Civilised Nations</em></p><h1 id="906ab4a3-729c-495f-a768-d9f2a28f2f60" class="">Sobre economia</h1><h1 id="9531762c-c15f-490d-8ec2-0db0c08b88e6" class="">Sobre la universidad</h1><h1 id="b2d58666-ac06-4cfc-b2a1-25ccef0af520" class="">Recursos por carrera</h1><ul id="61177ecb-675f-4e27-b7cc-b66c9452792c" class="toggle"><li><details open=""><summary>Ciencias computacionales</summary><figure id="045ebfe4-78c6-4a42-b034-fcd6a6475f31"><a href="https://www.youtube.com/watch?v=BtIMCqFZNQ4" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">El feliz developer - Irene M Morgado | T3chFest 2018</div><div class="bookmark-description">¿Qué hace que un profesional del mundo IT esté contento en su trabajo? ¿Es importante involucrarlo en el proyecto, hacerle responsables del código? ¿Le encer...</div></div><div class="bookmark-href"><img src="https://www.youtube.com/s/desktop/6babc418/img/favicon.ico" class="icon bookmark-icon"/>https://www.youtube.com/watch?v=BtIMCqFZNQ4</div></div><img src="https://i.ytimg.com/vi/BtIMCqFZNQ4/hqdefault.jpg" class="bookmark-image"/></a></figure><figure id="e035331f-2b18-46b8-98ff-e641b468ef56"><a href="https://www.youtube.com/watch?v=l8XAWlH1mKc" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Soy informático, duermo 4h/5h al día, y soy súper feliz - Raúl Jimenez - T3chFest 2017</div><div class="bookmark-description">Q: ¿Cuál es el propósito de la vida?R: Ser felizQ: ¿Y cuál es el secreto de la felicidad?R: Encontrar algo más grande que tú y dedicar tu vida a elloEn mi ca...</div></div><div class="bookmark-href"><img src="https://www.youtube.com/s/desktop/6babc418/img/favicon.ico" class="icon bookmark-icon"/>https://www.youtube.com/watch?v=l8XAWlH1mKc</div></div><img src="https://i.ytimg.com/vi/l8XAWlH1mKc/hqdefault.jpg" class="bookmark-image"/></a></figure><figure id="ab96a7ff-8549-4f26-9a8a-0762892ad3e7" class="image"><a href="Untitled%2064.png"><img style="width:547px" src="Untitled%2064.png"/></a></figure><figure id="7b4770f7-f00d-4615-9b99-74f9c657c6e8" class="image"><a href="Untitled%2065.png"><img style="width:633px" src="Untitled%2065.png"/></a></figure><figure id="02559bfc-058e-4a09-856d-29f72d649e2e"><a href="https://www.youtube.com/watch?v=d2_CUOeCgVE" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">¿Cobras poco? Carreras profesionales en software - David Bonilla | T3chFest 2018</div><div class="bookmark-description">En esta charla mostraremos datos agregados de salarios reales del sector. Estudiaremos las posibles diferencias, dependiendo de la localización, tecnologías ...</div></div><div class="bookmark-href"><img src="https://www.youtube.com/s/desktop/6babc418/img/favicon.ico" class="icon bookmark-icon"/>https://www.youtube.com/watch?v=d2_CUOeCgVE</div></div><img src="https://i.ytimg.com/vi/d2_CUOeCgVE/hqdefault.jpg" class="bookmark-image"/></a></figure><figure id="4a9b0603-baf3-45d6-a3ca-7f79b85e2eaa"><a href="https://www.youtube.com/watch?v=j_M9Rf-xZ84" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Entrevistas técnicas vs. Trabajo real</div><div class="bookmark-description">Muchas veces lo que se toma en las #entrevistas de #trabajo en #programación no se condice con lo que luego tendremos que hacer al trabajar en nuestro día a ...</div></div><div class="bookmark-href"><img src="https://www.youtube.com/s/desktop/80d87ec4/img/favicon.ico" class="icon bookmark-icon"/>https://www.youtube.com/watch?v=j_M9Rf-xZ84</div></div><img src="https://i.ytimg.com/vi/j_M9Rf-xZ84/hqdefault.jpg" class="bookmark-image"/></a></figure><figure id="4212bd20-76ea-458f-916b-fe6edcf20adb"><a href="https://www.producthunt.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Product Hunt - The best new products in tech.</div><div class="bookmark-description">Product Hunt is a curation of the best new products, every day. Discover the latest mobile apps, websites, and technology products that everyone&#x27;s talking about.</div></div><div class="bookmark-href"><img src="https://ph-static.imgix.net//favicon.ico?auto=format&amp;auto=compress" class="icon bookmark-icon"/>https://www.producthunt.com/</div></div></a></figure><figure id="fe079c55-dc55-426e-ac27-955618b94410"><a href="https://news.ycombinator.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Hacker News</div></div><div class="bookmark-href">https://news.ycombinator.com/</div></div></a></figure><figure id="ebc79af3-a773-4699-98da-9fd4c1da15dd"><a href="https://web.archive.org/web/20060525195404/http://www.idi.ntnu.no/emner/dif8916/denning.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://web.archive.org/web/20060525195404/http://www.idi.ntnu.no/emner/dif8916/denning.pdf</div></div></a></figure><figure id="bcad1378-1b2b-49c8-8470-5f99d455ff90"><a href="https://ocw.mit.edu/index.htm" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">MIT OpenCourseWare | Free Online Course Materials</div><div class="bookmark-description">MIT OpenCourseWare is a web-based publication of virtually all MIT course content. OCW is open and available to the world and is a permanent MIT activity.</div></div><div class="bookmark-href"><img src="https://ocw.mit.edu/favicon.ico" class="icon bookmark-icon"/>https://ocw.mit.edu/index.htm</div></div><img src="https://ocw.mit.edu/images/MIT_dome.jpg" class="bookmark-image"/></a></figure><figure id="b7d03df8-d88b-463c-bea4-1d99aeb13245"><a href="https://github.com/ossu/computer-science" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">ossu/computer-science</div><div class="bookmark-description">Path to a free self-taught education in Computer Science! The OSSU curriculum is a complete education in computer science using online materials. It&#x27;s not merely for career training or professional development. It&#x27;s for those who want a proper, well-rounded grounding in concepts fundamental to all computing disciplines, and for those who have the discipline, will, and (most importantly!)</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/ossu/computer-science</div></div><img src="https://avatars3.githubusercontent.com/u/14957346?s=400&amp;v=4" class="bookmark-image"/></a></figure></details></li></ul><ul id="82d85a2e-f8c8-491a-8531-576b5e6a9ee6" class="toggle"><li><details open=""><summary>Biología</summary><p id="437585c2-3a5b-4bc2-ac94-b57838cb7875" class=""><a href="https://www.youtube.com/watch?v=0REy2VQr_fU">El darwinismo, ¿de izquierdas o de derechas?</a></p><p id="eb0e54d6-a1ab-412c-ace8-7f579741685e" class=""><a href="https://www.ncbi.nlm.nih.gov/genbank/">BD Genoma humano</a></p></details></li></ul><h1 id="0bda9d82-c84a-4f5d-a051-a83a17be1ae2" class="">Dudas filosóficas</h1><ul id="baaa0b8c-a557-499c-9484-dea44e8b3fe2" class="toggle"><li><details open=""><summary>Generales</summary><p id="1a9cce55-dd53-4bb4-bce9-847b155d0fd8" class=""><a href="https://www.youtube.com/watch?v=1A_CAkYt3GY&amp;list=PLq5rFUzhsrBXuE0wxECMeTYSV-_52fGt5&amp;index=1">Crash Course</a></p><p id="54da410c-5a68-4d80-b505-d84698edc32a" class=""><a href="https://plato.stanford.edu/contents.html">Stanford Encyclopedia of Philosophy</a></p></details></li></ul><ul id="4279d7c1-19d1-479a-bbdb-2c84a9a8bf46" class="toggle"><li><details open=""><summary>La ciencia</summary><p id="b8cd05d3-5708-45db-84c7-ccd404a2c0d4" class=""><a href="https://www.youtube.com/watch?v=ZU5GsNb7lEo&amp;list=PL71h9nkUDIJec0XuuIPdfXSzJBh1oCPgn&amp;index=1">Introduccion al pensamiento cientifico</a></p></details></li></ul><ul id="73c33ce8-8df3-4441-9c27-48ca82c3b641" class="toggle"><li><details open=""><summary>¿Qué es la Universidad?</summary><p id="26ca4534-714f-42c3-a2c7-8f4e3adb6242" class=""><a href="https://www.youtube.com/watch?v=CEUEjo9g7M4">El método del maestro ignorante | Glosas a Suárez (2/10)</a></p><p id="838b4ef9-7aa5-4670-9720-648c1ae6051a" class=""><a href="https://www.youtube.com/watch?v=koZbX6sWU0o">Lo que aprendí en 18 años dando clases - Aprendizaje de un profesor</a></p><p id="703e949f-7d67-4b45-911f-9cf694eedbdc" class=""><a href="https://www.youtube.com/watch?v=30XKRKe-tLw">Los 3 grandes errores de la universidad | Quintín Racionero (2012)</a></p><p id="c009d119-c224-447f-9f97-02632164edfe" class=""><a href="https://www.youtube.com/watch?v=7dcUXDgayZg">Bastos &amp; Villanueva: &quot;La universidad que no queremos&quot;</a></p><p id="9b251b74-b0ee-4583-a2fc-b5c4834537e8" class=""><a href="https://www.youtube.com/watch?v=e49FcVg2g_4">¿Qué es la universidad? | Historia de las filosofías de las artes (1/27)</a></p></details></li></ul><ul id="02f3f05c-ad88-4fa3-811a-df7fce31ad89" class="toggle"><li><details open=""><summary>Drogas</summary><ul id="474ae1d6-9e7f-4627-9c6f-24301d4e4663" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=K5g7-jSVRZY">https://www.youtube.com/watch?v=K5g7-jSVRZY</a></li></ul></details></li></ul><ul id="f78de149-e118-47fa-b593-c0a25e7def6c" class="toggle"><li><details open=""><summary>Que es la buena vida</summary><p id="28046d89-adae-4d53-9898-993c2c2ac006" class="">Leer Los dialogos de Platon. </p><p id="d5547748-8888-46c9-842b-c2f72c99ab11" class="">Cuatro virtudes cardinales: Justicia, Prudencia, Fortaleza y templanza</p></details></li></ul><ul id="3286ccf6-7158-4033-8eed-779ee7831ddd" class="toggle"><li><details open=""><summary>Política</summary><ul id="e8fbe65d-e71e-4740-a6fc-3c0edf4bea15" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=Zs0dT0SjZzo">Socialdemocracia</a></li></ul><ul id="f5320d1c-2775-4084-bdce-d176dbe01266" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=J1fil2hqVDM">Ideologías y Teoría Política contemporánea </a></li></ul><ul id="84cda494-9f01-4541-8a8c-2901d9ce4caa" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=s3RdZuNFB9I">Tolerancia</a></li></ul></details></li></ul><ul id="118712e6-85f3-448c-af49-5d11dfd833cf" class="toggle"><li><details open=""><summary>El tiempo</summary><ul id="e653fdd2-34bf-46c5-a26b-37a765ca1cb6" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=VIhuJXAQiJM&amp;t=1290s">https://www.youtube.com/watch?v=VIhuJXAQiJM&amp;t=1290s</a></li></ul></details></li></ul><ul id="a458bcbb-9d64-4c01-b9f3-a42f006ca8d6" class="toggle"><li><details open=""><summary>La verdad </summary><ul id="17039a6c-eeeb-4d99-be38-5374ee811ab4" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=7Q4xCBpzpiM">https://www.youtube.com/watch?v=7Q4xCBpzpiM</a></li></ul></details></li></ul><ul id="d086c875-79ba-4aeb-aed9-c7bba10c8649" class="toggle"><li><details open=""><summary>Dios</summary><ul id="70917383-2ee1-4bac-bd78-3bfdb3485ecf" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=ysdbUmuxoJI&amp;t=808s">https://www.youtube.com/watch?v=ysdbUmuxoJI&amp;t=808s</a></li></ul></details></li></ul><ul id="28096047-40c4-49b2-9029-cf9a462c5630" class="toggle"><li><details open=""><summary>Identidad</summary><ul id="5048e522-d302-4fc8-8700-08bbbe7a3dc8" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=ilPA0V_Hjlg">https://www.youtube.com/watch?v=ilPA0V_Hjlg</a></li></ul></details></li></ul><ul id="b2f8ed27-3edf-4fc5-9178-12337380c9b5" class="toggle"><li><details open=""><summary>El poder</summary><ul id="8626d511-16b3-4fe0-a7c4-d447613e47a1" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=CGVxv7F4S6o">https://www.youtube.com/watch?v=CGVxv7F4S6o</a> </li></ul></details></li></ul><ul id="d662a8d3-8db9-42dd-a6be-fc623e7e862d" class="toggle"><li><details open=""><summary>Despues</summary><p id="f228b401-38a5-4884-b6cb-4f5c3a7e253d" class=""><a href="https://www.youtube.com/watch?v=ZNQ_k2vL9cI">https://www.youtube.com/watch?v=ZNQ_k2vL9cI</a></p><p id="3d84bdc7-cb02-4771-8cef-4a8eb1a64a32" class=""><a href="https://www.youtube.com/watch?v=NC6j_Pza3Bs">https://www.youtube.com/watch?v=NC6j_Pza3Bs</a></p></details></li></ul><ul id="5b5b05cd-ee58-455e-9083-c44c95ff40ba" class="toggle"><li><details open=""><summary>Soy malo en matematicas</summary><p id="68e1759c-e2ea-4436-95fe-b7074058fc03" class=""><a href="https://www.niemanlab.org/2013/11/matt-waite-how-i-faced-my-fears-and-learned-to-be-good-at-math/">https://www.niemanlab.org/2013/11/matt-waite-how-i-faced-my-fears-and-learned-to-be-good-at-math/</a></p><p id="60b53491-8b46-4fd3-8ec2-b58afe9710f0" class=""><a href="https://www.youtube.com/watch?time_continue=1&amp;v=Xs9aGVUZ3YA&amp;feature=emb_logo&amp;ab_channel=Mathematigal">https://www.youtube.com/watch?time_continue=1&amp;v=Xs9aGVUZ3YA&amp;feature=emb_logo&amp;ab_channel=Mathematigal</a></p></details></li></ul><ul id="5f14ff35-0d00-4e4e-9bc1-64fc3c8e7cf4" class="toggle"><li><details open=""><summary><a href="http://anarcocapitalista.com/jhsconsejos.htm#Consejos">http://anarcocapitalista.com/jhsconsejos.htm#Consejos</a></summary></details></li></ul><h1 id="3e8ef7e4-4053-4196-848f-3efb2e43f083" class="">Desemplo por carrera</h1><p id="303adf3b-892e-4386-ae97-bdfb9c5c23dc" class=""><a href="https://imco.org.mx/comparacarreras/ranking/porcentaje-desempleados/2020/1">https://imco.org.mx/comparacarreras/ranking/porcentaje-desempleados/2020/1</a></p><h1 id="84ee51eb-006e-4713-a5bb-f5bd6f3a9da8" class="">Emprendimiento (Founders)</h1><h1 id="3c95a699-82b8-4f20-80d9-0eb18b9f82aa" class="">Consejos generales</h1><figure id="43bdc753-c172-4869-aa34-53fb1c70269a"><a href="http://inside.mines.edu/~mmyoung/TW_Wkshop.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href"><img src="http://inside.mines.edu/favicon.ico" class="icon bookmark-icon"/>http://inside.mines.edu/~mmyoung/TW_Wkshop.pdf</div></div></a></figure><figure id="4715a290-0833-476b-ab9c-01ee5776dad5"><a href="https://www.inc.com/nicolas-cole/7-networking-hacks-you-need-to-start-using-immediately-and-actually-work.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">7 Networking Hacks You Need to Start Using Immediately</div><div class="bookmark-description">Innovate Your network is your net worth. When people think about networking, they imagine themselves walking around a big event, trying their best to be extroverted. They think about shaking hands and exchanging business cards, with the hope that sometime in the not-so-distant future an unbelievable opportunity will fall right into their lap.</div></div><div class="bookmark-href">https://www.inc.com/nicolas-cole/7-networking-hacks-you-need-to-start-using-immediately-and-actually-work.html</div></div><img src="https://www.incimages.com/uploaded_files/image/1024x576/getty_640629943_2000133320009280268_103794.jpg" class="bookmark-image"/></a></figure><figure id="cfe353d0-2498-4935-93f7-231af87f425f"><a href="https://rachelbythebay.com/w/2021/01/17/woe/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">HR is not your friend, and other things I think you should know</div><div class="bookmark-description">HR is not your friend. HR is there to support the company. If you are not the company, they are not going to be there to support you. HR boils down to paid witnesses in some cases. It changes it from a &quot;you said, the boss said&quot; thing to two-on-one (or worse).</div></div><div class="bookmark-href"><img src="https://rachelbythebay.com/favicon.ico" class="icon bookmark-icon"/>https://rachelbythebay.com/w/2021/01/17/woe/</div></div></a></figure><figure id="62116a81-6d5e-4b8e-aaf4-3abc7be4b0b2"><a href="https://www.quora.com/What-should-a-computer-science-software-engineering-student-never-take-for-granted" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">What should a computer science/ software engineering student never take for granted?</div><div class="bookmark-description">Answer (1 of 2): &gt; EMPLOYMENT Sure, CS grads are hot commodities, but there are also unemployed software engineers. The number is low, but the vast majority is made up of newer engineers that aren&#x27;t getting hired. So, students need to take steps to make themselves appealing to prospective employ...</div></div><div class="bookmark-href"><img src="https://qsf.fs.quoracdn.net/-4-images.favicon.ico-26-ebf6a9e7f7b4576d.ico" class="icon bookmark-icon"/>https://www.quora.com/What-should-a-computer-science-software-engineering-student-never-take-for-granted</div></div><img src="https://qph.fs.quoracdn.net/main-custom-t-788-600x315-pitawsfglqjondnjfdmgqqsnbnracpcv.jpeg" class="bookmark-image"/></a></figure><figure id="f9cf70c9-7e68-4a9a-a77b-9a490c0062ff"><a href="https://dontasktoask.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Don&#x27;t ask to ask, just ask</div><div class="bookmark-description">Every now and then, in online chat rooms I hang around in, someone pops in and says something in the lines of, Foobar123: Any Java experts around? This is bad form, for several reasons.</div></div><div class="bookmark-href"><img src="https://dontasktoask.com/favicon.png" class="icon bookmark-icon"/>https://dontasktoask.com/</div></div><img src="https://dontasktoask.com/favicon.png" class="bookmark-image"/></a></figure><figure id="7165566f-b2eb-4e0c-baaf-2286aeff2142"><a href="http://web-old.archive.org/web/20150707095009/http://www.erickcamacho.com/post/50501435120/el-sindrome-de-estocolmo-en-los-programadores" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">El síndrome de Estocolmo en los programadores</div><div class="bookmark-description">Las condiciones en que se trabaja como programador en la mayoría de las empresas en México son muy malas. Hace unos años se puso de moda que los programadores debían ser subcontratados a empresas que, a falta de mejor nombre, se les denomina &amp;ldquo;consultoras&amp;rdquo;.</div></div><div class="bookmark-href"><img src="http://web-old.archive.org/web/20150707095009im_/http://33.media.tumblr.com/avatar_2f060480eff6_128.png" class="icon bookmark-icon"/>http://web-old.archive.org/web/20150707095009/http://www.erickcamacho.com/post/50501435120/el-sindrome-de-estocolmo-en-los-programadores</div></div><img src="http://media.tumblr.com/dc67ebcecf154b93e9a36fd705fa30dd/tumblr_inline_mmttdeOb121qz4rgp.png" class="bookmark-image"/></a></figure><p id="c1ce2bdf-7d40-45a4-8a9e-6802de6bed42" class="">
+</p><h1 id="2188c2d1-b105-4b8f-a6b6-c5fb8e906450" class="">Contribuye al open source</h1><p id="d5d82ec7-e45e-44d7-913f-b0a9af11509a" class=""><a href="https://summerofcode.withgoogle.com/">https://summerofcode.withgoogle.com/</a></p><h1 id="e67a6e0f-0aa0-4716-bd15-fc6b9bc4728a" class="">Aprende creando</h1><figure id="0681597a-a129-4e2c-bb15-af77d807369c"><div class="source">https://github.com/danistefanovic/build-your-own-x</div></figure><h1 id="18bcb4df-3b18-41be-89cf-ddad20a02d15" class="">Lee</h1><p id="8217e3d2-cda6-4994-bbea-15557641f194" class="">Lee libros, de los originales y a los clasicos, de los grandes autores que han creado y avanzado el conocimiento humano.</p><ul id="e59c39db-8577-4670-b489-5a0c61f318eb" class="bulleted-list"><li style="list-style-type:disc">Deja los resumenes.</li></ul><ul id="800d4521-ab63-4c51-b80e-2bd42647140e" class="bulleted-list"><li style="list-style-type:disc">Los cursos online.</li></ul><ul id="87ad2164-151b-441f-b4d6-228767654898" class="bulleted-list"><li style="list-style-type:disc">YouTube. </li></ul><p id="9c450acc-2a9b-48f8-9374-6e86a8f6aea3" class="">
+</p><h1 id="7a19659c-9caa-4ff5-9906-447e3407bfe5" class=""><strong>¿Se puede ser demasiado viejo para ser un genio? Los grandes descubrimientos se deben hacer antes de los 30 años. Einstein.</strong></h1><p id="e4d14cbe-3d5d-47c7-8503-dca8497ff069" class=""><a href="https://www.bbc.com/mundo/noticias/2016/04/160405_finde_jim_al_khalili_genio_vejez_men">https://www.bbc.com/mundo/noticias/2016/04/160405_finde_jim_al_khalili_genio_vejez_men</a></p><h1 id="8a30a906-d5e9-410a-b9bb-20f68598dfc1" class="">Sobre el software</h1><h2 id="04336fe8-8f53-44cf-bf09-974921227a99" class="">Newsletter</h2><p id="e692ef7b-f5e0-4e09-9cc8-df4afe94ce02" class=""><a href="https://www.bonilista.com/">https://www.bonilista.com/</a></p><h2 id="a33982c1-5a69-46ce-b9f8-fe35c7c428dc" class="">Wikipedia</h2><p id="4e5a2953-0b99-4add-870f-d3a80d3c6806" class=""><a href="https://nypost.com/2021/07/16/wikipedia-co-founder-says-site-is-now-propaganda-for-left-leaning-establishment/">https://nypost.com/2021/07/16/wikipedia-co-founder-says-site-is-now-propaganda-for-left-leaning-establishment/</a></p><h1 id="af1dbcc5-14b7-4795-b93a-03809250f38e" class="">Sobre el corporativismo y el trabajo</h1><h2 id="6f32da78-5aec-42b3-9dad-6bfefc87cf69" class="">Salario</h2><h2 id="d0551a3b-267c-40ba-abb9-166091804965" class="">HHRR</h2><p id="875b636c-122c-42a0-aa40-67dbd925788e" class=""><a href="https://www.youtube.com/watch?v=UpjVt9uoUlw&amp;ab_channel=Humanoscomorecurso">https://www.youtube.com/watch?v=UpjVt9uoUlw&amp;ab_channel=Humanoscomorecurso</a></p><p id="c0481003-a832-476a-87e0-e8d877211c2b" class=""><a href="https://cs1201.medium.com/it-s-not-my-problem-7cd17f6aa421">https://cs1201.medium.com/it-s-not-my-problem-7cd17f6aa421</a></p><p id="ffd44f33-964a-4c7f-b9dd-59bd02ff12cb" class=""><a href="https://www.recruiter.com/recruiting/how-to-respond-when-an-employee-says-thats-not-my-job/">https://www.recruiter.com/recruiting/how-to-respond-when-an-employee-says-thats-not-my-job/</a></p><h2 id="a2d1d883-b82e-4f97-a2ad-29765e64cedb" class="">The best profession is</h2><p id="e897c63d-fdd4-4d5d-9545-5c8f1b9d0a29" class="">mathematician</p><p id="bb712df9-47f8-4788-8e83-1df6a9042860" class="">computer scientist</p><p id="eed71041-e2d0-4bd6-8cbf-2f6bcbfdcebb" class="">logician</p><p id="e9154ab7-325c-4810-9180-8b1fce181b33" class="">…</p><p id="64a392f1-5c28-4aac-9e7b-b5aebb57db7e" class="">that it is ego</p><p id="95438068-6432-4ebd-bad8-07bd75a6ffb6" class=""><a href="https://es.quora.com/Qu%C3%A9-piensan-los-matem%C3%A1ticos-de-las-matem%C3%A1ticas-que-utilizan-los-ingenieros-y-viceversa">https://es.quora.com/Qué-piensan-los-matemáticos-de-las-matemáticas-que-utilizan-los-ingenieros-y-viceversa</a></p><h2 id="6115ab40-132e-49d6-8206-f6409d9c3c35" class="">Is the journey the reward?</h2><p id="52537449-33d0-450f-a9ad-1cb0005ba3f2" class=""><strong>Basil Zaharoff</strong></p><h2 id="ab30f4c4-0eb7-4135-a8ac-bf7013e29701" class="">Work gives a man dignity</h2><ol type="1" id="c75f8044-df04-4f0c-b476-0deb447ee8a3" class="numbered-list" start="1"><li>El trabajo dignifica o es para esclavos? Cualquier trabajo vale? El trabajo es explotacion?  Tu trabajo es pesado o es una mierda? Hay suficiente trabajo? Emprender? Estado? Que industria? Investigacion? David Graeber</li></ol><p id="b3386b78-db89-4748-b0b3-41828cf25813" class=""><a href="https://www.youtube.com/watch?v=OesYhLB4sXQ&amp;ab_channel=WEBDELMAESTROCMF">https://www.youtube.com/watch?v=OesYhLB4sXQ&amp;ab_channel=WEBDELMAESTROCMF</a></p><p id="140298c3-d752-4aba-9f01-d5b7ad3add6b" class=""><a href="https://www.youtube.com/watch?v=HN1WB2UvZGc&amp;ab_channel=DanielTrevi%C3%B1o">https://www.youtube.com/watch?v=HN1WB2UvZGc&amp;ab_channel=DanielTreviño</a>  </p><ol type="1" id="8d6654bd-4942-45a8-92c2-d5a686f1a105" class="numbered-list" start="2"><li>Como conseguir seguridad frente a criminales y el estado?</li></ol><ol type="1" id="aa644751-761a-4df6-af46-edd85e21d5cb" class="numbered-list" start="3"><li><a href="https://www.youtube.com/watch?v=Z_uOhoviHPU&amp;ab_channel=CaféKyoto"><strong>¿Por qué tu TRABAJO destruye tu SALUD MENTAL? | La privatización del estrés | Mark Fisher</strong></a><strong> Es tu estres tu responsabilidad?</strong></li></ol><ol type="1" id="e6086a1d-4601-438e-9684-9932f35f3d50" class="numbered-list" start="4"><li>Sobre la</li></ol><ol type="1" id="3839ceca-084b-4e88-96a4-b205f1d15b6a" class="numbered-list" start="5"><li>Gerencialismo</li></ol><ol type="1" id="efe6bc5e-a1a9-4e13-b6d9-a4e7c3a45f7b" class="numbered-list" start="6"><li>1984, distopia</li></ol><ol type="1" id="2e5ff4cb-d451-41a7-978c-bfd605c5d5bb" class="numbered-list" start="7"><li>Un mundo feliz</li></ol><ol type="1" id="413a57a0-a58d-4bdc-8204-727d2e74b08b" class="numbered-list" start="8"><li><a href="https://www.youtube.com/watch?v=DwF3osDXuN4&amp;ab_channel=Caf%C3%A9Kyoto">https://www.youtube.com/watch?v=DwF3osDXuN4&amp;ab_channel=CaféKyoto</a></li></ol><ol type="1" id="aa8f7b7b-9ba3-49d6-8747-336b254495c0" class="numbered-list" start="9"><li>Debemos superar nuestra parte biologica?<ol type="a" id="1157ced8-01f6-44c9-a96c-d6971bdb5214" class="numbered-list" start="1"><li>Debemos ver a una mujer hermosa?</li></ol><ol type="a" id="5593a34b-c62b-493f-9ee2-26ca416c67ba" class="numbered-list" start="2"><li>Podemos vivir con trabajos criminales?</li></ol></li></ol><ol type="1" id="06370f69-39a1-4833-ae35-15162d4695c0" class="numbered-list" start="10"><li>Mi hijo ve porno ¿Qué debo hacer? ¿Cómo actuar si encuentro a mi hijo viendo pornografía?</li></ol><figure id="64c504f1-9609-488a-88ec-3e7a1cbe15b4" class="image"><a href="Untitled%2066.png"><img style="width:1080px" src="Untitled%2066.png"/></a></figure><h1 id="97434b61-9ede-4f96-98fc-b47bcbcb61e2" class="">Sobre aprender lenguajes -latin-</h1><h1 id="6101096f-5244-46e7-8ce4-7f5e1c752d70" class="">Existencialismo</h1><p id="727413d7-5cf0-4084-9455-dc569de8f0ac" class="">El mito del sisifo.</p><p id="1617afac-dcc6-40d8-96b9-6250d87a1fb5" class="">Albert Camus</p><p id="24dcaceb-0428-4dbe-9b38-394481ecc18d" class="">Satre</p><h2 id="d2901321-43d3-4647-8bf6-f32afa4dd227" class="">Haz lo que quieras</h2><h3 id="5f3a8dc3-296c-40ef-9717-66d837abb2e8" class="">Variantes</h3><p id="9b9b6c2a-a7a3-4998-93e1-e63878a0f859" class="">YOLO</p><p id="77a2f86f-2331-4bc2-b478-ff25114faa20" class="">Consumismo</p><p id="fd8426d7-54a4-48f3-8912-93c5f20aa343" class="">Libertinaje</p><p id="3edaddd5-c9f6-41da-9a2a-5f6a9e79f2f3" class="">Sociedad liquida</p><p id="7c67735c-a483-4fdb-9af5-95652b7df88a" class="">Lo que piensas es lo que obtienes</p><p id="c19af2b2-1fa4-4898-a885-055a09123d04" class="">
+</p><p id="eb49b7c0-b0a1-4cf8-bf0d-a37e4c2b58a6" class="">Esto produce aislamiento, que produce busqueda de mas consumismo, y se repite. En cada nuevo loop, se necesita mayor intensidad.</p><p id="5aa09293-e32b-42fc-afef-f71ed8e1304b" class="">
+</p><h2 id="f1bcbe50-a728-4b1f-90ab-32464aeb3f4b" class="">Sexo, dinero y drogas</h2><figure id="14bfe6e6-934f-44ee-ae44-de7e87e94695"><div class="source"><a href="https://twitter.com/FBuenAbad/status/1537934640048005120">https://twitter.com/FBuenAbad/status/1537934640048005120</a></div></figure><h3 id="9439f473-bb18-4d3c-967c-71a068f7c229" class="">Variantes</h3><ul id="d3f00e76-3e3e-414b-85c7-d4b1b7e0c2ea" class="bulleted-list"><li style="list-style-type:disc">Alcohol, autos y mujeres</li></ul><ul id="0e084049-05e9-4a68-9809-fa515b98daca" class="bulleted-list"><li style="list-style-type:disc">Los 7 pecados capitales</li></ul><ul id="8ee57496-81e1-40f3-a59b-59d27ee5708e" class="bulleted-list"><li style="list-style-type:disc">Malcom X y el movimiento de la Nación del Islam: mujeres blancas, drogas de blancos, cerdo, prostitución</li></ul><ul id="c2b16320-da80-4238-80ef-d3aa36f779b3" class="bulleted-list"><li style="list-style-type:disc">Consumismo</li></ul><ul id="6ba4292c-1a49-4ddc-a425-e4d61c4bc95e" class="bulleted-list"><li style="list-style-type:disc">Los deportes masivos como espectadores: fútbol, baloncesto -NBA-, …</li></ul><h3 id="387e7a44-d17c-406e-88a9-fd337a15bfa6" class="">Sexo</h3><p id="a90e5348-2f66-4c97-8c0d-f70ce9bb142f" class=""><a href="https://www.robkhenderson.com/">https://www.robkhenderson.com/</a></p><p id="e11f84f8-deb6-43a9-bb2e-9a1cb3f0c641" class=""><strong>Summary. Women look for CHADs (Charming, Handsome, and Driven) AKA Tall Dark and Handsome.</strong></p><p id="d8cf50a0-411c-4396-a199-df241d9036b1" class=""><a href="https://edwest.substack.com/p/why-men-dont-age-like-wine?s=r">https://edwest.substack.com/p/why-men-dont-age-like-wine?s=r</a></p><figure id="ab83f32b-3391-44e9-b896-22f5d171f372"><div class="source"><a href="https://twitter.com/robkhenderson/status/1536187419732721664">https://twitter.com/robkhenderson/status/1536187419732721664</a></div></figure><h1 id="b6bdd532-8b64-4f05-8afd-a66ede0c5cb7" class="">Ser de alto desempeno?</h1><figure id="85fe33da-b507-44d7-807d-5dd29dbfa95c"><div class="source"><a href="https://twitter.com/aaronbenitez_/status/1538180611835322368">https://twitter.com/aaronbenitez_/status/1538180611835322368</a></div></figure><p id="a110091b-51cc-4249-b7ba-200861adefa5" class="">
+</p><p id="3bb645fc-941e-420d-af4f-d7d3102b470b" class="">Habla bien.</p><p id="0a7922bc-db0a-49cc-a6b0-1e8325975cc6" class="">Presenta bien.</p><p id="99bbdc8c-4714-4b1c-b71c-77c94900afd2" class="">Párate bien.</p><p id="5a2d90dc-627f-4578-a15b-617410cf3bd8" class="">Vístete adecuadamente.</p><p id="8f76730a-3303-4eb6-9cff-333787bf2374" class="">Escribe bien.</p><p id="1768a361-c0a7-4772-a2c8-3d3cb98e2d00" class="">Ecuanimidad. Enfoque. Largo plazo.</p><h1 id="96e465cc-7e95-413e-a5a1-95bd814b7800" class="">Que es la vida?</h1><h2 id="43a1ac25-8360-404f-b1ae-bc8c81dae5d1" class="">Comparaciones</h2><h1 id="0c145894-6a6c-4b0a-8ccf-392f717a3355" class="">Sobre el conocimiento o mi propia teoria de las ideas</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a6942d62-f508-4e03-943f-105bf960bd31"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>¿Quieres acaso contemplar cosas lamentables, ciegas y tortuosas, en lugar de oírlas de otros claras y bellas?</strong> Platón, <em>La República</em>, 506d</div></figure><p id="9a293a6e-8871-4ba3-8832-3a672166cf2a" class="">
+La verdad vive en el mundo de las ideas, no puede ser conseguida en este mundo porque somos su sombra.
+A efectos practicos, podemos vivir con un conocimiento suficiente.
+Un conjunto A que es un subconjunto B y asi sucesivamente hasta el conjunto universal.
+El conjunto k es suficiente, siempre que sea valioso para nosotros. Lenguaje privado?</p><p id="d7c5295b-3a06-4f00-aedc-ad9d9b50206f" class="">Ignorancia. Se ignora que se ignora. En este punto, se padece hipocognicion. </p><p id="83109a6f-5633-44c7-8673-91828fa9b551" class="">Aprende. </p><p id="87e58a86-f509-42fd-a546-a43f073682c3" class="">Opinion.</p><p id="6422afda-94e7-4a44-9c39-d6b206ec84fe" class="">Cultura.</p><p id="e92d56dc-01e7-4ebf-b0b2-c07f38f5d874" class="">Ciencia.</p><p id="8440b672-3563-4fad-a1e1-12d66cb87464" class="">La filosofia puede proporcionar conocimiento?</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8bbeb088-e095-49d0-b951-d1054cf02e61"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Las redes sociales también son <strong>una de las principales fuentes de información del alumnado, </strong>lo que, a juicio del profesor, lleva a que sepan <strong>&quot;muchas cosas, pero poco profundamente&quot;</strong>, algo que no es necesariamente malo, ya que &quot;denota interés&quot; y permite &quot;recomendar textos para ahondar en el tema&quot;. <a href="https://www.elespanol.com/quincemil/articulos/actualidad/asi-es-miguel-anxo-bastos-uno-de-los-profesores-mas-populares-de-la-usc">https://www.elespanol.com/quincemil/articulos/actualidad/asi-es-miguel-anxo-bastos-uno-de-los-profesores-mas-populares-de-la-usc</a></div></figure><p id="d293f710-a1f7-4513-a03e-9246330d7e31" class="">Depende del coste-beneficio que reporte.</p><p id="ee4d4d71-060e-427c-ba07-8e144790f930" class="">Ejemplo:</p><p id="a3cff471-08f4-4a93-9b93-209ce330056a" class="">Conjunto A: <a href="https://interestingengineering.com/us-army-portable-nuclear-reactor-2024">https://interestingengineering.com/us-army-portable-nuclear-reactor-2024</a></p><p id="298d5ebb-93e1-4bdf-b6de-66f59937c694" class="">Sofistas. Hablan poéticamente.</p><p id="8b919292-eefd-486f-9818-2c32dc4aeae5" class="">Cuñaos.</p><p id="e10d581c-7d21-4e91-a691-eed8614618b9" class="">
+</p><p id="e341a652-3645-49fb-8b89-3d23d03322b7" class="">Conjunto B: </p><p id="ce72b523-4fd0-4a18-8e73-3d8e6d2377ae" class="">Leer sobre reactores nucleares en la Wikipedia o <strong>La energía nuclear salvará el mundo. </strong><a href="https://www.planetadelibros.com/autor/alfredo-garcia-operadornuclear/000052605"><strong>Alfredo García, @OperadorNuclear</strong></a></p><p id="e717b5c1-a43b-46c9-9fb8-33eae59ddf87" class="">Divulgacion cientifica. Note que aqui no se ven matematicas ni logica, condicion necesaria para llamar algo ciencia -Mario Bunge. La ciencia. Su método y su filosofía.-, la razon es que se la divulgacion se enfoca mas en ser brillosa que en ser rigurosa.</p><p id="e95d85e6-f6c5-4293-ba99-fec542dc887d" class="">A ojo de bien cubero.</p><p id="0154fc90-4ca6-40a2-8435-014daae905a4" class="">
+</p><p id="39cdf979-9a99-4d3e-b613-f1a7d190795f" class="">Conjunto C: Aprender quimica, mecanica, mecanica cuantica, ...</p><p id="c435fb07-45c5-417e-8278-2796b1cb0941" class="">…</p><p id="5a9bac98-988f-46b5-818e-2b8231152f3d" class="">Notese que con saber el primer conjunto no eres capaz de ejecutar, pero aprender la siguiente conjunto es cada vez mas dificil.</p><p id="1e3cb6d1-2806-467d-8c66-cc4690adab44" class="">Notese que en el conjunto A o en el conjunto vacio vive la mayoria de las personas. Esto es, o reflexionan al respecto -lenguaje privado-, leen un articulo aleatorio o intuyen como manipular las herramientas: opinion -facultad- o creencia.</p><p id="388236e7-e647-426d-8e89-7eedb8cf7930" class="">Existe un conjunto n tal que en ese eres un profesional -te pagan por tus habilidades- o puedes ejecutar habilidades de manera sistematica.</p><p id="d1373246-36ce-4173-a88b-62c1c9606ca3" class="">Llevan 4 anos para aprender computacion, mientras que la mayoria sabe abrir redes sociales y una que otra aplicacion. Es la misma parcela de conocimiento pero en distinto grado.</p><p id="017ae2a8-a6f1-420a-b5fe-9e6d075acaba" class=""><a href="https://sanchezcarlosjr.medium.com/la-pura-l%C3%B3gica-es-la-ruina-del-esp%C3%ADritu-df217c7135a4">¿Tomar decisiones con el corazón, cabeza, el estómago, o el pene, …? ¿Tiene sentido no elegir la mejor decisión posible?</a></p><p id="bdf45b4d-f6d4-4819-89bd-1e3b2e3c702d" class="">He also argued that Wikipedia&#x27;s &quot;root problem&quot; is a &quot;lack of respect for expertise&quot;.</p><p id="b84eac3c-aa65-4b37-a482-21c0f53f1b09" class="">Maniqueísmo.</p><h1 id="e1d2a4e5-a666-43db-9232-11ff7db79ed7" class="">Sobre los deportes</h1><h1 id="7eac3cc0-7dbc-4c10-8651-bbc917a8f5f2" class="">Sobre la cultura: ¿mito?</h1><h2 id="aa33eea3-72eb-4b6b-a34e-b05ebe0ae319" class="">Arte, la musica, poesia</h2><h1 id="7c567dd9-53d9-404b-afa0-3c772f2e6fda" class="">Work</h1><ul id="299acc68-a8b4-4ac8-803b-4e6c78db0d15" class="bulleted-list"><li style="list-style-type:disc">Freelancer</li></ul><ul id="ba8add80-9989-4dd4-890e-33ebf0319556" class="bulleted-list"><li style="list-style-type:disc">Contractor</li></ul><ul id="662c3049-6fbd-4fe4-a526-35cb52672a3f" class="bulleted-list"><li style="list-style-type:disc">Startup</li></ul><ul id="18ab694f-8533-450b-8380-3080530fb3bf" class="bulleted-list"><li style="list-style-type:disc">Consulting</li></ul><ul id="e55fd65d-0f67-4993-9dad-2792b37e3918" class="bulleted-list"><li style="list-style-type:disc">Corporation</li></ul><ul id="b4696704-a501-4446-9f0b-5110ecd889dd" class="bulleted-list"><li style="list-style-type:disc">Government</li></ul><ul id="da615a48-cd58-4989-b7ef-af717e2733c4" class="bulleted-list"><li style="list-style-type:disc">Researcher</li></ul><h1 id="1d13ef4a-1cd8-48c9-8f63-805736035ab8" class="">Emigrar</h1><h2 id="cddf5a61-2df0-4f3a-b983-865d1c717230" class="">Japon</h2><p id="95c9e00a-3872-4bbf-a81e-0fee7849c428" class=""><a href="https://www.youtube.com/watch?v=Ov0jrVbDRKA&amp;ab_channel=KiraSensei">https://www.youtube.com/watch?v=Ov0jrVbDRKA&amp;ab_channel=KiraSensei</a></p><h1 id="85f19d2c-1ef1-4675-9b8e-87fe74f17b05" class="">Remote work</h1><h1 id="7816b129-42e2-4875-b1fa-ce833a1c62e7" class="">Lenguaje</h1><p id="0d3f32bc-15ea-4471-ae2c-3dad85adc685" class=""><a href="https://quillette.com/2019/11/16/thorstein-veblens-theory-of-the-leisure-class-a-status-update/">https://quillette.com/2019/11/16/thorstein-veblens-theory-of-the-leisure-class-a-status-update/</a></p><h1 id="bef5c922-3093-40fc-89d9-ed95fe15fd2d" class="">Software engineering levels</h1><h1 id="bd42a644-843b-4c81-8527-f9a96fc5dd70" class="">Que es aprender? Que libros leer? Que aprender?</h1><p id="74a54eb3-667a-4ef5-8e8a-9c8968cee159" class="">
+El conocimiento -matematicas, fisica, ciencias computacionales, …- evita que:</p><ol type="1" id="777690ec-1b60-4707-975d-e20692fafccf" class="numbered-list" start="1"><li>Los edificios se caigan -aviones, internet, electronica, medicina, Telegram-.</li></ol><ol type="1" id="666a6e26-b661-4874-8b18-86798dd9c8bf" class="numbered-list" start="2"><li>Nos dan la relacion de causa-efecto. Por tanto,</li></ol><ol type="1" id="2394c4f0-b2bb-4198-b766-4136309f3e90" class="numbered-list" start="3"><li>Tu puedes predecir que pasara dadas tus acciones.</li></ol><ol type="1" id="328fc73a-ceca-4ce3-aa01-39103a7fd5ef" class="numbered-list" start="4"><li>Asi, estableciendo cuales son las mejores decisiones o acciones para lograr el mejor resultado posible.</li></ol><ol type="1" id="fdd439eb-7d44-4378-8a8c-b1b9681c6bb7" class="numbered-list" start="5"><li>Permiten desarrollar teorias cada vez mas completas via deduccion, por tanto, permiten manipular la realidad de manera mas precisa.</li></ol><p id="db60bde8-9d87-49f7-aab0-19b88f2c6000" class="">Conversion de conocimiento (dominio?) a software.</p><p id="6db0ae60-b522-48ff-93aa-107320322ec4" class="">Puede la religion producir conocimiento?</p><p id="945a52d2-362b-4edc-b7a4-5e24ca397079" class="">Intenta leer el libro en su idioma original, sino en una traduccion aceptable.</p><ul id="11263b9b-8376-4758-8c02-fddfd00805ea" class="bulleted-list"><li style="list-style-type:disc">Libros que cambiaron el mundo:<ul id="f580e087-e059-4572-a559-291512ee258d" class="bulleted-list"><li style="list-style-type:circle">Dialogos, Platon.</li></ul><ul id="b6250658-1360-452c-91d6-d480ce2e7b3f" class="bulleted-list"><li style="list-style-type:circle">Fausto, Goethe.</li></ul><ul id="45f8bc2c-04c7-4fcf-abe5-a751345ba9e7" class="bulleted-list"><li style="list-style-type:circle">Todas las obras de Sheakspeare.</li></ul></li></ul><ul id="ff37227a-a4f3-482d-8aad-638d59d32fd7" class="bulleted-list"><li style="list-style-type:disc">Libros tecnicos sobre tu area -los mas completos y dificiles-. Sobre computacion.</li></ul><ul id="0793bb39-a4f6-42e8-981f-6a8be0d4e1aa" class="bulleted-list"><li style="list-style-type:disc">Libros de recomendaciones de personas con autoridad.</li></ul><p id="f41ed4c7-c6e2-4429-80b3-f88f52addf63" class=""><a href="https://www.gatesnotes.com/Books">https://www.gatesnotes.com/Books</a></p><p id="b3f7d1ed-1b6c-49e3-858d-a82a592e2d1b" class=""><a href="https://www.nytimes.com/books/best-sellers/">https://www.nytimes.com/books/best-sellers/</a></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="06d675ca-42ee-4b57-9173-3b8d12edb424"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Cuando aprendes algo nuevo que nadie antes sabia y pasa del lenguaje privado al lenguaje publico, se le llama descubrimiento o invencion.</div></figure><p id="ec330989-79bd-48b5-a85a-0e4b2a3c8bc9" class=""><a href="https://www.gatesnotes.com/About-Bill-Gates/Year-in-Review-2021#ALChapter3">At the end of last year</a>, I said that one of my plans for 2022 was to read more about 
+polarization. <strong>It’s a problem I’m quite concerned about, and this helped 
+me understand the phenomena much better. </strong>I wouldn’t say I finished the 
+book more optimistic about our ability to tackle the problem, which is 
+even more daunting than I thought. <strong>But if you want to understand what’s 
+going on with politics in the United States, this is the book to pick 
+up.</strong> <a href="https://www.gatesnotes.com/Books/Why-Were-Polarized">https://www.gatesnotes.com/Books/Why-Were-Polarized</a></p><h2 id="2b69dfb9-6f18-4ba4-abe4-a33afbd8f168" class="">Carrera? Soft skills</h2><figure id="5acd7e83-82f2-411a-928b-6400779a49f1"><div class="source"><a href="De_cero_a_Junior_-_Matas_Ippoliti.pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5a0d7cf5-9717-48d6-af65-ba676f99a181/De_cero_a_Junior_-_Matas_Ippoliti.pdf</a></div></figure><h1 id="ded25a9d-ea0c-4bbc-a1ee-4884bb610417" class="">La autoayuda</h1><h1 id="5307720d-4454-4a0a-ae6c-a58ebd5c71eb" class="">Profession and realities</h1><h2 id="b2b965a1-85fa-432f-9592-d20e2956303e" class=""><a href="https://www.quora.com/Why-do-so-many-American-college-students-avoid-STEM-majors-considering-that-is-what-leads-to-good-jobs">Why do so many American college students avoid STEM majors, considering that is what leads to good jobs?</a></h2><h1 id="54c3d96e-0a8f-4981-9812-4b0be03e9c64" class="">INCEL</h1><p id="6a010850-8963-4726-853d-63288c9ea2f3" class="">Icelandic Phallological Museum.</p><h2 id="a50b0917-ae8f-40e7-b68f-fd79558239c9" class="">Hipergamia</h2><ol type="1" id="86751b5b-e498-4d7f-83e6-d52028f816c0" class="numbered-list" start="1"><li><a href="https://www.youtube.com/watch?v=pzSfKjCnFl8&amp;ab_channel=Podcasts"><strong>Groupie</strong></a><strong>. Cynthia Plaster Caster.</strong></li></ol><ol type="1" id="fb636c12-b191-419c-9516-590e672089c8" class="numbered-list" start="2"><li>El gran Gastby.</li></ol><h1 id="a6a64517-554b-4a7e-9f57-2eeb33160e70" class="">Sobre la pornografia y NO FAP</h1><p id="939dd7ac-68ee-47e7-9c80-168cce005701" class="">Debido a sus propiedades el FAP esta asociado en nuestro tiempo con la pornografia. Y como no es indispensable para tu supervivencia: pero es malo?·  </p><p id="75892058-7896-4f9b-941d-d45d0f482c6b" class=""><a href="https://nofap.com/">https://nofap.com/</a></p><p id="add5256a-aed6-4c64-a2a6-77847b2dcfe7" class=""><a href="https://www.youtube.com/watch?v=9INpyZeRWO0&amp;ab_channel=MaestriaSexual">https://www.youtube.com/watch?v=9INpyZeRWO0&amp;ab_channel=MaestriaSexual</a></p><h1 id="1f550525-3c74-4128-94b6-96ca7028b9d4" class="">Referencias</h1><p id="224302d4-cbda-4c31-922d-3098f96fbd17" class="">[1] Cómo dejar de hacerse pajas mentales y disfrutar de la vida. Giulio Cesare Giacobbe.
+[2] La cultura: Todo lo que hay que saber. Dietrich Schwanitz.</p><p id="e489c0e7-255e-4b00-8601-c806201df28c" class="">[3] El mito de la cultura.</p><p id="5be2d13f-faa1-4edc-870e-efe88811ea6f" class=""><a href="https://en.wikipedia.org/wiki/23_Things_They_Don%27t_Tell_You_About_Capitalism"><strong>Ha-Joon Chang - 23 Things They Don&#x27;t Tell You About Capitalism</strong></a></p><p id="7d8a65da-ada5-40a0-95e5-db51147afc39" class=""><a href="https://michael-lim.medium.com/16-microhabits-that-will-improve-your-life-1-everyday-98c5521b4161">https://michael-lim.medium.com/16-microhabits-that-will-improve-your-life-1-everyday-98c5521b4161</a></p><p id="90aac70a-2fbc-4db5-a6a7-bbe788cfb71c" class=""><a href="https://www.playboy.com.mx/playboy-se-lee/13-habitos-para-tener-una-vida-increible/">https://www.playboy.com.mx/playboy-se-lee/13-habitos-para-tener-una-vida-increible/</a></p><p id="3c7d86cb-e638-4366-9e84-2a7f812a229c" class=""><em><strong>Unnatural Selection: Why the Geeks Will Inherit the Earth</strong></em></p><p id="d2f72edf-edd1-4e3f-8f18-d99478632cec" class=""><strong>The Cathedral and the Bazaar.</strong></p><p id="8f711dfd-451f-4957-b136-fb73035d23e9" class="">Free software.</p><p id="6d7a50de-00d9-45b9-9714-faf253dddcb7" class="">El sutil arte de que te importe un carajo</p><h1 id="839d592f-0a94-45b7-9c90-05745e0dbe97" class="">Por explorar</h1><p id="498d21db-16f9-4a62-92e0-3340e7114a84" class="">Seguro social</p><p id="ec3dbdd6-e9ae-458f-96a1-a6c0ebe93879" class="">J. Paul Getty</p><p id="98fb98ac-5d1d-486a-b67e-93d8f5837e52" class="">Antivacunas</p><h1 id="14f57a05-4ad6-48e4-8615-7bb61c361515" class="">Peliculas</h1><ul id="5bc88c94-9134-4ec5-8633-92ff11f6e278" class="bulleted-list"><li style="list-style-type:disc">Malcom X</li></ul></div></article></body></html>
