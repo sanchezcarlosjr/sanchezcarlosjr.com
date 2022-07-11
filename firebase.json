@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "carlos-sanchez-jr",
     "public": ".",
     "ignore": [
       "firebase.json",
