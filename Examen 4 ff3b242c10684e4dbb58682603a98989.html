@@ -1,0 +1,761 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Examen 4</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="ff3b242c-1068-4e4d-bb58-682603a98989" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/nasa_multi-axis_gimbal_rig.jpg" style="object-position:center 80%"/><h1 class="page-title">Examen 4</h1></header><div class="page-body"><nav id="e53a4ebf-b3ab-4252-8bc8-885c900d15cf" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#38266b08-ec03-41c1-9e13-8b576a4e09bb">Describa las principales secciones de la memoria asignada a un programa durante su ejecución.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9923cbfe-cc59-469c-9153-603b5072ecff">La respuesta: Típicas secciones de la memoria en tiempo de ejecución</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cb4e085f-f86d-49c8-844b-28fb7acb25c2">Contexto</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#90beed90-f06d-4598-bcba-178936ac76ce">Mencione qué es un “Activation Record” y para qué se utiliza.</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f3ec4a31-7696-4385-8c6c-30563564c159">Explique las ventajas de utilizar “Stack Machine” como modelo de evaluación. </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d0d618c6-e68a-4fa7-b473-9d079fe36972">Suponga que queremos agregar la siguiente expresión condicional a COOL: </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b2bc7584-1b11-493b-9984-1b96c8dd3e45">Considere las siguientes clases: </a></div></nav><h1 id="38266b08-ec03-41c1-9e13-8b576a4e09bb" class="">Describa las principales secciones de la memoria asignada a un programa durante su ejecución.</h1><h2 id="9923cbfe-cc59-469c-9153-603b5072ecff" class="">La respuesta: Típicas secciones de la memoria en tiempo de ejecución</h2><pre id="cd7799ec-3c14-433f-bbb4-3af0ef74b9dc" class="code"><code>+--------------+ Direcciones bajas.
+|              | El tipo de archivo (por ejemplo .ELF), librerías estáticas, ...
+|    Code      | Donde las instrucciones de nuestro programa viven.
+|   Static     | Constantes. Datos generados por el compilador.
+|    Heap      | Memoria dinámica para estructuras de datos. Crece positivamente.
+|      ↓       | 
+|      ↓       | 
+|              | 
+|              | 
+|  Free memory | Memoria libre. Bloques de memoria de 4KB o 16KB con basura.
+|              | 
+|              | 
+|              | 
+|      ↑       | 
+|      ↑       |
+|     Stack    | Guarda los &quot;activation records&quot;. Crece negativamente.
++--------------+ Direcciones altas.</code></pre><p id="fd5c432a-fb43-4d48-afee-7c3332d44108" class="">En el caso del <em>Heap</em>, dinámico significa que localización y deslocalización es hecha explíticitamente desde un procedimiento mientras la aplicación está corriendo. En otras palabras, no sabemos cuánta memoria se necesita. Típicas operaciones que incrementan el <em>Heap</em> son «new» (instanciar una clase) y malloc. Por su puesto, debemos considerar la liberación (<em>free</em>) del espacio: no queremos acabarnos con la memoria disponible ni queremos errores inesperados. Por esto nace la necesidad de un Gargabe Collector, una característica de los lenguajes modernos para deslocalizar objetos no usados.</p><p id="c37d438a-3804-45d8-b91d-a2645e4beba5" class="">El stack (<em>call stack</em>) es donde almacenamos el estado actual (<em>activation records</em>) de un bloque de código (funciones, procedimientos, métodos,…) y un registro del historial de las llamadas (<code>main</code> llama a <code>g</code>, <code>g</code> a <code>f</code>, <code>f</code> a <code>r,</code> …). Debes considerar que algunos lenguajes de programación como <em>Erlang</em> también pueden usar colas en lugar de pilas.</p><p id="2286d3f5-9578-46ae-b9ff-28a9d739e82f" class="">El temido <em>Stack Overflow</em> surge precisamente cuando agotamos el espacio disponible para esta estructura de datos. Este error es normalmente causado por la recursión, aunque puede ocurrir sin ella: con una gran cantidad de llamadas o con un ciclo de llamadas.  Por ello, algunos lenguajes de programación como Java (<code>java -Xss1m MyProgram</code>) permite cambiar el tamaño de la pila.</p><p id="f21bd25f-4a10-48f1-9e52-78186b8b7b33" class="">Es importante mencionar que este acercamiento a la recursividad no es el único, por ejemplo, el uso de iteradores y generadores en lenguajes como Python o Haskell.</p><p id="20794f0f-abf4-4852-b0b5-968be7618899" class="">Las estructuras de datos «activation records» las estudiamos en la siguiente pregunta.</p><h2 id="cb4e085f-f86d-49c8-844b-28fb7acb25c2" class="">Contexto</h2><p id="ed701110-cb38-49d9-ba2f-2a849ad5619f" class="">Antes de hablarte sobre las secciones de la memoria, debemos entender que el manejo de la memoria es contigente: existen mundos posibles con otra ingenería. Por ejemplo, al inicio toda la memoria era solo para un solo proceso, luego para el sistema operativo y para un proceso, hasta llegar nuestros días con la virtualización y múltiples procesos.</p><p id="e3b07cd3-f099-4192-8926-361f9790d71b" class="">Con esto en mente, estudiemos el trabajo actual de los maestros de todos nosotros [1]: primero discutimos la memoria de arriba a abajo brevemente, para luego enfocarnos exclusivamente en el ambiente en ejecución -cuando nuestro programa es un proceso-.</p><p id="929bdb97-c3a2-4bfe-8ec4-b674226284af" class="">Tenemos una jeraquía de memoria, pero para la programadores principalmente existen los registros de la CPU, la memoria principal y la secundaria. Y por otra parte, el sistema operativo que debe lidiar con múltiples procesos. Así nace la necesidad de virtualizar la memoria: nuestros programas son más fáciles de crear o usar, da mayor protección de la intervención de otros procesos y los aisla de los fallos de otros procesos.</p><p id="ad753544-1ec7-400c-b755-0557460688bd" class="">La colaboración entre estos 3 componentes ocurre con la ayuda de la MMU (en español, memoria de manejadora de memoria), una tabla de páginas o segmento (bloque de memoria regularmente de 4KB o 16KB) y el concepto de memoria virtual.</p><p id="1bf3f70b-78aa-4113-a14a-c85d3348470b" class="">Aquí empieza la diversión. </p><p id="8905ec98-2ed3-4be1-94d5-a02f82960501" class="">Nuestro programa en ejecución no se entera de el cómo está organizada la memoria porque <strong>cada dirección de memoria es un dirección virtual.</strong> ¡Ya no tenemos que preocuparnos por donde guardamos nuestras variables! Como escritores de un compilador, un problema menos. Podemos asumir que los bloques son contiguos.</p><p id="ddaf381f-74f0-43e2-aff0-065fd7e46246" class="">El sistema operativo asigna a nuestro programa cuando entra en ejecución una abstracción de la memoria física llamado espacio de memoria. </p><p id="c84fa6e9-9b4d-40c5-83cd-c5f16d4c759e" class="">Una típica subdivisión o disposición de la memoria en tiempo de ejecución fue explicada en la sección anterior.</p><p id="021074b0-187f-4202-8c5e-f0fbf5a21362" class="">[1] Ken Thompson creó Unix entre 3 semanas, ¿acaso eso no es ser un maestro?</p><p id="8d4fabfc-5eda-41cd-bb05-7774c1649cf2" class="">Federation, V. C. (2019, May 06). Ken Thompson interviewed by Brian Kernighan at VCF East 2019. Youtube. Retrieved from <a href="https://www.youtube.com/watch?v=EY6q5dv_B-o&amp;t=1909s&amp;ab_channel=VintageComputerFederation">https://www.youtube.com/watch?v=EY6q5dv_B-o&amp;t=1909s&amp;ab_channel=VintageComputerFederation</a></p><h1 id="90beed90-f06d-4598-bcba-178936ac76ce" class="">Mencione qué es un “Activation Record” y para qué se utiliza.</h1><p id="aa874767-cddd-444c-b8c2-22be1d17a323" class="">Un «Activation Record» (<em>stack frame,</em> <em>call frame </em>o solamente <em>frame</em>) es una estructura de datos usada en ejecución para almacenar las llamadas a un bloque de código (funciones, procedimientos, métodos, …), donde el registro completo de llamadas es guardado en la <em>call stack</em>. Un general <em>activation record</em> es:</p><pre id="fd877728-f695-4e5b-9959-390bd59776ec" class="code"><code>struct ActivationRecord {
+    current paramaters
+    returned values
+    control link
+    access link
+    saved machine status
+    local data #Los valores internos del bloque.
+    temporaries 
+}</code></pre><ol type="1" id="10e8b070-6225-4c7b-b2c2-666a7df7fcc3" class="numbered-list" start="1"><li>Los valores temporales son aquellos que no pueden ser guardados en registros.</li></ol><ol type="1" id="3ea42172-1038-4b6a-9551-6f8a1c7e25b4" class="numbered-list" start="2"><li>Guardamos el estado de la máquina para referirnos a la información previa a la llamada, como por ejemplo, la dirección de retorno. </li></ol><ol type="1" id="dc0c589e-7427-4191-9f50-f8eabfb2560d" class="numbered-list" start="3"><li>Los <em>access links</em> es donde guardamos la información de otros <em>activation records</em>. </li></ol><ol type="1" id="c859f038-699f-4eab-a9ee-4e50513cb6f9" class="numbered-list" start="4"><li>Los <em>control links </em>apunta a la dirección de memoria de la llamada.</li></ol><ol type="1" id="a9254ba3-865d-46bf-9355-b7e33009830c" class="numbered-list" start="5"><li>Si el bloque de código regresa un valor, necesitamos un espacio de memoria para eso. Aunque, también podemos guardarlo en un registro.</li></ol><ol type="1" id="417d2c90-0b8d-44f1-a3d0-fb11c1220000" class="numbered-list" start="6"><li>Los argumentos usados en el método actual. Aunque, también pueden estar en un registro.</li></ol><p id="a23b5873-6315-40ee-ade0-99e5a3087371" class="">Utilizamos los «Activation Record» en ejecución para que la subrutina actual acceda a la información interna, interactúe con otras subrutinas, y por supuesto, es un mecanismo que habilita la recursividad.</p><h1 id="f3ec4a31-7696-4385-8c6c-30563564c159" class="">Explique las ventajas de utilizar “Stack Machine” como modelo de evaluación. </h1><p id="44e4ec4d-7b3d-4113-bb25-59811928ab4e" class="">Los programas son más compactos en el modelo “Stack Machine”, además es más fácil de implementar por ser un modelo bastante intuitivo. Este modelo es flexible porque permite adaptarlo sin mucho problema a las necesidades de tipos y operaciones. Incluso es posible combinarlo con otros modelos como “Register Machine”, “Functional evaluation model”, “rule-based evaluation model”, y “constraint-based evaluation model”.</p><p id="ed2cbfaa-d882-4096-a95d-a770aa2b59ae" class="">Dependendiendo de la arquitectura de la computadora, también puede ser bastante eficiente.</p><h1 id="d0d618c6-e68a-4fa7-b473-9d079fe36972" class="">Suponga que queremos agregar la siguiente expresión condicional a COOL: </h1><p id="f4018043-8683-427f-b763-1526f48211fd" class=""><em><strong>cond &lt;p1&gt; =&gt; &lt;e1&gt;; &lt;p2&gt; =&gt; &lt;e2&gt;; … ; &lt;pn&gt; =&gt; &lt;en&gt;; dnoc</strong></em></p><p id="1b22dfc1-aa6e-48d4-9cea-a2aacbdb9336" class="">Suponga que n &gt;=1, y que se inicia evaluando el primer predicado &lt;p1&gt;, en caso de ser verdadero se evalúa la expresión &lt;e1&gt;, de lo contrario evalúa &lt;p2&gt;, y así sucesivamente hasta que uno de los predicados se cumple o termina de evaluarlos a todos.</p><p id="bb0d131e-6826-4e36-835e-f45c4d5f7340" class="">Escriba la función de generación de código cgen(cond &lt;p1&gt; =&gt; &lt;e1&gt;; … ; &lt;pn&gt; =&gt; &lt;en&gt;; dnoc) siguiendo la “Stack machine” y las convenciones MIPS vistas en las lecturas.</p><p id="a99147a2-1d0e-4ec3-bcdb-0311558d94ae" class="">Solución:</p><pre id="1c838eef-7e0e-49ba-918f-619dd6ee9493" class="code"><code># Kind of Predicates
+codegen(expression1 = expression2, tag) =  
+  codegen(expression1)
+  sw $a0, 0$sp # push $a0
+  addiu $sp, $sp, -4 # new space in stack
+  codegen(expression2)
+  lw $t1, 4($sp) # pop
+  addiu $sp, $sp, 4 # remove space in stack
+  beq $t1, $a0, tag
+
+codegen(expression1 != expression2, tag) =  
+  codegen(expression1)
+  sw $a0, 0$sp # push $a0
+  addiu $sp, $sp, -4 # new space in stack
+  codegen(expression2)
+  lw $t1, 4($sp) # pop
+  addiu $sp, $sp, 4 # remove space in stack
+  bne $t1, $a0, tag
+
+...
+
+# We don&#x27;t manipulate the stack. We keep the principle.
+codegen(cond &lt;p1&gt; =&gt; &lt;e1&gt;; … ; &lt;pn&gt; =&gt; &lt;en&gt;; dnoc) =
+  codegen(p1, e1) # beq $t0, $a0, e1; bne $t0, $a0, e1; ...
+  codegen(p2, e2)
+  codegen(p3, e3) 
+  codegen(p4, e4)
+  ...
+  codegen(pn, en) # beq $t0, $a0, en; bne $t0, $a0, en; ...
+  # $a0 is gargabe
+  li $a0, $0
+  b end_cond
+
+e1:
+  codegen(e1)
+  b end_cond
+
+e2:
+  codegen(e2)
+  b end_cond
+
+e3:
+  codegen(e3)
+  b end_cond
+
+...
+
+en:
+  codegen(en)
+  b end_cond
+
+end_cond:
+   
+   </code></pre><p id="864870d2-ffcd-49f5-975a-d128f211f863" class="">
+</p><p id="a00769d3-e110-4dec-a4a7-f2024a91a5b8" class="">Seguimos la notación un poco más exacta de:</p><p id="781dabca-e4f7-4e8c-92b5-f8d649cd7350" class="">12-02: Code Generation I (17m26s) | Week 7: Code Generation &amp; Operational Semantics | Compilers | edX. (2022, December 01). Retrieved from <a href="https://learning.edx.org/course/course-v1:StanfordOnline+SOE.YCSCS1+2T2020/block-v1:StanfordOnline+SOE.YCSCS1+2T2020+type@sequential+block@5dbc1371fbcb4f1497da952a991d7387/block-v1:StanfordOnline+SOE.YCSCS1+2T2020+type@vertical+block@1d1d0ef7cac943f1b6d22afce44845f0">https://learning.edx.org/course/course-v1:StanfordOnline+SOE.YCSCS1+2T2020/block-v1:StanfordOnline+SOE.YCSCS1+2T2020+type@sequential+block@5dbc1371fbcb4f1497da952a991d7387/block-v1:StanfordOnline+SOE.YCSCS1+2T2020+type@vertical+block@1d1d0ef7cac943f1b6d22afce44845f0</a></p><h1 id="b2bc7584-1b11-493b-9984-1b96c8dd3e45" class="">Considere las siguientes clases: </h1><table id="45061c4f-4889-491e-b89f-0d860f8e8927" class="simple-table"><tbody><tr id="bb3f36c8-55a1-4c63-a58b-9f6b98ee1672"><td id="eBUD" class="" style="width:232.66666666666666px">class A {
+a1 : Int;
+a2 : String;
+m1() : Object { ... };
+m2() : Object { ... };
+};</td><td id="vj~a" class="" style="width:232.66666666666666px">class B inherits A {
+a3 : Int;
+m1() : Object { ... };
+m3() : Object { ... };
+};</td><td id="OV~?" class="" style="width:232.66666666666666px">class C inherits B {
+a4 : Int;
+m2() : Object { ... };
+m3() : Object { ... };
+};</td></tr></tbody></table><p id="8d01f470-e826-4ff3-a8b4-58720bb9a635" class="">Ilustre la estructura de los objetos de tipo A, B y C, incluyendo tablas de dispatch.</p><figure id="ba189a99-e64b-48bf-9c32-0f9b38027a75" class="image"><a href="Untitled%20229.png"><img style="width:361px" src="Untitled%20229.png"/></a></figure><p id="a82c6c6b-9fa8-41ef-9ce6-4ba82d0d0a7a" class="">
+</p></div></article></body></html>

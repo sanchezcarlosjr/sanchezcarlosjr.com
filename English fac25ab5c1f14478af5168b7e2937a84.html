@@ -1,0 +1,708 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>English</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="fac25ab5-c1f1-4478-af51-68b7e2937a84" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🏁</span></div><h1 class="page-title">English</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Created</th><td><time>@December 27, 2020 6:01 PM</time></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Updated</th><td><time>@December 8, 2022 9:59 AM</time></td></tr></tbody></table></header><div class="page-body"><p id="978a3a69-f450-40ca-b2a2-501b94df3dab" class=""><a href="https://academicguides.waldenu.edu/writingcenter/grammar">https://academicguides.waldenu.edu/writingcenter/grammar</a></p><h1 id="1ce9c18f-bd6d-4199-9653-6a4d4cc87cf5" class="">Resources</h1><p id="e235d2f5-5caa-410f-8c8c-94234b71e539" class="">Diana Hacker. Rules for write.</p><p id="91b14b3b-bd09-41ab-8876-befa15d5e5f2" class="">Diana Hacker. A pocket style manual.</p><p id="ed45e531-0eff-44e7-bcb8-86f58c0edd2d" class="">Oxford Modern English Grammar by Bas Aarts.</p><p id="bda7cdc0-a9e2-4652-a732-eb4bd62c6146" class="">From Old English to Standard English by Dennis Freeborn.</p><p id="598a633e-8f24-4ae1-8eb7-9950b389ac07" class="">Samuel P. Newman in <em>A Practical System of Rhetoric</em></p><p id="503375d0-0a1f-4e72-b255-3bbb41cf4834" class=""><a href="https://hemingwayapp.com/">https://hemingwayapp.com/</a></p><h1 id="a64f856e-1d83-4c68-a43e-a43b0388e32e" class="">English</h1><ul id="fc5f0f00-bc5d-451b-9c14-bcd5e4ac816a" class="bulleted-list"><li style="list-style-type:disc">Bilingual children&#x27;s books English- Spanish
+What are your life goals?
+Why do you want to study in the U.S?
+Talk about your job in a more detailed way
+read it out loud a few times before you practice with a teacher</li></ul><h2 id="aa18a5bc-99d2-4315-84d0-955668d65bfd" class="">How do I use the phrases &quot;to the south of …&quot;, &quot;on the south of …&quot; and &quot;in the south of …&quot;?</h2><p id="c66b975d-d894-446f-8e2c-ed910ae62a35" class=""><a href="https://forum.wordreference.com/threads/prepositions-with-compass-points-south-north-etc.1875944/">https://forum.wordreference.com/threads/prepositions-with-compass-points-south-north-etc.1875944/</a></p><p id="ca18d064-de2c-4418-8257-d49eaad4c0bb" class=""><a href="https://www.quora.com/Which-one-is-correct-%E2%80%98live-in%E2%80%99-or-%E2%80%98l-live-at%E2%80%99">https://www.quora.com/Which-one-is-correct-‘live-in’-or-‘l-live-at’</a></p><p id="2573bd74-4022-4707-8f13-5666e55a1f02" class="">
+</p><h1 id="1cff1246-ab93-43b8-b961-bc3b23679aef" class="">Resources</h1><p id="bb457a8a-1f6d-4b10-bb75-916c890be2de" class=""><a href="https://www.englisch-hilfen.de/en/inhalt_grammar.htm">https://www.englisch-hilfen.de/en/inhalt_grammar.htm</a></p><p id="926bc33d-98a5-4c48-8576-8a8467ea92ef" class=""><a href="https://www.myenglishpages.com/english/vocabulary-lesson-idioms-alphabetical-order.php?letter=a">https://www.myenglishpages.com/english/vocabulary-lesson-idioms-alphabetical-order.php?letter=a</a></p><p id="2d5e6ff3-0b17-4b03-8d5a-4b4cb2d4b3cf" class=""><a href="https://learningenglish.voanews.com/">https://learningenglish.voanews.com/</a></p><p id="4c598d3c-6196-445f-be6c-5523d0a78015" class=""><strong>AP English Language and Composition</strong></p><ul id="8b42fc7c-9db0-4bbf-bbc5-f9ef2ed7f66b" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.edx.org/course/preparing-for-the-ap-english-language-and-composit">https://www.edx.org/course/preparing-for-the-ap-english-language-and-composit</a></li></ul><ul id="dbf867e6-b690-401e-b368-ebdcf80c3e29" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=TXCaBkWHZuQ&amp;list=PLCEja84uspXuBecyr-ijQ8pl6UHkih-17&amp;ab_channel=MarcoLearning">https://www.youtube.com/watch?v=TXCaBkWHZuQ&amp;list=PLCEja84uspXuBecyr-ijQ8pl6UHkih-17&amp;ab_channel=MarcoLearning</a></li></ul><p id="824aff64-d589-4252-8461-852cf6fba212" class=""><strong>AP English Literature and Composition</strong></p><p id="f26590c4-d575-4c16-8a1e-f952194bb669" class="">Latin: <em>Vergil</em></p><ul id="85661e8c-cac4-4154-b2e4-538d1eed3076" class="bulleted-list"><li style="list-style-type:disc">The Bedford Handbook - Writing Exercises for practice. - <a href="http://dianahacker.com/bedhandbook6e/subpages/wr_menu.asp">http://dianahacker.com/bedhandbook6e/subpages/wr_menu.asp</a></li></ul><ul id="cdf23e0a-f65b-4f71-bc91-c966de78478d" class="bulleted-list"><li style="list-style-type:disc">The Bedford Handbook - Grammar Exercises for practice. - <a href="http://dianahacker.com/bedhandbook6e/subpages/gm_menu.asp">http://dianahacker.com/bedhandbook6e/subpages/gm_menu.asp</a></li></ul><ul id="74650ea5-a031-4830-83a7-810afe417540" class="bulleted-list"><li style="list-style-type:disc">Aims Community College - Body Paragraphs Exercise - <a href="http://www.aims.edu/student/online-writing-lab/process/body-exercise">http://www.aims.edu/student/online-writing-lab/process/body-exercise</a></li></ul><ul id="423fd7da-5785-4c5b-8496-e3c7304a9504" class="bulleted-list"><li style="list-style-type:disc">The Writing Center at University of North Carolina - Handouts and Resources - <a href="http://writingcenter.unc.edu/handouts/">http://writingcenter.unc.edu/handouts/</a></li></ul><ul id="2155117d-0fde-47f4-a46b-8176dcc78793" class="bulleted-list"><li style="list-style-type:disc">Purdue University Online Writing Lab - The Online Writing Lab (OWL)
+at Purdue University houses writing resources and instructional
+material, and we provide these as a free service of the Writing Lab at
+Purdue. - <a href="https://owl.english.purdue.edu/owl/">https://owl.english.purdue.edu/owl/</a></li></ul><ul id="fc59de9b-e0a7-40d0-9c9b-da72e825ad07" class="bulleted-list"><li style="list-style-type:disc">Writers&#x27; Handbook (University of Wisconsin at Madison) - In this
+section, you will find many instructional materials developed for
+the Writing Center - <a href="http://writing.wisc.edu/Handbook/">http://writing.wisc.edu/Handbook/</a>.</li></ul><ul id="b88d1267-4201-4269-8104-f1fb17ae5663" class="bulleted-list"><li style="list-style-type:disc">Grammar Bytes - Grammar Instruction with Attitude - <a href="http://www.chompchomp.com/menu.htm">http://www.chompchomp.com/menu.htm</a></li></ul><ul id="01c0309d-ec19-43d7-bad4-808c967c9a4e" class="bulleted-list"><li style="list-style-type:disc">Guide to Grammar and Writing (Charles Darling, Capital Community
+College; Hartford, CN) - The Guide to Grammar and Writing is sponsored
+by the Capital Community College Foundation, a nonprofit 501 c-3
+organization that supports scholarships, faculty development, and
+curriculum innovation. - <a href="http://grammar.ccc.commnet.edu/grammar/">http://grammar.ccc.commnet.edu/grammar/</a></li></ul><ul id="0ec0cc9a-d14f-4be2-9a40-76b0dbf6f8b7" class="bulleted-list"><li style="list-style-type:disc">Big Dog&#x27;s Grammar - &quot;Maybe some dull, basic English grammar stuff
+here, but I know how to get to the meat of any subject. Join me as I
+nose my way through the least you need to know to bluff your way through Freshman comp or any general writing task.&quot; - <a href="http://www.aliscot.com/bigdog/">http://www.aliscot.com/bigdog/</a></li></ul><p id="97613d7b-2d93-4b9f-a717-7fe75518dbee" class="">
+</p><p id="680aaf43-1199-4d2e-86d1-4f401f2720ba" class=""><a href="https://writemyessayfor.me/">https://writemyessayfor.me/</a>?</p><p id="bff5538f-5e21-4780-93d1-0efd080a14ad" class=""><a href="https://ted-ielts.com/describe-a-map-language/">https://ted-ielts.com/describe-a-map-language/</a></p><p id="99c6ffcb-9159-4acb-adc6-13b8d264594a" class=""><a href="https://www.englishclass101.com/blog/2020/07/17/directions-in-english/">https://www.englishclass101.com/blog/2020/07/17/directions-in-english/</a></p><p id="8c0054d5-4a13-44b6-9767-93d8d04ad41e" class=""><a href="https://en.islcollective.com/english-esl-powerpoints/grammar/word-order/compass-cardinal-directions/106123">https://en.islcollective.com/english-esl-powerpoints/grammar/word-order/compass-cardinal-directions/106123</a></p><p id="4228c62c-7d7f-4a81-b9fe-34fc18fc7da7" class=""><a href="https://blog.apastyle.org/apastyle/2015/09/principles-of-writing-how-to-avoid-wordiness.html">https://blog.apastyle.org/apastyle/2015/09/principles-of-writing-how-to-avoid-wordiness.html</a></p><p id="018f7d44-b9ee-4073-8f06-ad59718a6eff" class=""><a href="https://dictionary.cambridge.org/us/grammar/british-grammar/verb-patterns-verb-infinitive-or-verb-ing">https://dictionary.cambridge.org/us/grammar/british-grammar/verb-patterns-verb-infinitive-or-verb-ing</a></p><h1 id="4115e5fb-1c1d-41e4-b359-4bb887b4d8ec" class="">My exercises </h1><pre id="2c3a0138-637f-47ef-9db4-7a5332c8be80" class="code"><code>&quot;His English had the flawless, idiomatic ring of a native speaker&quot; about 
+Satoshi Nakomoto</code></pre><figure id="a6003830-3539-43f3-abad-d13185bf1a97" class="link-to-page"><a href="English%20vocabulary%20and%20quotes%20a6003830353943f3abadd13185bf1a97.html">English vocabulary and quotes</a></figure><ol type="1" id="876c5c5d-c50e-4e4d-8e2e-1a8ac8e61f62" class="numbered-list" start="1"><li><a href="https://www.ldoceonline.com/dictionary/make-the-most-of-something-get-the-most-out-of-something">Get the most out</a><ul id="6bfd0815-faca-46ef-8288-a1dc3395a3ff" class="bulleted-list"><li style="list-style-type:disc">I’d learned English grammar in order to get the most out of enlightenment.</li></ul><ul id="1eb977b7-010a-46df-812b-c6959c45ef91" class="bulleted-list"><li style="list-style-type:disc">She gets the most out of our Computer science course.</li></ul><ul id="4640c84f-7e22-4ed0-badc-ce3e742ca42f" class="bulleted-list"><li style="list-style-type:disc">His writing gets the most out of American literature.</li></ul><ul id="fef8c3b6-4f06-4ed0-8200-b97d97f48512" class="bulleted-list"><li style="list-style-type:disc">Since you want to speak fluently, thinking actively gets the most out of any conversation.</li></ul><ul id="fe251fd7-35a3-497a-93d6-f2f2737ffd59" class="bulleted-list"><li style="list-style-type:disc">Paolo gets the most out of his college classes.</li></ul><ul id="92203765-e030-451e-a6c1-efb063b29ff5" class="bulleted-list"><li style="list-style-type:disc">Enlightenment gets the most out of good.</li></ul><ul id="23f473dd-2131-40ae-94a1-a6bb1cebbdd3" class="bulleted-list"><li style="list-style-type:disc">Our house gets the most out of Greek architecture.</li></ul><ul id="a44de572-87fe-478d-8846-f87040bb6ca7" class="bulleted-list"><li style="list-style-type:disc">My learning method gets the most out of your skills.</li></ul><ul id="6e778c49-b1fe-4518-b63d-f78a0cf78ae6" class="bulleted-list"><li style="list-style-type:disc">I’m studying mathematics because it gets the most out of my time. </li></ul></li></ol><ol type="1" id="33111eab-dd29-4fa8-9dbf-1bf6aed32ed9" class="numbered-list" start="2"><li>Make the most out of. </li></ol><ol type="1" id="91548f76-bb67-4c02-9d60-f14a75667bda" class="numbered-list" start="3"><li>poster child</li></ol><ol type="1" id="f61def04-eb2e-4470-8f7c-2538550ea289" class="numbered-list" start="4"><li></li></ol><ol type="1" id="981c1230-e8c2-44f8-b457-5ecdda406658" class="numbered-list" start="5"><li>Unfounded.<ul id="17e4d79f-954b-4c18-8c1d-48f6f740f42b" class="bulleted-list"><li style="list-style-type:disc">Clever people gotta keep away unfounded opinions.</li></ul></li></ol><ol type="1" id="4717e1bc-fb45-4f06-a817-a96fc375ac14" class="numbered-list" start="6"><li>Revelers.<ul id="2775fc20-cf06-4507-b78b-482432859bd5" class="bulleted-list"><li style="list-style-type:disc">My neighborhood has several revelers.</li></ul><ul id="4af174dd-0638-4e37-8bab-3f4270c4eb69" class="bulleted-list"><li style="list-style-type:disc">On New Year’s Eve shows who is a reveler.</li></ul><ul id="cb388c56-aea5-487e-89bc-4bc84d27f58e" class="bulleted-list"><li style="list-style-type:disc">Revelers gone.</li></ul><ul id="37d8579b-4950-40a7-b995-ec75f26876cc" class="bulleted-list"><li style="list-style-type:disc">Each reveler was odd.</li></ul><ul id="6b8d9917-3862-4610-933b-e5d84975d6a5" class="bulleted-list"><li style="list-style-type:disc">I see a reveler.</li></ul></li></ol><ol type="1" id="b668af3c-2c84-42db-97fa-a8326b984085" class="numbered-list" start="7"><li>Reign.</li></ol><ol type="1" id="4de28166-6656-48a7-aa1c-956b42440db1" class="numbered-list" start="8"><li>muddle up<ol type="a" id="e88e094a-5371-41c5-883e-60d79fcab548" class="numbered-list" start="1"><li>Some instructors muddle up computer science topics.</li></ol></li></ol><ol type="1" id="06f6ee81-22ff-4e94-9226-ffe8054395b7" class="numbered-list" start="9"><li>malfeasance</li></ol><ol type="1" id="84bc07e7-cd01-471f-910c-df0da44d6626" class="numbered-list" start="10"><li>groundbreaking</li></ol><ol type="1" id="238511f4-437b-452a-b1e1-02c753a9a637" class="numbered-list" start="11"><li>clever</li></ol><ol type="1" id="d2d7928b-1794-41a0-9b13-c5980de7f645" class="numbered-list" start="12"><li>lounge</li></ol><ol type="1" id="59ceb958-5725-431b-9b72-d544bd98979e" class="numbered-list" start="13"><li>licentiousness</li></ol><ol type="1" id="78554447-c418-4c6d-9aae-99a3ce0b6167" class="numbered-list" start="14"><li>hall</li></ol><ol type="1" id="81b35f2b-8476-46a3-b646-1fe489017af7" class="numbered-list" start="15"><li>bring</li></ol><ol type="1" id="e8363504-9d28-4d8b-84d6-576c0b0e85bf" class="numbered-list" start="16"><li>tough time</li></ol><ol type="1" id="939418a0-82c4-48fc-a60f-006b48c3fab2" class="numbered-list" start="17"><li>threatened</li></ol><ol type="1" id="b485d2fb-b829-4b8c-bb4f-c103d4e2b2bf" class="numbered-list" start="18"><li>STAND FOR</li></ol><ol type="1" id="656d28da-b1fd-4042-ba64-2914f5824879" class="numbered-list" start="19"><li>grave</li></ol><ol type="1" id="6da2438e-2e8a-4752-9e7e-4f5774dce43b" class="numbered-list" start="20"><li>shawl</li></ol><ol type="1" id="2eb5d963-a783-4d2b-8509-c0c42abf1626" class="numbered-list" start="21"><li>burial</li></ol><ol type="1" id="c5b7f00c-3d86-4344-bc64-d8eb98d30bed" class="numbered-list" start="22"><li>breastfeed</li></ol><ol type="1" id="67cb1e39-2f8d-4d9c-a0bf-068e7fece4dc" class="numbered-list" start="23"><li>set off</li></ol><ol type="1" id="00156e4e-30b6-4834-a8f8-086a7dc87382" class="numbered-list" start="24"><li>abridgment</li></ol><ol type="1" id="08f07cc5-63bc-4dba-9c83-91a210b8d3c6" class="numbered-list" start="25"><li>reckoning</li></ol><ol type="1" id="0f19f745-b3fb-4952-98e6-f4629f58fca7" class="numbered-list" start="26"><li>hailed</li></ol><ol type="1" id="1e5807d3-246a-43ad-9396-d87abfa6db55" class="numbered-list" start="27"><li>bring out</li></ol><ol type="1" id="e645a57e-8540-4308-b757-a1f5db2e43df" class="numbered-list" start="28"><li>alike</li></ol><ol type="1" id="9f3d0e61-ef8c-4561-a86d-d65b0692b3ff" class="numbered-list" start="29"><li>bodes</li></ol><ol type="1" id="ef0145b2-45f9-4422-98c3-95959f522b3d" class="numbered-list" start="30"><li>send out</li></ol><ol type="1" id="a8dad785-c774-4a51-b2e3-013db00c538e" class="numbered-list" start="31"><li>pointed out:</li></ol><ol type="1" id="8573195a-3611-4d75-9885-a588c220eba7" class="numbered-list" start="32"><li>dearth</li></ol><ol type="1" id="8df9d661-a961-4551-a69a-e2cc8a844f3e" class="numbered-list" start="33"><li>so that</li></ol><ol type="1" id="70585247-20dc-40ed-b314-08a46e5de954" class="numbered-list" start="34"><li>breaks down</li></ol><ol type="1" id="27a1e212-26c7-431d-8046-1769bff688a5" class="numbered-list" start="35"><li>scuffle. It refers to a physical conflict.</li></ol><ol type="1" id="c640479c-04b9-416d-b8c2-f37f3e1a34d1" class="numbered-list" start="36"><li>melee. It refers to a physical conflict mass.</li></ol><ol type="1" id="343ae9dc-882a-436c-b7bd-21758ee87a5a" class="numbered-list" start="37"><li>bout. It refers to illness or a boxing match. </li></ol><ol type="1" id="09274d2d-f6e9-406b-8197-edd9cf4b47a2" class="numbered-list" start="38"><li>proper</li></ol><ol type="1" id="2ac1e7f9-4df2-4e69-a1aa-2a811fb55a62" class="numbered-list" start="39"><li>raison d&#x27;être (Yes, it’s an English noun).</li></ol><ol type="1" id="1fdedd43-c2e8-4ff1-a282-f16059401494" class="numbered-list" start="40"><li>haunted</li></ol><ol type="1" id="87335898-5279-4b47-ac7e-4b43e33b083b" class="numbered-list" start="41"><li>quest</li></ol><ol type="1" id="da83d469-8fe1-4c41-a1d9-c21dcf83214b" class="numbered-list" start="42"><li>standoffish</li></ol><ol type="1" id="954f53d0-ddca-46c1-a28b-2d58af84d356" class="numbered-list" start="43"><li>cunningly</li></ol><ol type="1" id="08e0f6fa-9f03-41aa-b0ea-5d1fe002ff4a" class="numbered-list" start="44"><li>seriousness</li></ol><ol type="1" id="51f2e11d-1d66-4dcc-a60a-16541db16202" class="numbered-list" start="45"><li>sleuth</li></ol><ol type="1" id="17241eb5-a88b-4400-95d2-907cb1a08d87" class="numbered-list" start="46"><li>Giggling</li></ol><ol type="1" id="bc766d76-a356-436d-ae0c-e4aa590d17f2" class="numbered-list" start="47"><li>toucancompelling</li></ol><ol type="1" id="e80339a0-d954-4b1a-947a-97eb4c458bab" class="numbered-list" start="48"><li>sunken ship</li></ol><ol type="1" id="397d7645-9a8e-40ce-9c74-c72bca447420" class="numbered-list" start="49"><li>gumballs</li></ol><ol type="1" id="0d44f265-5772-4a0e-90d5-a8f6df0ff6da" class="numbered-list" start="50"><li>poured out</li></ol><ol type="1" id="e7139d7e-48e3-408a-bde3-233c418c1839" class="numbered-list" start="51"><li>Sleep-deprived,</li></ol><ol type="1" id="09ea7ea7-d85a-4e69-87fd-d8b830037a18" class="numbered-list" start="52"><li>Farewall</li></ol><ol type="1" id="35f10c05-3588-4855-8ae2-53739abf04cc" class="numbered-list" start="53"><li>beacon</li></ol><ol type="1" id="60ed5e6b-6a20-40f7-9203-86e89498f18e" class="numbered-list" start="54"><li>uplifting</li></ol><ol type="1" id="a8333f32-5775-43d9-af4b-e184a1b20b75" class="numbered-list" start="55"><li><strong>Prerequisite vs Requisite</strong></li></ol><ol type="1" id="ddc80156-3758-4805-80b4-efe5e1871772" class="numbered-list" start="56"><li><em>For those</em> who are <em>interested</em></li></ol><ol type="1" id="89f86947-0696-4357-b84f-023d84241c5e" class="numbered-list" start="57"><li>He did like to pull chains …</li></ol><ol type="1" id="18c31a63-0a08-4332-a777-e30b73af4817" class="numbered-list" start="58"><li>rekindle</li></ol><ol type="1" id="8482cf55-1d14-4ef3-80da-8edf25374d49" class="numbered-list" start="59"><li>stepping-stone</li></ol><ol type="1" id="975c0d9c-df3b-4220-a5e9-aa35007ed343" class="numbered-list" start="60"><li>delighted</li></ol><ol type="1" id="be597d7b-2bfe-459b-a481-9cd2079729dd" class="numbered-list" start="61"><li>faithfully</li></ol><ol type="1" id="ce143084-6c90-4312-ae79-58fcb2658765" class="numbered-list" start="62"><li>astounded</li></ol><ol type="1" id="b437f3b0-c076-4f2d-a9c1-9bde2d58ce3b" class="numbered-list" start="63"><li>live up to,</li></ol><ol type="1" id="556b6f34-9b0f-4739-979f-17e786a65da3" class="numbered-list" start="64"><li>undertaking</li></ol><ol type="1" id="131c6699-fc8d-4d51-9524-8522e23cbb0f" class="numbered-list" start="65"><li>clapping</li></ol><ol type="1" id="c57d7973-f2e3-4d04-a9be-24bcee7294bd" class="numbered-list" start="66"><li>divers</li></ol><ol type="1" id="a1724bdb-0d62-499b-bb1b-2e42e8184977" class="numbered-list" start="67"><li>toddler</li></ol><ol type="1" id="44989595-ca2c-409d-9d71-6e7ff68aa231" class="numbered-list" start="68"><li>odd one out</li></ol><ol type="1" id="b80650a9-f486-4477-8479-8e6086812457" class="numbered-list" start="69"><li>burglary</li></ol><ol type="1" id="bd4c9434-9ce0-4767-ab64-58e656064844" class="numbered-list" start="70"><li>breath away</li></ol><ol type="1" id="a1f56970-653c-4522-b609-d4f64d2481cb" class="numbered-list" start="71"><li><strong>day in, day out</strong></li></ol><ol type="1" id="a10b6fe3-0b94-4d4b-9e7d-8007ffd4a05b" class="numbered-list" start="72"><li>acquaintance</li></ol><ol type="1" id="5d81eece-6bb6-4376-b7c1-ded0060abc80" class="numbered-list" start="73"><li>wagered</li></ol><ol type="1" id="da2eeb17-0272-45c5-8725-c0e90c249e93" class="numbered-list" start="74"><li>show up</li></ol><ol type="1" id="ad8aac71-e938-49a4-93a9-09b7d306f626" class="numbered-list" start="75"><li>Outward<ol type="a" id="a90cd739-249e-4060-bdd3-689933622c9c" class="numbered-list" start="1"><li>An outward crocodile follows me!</li></ol><ol type="a" id="0e7f0051-0c6b-40a2-ba55-0f06ff723d12" class="numbered-list" start="2"><li>The 1st president of the United States that opens outward us.</li></ol><ol type="a" id="01fb1a17-32ea-4daf-b388-c92e4ce1bde4" class="numbered-list" start="3"><li>Have you played the “outward” game?</li></ol><ol type="a" id="6f65f8c1-7db1-488b-baaa-795caa0f3cc9" class="numbered-list" start="4"><li>I ain&#x27;t gotta outward and grow up.</li></ol><ol type="a" id="1d31324d-e545-4968-b1e3-82a2bf004670" class="numbered-list" start="5"><li>Have you got to go outward?</li></ol></li></ol><ol type="1" id="b6be0ef2-3c3c-48ad-9ade-4c2e5bc19d53" class="numbered-list" start="76"><li>Relentless.</li></ol><ol type="1" id="b96d63d4-a013-48f7-beb4-cafd3cb17ffa" class="numbered-list" start="77"><li>Ground.</li></ol><ol type="1" id="cc8a266f-cb6f-4c8a-8de7-b4143fa920f8" class="numbered-list" start="78"><li>junkies</li></ol><ol type="1" id="89974074-f586-48af-8f15-fdd36011af0a" class="numbered-list" start="79"><li>alas</li></ol><ol type="1" id="6b9cbb9d-f836-4497-adb7-d371af38d568" class="numbered-list" start="80"><li>purview</li></ol><ol type="1" id="71a4ff51-a286-4587-a361-a41309fea999" class="numbered-list" start="81"><li>outlaw</li></ol><ol type="1" id="e974106f-76bf-4b32-8c78-a1e0078d8a1f" class="numbered-list" start="82"><li>slippery</li></ol><ol type="1" id="3fa18aed-eefc-4f2b-9183-090f4c77619d" class="numbered-list" start="83"><li></li></ol><ol type="1" id="6b570d9b-b944-4a9c-98d8-47e839a10fa8" class="numbered-list" start="84"><li>work out</li></ol><ol type="1" id="9ea9796a-8b7a-4711-a4d7-fb720bea9d9b" class="numbered-list" start="85"><li>gossip</li></ol><ol type="1" id="ccc23c5b-fd30-4af4-8214-8a2f5743823c" class="numbered-list" start="86"><li>some still at large</li></ol><ol type="1" id="faffde51-241e-4f97-b3c9-7682294acc73" class="numbered-list" start="87"><li>ensuing</li></ol><ol type="1" id="d54ee792-6c44-4c03-ac57-932a72a83b94" class="numbered-list" start="88"><li>feat</li></ol><ol type="1" id="9c363063-7cc7-418d-a47a-383a3b357708" class="numbered-list" start="89"><li>deal</li></ol><ol type="1" id="9683c961-ac5f-4274-a945-32cd0d21e961" class="numbered-list" start="90"><li>declutter</li></ol><ol type="1" id="6002a479-0cc5-42c2-aa28-1bdabf5fb188" class="numbered-list" start="91"><li>draws off track</li></ol><ol type="1" id="4257cf10-9481-4fda-abea-5f79b029b2e3" class="numbered-list" start="92"><li>convey</li></ol><ol type="1" id="ef89af8f-8148-42dd-a60e-d8f41eb3f65d" class="numbered-list" start="93"><li><span style="border-bottom:0.05em solid">harvest</span></li></ol><ol type="1" id="af689b27-e986-42b7-9700-c880aa07e9f7" class="numbered-list" start="94"><li>burgeon</li></ol><ol type="1" id="49ea352c-1b74-440d-b1b2-6f2639831fd4" class="numbered-list" start="95"><li>bathe</li></ol><ol type="1" id="895d0ee5-ddd9-42c1-bf9d-c4417b245068" class="numbered-list" start="96"><li>voyage</li></ol><ol type="1" id="10f4fad4-1673-4d1c-89cf-f79e45afdf06" class="numbered-list" start="97"><li><span style="border-bottom:0.05em solid">communal</span></li></ol><ol type="1" id="89234dd3-b902-4ded-afb5-bad2fbd0cf65" class="numbered-list" start="98"><li>spotless</li></ol><ol type="1" id="3adcce8c-f81e-4d90-8f26-5a1d30d9c810" class="numbered-list" start="99"><li>brush up on</li></ol><ol type="1" id="858e2eef-d695-43b2-a92d-ffc9982dd36d" class="numbered-list" start="100"><li>dust</li></ol><ol type="1" id="007c2951-622c-470d-add6-95bc7ef7ae27" class="numbered-list" start="101"><li>make out</li></ol><ol type="1" id="ac0854d7-569a-461e-a395-6414a8e7e0f4" class="numbered-list" start="102"><li><span style="border-bottom:0.05em solid">encourages</span></li></ol><ol type="1" id="68ff542d-3185-4b97-9c24-2ca27052ca5f" class="numbered-list" start="103"><li>pure</li></ol><ol type="1" id="48562bbf-3d04-41ac-bb64-3d7e985b1bbf" class="numbered-list" start="104"><li>stockpiled</li></ol><ol type="1" id="b9e12915-c94b-42d5-8544-8062f3020810" class="numbered-list" start="105"><li>amalgamated</li></ol><ol type="1" id="6068a498-c3fd-456c-b9c9-4c3bb0d0c328" class="numbered-list" start="106"><li>built-up</li></ol><ol type="1" id="e44cc9fc-2de8-4206-8bf1-57205a003c27" class="numbered-list" start="107"><li>parade</li></ol><ol type="1" id="b05074f2-3d78-47dc-b60c-43eca618a915" class="numbered-list" start="108"><li>sets up</li></ol><ol type="1" id="0c3de137-b74e-4342-a567-3ea1b81a987e" class="numbered-list" start="109"><li>stains</li></ol><ol type="1" id="ee3d3398-0311-4a07-b349-a017dde8ca97" class="numbered-list" start="110"><li>leaping out</li></ol><ol type="1" id="a08caf7b-ab7f-4c36-8457-f646b186584a" class="numbered-list" start="111"><li>antiseptic meaning</li></ol><ol type="1" id="e5cb3d85-80c5-4c82-ab37-b56fd1ca88bf" class="numbered-list" start="112"><li>congrous</li></ol><ol type="1" id="68005644-aad8-4b38-9e3d-c557f3acc77c" class="numbered-list" start="113"><li>conjoined</li></ol><ol type="1" id="1e57c0b0-4d55-4f6f-bd01-9645aefd444c" class="numbered-list" start="114"><li>coicident</li></ol><ol type="1" id="f85b05b9-a215-4b51-98ed-3896389d700f" class="numbered-list" start="115"><li>mannerisms</li></ol><ol type="1" id="a9525480-de6e-43b5-9911-f314df95410d" class="numbered-list" start="116"><li>bull-riding</li></ol><ol type="1" id="c920b63b-6064-48df-9601-88f500f2514f" class="numbered-list" start="117"><li>maneuver</li></ol><ol type="1" id="a90d210e-3586-4098-a017-a709e544efcb" class="numbered-list" start="118"><li>debauchery</li></ol><ol type="1" id="4f701a91-b5ca-4da5-a792-34718be3be5e" class="numbered-list" start="119"><li>sheathing</li></ol><ol type="1" id="249e0e49-09ea-4a19-919f-a3fb2e6a194e" class="numbered-list" start="120"><li>drowning</li></ol><ol type="1" id="ed1c060c-b834-4d06-82c3-f1e4425a1bc1" class="numbered-list" start="121"><li>catchall</li></ol><ol type="1" id="00601e0b-785a-4825-9003-081079839178" class="numbered-list" start="122"><li>knocking down</li></ol><ol type="1" id="33db6697-6278-4e15-b975-2301833dc77f" class="numbered-list" start="123"><li>malarkey</li></ol><ol type="1" id="3ae6e0c7-8572-4fcb-9bdf-caeed63f2228" class="numbered-list" start="124"><li>thrusts</li></ol><ol type="1" id="5c93351e-fc1d-41ff-b5de-2a13c816beb6" class="numbered-list" start="125"><li>flashy</li></ol><ol type="1" id="e6903457-74b3-4434-9db5-634f119bbe84" class="numbered-list" start="126"><li>stashes</li></ol><ol type="1" id="4baebcc0-0497-41ac-9b4a-4bb9abed2779" class="numbered-list" start="127"><li>eye-catching</li></ol><ol type="1" id="0a8ac49b-e85c-4859-b639-804673e56cbd" class="numbered-list" start="128"><li>though</li></ol><ol type="1" id="122f6d7a-33cd-4779-9cda-72a3e8707f3e" class="numbered-list" start="129"><li>apt</li></ol><ol type="1" id="8e967970-9a41-4479-b8ca-437b44cbce28" class="numbered-list" start="130"><li>prevailing</li></ol><ol type="1" id="30e5a780-dcc0-400d-96d1-2b5e4bfbd0e4" class="numbered-list" start="131"><li>sore</li></ol><ol type="1" id="f409412b-6b98-43d6-ad8b-52113b7f2f2a" class="numbered-list" start="132"><li>silk</li></ol><ol type="1" id="336c65b2-75b7-4529-a823-92dbdc64faca" class="numbered-list" start="133"><li>vent</li></ol><ol type="1" id="fe878fb5-8d93-4d11-a037-58a29fa6ab84" class="numbered-list" start="134"><li>steadiness</li></ol><ol type="1" id="eb22d2ee-847f-4cfc-ae48-7c49a71faa6b" class="numbered-list" start="135"><li>acquiescence</li></ol><ol type="1" id="56aaf07f-455a-4b74-a5a3-d68d15c60bfe" class="numbered-list" start="136"><li>bruise</li></ol><ol type="1" id="55304db3-0e4f-4e43-a9f8-875abcc7be85" class="numbered-list" start="137"><li>fit</li></ol><ol type="1" id="99a38967-37fd-4ea1-92e8-1e16bbadb0bb" class="numbered-list" start="138"><li>to make up, comprise of, compose of <a href="https://dictionary.cambridge.org/us/grammar/british-grammar/consist-comprise-or-compose">https://dictionary.cambridge.org/us/grammar/british-grammar/consist-comprise-or-compose</a></li></ol><ol type="1" id="f770ee23-9a60-4b9b-b2db-5ebb2c4ef390" class="numbered-list" start="139"><li>comprise</li></ol><ol type="1" id="aa064169-9740-477e-9697-30581637daff" class="numbered-list" start="140"><li>whim</li></ol><ol type="1" id="5dfc908e-b8d4-4f5c-87a5-4c91b3ffa3f7" class="numbered-list" start="141"><li>whereas</li></ol><ol type="1" id="e906edc1-035f-423e-b075-d4c325c141da" class="numbered-list" start="142"><li>while</li></ol><ol type="1" id="52e5a3eb-c779-4fb8-8d95-d99690c4f602" class="numbered-list" start="143"><li>outlandish</li></ol><ol type="1" id="9ff51ccf-b954-4bf9-84dd-cbe2ac394085" class="numbered-list" start="144"><li>leverage</li></ol><ol type="1" id="7413cfdd-232c-413c-bc31-bb86304b7c29" class="numbered-list" start="145"><li>chasing</li></ol><ol type="1" id="a6b70759-ff68-4ba6-9fba-dadd24899d9c" class="numbered-list" start="146"><li>sleek-looking decoys</li></ol><ol type="1" id="e84dda32-77cb-4883-b9a8-117bccfc4980" class="numbered-list" start="147"><li>settling down<ol type="a" id="3462003a-144b-4f3e-baff-50b24384780a" class="numbered-list" start="1"><li>Most modern men don’t settle down with anybody.  </li></ol><ol type="a" id="ef91627d-9942-4bda-8309-c4f069c30871" class="numbered-list" start="2"><li>People forget their problems settling down on a sofa.</li></ol><ol type="a" id="fef934ec-69fe-44a6-9af6-bfcec58b62d4" class="numbered-list" start="3"><li>Guys! S<strong><strong>ettle down</strong></strong></li></ol></li></ol><ol type="1" id="822933c0-1e6c-43c1-a81d-cd2f8ee3a79b" class="numbered-list" start="148"><li>bragging</li></ol><ol type="1" id="e554e5dc-6b24-46f2-821c-197c71e5dc19" class="numbered-list" start="149"><li>godly</li></ol><ol type="1" id="602525a6-227a-44a2-9074-77ea35e729f2" class="numbered-list" start="150"><li>outgroup</li></ol><ol type="1" id="a48d0b34-21fe-47b8-866a-917ff317b608" class="numbered-list" start="151"><li>straw</li></ol><ol type="1" id="7ec62182-b8e0-4f5a-9902-a5b337dec6cf" class="numbered-list" start="152"><li>golly<ol type="a" id="b888d190-b602-4477-b0ed-202c5bd5bd75" class="numbered-list" start="1"><li>Golly! I’m wondering why?</li></ol></li></ol><ol type="1" id="946c2977-66e3-4230-883f-7696c46f55b8" class="numbered-list" start="153"><li>plenty<ol type="a" id="7bd888e7-cfa2-450b-8a78-9676f58279af" class="numbered-list" start="1"><li>Rich people, by definition, are plenty of money. </li></ol></li></ol><ol type="1" id="5dc9ab3c-e134-4b45-8b3a-89e7c9930a00" class="numbered-list" start="154"><li>endearment<ol type="a" id="cb0e6e57-b3b5-4d86-9005-87f713b06f04" class="numbered-list" start="1"><li>Are you endearment to parents?</li></ol></li></ol><ol type="1" id="20cd363f-2272-47de-b109-83a730a088ff" class="numbered-list" start="155"><li><strong>Catfishing</strong><ol type="a" id="3b6968c1-9679-4060-81be-40aaa8007f3f" class="numbered-list" start="1"><li>Far too many influencers are c<strong>atfishing.</strong></li></ol><ol type="a" id="037fc37b-345b-492c-bc50-cd21e7533be4" class="numbered-list" start="2"><li>Their catfish is disgusting. </li></ol></li></ol><ol type="1" id="f47e3e8c-3829-49ac-8830-dee8a2a4624e" class="numbered-list" start="156"><li>coups</li></ol><ol type="1" id="7f21b157-99d0-4c44-889b-e046df4ac16c" class="numbered-list" start="157"><li>appointed</li></ol><ol type="1" id="08674db0-934c-4994-8dc7-f70f55d019b0" class="numbered-list" start="158"><li>nuggies</li></ol><ol type="1" id="d5bd3166-ff8c-409f-a6b1-4d1a0d7a80ba" class="numbered-list" start="159"><li>charade <ol type="a" id="108ce4ac-17a6-449f-ae0a-4c6a13617518" class="numbered-list" start="1"><li>A charade has been seen. </li></ol></li></ol><ol type="1" id="2899a1d9-967e-4cfd-8a9f-1e3825bb722c" class="numbered-list" start="160"><li>betrayal <ol type="a" id="d0121f67-b591-4fe0-83b0-43d18a9c02d1" class="numbered-list" start="1"><li>Betrayal is forever. </li></ol></li></ol><ol type="1" id="9503f5ed-014d-4fb0-9297-805b10d6afc2" class="numbered-list" start="161"><li>held</li></ol><ol type="1" id="df1d1f0e-c600-491e-bcaf-0a81a8b440c0" class="numbered-list" start="162"><li>relegate</li></ol><ol type="1" id="a71728bc-72e7-4ad1-93c3-196a178be5a4" class="numbered-list" start="163"><li>tame</li></ol><ol type="1" id="f478ff7b-4113-4dc0-ac04-93a44cb5a78c" class="numbered-list" start="164"><li>thing up</li></ol><ol type="1" id="9e75639c-fd55-4bf9-81c3-4e0fdc1b6e97" class="numbered-list" start="165"><li>dope</li></ol><ol type="1" id="1d6cbf46-63de-40c2-81b3-2845bbc43951" class="numbered-list" start="166"><li>fallen</li></ol><ol type="1" id="ae8a13a4-8754-4591-9822-5e0dbe81b19c" class="numbered-list" start="167"><li>loose</li></ol><ol type="1" id="519ea5fe-6e67-4a73-a13a-4badcb0f9437" class="numbered-list" start="168"><li>deemed</li></ol><ol type="1" id="7460c948-754e-4024-90f3-b46b1d2c0541" class="numbered-list" start="169"><li>tricked</li></ol><ol type="1" id="32ba5803-9325-48cb-929e-54adadf20615" class="numbered-list" start="170"><li>back-alley</li></ol><ol type="1" id="83123a95-69da-4cb3-a63d-eca5d83c32ad" class="numbered-list" start="171"><li>sordid</li></ol><ol type="1" id="47672ba6-55b3-446b-a917-bab362e691a3" class="numbered-list" start="172"><li>hijackings</li></ol><ol type="1" id="6e55eb70-945d-40c2-99c7-406da2d2c06d" class="numbered-list" start="173"><li>scoundrel</li></ol><ol type="1" id="ddad1b1e-011b-4938-ae5c-5ba73cf32e75" class="numbered-list" start="174"><li>sacred</li></ol><ol type="1" id="c8f8a0bf-e1d9-48c0-a676-1a80b8449ad8" class="numbered-list" start="175"><li>head up</li></ol><ol type="1" id="5d0d9eac-5445-4261-82d4-158c3560ae11" class="numbered-list" start="176"><li>blind</li></ol><ol type="1" id="5f2dcd72-491e-4caf-a355-93dc07368e33" class="numbered-list" start="177"><li>Satyr</li></ol><ol type="1" id="e5dc778c-a38a-45d5-b0f9-d9ef5143cef5" class="numbered-list" start="178"><li>Som</li></ol><ol type="1" id="0f648e7d-61bd-4062-9cab-aaddddac0e1c" class="numbered-list" start="179"><li>in awe</li></ol><ol type="1" id="7ee86dd2-2e1f-4460-aa77-e4e4546b6693" class="numbered-list" start="180"><li>rehearsed</li></ol><ol type="1" id="a4a9f305-f819-4369-9186-1c5b8f0dfd66" class="numbered-list" start="181"><li></li></ol><ul id="53bd2f15-0c47-4119-ba72-625d79489c61" class="bulleted-list"><li style="list-style-type:disc"><strong>not only </strong><em><strong>__</strong></em><strong> but also </strong><em><strong>__</strong></em></li></ul><ul id="82c48fc4-01d7-426a-86be-965abf32bf58" class="bulleted-list"><li style="list-style-type:disc"><strong>both </strong><em><strong>__</strong></em><strong> and </strong><em><strong>__</strong></em></li></ul><ul id="4edf255e-e324-4779-a13c-ded914d918e3" class="bulleted-list"><li style="list-style-type:disc"><strong>from </strong><em><strong>__</strong></em><strong> to </strong><em><strong>__</strong></em></li></ul><ul id="0239d35b-c980-4579-824a-b8c29c491358" class="bulleted-list"><li style="list-style-type:disc"><strong>as </strong><em><strong>__</strong></em><strong> as </strong><em><strong>__</strong></em></li></ul><ul id="8c3edb42-d73b-4808-9e53-00920cc71f01" class="bulleted-list"><li style="list-style-type:disc"><strong>between </strong><em><strong>__</strong></em><strong> and </strong><em><strong>__</strong></em></li></ul><ul id="85c9b66d-602e-41b8-b61f-f22fae93d92e" class="bulleted-list"><li style="list-style-type:disc"><strong>(n)either </strong><em><strong>__</strong></em><strong> (n)or </strong><em><strong>__</strong></em></li></ul><ul id="0708d424-e26f-47fd-a14f-133ae9789d4d" class="bulleted-list"><li style="list-style-type:disc">&quot;stand <strong>on</strong>
+&quot; vs. &quot;stand <strong>in</strong>
+&quot; vs. &quot;stand <strong>for</strong>
+&quot;</li></ul><ol type="1" id="2ed796ed-8277-4ad6-a36d-805865e0a85b" class="numbered-list" start="1"><li>Coconut-water-sipping</li></ol><ol type="1" id="516979e2-3cc4-46ca-8bee-df09b892229a" class="numbered-list" start="2"><li>blabs</li></ol><ol type="1" id="316b8968-79db-413e-abbb-3f8a2b290c5a" class="numbered-list" start="3"><li>second fiddle to none.</li></ol><ol type="1" id="b869a827-c0a3-4a14-98db-47e519f7c33e" class="numbered-list" start="4"><li>sipping</li></ol><ol type="1" id="6f87ff92-b324-4c7e-8a66-d0a594d14b49" class="numbered-list" start="5"><li>goonish<ol type="a" id="c58a62a5-6236-40db-91b7-2e7c817020cb" class="numbered-list" start="1"><li></li></ol></li></ol><ol type="1" id="3aff8fcf-7c38-42ba-a050-1f27bd100c77" class="numbered-list" start="6"><li>whole thing up. <a href="https://forum.wordreference.com/threads/to-make-the-whole-thing-up.2694433/">https://forum.wordreference.com/threads/to-make-the-whole-thing-up.2694433/</a><ol type="a" id="6b804f76-ea59-4c06-b170-9b7a65ed10d7" class="numbered-list" start="1"><li>this whole thing up </li></ol><ol type="a" id="90eb7d6f-ac5a-4198-ba67-a53d13bb6996" class="numbered-list" start="2"><li>Leviatan told us a whole thing up. Might you tame?</li></ol></li></ol><ol type="1" id="d1bbaf66-df1f-46c6-acec-a4ad58412e87" class="numbered-list" start="7"><li><strong>I can dig it </strong><a href="https://www.urbandictionary.com/define.php?term=I%20can%20dig%20it">https://www.urbandictionary.com/define.php?term=I can dig it</a><ol type="a" id="b8c1dff6-75fa-41ad-a367-4da8bf6ec6c5" class="numbered-list" start="1"><li></li></ol></li></ol><ol type="1" id="dae81aa9-b6f8-4a53-bdd5-71ec76cda94b" class="numbered-list" start="8"><li>bread and butter</li></ol><ol type="1" id="7b30adde-d01a-43ef-8730-0cb11b02a6c6" class="numbered-list" start="9"><li>Waste.</li></ol><ol type="1" id="1c7b21e4-975b-4469-bbfc-65f983e4b52a" class="numbered-list" start="10"><li>alibis</li></ol><ol type="1" id="4844c4be-7d27-46f7-8d78-dca4826e14a1" class="numbered-list" start="11"><li>sharpen</li></ol><ol type="1" id="beeec8d6-f63e-421e-a122-659f8180b4e2" class="numbered-list" start="12"><li>alibis</li></ol><ol type="1" id="66e0cc85-c12c-4352-9ce6-81be3982b430" class="numbered-list" start="13"><li>in fits</li></ol><ol type="1" id="ce2477a0-60d5-49bf-8eac-5e6d6adf7631" class="numbered-list" start="14"><li>suitor</li></ol><ol type="1" id="57df89cb-2ca2-49c7-b723-e96142587e03" class="numbered-list" start="15"><li>awake</li></ol><ol type="1" id="80d540a1-097f-40ef-a178-53225dcfbabd" class="numbered-list" start="16"><li>naughtyw</li></ol><ol type="1" id="9bcde434-f4f5-499f-b43f-8417a64aea50" class="numbered-list" start="17"><li>leering glances</li></ol><ol type="1" id="622a22c5-f222-4430-b4a8-69f971250a84" class="numbered-list" start="18"><li>arises</li></ol><ol type="1" id="33391f75-d167-48a1-96f8-65fa49017c92" class="numbered-list" start="19"><li>nuggies</li></ol><ol type="1" id="4c93ff21-9783-4cd4-99c8-e6b9ae9fb350" class="numbered-list" start="20"><li>cheers</li></ol><ol type="1" id="461ec1f3-54b1-488b-be87-cf1de6dee6ad" class="numbered-list" start="21"><li>set off</li></ol><ol type="1" id="22a7e9e8-8b59-4635-826f-0d3abd65125a" class="numbered-list" start="22"><li>crocodilian jaws</li></ol><ol type="1" id="a7053566-700b-4b62-927f-c3aaed334b83" class="numbered-list" start="23"><li>guilty of arson.</li></ol><ol type="1" id="eed04887-bc0b-4f0a-af03-2f1a36b3126f" class="numbered-list" start="24"><li>hapless</li></ol><ol type="1" id="ad8f0b90-a151-404c-b7bc-1bf06eeef9b5" class="numbered-list" start="25"><li><a href="https://en.wikipedia.org/wiki/William_Donner">Donner Professor</a></li></ol><ol type="1" id="cb26f56e-7dda-42b4-be95-136175b114fa" class="numbered-list" start="26"><li>lie</li></ol><ol type="1" id="2954897f-ffa4-4497-b937-450c859dd3e4" class="numbered-list" start="27"><li>spare</li></ol><ol type="1" id="9bf6c5bc-4b4d-4be5-95d5-d3a59572b869" class="numbered-list" start="28"><li>malcontent</li></ol><ol type="1" id="91c33a1e-810f-4971-ba1d-fe3ba1b99eef" class="numbered-list" start="29"><li>Willing</li></ol><ol type="1" id="b2a3be58-d625-4699-a8be-d4402d4311f6" class="numbered-list" start="30"><li>clout</li></ol><ol type="1" id="73ea1e1d-906d-4dc7-ab32-945d3f161ac9" class="numbered-list" start="31"><li>tune in</li></ol><ol type="1" id="bef02cc7-9d3b-4191-a32f-4d649cc2a08d" class="numbered-list" start="32"><li>laid<ol type="a" id="19159a47-ed97-49ba-810b-3c18ff4038b2" class="numbered-list" start="1"><li>You laid with this hope</li></ol></li></ol><ol type="1" id="2712f440-8784-4094-9142-937891d0911e" class="numbered-list" start="33"><li>forth</li></ol><ol type="1" id="c238bea7-6cb6-4884-afd8-f34040c4922b" class="numbered-list" start="34"><li></li></ol><ol type="1" id="ec8151d2-45be-4838-95db-ce724f1f2719" class="numbered-list" start="35"><li>chiefly</li></ol><ol type="1" id="5b70622e-55f5-4c1f-afa8-e2fe9cd31d42" class="numbered-list" start="36"><li>awe</li></ol><ol type="1" id="261fc36e-1281-4124-bd6a-ddb0eafb979f" class="numbered-list" start="37"><li>chase</li></ol><ol type="1" id="6a72569c-03ed-42e3-bca3-4c156b753d48" class="numbered-list" start="38"><li>toast</li></ol><ol type="1" id="941c2072-4bbd-4d1e-8b52-35be1f810afb" class="numbered-list" start="39"><li>disengage</li></ol><ol type="1" id="342f0746-074d-4522-ba5b-e7f51b4e3b98" class="numbered-list" start="40"><li>foreboding.</li></ol><ol type="1" id="eac6bc92-5900-4fe0-a6ef-11c7972f6234" class="numbered-list" start="41"><li>breathtaking<ol type="a" id="560ea046-1e65-4eb5-a21f-efe95cfebd20" class="numbered-list" start="1"><li>A breathtaking pretty woman was talking to me.</li></ol><ol type="a" id="bf22c5ac-53ff-4766-8351-e2f356f53bda" class="numbered-list" start="2"><li>For God’s sake, you’re saying a breathtaking truth.</li></ol></li></ol><ol type="1" id="d455b138-940d-4358-8557-28f071c7bccd" class="numbered-list" start="42"><li>couching</li></ol><ol type="1" id="fafb2ff7-4c75-4258-91b1-f0355b70ef15" class="numbered-list" start="43"><li><a href="https://www.merriam-webster.com/dictionary/repair%20to">repair to</a><ol type="a" id="8c422c30-6186-4fd3-8173-177d9ab2b572" class="numbered-list" start="1"><li>In business days, I&#x27;m repairing to my school.</li></ol></li></ol><ol type="1" id="4cbf74b9-adb9-458d-988d-02a4c006e41d" class="numbered-list" start="44"><li>outspoken</li></ol><ol type="1" id="477a839d-8aff-4655-9a5a-3604bd2d2843" class="numbered-list" start="45"><li><a href="https://ell.stackexchange.com/questions/131671/only-one-vs-exactly-one-referring-item-count">exactly one vs only one</a></li></ol><ol type="1" id="6ec493cd-5c24-4f23-9cb2-cf146fa45ae8" class="numbered-list" start="46"><li><strong>Misnomer</strong></li></ol><ol type="1" id="84ac8313-d82e-42a8-981d-451e9e511980" class="numbered-list" start="47"><li>subtle</li></ol><ol type="1" id="7fe0a2c4-d9a6-4f5a-afb4-6c0d9ecb824d" class="numbered-list" start="48"><li>so far</li></ol><ol type="1" id="fa0a5669-998b-454e-af4c-e06a2e8017fa" class="numbered-list" start="49"><li><strong>in a way</strong></li></ol><ol type="1" id="e00d4a3c-7cd2-4448-abfa-ee83d3aa401b" class="numbered-list" start="50"><li>rendered</li></ol><ol type="1" id="527dcef6-bb2a-4b41-a564-466c67205fe1" class="numbered-list" start="51"><li>nuances</li></ol><ol type="1" id="01a59e15-436b-4c6f-806f-32826c6de18a" class="numbered-list" start="52"><li>ought</li></ol><ol type="1" id="3210b6d6-9447-4aa6-b35e-41f8c0cd4fe8" class="numbered-list" start="53"><li>disobedient.</li></ol><ol type="1" id="d0ecc783-85b2-49a7-880a-d386095f50cc" class="numbered-list" start="54"><li>spiteful.</li></ol><ol type="1" id="26e000d9-53e6-4040-b5cd-7e95f5a55844" class="numbered-list" start="55"><li>thwart</li></ol><ol type="1" id="4459a351-103f-42a0-a75e-e3ef7f19e9f6" class="numbered-list" start="56"><li>finest Wool</li></ol><ol type="1" id="6c975d7d-386a-4d05-bef3-a9e79432654c" class="numbered-list" start="57"><li>mischievous</li></ol><ol type="1" id="d7233573-015e-401c-96c4-31e7b802b301" class="numbered-list" start="58"><li>acquiescence</li></ol><ol type="1" id="b976f98d-3bf1-4e82-b344-7c85c99d010c" class="numbered-list" start="59"><li>subtle nuances</li></ol><ol type="1" id="e1f3215f-8385-493c-973d-51b8084858d4" class="numbered-list" start="60"><li>agreeable</li></ol><ol type="1" id="531c6626-2c0f-460f-bbb0-ed89e2349d7a" class="numbered-list" start="61"><li>agreeable</li></ol><ol type="1" id="7e44a671-d38e-4d65-8ac0-e3d37d6a5b6d" class="numbered-list" start="62"><li>on lung disease other than cancer.</li></ol><ol type="1" id="218ba036-600c-4812-bc2c-6e5d2178d4de" class="numbered-list" start="63"><li>Pitted.<ul id="e2b4a80b-d278-4082-b108-9afbbcd6f918" class="bulleted-list"><li style="list-style-type:disc">I pit you.</li></ul><ul id="c481cb7c-beca-4ef5-b1a0-99f2dade5dbf" class="bulleted-list"><li style="list-style-type:disc">The good pitted her again.</li></ul><ul id="df67e344-fe5f-4e95-9e44-56a3059a3c0f" class="bulleted-list"><li style="list-style-type:disc">Why are you pitting yourself?</li></ul><ul id="90908abf-7f87-42fc-b11f-1682336e71b0" class="bulleted-list"><li style="list-style-type:disc">Our friends have pitted her.</li></ul><ul id="ab90e921-355c-4043-9879-7e515a7ed650" class="bulleted-list"><li style="list-style-type:disc">You gotta pit the bad.</li></ul></li></ol><ol type="1" id="db1630c5-8f5f-45b8-b754-1c0343128a8d" class="numbered-list" start="64"><li>oath<ol type="a" id="c8142807-1875-4f4b-aa57-5cb2b0ee1d75" class="numbered-list" start="1"><li>All the United States elected presidents have got to take an oath to fill the president.</li></ol></li></ol><ol type="1" id="ad911e3c-30a0-496e-b165-7fe70433be75" class="numbered-list" start="65"><li>Faint.</li></ol><ol type="1" id="a4cf37c2-6315-4965-87b8-88b4ec975a75" class="numbered-list" start="66"><li>Gotta</li></ol><ol type="1" id="ec59bc6e-ddca-46cb-a139-46fba86aa369" class="numbered-list" start="67"><li>Gone</li></ol><ol type="1" id="d5193b05-1afb-48e0-baae-cc1ff8bbe749" class="numbered-list" start="68"><li>breeze</li></ol><ol type="1" id="63073a74-fbb3-4655-ab00-63f768c72ec9" class="numbered-list" start="69"><li>keep away</li></ol><ol type="1" id="92329104-eff0-45e5-8682-282ec2722f49" class="numbered-list" start="70"><li>valedictorian</li></ol><ol type="1" id="270a2a5b-51f3-4171-9dce-92eb31362fde" class="numbered-list" start="71"><li>full-fledged</li></ol><ol type="1" id="be998f34-b367-4233-890a-19436a135ef9" class="numbered-list" start="72"><li>Weightage<ol type="a" id="89e42fc3-a4d0-49ff-b846-f1cdff52bcd5" class="numbered-list" start="1"><li>ajar</li></ol></li></ol><ol type="1" id="350f38ae-2e20-41c4-b174-71539dc69c4e" class="numbered-list" start="73"><li>indeed.<ul id="19083db2-a07d-4711-8440-1080945b040f" class="bulleted-list"><li style="list-style-type:disc">Indeed, it happens.</li></ul><ul id="936bdfbc-ccd9-4b26-80b0-5bd1188cf768" class="bulleted-list"><li style="list-style-type:disc">I see you indeed.</li></ul><ul id="273fb331-ef96-4f41-a54a-7c79603c3346" class="bulleted-list"><li style="list-style-type:disc">Scientific evidence says indeed another thing.</li></ul><ul id="09a2d490-f771-447b-ba44-324fe8057078" class="bulleted-list"><li style="list-style-type:disc">Oh, my boy, you’ve made another thing indeed.</li></ul><ul id="f729c562-b65b-4fb0-a979-94a27e208735" class="bulleted-list"><li style="list-style-type:disc">Are you okay? Indeed I’m okay.</li></ul><ul id="e22cf92d-a0c7-4a14-9de2-6ebd1c75f575" class="bulleted-list"><li style="list-style-type:disc">Have you been, Jeff? I’m sad by Disney indeed. </li></ul><ul id="ca29a3e6-2e48-4bd3-94db-bfcc064477e6" class="bulleted-list"><li style="list-style-type:disc">For me it is happy fact, indeed it is better than I expected.</li></ul></li></ol><ol type="1" id="aeb5fd2f-204b-41cd-a569-c130d3a12b25" class="numbered-list" start="74"><li>regarded</li></ol><ol type="1" id="640699c9-6d75-486f-9b8f-ce67b92e21e5" class="numbered-list" start="75"><li>thoroughly</li></ol><ol type="1" id="b6d0a4d9-5f5b-41f6-a812-f8b8f9307731" class="numbered-list" start="76"><li><strong><strong>end up</strong></strong><ul id="b2d49caa-bd23-4663-8646-e0a2f55de916" class="bulleted-list"><li style="list-style-type:disc">I listen to you; you end up in a dark place.</li></ul><ul id="bdb6caa2-ce49-421c-bc81-7fd65dd4c3e9" class="bulleted-list"><li style="list-style-type:disc"></li></ul></li></ol><ol type="1" id="64c741df-e99c-41b3-b00c-c9f9ef6c220d" class="numbered-list" start="77"><li>Bear one thing</li></ol><ol type="1" id="482b0568-c8f2-4670-8aaf-a9e915294bbb" class="numbered-list" start="78"><li>literary</li></ol><ol type="1" id="f43ac44e-75c0-47a8-aede-28e652bd1122" class="numbered-list" start="79"><li><strong>further</strong></li></ol><ol type="1" id="7c3ee33c-17cd-4b85-81d5-67a544c94c0c" class="numbered-list" start="80"><li>curmudgeonly</li></ol><ol type="1" id="a3711a59-37bd-4b97-890d-28e0bd868efe" class="numbered-list" start="81"><li><a href="https://en.wikipedia.org/wiki/Barnyard">farmyard</a></li></ol><ol type="1" id="684376f1-5a4e-42ed-8e74-48e4e755ca37" class="numbered-list" start="82"><li>moron<ul id="59c8563a-aaa4-40d8-89c7-9e50ab0dab91" class="bulleted-list"><li style="list-style-type:disc">When one has seen a lot of moron people, you become one. It ends up our clever path.</li></ul></li></ol><ol type="1" id="c4dd9582-1de1-444d-be70-31526d5447ba" class="numbered-list" start="83"><li><strong><strong>Search and seizure</strong></strong></li></ol><ol type="1" id="16d62cde-c79b-43bd-9411-f71aaaf1aa21" class="numbered-list" start="84"><li>verb +noun + on</li></ol><ol type="1" id="89163f24-3a12-4238-9774-d8af59ac7321" class="numbered-list" start="85"><li>couch potato</li></ol><ol type="1" id="5d181104-d0a9-4aa0-b2f0-27f6d5b6d605" class="numbered-list" start="86"><li>gym freak</li></ol><ol type="1" id="11396171-afa8-4747-8409-d1172e1f0168" class="numbered-list" start="87"><li>burn off</li></ol><ol type="1" id="17067f5d-8664-4166-a671-0424cbbf37a9" class="numbered-list" start="88"><li>warm-up</li></ol><ol type="1" id="e5d0a016-8968-4e32-83bb-a4784f1bda22" class="numbered-list" start="89"><li>moist</li></ol><ol type="1" id="33805fe9-87b9-431e-8f91-7103860e0ebe" class="numbered-list" start="90"><li>shed light on,</li></ol><ol type="1" id="7d68def9-0819-49f7-85e6-6b1e6e7ea2e7" class="numbered-list" start="91"><li>such-and-such</li></ol><ol type="1" id="3db066c8-05cf-4307-ad84-9ca3759e52b8" class="numbered-list" start="92"><li>All English conjugations.</li></ol><ol type="1" id="36a41b5b-52c2-46e0-8b64-ed544a420470" class="numbered-list" start="93"><li>foolish</li></ol><p id="a2337dad-c476-487a-b4ba-e998e853c10f" class=""><a href="https://www.grammarly.com/blog/verb-conjugation/">https://www.grammarly.com/blog/verb-conjugation/</a></p><p id="d073d97c-dc48-43ef-b0e8-2fa4ee907301" class=""><strong>Present Perfect</strong></p><ol type="1" id="4d6d1d51-ad14-4d94-bdfb-8b3f2dbfd106" class="numbered-list" start="12"><li>To + For</li></ol><p id="1020a7e3-07f0-463c-9065-871f30804d25" class=""><a href="https://www.grammarly.com/blog/to-vs-for/">https://www.grammarly.com/blog/to-vs-for/</a></p><ol type="1" id="3e9e2e0a-f30b-4ff6-aade-c73b6ea16039" class="numbered-list" start="13"><li>Depicts</li></ol><ol type="1" id="75d6ded2-3cef-42ed-9f8a-8b6cffa50c86" class="numbered-list" start="14"><li>haunts</li></ol><ol type="1" id="c64a16b6-6040-48f4-bc56-4ff50d2f70e1" class="numbered-list" start="15"><li><strong><strong>bachelor</strong></strong></li></ol><ol type="1" id="ee16fa0e-8bb5-468a-81e3-7509c0c7ad68" class="numbered-list" start="16"><li>as such<ol type="a" id="1f348ab9-30d2-478f-bb84-971548394c55" class="numbered-list" start="1"><li>We don’t have a house as such.</li></ol><ol type="a" id="8c958ca4-6d34-4b8e-a463-4fe1d2ba979a" class="numbered-list" start="2"><li>You see her as such</li></ol></li></ol><ol type="1" id="519b06e3-7171-4963-a120-fbf615b3b1d2" class="numbered-list" start="17"><li>Learning the ropes</li></ol><ol type="1" id="7284e509-3f86-490c-9a0b-af82228bdb95" class="numbered-list" start="18"><li>No sweat</li></ol><ol type="1" id="2a98ca1d-ec64-4c95-bffe-c710f23fcea8" class="numbered-list" start="19"><li>coaxing</li></ol><ol type="1" id="fed28e92-8576-4389-8529-6d16cd4b30dd" class="numbered-list" start="20"><li>devoid</li></ol><ol type="1" id="6943761d-27eb-4657-a54b-5d8c920da512" class="numbered-list" start="21"><li>bout</li></ol><ol type="1" id="feaecbff-8d9b-4922-aab5-f78154d6f11e" class="numbered-list" start="22"><li>maneuvers</li></ol><ol type="1" id="b7b80a33-d734-46dc-87ff-899125a7169b" class="numbered-list" start="23"><li>devoid of</li></ol><ol type="1" id="9cef68e4-b498-4d0c-9c46-af8d4eb07476" class="numbered-list" start="24"><li>flock of backyard</li></ol><ol type="1" id="3d9aa696-e7a4-4306-9f97-124202ead3be" class="numbered-list" start="25"><li>to refrain from performing</li></ol><ol type="1" id="f93bd576-787d-4473-b3f9-e1c890ddc5e9" class="numbered-list" start="26"><li>All that glitters are not gold.</li></ol><ol type="1" id="3ca4b40e-4eb5-4797-9779-075751472665" class="numbered-list" start="27"><li><strong><strong>overlooked</strong></strong></li></ol><ol type="1" id="dffa17cf-5b52-4fd9-87e6-3241686d94ad" class="numbered-list" start="28"><li><strong>Adjectives ending in ED and ING</strong></li></ol><ol type="1" id="97284670-52ca-4766-9580-d2b0ef0cb489" class="numbered-list" start="29"><li>out of someone’s league</li></ol><ol type="1" id="1ed93a70-973e-4b5f-82b0-56d736e0ca5d" class="numbered-list" start="30"><li>get the ball rolling.</li></ol><ol type="1" id="ecabd6f4-e4b1-4c4b-b338-ae17de402418" class="numbered-list" start="31"><li>get into shape.</li></ol><ol type="1" id="1d0e2a71-f185-40d1-a255-3d34f3b20846" class="numbered-list" start="32"><li>singling out</li></ol><ol type="1" id="de4a0770-a594-467b-820b-f08beaf679dd" class="numbered-list" start="33"><li>fulfill</li></ol><ol type="1" id="fbac69dd-bed4-4eb8-893b-c97dbd2d45d6" class="numbered-list" start="34"><li>fall off</li></ol><p id="4bad6c72-90f5-4652-ac97-da031664c1bb" class="">
+</p><ol type="1" id="e5949f4e-18f3-4ca5-bc6a-a3c7e7ceadf9" class="numbered-list" start="1"><li><strong><strong>DIRECTION</strong></strong></li></ol><p id="8be892b1-56a4-45ef-88ab-fe6afebf4ccd" class=""><a href="https://forum.wordreference.com/threads/in-the-south-of-england-or-on-the-south-of-england.2506712/">https://forum.wordreference.com/threads/in-the-south-of-england-or-on-the-south-of-england.2506712/</a></p><p id="0be0e5e7-5dfe-4ace-a127-9681b1a13afe" class=""><a href="https://www.quora.com/Is-there-any-significant-difference-between-in-the-south-of-and-to-the-south-of">https://www.quora.com/Is-there-any-significant-difference-between-in-the-south-of-and-to-the-south-of</a><div class="indented"><ol type="1" id="8f6ca285-2e2a-4e35-a088-a8acaf3dd92f" class="numbered-list" start="1"><li>I’m living in Southern California.</li></ol><ol type="1" id="9fa0d3a8-4d02-429d-820a-e52eca0ce3a9" class="numbered-list" start="2"><li>My house is in the south of England</li></ol><ol type="1" id="3dcb5d87-9f4c-4158-b488-bfaffc895b03" class="numbered-list" start="3"><li>Where I’m living is to the south of California.</li></ol><ol type="1" id="543afeb4-223f-4e9e-a3cd-7839f18c56ac" class="numbered-list" start="4"><li>Mexico is to the south of the USA.</li></ol><ol type="1" id="e0aff5b1-f0d8-4f39-99b0-b3ffece750d7" class="numbered-list" start="5"><li>I live in a little town ON the south<strong> </strong>coast of England</li></ol><ol type="1" id="8d5c96a4-6280-4ed0-a742-b27edcd6e0f5" class="numbered-list" start="6"><li>I live in a little town IN the South of England.</li></ol><p id="037035b7-e54b-4ae5-9925-873417a46cc4" class=""><a href="https://englishgrammarapp.com/">https://englishgrammarapp.com/</a></p><p id="5cb56b4d-53e3-445b-8fe1-41e902c0355a" class="">slight</p><p id="b2a48f41-2c6a-4edc-8d29-3be46c6c9e71" class="">hard-featured</p><p id="6ef84d6f-8e47-4dfc-8014-082e64d05aa6" class="">summon</p><p id="1688ad22-bbbb-4a59-a043-ff1676386fc7" class="">settled</p><ol type="1" id="360a8e7b-70be-4ec0-8419-1a5fb359412c" class="numbered-list" start="28"><li><strong>Preposition </strong><ol type="a" id="36ab77d5-5134-471e-ba6a-cd5c39cf9d9d" class="numbered-list" start="1"><li><a href="https://academicguides.waldenu.edu/writingcenter/grammar/prepositions">https://academicguides.waldenu.edu/writingcenter/grammar/prepositions</a> </li></ol><ol type="a" id="265e2c81-ab7a-4a99-bfad-a156d5f4bb3d" class="numbered-list" start="2"><li><a href="https://dictionary.cambridge.org/us/grammar/british-grammar/prepositions">https://dictionary.cambridge.org/us/grammar/british-grammar/prepositions</a></li></ol><ol type="a" id="46b628e7-393f-4d32-b0bb-9377b5d9fdc1" class="numbered-list" start="3"><li><a href="https://learnenglish.britishcouncil.org/grammar/b1-b2-grammar/verbs-and-prepositions">https://learnenglish.britishcouncil.org/grammar/b1-b2-grammar/verbs-and-prepositions</a></li></ol></li></ol><p id="421ac77d-8f96-4725-9a9d-be1b2b9034e9" class=""><a href="https://www.britannica.com/dictionary/eb/qa/-Your-Yours-and-Letter-Writing">https://www.britannica.com/dictionary/eb/qa/-Your-Yours-and-Letter-Writing</a></p><p id="de0e855c-8d55-4c39-b002-6c440ad7ce8e" class="">n/a. (2022, November 02). Retrieved from <a href="https://dictionary.cambridge.org/dictionary/english/n-a">https://dictionary.cambridge.org/dictionary/english/n-a</a></p><h1 id="8aac1c25-1231-4aef-a8e9-b1cae40908ba" class="">Sentences</h1><pre id="06dea060-c78c-44ae-8de6-bed73e4a4dac" class="code"><code>It is not uncommon to meet with an opinion that though 
+the promoting manufactures may be the interest of a part
+of the Union, it is to that of another part.
+Alexander Hamilton, &quot;Report on Manufactures,&quot; originally published in 1791.</code></pre><h1 id="7ec190fc-f6f0-4e5f-bc63-711dc4cf93f4" class="">How to increase your reading skills?</h1><ul id="d4bf0d64-e373-4af4-9ff0-e5a68ba21241" class="bulleted-list"><li style="list-style-type:disc">Increase your vocabulary.</li></ul><ul id="fcb2c4e3-466e-4e18-beaa-dcb949667b28" class="bulleted-list"><li style="list-style-type:disc">Understand grammar.</li></ul><ul id="e89cb651-ba3e-41ca-ad6b-0d3ce3113212" class="bulleted-list"><li style="list-style-type:disc">Reading more.</li></ul><ul id="5eca547c-d60a-4ff1-b631-eb189d196588" class="bulleted-list"><li style="list-style-type:disc">On focus.</li></ul><ul id="775d7da3-424f-46d8-ac01-805d50296dd6" class="bulleted-list"><li style="list-style-type:disc">Safe steps. Keywords. Inferences.</li></ul><ul id="9e064e1d-c8d7-49de-aea4-492fd37e33c3" class="bulleted-list"><li style="list-style-type:disc">Heuristics. Representations.</li></ul><ul id="2b2f12e1-11a5-4535-a304-6abbe0a62288" class="bulleted-list"><li style="list-style-type:disc">Search.</li></ul><h1 id="a0b78a86-2c07-4c3f-8832-60d32d199baf" class="">Conventional expressions</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="0c30e03f-814e-4726-87f5-5d9d3080d975"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Unfortunately, there is no rule or formula that can be applied to conventional expressions. <a href="https://www.khanacademy.org/test-prep/sat/sat-reading-writing-practice/new-sat-writing-grammar/a/sat-writing--article--conventional-expressions--quick-guide">https://www.khanacademy.org/test-prep/sat/sat-reading-writing-practice/new-sat-writing-grammar/a/sat-writing--article--conventional-expressions--quick-guide</a></div></figure><p id="4d9e3aa8-967a-4c34-a9a2-d22873fb3251" class="">&quot;stand <strong>on</strong>
+&quot; vs. &quot;stand <strong>in</strong>
+&quot; vs. &quot;stand <strong>for</strong>
+in awe</p><ul id="d3e7aa12-fbdb-44f0-90e3-17f2445d21b8" class="bulleted-list"><li style="list-style-type:disc"><strong>not only </strong><em><strong>__</strong></em><strong> but also </strong><em><strong>__</strong></em></li></ul><ul id="d8f89029-be2b-429d-9d56-8cc690ac52f2" class="bulleted-list"><li style="list-style-type:disc"><strong>both </strong><em><strong>__</strong></em><strong> and </strong><em><strong>__</strong></em></li></ul><ul id="96eead2a-6220-4e00-b56b-3206f51345e6" class="bulleted-list"><li style="list-style-type:disc"><strong>from </strong><em><strong>__</strong></em><strong> to </strong><em><strong>__</strong></em></li></ul><ul id="f0e5420d-8374-483e-9d6c-a367986d6763" class="bulleted-list"><li style="list-style-type:disc"><strong>as </strong><em><strong>__</strong></em><strong> as </strong><em><strong>__</strong></em></li></ul><ul id="8908b87e-99b3-4c19-8736-5cfb2a5f0648" class="bulleted-list"><li style="list-style-type:disc"><strong>between </strong><em><strong>__</strong></em><strong> and </strong><em><strong>__</strong></em></li></ul><ul id="2021afdf-a0fb-4884-89be-5d1ff9bf3e81" class="bulleted-list"><li style="list-style-type:disc"><strong>(n)either </strong><em><strong>__</strong></em><strong> (n)or </strong><em><strong>__</strong></em></li></ul><p id="4ef68b93-678f-46d2-8a01-feb55aa330ab" class="">verb + preposition.</p><p id="d6b73dd5-cf52-4f08-9ef2-e5b6fb4dd492" class="">preposition + noun.</p><p id="200ebce7-2c8d-4c5a-8e77-707eaf664f42" class=""><a href="https://blog.prepscholar.com/all-the-sat-idioms-you-need-complete-list-and-tips">https://blog.prepscholar.com/all-the-sat-idioms-you-need-complete-list-and-tips</a></p><p id="2a3085b2-4afb-4d6f-aab7-dd09afe50d91" class=""><a href="https://rm.coe.int/tool-33-a-list-of-expressions-for-everyday-communication-language-supp/16807171b7">https://rm.coe.int/tool-33-a-list-of-expressions-for-everyday-communication-language-supp/16807171b7</a></p><h1 id="38cb263e-67e1-4d6d-947f-08a0a1b403ce" class="">Subjects</h1><p id="0dd50292-e973-4ddc-b13b-7df6d948d70b" class="">“Just woke up to the news that more Tweeps were summarily fired last night.”</p><p id="a571127d-71db-48a0-9d8b-6a890194988b" class="">Eric Frohnhoefer @ 🏡 on Twitter. (2022, November 14). Retrieved from <a href="https://twitter.com/EricFrohnhoefer/status/1592528714126233600">https://twitter.com/EricFrohnhoefer/status/1592528714126233600</a></p><p id="5d02d0a8-d412-4f1f-ac33-8334f1ed9cf4" class="">
+</p><p id="ec5b806c-99b2-4099-8381-5e28bbf17be7" class="">Is “I woke up” or “you woke up”? is it a command?</p><p id="e60af339-2681-4f67-a695-cdc13bb21526" class="">The answer is I woke up.</p><h1 id="8338b4b7-4818-4bfa-9699-cb01e1b0f035" class="">Types of conditional</h1><p id="a7beab85-b4a2-4e1a-9a48-1478627999f0" class=""><a href="https://www.cs.dartmouth.edu/~thc/Cormen-rules.pdf">https://www.cs.dartmouth.edu/~thc/Cormen-rules.pdf</a></p><p id="e9d5c93a-868d-4ecd-97b7-ba742dd4dafb" class=""><a href="https://dictionary.cambridge.org/us/grammar/british-grammar/conditionals-if">https://dictionary.cambridge.org/us/grammar/british-grammar/conditionals-if</a></p><h2 id="5718e0de-5d3a-412b-b78e-093a41e43ca0" class="">Forms</h2><p id="b6e501fd-576c-42d3-bfbb-51a1b5581ecb" class="">if <span style="border-bottom:0.05em solid">clause</span>, then main clause</p><p id="b1dfcfaf-4124-42f6-8b68-95bc4ee1913e" class="">if <span style="border-bottom:0.05em solid">clause</span>, then main clause</p><p id="c639c876-5a05-4d30-96e8-87d02fe182d5" class="">main clause if <span style="border-bottom:0.05em solid">clause</span></p><h2 id="c7224d1c-e5e6-41d4-adca-16e093fe5929" class="">Summary</h2><table id="d1b3e060-c094-4e5a-b628-ccb2c66d1b59" class="simple-table"><thead class="simple-table-header"><tr id="9881c631-f916-41f0-86f0-db5adac041b1"><th id="pwQP" class="simple-table-header-color simple-table-header"></th><th id="\EbK" class="simple-table-header-color simple-table-header" style="width:119.75px">true</th><th id="tlsI" class="simple-table-header-color simple-table-header" style="width:119.75px">likely/possible</th><th id="@{gb" class="simple-table-header-color simple-table-header" style="width:119.75px">less likely / less posibble</th><th id="mhNg" class="simple-table-header-color simple-table-header" style="width:119.75px">impossible</th></tr></thead><tbody><tr id="6013252f-4623-4d0f-b8b9-a398152914a5"><td id="pwQP" class="">Form</td><td id="\EbK" class="" style="width:119.75px">if <em>present simple, 
+</em>modal verb with future meaning
+(shall/should/will/would/can/could/may/might)</td><td id="tlsI" class="" style="width:119.75px">if <em>past simple, 
+</em>modal verb with future meaning
+(shall/should/will/would/can/could/may/might)</td><td id="@{gb" class="" style="width:119.75px"></td><td id="mhNg" class="" style="width:119.75px"></td></tr><tr id="a59a8ce2-2ed0-4fec-a1f7-4ef6169abdf4"><td id="pwQP" class="">When?</td><td id="\EbK" class="" style="width:119.75px"></td><td id="tlsI" class="" style="width:119.75px"></td><td id="@{gb" class="" style="width:119.75px"></td><td id="mhNg" class="" style="width:119.75px"></td></tr></tbody></table><p id="d13ba8c7-401c-45bb-9262-0596fe903ea4" class=""><div class="indented"><ol type="1" id="c142f3ee-ed59-4374-96cd-70a9df7c112e" class="numbered-list" start="1"><li>If they have money, they will join us on our vacation. If they had money, they could join us on our vacation.</li></ol><ol type="1" id="86b9893a-e2e0-4edd-adf9-b0d2bbfacdec" class="numbered-list" start="2"><li>If you don’t have to work tomorrow, you will be happier. If you didn’t have to work tomorrow, you would be happier.</li></ol><ol type="1" id="fa958289-85e5-4c26-98f3-998040e2dd61" class="numbered-list" start="3"><li>If she goes to sleep earlier, she will not be too tired tomorrow. If she went to sleep earlier, she might not be too tired tomorrow.</li></ol><ol type="1" id="cf279634-b917-4b52-9ac4-c012526a1e7b" class="numbered-list" start="4"><li>If I win the lottery, I will buy a house. If I won the lottery, I would buy a house.    </li></ol></div></p><h1 id="ad9e9ebe-a6aa-4de9-8d04-e270229acaa0" class=""><strong>Asking and Giving Direction in English</strong></h1><h1 id="b294ddcb-6874-48cc-8230-474d79c73143" class="">Personal names</h1><p id="6bc5ba8a-a7a5-4861-8f34-254624f0e096" class=""><a href="https://en.wikipedia.org/wiki/Given_name">https://en.wikipedia.org/wiki/Given_name</a></p><p id="25f66a2e-151e-40ea-885b-475b29c1669c" class="">
+</p><h2 id="8c4328a5-bba2-48c0-96ba-32dd8b6063c0" class="">Conjugations</h2><p id="d825c415-af00-4f98-bb1d-92c779876f99" class=""><strong>Simple Present</strong></p><p id="b57d6d4a-ea38-4ec6-902c-3e46fb034da0" class=""><strong>Simple Past</strong></p><p id="b84227f4-a1ac-4dbe-873b-bd7f4cbcce45" class="">Rebeca and I rewound the commercial when we saw our stimmy.</p><p id="8661feeb-5f5e-4679-8071-8a03dbb24992" class=""><strong>Present Perfect</strong></p><p id="c447248f-0e00-4b61-b796-ddb0b830218e" class="">I have eaten it.
+We have sent them.
+He has shown something else.
+Adam has been a reveler, but not now.</p><h1 id="514ce0a6-7128-43b7-80af-1fc034e2d8bf" class="">Adverbs vs verbs</h1><p id="6d4f2889-0f32-4c7b-b648-6d4403eb2494" class="">You must write verbs over adverbs.</p><p id="fbdac505-b54b-411f-83ba-349106143d07" class="">Hove, S. (2018). Grammar 101: Verbs vs. Adverbs - Elite Editing. Elite Editing. Retrieved from <a href="https://eliteediting.com/resources/verbs-vs-adverbs">https://eliteediting.com/resources/verbs-vs-adverbs</a></p><h1 id="d0b3a5cd-ba2a-44bb-8086-c768c4b96129" class=""><strong>Modals of Certainty</strong></h1><p id="87f16625-c7a4-4d88-bd75-3173b7e81240" class=""><a href="https://learningenglish.voanews.com/a/everyday-grammar-may-might-must-modals-certainty/2887387.html">https://learningenglish.voanews.com/a/everyday-grammar-may-might-must-modals-certainty/2887387.html</a></p><h1 id="73c55429-923a-4336-adbb-65fad0ac6e00" class="">Whom and who</h1><h1 id="c5bb6898-b0ec-42a8-b321-9d42a940d5c7" class="">English literature</h1><p id="96f4c03b-f941-4e22-bb6b-b95b48879240" class="">CliffsNotes</p><h2 id="3799bc17-b14c-49be-b0a2-bb847e70dc82" class="">Victorian literature</h2><p id="4d1f281b-f177-4364-ad31-20891e400062" class="">Villette, Charlotte Brontë</p><h1 id="fb3e8f58-080c-4f27-9ae2-944313fca79c" class=""><strong>Converting nouns or adjectives into verbs</strong></h1><p id="f0375e72-bad6-4350-89c5-5ec8e63016f5" class=""><a href="https://primaryleap.co.uk/activity/converting-nouns-or-adjectives-into-verbs/level-1">https://primaryleap.co.uk/activity/converting-nouns-or-adjectives-into-verbs/level-1</a></p><h1 id="50dcecb5-dee7-40cf-af67-1f45b7e6b254" class="">Polisemia</h1></div></p><p id="b92c1ec6-a8f1-4849-b410-61c8909bd582" class=""><a href="https://blog.prepscholar.com/all-the-sat-idioms-you-need-complete-list-and-tips">https://blog.prepscholar.com/all-the-sat-idioms-you-need-complete-list-and-tips</a></p><p id="78bb0cbc-c836-4ba4-98bc-84cc978effea" class=""><strong>Enantiosemia</strong></p><p id="c887cb55-d40f-4145-9121-0c66e6e72ccf" class=""><strong>Endonym and exonym</strong></p><p id="14b42ba8-5e89-4a83-8281-fc4e62ef2c99" class="">
+</p><h1 id="af7d9066-a09a-450b-ad06-851725374d17" class="">Connotation</h1><h1 id="23304ff5-5816-4971-b0ea-e5e4642cd3e8" class="">Denotation</h1><h1 id="3701ba44-5c9e-4481-8ff3-c735d1e29db6" class="">DECLENSION OF NOUNS</h1><p id="fbb93058-710f-482a-a0be-a43236e23767" class=""><a href="https://www.thelatinlibrary.com/101/Declension.pdf">https://www.thelatinlibrary.com/101/Declension.pdf</a></p><h1 id="67b3382d-cb14-4f88-880e-003f32c206a0" class="">German</h1><p id="e4058726-3eb8-4e87-8ac2-fc433daf3694" class=""><a href="https://userbase.kde.org/Tutorials/ComposeKey#Typing_Macrons.2C_Umlauts.2C_Accents.2C_">https://userbase.kde.org/Tutorials/ComposeKey#Typing_Macrons.2C_Umlauts.2C_Accents.2C_</a>...</p><h2 id="e70e75c7-3023-4081-ae18-80eafe1a9791" class="">Dictionary</h2><p id="8819f16d-7b63-4604-b78e-f62912c15be6" class=""><a href="https://www.dwds.de/">https://www.dwds.de/</a></p><p id="47c32432-a986-4e8b-b91c-9ea61942e7a6" class=""><a href="https://www.duden.de/">https://www.duden.de/</a></p><h1 id="125d9562-a86b-4dc6-940a-702f4bc79388" class="">Latin</h1><p id="6bb6507e-867b-48d0-bf83-b86cb1ec674d" class=""><a href="https://nobispacem.com/sites/default/files/documents/anewlatinprimerbymimamaxey.pdf">https://nobispacem.com/sites/default/files/documents/anewlatinprimerbymimamaxey.pdf</a></p><h1 id="b8c42a2d-a043-4287-9d90-0decda374d77" class="">Espanol</h1><p id="9bd7961d-8e16-4d2a-8d32-8f0e5830be85" class=""><a href="https://aplica.rae.es/orweb/cgi-bin/v.cgi?i=fnviErcOkgLFPkpa">https://aplica.rae.es/orweb/cgi-bin/v.cgi?i=fnviErcOkgLFPkpa</a></p><figure id="56504b65-7b0e-4085-aad7-93c64fde117c"><div class="source"><a href="https://twitter.com/RAEinforma/status/1572494565130526720">https://twitter.com/RAEinforma/status/1572494565130526720</a></div></figure><p id="b3c8d4b0-7938-4cd0-b1ec-90e593f6040e" class=""><a href="https://aplica.rae.es/grweb/cgi-bin/v.cgi?i=wMyVTfglgPhZzzSJ">https://aplica.rae.es/grweb/cgi-bin/v.cgi?i=wMyVTfglgPhZzzSJ</a></p><p id="0aee36b7-c6f5-4f09-a71b-a06e61d46022" class="">Composicion del nombre</p><p id="45941fa2-6dec-4e3d-b6cd-226922199afd" class="">Nombre := Nombre de pila + Apellidos Paternos + Apellido Maternos</p><p id="1d026bdf-d016-4f9a-a7c8-85c206f21065" class=""><a href="http://dspace.uces.edu.ar:8180/xmlui/bitstream/handle/123456789/1953/Importancia_Fuente_Linares.pdf?sequence=1">http://dspace.uces.edu.ar:8180/xmlui/bitstream/handle/123456789/1953/Importancia_Fuente_Linares.pdf?sequence=1</a></p><p id="f7c23c28-d2e6-4a2f-9333-52d1ee30ba6c" class=""><a href="https://www.rae.es/duda-linguistica/es-correcto-anadir-articulo-al-nombre-de-pila-como-en-el-luis-o-la-susana">https://www.rae.es/duda-linguistica/es-correcto-anadir-articulo-al-nombre-de-pila-como-en-el-luis-o-la-susana</a></p><p id="93beb361-52c9-41ce-944c-947b4299199a" class="">
+</p></div></article></body></html>

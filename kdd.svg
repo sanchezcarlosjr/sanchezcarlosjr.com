@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="495px" preserveAspectRatio="none" style="width:1401px;height:495px;background:#F9F9F9;" version="1.1" viewBox="0 0 1401 495" width="1401px" zoomAndPan="magnify"><defs/><g><!--MD5=[66c594402eadc792f3c20c815e5a68bd]
+class Knowledge Discovery and Data Mining Process--><g id="elem_Knowledge Discovery and Data Mining Process"><rect codeLine="2" fill="#F1F1F1" height="113.1875" id="Knowledge Discovery and Data Mining Process" rx="3.5" ry="3.5" style="stroke:#181818;stroke-width:0.5;" width="363" x="973.5" y="92"/><ellipse cx="988.5" cy="108" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M990.8438,103.6719 C989.9063,103.2344 989.3125,103.0938 988.4375,103.0938 C985.8125,103.0938 983.8125,105.1719 983.8125,107.8906 L983.8125,109.0156 C983.8125,111.5938 985.9219,113.4844 988.8125,113.4844 C990.0313,113.4844 991.1875,113.1875 991.9375,112.6406 C992.5156,112.2344 992.8438,111.7813 992.8438,111.3906 C992.8438,110.9375 992.4531,110.5469 991.9844,110.5469 C991.7656,110.5469 991.5625,110.625 991.375,110.8125 C990.9219,111.2969 990.9219,111.2969 990.7344,111.3906 C990.3125,111.6563 989.625,111.7813 988.8594,111.7813 C986.8125,111.7813 985.5156,110.6875 985.5156,108.9844 L985.5156,107.8906 C985.5156,106.1094 986.7656,104.7969 988.5,104.7969 C989.0781,104.7969 989.6875,104.9531 990.1563,105.2031 C990.6406,105.4844 990.8125,105.7031 990.9063,106.1094 C990.9688,106.5156 991,106.6406 991.1406,106.7656 C991.2813,106.9063 991.5156,107.0156 991.7344,107.0156 C992,107.0156 992.2656,106.875 992.4375,106.6563 C992.5469,106.5 992.5781,106.3125 992.5781,105.8906 L992.5781,104.4688 C992.5781,104.0313 992.5625,103.9063 992.4688,103.75 C992.3125,103.4844 992.0313,103.3438 991.7344,103.3438 C991.4375,103.3438 991.2344,103.4375 991.0156,103.75 L990.8438,103.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="331" x="1002.5" y="112.8467">Knowledge Discovery and Data Mining Process</text><line style="stroke:#181818;stroke-width:0.5;" x1="974.5" x2="1335.5" y1="124" y2="124"/><line style="stroke:#181818;stroke-width:0.5;" x1="974.5" x2="1335.5" y1="132" y2="132"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="180" x="979.5" y="148.9951">analyze(massive dataset)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="979.5" y="165.292">develop algorithms()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="979.5" y="181.5889">visualize()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="270" x="979.5" y="197.8857">support human-machine interaction()</text></g><g id="elem_GMN1693935"><path d="M995,9.5 L995,27.6328 A3.5,3.5 0 0 0 998.5,31.1328 L1151,31.1328 L1155,91.73 L1159,31.1328 L1311.5,31.1328 A3.5,3.5 0 0 0 1315,27.6328 L1315,16 L1305,6 L998.5,6 A3.5,3.5 0 0 0 995,9.5 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;"/><path d="M1305,6 L1305,14.25 A1.75,1.75 0 0 0 1306.75,16 L1315,16 L1305,6 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;"/><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="299" x="1001" y="23.0669">It concerts about all kinds of data and sources.</text></g><!--MD5=[b2d258a7dad7bf1b4c6e509cd7e031af]
+class Data source--><g id="elem_Data source"><rect codeLine="17" fill="#F1F1F1" height="64.2969" id="Data source" rx="3.5" ry="3.5" style="stroke:#181818;stroke-width:0.5;" width="117" x="1277.5" y="298.5"/><ellipse cx="1292.5" cy="314.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1294.8438,310.1719 C1293.9063,309.7344 1293.3125,309.5938 1292.4375,309.5938 C1289.8125,309.5938 1287.8125,311.6719 1287.8125,314.3906 L1287.8125,315.5156 C1287.8125,318.0938 1289.9219,319.9844 1292.8125,319.9844 C1294.0313,319.9844 1295.1875,319.6875 1295.9375,319.1406 C1296.5156,318.7344 1296.8438,318.2813 1296.8438,317.8906 C1296.8438,317.4375 1296.4531,317.0469 1295.9844,317.0469 C1295.7656,317.0469 1295.5625,317.125 1295.375,317.3125 C1294.9219,317.7969 1294.9219,317.7969 1294.7344,317.8906 C1294.3125,318.1563 1293.625,318.2813 1292.8594,318.2813 C1290.8125,318.2813 1289.5156,317.1875 1289.5156,315.4844 L1289.5156,314.3906 C1289.5156,312.6094 1290.7656,311.2969 1292.5,311.2969 C1293.0781,311.2969 1293.6875,311.4531 1294.1563,311.7031 C1294.6406,311.9844 1294.8125,312.2031 1294.9063,312.6094 C1294.9688,313.0156 1295,313.1406 1295.1406,313.2656 C1295.2813,313.4063 1295.5156,313.5156 1295.7344,313.5156 C1296,313.5156 1296.2656,313.375 1296.4375,313.1563 C1296.5469,313 1296.5781,312.8125 1296.5781,312.3906 L1296.5781,310.9688 C1296.5781,310.5313 1296.5625,310.4063 1296.4688,310.25 C1296.3125,309.9844 1296.0313,309.8438 1295.7344,309.8438 C1295.4375,309.8438 1295.2344,309.9375 1295.0156,310.25 L1294.8438,310.1719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="1306.5" y="319.3467">Data source</text><line style="stroke:#181818;stroke-width:0.5;" x1="1278.5" x2="1393.5" y1="330.5" y2="330.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="1283.5" y="347.4951">structure</text><line style="stroke:#181818;stroke-width:0.5;" x1="1278.5" x2="1393.5" y1="354.7969" y2="354.7969"/></g><!--MD5=[914208b3dd90d0cd09084b2847604d37]
+class Data Mining--><g id="elem_Data Mining"><rect codeLine="12" fill="#F1F1F1" height="96.8906" id="Data Mining" rx="3.5" ry="3.5" style="stroke:#181818;stroke-width:0.5;" width="174" x="1068" y="282"/><ellipse cx="1108.65" cy="298" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1110.9938,293.6719 C1110.0563,293.2344 1109.4625,293.0938 1108.5875,293.0938 C1105.9625,293.0938 1103.9625,295.1719 1103.9625,297.8906 L1103.9625,299.0156 C1103.9625,301.5938 1106.0719,303.4844 1108.9625,303.4844 C1110.1813,303.4844 1111.3375,303.1875 1112.0875,302.6406 C1112.6656,302.2344 1112.9938,301.7813 1112.9938,301.3906 C1112.9938,300.9375 1112.6031,300.5469 1112.1344,300.5469 C1111.9156,300.5469 1111.7125,300.625 1111.525,300.8125 C1111.0719,301.2969 1111.0719,301.2969 1110.8844,301.3906 C1110.4625,301.6563 1109.775,301.7813 1109.0094,301.7813 C1106.9625,301.7813 1105.6656,300.6875 1105.6656,298.9844 L1105.6656,297.8906 C1105.6656,296.1094 1106.9156,294.7969 1108.65,294.7969 C1109.2281,294.7969 1109.8375,294.9531 1110.3063,295.2031 C1110.7906,295.4844 1110.9625,295.7031 1111.0563,296.1094 C1111.1188,296.5156 1111.15,296.6406 1111.2906,296.7656 C1111.4313,296.9063 1111.6656,297.0156 1111.8844,297.0156 C1112.15,297.0156 1112.4156,296.875 1112.5875,296.6563 C1112.6969,296.5 1112.7281,296.3125 1112.7281,295.8906 L1112.7281,294.4688 C1112.7281,294.0313 1112.7125,293.9063 1112.6188,293.75 C1112.4625,293.4844 1112.1813,293.3438 1111.8844,293.3438 C1111.5875,293.3438 1111.3844,293.4375 1111.1656,293.75 L1110.9938,293.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="1128.35" y="302.8467">Data Mining</text><line style="stroke:#181818;stroke-width:0.5;" x1="1069" x2="1241" y1="314" y2="314"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="145" x="1074" y="330.9951">low-level algorithms</text><line style="stroke:#181818;stroke-width:0.5;" x1="1069" x2="1241" y1="338.2969" y2="338.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="1074" y="355.292">analyze(data)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162" x="1074" y="371.5889">extract patterns(data)</text></g><!--MD5=[7bbf8382e2e0bf5bdca8d103534d728b]
+class Knowledge Discovery--><g id="elem_Knowledge Discovery"><rect codeLine="20" fill="#F1F1F1" height="80.5938" id="Knowledge Discovery" rx="3.5" ry="3.5" style="stroke:#181818;stroke-width:0.5;" width="539" x="317.5" y="290"/><ellipse cx="506.25" cy="306" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M508.5938,301.6719 C507.6563,301.2344 507.0625,301.0938 506.1875,301.0938 C503.5625,301.0938 501.5625,303.1719 501.5625,305.8906 L501.5625,307.0156 C501.5625,309.5938 503.6719,311.4844 506.5625,311.4844 C507.7813,311.4844 508.9375,311.1875 509.6875,310.6406 C510.2656,310.2344 510.5938,309.7813 510.5938,309.3906 C510.5938,308.9375 510.2031,308.5469 509.7344,308.5469 C509.5156,308.5469 509.3125,308.625 509.125,308.8125 C508.6719,309.2969 508.6719,309.2969 508.4844,309.3906 C508.0625,309.6563 507.375,309.7813 506.6094,309.7813 C504.5625,309.7813 503.2656,308.6875 503.2656,306.9844 L503.2656,305.8906 C503.2656,304.1094 504.5156,302.7969 506.25,302.7969 C506.8281,302.7969 507.4375,302.9531 507.9063,303.2031 C508.3906,303.4844 508.5625,303.7031 508.6563,304.1094 C508.7188,304.5156 508.75,304.6406 508.8906,304.7656 C509.0313,304.9063 509.2656,305.0156 509.4844,305.0156 C509.75,305.0156 510.0156,304.875 510.1875,304.6563 C510.2969,304.5 510.3281,304.3125 510.3281,303.8906 L510.3281,302.4688 C510.3281,302.0313 510.3125,301.9063 510.2188,301.75 C510.0625,301.4844 509.7813,301.3438 509.4844,301.3438 C509.1875,301.3438 508.9844,301.4375 508.7656,301.75 L508.5938,301.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="153" x="526.75" y="310.8467">Knowledge Discovery</text><line style="stroke:#181818;stroke-width:0.5;" x1="318.5" x2="855.5" y1="322" y2="322"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="323.5" y="338.9951">application domain</text><line style="stroke:#181818;stroke-width:0.5;" x1="318.5" x2="855.5" y1="346.2969" y2="346.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="527" x="323.5" y="363.292">seek new knowledge from(data): knowledge that is useful to the end user</text></g><path d="M6,305.5 L6,345.7656 A0,0 0 0 0 6,345.7656 L282,345.7656 A0,0 0 0 0 282,345.7656 L282,329.6328 L321.5,358.4453 L282,321.6328 L282,315.5 L272,305.5 L6,305.5 A0,0 0 0 0 6,305.5 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;"/><path d="M272,305.5 L272,315.5 L282,315.5 L272,305.5 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;"/><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="251" x="12" y="322.5669">It has to avoid misuse of data analysis.</text><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="140" x="12" y="337.6997">(Fayyad et al., 1996c)</text><!--MD5=[e0ffe6cca08744e5a6f1adf6728191cb]
+class Knowledge Discovery in Database--><g id="elem_Knowledge Discovery in Database"><rect codeLine="28" fill="#F1F1F1" height="48" id="Knowledge Discovery in Database" rx="3.5" ry="3.5" style="stroke:#181818;stroke-width:0.5;" width="274" x="352" y="440"/><ellipse cx="367" cy="456" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M369.3438,451.6719 C368.4063,451.2344 367.8125,451.0938 366.9375,451.0938 C364.3125,451.0938 362.3125,453.1719 362.3125,455.8906 L362.3125,457.0156 C362.3125,459.5938 364.4219,461.4844 367.3125,461.4844 C368.5313,461.4844 369.6875,461.1875 370.4375,460.6406 C371.0156,460.2344 371.3438,459.7813 371.3438,459.3906 C371.3438,458.9375 370.9531,458.5469 370.4844,458.5469 C370.2656,458.5469 370.0625,458.625 369.875,458.8125 C369.4219,459.2969 369.4219,459.2969 369.2344,459.3906 C368.8125,459.6563 368.125,459.7813 367.3594,459.7813 C365.3125,459.7813 364.0156,458.6875 364.0156,456.9844 L364.0156,455.8906 C364.0156,454.1094 365.2656,452.7969 367,452.7969 C367.5781,452.7969 368.1875,452.9531 368.6563,453.2031 C369.1406,453.4844 369.3125,453.7031 369.4063,454.1094 C369.4688,454.5156 369.5,454.6406 369.6406,454.7656 C369.7813,454.9063 370.0156,455.0156 370.2344,455.0156 C370.5,455.0156 370.7656,454.875 370.9375,454.6563 C371.0469,454.5 371.0781,454.3125 371.0781,453.8906 L371.0781,452.4688 C371.0781,452.0313 371.0625,451.9063 370.9688,451.75 C370.8125,451.4844 370.5313,451.3438 370.2344,451.3438 C369.9375,451.3438 369.7344,451.4375 369.5156,451.75 L369.3438,451.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="242" x="381" y="460.8467">Knowledge Discovery in Database</text><line style="stroke:#181818;stroke-width:0.5;" x1="353" x2="625" y1="472" y2="472"/><line style="stroke:#181818;stroke-width:0.5;" x1="353" x2="625" y1="480" y2="480"/></g><g id="elem_GMN1693947"><path d="M129,455 L129,473.1328 A3.5,3.5 0 0 0 132.5,476.6328 L313.5,476.6328 A3.5,3.5 0 0 0 317,473.1328 L317,469.5 L351.966,464 L317,461.5 L317,461.5 L307,451.5 L132.5,451.5 A3.5,3.5 0 0 0 129,455 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;"/><path d="M307,451.5 L307,459.75 A1.75,1.75 0 0 0 308.75,461.5 L317,461.5 L307,451.5 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;"/><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="167" x="135" y="468.5669">(Klosgen &amp; Zytkow, 1996)</text></g><!--MD5=[ceddfb79bdb4bc56b4af4c6e5653bc36]
+class Knowledge Discovery in Non-Database Source--><g id="elem_Knowledge Discovery in Non-Database Source"><rect codeLine="30" fill="#F1F1F1" height="48" id="Knowledge Discovery in Non-Database Source" rx="3.5" ry="3.5" style="stroke:#181818;stroke-width:0.5;" width="361" x="661.5" y="440"/><ellipse cx="676.5" cy="456" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M678.8438,451.6719 C677.9063,451.2344 677.3125,451.0938 676.4375,451.0938 C673.8125,451.0938 671.8125,453.1719 671.8125,455.8906 L671.8125,457.0156 C671.8125,459.5938 673.9219,461.4844 676.8125,461.4844 C678.0313,461.4844 679.1875,461.1875 679.9375,460.6406 C680.5156,460.2344 680.8438,459.7813 680.8438,459.3906 C680.8438,458.9375 680.4531,458.5469 679.9844,458.5469 C679.7656,458.5469 679.5625,458.625 679.375,458.8125 C678.9219,459.2969 678.9219,459.2969 678.7344,459.3906 C678.3125,459.6563 677.625,459.7813 676.8594,459.7813 C674.8125,459.7813 673.5156,458.6875 673.5156,456.9844 L673.5156,455.8906 C673.5156,454.1094 674.7656,452.7969 676.5,452.7969 C677.0781,452.7969 677.6875,452.9531 678.1563,453.2031 C678.6406,453.4844 678.8125,453.7031 678.9063,454.1094 C678.9688,454.5156 679,454.6406 679.1406,454.7656 C679.2813,454.9063 679.5156,455.0156 679.7344,455.0156 C680,455.0156 680.2656,454.875 680.4375,454.6563 C680.5469,454.5 680.5781,454.3125 680.5781,453.8906 L680.5781,452.4688 C680.5781,452.0313 680.5625,451.9063 680.4688,451.75 C680.3125,451.4844 680.0313,451.3438 679.7344,451.3438 C679.4375,451.3438 679.2344,451.4375 679.0156,451.75 L678.8438,451.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="329" x="690.5" y="460.8467">Knowledge Discovery in Non-Database Source</text><line style="stroke:#181818;stroke-width:0.5;" x1="662.5" x2="1021.5" y1="472" y2="472"/><line style="stroke:#181818;stroke-width:0.5;" x1="662.5" x2="1021.5" y1="480" y2="480"/></g><g id="elem_GMN1693951"><path d="M1057.5,455 L1057.5,460 L1022.5,464 L1057.5,468 L1057.5,473.1328 A3.5,3.5 0 0 0 1061,476.6328 L1207,476.6328 A3.5,3.5 0 0 0 1210.5,473.1328 L1210.5,461.5 L1200.5,451.5 L1061,451.5 A3.5,3.5 0 0 0 1057.5,455 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;"/><path d="M1200.5,451.5 L1200.5,459.75 A1.75,1.75 0 0 0 1202.25,461.5 L1210.5,461.5 L1200.5,451.5 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;"/><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="132" x="1063.5" y="468.5669">Frawley et al. (1991)</text></g><!--MD5=[122d9a74c36eb8003411858be6048cf4]
+reverse link Knowledge Discovery and Data Mining Process to Data source--><g id="link_Knowledge Discovery and Data Mining Process_Data source"><path codeLine="9" d="M1220.84,214.978 C1249.5,243.481 1281.74,275.537 1304.8,298.469 " fill="none" id="Knowledge Discovery and Data Mining Process-backto-Data source" style="stroke:#191919;stroke-width:1.0;"/><polygon fill="none" points="1211.28,205.466,1212.7178,212.5323,1219.7936,213.9229,1218.3558,206.8566,1211.28,205.466" style="stroke:#191919;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="105" x="1257" y="248.0669">how is it stored?</text></g><!--MD5=[dcb90e03ba308ac5154dcf9ef8e2255a]
+reverse link Knowledge Discovery and Data Mining Process to Data Mining--><g id="link_Knowledge Discovery and Data Mining Process_Data Mining"><path codeLine="10" d="M1155,218.681 C1155,239.754 1155,262.438 1155,281.76 " fill="none" id="Knowledge Discovery and Data Mining Process-backto-Data Mining" style="stroke:#191919;stroke-width:1.0;"/><polygon fill="none" points="1155,205.466,1151,211.466,1155,217.466,1159,211.466,1155,205.466" style="stroke:#191919;stroke-width:1.0;"/></g><!--MD5=[6e8f6f0407c5aa7e7a36fbe8758551b4]
+reverse link Knowledge Discovery and Data Mining Process to Knowledge Discovery--><g id="link_Knowledge Discovery and Data Mining Process_Knowledge Discovery"><path codeLine="11" d="M967.01,209.074 C883.112,235.662 786.544,266.264 711.75,289.966 " fill="none" id="Knowledge Discovery and Data Mining Process-backto-Knowledge Discovery" style="stroke:#191919;stroke-width:1.0;"/><polygon fill="none" points="979.559,205.098,972.631,203.0974,968.1196,208.723,975.0476,210.7236,979.559,205.098" style="stroke:#191919;stroke-width:1.0;"/></g><!--MD5=[39c7fd637e409eebd54f473ba8dc843f]
+reverse link Knowledge Discovery to Knowledge Discovery in Database--><g id="link_Knowledge Discovery_Knowledge Discovery in Database"><path codeLine="32" d="M545.353,387.383 C531.655,405.7639 517.172,425.1972 506.319,439.7601 " fill="none" id="Knowledge Discovery-backto-Knowledge Discovery in Database" style="stroke:#191919;stroke-width:1.0;"/><polygon fill="none" points="539.767,383.165,557.331,371.311,550.992,391.5306,539.767,383.165" style="stroke:#191919;stroke-width:1.0;"/></g><!--MD5=[f64b1a31baf3e437b305e2cc26c4ccb4]
+reverse link Knowledge Discovery to Knowledge Discovery in Non-Database Source--><g id="link_Knowledge Discovery_Knowledge Discovery in Non-Database Source"><path codeLine="33" d="M681.646,380.308 C721.193,400.7015 765.265,423.429 797.183,439.8883 " fill="none" id="Knowledge Discovery-backto-Knowledge Discovery in Non-Database Source" style="stroke:#191919;stroke-width:1.0;"/><polygon fill="none" points="678.422,386.521,663.854,371.133,684.838,374.078,678.422,386.521" style="stroke:#191919;stroke-width:1.0;"/></g><!--MD5=[11a9070fe666b56690cc0d685d9d63f3]
+link Knowledge Discovery to Data Mining--><g id="link_Knowledge Discovery_Data Mining"><path codeLine="34" d="M856.861,330.5 C930.908,330.5 1006.24,330.5 1062.66,330.5 " fill="none" id="Knowledge Discovery-to-Data Mining" style="stroke:#191919;stroke-width:1.0;"/><polygon fill="#191919" points="1067.71,330.5,1058.71,326.5,1062.71,330.5,1058.71,334.5,1067.71,330.5" style="stroke:#191919;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="175" x="874.75" y="323.5669">the discovery process uses</text></g><!--MD5=[cd4826e2a8d19126a9756c865886abb5]
+@startuml
+!theme mars
+class "Knowledge Discovery and Data Mining Process" {
+  analyze(massive dataset)
+  develop algorithms()
+  visualize()
+  support human-machine interaction()
+}
+note top: It concerts about all kinds of data and sources.
+"Knowledge Discovery and Data Mining Process" o- - "Data source": how is it stored?
+"Knowledge Discovery and Data Mining Process" o- - "Data Mining"
+"Knowledge Discovery and Data Mining Process" o- - "Knowledge Discovery"
+class "Data Mining" {
+  low-level algorithms
+  analyze(data)
+  extract patterns(data)
+}
+class "Data source" {
+  structure
+}
+class "Knowledge Discovery" {
+  application domain
+  seek new knowledge from(data): knowledge that is useful to the end user
+}
+note left of "Knowledge Discovery"::"seek new knowledge from"
+  It has to avoid misuse of data analysis. 
+  (Fayyad et al., 1996c)
+end note
+class "Knowledge Discovery in Database"
+note left: (Klosgen & Zytkow, 1996)
+class "Knowledge Discovery in Non-Database Source"
+note right: Frawley et al. (1991)
+"Knowledge Discovery" <|- - "Knowledge Discovery in Database"
+"Knowledge Discovery" <|- -  "Knowledge Discovery in Non-Database Source"
+"Knowledge Discovery" -> "Data Mining": the discovery process uses
+@enduml
+
+@startuml
+skinparam BackgroundColor F9F9F9
+skinparam shadowing false
+skinparam RoundCorner 7
+skinparam ArrowColor 191919
+skinparam FontColor 191919
+skinparam SequenceLifeLineBorderColor 393939
+skinparam SequenceGroupHeaderFontColor 191919
+skinparam SequenceGroupFontColor 393939
+skinparam SequenceGroupBorderColor 393939
+skinparam SequenceGroupBorderThickness 1
+
+skinparam sequenceDivider {
+    BorderColor 191919
+    BorderThickness 1
+    FontColor 191919
+}
+
+skinparam participant {
+    BackgroundColor E55756
+    BorderColor 191919
+    FontColor F9F9F9
+    BorderThickness 1.5
+}
+
+skinparam database {
+    BackgroundColor A4DBD8
+    BorderColor 191919
+    FontColor 191919
+}
+
+skinparam entity {
+    BackgroundColor EFBABC
+    BorderColor 191919
+    FontColor 191919
+}
+
+skinparam note {
+    BackgroundColor e5e5e5
+    BorderColor 191919
+    FontColor 191919
+    BorderThickness 1.5
+}
+
+skinparam actor {
+    BackgroundColor 191919
+    BorderColor 191919
+    FontColor 191919
+}
+
+skinparam boundary {
+    BackgroundColor EFBABC
+    BorderColor 191919
+    FontColor 191919
+}
+
+skinparam control {
+    BackgroundColor EFBABC
+    BorderColor 191919
+    FontColor 191919
+}
+
+skinparam collections {
+    BackgroundColor E55756
+    BorderColor 191919
+    FontColor 191919
+    BorderThickness 1.5
+}
+
+skinparam queue {
+    BackgroundColor E55756
+    BorderColor 191919
+    FontColor FFF
+    BorderThickness 1.5
+}
+class "Knowledge Discovery and Data Mining Process" {
+  analyze(massive dataset)
+  develop algorithms()
+  visualize()
+  support human-machine interaction()
+}
+note top: It concerts about all kinds of data and sources.
+"Knowledge Discovery and Data Mining Process" o- - "Data source": how is it stored?
+"Knowledge Discovery and Data Mining Process" o- - "Data Mining"
+"Knowledge Discovery and Data Mining Process" o- - "Knowledge Discovery"
+class "Data Mining" {
+  low-level algorithms
+  analyze(data)
+  extract patterns(data)
+}
+class "Data source" {
+  structure
+}
+class "Knowledge Discovery" {
+  application domain
+  seek new knowledge from(data): knowledge that is useful to the end user
+}
+note left of "Knowledge Discovery"::"seek new knowledge from"
+  It has to avoid misuse of data analysis. 
+  (Fayyad et al., 1996c)
+end note
+class "Knowledge Discovery in Database"
+note left: (Klosgen & Zytkow, 1996)
+class "Knowledge Discovery in Non-Database Source"
+note right: Frawley et al. (1991)
+"Knowledge Discovery" <|- - "Knowledge Discovery in Database"
+"Knowledge Discovery" <|- -  "Knowledge Discovery in Non-Database Source"
+"Knowledge Discovery" -> "Data Mining": the discovery process uses
+@enduml
+
+PlantUML version 1.2022.8beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

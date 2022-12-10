@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Sobre los alcances y limitaciones de las Matemáticas en la Economía</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5ae0c179-cae6-41d2-a546-97759fedefea" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/woodcuts_5.jpg" style="object-position:center 66.91%"/><h1 class="page-title">Sobre los alcances y limitaciones de las Matemáticas en la Economía</h1></header><div class="page-body"><nav id="a680025a-bfda-470a-a9ba-b079385e0762" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ed83cdb2-1ae5-4a04-8efa-317a2e30bcb4">Como campo de conocimiento ¿cuál es el objetivo de la Economía?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#91d6b8fa-19b7-4adc-a6ab-04c4572c725f">Como campo de conocimiento ¿cuál es el objetivo de la Matemática?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7bee324e-9dbb-460b-8bfb-fb51cf20c574">¿Por qué las matemáticas resultan ser un recurso útil en el estudio de temas económicos?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a477dd53-ef58-423a-9367-9a6314f6c3b2">¿Con qué otros campos se han relacionado las Matemáticas y la Economía?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d7f9cd04-f063-4e31-8da8-b4d7e0c674bf">¿Qué puntos de encuentro tienen el campo de las Matemáticas y el campo de la Economía? Es decir: ¿en qué coinciden?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#23cc8ebc-5a14-48c6-9451-10d6a75c08b3">¿Cuáles serían algunas limitaciones del uso de las Matemáticas en la Economía?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#61c4c49b-a239-4aff-9fb1-e82a29d32f62">Menciona un ejemplo macroeconómico en el que se pueda aplicar el lenguaje y razonamiento matemático para estudiarlo.</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#70931474-d5b9-4ba5-882c-ad59bd015b1b">Menciona un ejemplo de microeconomía en el que se pueda aplicar el lenguaje y razonamiento matemático para estudiarlo.</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c454eee6-52b0-4baf-a433-da0c2a364859">Referencias</a></div></nav><h1 id="ed83cdb2-1ae5-4a04-8efa-317a2e30bcb4" class="">Como campo de conocimiento ¿cuál es el objetivo de la Economía?</h1><p id="ad886d32-6bb2-440f-acd0-c53f7b8a246b" class="">El objetivo de la economía es estudiar el comportamiento e interacciones de agentes en la distribución, producción y el consumo de bienes-servicios.</p><h1 id="91d6b8fa-19b7-4adc-a6ab-04c4572c725f" class="">Como campo de conocimiento ¿cuál es el objetivo de la Matemática?</h1><p id="9a64a0d9-0154-4bf1-a9f0-0d36fcffc90c" class="">Comprender un discurso de dominio de la manera más precisa, simple y clara posible. El discurso de dominio es cualquier área que los seres humanos tengan interés y tenga sentido usarla, por ejemplo otras áreas de las matématicas -excepto las metamatématicas (lógica y la teoría de la computación)-, física, economía, ….</p><p id="a6c276b9-7154-431a-bfe3-b19cb0607658" class="">Puede ser que la matemática es injustificada para un discurso de dominio, pero no así la lógica: investigar con rigor y escribir un mal argumento es una contradicción.</p><p id="e2285143-06b7-4dfc-8f38-8110cfda883d" class="">Escribir matemáticas no necesariamente significa escribir un montón de símbolos conectados, seguir o aplicar un algoritmo.</p><h1 id="7bee324e-9dbb-460b-8bfb-fb51cf20c574" class="">¿Por qué las matemáticas resultan ser un recurso útil en el estudio de temas económicos?</h1><p id="0a4c9228-ceee-4ece-9207-5b8c9c1f636b" class="">(Samuelson, 1947) afirma que el objetivo común de múltiples áreas de la economía es optimizar -maximizar- la *utilidad de los agentes (empresas, individuos, software -inteligencia artificial-) y la estabilidad de los sistemas económicos (el mercado u otros). Después (Samuelson et al., 1954) también menciona la econometría, analizar los fénomenos económicos desde una óptica cuantitativa.</p><p id="1c1c9920-eff6-4de5-ab57-c5e83c4775e8" class="">De esto se sigue el uso de las matemáticas en la economía: bajo el principio de usar el mejor método disponible. Para optimizar, entender sistemas u econometría usamos las matemáticas. Ejemplos del primero caso son programación, cálculo o teoría de juegos; del segundo, sistemas complejos; del tercero, estadística y probabilidad.</p><p id="709d1bf4-297c-455c-bfe7-5a24f706794f" class="">* Utilidad no necesariamente significa capital, aunque normalmente es así.</p><h1 id="a477dd53-ef58-423a-9367-9a6314f6c3b2" class="">¿Con qué otros campos se han relacionado las Matemáticas y la Economía?</h1><p id="e573cb37-96c0-4160-8e65-2f40fa0b16bf" class="">Admnistración, Informática-Computación-Ciencia de datos-Inteligencia (están juntos por una extraña relación que por cuestiones de brevedad no expondré) o Política. Los 3 tratan sobre conseguir mejor información o lograr que los agentes tomen mejores decisiones -optimización- en un ambiente o ámbito dado, para nuestro caso, económico.</p><h1 id="d7f9cd04-f063-4e31-8da8-b4d7e0c674bf" class="">¿Qué puntos de encuentro tienen el campo de las Matemáticas y el campo de la Economía? Es decir: ¿en qué coinciden?</h1><p id="11a72d65-e1a6-4030-adcf-d868fa5e4d46" class="">Ambas son ciencias y por tanto, buscan verdades no triviales con un método riguroso en un discurso de dominio. Coinciden en la maquinaria de matemáticas aplicadas como vimos anteriormente. Y los inicios de la matemáticas fueron fundamentalmente provocados por fenómenos económicos (para comerciar, cobrar impuestos o la guerra se necesitaba medir, contar, entender planos, …). Aunque los fenómenos económicos son, por definición, tan antiguos como el ser humano, no así la Economía como campo de estudio.</p><h1 id="23cc8ebc-5a14-48c6-9451-10d6a75c08b3" class="">¿Cuáles serían algunas limitaciones del uso de las Matemáticas en la Economía?</h1><p id="b65deec3-2cee-451b-9f43-5e0b58b6474b" class="">Al igual que otras ciencias sociales, los investigadores no cuentan con todas las variables o entendimiento de todo el sistema para aplicar correctamente las matemáticas, por lo tanto, los modelos o soluciones son incompletas, aproximadas y prácticas debido a ciertas asunciones o apriorismos sin datos o pruebas significativas. Y en algunos casos, ya no describen u optimizan la realidad sino que la norman o no dicen nada relevante.</p><p id="d944dbb6-1d3c-4a5d-8dee-c914d23572ee" class="">Así resulta en dos mundos distintos: la academia y la no-academia, cuyos paradigmas son distintos. </p><h1 id="61c4c49b-a239-4aff-9fb1-e82a29d32f62" class="">Menciona un ejemplo macroeconómico en el que se pueda aplicar el lenguaje y razonamiento matemático para estudiarlo.</h1><p id="56f5b9db-4cf2-45ed-84f8-a2a1860a4b51" class="">El modelo Hiks-Hansen es una herramienta para mostrar la relación entre los tipos de interés y  la liquidez de mercado.</p><figure id="0c35c333-5686-4b71-b6f6-a10e1490f4f8" class="image"><a href="Untitled%20293.png"><img style="width:800px" src="Untitled%20293.png"/></a><figcaption>File:Islm.svg - Wikimedia Commons. (2022, November 14). Retrieved from <a href="https://commons.wikimedia.org/wiki/File:Islm.svg">https://commons.wikimedia.org/wiki/File:Islm.svg</a></figcaption></figure><h1 id="70931474-d5b9-4ba5-882c-ad59bd015b1b" class="">Menciona un ejemplo de microeconomía en el que se pueda aplicar el lenguaje y razonamiento matemático para estudiarlo.</h1><p id="1999b49e-6c05-46bb-bdd3-d64a72f1cd1c" class="">El análisis de la curva y demanda, que es un problema de optimización con restricciones donde dos agentes buscan maximizar su utilidad con un capital limitado.</p><figure id="0c42d141-3c5e-4251-a0fd-cc0dd9dff75d" class="image"><a href="Untitled%20294.png"><img style="width:800px" src="Untitled%20294.png"/></a><figcaption>File:Supply-demand-right-shift-demand.svg - Wikimedia Commons. (2006, November 28). Retrieved from <a href="https://commons.wikimedia.org/wiki/File:Supply-demand-right-shift-demand.svg">https://commons.wikimedia.org/wiki/File:Supply-demand-right-shift-demand.svg</a></figcaption></figure><h1 id="c454eee6-52b0-4baf-a433-da0c2a364859" class="">Referencias</h1><p id="3aad95de-ecef-4f37-9c74-a1997a70ff49" class="">de Hidalgo, U. A. d. E. (2016, September 07). Boletín Científico de Ciencias Económico Administrativas No.3. Retrieved from <a href="https://www.uaeh.edu.mx/scige/boletin/icea/n3/e4.html">https://www.uaeh.edu.mx/scige/boletin/icea/n3/e4.html</a></p><p id="9757c222-67b0-490d-af8d-fc6f97ce0956" class="">Calvo, C., &amp; Castillo, C. I. (2012). <em>Las matemáticas en la economía: a través de ejemplos en contextos económicos</em>. Tirant lo Blanch.</p><p id="6353a8b3-a6a3-4f90-8d89-9c331b212982" class="">Concepción, C. G. (2009). Matemáticas como recurso para economía. <em>Matemáticas y Sociedad</em>, 21.</p><p id="048aec56-0819-4933-b3c4-5a411be8e9c8" class="">Page 406: <a href="https://en.wikipedia.org/w/index.php?title=Boris_T._Polyak&amp;action=edit&amp;redlink=1">Polyak, B. T.</a>  (2002). &quot;History of mathematical programming in the USSR: Analyzing the phenomenon (Chapter 3 The pioneer: L. V. Kantorovich, 1912–1986,  pp. 405–407)&quot;. <em>Mathematical Programming</em>. Series <strong>B</strong>. Vol. 91, no. ISMP 2000, Part 1 (Atlanta, GA), number 3. pp. 401–416. <a href="https://en.wikipedia.org/wiki/Doi_(identifier)">doi</a>:<a href="https://doi.org/10.1007%2Fs101070100258">10.1007/s101070100258</a>. <a href="https://en.wikipedia.org/wiki/MR_(identifier)">MR</a> <a href="https://www.ams.org/mathscinet-getitem?mr=1888984">1888984</a>.</p><p id="e701bc86-b8f4-41d6-9217-ebe8afc49d53" class=""><a href="https://en.wikipedia.org/wiki/Paul_Samuelson">Samuelson, Paul A.</a>,  1947, Enlarged ed., 1983. <em>Foundations of Economic Analysis</em>. <a href="https://www.google.com/books/edition/_/0ltHmQEACAAJ?hl=en&amp;sa=X&amp;ved=2ahUKEwi-h96JzO71AhXtpXIEHbLzAfkQ7_IDegQIDxAC">Description.</a>. Harvard University Press. <a href="https://en.wikipedia.org/wiki/ISBN_(identifier)">ISBN</a> <a href="https://en.wikipedia.org/wiki/Special:BookSources/9780674313033">9780674313033</a></p><p id="33921639-d2eb-4f79-b07c-7f57573ee70f" class="">P. A. Samuelson, T. C. Koopmans, and J. R. N. Stone (1954). &quot;Report of the Evaluative Committee for Econometrica,&quot; Econometrica 22(2), p. 142. [p p. 141-146]</p><p id="83da69da-07c6-475a-8d7c-0bff2eaa1048" class="">Student Learning Goals | Department of Mathematics at University of California Berkeley. (2022, November 28). Retrieved from <a href="https://math.berkeley.edu/programs/undergraduate/student-learning-goals">https://math.berkeley.edu/programs/undergraduate/student-learning-goals</a></p><p id="c3768c52-cc22-41d1-ad4f-849ef8ee45b7" class="">Krugman, Paul; Wells, Robin (2012). Economics (3rd ed.). Worth Publishers. p. 2. ISBN 978-1464128738.</p><p id="faf75c27-083d-4932-9d4c-5853b5d408b4" class="">Hathaway, B. (1996). Afternoon session - 1996 meeting. <a href="https://buffett.cnbc.com/video/1996/05/06/afternoon-session---1996-berkshire-">https://buffett.cnbc.com/video/1996/05/06/afternoon-session---1996-berkshire-</a> hathaway-annual-meeting.html</p></div></article></body></html>

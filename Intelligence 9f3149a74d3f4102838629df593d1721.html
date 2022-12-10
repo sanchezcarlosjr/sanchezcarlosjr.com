@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Intelligence</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="9f3149a7-4d3f-4102-8386-29df593d1721" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/webb2.jpg" style="object-position:center 70%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">📯</span></div><h1 class="page-title">Intelligence</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-default">Espionage</span><span class="selected-value select-value-color-purple">cybersecurity</span><span class="selected-value select-value-color-blue">information gathering</span><span class="selected-value select-value-color-yellow">security</span></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Created</th><td><time>@September 17, 2022 11:48 AM</time></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Updated</th><td><time>@December 4, 2022 9:33 PM</time></td></tr></tbody></table></header><div class="page-body"><nav id="aaa2aaf3-b067-4833-8485-5027e22717b3" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cfbde950-83d3-4106-9eb5-1c32532a9d6b">Requisites</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f9483016-8b99-42c5-8fa5-2fc264214f88">Resources</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#84cd09d8-fee0-47ab-b4ef-3d95fa539b1e">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ddc102bd-1b5a-4973-8dde-a5fe60be5bf7">What is X?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a7695a2b-6794-4a70-90c0-f92406a35b6a">Why does X matter to you?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fd716de3-7c6f-4343-9da1-d43b778f5e29">Research</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0753d370-2d0f-483e-8cbb-06a5798d1b09">Ecosystem</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cdae3ed9-8d56-464c-8e15-34dcf4be424f">Hacking, hackers, crackers, ….</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19f1f391-eebb-45c0-b9aa-49fe636a93b2">Conferences</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e881178f-153c-48f7-a81f-f78b2d93f0ef">Jobs</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7ff385be-fe0b-44a7-862c-213b4a66bb34">Culture</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c8616f20-3d33-42e9-bff3-faaff9d2d8c1">Story</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a9739189-ad90-4460-b45e-c0aa4e8d0b4e">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e70a8e98-15ba-448a-b2f6-8e2fc8e54d35">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#137e8b6c-76d8-4c3b-a382-ce87a8c925da">Chapter Name</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c27e611d-1c69-4c30-bc1c-d875f256b209">Notes</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f2a2264c-8daa-4310-85b8-862cdca9425c">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#682119f3-f760-4a98-b975-5bb6bd824061">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#799e9c35-7b55-4782-a745-99faeeff1fb7">Further resources</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7cbef29d-c5ab-42b1-9cd8-f789370f8154">Next steps</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1bf2f8bb-4726-45dc-9679-aa16b7665551">Safety vs Security</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2c53a164-a949-46dc-b962-ba2ef6ec411c">Physical security</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#42217888-0c31-490f-b051-3ff2193d08a4"><strong>Intelligence assessment</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#627ad351-7635-4091-9094-5be330103c96">Espionage</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d913b21f-8204-46e6-a4e6-bb3967f53c2a"><strong>Strategic intelligence</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34987559-10eb-41ef-a63f-327284e52be5"><strong>Military intelligence</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7af996db-70ce-4962-b190-5c4540bb156c">Business intelligence</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c000ee88-ab58-4b07-b8fb-9c29dec52c04">Police intelligence</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#06f4d0a9-4f26-44db-b51d-ce41c3d5fb4b">References</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6d4aad99-2e52-4de7-a8c9-f85404c88b3b">Institutions</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#bd87929a-b968-4c21-a4d0-861719a53b92">Literature</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5c097f98-d3a2-4ec4-af0c-fb49f27432f6">Research</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2ce93e65-c773-4170-b86b-b0e7266be2a3"><strong>Cyberwarfare</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#291347fd-ac25-4540-ba48-35c940f6400e">Social engineering</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8c2525a7-fcfa-4735-ae46-809fa970d201">OSINT</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5a1893ae-6ea5-456c-b098-6b0dc6c06d50">USB Protection</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e60ae75d-6484-4b97-b010-ccf9a39dd763">Law</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d9fc4297-b3b9-4380-af58-0676a1c74fdd">Entropy</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#647dec97-b230-4f32-ab36-8fbe2df853ee">Hash functions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fee88b38-0dba-438d-86ec-cbb6246230c3">Encryption</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d1065149-74ed-4f2d-9055-638d1a02abb4">Symmetric cryptography</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2bc21f30-0bd8-4ddc-b0d8-9c722f7aebf9">Asymmetric cryptography</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#08850183-aeec-440c-9446-e9131768ce8a">PGP and GPG</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9b8488ec-470e-4952-b3ed-83f5b9ca2baf">Email</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1181b813-7cc5-4f7d-883d-cd341c1edecd">Signal, Keybase</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ee76755d-62ae-4fd5-a71c-54e0606d8525">Full disk encryption</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#676eddce-dae9-4569-81a0-2f486f08dbda">SSL, HTTPS, …</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a5e917ba-3d77-4d5a-8e28-6686cf87b51e">Yubikeys</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b292ad08-a197-4068-a88d-0ffc53e37815">Password manager</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#dbc6cb16-ca76-433a-8170-6432a11a7bcb">Authentication</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bda05d3a-0479-4e1e-8975-2f97aa433926">Two-factor authentication</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#512ab430-b603-4ed9-8855-ef3ec77bf098"><strong>Backups</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#532569c9-2a32-4344-94b7-eedee4ac3d4a">Useful idiot</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9a222cde-f5a7-4441-98e9-4b952bcf6143">Matrix (social app)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8dede4f3-7294-4577-a1b2-d0ba859c2c10">5 eyes alliance</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#dde8fcd4-7a29-487b-a125-e0147bf055e3">Federation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#39988d9c-1fef-4f2f-bd97-1eae38445646">Tor</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#77f4f3a7-564d-4fa1-a5a3-a132dd4bf114">Zero-knowledge architecture</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0d50f3cc-2571-4961-8a9e-27cde1c40459">AAA framework</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#982cd14e-b4ec-4c25-a689-79f8556f6aaa">Authority</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4d8f5c3d-591c-4b36-8847-ed3f649268c7">Authorization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e6e8c631-af5e-4047-bf7d-dcc3b9b47dc0">FAQ </a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d9eaee93-2629-41fe-8269-c6af5bb85091">tor vs vpn</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#986c0970-7c48-4431-877e-b691890c14c5"><strong>Cyber Intelligence</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a0abfd02-e998-4ccf-bf6f-96e27eaad0ae">Virus and Malware</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#51bcd988-f5a6-46d0-882b-97504cd0031d">TODO</a></div></nav><h1 id="cfbde950-83d3-4106-9eb5-1c32532a9d6b" class="">Requisites</h1><h1 id="f9483016-8b99-42c5-8fa5-2fc264214f88" class="">Resources</h1><div id="279778b8-bccc-4945-a531-3a293f98cc9f" class="collection-content"><h4 class="collection-title">Foundations</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th></tr></thead><tbody><tr id="8abd4f5e-6671-4219-928b-8de2aa061fec"><td class="cell-title"><a href="Wenliang%20Du%20-%20Computer%20&amp;%20Internet%20Security_%20A%20Hand%208abd4f5e66714219928b8de2aa061fec.html">Wenliang Du - Computer &amp; Internet Security_ A Hands-on Approach-Wenliang Du</a></td><td class="cell-iAvD"></td></tr><tr id="1b59f7bf-c86d-44ee-a56b-5002d1fed61f"><td class="cell-title"><a href="Untitled%201b59f7bfc86d44eea56b5002d1fed61f.html">Untitled</a></td><td class="cell-iAvD"></td></tr><tr id="97cab58f-d659-4e58-ad0e-b5d00fe52992"><td class="cell-title"><a href="Untitled%2097cab58fd6594e58ad0eb5d00fe52992.html">Untitled</a></td><td class="cell-iAvD"></td></tr></tbody></table></div><h1 id="84cd09d8-fee0-47ab-b4ef-3d95fa539b1e" class="">Introduction</h1><h2 id="ddc102bd-1b5a-4973-8dde-a5fe60be5bf7" class="">What is X?</h2><h2 id="a7695a2b-6794-4a70-90c0-f92406a35b6a" class="">Why does X matter to you?</h2><h2 id="fd716de3-7c6f-4343-9da1-d43b778f5e29" class="">Research</h2><h2 id="0753d370-2d0f-483e-8cbb-06a5798d1b09" class="">Ecosystem</h2><p id="5942fbe4-7b76-461e-9328-bf8f04de6901" class="">Standards, jobs, industry, roles, … </p><p id="e599ce5b-8dd3-4369-bdf4-db1549a9dbe1" class="">Hacker One</p><p id="f3dc4e68-c03b-498e-873d-12f261ee7a77" class="">Red teams</p><p id="bb55349d-dd2e-442d-a682-ab49be2d3fcb" class="">bug bounty hunter</p><h3 id="cdae3ed9-8d56-464c-8e15-34dcf4be424f" class="">Hacking, hackers, crackers, ….</h3><h2 id="19f1f391-eebb-45c0-b9aa-49fe636a93b2" class="">Conferences</h2><p id="765fc522-3cab-4906-bef0-607310167939" class="">DefCon</p><p id="aefb81ca-3e51-4cad-89fa-fec32ec8978e" class="">BugCon</p><p id="7f93df06-9b30-4c4a-8c2e-4fa2fdcbc1ab" class=""><a href="https://twitter.com/rootedcon">Rootedcon</a></p><h2 id="e881178f-153c-48f7-a81f-f78b2d93f0ef" class="">Jobs</h2><p id="3605a2bc-2a85-4129-bf17-b3379cc95e91" class="">Intelligence Analysts</p><h2 id="7ff385be-fe0b-44a7-862c-213b4a66bb34" class="">Culture</h2><p id="b6a04a9a-51bf-40e5-b33c-f3b533deb3a4" class=""><a href="https://www.youtube.com/watch?v=przDcQe6n5o&amp;ab_channel=Google">https://www.youtube.com/watch?v=przDcQe6n5o&amp;ab_channel=Google</a></p><h2 id="c8616f20-3d33-42e9-bff3-faaff9d2d8c1" class="">Story</h2><h2 id="a9739189-ad90-4460-b45e-c0aa4e8d0b4e" class="">FAQ</h2><h2 id="e70a8e98-15ba-448a-b2f6-8e2fc8e54d35" class="">Worked examples</h2><h1 id="137e8b6c-76d8-4c3b-a382-ce87a8c925da" class="">Chapter Name</h1><p id="74f711a3-a8ec-4dff-bd19-53452089b710" class=""><a href="https://kroki.io/#try">https://kroki.io/#try</a></p><p id="e8d74cff-4537-4176-9618-12044a1be710" class="">Prove</p><h2 id="c27e611d-1c69-4c30-bc1c-d875f256b209" class="">Notes</h2><h2 id="f2a2264c-8daa-4310-85b8-862cdca9425c" class="">Worked examples</h2><ol type="1" id="af18d383-91a3-446d-98b9-0222a0340193" class="numbered-list" start="1"><li>Mathematics or Code. Automatic Verification such as Testing or Lean Proven?</li></ol><ol type="1" id="a5daa79a-6ade-4402-8396-537f096008db" class="numbered-list" start="2"><li>Languages in Anki.</li></ol><h2 id="682119f3-f760-4a98-b975-5bb6bd824061" class="">FAQ</h2><h2 id="799e9c35-7b55-4782-a745-99faeeff1fb7" class="">Further resources</h2><h1 id="7cbef29d-c5ab-42b1-9cd8-f789370f8154" class="">Next steps</h1><h1 id="1bf2f8bb-4726-45dc-9679-aa16b7665551" class="">Safety vs Security</h1><h1 id="2c53a164-a949-46dc-b962-ba2ef6ec411c" class="">Physical security</h1><h1 id="42217888-0c31-490f-b051-3ff2193d08a4" class=""><strong>Intelligence assessment</strong></h1><p id="c880727c-eecd-4d21-8341-a39f04ba183c" class=""><strong>Intelligence assessment</strong>, <strong>Intelligence or Intel (information gathering)</strong></p><h2 id="627ad351-7635-4091-9094-5be330103c96" class="">Espionage</h2><p id="f1dd9348-a75a-4952-900a-6345822c45ed" class="">Edward Snowden</p><h2 id="d913b21f-8204-46e6-a4e6-bb3967f53c2a" class=""><strong>Strategic intelligence</strong></h2><h2 id="34987559-10eb-41ef-a63f-327284e52be5" class=""><strong>Military intelligence</strong></h2><h2 id="7af996db-70ce-4962-b190-5c4540bb156c" class="">Business intelligence</h2><h2 id="c000ee88-ab58-4b07-b8fb-9c29dec52c04" class="">Police intelligence</h2><h2 id="06f4d0a9-4f26-44db-b51d-ce41c3d5fb4b" class="">References</h2><h3 id="6d4aad99-2e52-4de7-a8c9-f85404c88b3b" class="">Institutions</h3><p id="1007cf1c-5a27-49ee-b609-434180970390" class=""><strong>National Intelligence Centre in Mexico</strong></p><h3 id="bd87929a-b968-4c21-a4d0-861719a53b92" class="">Literature</h3><p id="567838b1-58d0-4f29-86ea-8836268e8a2f" class="">Lerner, K. Lee and Brenda Wilmoth Lerner, eds. <em>Encyclopedia of Espionage, Intelligence and Security</em> (2003)</p><p id="7f6592fc-6855-493d-8f2a-baf8f220193c" class=""><strong>La seguridad nacional de México, una visión integradora</strong></p><p id="efaa64cb-7845-4083-badc-b2c8290ebc1b" class=""><a href="https://web.archive.org/web/20070612182250/https://www.cia.gov/library/intelligence-literature/index.html">https://web.archive.org/web/20070612182250/https://www.cia.gov/library/intelligence-literature/index.html</a></p><p id="41f478a0-4411-4d97-b67f-c13a16176b18" class=""><a href="https://www.youtube.com/watch?v=tUjBpvxupq8&amp;ab_channel=ADNOpini%C3%B3n">https://www.youtube.com/watch?v=tUjBpvxupq8&amp;ab_channel=ADNOpinión</a></p><h3 id="5c097f98-d3a2-4ec4-af0c-fb49f27432f6" class="">Research</h3><p id="4fb298db-2911-4603-b41d-404913d7555c" class=""><a href="https://www.journals.elsevier.com/journal-of-information-and-intelligence"><strong>Journal of Information and Intelligence</strong></a></p><h1 id="2ce93e65-c773-4170-b86b-b0e7266be2a3" class=""><strong>Cyberwarfare</strong></h1><p id="e5009c3a-5193-44a7-80d1-4966dcd6fcda" class="">Operation Aurora</p><h1 id="291347fd-ac25-4540-ba48-35c940f6400e" class="">Social engineering</h1><h1 id="8c2525a7-fcfa-4735-ae46-809fa970d201" class="">OSINT</h1><h1 id="5a1893ae-6ea5-456c-b098-6b0dc6c06d50" class="">USB Protection</h1><p id="1cb15490-3870-4d62-8d96-d16f1e854f6f" class=""><a href="https://github.com/USBGuard/usbguard">https://github.com/USBGuard/usbguard</a></p><figure id="3d05a056-f0f8-4f7d-9ea8-994faa3584fe"><div class="source">https://github.com/google/ukip</div></figure><h1 id="e60ae75d-6484-4b97-b010-ccf9a39dd763" class="">Law</h1><figure id="eaebb038-24b6-42f4-abcb-10e12fb24ebf" class="link-to-page"><a href="Rights%20and%20Laws%20eaebb03824b642f4abcb10e12fb24ebf.html"><span class="icon">🎇</span>Rights and Laws</a></figure><h1 id="d9fc4297-b3b9-4380-af58-0676a1c74fdd" class="">Entropy</h1><h1 id="647dec97-b230-4f32-ab36-8fbe2df853ee" class="">Hash functions</h1><h1 id="fee88b38-0dba-438d-86ec-cbb6246230c3" class="">Encryption</h1><h2 id="d1065149-74ed-4f2d-9055-638d1a02abb4" class="">Symmetric cryptography</h2><h2 id="2bc21f30-0bd8-4ddc-b0d8-9c722f7aebf9" class="">Asymmetric cryptography</h2><h2 id="08850183-aeec-440c-9446-e9131768ce8a" class="">PGP and GPG</h2><pre id="e9f7b2cc-4cef-4ea0-ab4a-82a0c372918d" class="code"><code>gpg -c file</code></pre><pre id="008dfe45-8412-4796-97bd-db3a3a83a168" class="code"><code>gpg --decrypt file.asc</code></pre><p id="f886fcfc-4337-405a-b197-784265b38135" class="">
+</p><pre id="4afa5ae6-cc52-44f7-8b96-7f05628c8e32" class="code"><code>gpg --search-key DF0925CFEC52C98E4CEB826ADB57E52EDEE4E4D2</code></pre><p id="c975ddf3-0c74-4279-b896-df6d431a86c5" class="">
+</p><pre id="84ba8887-7556-426e-8619-b0f21c9d0e34" class="code"><code>echo &quot;Hello World! This is important. My real name is pepito24@gmail.com&quot; | gpg --encrypt --sign --armor -r DF0925CFEC52C98E4CEB826ADB57E52EDEE4E4D</code></pre><pre id="46f9b4e1-e9ce-4dd5-a80c-b3a46f8fc21f" class="code"><code>gpg --armor --export DF0925CFEC52C98E4CEB826ADB57E52EDEE4E4D2
+# Prints the GPG key ID, in ASCII armor format</code></pre><p id="4cdd4a18-11e2-4b49-a28d-0813722a5e10" class="">Web of trust</p><p id="010d215a-9d53-4ce0-ba58-36e8bbc21e34" class="">Social proof</p><p id="e74c6e49-9449-4870-b3e5-9e536e5f3a43" class="">
+</p><p id="70a6f6b0-12a2-4bcc-8372-27b405eb79ea" class="">
+</p><p id="5029f872-5196-46bc-ad7a-a4ce8cdfd25e" class="">
+</p><p id="6e4e7586-f734-48a8-8a7e-2daefb761dc8" class="">(Admin), X. G. (2022). A Practical Guide to GPG Part 1: Generate Your Public/Private Key Pair. LinuxBabe. Retrieved from <a href="https://www.linuxbabe.com/security/a-practical-guide-to-gpg-part-1-generate-your-keypair">https://www.linuxbabe.com/security/a-practical-guide-to-gpg-part-1-generate-your-keypair</a></p><p id="0d00b8fb-afc3-4194-b4cc-025112f76821" class="">Ellingwood, J. (2017). How To Use GPG to Encrypt and Sign Messages. DigitalOcean. Retrieved from <a href="https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages">https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages</a></p><p id="eb831d2c-2a34-4f1a-b5d0-54b20c3734d7" class="">Security and Cryptography. (2022, October 27). Retrieved from <a href="https://missing.csail.mit.edu/2020/security">https://missing.csail.mit.edu/2020/security</a></p><p id="70408326-f5cb-4017-85f3-4d838ec817b2" class="">GPG Keys Cheatsheet. (2022, November 02). Retrieved from <a href="https://rtcamp.com/tutorials/linux/gpg-keys">https://rtcamp.com/tutorials/linux/gpg-keys</a></p><p id="bb3f8283-a495-4072-9b69-eb0120d853c2" class="">Spam?</p><p id="1bcd9d41-e771-43d5-9d33-245f9556cc2c" class="">Spam protection for public GPG keys? (2022, November 02). Retrieved from <a href="https://security.stackexchange.com/questions/119271/spam-protection-for-public-gpg-keys">https://security.stackexchange.com/questions/119271/spam-protection-for-public-gpg-keys</a></p><h2 id="9b8488ec-470e-4952-b3ed-83f5b9ca2baf" class="">Email</h2><p id="376b203a-841c-4bfd-afdf-8a295c075b39" class="">Plain text</p><p id="31ca0ed1-eeff-42c4-b8c7-b1860c01ed59" class="">Proton Email</p><h2 id="1181b813-7cc5-4f7d-883d-cd341c1edecd" class="">Signal, Keybase</h2><h2 id="ee76755d-62ae-4fd5-a71c-54e0606d8525" class="">Full disk encryption</h2><p id="99baae1c-e5ba-4be1-b369-c97f37dd323b" class="">cryptsetup + LUKS on Linux, BitLocker on Windows, or FileVault on macOS.</p><h2 id="676eddce-dae9-4569-81a0-2f486f08dbda" class="">SSL, HTTPS, …</h2><h1 id="a5e917ba-3d77-4d5a-8e28-6686cf87b51e" class="">Yubikeys</h1><h1 id="b292ad08-a197-4068-a88d-0ffc53e37815" class="">Password manager</h1><h1 id="dbc6cb16-ca76-433a-8170-6432a11a7bcb" class="">Authentication</h1><h2 id="bda05d3a-0479-4e1e-8975-2f97aa433926" class="">Two-factor authentication</h2><h1 id="512ab430-b603-4ed9-8855-ef3ec77bf098" class=""><strong>Backups</strong></h1><h1 id="532569c9-2a32-4344-94b7-eedee4ac3d4a" class="">Useful idiot</h1><h1 id="9a222cde-f5a7-4441-98e9-4b952bcf6143" class="">Matrix (social app)</h1><p id="0e1eca98-06b8-414f-b525-8cd0058865f6" class=""><a href="https://matrix.org/">https://matrix.org/</a></p><h1 id="8dede4f3-7294-4577-a1b2-d0ba859c2c10" class="">5 eyes alliance</h1><h1 id="dde8fcd4-7a29-487b-a125-e0147bf055e3" class="">Federation</h1><h1 id="39988d9c-1fef-4f2f-bd97-1eae38445646" class="">Tor</h1><h1 id="77f4f3a7-564d-4fa1-a5a3-a132dd4bf114" class="">Zero-knowledge architecture</h1><p id="9936cf91-aa92-4935-b327-0a7a809df02d" class="">Zero-trust</p><p id="e8a00822-6ca2-42b1-a943-1eec2fdc6dad" class="">Zero-knowledge proof</p><p id="bce752e7-3397-4b42-bd02-be425308a031" class=""><a href="https://www.youtube.com/watch?v=HUs1bH85X9I&amp;ab_channel=Computerphile">https://www.youtube.com/watch?v=HUs1bH85X9I&amp;ab_channel=Computerphile</a></p><p id="aa524388-3d10-430e-8a2c-8b3036b9aff0" class=""><a href="https://www.youtube.com/watch?v=cI5lkif-V1c&amp;ab_channel=ALEXonScience">https://www.youtube.com/watch?v=cI5lkif-V1c&amp;ab_channel=ALEXonScience</a></p><p id="592d9f43-683b-451f-b3fb-01dae70d77c9" class=""><a href="https://www.youtube.com/watch?v=yn6CPQ9RioA&amp;ab_channel=IBMTechnology">https://www.youtube.com/watch?v=yn6CPQ9RioA&amp;ab_channel=IBMTechnology</a></p><h1 id="0d50f3cc-2571-4961-8a9e-27cde1c40459" class="">AAA framework</h1><p id="a062805d-4533-447d-bbb1-7f2ec14aa632" class=""><strong>IETF protocol for AAA</strong></p><p id="aa8f1b33-3de3-46bd-b8d9-9e8fccd1f910" class="">Kerberos</p><p id="ce7e1f8f-c854-4ab2-a5ca-d81e5d565d7f" class="">Open Radius</p><h2 id="982cd14e-b4ec-4c25-a689-79f8556f6aaa" class="">Authority</h2><h2 id="4d8f5c3d-591c-4b36-8847-ed3f649268c7" class="">Authorization</h2><h2 id="e6e8c631-af5e-4047-bf7d-dcc3b9b47dc0" class="">FAQ </h2><h3 id="d9eaee93-2629-41fe-8269-c6af5bb85091" class="">tor vs vpn</h3><p id="15701537-2cca-4a81-beaa-727b18f917eb" class="">One, T. H. (2020, February 08). Tor vs VPN | Which one should you use for privacy, anonymity and security. Youtube. Retrieved from <a href="https://www.youtube.com/watch?v=6ohvf03NiIA&amp;ab_channel=TheHatedOne">https://www.youtube.com/watch?v=6ohvf03NiIA&amp;ab_channel=TheHatedOne</a></p><h1 id="986c0970-7c48-4431-877e-b691890c14c5" class=""><strong>Cyber Intelligence</strong></h1><h1 id="a0abfd02-e998-4ccf-bf6f-96e27eaad0ae" class="">Virus and Malware</h1><p id="4ab5ed3d-a23f-4bbc-b9dd-b6c417684c17" class="">&quot;Malicious Software&quot; de Eric L. Freudenthal, &quot;The Art of Computer Virus Research and Defense&quot; de Peter Szor, y &quot;Computer Viruses and Malware&quot; de Markus Jakobsson y Zulfikar Ramzan</p><h1 id="51bcd988-f5a6-46d0-882b-97504cd0031d" class="">TODO</h1><p id="e6217804-43c8-4c55-bb83-43e8631022ee" class="">CTF</p><p id="d5224746-f917-4e74-9369-b1da6497fd71" class="">USB Keystroke Injection Protection</p><p id="3d159e69-63c2-4436-b292-abf470c1da51" class="">Enlace Hacktivista. (2022, September 19). Retrieved from <a href="https://enlacehacktivista.org/index.php?title=Enlace_Hacktivista">https://enlacehacktivista.org/index.php?title=Enlace_Hacktivista</a></p><p id="27d912d6-9d70-480c-bfe5-172cf33aa1f3" class="">OWASP</p><p id="978940a3-06dd-4492-b1e8-ba5fc8274f54" class=""><a href="https://www.youtube.com/watch?v=ZrXhoT_tXFE&amp;ab_channel=%24DebugSec%24">https://www.youtube.com/watch?v=ZrXhoT_tXFE&amp;ab_channel=%24DebugSec%24</a></p><p id="89cb15c4-36a1-40ff-9b29-31833ba61115" class="">Rafael Bucio ⠠⠵ on Twitter. (2022, October 01). Retrieved from <a href="https://twitter.com/Bucio/status/1575987501457494016">https://twitter.com/Bucio/status/1575987501457494016</a></p><p id="7383c670-c431-4dce-9aa3-6381a35ce52e" class=""><strong>Children education</strong></p><p id="6438b010-f763-4244-9031-2c3e63f66e38" class="">Welcome to Mara Turing Official Website for UK. (2021, March 07). Retrieved from <a href="https://maraturing.us/">https://maraturing.us</a></p><p id="396e67d5-a19d-4443-8453-9876562f5fff" class=""><strong>Mara Turing: El despertar de los hackers (The Awakening of the Hackers)</strong></p><p id="47588829-f4f2-4f43-89ab-e1394a7c6350" class=""><a href="https://www.axis.com/blog/secure-insights/physical-vs-cyber-security/"><strong>Physical security and cybersecurity – are they so different?</strong></a></p><p id="110597af-8805-4c19-baf7-8e606fc76e20" class="">Security and Cryptography. (2022, October 27). Retrieved from <a href="https://missing.csail.mit.edu/2020/security">https://missing.csail.mit.edu/2020/security</a></p><p id="66b16d58-6a4d-4a26-bde2-3140e2fa426b" class="">The Hated One - YouTube. (2022, October 30). Youtube. Retrieved from <a href="https://www.youtube.com/c/TheHatedOne/videos">https://www.youtube.com/c/TheHatedOne/videos</a></p><p id="d21e0582-867c-412b-9a5b-a959fc68b2c0" class="">
+</p><p id="3152992b-e31c-41fd-9136-26ed0fd15df3" class="">Folker, R. (2016, August 22). Intelligence Research &amp; Collection. Youtube. Retrieved from <a href="https://www.youtube.com/watch?v=onfCJiw6iEI&amp;ab_channel=RobertFolker">https://www.youtube.com/watch?v=onfCJiw6iEI&amp;ab_channel=RobertFolker</a></p></div></article></body></html>

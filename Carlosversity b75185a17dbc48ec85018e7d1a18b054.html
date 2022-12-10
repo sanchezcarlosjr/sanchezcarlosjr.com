@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Carlosversity</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b75185a1-7dbc-48ec-8501-8e7d1a18b054" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/rijksmuseum_claesz_1628.jpg" style="object-position:center 3.710000000000002%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🏫</span></div><h1 class="page-title">Carlosversity</h1></header><div class="page-body"><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Created</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Updated</th></tr></thead><tbody><tr id="4b265e4d-4df5-4eda-975c-efdaf16f534f"><td class="cell-title"><a href="How%20can%20you%20live%20better%204b265e4d4df54eda975cefdaf16f534f.html"><span class="icon">🪒</span>How can you live better?</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@December 12, 2021 10:39 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-red">ethics</span><span class="selected-value select-value-color-gray">moral</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 9, 2022 1:38 PM</time></td></tr><tr id="f52c0d8c-283d-441e-b1e0-ef0847d7808e"><td class="cell-title"><a href="Theory%20of%20Computation%20f52c0d8c283d441eb1e0ef0847d7808e.html"><span class="icon">⚛️</span>Theory of Computation</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@September 4, 2022 8:36 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-orange">Computer science</span><span class="selected-value select-value-color-gray">Math</span><span class="selected-value select-value-color-brown">Science</span><span class="selected-value select-value-color-gray">automata theory</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 9, 2022 11:47 AM</time></td></tr><tr id="48c39103-1081-4c0b-a638-59a0f3e40aba"><td class="cell-title"><a href="The%20Missing%20Semester%20of%20Your%20Computer%20Science%20Educ%2048c3910310814c0ba63859a0f3e40aba.html"><span class="icon">🕥</span>The Missing Semester of Your Computer Science Education</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@June 13, 2021 1:05 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-gray">Math</span><span class="selected-value select-value-color-brown">Science</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 8, 2022 7:33 PM</time></td></tr><tr id="15eb76da-5655-4101-9161-db7cdf167601"><td class="cell-title"><a href="Operating%20system%2015eb76da565541019161db7cdf167601.html"><span class="icon">🛗</span>Operating system</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@July 11, 2022 12:18 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-blue">Algorithms</span><span class="selected-value select-value-color-orange">Computer science</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 8, 2022 6:19 PM</time></td></tr><tr id="d5be9fcf-a490-476a-adc8-418922bae2e5"><td class="cell-title"><a href="Meta%20Carlosversity%20d5be9fcfa490476aadc8418922bae2e5.html"><span class="icon">🏫</span>Meta Carlosversity</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@September 25, 2022 7:46 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 8, 2022 11:07 AM</time></td></tr><tr id="87e5ae53-e99a-4d63-82e4-d1f853d7f5da"><td class="cell-title"><a href="Telecommunications%2087e5ae53e99a4d6382e4d1f853d7f5da.html"><span class="icon">🌏</span>Telecommunications</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@July 12, 2022 2:49 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-gray">Computer network</span><span class="selected-value select-value-color-orange">Computer science</span><span class="selected-value select-value-color-brown">Network system</span><span class="selected-value select-value-color-green">Telecommunications Networks</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 8, 2022 10:48 AM</time></td></tr><tr id="fac25ab5-c1f1-4478-af51-68b7e2937a84"><td class="cell-title"><a href="English%20fac25ab5c1f14478af5168b7e2937a84.html"><span class="icon">🏁</span>English</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@December 27, 2020 6:01 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 8, 2022 9:59 AM</time></td></tr><tr id="2bfe48a5-d90d-4c6f-a900-ade2b09acbae"><td class="cell-title"><a href="Foundations%20of%20Computing%202bfe48a5d90d4c6fa900ade2b09acbae.html"><span class="icon">👩🏼‍💻</span>Foundations of Computing</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@December 28, 2020 1:19 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-orange">Computer science</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 7, 2022 8:10 PM</time></td></tr><tr id="38fac5ca-34e7-4071-9b43-673db9f8b918"><td class="cell-title"><a href="UABC%20Algoritmos%2038fac5ca34e740719b43673db9f8b918.html"><img class="icon" src="Escudo_0.png"/>UABC Algoritmos</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@February 17, 2022 10:30 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-blue">Algorithms</span><span class="selected-value select-value-color-orange">Computer science</span><span class="selected-value select-value-color-brown">Science</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 7, 2022 6:21 PM</time></td></tr><tr id="5b5f89af-276a-4848-97ff-8547a9619975"><td class="cell-title"><a href="Data%20Science%205b5f89af276a484897ff8547a9619975.html"><span class="icon">🌉</span>Data Science</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@December 6, 2022 10:59 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 6, 2022 11:00 AM</time></td></tr><tr id="21343be7-940e-4ae7-9d7b-7477fb8501ea"><td class="cell-title"><a href="Language%20Processing%20(compilers,%20interpreters,%20NLP)%2021343be7940e4ae79d7b7477fb8501ea.html"><span class="icon">🔨</span>Language Processing (compilers, interpreters, NLP)</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@May 19, 2022 9:16 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-blue">Algorithms</span><span class="selected-value select-value-color-orange">Computer science</span><span class="selected-value select-value-color-green">NLP</span><span class="selected-value select-value-color-gray">automata theory</span><span class="selected-value select-value-color-green">compilers</span><span class="selected-value select-value-color-purple">interpreters</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 6, 2022 8:44 AM</time></td></tr><tr id="9f3149a7-4d3f-4102-8386-29df593d1721"><td class="cell-title"><a href="Intelligence%209f3149a74d3f4102838629df593d1721.html"><span class="icon">📯</span>Intelligence</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@September 17, 2022 11:48 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-default">Espionage</span><span class="selected-value select-value-color-purple">cybersecurity</span><span class="selected-value select-value-color-blue">information gathering</span><span class="selected-value select-value-color-yellow">security</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 4, 2022 9:33 PM</time></td></tr><tr id="6a93fe4b-c4ca-4260-b89c-571848249c2c"><td class="cell-title"><a href="Artificial%20Intelligence%206a93fe4bc4ca4260b89c571848249c2c.html"><span class="icon">🧠</span>Artificial Intelligence</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@January 8, 2021 3:32 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-orange">Computer science</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 2, 2022 11:33 AM</time></td></tr><tr id="4e8bd1b4-2bf3-4309-b8c1-65e2bb6c9ed9"><td class="cell-title"><a href="Discrete%20(aka%20finite%20aka%20concrete)%20mathematics%204e8bd1b42bf34309b8c165e2bb6c9ed9.html"><span class="icon">🎡</span>Discrete (aka finite aka concrete) mathematics</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@January 6, 2021 1:39 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-gray">Math</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 2, 2022 10:42 AM</time></td></tr><tr id="86a1a27b-8468-47cf-9dbd-b00b6c40cd8a"><td class="cell-title"><a href="Introduction%20to%20the%20principles%20of%20Economics%2086a1a27b846847cf9dbdb00b6c40cd8a.html"><span class="icon">🥍</span>Introduction to the principles of Economics</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@August 11, 2022 7:27 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-red">Business</span><span class="selected-value select-value-color-green">economics</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@December 1, 2022 5:39 PM</time></td></tr><tr id="01b3379b-70db-4e3a-876a-9187c96ec7ba"><td class="cell-title"><a href="Introduction%20to%20Mathematical%20foundations%2001b3379b70db4e3a876a9187c96ec7ba.html">Introduction to Mathematical foundations</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@November 29, 2022 9:59 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@November 29, 2022 10:33 AM</time></td></tr><tr id="b1218e29-bfc1-43f5-84d6-f255100463d8"><td class="cell-title"><a href="Data%20mining%20Data%20analysis%20b1218e29bfc143f584d6f255100463d8.html"><span class="icon">💽</span>Data mining. Data analysis. </a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@July 6, 2022 7:29 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-blue">Algorithms</span><span class="selected-value select-value-color-orange">Computer science</span><span class="selected-value select-value-color-gray">Math</span><span class="selected-value select-value-color-orange">Probability</span><span class="selected-value select-value-color-brown">Science</span><span class="selected-value select-value-color-green">Statistics</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@November 29, 2022 12:58 AM</time></td></tr><tr id="a184f9b4-0523-4cd1-94ba-a9c201418d2a"><td class="cell-title"><a href="Research,%20research%20methodology,%20science%20a184f9b405234cd194baa9c201418d2a.html"><span class="icon">👩🏾‍🔬</span>Research, research methodology, science</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@June 10, 2021 2:38 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-yellow">Philosophy</span><span class="selected-value select-value-color-brown">Science</span><span class="selected-value select-value-color-green">how to write a thesis?</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@November 28, 2022 8:15 AM</time></td></tr><tr id="4c40e480-fb2a-4ece-82fa-2473f7dc75e4"><td class="cell-title"><a href="Computer%20vision%204c40e480fb2a4ece82fa2473f7dc75e4.html">Computer vision</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@November 24, 2022 6:26 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@November 24, 2022 6:27 PM</time></td></tr><tr id="f37874bb-ab87-4b1a-a534-b82c36035cd0"><td class="cell-title"><a href="Statistics%20f37874bbab874b1aa534b82c36035cd0.html"><span class="icon">📈</span>Statistics</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@January 31, 2022 10:54 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-gray">Math</span><span class="selected-value select-value-color-brown">Science</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@November 24, 2022 12:49 PM</time></td></tr><tr id="badd3126-9c50-4fe8-9e15-55c2b68740a6"><td class="cell-title"><a href="Digital%20Electronic%20badd31269c504fe89e1555c2b68740a6.html">Digital Electronic</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@September 24, 2022 2:35 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@November 22, 2022 11:50 AM</time></td></tr><tr id="1233eecc-119d-4217-b380-6fe9a87801ab"><td class="cell-title"><a href="Introduction%20to%20Software%20Engineering%201233eecc119d4217b3806fe9a87801ab.html"><span class="icon">🎎</span>Introduction to Software Engineering</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@August 20, 2022 9:02 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@November 16, 2022 10:57 AM</time></td></tr><tr id="eaebb038-24b6-42f4-abcb-10e12fb24ebf"><td class="cell-title"><a href="Rights%20and%20Laws%20eaebb03824b642f4abcb10e12fb24ebf.html"><span class="icon">🎇</span>Rights and Laws</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@December 12, 2021 10:34 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@November 16, 2022 10:21 AM</time></td></tr><tr id="4baeb2f3-1be3-46ef-a7da-55c5bf83d85c"><td class="cell-title"><a href="New%20Enterprises%204baeb2f31be346efa7da55c5bf83d85c.html"><span class="icon">🧭</span>New Enterprises</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@June 6, 2022 8:38 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@November 10, 2022 8:31 PM</time></td></tr><tr id="45aeb62e-6ee0-4792-b2bf-4edc407187cc"><td class="cell-title"><a href="Models%20of%20computation%20and%20programming%20languages%20pr%2045aeb62e6ee04792b2bf4edc407187cc.html"><span class="icon">🥷🏼</span>Models of computation and programming languages: principles and paradigms</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@October 3, 2022 9:13 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@October 31, 2022 9:23 PM</time></td></tr><tr id="7a5db338-7267-4b7f-8d8a-8ccb0374d2b2"><td class="cell-title"><a href="Project%20management%207a5db33872674b7f8d8a8ccb0374d2b2.html"><span class="icon">🗓️</span>Project management</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@August 10, 2022 1:22 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@October 30, 2022 7:26 PM</time></td></tr><tr id="f1c775dd-9879-4ea0-9fd5-fb052700f832"><td class="cell-title"><a href="Latin%20f1c775dd98794ea09fd5fb052700f832.html">Latin</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@June 6, 2022 7:03 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@October 30, 2022 7:04 PM</time></td></tr><tr id="58565c5d-5b4f-4e52-8409-f37868b1496f"><td class="cell-title"><a href="Database%2058565c5d5b4f4e528409f37868b1496f.html"><span class="icon">📚</span>Database</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@June 9, 2021 10:15 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-orange">Computer science</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@October 30, 2022 2:13 PM</time></td></tr><tr id="434ecaf1-3640-4db7-8e4f-aadb36d232ad"><td class="cell-title"><a href="Embedded%20Systems%20434ecaf136404db78e4faadb36d232ad.html"><span class="icon">🏓</span>Embedded Systems</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@September 24, 2022 2:45 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@October 29, 2022 3:42 PM</time></td></tr><tr id="24d264cd-0518-4252-adf0-2d06a080ae85"><td class="cell-title"><a href="Computer%20Organization%20and%20Architecture%2024d264cd05184252adf02d06a080ae85.html"><span class="icon">🏗️</span>Computer Organization and Architecture</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@July 11, 2021 4:48 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-orange">Computer science</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@October 24, 2022 5:30 PM</time></td></tr><tr id="ba00813d-12f0-41df-8108-ca1109a036c9"><td class="cell-title"><a href="Praxeology,%20Psychology,%20and%20marketing%20ba00813d12f041df8108ca1109a036c9.html"><span class="icon">🤼</span>Praxeology, Psychology, and marketing </a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@November 29, 2020 7:46 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-yellow">Philosophy</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@October 16, 2022 8:01 AM</time></td></tr><tr id="0dd2efc6-4df9-4635-9e6b-8edaa91eb947"><td class="cell-title"><a href="Computer%20Graphics%20(CG)%200dd2efc64df946359e6b8edaa91eb947.html"><span class="icon">🖥️</span>Computer Graphics (CG)</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@February 1, 2022 1:27 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@October 12, 2022 8:37 AM</time></td></tr><tr id="3ab3b4f9-600e-4e56-8abb-8973f74a2d34"><td class="cell-title"><a href="Operational%20Research%203ab3b4f9600e4e568abb8973f74a2d34.html"><span class="icon">📆</span>Operational Research</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@August 11, 2021 11:54 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-red">Business</span><span class="selected-value select-value-color-orange">Computer science</span><span class="selected-value select-value-color-gray">Math</span><span class="selected-value select-value-color-brown">Science</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@October 11, 2022 11:18 AM</time></td></tr><tr id="525c2b8c-ea6c-44b2-8e5a-99d932bd113d"><td class="cell-title"><a href="Logic%20525c2b8cea6c44b28e5a99d932bd113d.html"><span class="icon">🗣️</span>Logic</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@January 6, 2021 1:48 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-yellow">Philosophy</span><span class="selected-value select-value-color-brown">Science</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@October 4, 2022 6:54 PM</time></td></tr><tr id="6815ef7f-81c5-43c9-b1c6-e8a33e95adaa"><td class="cell-title"><a href="Introduction%20to%20System%20theory,%20Theory%20of%20Complex%20S%206815ef7f81c543c9b1c6e8a33e95adaa.html">Introduction to System theory, Theory of Complex Systems, and dynamic systems</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@August 20, 2022 10:14 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@September 30, 2022 8:21 AM</time></td></tr><tr id="f774bbfd-dd83-4cf1-beff-da5e9e935ff8"><td class="cell-title"><a href="Numerical%20analysis%20f774bbfddd834cf1beffda5e9e935ff8.html"><span class="icon">⛏️</span>Numerical analysis</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@June 9, 2021 12:27 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-orange">Computer science</span><span class="selected-value select-value-color-gray">Math</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@September 24, 2022 5:05 PM</time></td></tr><tr id="e07e184e-033c-4343-8386-6cf4f527adf8"><td class="cell-title"><a href="Electricity%20e07e184e033c434383866cf4f527adf8.html">Electricity</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@September 24, 2022 2:39 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@September 24, 2022 2:39 PM</time></td></tr><tr id="d96a8d47-7969-4ff7-9b03-2685805b5ab8"><td class="cell-title"><a href="Linear%20algebra%20d96a8d4779694ff79b032685805b5ab8.html"><span class="icon">🔢</span>Linear algebra</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@May 8, 2020 5:40 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-gray">Math</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@September 22, 2022 6:46 PM</time></td></tr><tr id="da6649a6-7056-4e68-b05b-d4e98776db01"><td class="cell-title"><a href="Philosophy%20of%20Mathematics%20da6649a670564e68b05bd4e98776db01.html">Philosophy of Mathematics</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@January 28, 2022 9:53 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@September 22, 2022 5:23 PM</time></td></tr><tr id="e4579a64-1f9b-4768-a98a-e4c62bb78ef2"><td class="cell-title"><a href="Probability%20e4579a641f9b4768a98ae4c62bb78ef2.html"><span class="icon">📊</span>Probability</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@January 21, 2021 10:07 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-orange">Computer science</span><span class="selected-value select-value-color-gray">Math</span><span class="selected-value select-value-color-yellow">Philosophy</span><span class="selected-value select-value-color-brown">Science</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@September 22, 2022 3:34 PM</time></td></tr><tr id="b4694f46-0880-40f2-b0e5-07d130691bbb"><td class="cell-title"><a href="Software%20Engineering%20b4694f46088040f2b0e507d130691bbb.html"><span class="icon">🎮</span>Software Engineering</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@July 27, 2020 9:54 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-red">Business</span><span class="selected-value select-value-color-orange">Computer science</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@September 19, 2022 8:03 PM</time></td></tr><tr id="c0e57ec0-9cc3-444d-a2f7-1874291877a9"><td class="cell-title"><a href="Physics%20c0e57ec09cc3444da2f71874291877a9.html"><span class="icon">🍎</span>Physics</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@May 13, 2020 10:19 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-pink">Classical Mechanics</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@September 6, 2022 8:17 AM</time></td></tr><tr id="336ee447-5b4b-46c8-9785-4d76e86b64b5"><td class="cell-title"><a href="Path%20to%20learning%20Computer%20science%20336ee4475b4b46c897854d76e86b64b5.html"><span class="icon">🏃🏼‍♀️</span>Path to learning Computer science</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@January 31, 2022 11:02 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@September 2, 2022 7:16 AM</time></td></tr><tr id="88e9187d-27cc-4db6-b227-36c66f53479a"><td class="cell-title"><a href="Engineering%20foundations%2088e9187d27cc4db6b22736c66f53479a.html">Engineering foundations</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@August 24, 2022 8:09 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@August 24, 2022 8:10 AM</time></td></tr><tr id="6fe89ad9-0c2b-4d25-b13e-c3f675c738d5"><td class="cell-title"><a href="Mobile%20development%206fe89ad90c2b4d25b13ec3f675c738d5.html"><span class="icon">📲</span>Mobile development</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@August 9, 2022 2:54 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@August 18, 2022 2:50 PM</time></td></tr><tr id="32d06c71-04c2-418e-b7b1-81a09cc22f9b"><td class="cell-title"><a href="Reverse%20engineering%2032d06c7104c2418eb7b181a09cc22f9b.html">Reverse engineering</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@August 13, 2022 5:28 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@August 13, 2022 5:29 PM</time></td></tr><tr id="3fb5587d-df87-410f-8b13-a37a10c17786"><td class="cell-title"><a href="Sociology%203fb5587ddf87410f8b13a37a10c17786.html">Sociology</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@August 11, 2022 7:47 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@August 11, 2022 7:48 AM</time></td></tr><tr id="022de13b-eb18-49f1-8fb7-1796a4a4e634"><td class="cell-title"><a href="Law%20022de13beb1849f18fb71796a4a4e634.html">Law</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@March 15, 2022 9:52 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@August 9, 2022 10:02 AM</time></td></tr><tr id="44e31cd9-ddf9-412f-8dc7-17fb996f42a7"><td class="cell-title"><a href="Espan%CC%83ol%2044e31cd9ddf9412f8dc717fb996f42a7.html">Español</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@March 24, 2022 9:30 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@July 29, 2022 10:55 AM</time></td></tr><tr id="9f9b64d5-13cc-40d4-95e8-da650199e2f7"><td class="cell-title"><a href="History%209f9b64d513cc40d495e8da650199e2f7.html">History</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@July 15, 2022 9:32 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@July 19, 2022 9:29 PM</time></td></tr><tr id="7f232704-0678-41de-9560-fee8a6a4ebb4"><td class="cell-title"><a href="Systems%207f232704067841de9560fee8a6a4ebb4.html"><span class="icon">🪞</span>Systems</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@October 7, 2021 7:52 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@July 13, 2022 4:12 PM</time></td></tr><tr id="b389bd02-0e41-4d45-bda5-1471d15bde76"><td class="cell-title"><a href="User%20experience%20(UX)%20b389bd020e414d45bda51471d15bde76.html"><span class="icon">⛑️</span>User experience (UX)</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@June 19, 2022 6:32 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@June 19, 2022 6:44 AM</time></td></tr><tr id="b52d1d0b-4e0a-4aea-8ef6-1602fb2c9943"><td class="cell-title"><a href="Cornell%20Notes%20System%20b52d1d0b4e0a4aea8ef61602fb2c9943.html"><span class="icon">📍</span>Cornell Notes System</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@April 9, 2022 7:18 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@May 25, 2022 11:00 AM</time></td></tr><tr id="1b7f2aae-0821-4938-9fa8-a7e8c997cacb"><td class="cell-title"><a href="Calculus%201b7f2aae082149389fa8a7e8c997cacb.html"><span class="icon">➕</span>Calculus</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@May 8, 2020 5:41 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-green">Differential calculus</span><span class="selected-value select-value-color-purple">Differential equations</span><span class="selected-value select-value-color-default">Integral Calculus</span><span class="selected-value select-value-color-gray">Math</span><span class="selected-value select-value-color-purple">Vector calculus</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@April 23, 2022 6:59 PM</time></td></tr><tr id="1c6b4490-e469-40c7-a664-8401a4339353"><td class="cell-title"><a href="Epistemology%201c6b4490e46940c7a6648401a4339353.html"><span class="icon">🗡️</span>Epistemology</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@August 10, 2021 11:26 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@April 23, 2022 12:30 PM</time></td></tr><tr id="01da1bcc-aec6-4f6d-bffb-b805fa13be5d"><td class="cell-title"><a href="Philosophy%20of%20Science%2001da1bccaec64f6dbffbb805fa13be5d.html"><span class="icon">🏯</span>Philosophy of Science </a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@August 4, 2021 7:41 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@February 24, 2022 12:32 PM</time></td></tr><tr id="cd535923-9daf-4078-a2b4-ae9324994a76"><td class="cell-title"><a href="Math%20Olympiad%20Problems%20cd5359239daf4078a2b4ae9324994a76.html"><span class="icon">🥇</span>Math Olympiad Problems</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@July 29, 2020 1:36 PM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-gray">Math</span><span class="selected-value select-value-color-brown">Science</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@July 11, 2021 5:19 PM</time></td></tr><tr id="be3d996a-061c-4031-b449-a5659e657047"><td class="cell-title"><a href="Geometry%20be3d996a061c4031b449a5659e657047.html"><span class="icon">📐</span>Geometry</a></td><td class="cell-64ed358d-59c2-499b-ae76-ba673964c28d"><time>@February 18, 2021 10:51 AM</time></td><td class="cell-feecf24d-d4c9-4bc7-80a4-1e19990155b4"><span class="selected-value select-value-color-gray">Math</span></td><td class="cell-56e82c20-8339-43bb-b35d-cae4c54448b9"><time>@June 24, 2021 10:01 AM</time></td></tr></tbody></table></div></article></body></html>

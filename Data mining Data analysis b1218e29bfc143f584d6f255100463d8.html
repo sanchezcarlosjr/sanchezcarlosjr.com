@@ -1,0 +1,705 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Data mining. Data analysis. </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b1218e29-bfc1-43f5-84d6-f255100463d8" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/met_bruegel_1565.jpg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">💽</span></div><h1 class="page-title">Data mining. Data analysis. </h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-blue">Algorithms</span><span class="selected-value select-value-color-orange">Computer science</span><span class="selected-value select-value-color-gray">Math</span><span class="selected-value select-value-color-orange">Probability</span><span class="selected-value select-value-color-brown">Science</span><span class="selected-value select-value-color-green">Statistics</span></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Created</th><td><time>@July 6, 2022 7:29 AM</time></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Updated</th><td><time>@November 29, 2022 12:58 AM</time></td></tr></tbody></table></header><div class="page-body"><nav id="78f04b68-6d99-4721-a443-de54a0b3fe89" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#aa30be30-347b-4627-afd8-15b9917f9b32">Resources</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5a34f07f-e856-4652-a526-78a54e2cd547">Requisites</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#21b32a06-dfec-4867-8ef5-a4140c916285">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6dcfc0c1-656f-4e3a-aa0e-b26c7a892675">What is Data mining?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#20631f09-ef30-46bc-8512-0f5259b3cafe">Data mining tasks</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3619c20b-d6fb-4c38-a57a-1afa0f67d07f">Great opportunities but big challenges </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#da16b6df-bfc4-49f2-8990-cd51878d3a19">Warning. Buzzwords. Marketing. </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b99e5c74-dcd8-419f-9e47-183b793fc409">Research</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#578c13a9-2586-4cce-acf2-1ba75809fbc6">Ecosystem</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#44b432b7-aa7d-4ae6-94aa-2fe5844af422">Economics Applications</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#16ae2cfb-2ccb-4895-93c9-c9d4dd0ad1cd">Story</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#330dda40-9884-4e8b-a81f-0bf1b496d361">Ethics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3f35dbc9-2f46-43b5-9722-1090b9c4d7d5">Concepts</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#71662ae6-7bf0-40ea-a493-241b2e05b6bb">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1ff2e466-6e77-4dc2-884e-a135fab26acd">Notes and references</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ab7b3c35-d0e2-49a2-a5f8-8b95f947a0cf">Data mining project management</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7b8e3c03-fa2d-4ce7-ab69-9fad33e8f20f">Input: Concepts, Instances, and Attributes. Data preparation. Data preprocessing.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#09eb1197-751e-4e77-8ec4-182d169df6c0">Data sources</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d7e4fb1f-bfad-45bc-9184-f5e668d94b5d">Data preparation steps</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4420c0af-fda3-4550-8fd5-641f3a6e6664">1. Create a data table from different sources.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cd55e541-e03c-43c1-8db6-fbcc9b037a64"><strong>Data Wrangling</strong> </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a4f645fe-1c98-444c-bd69-183591223cd0">2. Characterize variables. Data understanding.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a03d7c33-cdfe-483a-8204-038487371a66">Observations, Variables, data value.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#39660feb-50af-4859-a7e8-35cbcc025152">Continuous and Discrete variables and their data type.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0d5b447c-08e6-402c-b7cf-4014952b63a2">Scales of Measurement</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#dc07440f-7ac5-4cbc-bb92-f650d175594d">Roles in analysis</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1b46be5d-8c61-4394-9d9c-387cbc972ef8">Frequency distribution</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b5fa7cb7-8992-48c1-ab68-5b1f3c5013d9">Case study</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ec49bed3-0f9c-4ac0-83ec-cbda5ba48c89">References</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5f309303-4a28-403b-9693-0e825b3d129f">3. Clean data and deal with missing values</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7768c3f6-5b67-48fa-b0da-2d1e88eb2ac4">References</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9ee9d4df-811d-49ee-a1cf-91d1f4daaf23">4. Data reduction.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e527c739-ecf4-4291-b523-10d6629ac309">Data reductions ways</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0d981925-4a7c-428d-a21e-8774c1cf67f8">Instance selection or generation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a783a807-a95e-4177-a664-34aa4a173c06">Dimension reducer. Features selection. The curse of dimensional</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3f5385a3-edc1-4dc5-9b14-e84080bf60f1">Principal Component Analysis (PCA)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5ccaaa3d-9ff3-466e-a68c-d6b9f1125798">Factor analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6feae374-2152-450f-8769-e09486985c0a">Feature extraction</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ccd5b59f-fed1-4c25-94c4-1a336db5cbb7">Textual</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f845b7b4-9d6a-4301-b02e-7d3072b82a20">5. Transform variables. Simplification.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e4181b33-3dfa-4cff-996f-bd5cae52b13b">Normalization.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#959acaea-df86-4111-9ed1-7746763acea7">Value mapping.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9c00fd24-8e3b-4e9f-a844-f20e2e329c42">Distributed file system and MapReduce</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#690d1261-b835-499a-9a9b-fe318ad67da5">Discretization.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5db9fd51-80a5-411b-b1f8-637f34711d67">Linear Transformations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a2ff393f-d335-4227-918a-5659b1edfef1">Quadratic transformations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bfba0d77-b2f0-4691-8991-2985cd627cc3">Non-polynomial Approximations of Transformations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a968f39a-6360-4ed7-af53-96e30db21885">Polynomial Approximations of Transformations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a4d73f47-1820-4935-afb2-db2365b38457">Rank Transformations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6853643b-681e-4de7-ae29-613b3d9e66dd">Box-Cox transformations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aecd2ef9-25c7-4107-abba-627b1762fc5d">Dimension reduction methods</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bac01c1b-cc2f-41cb-b6be-ac8d9038fe34">Transformations via Data Reduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c5d72d81-6ea8-458d-9876-3bfbe060ba03">Algorithms</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6a7efefc-71d1-403b-a240-fb92bf8021e0">Aggregation.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bbe7172f-4b1d-4c84-bd08-9af16394dbf9">6. Segment table</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e46659e6-77a4-40d0-b25d-ec00a2c593d1">Concept description: Characterization and comparison</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c93c4a2-9a65-4c63-8923-d2ebfcddf966">References</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ec88bbd7-28c5-4531-a16d-908d2899e265">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b5893ce7-9250-4cae-ae5c-4d03447228ad">How do I prepare images?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2b3c8f6b-579f-4c30-9628-2a1806641591">Output: Knowledge Representation. Implementation of the analysis.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#766fcbea-746d-422b-8283-3c0b2b80151d">Data Analytics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#82c9cfd3-09b5-4b53-8d1a-f41b7d069b3f">Implementation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3e54b563-0150-4d0c-93c2-88795758cc78">Worked example</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#363ea5d1-629d-4371-b028-e3cf7afaca48">Measurement and Data</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e4715d87-bea8-435d-9ec2-18377fec1092">Data Mining Primitives, Languages, and System Architectures</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#52ed81ba-71bb-4b28-9bfe-ddf01730d43c">Visualizing and Exploring data. <strong>Exploratory Data Analysis (EDA).</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fe0a3323-e8b1-45a2-b38e-e0aacde3d9c4">Descriptive modeling</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bcfbc0af-08ba-4fc5-9fcd-d91f40c433d5">Finding patterns and rules</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5fb3e593-fed5-4039-8b1a-2f38bbe5a9c7">Data Analysis and Uncertainty</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b3daee24-7404-48f2-b2a6-46195ad0ba6c">Tables and Graphs</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6644aaf8-4514-4fe2-a366-7c8520ed75de">Diagrams from a <strong>Domain-specific language (DSL)</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e943403f-b7dc-4362-ba9e-c6c12da9b1fd">What&#x27;s the difference between a graph, a chart, and a plot?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b2af52c4-a196-4a35-b6f1-e2b5b4f5af17">Images</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b3242d8a-9290-459d-ad4b-22589bd3f081">Statistics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d4f72e65-f509-47d3-a600-d5a2f53a3b75">Grouping</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3dca8716-8f4d-4351-9325-93432d270a6c">Cluster</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b44e52c6-cfc0-42e8-9d89-16d4b2a89c80">Hierarchical Agglomerative Clustering</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#39d35627-876d-453d-ab5d-2e6b8fea730d">K-Means</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b188fac7-aa45-47ef-9762-2fdc57cf8890">Association rules</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5c789ca3-6bee-46df-8d62-89f79ea80e02">Decision trees</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#69b080d3-8770-4bf4-ab00-8c0557886f24">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7710825e-3adc-4c56-a0e2-c648b0b0ac68">Prediction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#04901159-88dc-45d5-aedc-8804d20c8442">Models and Patterns. Classification and Prediction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#21fc875c-4683-4879-adb7-ec84ac554423">Real Machine Learning</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#abc23dbb-6aca-4923-a293-d3a1a9b4e820">Data transformations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cd1d0f8c-0e22-4f9c-a8d3-5954e5836c25">Ensemble Learning</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f39f6897-e4a6-45dd-bf1a-2b37c17714e9">Moving on</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#68d91148-a8b9-4a28-8efa-f98e5f6e69e2">Classification</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bb849422-58d3-4b01-bb59-f33a42e27556">Regression</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c42bd894-f856-42bd-8ca8-53312d3306f4">Associate rules</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dc0d2645-5dbd-4823-bca6-90eb4042b070">Regression modeling</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#857eca4c-4f84-4341-b1b2-261036ebabfb">Multiple regression and model building</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#79c50846-7be0-412f-80c7-f7e817603a88">Logistic regression</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d373bb21-c6fe-49a5-afcd-db7ae6083495">Naive Bayes estimation and Bayesian networks</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#22d235fe-49bb-48c0-bed9-98b97a2e40b7">Tools</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#eaa115d6-fa4a-4142-bcfa-b6676f816629">Weka</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#489a392a-f674-4582-b2ba-008a9576666b">Search and Optimization Methods</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4c90f15e-973e-46e7-aaeb-565c513d7adb">Score Functions for Data Mining Algorithms. Credibility: Evaluating What’s been learned</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#996f1383-352c-4c90-8e44-6262e53e0100">Data Organization and Databases</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#096ea7ac-2a61-4a6e-872f-e47f8be6be12">Evaluation &amp; Deployment</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#43f57e2f-0d5b-471b-8413-48686949506a">Report examples</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fd24b6e7-11b2-4d85-b9f7-1acaac1b1ce3">Storytelling</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ea5dfd37-4a93-41a6-9037-1d8df35a554c">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#87b701aa-1f18-4fd5-95b7-e302daf1fd80">Data mining process</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b5c2a4da-5d25-4735-9109-ff485b125122">Software Ecosystem</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a2de2070-9cdc-48e1-86a9-ab10d35479da">Applications and Trends in Data Mining</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f02d3530-3a76-4a8b-a2cb-ed21be220f23">Project ideas to learn data mining</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#06015b0f-51ac-470f-899a-aca506ffff5e">Intelligence</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6bfc0453-3eed-422e-ac91-a3587b8cab7f">References</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d8634d80-8674-41ce-b394-266a2fcff6a5">Case of study</a></div></nav><h1 id="aa30be30-347b-4627-afd8-15b9917f9b32" class="">Resources</h1><div id="b55b0451-8fac-49a0-b013-2f6f48304585" class="collection-content"><h4 class="collection-title">Foundations</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th></tr></thead><tbody><tr id="f8e12715-60e8-4516-b9bf-41c605ec6bc7"><td class="cell-title"><a href="Data%20Mining%20Practical%20Machine%20Learning%20Tools%20and%20T%20f8e1271560e84516b9bf41c605ec6bc7.html">Data Mining: Practical Machine Learning Tools and Techniques by Mark A. Hall, Eibe Frank, Ian H. Witten, Christopher J. Pal</a></td><td class="cell-om&lt;M"></td></tr><tr id="e2d132ff-e821-49fa-8cf6-8963604d2901"><td class="cell-title"><a href="Principles%20of%20Data%20Mining%20by%20David%20J%20Hand,%20Heikki%20%20e2d132ffe82149fa8cf68963604d2901.html">Principles of Data Mining by David J. Hand, Heikki Mannila, and Padhraic Smyth</a></td><td class="cell-om&lt;M"></td></tr><tr id="bd8a12a1-9308-47f2-a38f-214abd47ddd6"><td class="cell-title"><a href="Mining%20of%20Massive%20Datasets%20by%20Jure%20Leskovec,%20Anand%20bd8a12a1930847f2a38f214abd47ddd6.html">Mining of Massive Datasets by Jure Leskovec, Anand Rajaraman, and Jeffrey D. Ullman</a></td><td class="cell-om&lt;M"></td></tr><tr id="dc1efcbe-610c-4e05-a025-aa56edf23570"><td class="cell-title"><a href="Data%20mining%20by%20Jiawei%20Han,%20Micheline%20Kamber,%20and%20J%20dc1efcbe610c4e05a025aa56edf23570.html">Data mining by Jiawei Han, Micheline Kamber, and Jian Pei</a></td><td class="cell-om&lt;M"></td></tr><tr id="7419fa65-ac30-4031-93f7-573529cd99e7"><td class="cell-title"><a href="Making%20sense%20of%20data%20by%20Glenn%20J%20Myatt%207419fa65ac30403193f7573529cd99e7.html">Making sense of data by Glenn J. Myatt</a></td><td class="cell-om&lt;M"></td></tr><tr id="007fe589-d94d-4652-92ea-8e0ab9ad3af9"><td class="cell-title"><a href="Making%20sense%20of%20data%20I%20A%20practical%20guide%20to%20explor%20007fe589d94d465292ea8e0ab9ad3af9.html">Making sense of data I. A practical guide to exploratory data analysis and data mining. By Glenn J. Myatt</a></td><td class="cell-om&lt;M"></td></tr><tr id="661f755a-5d13-4d2e-8b4f-56d51a837128"><td class="cell-title"><a href="Making%20sense%20of%20data%20II%20A%20practical%20guide%20to%20data%20%20661f755a5d134d2e8b4f56d51a837128.html">Making sense of data II. A practical guide to data visualization, advanced data mining methods, and applications. By Glenn J. Myatt and Wayne P. Johnson</a></td><td class="cell-om&lt;M"></td></tr><tr id="c159850a-36b8-4a62-ab77-4628feabea82"><td class="cell-title"><a href="Making%20sense%20of%20data%20III%20A%20practical%20guide%20to%20desi%20c159850a36b84a62ab774628feabea82.html">Making sense of data III. A practical guide to designing interactive data visualizations. By Glenn J. Myatt and Wayne P. Johnson.</a></td><td class="cell-om&lt;M"></td></tr><tr id="a0495577-e600-4fdc-a342-7b66c4f31752"><td class="cell-title"><a href="The%20visual%20display%20of%20quantitative%20information%20by%20%20a0495577e6004fdca3427b66c4f31752.html">The visual display of quantitative information by Edward Tufte</a></td><td class="cell-om&lt;M"></td></tr><tr id="c4a1f37a-55e5-41a1-b1d0-8a0f649366fc"><td class="cell-title"><a href="Show%20me%20the%20numbers%20Designing%20tables%20and%20graphs%20to%20c4a1f37a55e541a1b1d08a0f649366fc.html">Show me the numbers: Designing tables and graphs to enlighten by Stephen Few.</a></td><td class="cell-om&lt;M"></td></tr><tr id="9e413da7-2005-4f4c-a3eb-3db256117d37"><td class="cell-title"><a href="Data%20Mining%20Methods%20and%20Models%20by%20Daniel%20T%20Larose%209e413da720054f4ca3eb3db256117d37.html">Data Mining Methods and Models by Daniel T. Larose</a></td><td class="cell-om&lt;M"></td></tr></tbody></table></div><div id="52b981f2-e32f-495c-996d-d845abaa3d3e" class="collection-content"><h4 class="collection-title">Complement</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th></tr></thead><tbody><tr id="cdae4b9a-e689-4a75-bedc-75a71c146b1d"><td class="cell-title"><a href="Data%20Science%20Jonh%20D%20Kelleher%20by%20John%20D%20Kelleher%20an%20cdae4b9ae6894a75bedc75a71c146b1d.html">Data Science. Jonh D. Kelleher by John D. Kelleher and Brendan Tierney</a></td><td class="cell-RfB_"></td></tr><tr id="22203183-6d52-484b-b0e8-975bb85344cf"><td class="cell-title"><a href="https%20clauswilke%20com%20dataviz%20index%20html%20222031836d52484bb0e8975bb85344cf.html">https://clauswilke.com/dataviz/index.html</a></td><td class="cell-RfB_"></td></tr><tr id="b569432d-08bb-41a0-a8bb-1865145a541e"><td class="cell-title"><a href="Mining%20Complex%20Data%20ECML%20PKDD%202007%20Third%20Internati%20b569432d08bb41a0a8bb1865145a541e.html">Mining Complex Data
+ECML/PKDD 2007 Third International Workshop, MDC 2007, Warsaw, Poland, September 17-21, 2007, Revised Selected Papers</a></td><td class="cell-RfB_"></td></tr><tr id="ce2a1ecb-51d2-4383-821e-4dcb8bb38393"><td class="cell-title"><a href="Untitled%20ce2a1ecb51d24383821e4dcb8bb38393.html">Untitled</a></td><td class="cell-RfB_"></td></tr></tbody></table></div><h1 id="5a34f07f-e856-4652-a526-78a54e2cd547" class="">Requisites</h1><figure id="f37874bb-ab87-4b1a-a534-b82c36035cd0" class="link-to-page"><a href="Statistics%20f37874bbab874b1aa534b82c36035cd0.html"><span class="icon">📈</span>Statistics</a></figure><figure id="e4579a64-1f9b-4768-a98a-e4c62bb78ef2" class="link-to-page"><a href="Probability%20e4579a641f9b4768a98ae4c62bb78ef2.html"><span class="icon">📊</span>Probability</a></figure><figure id="d96a8d47-7969-4ff7-9b03-2685805b5ab8" class="link-to-page"><a href="Linear%20algebra%20d96a8d4779694ff79b032685805b5ab8.html"><span class="icon">🔢</span>Linear algebra</a></figure><h1 id="21b32a06-dfec-4867-8ef5-a4140c916285" class="">Introduction</h1><h2 id="6dcfc0c1-656f-4e3a-aa0e-b26c7a892675" class="">What is Data mining?</h2><p id="0834fe34-5777-46dd-b63c-1d6cc084d232" class="">Data mining is the process of finding insight patterns from data. Its goal is those patterns are information unexpected, non-trivial, useful, understandable, exact, and true.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="210ceb8d-a11c-4e0d-965a-d7dc9fed289d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Data mining is applied to inductive arguments, so large data means better arguments than few. So, the mantra is to collect all data possible!</div></figure><p id="b8f3a4d3-8cda-4ea0-be17-0ccab4fa748c" class="">Another point of view is in the DIKW pyramid context, where data mining converts data to information.<strong> </strong></p><table id="2810902f-e945-4af6-8ba7-4406ac3af4e5" class="simple-table"><tbody><tr id="3c4da6f7-0f85-4257-9ea2-3ca77233c6db"><td id="DGn?" class="" style="width:296px">What is not Data Mining?</td><td id="`wCB" class="" style="width:349px">What is Data Mining?</td></tr><tr id="f954b650-fac0-4b2c-977b-0dca0063b10d"><td id="DGn?" class="" style="width:296px">Look up how you can center a div on Stack Overflow</td><td id="`wCB" class="" style="width:349px">60% of questions on 
+StackOverflow is about web</td></tr><tr id="f9e327a9-84d8-4934-891e-a6aa9d7877be"><td id="DGn?" class="" style="width:296px">Create a relational database in 3NF</td><td id="`wCB" class="" style="width:349px">List what is the best clients in Mexico and answer why they buy us.</td></tr><tr id="5649cdd4-a580-4c4a-84b4-3868c6bc1165"><td id="DGn?" class="" style="width:296px">List clients from SQL command.</td><td id="`wCB" class="" style="width:349px"></td></tr><tr id="8f6461ee-0f55-4bf1-9a9e-219632c510e1"><td id="DGn?" class="" style="width:296px"></td><td id="`wCB" class="" style="width:349px"></td></tr></tbody></table><h2 id="20631f09-ef30-46bc-8512-0f5259b3cafe" class="">Data mining tasks</h2><p id="e9a02e38-bd82-4e13-bd7f-218700c3a91a" class="">The process is as follows:</p><figure id="00988f55-595d-4026-83c1-4eb0af505bab" class="image"><a href="Untitled%20100.png"><img style="width:304px" src="Untitled%20100.png"/></a></figure><p id="d5ffbdaf-88c3-4ea1-b9a8-d9d89c19e957" class="">Where data mining can be focused to generate descriptive or predictive information by applying algorithms, scalability concepts, computing architectures, and automation for handling large data.</p><p id="f33efef4-71a3-4905-a4a0-1cb59e4d5c65" class="">Descriptive information means the process is on presenting insight into <strong>current variables</strong> from the data. Some descriptive techniques are <strong>clustering</strong> and <strong>association rules</strong>. Sometimes it’s called analytic processing.</p><p id="0bf84ef5-db09-4d35-8e4d-d088e72d0837" class="">Predictive information means the process is on presenting insight into <strong>future variables</strong> from the data. Some prediction techniques are models for the class attributes (<strong>machine learning</strong>) and <strong>anomaly detection</strong>. Sometimes it’s called inference of models.</p><h2 id="3619c20b-d6fb-4c38-a57a-1afa0f67d07f" class="">Great opportunities but big challenges </h2><p id="9bb8fabe-67aa-4c22-9644-2a5c5fd0a5be" class="">Today, we collect, store, prepare, represent, model, reason, and visualize data to operate different data modalities such as ontologies, structured, networks, text, multimedia, and signals in order to give insights into Society’s major problems such as health care, climate change, etc. And from a market’s view, some applications are credit card fraud detection, network intrusion detection, and sales promotion.</p><p id="747b591b-3dea-4d72-8687-6135161978da" class="">However, some challenges are scalability, context, quality, streaming, high dimensionality, heterogeneous and complex data, data ownership and distribution, and non-traditional analysis. </p><h2 id="da16b6df-bfc4-49f2-8990-cd51878d3a19" class="">Warning. Buzzwords. Marketing. </h2><h2 id="b99e5c74-dcd8-419f-9e47-183b793fc409" class="">Research</h2><p id="e0857d07-3e8a-4dc7-9fee-27a342bf39e2" class="">Special Interest Group (SIG) on Knowledge Discovery and Data Mining (<a href="https://en.wikipedia.org/wiki/SIGKDD">SIGKDD</a>)</p><p id="157fc9a5-6d8e-4ac7-b70a-ea84f806f129" class="">Operations Research Center</p><p id="a539fbb3-1067-4365-845f-800c97041176" class=""><a href="http://statistics.mit.edu/">http://statistics.mit.edu/</a></p><p id="2d33592c-5ca2-4b3b-8b74-622d45696720" class=""><a href="https://stat.mit.edu/">https://stat.mit.edu/</a></p><p id="bd95b44d-65c8-49c7-b5d7-f94d38cc46e5" class=""><a href="https://dl.acm.org/conference/kdd">https://dl.acm.org/conference/kdd</a></p><h2 id="578c13a9-2586-4cce-acf2-1ba75809fbc6" class="">Ecosystem</h2><h3 id="44b432b7-aa7d-4ae6-94aa-2fe5844af422" class="">Economics Applications</h3><h2 id="16ae2cfb-2ccb-4895-93c9-c9d4dd0ad1cd" class="">Story</h2><p id="a4d7d099-6cac-4795-be6b-6d60d58afdaa" class=""><a href="http://infolab.stanford.edu/~ullman/">http://infolab.stanford.edu/~ullman/</a></p><h3 id="330dda40-9884-4e8b-a81f-0bf1b496d361" class="">Ethics</h3><h2 id="3f35dbc9-2f46-43b5-9722-1090b9c4d7d5" class="">Concepts</h2><figure id="f6df911a-5a5e-498b-a96b-c0e11d7667ab" class="image"><a href="kdd.svg"><img style="width:1401px" src="kdd.svg"/></a></figure><p id="1654e0d9-bc86-4d1c-b228-04ad1ddb4683" class="">Data Mining</p><p id="05ab6e4f-da9f-4280-8fa7-bdb52ab58d73" class="">Statistics</p><p id="1da04562-8915-44e1-9b0f-47e142151542" class="">Probability</p><p id="754c8705-f052-4599-9b34-9efff064f0d9" class="">Machine Learning</p><p id="de724123-9884-4564-a56b-934b7fdbdaa5" class="">Operations Research</p><p id="b24a6194-1cab-4974-b7d2-9b71bd6443e6" class="">IA</p><p id="33cb663b-44fe-4606-b8e9-40b70bf2355f" class="">Data Science</p><p id="e7a29ef1-cd23-434b-92e4-e835d4c8ae1d" class="">Big Data</p><p id="5292f608-b168-4af1-b744-e0c185d44d74" class="">Data Analytics</p><p id="904e5025-023a-472a-b91e-462a298de8f1" class="">Business Analysts</p><p id="5a7db9e5-4f8f-4376-8bfb-ce8ad6852680" class="">Domain Experts (Subject matter experts)</p><p id="502d9f56-5792-4170-8106-a39a5b29450b" class="">Domain Mining expert.</p><p id="9588d588-f16a-4bca-ba9e-025a44d744a3" class=""><a href="https://stats.stackexchange.com/questions/5026/what-is-the-difference-between-data-mining-statistics-machine-learning-and-ai">https://stats.stackexchange.com/questions/5026/what-is-the-difference-between-data-mining-statistics-machine-learning-and-ai</a></p><p id="72ac468c-1db8-45c2-8d5f-70ee6c881e57" class=""><a href="https://stats.stackexchange.com/questions/5026/what-is-the-difference-between-data-mining-statistics-machine-learning-and-ai">https://stats.stackexchange.com/questions/5026/what-is-the-difference-between-data-mining-statistics-machine-learning-and-ai</a></p><h2 id="71662ae6-7bf0-40ea-a493-241b2e05b6bb" class="">FAQ</h2><h2 id="1ff2e466-6e77-4dc2-884e-a135fab26acd" class="">Notes and references</h2><h1 id="ab7b3c35-d0e2-49a2-a5f8-8b95f947a0cf" class="">Data mining project management</h1><p id="57cdd667-afed-45b9-bd55-0b5056a78c74" class="">What is the scope of the project? Which questions have to answer?</p><p id="f8f956e2-e677-4275-9cc4-de5d027584e7" class="">Workers:</p><ul id="a77196a5-8ee2-4e92-ae19-fd9d0a935f84" class="bulleted-list"><li style="list-style-type:disc">Project leader.</li></ul><ul id="594db24c-c200-408b-86b4-6e1165e4acba" class="bulleted-list"><li style="list-style-type:disc">Specialist in data analysis/data mining.</li></ul><ul id="8ea19706-6386-42ca-8415-f6b6b15b3842" class="bulleted-list"><li style="list-style-type:disc">Expert with knowledge of the domain.</li></ul><ul id="760ffeaa-ab95-4ddd-b64f-e28511f21ddc" class="bulleted-list"><li style="list-style-type:disc">Information technology (IT) support.</li></ul><ul id="7f502a07-a951-4ee5-bd28-c5735b82a84b" class="bulleted-list"><li style="list-style-type:disc">Consumer.</li></ul><p id="f6a1c25d-f577-4ef3-85d7-d7d86fa79b98" class="">Objectives</p><p id="ea3145a2-65e9-4c69-aed9-ec9a206265ae" class="">Deliverables</p><p id="a8e3c22b-40da-48d6-87d7-e7cf9f636c23" class="">Roles and responsibilities</p><p id="1315f2ba-eeb1-45bc-9d5c-8bda62bf77d5" class="">Current situation</p><p id="8b31e8fa-fdb0-4b55-ab23-876805e036d5" class="">Timeline</p><p id="6981dc3f-7404-4763-ae2a-c007e5174d5d" class="">Costs and benefits</p><h1 id="7b8e3c03-fa2d-4ce7-ab69-9fad33e8f20f" class="">Input: Concepts, Instances, and Attributes. Data preparation. Data preprocessing.</h1><pre id="c6e86454-c1c5-453c-947e-ab5b884cb558" class="code"><code>graph TD
+  DataPreparation[Data preparation] --&gt; DataCleaning[&quot;Data Cleaning&quot;]
+  DataPreparation[Data preparation] --&gt; FeatureExtraction[&quot;Feature extraction&quot;]
+  DataPreparation[Data preparation] --&gt; DataTrasnformation[&quot;Data transformation&quot;]
+  DataPreparation[Data preparation] --&gt; DataNormalization[&quot;Data normalization&quot;]
+  DataPreparation[Data preparation] --&gt; MissingDataImputation[&quot;Missing Data imputation&quot;]
+  DataPreparation[Data preparation] --&gt; NoiseIdentification[&quot;Noise identification&quot;]</code></pre><p id="c00e13bc-e683-4a48-b222-73478f3ae8fc" class="">This is the most time-consuming step.</p><p id="d57c5852-7c29-4b88-a68c-1ef9dccf7cb2" class="">We suppose data exists, but sometimes is harder to use.  So, Data mining doesn’t concern data collection or generation. But, quality data is necessary in order to make a good analysis. What is quality data? It’s a statistics question.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e240bae1-9cc5-4843-937a-4287157c7550"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Data is generated by previous projects.</div></figure><p id="94ba5d34-4924-4e05-bced-f561c3cbea49" class="">DataWarehouse and OLAP technology.</p><h2 id="09eb1197-751e-4e77-8ec4-182d169df6c0" class="">Data sources</h2><p id="3d448454-7dbd-43d3-9453-9e24dbf06a9e" class="">The most important factor to analyze data is the quality of the data, which means data is reliable and represents the defined target population.</p><p id="5c5e3140-9d2e-4922-a8ba-c78a4eaeefc1" class="">You must get data from studies such as</p><ul id="237c3e0a-86fd-4c70-9ab1-1f6b45f0632b" class="bulleted-list"><li style="list-style-type:disc">Surveys or polls.</li></ul><ul id="540ee2bf-1ac2-4420-bc3e-988e648473f4" class="bulleted-list"><li style="list-style-type:disc">Experiments.</li></ul><ul id="c2e9b80d-d965-429d-8b6b-8df33271eecd" class="bulleted-list"><li style="list-style-type:disc">Observational and other studies.</li></ul><figure id="a184f9b4-0523-4cd1-94ba-a9c201418d2a" class="link-to-page"><a href="Research,%20research%20methodology,%20science%20a184f9b405234cd194baa9c201418d2a.html"><span class="icon">👩🏾‍🔬</span>Research, research methodology, science</a></figure><p id="21efe945-69bf-4a88-b8bd-f13f47cf4d6b" class="">You must get data from the daily operations of an organization such as</p><ul id="990887f2-3a37-4d24-a083-983cf96614d7" class="bulleted-list"><li style="list-style-type:disc">Operational Databases.</li></ul><ul id="1293a4ab-b506-4495-ac9b-f128f9c40651" class="bulleted-list"><li style="list-style-type:disc">Data warehouses.</li></ul><ul id="3e44c756-b5e1-433b-9e6a-589e4d446498" class="bulleted-list"><li style="list-style-type:disc">Historical databases.</li></ul><ul id="836935c0-700f-4a00-b499-0e48d3286d46" class="bulleted-list"><li style="list-style-type:disc">Purchased data.</li></ul><h2 id="d7e4fb1f-bfad-45bc-9184-f5e668d94b5d" class="">Data preparation steps</h2><p id="49817dc0-62c5-40c4-857b-60769564d109" class="">The following are steps to prepare data:</p><h2 id="4420c0af-fda3-4550-8fd5-641f3a6e6664" class="">1. Create a data table from different sources.</h2><p id="f04490d7-caf5-4d45-81ea-8dc7dcf75cfc" class="">You must query data sources such as operational databases, surveys, experiments, data warehouses, and historical databases, and integrate them as a data table.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e4d37d48-f127-4a65-9888-1af5809a7616"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Why a table? Because it is a matrix, we can use mathematics with it.</div></figure><p id="0fb1830f-1670-4f7b-ac91-dbfa94264179" class="">We suppose a table but for other purposes XML or JSON.</p><h2 id="cd55e541-e03c-43c1-8db6-fbcc9b037a64" class=""><strong>Data Wrangling</strong> </h2><p id="178c562a-b028-423b-8fae-a7c79804227d" class=""><a href="https://missing.csail.mit.edu/2020/data-wrangling/">https://missing.csail.mit.edu/2020/data-wrangling/</a></p><h2 id="a4f645fe-1c98-444c-bd69-183591223cd0" class="">2. Characterize variables. Data understanding.</h2><p id="6ecf08d1-2e81-41bc-b3ad-d331559de798" class="">You must characterize your data table in standard ways. </p><h3 id="a03d7c33-cdfe-483a-8204-038487371a66" class="">Observations, Variables, data value.</h3><pre id="009e5ffd-fe99-47fb-9dad-9bad4c277cef" class="code"><code>graph TD
+  Object --&gt; Observations</code></pre><table id="b2885314-a31c-4d42-aa08-8c3572956a06" class="simple-table"><tbody><tr id="16d819ab-249d-4a50-a459-be50aac08c4c"><td id="UiTo" class=""></td><td id="Dn@B" class="">Variable X_1</td><td id="}S_G" class="">Variable X_2</td><td id="q_xy" class="">Variable X_3</td><td id="Zp]H" class="">Variable X_4</td></tr><tr id="c394f7eb-6ccc-4945-be2a-39489e650547"><td id="UiTo" class="">O1</td><td id="Dn@B" class=""></td><td id="}S_G" class=""></td><td id="q_xy" class=""></td><td id="Zp]H" class=""></td></tr><tr id="609f3cba-74f7-4763-8a07-26d441579041"><td id="UiTo" class="">O2</td><td id="Dn@B" class=""></td><td id="}S_G" class=""></td><td id="q_xy" class=""></td><td id="Zp]H" class=""></td></tr><tr id="8a1262fd-3f1c-4b08-9f9d-a3a242079a5d"><td id="UiTo" class="">O3</td><td id="Dn@B" class=""></td><td id="}S_G" class=""></td><td id="q_xy" class=""></td><td id="Zp]H" class=""></td></tr><tr id="96efc35d-3949-4b2a-aa52-a72ca89d32c3"><td id="UiTo" class=""></td><td id="Dn@B" class=""></td><td id="}S_G" class=""></td><td id="q_xy" class=""></td><td id="Zp]H" class=""></td></tr><tr id="60c15d18-2fa4-432e-8550-30602366499d"><td id="UiTo" class=""></td><td id="Dn@B" class=""></td><td id="}S_G" class=""></td><td id="q_xy" class=""></td><td id="Zp]H" class=""></td></tr><tr id="77993e84-78b0-459f-904a-aac7d26de0f5"><td id="UiTo" class=""></td><td id="Dn@B" class=""></td><td id="}S_G" class=""></td><td id="q_xy" class=""></td><td id="Zp]H" class=""></td></tr></tbody></table><p id="da2bd251-ed75-4213-9680-26f519b49478" class="">Observations are entity registers where variables describe them. A class instance.</p><p id="69390978-f57d-461e-807c-fa3caea844ca" class="">Independent variables are sometimes called features.</p><p id="a051e7f8-d986-41ab-a0f6-e85a188f5016" class="">Dependent variables are what you look up for. They are sometimes called targets.</p><p id="e3cd4956-edd7-47ac-b7fc-f5326bc76f50" class="">Variables are observation attributes, so variables are sometimes called attributes. </p><p id="3554a603-179f-4e61-8b33-8c5075026bfa" class="">Class attributes???</p><p id="42941116-07d4-4ba4-82f5-a3e7f8a79bb7" class="">attributes?</p><p id="371e9ed7-e962-493d-8c6d-fd46b6f6b217" class="">Variable roles can be target or feature.</p><p id="adc62564-a127-459d-b94c-1ac19faa3896" class="">Your measurement has got to have units. Please, use International standards.</p><p id="e97f5c90-471c-4680-bbab-733cf753a1a1" class="">Random variables?</p><p id="684270a7-1625-4dc5-b9a4-53095ac3e868" class=""><a href="https://www.statisticshowto.com/attribute-variable/">https://www.statisticshowto.com/attribute-variable/</a></p><h3 id="39660feb-50af-4859-a7e8-35cbcc025152" class="">Continuous and Discrete variables and their data type.</h3><p id="1fe04ed2-6f20-416f-885f-017efefc9339" class="">If variable X is 1 value where <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>≈</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\sigma\approx 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.48312em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></span><span>﻿</span></span>, then it is constant. </p><p id="783b3768-6c11-4f55-aad4-b6821e4ff09e" class="">If variable X is 2 values, then it is dichotomous. </p><p id="ef77ec97-b0bb-44a7-9b17-b24eeeed3bc3" class="">If variable <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">X_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> values are <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><msub><mi>x</mi><mrow><mi>j</mi><mo separator="true">,</mo><mi>i</mi></mrow></msub><mo stretchy="false">}</mo><mo>⊂</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">\{x_{j,i}\}\sub Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⊂</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">Q</span></span></span></span></span><span>﻿</span></span>, then it is discrete. </p><p id="60dfc481-3287-49bd-9b46-6e5f4eb32d5d" class="">If variable <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">X_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> values are <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><msub><mi>x</mi><mrow><mi>j</mi><mo separator="true">,</mo><mi>i</mi></mrow></msub><mo stretchy="false">}</mo><mo>=</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">\{x_{j,i}\}=R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span></span><span>﻿</span></span>, then it is continuous.</p><p id="f656abf3-6d64-425e-b887-b40b04f6c5ce" class="">Identify data type by Variable. </p><h3 id="0d5b447c-08e6-402c-b7cf-4014952b63a2" class="">Scales of Measurement</h3><p id="59b70c8d-db62-4b3b-a1be-85ad6f776d67" class="">Scales of measurement are the relationship restriction between variable values and sensitivity. In general, it is a better high than low, where the highest is the Ratio.</p><table id="0041a75a-f12a-409a-a673-133e2cbeb6bc" class="simple-table"><tbody><tr id="e6658197-30e3-4cab-bad6-f9880822623f"><td id="Fl;\" class="" style="width:152.5px"></td><td id="Q]rC" class="" style="width:192.5px">Is it a partially ordered set?
+Is it a meaningful order?</td><td id="Zuqf" class="" style="width:111.5px">Is it a meaningful distance?</td><td id="qTG=" class="" style="width:191px">Does it have absolute zero? It means that the lowest element in the set has got to be 0.
+It is a linear unit?
+It is proportional?</td><td id="@`Qs" class="" style="width:174.5px">Example</td></tr><tr id="086a6f15-5cd9-424f-bb11-1f8af6509db5"><td id="Fl;\" class="" style="width:152.5px">Nominal.
+It names things.</td><td id="Q]rC" class="" style="width:192.5px">No.</td><td id="Zuqf" class="" style="width:111.5px">No.</td><td id="qTG=" class="" style="width:191px">No.</td><td id="@`Qs" class="" style="width:174.5px">Eye colors whose values are “blue” and “brown”.</td></tr><tr id="f58f49ed-d566-4300-a7b0-5c33b1b99662"><td id="Fl;\" class="" style="width:152.5px">Ordinal.
+It shows the position of something in a list, and nothing else. So, it is about order rather than amount.</td><td id="Q]rC" class="" style="width:192.5px">Yes.</td><td id="Zuqf" class="" style="width:111.5px">No.</td><td id="qTG=" class="" style="width:191px">No.</td><td id="@`Qs" class="" style="width:174.5px">Level of satisfaction whose values are “low”, “medium”, and “high”.</td></tr><tr id="154430cc-4877-485a-8609-0459fcf67064"><td id="Fl;\" class="" style="width:152.5px">Interval.
+It represents amounts rather than orders.</td><td id="Q]rC" class="" style="width:192.5px">Yes.</td><td id="Zuqf" class="" style="width:111.5px">Yes.</td><td id="qTG=" class="" style="width:191px">No.</td><td id="@`Qs" class="" style="width:174.5px">Celsius and Fahrenheit.</td></tr><tr id="d0881e6c-11da-486e-ae52-f9ed7f90d518"><td id="Fl;\" class="" style="width:152.5px">Ratio.
+It represents proportions.</td><td id="Q]rC" class="" style="width:192.5px">Yes.</td><td id="Zuqf" class="" style="width:111.5px">Yes.</td><td id="qTG=" class="" style="width:191px">Yes.</td><td id="@`Qs" class="" style="width:174.5px">Kelvin and Rankine.</td></tr></tbody></table><p id="5b601139-18be-4cab-b629-9891a2e61a6b" class="">Cardinal vs Ordinal??</p><h3 id="dc07440f-7ac5-4cbc-bb92-f650d175594d" class="">Roles in analysis</h3><p id="04ef843c-a0e3-421d-aa24-e30abe56d463" class="">ID. These variables identify observations.  For example, name.</p><p id="218a82f9-d1a2-4f2d-b104-e79ec13fb3d6" class="">Descriptors. These variables whose only purpose is describing data.</p><p id="3f052900-db60-4b9a-b1e8-846433acbf40" class="">Response (classes or labels). These variables are predictive model outputs.</p><h3 id="1b46be5d-8c61-4394-9d9c-387cbc972ef8" class="">Frequency distribution</h3><p id="65e93641-db5d-463a-b714-e89a661bcfa2" class="">Variables.</p><h3 id="b5fa7cb7-8992-48c1-ab68-5b1f3c5013d9" class="">Case study</h3><p id="c0dd17fd-3536-4129-8a6b-82eed1a2649c" class="">Check out how the <a href="https://archive-beta.ics.uci.edu/ml/datasets/iris">Iris flower data set or Fisher&#x27;s Iris data set</a> is understood.</p><h3 id="ec49bed3-0f9c-4ac0-83ec-cbda5ba48c89" class="">References</h3><p id="416da313-674b-43b2-924a-83631ddd5e92" class=""><a href="https://stats.stackexchange.com/questions/138740/what-is-the-difference-between-independent-variable-and-a-feature">https://stats.stackexchange.com/questions/138740/what-is-the-difference-between-independent-variable-and-a-feature</a></p><p id="c2f88f1a-3350-43f1-8b1f-bf373358155a" class="">Guyon &amp; Elisseeff - <em>An Introduction to Variable and Feature Selection</em> - Journal of Machine Learning Research 3 (2003) 1157-1182</p><h2 id="5f309303-4a28-403b-9693-0e825b3d129f" class="">3. Clean data and deal with missing values</h2><p id="92894105-4160-4c67-a773-b8183dd95818" class="">Consolidate observations </p><h3 id="7768c3f6-5b67-48fa-b0da-2d1e88eb2ac4" class="">References</h3><p id="80d4b6b2-fb24-4074-90af-e80acfcb8ae6" class="">Computerphile. (2015, October 09). The Trouble with Missing Data - Computerphile. Youtube. Retrieved from <a href="https://www.youtube.com/watch?v=oCQbC818KKU&amp;ab_channel=Computerphile">https://www.youtube.com/watch?v=oCQbC818KKU&amp;ab_channel=Computerphile</a></p><h2 id="9ee9d4df-811d-49ee-a1cf-91d1f4daaf23" class="">4. Data reduction.</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="84afde05-a9cd-471b-959d-9ab1aca5c598"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">The goal is to decrease a big dataset and produce the same outcome.</div></figure><h3 id="e527c739-ecf4-4291-b523-10d6629ac309" class="">Data reductions ways</h3><figure id="a4b268f6-12cc-4796-8e9f-e42d41ff508f" class="image"><a href="Untitled%20101.png"><img style="width:452px" src="Untitled%20101.png"/></a><figcaption>Data mining analyst reduces data with discretization, feature selection, instance selection, instance generation, or by feature extraction.</figcaption></figure><p id="8debd36b-cb88-4712-8b5c-d40251f48917" class="">We can manually remove variables that will not contribute to any analysis in obvious variables and small datasets.</p><pre id="e4ecd8e6-8ae4-4d9a-9bc8-e157c91e5276" class="code"><code>graph TD
+  Reduction[&quot;Reduction techniques&quot;] --&gt; DR[&quot;Data reduction&quot;]
+  Reduction[&quot;Reduction techniques&quot;] --&gt; SR[&quot;Sample numerosity reduction&quot;]
+  Reduction[&quot;Reduction techniques&quot;] --&gt; CR[&quot;Cardinality reduction&quot;]
+  DR --&gt; FeatureExtraction[&quot;Feature extraction/construction&quot;]
+  DR --&gt; PCA[&quot;Principal component analysis&quot;]
+  DR --&gt; FactorAnalysis[&quot;Factor analysis&quot;]
+  DR --&gt; MDS[&quot;Multidimensional Scaling&quot;]
+  DR --&gt; LLE[&quot;Locally linear embedding&quot;]</code></pre><p id="d104bb8c-2331-49a3-b0d4-fba17b023818" class="">Other positive effects on the data reduction are:</p><ul id="0ac2adf6-7aac-4c25-a7d7-20ac5d5df0e8" class="bulleted-list"><li style="list-style-type:disc">Speed up the processing of the DM algorithm.</li></ul><ul id="b2ff8021-f092-457d-a453-7c8775a7a06b" class="bulleted-list"><li style="list-style-type:disc">Improve data quality.</li></ul><ul id="762b2ac1-c278-4610-8c5c-064e55b695b8" class="bulleted-list"><li style="list-style-type:disc">Make the results easier to understand.</li></ul><p id="7c3839b2-22b9-4ff9-b7e5-3b2938a3d3e6" class="">
+</p><p id="090bcf35-118c-4fe3-a3d2-8429868105b0" class="">But how do you search for the correct data? A brute force search has an average performance of  <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">(</mo></mrow><annotation encoding="application/x-tex">\Theta(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Θ</span><span class="mopen">(</span></span></span></span></span><span>﻿</span></span><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mi>m</mi><mi>d</mi></mfrac><mo fence="true">)</mo></mrow><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">{m \choose d} )</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.20001em;vertical-align:-0.35001em;"></span><span class="mord"><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7453919999999999em;"><span style="top:-2.3550000000000004em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> where <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span></span></span></span></span><span>﻿</span></span> is the feature cardinality and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">d</span></span></span></span></span><span>﻿</span></span> is the desired number of features in the subset. So, it’s not a good idea. </p><p id="102e4ec8-8522-4a29-bfab-ef8e211e240a" class="">The following are the most relevant techniques that solve it.</p><h2 id="0d981925-4a7c-428d-a21e-8774c1cf67f8" class="">Instance selection or generation</h2><figure id="b34a9798-c3b1-4790-80ee-385c500b66c3" class="link-to-page"><a href="Paper%20Review%20on%20Evolutionary%20Design%20of%20Nearest%20Pro%20b34a9798c3b1479080ee385c500b66c3.html">Paper Review on Evolutionary Design of Nearest Prototype Classifiers</a></figure><p id="4e152082-4828-4cc5-974f-4d900bf6cd0b" class=""><strong>NEAREST NEIGHBOR RULE</strong></p><p id="f4e7fabb-2aa5-4290-bd14-7e2d7d39c0ae" class=""><a href="https://www.cs.rit.edu/~rlaz/PatternRecognition/slides/kNearestNeighbor.pdf">https://www.cs.rit.edu/~rlaz/PatternRecognition/slides/kNearestNeighbor.pdf</a></p><figure id="eae0cff9-80bb-4491-afde-b1fccd4fc0f7" class="image"><a href="Untitled%20102.png"><img style="width:772px" src="Untitled%20102.png"/></a><figcaption>GARCIA ET AL.: PROTOTYPE SELECTION FOR NEAREST NEIGHBOR CLASSIFICATION: TAXONOMY AND EMPIRICAL STUDY. IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE, VOL. 34, NO. 3, MARCH 2012</figcaption></figure><figure id="61b2c375-dc86-4a37-8910-81c6e79214df" class="image"><a href="Untitled%20103.png"><img style="width:465px" src="Untitled%20103.png"/></a><figcaption>TRIGUERO ET AL.: A TAXONOMY AND EXPERIMENTAL STUDY ON PROTOTYPE GENERATION FOR NEAREST NEIGHBOR CLASSIFICATION. IEEE TRANSACTIONS ON SYSTEMS, MAN, AND CYBERNETICS. PART C: APPLICATIONS AND REVIEWS, 2011.</figcaption></figure><h2 id="a783a807-a95e-4177-a664-34aa4a173c06" class="">Dimension reducer. Features selection. The curse of dimensional</h2><h3 id="3f5385a3-edc1-4dc5-9b14-e84080bf60f1" class="">Principal Component Analysis (PCA)</h3><h3 id="5ccaaa3d-9ff3-466e-a68c-d6b9f1125798" class="">Factor analysis</h3><h2 id="6feae374-2152-450f-8769-e09486985c0a" class="">Feature extraction</h2><h3 id="ccd5b59f-fed1-4c25-94c4-1a336db5cbb7" class="">Textual</h3><p id="6ccf2bdb-f13f-49ea-b03a-3b500b0f01d1" class=""><strong>Latent Semantic Analysis (LSA)</strong></p><p id="1625eeb0-db34-4b5a-b15e-3e73c1b78d0a" class=""><strong>Probabilistic Latent Semantic Analysis (pLSA)</strong></p><p id="077646ac-b9db-4077-990a-334152610574" class=""><strong>LDA</strong></p><p id="77609c46-434b-4100-9c3c-1cc7f347b0af" class="">A Bayesian version of pLSA</p><p id="ae585be4-2f00-4ae0-8270-6c2d69a620df" class=""><strong>LSI</strong></p><p id="398458b4-af30-4411-b7f0-91db64c018ee" class=""><strong>lda</strong></p><figure id="0ddbc094-783b-452d-8bc3-8093ae2c7740" class="link-to-page"><a href="Review%20on%20Visualizing%20Data%20using%20t-SNE%200ddbc094783b452d8bc38093ae2c7740.html">Review on Visualizing Data using t-SNE</a></figure><h2 id="f845b7b4-9d6a-4301-b02e-7d3072b82a20" class="">5. Transform variables. Simplification.</h2><h3 id="e4181b33-3dfa-4cff-996f-bd5cae52b13b" class="">Normalization.</h3><p id="58496728-38b5-4ce8-9c57-a51cb9fe36a8" class="">Min-Max</p><p id="d7e9b7f9-45c8-4384-a2e0-42a565acb10e" class="">Z-score</p><p id="1b01e59b-f7cd-4252-b74c-b863dd9aa0cd" class="">Decimal Scaling Normalization</p><h3 id="959acaea-df86-4111-9ed1-7746763acea7" class="">Value mapping.</h3><h3 id="9c00fd24-8e3b-4e9f-a844-f20e2e329c42" class="">Distributed file system and MapReduce</h3><h3 id="690d1261-b835-499a-9a9b-fe318ad67da5" class="">Discretization.</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9965286f-9425-4ef6-8d48-f91d4f7249a0"><div style="font-size:1.5em"><span class="icon">👉🏼</span></div><div style="width:100%">“Discretization” means the conversion from continuous attributes to discrete variables. It simplifies the domain of an attribute.</div></figure><p id="ab44d7d9-7acc-4885-a657-312d1cad5ffc" class="">Formally, it means giving <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></span><span>﻿</span></span> examples and a <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span><span>﻿</span></span> target classes.</p><p id="c4541669-eb25-4def-869f-b063fcbc49d8" class="">Some algorithms are ChiMerge, CAIM, </p><p id="e6d19bdf-c3eb-436e-a88d-9b0ca0905a09" class="">Output: Decision tree (C4.5 algorithm), Aprori, KNN, and Naive Bayes.</p><p id="b1302cf5-f587-4319-9d2c-8cf1f3519446" class="">Tools. A</p><p id="3f01339f-a032-4680-8794-d97e2824a065" class="">Meta-learning.</p><p id="7cd0acab-d490-4536-87d2-4d65e9729aef" class="">Some properties are static (versus dynamic), univariate (versus multivariate), supervised (versus unsupervised), splitting (versus merging), global (versus local), direct (versus incremental), evaluation measures (they are provided by domain or algorithm), parametric (versus nonparametric), disjoint (versus nondisjoint) —fuzzy logic, ordinal (versus nominal).</p><p id="d61ee9d9-cb66-43fc-930e-cc4dc6c1ee80" class="">We compare methods using a number of intervals, inconsistent, predictive, …</p><p id="771d8735-3690-4854-a4c5-c65e9dd5bdab" class="">Taxonomy.  </p><figure id="7cbb6583-7763-4e5a-916f-7ac7a0dcbf17" class="link-to-page"><a href="ChiMerge%207cbb658377634e5a916f7ac7a0dcbf17.html">ChiMerge</a></figure><p id="b9e26581-ab7b-4499-bd9a-1cdaa0ac0547" class="">Wu, X., Kumar, V., Ross Quinlan, J., 
+Ghosh, J., Yang, Q., Motoda, H., ... &amp; Steinberg, D. (2008). Top 10 
+algorithms in data mining. <em>Knowledge and information systems</em>, <em>14</em>(1), 1-37.</p><p id="6a293b97-0d02-446f-bf5d-2e53d6a313f5" class="">Data discretization: taxonomy and big data challenge (2015). Sergio
+Ram ́ırez-Gallego, Salvador Garc ́ıa, H ́ector Mouri ̃no-Tal ́ın, David
+Mart ́ınez-Rego, Ver ́onica Bol ́on-Canedo, Amparo Alonso-Betanzos,
+Manuel Ben ́ıtez, and Francisco Herrera. Wiley Interdisciplinary Reviews:
+Data Mining and Knowledge Discovery 6(1):5-21. DOI:
+10.1002/widm.1173</p><h2 id="5db9fd51-80a5-411b-b1f8-637f34711d67" class="">Linear Transformations</h2><h2 id="a2ff393f-d335-4227-918a-5659b1edfef1" class="">Quadratic transformations</h2><h2 id="bfba0d77-b2f0-4691-8991-2985cd627cc3" class="">Non-polynomial Approximations of Transformations</h2><h2 id="a968f39a-6360-4ed7-af53-96e30db21885" class="">Polynomial Approximations of Transformations</h2><h2 id="a4d73f47-1820-4935-afb2-db2365b38457" class="">Rank Transformations</h2><h2 id="6853643b-681e-4de7-ae29-613b3d9e66dd" class="">Box-Cox transformations</h2><h2 id="aecd2ef9-25c7-4107-abba-627b1762fc5d" class="">Dimension reduction methods</h2><h2 id="bac01c1b-cc2f-41cb-b6be-ac8d9038fe34" class="">Transformations via Data Reduction</h2><h2 id="c5d72d81-6ea8-458d-9876-3bfbe060ba03" class="">Algorithms</h2><h3 id="6a7efefc-71d1-403b-a240-fb92bf8021e0" class="">Aggregation.</h3><h2 id="bbe7172f-4b1d-4c84-bd08-9af16394dbf9" class="">6. Segment table</h2><p id="ed4a115e-9641-49b2-b4f5-3c4ad3423a27" class="">Create subsets of data to facilitate analysis and answer specific questions.</p><p id="2a3e737e-3288-4b5d-8f8d-eb5efd0661de" class="">Random Samples.</p><h2 id="e46659e6-77a4-40d0-b25d-ec00a2c593d1" class="">Concept description: Characterization and comparison</h2><h2 id="1c93c4a2-9a65-4c63-8923-d2ebfcddf966" class="">References</h2><p id="0326c4a8-066e-48fd-bc81-810d66bcb1d4" class="">García Salvador  Luengo Julián  &amp; Herrera  F. (2015). <em>Data preprocessing in data mining</em>. Springer International Publishing : Imprint : Springer. https://doi.org/10.1007/978-3-319-10247-4</p><h2 id="ec88bbd7-28c5-4531-a16d-908d2899e265" class="">FAQ</h2><h3 id="b5893ce7-9250-4cae-ae5c-4d03447228ad" class="">How do I prepare images?</h3><p id="c5711c20-49b9-4a72-9ba1-151c9e951f32" class="">
+</p><h1 id="2b3c8f6b-579f-4c30-9628-2a1806641591" class="">Output: Knowledge Representation. Implementation of the analysis.</h1><p id="1159ab05-ad4f-4436-aa55-585e1c5e7e60" class="">Descriptive modeling and predictive modeling.</p><h2 id="766fcbea-746d-422b-8283-3c0b2b80151d" class="">Data Analytics</h2><p id="6f2b2619-e568-404d-99fa-d55788790df0" class="">The category outputs that are determined by <a href="https://www.notion.so/452bf91c4dfc4c2cb146d9d8d75d58d6">Untitled</a> are</p><ul id="9e17813e-8df1-49fc-b9cd-f12d96ae9725" class="bulleted-list"><li style="list-style-type:disc">Summarizing the data. <a href="Data%20mining%20Data%20analysis%20b1218e29bfc143f584d6f255100463d8.html">Visualizing and Exploring data. Exploratory Data Analysis (EDA).</a>.</li></ul><ul id="4060ca80-a161-43c9-b150-ad90ca57f711" class="bulleted-list"><li style="list-style-type:disc">Finding hidden relationships.</li></ul><ul id="5db0a33e-28e6-4d2d-8111-18141b312c82" class="bulleted-list"><li style="list-style-type:disc">Making predictions.</li></ul><p id="14dc384e-1d52-4a9e-9ecc-92e0018180ac" class="">They interact among themselves.</p><p id="a74c3391-72b4-474a-b7a4-75b8aa921e5b" class="">The methods are</p><ul id="412d6414-7df9-4ce7-945d-70d82323078f" class="bulleted-list"><li style="list-style-type:disc">Summary tables</li></ul><ul id="19f003ea-ff06-422e-a655-bd797e65f8b7" class="bulleted-list"><li style="list-style-type:disc">Graphs</li></ul><ul id="ae640320-752c-4ff5-b8e7-82bdc7074631" class="bulleted-list"><li style="list-style-type:disc">Descriptive statistics</li></ul><ul id="8724dfb4-ec28-47df-bd6f-df298fbd7266" class="bulleted-list"><li style="list-style-type:disc">Inferential statistics</li></ul><ul id="a1b939cb-5a4e-4574-adca-2c6d2eca3220" class="bulleted-list"><li style="list-style-type:disc">Correlation statistics</li></ul><ul id="4683fab6-9573-4616-8eca-d6a0796a0110" class="bulleted-list"><li style="list-style-type:disc">Searching</li></ul><ul id="1c26ff7c-c67f-4084-a454-b3b2163c4c79" class="bulleted-list"><li style="list-style-type:disc">Grouping</li></ul><ul id="46d1c108-f1f3-4e4f-8a83-d81b3c6bcc26" class="bulleted-list"><li style="list-style-type:disc">Mathematical models</li></ul><h2 id="82c9cfd3-09b5-4b53-8d1a-f41b7d069b3f" class="">Implementation</h2><h2 id="3e54b563-0150-4d0c-93c2-88795758cc78" class="">Worked example</h2><p id="5f41e912-eaa4-4491-87b0-cc785fb57a52" class="">The next table shows a series of retail transactions monitored by the main office of a computer game store.</p><figure id="76bb5185-a476-4594-a337-e40918d3f698"><div class="source"><a href="data_mining_making_sense.csv">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/05fa68d8-b522-4010-9cab-472607c1de72/data_mining_making_sense.csv</a></div></figure><figure id="e5ecbbe6-f40b-47b6-95d3-3fe5c2cf39b4"><div class="source"><a href="making_sense_data_graphics.csv">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cedc11d9-0c64-41ab-af2c-7a0dc36453fc/making_sense_data_graphics.csv</a></div></figure><p id="bb7f87b6-83db-4515-8cb4-fcbedbf07df1" class="">Generate a contingency table summarizing the variables <strong>Store</strong> and <strong>Product category</strong>.</p><p id="837d5026-a3ee-4911-86f9-9923fe4902e7" class="">Generate the following summary tables:</p><ul id="386fd89e-28a6-40ba-861a-7452bab02f16" class="bulleted-list"><li style="list-style-type:disc">Grouping by <strong>Customer</strong> and the showing a count of the number of observations and the sum of <strong>Sale price ($)</strong> for each row.</li></ul><ul id="be3fc4b4-4db6-40a8-8cb6-f97789f4ebff" class="bulleted-list"><li style="list-style-type:disc">Grouping by <strong>Store</strong> and showing a count of the number of observations and the mean <strong>Sale price ($)</strong> for each row.</li></ul><ul id="d5142e60-076f-40a3-a6ef-69f1db04d296" class="bulleted-list"><li style="list-style-type:disc">Grouping by <strong>Product</strong> category and showing a count of the number of observations and the sum of the <strong>Profit ($)</strong> for each row.</li></ul><p id="b4e07e02-2896-43eb-9216-6069fbadfedf" class="">Create a histogram of <strong>Sales price ($)</strong> using the following intervals 0 to less than 20, 20 to less than 30, 30 to less than 40, 40 to less than 50.</p><p id="92912c52-dcf4-4851-950a-15a0ad9835ae" class="">Create a scatterplot showing <strong>Sales price ($)</strong> against <strong>Profit ($)</strong></p><p id="bb77be5a-3f95-4261-9e1c-acf1e72329e1" class=""><strong>Solution.</strong></p><p id="9fda14b8-bde5-49bd-ace1-5ac0d9189bf5" class=""><a href="https://gist.github.com/sanchezcarlosjr/10fbc3d4ec8e5118d4a2960c0e67f0e7">https://gist.github.com/sanchezcarlosjr/10fbc3d4ec8e5118d4a2960c0e67f0e7</a></p><h1 id="363ea5d1-629d-4371-b028-e3cf7afaca48" class="">Measurement and Data</h1><h1 id="e4715d87-bea8-435d-9ec2-18377fec1092" class="">Data Mining Primitives, Languages, and System Architectures</h1><h1 id="52ed81ba-71bb-4b28-9bfe-ddf01730d43c" class="">Visualizing and Exploring data. <strong>Exploratory Data Analysis (EDA).</strong></h1><h2 id="fe0a3323-e8b1-45a2-b38e-e0aacde3d9c4" class="">Descriptive modeling</h2><h2 id="bcfbc0af-08ba-4fc5-9fcd-d91f40c433d5" class="">Finding patterns and rules</h2><h2 id="5fb3e593-fed5-4039-8b1a-2f38bbe5a9c7" class="">Data Analysis and Uncertainty</h2><p id="9925d279-837a-4c16-a523-6d2524f9c0dc" class="">Mining Association rules in large databases</p><p id="e49ece6b-9986-4387-8629-ee2404131ccf" class="">Cluster Analysis</p><p id="e82dbf7c-86a7-4359-aabc-23dbc4aaff8c" class="">Mining Complex Types of Data</p><h2 id="b3daee24-7404-48f2-b2a6-46195ad0ba6c" class="">Tables and Graphs</h2><h2 id="6644aaf8-4514-4fe2-a366-7c8520ed75de" class="">Diagrams from a <strong>Domain-specific language (DSL)</strong></h2><p id="c584aeb0-86ce-46ba-a37b-ea2540a69918" class=""><a href="https://www.diagram.codes/">https://www.diagram.codes/</a></p><p id="6948f801-1943-4748-92be-b6012acc9f98" class=""><a href="https://plantuml.com/">https://plantuml.com/</a></p><p id="2cf956ca-50b4-4ef6-b336-d5e90157373a" class=""><a href="https://mermaid-js.github.io/mermaid/#/">https://mermaid-js.github.io/mermaid/#/</a></p><p id="14fa2923-5760-4b62-a7c5-68032a93de02" class=""><strong>Graphviz</strong></p><p id="c5ff1de2-e359-4260-8e32-2a4fb4f89d0c" class=""><a href="https://pikchr.org/">pikchr</a></p><p id="9cafd830-ce87-4c8c-9bab-a4f789450dbf" class=""><a href="https://avdi.codes/tools-for-turning-descriptions-into-diagrams/">https://avdi.codes/tools-for-turning-descriptions-into-diagrams/</a></p><p id="8ab23988-7b27-4a74-b1c6-21b8d07491bc" class=""><a href="https://www.augmentedmind.de/2020/12/20/plain-text-diagrams-as-code/">https://www.augmentedmind.de/2020/12/20/plain-text-diagrams-as-code/</a></p><p id="e5ed4c88-81ec-44e6-a9c2-c6266a4d390c" class=""><a href="https://modeling-languages.com/text-uml-tools-complete-list/">https://modeling-languages.com/text-uml-tools-complete-list/</a></p><h3 id="e943403f-b7dc-4362-ba9e-c6c12da9b1fd" class="">What&#x27;s the difference between a graph, a chart, and a plot?</h3><p id="9cb9aff6-72a6-4966-96c5-c37291eb4e0c" class=""><a href="https://english.stackexchange.com/questions/43027/whats-the-difference-between-a-graph-a-chart-and-a-plot">https://english.stackexchange.com/questions/43027/whats-the-difference-between-a-graph-a-chart-and-a-plot</a></p><h2 id="b2af52c4-a196-4a35-b6f1-e2b5b4f5af17" class="">Images</h2><p id="0c851e59-27db-4061-839a-5d465dd5698f" class=""><a href="https://imagej.nih.gov/ij/">https://imagej.nih.gov/ij/</a></p><h2 id="b3242d8a-9290-459d-ad4b-22589bd3f081" class="">Statistics</h2><figure id="f37874bb-ab87-4b1a-a534-b82c36035cd0" class="link-to-page"><a href="Statistics%20f37874bbab874b1aa534b82c36035cd0.html"><span class="icon">📈</span>Statistics</a></figure><h2 id="d4f72e65-f509-47d3-a600-d5a2f53a3b75" class="">Grouping</h2><p id="c38009ab-7a58-4942-abc8-763bc322b083" class="">Supervised vs unsupervised</p><p id="dfd78736-20a1-40c6-8b2c-b47edfe20d39" class="">Grouping methods are methods whose goal is segmenting, finding hidden relationships, and understanding data.  </p><h3 id="3dca8716-8f4d-4351-9325-93432d270a6c" class="">Cluster</h3><p id="d92ae57a-0dce-498e-b6f4-ee3b926380f7" class="">Types of variables</p><p id="909551e2-4bca-472a-a77a-5707fb70dd59" class="">Data set limit</p><p id="92c46d60-d168-4a15-b373-cea952fddf55" class="">Interpretable and actionable</p><p id="e5cbaaf2-aa5c-4932-9f6c-daab4e771e93" class="">Overlapping groups</p><p id="44765d2f-29ea-4ac9-9df7-9a5dd3820960" class="">Identify outliers</p><p id="d42794f2-f69d-478a-a476-fd9658cb89b5" class=""><em>endograma</em></p><h3 id="b44e52c6-cfc0-42e8-9d89-16d4b2a89c80" class="">Hierarchical Agglomerative Clustering</h3><h3 id="39d35627-876d-453d-ab5d-2e6b8fea730d" class="">K-Means</h3><p id="ca2f444d-f806-4562-a2da-9020b600b9d1" class=""><strong>Preconditions.</strong></p><ul id="f13ad739-1c82-403a-b6e5-f077ccb0e65b" class="bulleted-list"><li style="list-style-type:disc">Data measurement should be Interval.</li></ul><ul id="a09de26d-2553-47ce-be4b-1f150ce76e07" class="bulleted-list"><li style="list-style-type:disc">Don’t mix units.</li></ul><ul id="fed0571a-4e3a-4f53-b317-8813a484f939" class="bulleted-list"><li style="list-style-type:disc">Data should be normalized.</li></ul><pre id="acf7484c-5d69-4049-af72-e3e170457656" class="code"><code>k_means(data, k groups)
+   allocate an observation randomly
+   </code></pre><figure id="27c042be-e738-44f2-800a-9b7bd8b7d69c" class="link-to-page"><a href="K-Means%20and%20association%20rules%20in%20Weka%2027c042bee73844f2800a9b7bd8b7d69c.html">K-Means and association rules in Weka</a></figure><h3 id="b188fac7-aa45-47ef-9762-2fdc57cf8890" class="">Association rules</h3><p id="b4f67f59-6a0d-47fe-b94f-63f7013703ba" class="">The Association rules method is an unsupervised groping method.</p><p id="e52786a4-281d-4442-93c4-57c7b080839e" class=""><strong>Preconditions.</strong></p><ul id="27b1cdc8-fb77-4252-8f49-c5974bec4f7a" class="bulleted-list"><li style="list-style-type:disc">Data measurement should be Categorial (Nominal or Ordinal).</li></ul><ul id="1b955252-95d0-46e3-8d9a-b9a44d7c168f" class="bulleted-list"><li style="list-style-type:disc">Instances have to be 0 or 1.</li></ul><p id="10c5d022-f55e-44b3-a6d8-1e5ce214241f" class=""><strong>Apriori algorithm</strong></p><h2 id="5c789ca3-6bee-46df-8d62-89f79ea80e02" class="">Decision trees</h2><p id="37715358-59aa-46b1-a0a7-22001c3ec042" class=""><strong>Preconditions.</strong></p><ul id="dd97d286-96c9-40f9-8b2b-d553fb92e309" class="bulleted-list"><li style="list-style-type:disc">Categorical and continuous variables.</li></ul><h2 id="69b080d3-8770-4bf4-ab00-8c0557886f24" class="">FAQ</h2><h1 id="7710825e-3adc-4c56-a0e2-c648b0b0ac68" class="">Prediction</h1><p id="e9950a76-4ec3-427d-86ec-2c35c278e46b" class="">Predictive</p><p id="f957c7ed-dbc8-4a0d-875e-2201d8becf64" class="">Predictive Modeling for Classification</p><p id="4025b23e-7f83-40e8-aa88-9ab05a4b86fc" class="">Predictive Modeling for Regression</p><h2 id="04901159-88dc-45d5-aedc-8804d20c8442" class="">Models and Patterns. Classification and Prediction</h2><h2 id="21fc875c-4683-4879-adb7-ec84ac554423" class="">Real Machine Learning</h2><ul id="a75eb78c-03ed-427d-932a-e8d9c933e05a" class="bulleted-list"><li style="list-style-type:disc">Unsupervised learning.  No classes or Labels. <ul id="35215d06-3e67-4bfc-83a3-494345c4d8df" class="bulleted-list"><li style="list-style-type:circle">Clustering.</li></ul><ul id="c7090113-47f0-4409-b53e-4831968b3347" class="bulleted-list"><li style="list-style-type:circle">Dimensionality. </li></ul></li></ul><ul id="cdff5622-72c0-4f84-99ee-e72398313cb4" class="bulleted-list"><li style="list-style-type:disc">Supervised learning. Classes or Label. <ul id="e8f4d37a-c826-43b5-b96a-41815828e91c" class="bulleted-list"><li style="list-style-type:circle">Classification.</li></ul><ul id="86c0418c-f77a-4ece-b160-b638a1ec7185" class="bulleted-list"><li style="list-style-type:circle">Regression. </li></ul><ul id="45587811-f7e8-44b3-a559-1e3209a01a1b" class="bulleted-list"><li style="list-style-type:circle">Deep learning.</li></ul></li></ul><ul id="232185f1-60dc-40a7-bc7e-256c0369eaad" class="bulleted-list"><li style="list-style-type:disc">Reinforcement learning. </li></ul><p id="55a3b605-24f0-4be1-bcd5-d80f372eebe8" class="">Paradigms of Machine Learning.</p><p id="008bab45-85b1-4e0c-b358-a1be8587a98b" class="">Symbolysts.</p><p id="47b511cc-996a-4c97-ba18-b80c7f240e96" class="">Connectionists</p><p id="9d00352d-04f3-43e5-8e2b-ac31dba8a6c9" class="">Bayesians.</p><p id="7796f41b-10cf-45ee-b373-62040ecdfdc1" class="">Analogizers.</p><p id="0e7ad377-eaed-4e7b-8128-b04c41fcb2b7" class="">Evolutionaries.</p><p id="b658346b-b30c-442e-909d-058213c27103" class="">The task of Machine Learning.</p><p id="4ab97d08-e16a-4e8a-8598-1735c3baa94a" class="">Classification. If you have discrete labels, then you need classification algorithms. </p><p id="32a71776-4a8f-49c6-89fd-27487c230e00" class="">Regression.  If you have continuous labels, then you need regression algorithms.</p><p id="9894b3de-f73a-400d-88a7-0a0be734a081" class="">Contingency table and confusion matrix.</p><p id="42f78cf6-f411-4a5c-bb9c-7671cf4e4a35" class="">Holdout (1/3 testing, 2/3 training).</p><p id="4aa5dfb9-36d5-4ed3-b5fb-f96c112461d5" class="">K-fold cross-validation K=10.</p><p id="7c6b5bda-d42f-4787-a6e2-819d3ffbf4bd" class="">Linear Regression.</p><p id="fa451e53-7504-4137-8f82-7b442e536375" class="">Nonlinear regression. If you can, transform nonlinear regression to a linear relationship using a mathematical transformation.</p><h2 id="abc23dbb-6aca-4923-a293-d3a1a9b4e820" class="">Data transformations</h2><h2 id="cd1d0f8c-0e22-4f9c-a8d3-5954e5836c25" class="">Ensemble Learning</h2><h2 id="f39f6897-e4a6-45dd-bf1a-2b37c17714e9" class="">Moving on</h2><h2 id="68d91148-a8b9-4a28-8efa-f98e5f6e69e2" class="">Classification</h2><p id="e50f2ac4-1764-45ca-b676-71cdc3e3878a" class="">Classification trees</p><p id="62389ff8-47bb-43fc-b78e-0eaa4327fc36" class="">k-Nearest Neighbors</p><p id="1cd88048-bbf7-4fee-b8bf-4aa1fe3b64d6" class="">Logistic regression</p><p id="67b3545e-de64-4848-a25d-609a731ec6c8" class="">Naive Bayes classifiers</p><p id="d8cc5a97-5c9e-4fec-a3f5-247bed5be37a" class="">Neural networks</p><p id="d5398967-a3f0-4ddf-81ea-6f7b4596b497" class="">Rule-based classifiers</p><p id="45bbca4f-fabf-4fbe-b4cd-75f1cbe0942b" class="">Support vector machines</p><figure id="d001a53b-db44-41ae-bab0-50d4d3126e92" class="link-to-page"><a href="Prediction%20d001a53bdb4441aebab050d4d3126e92.html">Prediction</a></figure><h2 id="bb849422-58d3-4b01-bb59-f33a42e27556" class="">Regression</h2><p id="1c733f0c-1877-4196-8deb-d5dc3c646086" class="">Regression trees</p><p id="f3f9f8f9-c3cc-4770-a1aa-f9037f15ba3b" class="">k-Nearest Neighbors</p><p id="1405e173-911b-4023-affa-d52878944cfa" class="">Linear regression</p><p id="77ae3056-35f7-4341-8e81-2a1652b7bce5" class="">Neural networks</p><p id="3dde49f2-5b87-46f1-b20c-16d44051a919" class="">Nonlinear regression</p><p id="702bee74-02f3-4b71-a3bd-e735af045866" class="">Partial least squares</p><p id="0a486294-5507-455e-8068-bd594e5e2fcf" class="">Support vector machines</p><h2 id="c42bd894-f856-42bd-8ca8-53312d3306f4" class="">Associate rules</h2><h2 id="dc0d2645-5dbd-4823-bca6-90eb4042b070" class="">Regression modeling</h2><h2 id="857eca4c-4f84-4341-b1b2-261036ebabfb" class="">Multiple regression and model building</h2><h2 id="79c50846-7be0-412f-80c7-f7e817603a88" class="">Logistic regression</h2><h2 id="d373bb21-c6fe-49a5-afcd-db7ae6083495" class="">Naive Bayes estimation and Bayesian networks</h2><h2 id="22d235fe-49bb-48c0-bed9-98b97a2e40b7" class="">Tools</h2><h3 id="eaa115d6-fa4a-4142-bcfa-b6676f816629" class="">Weka</h3><p id="d4321e5a-414c-4982-9fc4-eb6afc481d86" class="">Data Mining: Practical Machine Learning Tools and Techniques</p><p id="57648f44-0bb9-4277-9b11-0cac59b1716d" class=""><a href="https://www.cs.waikato.ac.nz/ml/weka/">https://www.cs.waikato.ac.nz/ml/weka/</a></p><h1 id="489a392a-f674-4582-b2ba-008a9576666b" class="">Search and Optimization Methods</h1><h1 id="4c90f15e-973e-46e7-aaeb-565c513d7adb" class="">Score Functions for Data Mining Algorithms. Credibility: Evaluating What’s been learned</h1><h1 id="996f1383-352c-4c90-8e44-6262e53e0100" class="">Data Organization and Databases</h1><h1 id="096ea7ac-2a61-4a6e-872f-e47f8be6be12" class="">Evaluation &amp; Deployment</h1><p id="7b1ef66f-f229-46dd-bddb-3113629ad709" class="">Some kinds of deliverables are</p><ul id="a871cdd6-fb4e-4bc4-b4c8-53f22619920e" class="bulleted-list"><li style="list-style-type:disc">Static report to management.</li></ul><ul id="46d70c9a-9be8-4a35-b582-7e6a0b962206" class="bulleted-list"><li style="list-style-type:disc">Software integration.</li></ul><p id="a14fb93c-d05c-47d7-a6af-b99181647a47" class="">Then, measure and monitor performance and review the project.</p><h3 id="43f57e2f-0d5b-471b-8413-48686949506a" class="">Report examples</h3><p id="c82587db-702f-4a90-a514-a0c6d576a445" class=""><a href="https://raw.githubusercontent.com/mrsac7/Data-Mining-Project/master/Report.pdf">https://raw.githubusercontent.com/mrsac7/Data-Mining-Project/master/Report.pdf</a></p><h2 id="fd24b6e7-11b2-4d85-b9f7-1acaac1b1ce3" class="">Storytelling</h2><h1 id="ea5dfd37-4a93-41a6-9037-1d8df35a554c" class="">Summary</h1><h2 id="87b701aa-1f18-4fd5-95b7-e302daf1fd80" class="">Data mining process</h2><figure id="dd8742a7-dbff-443e-912c-5cda198f291d" class="image"><a href="kdd-process.svg"><img style="width:1241px" src="kdd-process.svg"/></a></figure><p id="24dc084a-8f76-4df5-aad3-b0c06a7e7d11" class="">• Kurgan L. A. and Musilek P. (2006). A survey of Knowledge discovery and Data Mining process models. The Knowledge Engineering Review, Vol. 21:1, 1-24. doi:10.1017/S0269888906000737. Recuperado de: <a href="http://biomine.cs.vcu.edu/papers/KER-KDDM2006.pdf">http://biomine.cs.vcu.edu/papers/KER-KDDM2006.pdf</a></p><h2 id="b5c2a4da-5d25-4735-9109-ff485b125122" class="">Software Ecosystem</h2><p id="838cd6d0-c04d-4ddd-bb84-10630dd7b7d0" class="">SAS SEMMA???</p><ul id="afd23f96-2a79-4b0c-99bb-129773cf2fba" class="bulleted-list"><li style="list-style-type:disc">The WEKA data mining workbench</li></ul><ul id="8c23c25c-0d60-4382-a36a-6719cc9bc98d" class="bulleted-list"><li style="list-style-type:disc">Microsoft’s OLE DB for Data Mining</li></ul><ul id="7cc5b211-1112-4a8a-a5da-2ae4d0d8b318" class="bulleted-list"><li style="list-style-type:disc">DBMiner</li></ul><ul id="bced90f6-b095-4b32-bd0c-57a9f90c8083" class="bulleted-list"><li style="list-style-type:disc">Clementine data mining suite</li></ul><ul id="cb8e21c9-95b3-4033-bd8e-496335705a72" class="bulleted-list"><li style="list-style-type:disc">SPSS statistical software</li></ul><ul id="e5ca75ba-71bb-48d0-9843-3235c516082e" class="bulleted-list"><li style="list-style-type:disc">SAS Enterprise Miner</li></ul><h1 id="a2de2070-9cdc-48e1-86a9-ab10d35479da" class="">Applications and Trends in Data Mining</h1><h2 id="f02d3530-3a76-4a8b-a2cb-ed21be220f23" class="">Project ideas to learn data mining</h2><p id="1a2c9807-a06b-4441-8aac-e17488ee078c" class="">Email spam detector</p><p id="6841e217-2040-4b91-9eb5-9c113b4d9072" class="">Modeling response to direct mail marketing</p><p id="175daadd-eff4-4339-9e50-743bd356f2f9" class="">Wordnet</p><p id="15ae1410-09cb-4f8d-b5c5-2ef7de2422be" class=""><a href="https://archive-beta.ics.uci.edu/">https://archive-beta.ics.uci.edu/</a></p><h2 id="06015b0f-51ac-470f-899a-aca506ffff5e" class="">Intelligence</h2><p id="423fcaf5-595c-440d-9f33-8055ce241053" class=""><a href="Intelligence%209f3149a74d3f4102838629df593d1721.html">Intelligence assessment</a> </p><p id="65c02545-a682-4242-af8c-546111fe236c" class=""><a href="https://www.fbiic.gov/public/2008/feb/ODNI_Data_Mining_Report.pdf">https://www.fbiic.gov/public/2008/feb/ODNI_Data_Mining_Report.pdf</a></p><h2 id="6bfc0453-3eed-422e-ac91-a3587b8cab7f" class="">References</h2><p id="ea6a6a61-03d1-4601-9ee9-7748d5702739" class=""><a href="Intelligence%209f3149a74d3f4102838629df593d1721.html">Espionage</a> </p><h2 id="d8634d80-8674-41ce-b394-266a2fcff6a5" class="">Case of study</h2><p id="2b949b77-34d2-4e53-bc6f-34ea93c2394c" class=""><a href="https://arxiv.org/pdf/0803.2969.pdf">https://arxiv.org/pdf/0803.2969.pdf</a></p><p id="8957441a-d64a-452a-9fa2-2a18cfcd8018" class="">
+</p></div></article></body></html>

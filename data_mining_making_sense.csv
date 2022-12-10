@@ -1,0 +1,21 @@
+Customer,Store,Product category,Product description,Sale price ($),Profit ($)
+J. Smith,SD Mall,PS Game,Last of Us,49,5
+J. Smith,L.A. Store,Online Game,Celeste,45,3
+J. Smith,SD Mall,PS Game,Sniper Elite,35,4
+J. Smith,SD Mall,NS Game,Zelda: BoW,45,5
+E. Robinson,SD Mall,PS Game,Last of Us,49,5
+E. Robinson,L.A. Store,PS Game,Speed 4,39,3
+F. Tyle,SD Mall,Online Game,Celeste,46,1
+K. Jonhs,SD Mall,Online Game,Limbo,15,1
+K. Jonhs,L.A. Store,Xbox Game,Overcooked 2,20,3
+K. Jonhs,L.A. Store,Xbox Game,Last of Us,40,5
+K. Jonhs,SD Mall,Online Game,Pool House,45,2
+K. Jonhs,L.A. Store,Xbox Game,Pokemon Sword,39,5
+K. Hike,SD Mall,Xbox Game,Pokemon Sword,39,5
+S.Lee,L.A. Store,NS Game,Pikmin 3,49,4
+P. Gales,L.A. Store,Online Game,Overcooked 2,20,3
+P. Gales,SD Mall,NS Game,Zelda: BoW,45,5
+Y. Vert,SD Mall,Online Game,Pokemon Shield,39,5
+S. Kim,SD Mall,NS Game,Unravel two,20,2
+S. Kim,L.A. Store,Xbox Game,NFS Ultimate,56,4
+W. Wilson,SD Mall,Xbox Game,Overcooked 2,20,3

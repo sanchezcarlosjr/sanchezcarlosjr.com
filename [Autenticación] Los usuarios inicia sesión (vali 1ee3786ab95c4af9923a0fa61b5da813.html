@@ -1,0 +1,740 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[Autenticación] Los usuarios inicia sesión (valida sus credenciales) y obtiene permisos</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1ee3786a-b95c-4af9-923a-0fa61b5da813" class="page sans"><header><h1 class="page-title">[Autenticación] Los usuarios inicia sesión (valida sus credenciales) y obtiene permisos</h1><table class="properties"><tbody><tr class="property-row property-row-date"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M3.29688 14.4561H12.7031C14.1797 14.4561 14.9453 13.6904 14.9453 12.2344V3.91504C14.9453 2.45215 14.1797 1.69336 12.7031 1.69336H3.29688C1.82031 1.69336 1.05469 2.45215 1.05469 3.91504V12.2344C1.05469 13.6973 1.82031 14.4561 3.29688 14.4561ZM3.27637 13.1162C2.70898 13.1162 2.39453 12.8154 2.39453 12.2207V5.9043C2.39453 5.30273 2.70898 5.00879 3.27637 5.00879H12.71C13.2842 5.00879 13.6055 5.30273 13.6055 5.9043V12.2207C13.6055 12.8154 13.2842 13.1162 12.71 13.1162H3.27637ZM6.68066 7.38086H7.08398C7.33008 7.38086 7.41211 7.30566 7.41211 7.05957V6.66309C7.41211 6.41699 7.33008 6.3418 7.08398 6.3418H6.68066C6.44141 6.3418 6.35938 6.41699 6.35938 6.66309V7.05957C6.35938 7.30566 6.44141 7.38086 6.68066 7.38086ZM8.92285 7.38086H9.31934C9.56543 7.38086 9.64746 7.30566 9.64746 7.05957V6.66309C9.64746 6.41699 9.56543 6.3418 9.31934 6.3418H8.92285C8.67676 6.3418 8.59473 6.41699 8.59473 6.66309V7.05957C8.59473 7.30566 8.67676 7.38086 8.92285 7.38086ZM11.1582 7.38086H11.5547C11.8008 7.38086 11.8828 7.30566 11.8828 7.05957V6.66309C11.8828 6.41699 11.8008 6.3418 11.5547 6.3418H11.1582C10.9121 6.3418 10.8301 6.41699 10.8301 6.66309V7.05957C10.8301 7.30566 10.9121 7.38086 11.1582 7.38086ZM4.44531 9.58203H4.84863C5.09473 9.58203 5.17676 9.50684 5.17676 9.26074V8.86426C5.17676 8.61816 5.09473 8.54297 4.84863 8.54297H4.44531C4.20605 8.54297 4.12402 8.61816 4.12402 8.86426V9.26074C4.12402 9.50684 4.20605 9.58203 4.44531 9.58203ZM6.68066 9.58203H7.08398C7.33008 9.58203 7.41211 9.50684 7.41211 9.26074V8.86426C7.41211 8.61816 7.33008 8.54297 7.08398 8.54297H6.68066C6.44141 8.54297 6.35938 8.61816 6.35938 8.86426V9.26074C6.35938 9.50684 6.44141 9.58203 6.68066 9.58203ZM8.92285 9.58203H9.31934C9.56543 9.58203 9.64746 9.50684 9.64746 9.26074V8.86426C9.64746 8.61816 9.56543 8.54297 9.31934 8.54297H8.92285C8.67676 8.54297 8.59473 8.61816 8.59473 8.86426V9.26074C8.59473 9.50684 8.67676 9.58203 8.92285 9.58203ZM11.1582 9.58203H11.5547C11.8008 9.58203 11.8828 9.50684 11.8828 9.26074V8.86426C11.8828 8.61816 11.8008 8.54297 11.5547 8.54297H11.1582C10.9121 8.54297 10.8301 8.61816 10.8301 8.86426V9.26074C10.8301 9.50684 10.9121 9.58203 11.1582 9.58203ZM4.44531 11.7832H4.84863C5.09473 11.7832 5.17676 11.708 5.17676 11.4619V11.0654C5.17676 10.8193 5.09473 10.7441 4.84863 10.7441H4.44531C4.20605 10.7441 4.12402 10.8193 4.12402 11.0654V11.4619C4.12402 11.708 4.20605 11.7832 4.44531 11.7832ZM6.68066 11.7832H7.08398C7.33008 11.7832 7.41211 11.708 7.41211 11.4619V11.0654C7.41211 10.8193 7.33008 10.7441 7.08398 10.7441H6.68066C6.44141 10.7441 6.35938 10.8193 6.35938 11.0654V11.4619C6.35938 11.708 6.44141 11.7832 6.68066 11.7832ZM8.92285 11.7832H9.31934C9.56543 11.7832 9.64746 11.708 9.64746 11.4619V11.0654C9.64746 10.8193 9.56543 10.7441 9.31934 10.7441H8.92285C8.67676 10.7441 8.59473 10.8193 8.59473 11.0654V11.4619C8.59473 11.708 8.67676 11.7832 8.92285 11.7832Z"></path></svg></span>Time</th><td><time>@November 15, 2022 → November 29, 2022</time></td></tr><tr class="property-row property-row-person"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesPerson"><path d="M10.9536 7.90088C12.217 7.90088 13.2559 6.79468 13.2559 5.38525C13.2559 4.01514 12.2114 2.92017 10.9536 2.92017C9.70142 2.92017 8.65137 4.02637 8.65698 5.39087C8.6626 6.79468 9.69019 7.90088 10.9536 7.90088ZM4.4231 8.03003C5.52368 8.03003 6.42212 7.05859 6.42212 5.83447C6.42212 4.63843 5.51245 3.68945 4.4231 3.68945C3.33374 3.68945 2.41846 4.64966 2.41846 5.84009C2.42407 7.05859 3.32251 8.03003 4.4231 8.03003ZM1.37964 13.168H5.49561C4.87231 12.292 5.43384 10.6074 6.78711 9.51807C6.18628 9.14746 5.37769 8.87231 4.4231 8.87231C1.95239 8.87231 0.262207 10.6917 0.262207 12.1628C0.262207 12.7974 0.548584 13.168 1.37964 13.168ZM7.50024 13.168H14.407C15.4009 13.168 15.7322 12.8423 15.7322 12.2864C15.7322 10.8489 13.8679 8.88354 10.9536 8.88354C8.04492 8.88354 6.17505 10.8489 6.17505 12.2864C6.17505 12.8423 6.50635 13.168 7.50024 13.168Z"></path></svg></span>Assign</th><td></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Status</th><td><span class="selected-value select-value-color-green">Completed</span></td></tr><tr class="property-row property-row-created_by"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedBy"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 10.4229C6.05176 10.4229 4.54785 11.1133 3.83008 11.9131C2.90039 10.9082 2.33301 9.55469 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 9.55469 13.1064 10.9082 12.1699 11.9131C11.4521 11.1133 9.94824 10.4229 8 10.4229ZM8 9.30176C9.32617 9.30859 10.3516 8.18066 10.3516 6.71094C10.3516 5.33008 9.31934 4.18164 8 4.18164C6.6875 4.18164 5.6416 5.33008 5.64844 6.71094C5.65527 8.18066 6.68066 9.28809 8 9.30176Z"></path></svg></span>Created by</th><td></td></tr><tr class="property-row property-row-last_edited_by"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedBy"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 10.4229C6.05176 10.4229 4.54785 11.1133 3.83008 11.9131C2.90039 10.9082 2.33301 9.55469 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 9.55469 13.1064 10.9082 12.1699 11.9131C11.4521 11.1133 9.94824 10.4229 8 10.4229ZM8 9.30176C9.32617 9.30859 10.3516 8.18066 10.3516 6.71094C10.3516 5.33008 9.31934 4.18164 8 4.18164C6.6875 4.18164 5.6416 5.33008 5.64844 6.71094C5.65527 8.18066 6.68066 9.28809 8 9.30176Z"></path></svg></span>Last edited by</th><td></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Last edited time</th><td><time>@December 7, 2022 12:57 PM</time></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Created time</th><td><time>@September 7, 2022 1:57 PM</time></td></tr></tbody></table></header><div class="page-body"><nav id="8f546c6e-77f8-4f2a-aef8-7c9cb033182a" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d07b2541-ee95-4c68-a6e1-e401f9180f03">Requerimiento no funcional necesarios</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#06b07ea6-0850-4230-8abb-4c1033e76604">Requerimiento funcional</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fd11b76e-49a4-4ccf-a061-2ae3257cacc7">Consideraciones</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#22e03c1d-bf29-4279-bc66-c8c3beff7013">Capa de datos</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c1f1677b-29ca-49b8-bbb1-d45cda4a207e">Seeder (Semilla)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#70d8aea6-8811-4275-b8be-c3aa0c443fd3">Permisos</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2fd06bbc-4faf-4d27-97d3-286c58c06cc4">Roles</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#05cd9e2f-3c5b-4d6c-8385-323020bfd15e">Usuarios</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#66884822-2e5c-45e5-a7b4-5807c7db6a33">Capa de interfaz dominio-datos</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8fcfd68d-bba4-499e-89f7-c7c4b7b1232e">Capa de dominio</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b9a12e87-c719-4744-b5bb-90e6dba37fd9">Consideraciones</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bc4bf901-a391-4b6a-b7c1-2327a8690f7b">Cuando el usuario quiere iniciar sesión entonces</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ecd09ded-94fa-4309-9887-04f32556716a">Cuando el usuario quiere terminar la sesión entonces</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d254e73f-2501-4cae-b3da-53ef79b2e927">Referencias</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3e0fdd59-e482-455f-9826-c9758520b9c1">Capa de presentación web</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ef10ae25-832e-44ff-a27f-78d40ab2272b">Consideraciones</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#97bcfcef-32eb-41d6-8998-b6be3b469c53">Mockups</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c113ce3c-8fde-4232-b524-d2f0a20ae4b0">Referencias</a></div></nav><h1 id="d07b2541-ee95-4c68-a6e1-e401f9180f03" class="">Requerimiento no funcional necesarios</h1><p id="4a494048-aff9-46c7-b612-cd93fe841cd6" class=""><a href="Sistema%20de%20captura%20del%20Formato%20911%20para%20Coordinaci%203cb154ee123647f6a14a00630759c563.html">https://www.notion.so/sanchezcarlosjr/Sistema-de-captura-del-Formato-911-3cb154ee123647f6a14a00630759c563#7450c430c50848159b17f0b338c6cfb8</a></p><h1 id="06b07ea6-0850-4230-8abb-4c1033e76604" class="">Requerimiento funcional</h1><ul id="1cf9d8db-8c76-4c3b-97b0-f94f581567c8" class="bulleted-list"><li style="list-style-type:disc">El usuario quiere iniciar de sesión que cuando ingrese el correo y la contraseña valide los datos.</li></ul><p id="c8d5c3f5-076a-42e3-b47c-86b16d29bc07" class="">Cuando el usuario ingresa un correo universitario y contraseña correctos entonces el sistema lista las &quot;movilidades académicas de entrada&quot;.</p><p id="3ced1eb7-b2a0-42d8-9c57-1ecd18432171" class="">Cuando el usuario ingresa un correo universitario y contraseña incorrectos entonces el sistema manda un mensaje de error “revise su correo y contraseña”.</p><ul id="83fc5c5b-b5e5-49ad-8155-c629e12a6823" class="bulleted-list"><li style="list-style-type:disc">El usuario quiere terminar la sesión.</li></ul><p id="2a4072fa-085a-4db5-90c6-815452a63da6" class="">Cuando el usuario termina la sesión entonces el sistema borra los datos de autenticación.</p><ul id="97e987d4-12ae-4760-9715-7a005d720222" class="bulleted-list"><li style="list-style-type:disc">El usuario obtiene permisos.</li></ul><h2 id="fd11b76e-49a4-4ccf-a061-2ae3257cacc7" class="">Consideraciones</h2><p id="d3f22065-f25f-4dc0-a51e-e848803e0881" class="">El sistema de autenticación debe ser implementado usando la API proporcionada por la UABC.</p><p id="394789c7-6bff-46f9-b3a2-44e65c1ae201" class="">Pero, el sistema de autorización es interno.</p><p id="88cfc833-803f-48b2-ab32-8802773d2cb1" class="">No se necesita crear una interfaz gráfica para el módulo de usuarios por lo que deben crearse desde la base de datos los roles, los usuarios y las asociaciones entre ellos.</p><p id="c249a926-d297-4095-8d91-7abff6d719bb" class=""><strong>Para la capa de presentación lo prioritario es el diseño de la interfaz.</strong></p><p id="5e5d5405-b712-4f31-a5f6-21c1e9de7418" class="">Para la capa de negocio lo prioritario es mejorar el diseño del software, verificar la interacción de la API y crear el mecanismo de roles. Debe documentarse los roles, quienes son los usuarios y la asociación entre ellos (preguntar a Judith). </p><h1 id="22e03c1d-bf29-4279-bc66-c8c3beff7013" class="">Capa de datos</h1><h2 id="c1f1677b-29ca-49b8-bbb1-d45cda4a207e" class="">Seeder (Semilla)</h2><p id="529ff34d-a5fe-4a3e-992f-5fff7e35d314" class="">Mecanismo para crear usuarios desde un archivo CSV usando la API.</p><p id="4c953ff2-6ca9-4e72-a55d-d4ccccdce8d4" class="">Use el entorno de <code>playwright</code>. </p><pre id="e050af68-621e-476e-9a33-dfcbef88f54f" class="code"><code>POST /users
+Authorization: Bearer TOKEN
+
+[
+ {
+   &quot;user&quot;: &quot;EMAIL&quot;,
+   &quot;claims&quot;: [&quot;1&quot;, &quot;2&quot;]
+ }
+]</code></pre><h2 id="70d8aea6-8811-4275-b8be-c3aa0c443fd3" class="">Permisos</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="72a086a0-e467-47e5-80f2-8d82b5d9ee55"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Seguimos el estándar RBAC.</div></figure><p id="ff4ed0e9-e269-41db-9eba-a85d0faa7fb5" class="">Cada usuario tiene una combinación de los siguientes <code>claims</code>:</p><pre id="f5eccd66-43f6-49c6-a9a4-886882caf793" class="code"><code>login
+
+income_academic_mobilities.create.*
+income_academic_mobilities.edit.*
+income_academic_mobilities.read.*
+income_academic_mobilities.delete.*
+
+outcome_academic_mobilities.create.*
+outcome_academic_mobilities.edit.*
+outcome_academic_mobilities.read.*
+outcome_academic_mobilities.delete.*
+
+income_exchange_student.create.*
+income_exchange_student.edit.*
+income_exchange_student.read.*
+income_exchange_student.delete.*
+
+outcome_exchange_student.create.*
+outcome_exchange_student.edit.*
+outcome_exchange_student.read.*
+outcome_exchange_student.delete.*
+
+agreements.create.*
+agreements.edit.*
+agreements.read.*
+agreements.delete.*
+
+users.create.*
+users.edit.*
+users.read.*
+users.delete.*</code></pre><p id="8dae9705-7a4b-44e5-ab8a-e3d9ee9ebe05" class="">De manera reductiva, se puede ver a un permiso como uno binario de escritura o lectura.</p><h2 id="2fd06bbc-4faf-4d27-97d3-286c58c06cc4" class="">Roles</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="09c2a0f8-8ea5-41e3-a8dc-1b6d39f49a53"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Estos son implementados en la interfaz de usuario. NO en el modelo de dominio.
+Esto da más flexibilidad.</div></figure><pre id="b45b868a-73de-4d0f-b613-a0e0ad5ef4bb" class="code"><code>tres niveles de usuario por campus
+coordinacion general: rectoria
+de los departamento: miguel alvarez
+de las unidades academicas: coord vinculación y sub dirección
+las unidades academicas son las que llenan la información para que lleguen limpios a rectoría</code></pre><ul id="816d10e4-dda4-4237-b68d-1f524415df72" class="bulleted-list"><li style="list-style-type:disc">Administrador</li></ul><ul id="106e2146-dfaa-4556-a5da-dda68e4f6dca" class="bulleted-list"><li style="list-style-type:disc">Coordinación general</li></ul><ul id="719eed3b-9a1c-4c6c-90f7-c0f4e58336fb" class="bulleted-list"><li style="list-style-type:disc">Vicerrectoría</li></ul><ul id="a5448f64-9d52-4991-9d5c-b89760cba22f" class="bulleted-list"><li style="list-style-type:disc">Unidad académica (los únicos usuarios junto con el administrador que pueden modificar -crear, editar o eliminar- la información)<ul id="86803381-5b68-40b6-a35b-87e798183f51" class="bulleted-list"><li style="list-style-type:circle">Coordinación</li></ul><ul id="d730e5a8-9508-4f75-b9ae-3abf2294bf94" class="bulleted-list"><li style="list-style-type:circle">Subdirección</li></ul></li></ul><h2 id="05cd9e2f-3c5b-4d6c-8385-323020bfd15e" class="">Usuarios</h2><table id="d21ff1ae-2659-4de4-a3e8-42ecfb20dae0" class="simple-table"><tbody><tr id="ccdfd65b-8bbc-4c5a-80e5-efc108ed6aea"><td id="mvXQ" class="" style="width:349px">User</td><td id="Z?i@" class="" style="width:349px">Claims</td></tr><tr id="46d6f341-a94e-4c01-b9a1-ee19c5f2c526"><td id="mvXQ" class="" style="width:349px">jluna</td><td id="Z?i@" class="" style="width:349px">*</td></tr><tr id="0466a522-76f3-4818-9280-413835dfbf3b"><td id="mvXQ" class="" style="width:349px">Todos los miembros del equipo</td><td id="Z?i@" class="" style="width:349px">*</td></tr><tr id="8a10a9d0-f06a-4183-b821-a7d04332e5a9"><td id="mvXQ" class="" style="width:349px">Aracely</td><td id="Z?i@" class="" style="width:349px">*</td></tr></tbody></table><p id="50cc42f6-7d93-4bc8-bb15-ea5048fdb771" class="">Los correos dependen por unidad académica.</p><p id="77993684-d604-4504-bb43-d28772d51ebd" class="">El modelo utilizado es el siguiente:</p><pre id="4c0fbcef-797c-48e6-8724-97c50e009da1" class="code"><code>erDiagram
+
+User ||--|{ Claim : has
+
+User {
+	string email
+}
+
+Claim {
+	string claim 
+}</code></pre><h1 id="66884822-2e5c-45e5-a7b4-5807c7db6a33" class="">Capa de interfaz dominio-datos</h1><pre id="85c2ea39-8bde-4979-a54c-575f418a37d8" class="code"><code>graph LR
+
+
+APIHandler --&gt; Service
+Service --&gt; Database
+Database --&gt; Service
+Service --&gt; APIHandler</code></pre><h1 id="8fcfd68d-bba4-499e-89f7-c7c4b7b1232e" class="">Capa de dominio</h1><pre id="506bd4ff-24dc-4f1b-bb00-964a5cbfdb15" class="code"><code>graph TD
+
+subgraph User
+/sessions/:token
+/login
+/logout
+/users
+end</code></pre><p id="24e7ff8d-8197-477a-b576-c2a0da0e0d23" class=""><em>users</em> tiene los mismos métodos HTTP.</p><h2 id="b9a12e87-c719-4744-b5bb-90e6dba37fd9" class="">Consideraciones</h2><ul id="5f01bf8e-1aa9-48cd-9ea2-6216dd610cd7" class="bulleted-list"><li style="list-style-type:disc">Usamos el estándar JWT.</li></ul><ul id="3a33f5e7-9481-4b77-b629-b1a753b7ca9e" class="bulleted-list"><li style="list-style-type:disc">RBAC.</li></ul><h2 id="bc4bf901-a391-4b6a-b7c1-2327a8690f7b" class="">Cuando el usuario quiere iniciar sesión entonces</h2><pre id="5dd2a2d8-1f34-43a3-84c4-aad72b7c8dab" class="code"><code>sequenceDiagram
+    Cliente-&gt;&gt;Web Service: POST /sessions/login {&#x27;email&#x27;: &#x27;([A-Z0-9])+@uabc.edu.mx&#x27;, &#x27;password&#x27;: &#x27;&#x27;}
+    Web Service--&gt;&gt;Cliente: HTTP 201 Created {&#x27;token&#x27;: &#x27;JWT&#x27;}
+    Cliente-&gt;&gt;Web Service: GET /sessions/:token/permissions
+    Web Service--&gt;&gt;Cliente: HTTP 200 OK Role{&#x27;name&#x27;: &#x27;abc&#x27;, &#x27;permissions&#x27;: [...]}</code></pre><h2 id="ecd09ded-94fa-4309-9887-04f32556716a" class="">Cuando el usuario quiere terminar la sesión entonces</h2><p id="7559a583-5e4f-4671-860e-ec686cfbb280" class="">Con el protocolo JWT no es posible cerrar sesión. </p><h3 id="d254e73f-2501-4cae-b3da-53ef79b2e927" class="">Referencias</h3><ul id="abd9cf0e-52fd-4a05-8edd-46eea22cf39a" class="bulleted-list"><li style="list-style-type:disc"><a href="http://expressjs.com">expressjs.com</a> tiene un ejemplo de esto: <a href="https://github.com/expressjs/express/blob/master/examples/auth/index.js">https://github.com/expressjs/express/blob/master/examples/auth/index.js</a></li></ul><ul id="e9f34bcd-f91c-4360-b982-38ec5f844579" class="bulleted-list"><li style="list-style-type:disc">Tutorial MERN: <a href="https://www.mongodb.com/languages/mern-stack-tutorial">https://www.mongodb.com/languages/mern-stack-tutorial</a></li></ul><ul id="9bb041a3-3747-402b-a37a-02487df7f551" class="bulleted-list"><li style="list-style-type:disc">WebStorm. GitHub tiene un programa (<a href="https://education.github.com/pack/offers">https://education.github.com/pack/offers</a>) que te da un año gratis en dicho IDE.</li></ul><ul id="03a44282-574d-41fc-88bd-2b25cc5b8e38" class="bulleted-list"><li style="list-style-type:disc">React-admin - Autenticación: <a href="https://marmelab.com/react-admin/doc/2.9/Authentication.html">https://marmelab.com/react-admin/doc/2.9/Authentication.html</a></li></ul><h1 id="3e0fdd59-e482-455f-9826-c9758520b9c1" class="">Capa de presentación web</h1><h2 id="ef10ae25-832e-44ff-a27f-78d40ab2272b" class="">Consideraciones</h2><ul id="2e40ab55-e809-4747-8533-6a1bc3d1f50a" class="bulleted-list"><li style="list-style-type:disc">Usar un proveedor de datos fake mientras implementamos la capa de datos.</li></ul><ul id="189a6a46-ff8c-4070-905a-c34b1248d9d4" class="bulleted-list"><li style="list-style-type:disc">Tomar en cuenta que los usuarios tienen roles (¿cómo controlarán quien tiene que acceso?)</li></ul><ul id="054b198c-d4e8-44f9-bbfc-a79f5401a725" class="bulleted-list"><li style="list-style-type:disc">¿Un formulario para petición de crear un nuevo usuario (Google Forms)?]</li></ul><h2 id="97bcfcef-32eb-41d6-8998-b6be3b469c53" class="">Mockups</h2><figure id="167d6979-c214-4a80-a4a4-04bd9e86ae2b" class="image"><a href="Untitled%20295.png"><img style="width:1360px" src="Untitled%20295.png"/></a></figure><h2 id="c113ce3c-8fde-4232-b524-d2f0a20ae4b0" class="">Referencias</h2><p id="3290684f-e545-4814-8b61-ac5d46ec5135" class="">
+</p></div></article></body></html>

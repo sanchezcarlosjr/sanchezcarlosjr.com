@@ -1,0 +1,732 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Make your own minicompiler (aka parser) on the Web in Plain English (Calculator with C++)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c0cc7c59-56d6-48b6-9b07-d718e7f36a3b" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🐉</span></div><h1 class="page-title">Make your own minicompiler (aka parser) on the Web in Plain English (Calculator with C++)</h1><table class="properties"><tbody></tbody></table></header><div class="page-body"><figure id="fb2b7555-2e7f-4369-938c-f4640f21246b" class="image"><a href="Untitled%2029.png"><img style="width:615px" src="Untitled%2029.png"/></a><figcaption>Welcome to Dragon World! — if you get it, you’re my hero :).</figcaption></figure><p id="6d801299-100a-4859-80f9-002ade2150b7" class="">You’re going to learn to make your own compiler on the Web, indeed C++ and WebAssembly are the bread and butter of your needs, and unsurprisingly JavaScript, HTML, and CSS too.</p><p id="773e93b8-e0ba-4f31-ad98-7722d8c11f02" class="">Your chiefly goal is a calculator that evaluates ordinary expressions you type in ’cause you want to go into shape and acquaintance. An outward step career is writing a simple calculator; it shed light on programming techniques, compilers, and the theory of computation. By the way, my muse is Programming -- Principles and Practice Using C++ by Stroustrup. So, let’s do it.</p><p id="7e549f2d-2837-4e6a-b467-37a2feb104f5" class=""><a href="https://calculator.sanchezcarlosjr.com/">Demo</a></p><p id="556d2589-40af-464d-99b9-bc766bdb0c62" class=""><a href="https://github.com/sanchezcarlosjr/my-first-compiler-aka-calculator/">GitHub</a></p><p id="d6d49984-e96c-4a62-baec-94a9041e8fc1" class="">Please check out the dependencies on <a href="https://github.com/sanchezcarlosjr/my-first-compiler-aka-calculator/tree/main">GitHub</a>.</p><h1 id="590b098a-190f-4c90-ad6d-29b6dcceca11" class="">Use cases</h1><p id="9a0c79fa-b9fe-40cf-8ddd-e993e32c068b" class="">Since user experience is first and given users want a buttonless calculator, your calculator gotta receive infix expressions and return the result, but which expressions are your concern?  Operators your calculator admitted are <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mo separator="true">,</mo><mo>−</mo><mo separator="true">,</mo><mo>∗</mo><mo separator="true">,</mo><mi mathvariant="normal">/</mi><mo separator="true">,</mo><mi mathvariant="normal">%</mi><mo separator="true">,</mo><mo>∗</mo><mo>∗</mo></mrow><annotation encoding="application/x-tex">+,-,*,/,\%,**</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">+</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">−</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∗</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">/</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">%</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∗</span><span class="mord">∗</span></span></span></span></span><span>﻿</span></span> on usual <a href="https://en.wikipedia.org/wiki/Order_of_operations#Programming_languages">operator precedence</a>.</p><table id="e9d64f71-33c2-4aae-9154-0a446ac3a685" class="simple-table"><tbody><tr id="2ed836e9-58c6-4b83-8d93-75f4a02a1964"><td id="&gt;SRU" class="" style="width:349px">If you enter</td><td id="SPSP" class="" style="width:349px">the program should respond</td></tr><tr id="4ffe53d8-3159-4b33-b4c1-9549bbf0733f"><td id="&gt;SRU" class="" style="width:349px">2+3.1*4</td><td id="SPSP" class="" style="width:349px">14.4</td></tr><tr id="442b7da2-f403-4ee4-bf05-e6db92f8dbfd"><td id="&gt;SRU" class="" style="width:349px">2+4/2</td><td id="SPSP" class="" style="width:349px">4</td></tr><tr id="e3dae071-b8db-426a-bdb0-fe599ebb029b"><td id="&gt;SRU" class="" style="width:349px">2+3%3</td><td id="SPSP" class="" style="width:349px">2</td></tr><tr id="8a572c8a-d979-490d-9d8c-56b3775c7e56"><td id="&gt;SRU" class="" style="width:349px">10**2%5</td><td id="SPSP" class="" style="width:349px">0</td></tr><tr id="b7332bdd-fd62-4ec1-9220-ebe45df94d47"><td id="&gt;SRU" class="" style="width:349px">(25+5)**2/2%5</td><td id="SPSP" class="" style="width:349px">0</td></tr></tbody></table><figure id="e77142ce-9164-4851-8e64-f63ef39112f8" class="image"><a href="Untitled%2030.png"><img style="width:1600px" src="Untitled%2030.png"/></a><figcaption>(2%5)*(-10/00000001.100000000)+4!*e</figcaption></figure><h1 id="a5d2fa94-1f58-41cc-afbc-e5f02c307a56" class="">Local server and production hosting service</h1><p id="a0943f46-6b07-4dd8-b8aa-b9eed6c45cca" class="">Please checkout dependencies on <a href="https://github.com/sanchezcarlosjr/my-first-compiler-aka-calculator/tree/main">GitHub</a>.</p><p id="7fa408a6-eb14-4d53-822b-47eddb1963a9" class="">I’ve chosen Firebase hosting since I’m able to set up wasm files (WebAssembly compiled files) easier than other services such as Vercel or Netlfy, but you can deploy the project to them. We don’t really do more than it.</p><p id="8306a702-8d09-4bac-9073-4dfe72901b0e" class="">Whatever hosting service you choose, you should set up wasm file headers such that the server responds them as application/wasm, it must be not plain text format or another one.</p><pre id="18df8e97-58fd-49a8-92ad-7aa8d76a6eb8" class="code"><code>&quot;headers&quot;: [ 
+     {
+    	 &quot;source&quot;: &quot;**/*.@(wasm)&quot;,
+    	 &quot;headers&quot;: [ 
+         {
+      		&quot;key&quot;: &quot;Content-Type&quot;,
+      		&quot;value&quot;: &quot;application/wasm&quot;
+    		 } 
+	     ]
+  	 } 
+]</code></pre><p id="3afccd34-02c4-46fe-909c-006fe5cef75c" class=""><a href="https://github.com/sanchezcarlosjr/my-first-compiler-aka-calculator/blob/main/firebase.json">Example’s code</a></p><p id="be82919b-9d68-4b81-8337-6386171a8a23" class="">In your localhost, use <code>make start</code> it starts a Firebase local server with previous settings.</p><h1 id="c0514af7-0cd0-4e37-a786-54b10b8774d1" class="">Download nanolib and compile your calculator.cpp</h1><p id="0dcad019-4880-41cf-ba21-29387a98d25b" class="">Your project needs <a href="https://github.com/PetterS/clang-wasm"><code>nanolib</code></a> since Clang is enough for you.  Compile the simplest file to work. Checkout this empty <a href="https://github.com/sanchezcarlosjr/my-first-compiler-aka-calculator/tree/28dd526dd19ec71b0669097e041474a9409ea015">commit</a>.</p><pre id="ea7f0cab-c1f3-4953-9d2a-c5ac3d61af4a" class="code"><code>#include &quot;nanolibc/libc.h&quot;
+#include &quot;nanolibc/libc_extra.h&quot;
+#define WASM_EXPORT __attribute__((visibility(&quot;default&quot;))) extern &quot;C&quot;
+
+WASM_EXPORT char* allocateMemoryForString(int size) {
+	return new char[size];
+}
+
+WASM_EXPORT void freeMemoryForString(char* str) {
+	delete[] str;
+}
+
+WASM_EXPORT double calculate(const char* expression) {
+	return 0;
+}</code></pre><h2 id="4273150d-ea45-4ce0-9a9e-7bd5a968649e" class="">Compile your project with make</h2><pre id="0e879c54-84d0-4475-85cb-234e63306330" class="code"><code>make</code></pre><p id="f7099423-df9b-4b9b-aa06-a45663ee6641" class="">Since Makefile is not a chief concern you must be ignored it.</p><h2 id="6e45fd03-a6e5-4796-a8e1-5f94a5a9e7e6" class="">Start localhost</h2><pre id="e90025ce-6e5e-4497-b77b-302fd0831ad6" class="code"><code>make start</code></pre><h1 id="00d978e6-5d2e-44e1-852c-31078a5c802f" class="">User interface and scripts</h1><p id="fad8950b-f6a7-471b-9aea-3bbde660afb3" class="">I won’t talk deeply about Tailwind. If you would do a simple form, you’re OK.</p><pre id="c57d73f5-f1a3-43f0-a35c-5e34faca6547" class="code"><code>&lt;form&gt;
+   &lt;input id=&quot;calculator&quot;&gt;
+&lt;/form&gt;
+&lt;span id=&quot;result&quot; &gt;&lt;/span&gt;</code></pre><p id="26de6a27-b6dc-4803-82c1-d47a232d546f" class="">But you must link form and your calculator; it should call your C++ code when the users changes their input.</p><pre id="c1c44258-2863-4fda-ace9-355c3c30017f" class="code"><code>&lt;script type=&quot;module&quot;&gt;
+		document.getElementById(&quot;calculator&quot;).addEventListener(&#x27;input&#x27;, function (evt) {
+		     // This call your C++ code.
+		});
+&lt;/script&gt;</code></pre><p id="fc6a5bb9-b7f8-468a-96d7-dbd987ab7da5" class="">And, of course, you want to instantiate your wasm file.</p><pre id="dccf5972-a97b-4b5d-9f78-384a80323a48" class="code"><code>const calculator = await (async (url) =&gt; {
+			const { instance } = await WebAssembly.instantiateStreaming(fetch(url), importObject);
+			return instance;
+})(&quot;calculator.wasm&quot;);</code></pre><p id="b87e9351-96e5-418d-ac99-aaba1d05fc7d" class="">Bad news! The C++ WASM module has its own memory and it only accepts numbers, but you need to share the memory with JavaScript and pass an expression to your function. The good news is that JavaScript&#x27;s standard, built-in objects included an encoder,  your expression is allocated in a heap using a pointer that is passed to your function, and you free memory afterward such that you won’t fill up memory. For us, it is enough explanation but if you want to know more, I would recommend you to understand <a href="https://hacks.mozilla.org/2019/08/webassembly-interface-types/">memory management</a>.</p><pre id="4a36e0b5-9e81-4c01-89b5-20d01e23caf6" class="code"><code>// It encodes your input.
+const expression = encoder.encode(evt.target.value + &quot;\x00&quot;);
+// It allocates enough space in the heap, and also it returns a pointer to heap.
+const pointer = calculator.exports.allocateMemoryForString(expression.length + 1);
+// It sets the encoding expression in the heap.
+const memory = new Uint8Array(calculator.exports.memory.buffer);
+memory.subarray(pointer).set(expression);
+// It evaluates your expression where the pointer refers to it.
+calculator.exports.calculate(pointer);
+// It frees memory
+calculator.exports.freeMemoryForString(pointer);</code></pre><p id="0afad600-7369-4c7d-91a8-118e8a659c59" class=""><a href="https://github.com/sanchezcarlosjr/my-first-compiler-aka-calculator/blob/main/public/index.html">Example’s code</a></p><h1 id="baac3d1b-ac5a-402a-b2ac-0535fc5d3f68" class="">Our deal arises about building a fulfill calculator </h1><p id="744c90a9-117e-4ba7-a3ad-49bef0ef8b22" class="">At least 70 years before, people invented compilers in order to take symbolic input from a keyboard because these problems are tricky when you don&#x27;t have the theory, but don’t worry I promise you it is not a lot. Remember, if someone ignores good standard answers with no piece of evidence, she/he is a moron.</p><p id="03f2f230-9cd3-4609-8569-d898a824f46b" class="">The answer to your problem is “free context grammar”; it solves significant challenges in formal languages. Your calculator project doesn’t need a full theory, so you may ignore some details. Grammar describes a language in a compact way.</p><p id="dd239c33-f01d-404c-81c0-9bc3492d3cae" class="">For example, a simple English sentence</p><pre id="1bdf3c15-cca5-4fc7-9cb2-4990e037addd" class="code"><code>You fly : Subject Verb</code></pre><p id="2bfae7d2-8dd6-4c09-bc40-33d6d4054d8f" class="">So, its grammar is</p><pre id="c00bdd59-ea8b-4e34-84a2-fec2955833b9" class="code"><code>Sentence := Subject Verb</code></pre><p id="65e755a1-25c9-4e7e-88e6-e5a066c9cb58" class="">This representation way is called the Backus-Naur form.</p><p id="3b3a8542-711e-44d3-9e7c-60f5d812987c" class="">Our arithmetic expressions with precedence rules are</p><pre id="2fb917c3-047c-4867-91ff-491f0a88a533" class="code"><code>2+2*2 : Number+Number*Number : Number + Rule1 : Rule0: Expression
+1-2-3 : Number-Number-Number : Number-Rule0 : Rule0 : Expression
+(2+2)/2= : (Expression)/Number : (Number+Number)/Number : Expression
+</code></pre><p id="fa1e129b-4184-4dc6-95fd-4577ee3f64e6" class="">their grammar is </p><pre id="eeea4bfb-fcb0-4ca3-b3a3-73dbbc5616fe" class="code"><code>Expression := OperatorPrecedenceLevel0
+OperatorPrecedenceLevel0 :=
+	OperatorPrecedenceLevel1|
+  OperatorPrecedenceLevel0 &quot;+&quot; OperatorPrecedenceLevel1|
+  OperatorPrecedenceLevel0 &quot;-&quot; OperatorPrecedenceLevel1|
+OperatorPrecedenceLevel1 :=
+  OperatorPrecedenceLevel1|
+  OperatorPrecedenceLevel1 &quot;*&quot; OperatorPrecedenceLevel2|
+  OperatorPrecedenceLevel1 &quot;/&quot; OperatorPrecedenceLevel2|
+  OperatorPrecedenceLevel1 &quot;%&quot; OperatorPrecedenceLevel2|
+OperatorPrecedenceLevel2 :=
+  Number|
+  &quot;(&quot; Expression &quot;)&quot;
+Number := Integer|Integer&quot;.&quot;|Integer&quot;.&quot;Integer
+Integer := &lt;Digit&gt;&lt;Integer&gt;|Digit
+Digit := &quot;0&quot;|&quot;1&quot;|&quot;2&quot;|&quot;3&quot;|&quot;4&quot;|&quot;5&quot;|&quot;6&quot;|&quot;7&quot;|&quot;8&quot;|&quot;9&quot;</code></pre><p id="b75bd3b5-5f6f-4942-ab15-29fdd370d1d3" class="">Your grammar increases operator precedence (it is grouped before) at new levels. </p><p id="bf7de2df-b8ee-4d9f-aa05-328a78ac5cde" class="">If you want to test grammar, you would like <a href="https://web.stanford.edu/class/archive/cs/cs103/cs103.1156/tools/cfg/">https://web.stanford.edu/class/archive/cs/cs103/cs103.1156/tools/cfg/</a></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="0ffae765-c8a0-441d-a897-074c24f4f89e"><div style="font-size:1.5em"><span class="icon">👉🏼</span></div><div style="width:100%"><strong>Warning</strong>. Stroustrup&#x27;s book doesn’t teach the number rule. He parses tokens with cin and cin.putback(). But you don’t have them, since nanolibc doesn’t. You’re programming a free interface calculator.</div></figure><h1 id="9715eb79-8142-4f9d-8026-27eac12f183c" class="">Turning grammar into code. A program called <em>parser</em>.</h1><p id="900bd8f3-1550-4d79-bf7c-37fb30796c56" class="">You turn grammar into code using the simplest way: writing each grammar rule in a function that evaluates tokens, starting with the first rule, and parsing quote symbols as tokens (sometimes they are called terminal symbols).</p><p id="dbe3a223-016e-4fb1-a1a4-258bf53a5fd9" class="">A full-fledged evaluator shed light on you.</p><figure id="4b9d4522-4bbd-4fc1-98ca-26635cd08a5e"><a href="https://github.com/sanchezcarlosjr/my-first-compiler-aka-calculator/blob/main/evaluator.cpp" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">my-first-compiler-aka-calculator/evaluator.cpp at main · sanchezcarlosjr/my-first-compiler-aka-calculator</div><div class="bookmark-description">You can&#x27;t perform that action at this time. You signed in with another tab or window. You signed out in another tab or window. Reload to refresh your session. Reload to refresh your session.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/sanchezcarlosjr/my-first-compiler-aka-calculator/blob/main/evaluator.cpp</div></div><img src="https://opengraph.githubassets.com/53288fa66fc616e38f0243206a6144ff8709336bc30eda4fb6e287d0f038b7cd/sanchezcarlosjr/my-first-compiler-aka-calculator" class="bookmark-image"/></a></figure><h1 id="749d380e-b95e-482c-af94-350fe87d377f" class="">Testing</h1><p id="6f145d75-ac28-436e-b9a2-cc2c4402caf8" class="">If you like unit testing, you would like the Google Test framework for C++ code. </p><p id="a3922824-2145-426e-9660-774016663661" class="">We’re going to make a test suite as follows:</p><p id="68bc2cb8-4bdd-45cb-b726-65c82d3d5a27" class=""><a href="https://github.com/sanchezcarlosjr/my-first-compiler-aka-calculator/blob/main/src/evaluator.cpp">https://github.com/sanchezcarlosjr/my-first-compiler-aka-calculator/blob/main/src/evaluator.cpp</a></p><p id="43aa287b-2e72-4207-946b-345f227e7c0a" class="">Execute your tests with</p><pre id="019f6cb5-e8e3-489d-a967-b77e304fa2ad" class="code"><code>make live_test</code></pre><p id="ba9f219b-6612-476d-a66e-5a07644813b3" class="">When you change calculator_test.cc or evaluator.cpp files “make” compiles them and shows results.</p><figure id="9c10c889-3d47-4fbd-a02f-54f3dabd652f" class="image"><a href="Untitled%2031.png"><img style="width:970px" src="Untitled%2031.png"/></a></figure><h1 id="c1a7d5d9-e39b-41dd-ae89-f941e7b22dd2" class=""><strong>Exercises</strong></h1><p id="154c848f-baac-40b3-b298-b6d4e600dff3" class="">It&#x27;s expected you don&#x27;t import any mathematics library.</p><ol type="1" id="a53a2088-7986-4438-a33c-e749db24d511" class="numbered-list" start="1"><li>Turn factorial to Gamma function.</li></ol><ol type="1" id="78d6040d-6d46-4bdb-9464-a9709344b092" class="numbered-list" start="2"><li>Implement trigonometric functions. Hint: Taylor theorem.</li></ol><ol type="1" id="97da37c9-59ba-4210-96ca-3623c837fb29" class="numbered-list" start="3"><li>Implement the Fibonacci function.</li></ol><ol type="1" id="6cda57e4-6184-4350-8a09-93fd2bc89b10" class="numbered-list" start="4"><li>Implement exponential function <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>a</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">f(x)=a^x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>, a**x. Hint: Newton-Rapshon method.</li></ol><ol type="1" id="71ad3f0e-1770-49ea-890c-c384721f4d2b" class="numbered-list" start="5"><li>Implement bitwise operations.</li></ol><ol type="1" id="392431f2-2fc0-47c7-87ab-bab6e721eda4" class="numbered-list" start="6"><li>Implement max and min functions.</li></ol><ol type="1" id="4f32d44c-86aa-4572-a105-c4e4c0c39628" class="numbered-list" start="7"><li>Implement a sort function. </li></ol><p id="af621046-5337-4162-b451-906809635c4e" class="">
+</p></div></article></body></html>

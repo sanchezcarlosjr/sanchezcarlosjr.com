@@ -1,0 +1,19 @@
+Customer,Store,Product category,Product description,Sale price ($),Profit ($)
+B.March,New York NY,Laptop,DR2984,950,190
+B.March,New York NY,Printer,FW288,350,105
+B.March,New York NY,Scanner,BW9338,400,100
+J.Bain,New York NY,Scanner,BW9443,500,125
+T.Goss,Washington DC,Printer,FW199,200,60
+T.Goss,Washington DC,Scanner,BW39339,550,140
+L.Nye,New York NY,Desktop,LR21,600,60
+L.Nye,New York NY,Printer,FW299,300,90
+S.Cann,Washington DC,Desktop,LR21,600,60
+E.Sims,Washington DC,Laptop,DR2983,700,140
+P.Judd,New York NY,Desktop,LR22,700,70
+P.Judd,New York NY,Scanner,FJ3999,200,50
+G.Hinton,Washington DC,Laptop,DR2983,700,140
+G.Hinton,Washington DC,Desktop,LR21,600,60
+G.Hinton,Washington DC,Printer,FW288,350,105
+G.Hinton,Washington DC,Scanner,BW9443,500,125
+H.Fu,New York NY,Desktop,ZX88,450,45
+H.Taylor,New York NY,Scanner,BW9338,400,100
