@@ -1,0 +1,703 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>EvaPlatform</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="44459c4a-d40d-49ad-971e-1b403709cc4b" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1526598934312-ebc735c872ec?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🧧</span></div><h1 class="page-title">EvaPlatform</h1><p class="page-description"></p></header><div class="page-body"><nav id="c5b4f89f-7451-4118-9d10-90991e6537dd" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c86d183a-7a6e-4b61-b3c7-c77e016c08c8">Raspberry Pi 4 (Ethernet/WiFi ip address)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0011220f-ecf1-40f9-9019-82bc9228345e">MQTT</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ca582fdc-220a-4c94-b894-6950010ebdb6">Home Assistant</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#24b7149f-8fd2-4caa-a2d1-4e414694addf">Snivs Dev Center</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#031a0959-225c-43bd-9a78-75f9afaca75e">Apps to sync apple watch heart rate</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5c9e8275-0602-4389-b431-8be0c55d6242">Heartwitch</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4f3c0021-605d-4612-9d1e-77c09b4e7125">Pulsoid</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#293ff0a3-642b-49ec-89df-29bb0e4ed3f9">Rhasspy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f4e0b386-feeb-4b4c-8854-9c9bdc439c8d">Error sound</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#12892fd1-7ec0-4765-a337-d41077e43545">Porcupine Update</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e5f40c02-16f0-4cdd-b760-286dfc5a01ab">Sherlock offline voice assistant (integrated with Rhasspy)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a4e05372-d510-4d02-80a6-517703398cca">OpenVINO</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#341c895c-466c-4c52-baf2-e4184a99a4b2">Open Model Zoo </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cb1915ae-1b8f-4369-bf5f-88b78d44f8fc"><strong>Age and Gender Recognition via REST API</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cb2820f5-d2b7-4d5b-90ad-31c81fa14ac8">Clarifai Computer Vision</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#49c9d512-9762-4e65-90cc-fa8f21863615"><strong><strong>Explore state-of-the-art AI models</strong></strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b242066f-f682-4a9a-9c57-015ad1d0a091">Image recognition</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#030508e1-c2c8-4324-9a1e-f0e411c073cf">Age and Gender Recognition</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#062bf2d2-a1e9-446a-ba70-f8c0d7a2637d">EVA servomotors (AX-12A)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7ab5b1b6-eced-41f4-b893-647f7172eff3">Control Servomotors manually of Eva from Home Assistant App (<a href="http://158.97.91.177:8123/">http://158.97.91.177:8123/</a>)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3b899511-115b-453c-ab20-46ceea1f97f2">Specifications</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3878b175-1481-40da-b05c-d7225717125b">Queue system analysis. What is the user experience of the Eva System? How can we improve their experience?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8376ce54-f2ed-4196-a78f-bd7b5cdaff75">Ideas</a></div></nav><h1 id="c86d183a-7a6e-4b61-b3c7-c77e016c08c8" class="">Raspberry Pi 4 (Ethernet/WiFi ip address)</h1><p id="c243972b-b27b-49c8-a611-157523bb206c" class=""><strong>158.97.91.127</strong> (Ethernet Ernesto’s Desktop)</p><p id="3a0915c3-f551-4b88-8b96-92f3c77e64f4" class=""><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>158.97.86.117 </strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>(WiFi CICESE-SERVICIOS)</p><h1 id="0011220f-ecf1-40f9-9019-82bc9228345e" class="">MQTT</h1><p id="951b9328-08f3-4b54-9bf2-3e223fa6b29b" class="">Broker Mosquitto</p><p id="66a2569d-6ad0-4c5c-b459-59233d48930b" class=""><a href="https://platformio.org/">https://platformio.org/</a></p><p id="cb1f9d7a-85a4-4f06-988e-d7554675341a" class=""><a href="https://docs.snips.ai/">https://docs.snips.ai/</a></p><p id="0c359b89-9bfe-4468-847c-09c4f6fc5654" class=""><a href="https://rhasspy.readthedocs.io/en/latest/">https://rhasspy.readthedocs.io/en/latest/</a></p><p id="665321cb-9601-4d33-8553-458e411f618a" class=""><a href="https://protobuf.dev/">https://protobuf.dev/</a></p><p id="e84169cd-403d-43fa-9db8-31a4f218a858" class=""><a href="https://github.com/Romkabouter/ESP32-Rhasspy-Satellite">https://github.com/Romkabouter/ESP32-Rhasspy-Satellite</a></p><p id="aee386dd-e1e2-475f-8249-882eef5d0932" class=""><a href="https://www.hackster.io/matrix-labs/esp32-matrix-voice-satellites-streaming-audio-to-pi-server-63b9cd">https://www.hackster.io/matrix-labs/esp32-matrix-voice-satellites-streaming-audio-to-pi-server-63b9cd</a></p><p id="3bb299dd-ecb3-4343-bfd1-f27401028de2" class=""><a href="https://github.com/louislam/uptime-kuma/wiki/Reverse-Proxy-with-Cloudflare-Tunnel">https://github.com/louislam/uptime-kuma/wiki/Reverse-Proxy-with-Cloudflare-Tunnel</a></p><p id="05632587-84f1-4f29-8a6c-866bfb3c27c2" class=""><a href="http://tds-head-pose.py/">tds-head-pose.py</a>. (2023, March 20). Retrieved from <a href="https://gist.github.com/khalidmeister/ea292150905d748457d8f6c19ec095c3">https://gist.github.com/khalidmeister/ea292150905d748457d8f6c19ec095c3</a></p><h1 id="ca582fdc-220a-4c94-b894-6950010ebdb6" class="">Home Assistant</h1><p id="c04fdfcf-5630-460f-a1e6-0eae80528128" class=""><a href="https://www.home-assistant.io/">Home Assistant (home-assistant.io)</a></p><p id="a37cb384-8add-4764-946a-4be8f2074bcb" class=""><a href="https://www.home-assistant.io/integrations/rhasspy/">Rhasspy - Home Assistant (home-assistant.io)</a></p><p id="3d27b999-9363-4a5e-b553-a0a2d5ee03dd" class=""><a href="https://www.youtube.com/watch?v=BLJR_v3IFwk&amp;t=162s">Local Voice Control With Home Assistant Just Got Easier! - YouTube</a></p><p id="c273420b-4380-41aa-aa8b-98dc538880b4" class=""><a href="https://rendered-obsolete.github.io/2020/01/02/rhasspy.html">Home Assistant Voice Recognition with Rhasspy | Rendered Obsolete (rendered-obsolete.github.io)</a></p><h1 id="24b7149f-8fd2-4caa-a2d1-4e414694addf" class="">Snivs Dev Center</h1><p id="05592824-d7f8-4d92-aa83-02d9207151c9" class=""><a href="https://docs.snips.ai/reference/hermes#activating-the-wake-word-component">Hermes Reference - Snips Dev Center</a></p><p id="52ec62d0-705e-49d9-afb9-24ddbd6cef71" class=""><a href="https://docs.snips.ai/additional-resources/tutorial-videos">Tutorial Videos - Snips Dev Center</a></p><p id="1410872e-f8e7-41f8-a541-7296038d072e" class=""><a href="https://snips.gitbook.io/tutorials/t/technical-guides/listening-to-intents-over-mqtt-using-python">Listening to intents over MQTT using Python - Snips Dev Center (gitbook.io)</a></p><figure id="d3b66ce4-cb37-4d4a-9a69-b34edaaf5e05" class="image"><a href="Untitled%20197.png"><img style="width:1400px" src="Untitled%20197.png"/></a></figure><h1 id="031a0959-225c-43bd-9a78-75f9afaca75e" class="">Apps to sync apple watch heart rate</h1><h3 id="5c9e8275-0602-4389-b431-8be0c55d6242" class="">Heartwitch</h3><p id="4b4c5df7-f827-402f-8e04-a513c0224bd6" class=""><a href="https://www.mrjordilicious.com/2020/10/16/use-your-apple-watch-to-show-heart-rate-on-stream/">[UPDATE] Use your Apple Watch to show heart rate on stream - MrJordilicious</a></p><p id="8ee61fda-4120-4c98-b686-4199091476ca" class=""><a href="https://apps.apple.com/app/apple-store/id1480031203">Heartwitch on the App Store (apple.com)</a></p><p id="83ad7fa9-8a54-42a5-932e-4a2fc988b366" class=""><a href="https://heartwitch.app/#/home">Heartwitch</a></p><h3 id="4f3c0021-605d-4612-9d1e-77c09b4e7125" class="">Pulsoid</h3><p id="2307a291-17bc-493d-bd02-2cf38b455b6c" class=""><a href="https://pulsoid.net/ui/welcome">Welcome - Pulsoid</a></p><h1 id="293ff0a3-642b-49ec-89df-29bb0e4ed3f9" class="">Rhasspy</h1><h3 id="f4e0b386-feeb-4b4c-8854-9c9bdc439c8d" class="">Error sound</h3><p id="b432664c-a5cb-4e07-b3f7-e94ddf875243" class="">${RHASSPY_BASE_DIR}/etc/wav/beep_error.wav</p><h3 id="12892fd1-7ec0-4765-a337-d41077e43545" class="">Porcupine Update</h3><p id="eff0b93e-9bae-4bae-93e0-c40cb6e63087" class=""><a href="https://gist.github.com/mprymek/c753c6aa2ec94b35d030494ccace89ad">rhasspy-porcupine-v2.sh · GitHub</a></p><p id="2efe815e-898f-4b88-9d11-a8f06ba789e0" class=""><a href="https://picovoice.ai/">Train, develop and deploy custom voice features - Picovoice</a></p><p id="43523895-a06a-432e-a252-9d1f6875277f" class="">
+</p><h3 id="e5f40c02-16f0-4cdd-b760-286dfc5a01ab" class="">Sherlock offline voice assistant (integrated with Rhasspy)</h3><p id="dae97fa9-ac65-4c32-bf61-191dbc3e48b4" class=""><a href="https://ip-team4.intia.de/">Welcome to Sherlock - Offline Voice Assistant - Sherlock (intia.de)</a></p><h1 id="a4e05372-d510-4d02-80a6-517703398cca" class="">OpenVINO</h1><p id="7d4cd629-38d9-4c86-811b-0ee04a778024" class=""><a href="https://docs.openvino.ai/latest/home.html">Overview — OpenVINO™ documentation — Version(latest)</a></p><h2 id="341c895c-466c-4c52-baf2-e4184a99a4b2" class="">Open Model Zoo </h2><p id="1b24a3fd-5efb-4b8e-8541-e66779ac5cc8" class=""><a href="https://github.com/openvinotoolkit/open_model_zoo">openvinotoolkit/open_model_zoo: Pre-trained Deep Learning models and demos (high quality and extremely fast) (github.com)</a></p><p id="98a61980-c286-4275-b570-b002e1ec0802" class=""><a href="https://docs.openvino.ai/latest/omz_demos.html">Open Model Zoo Demos — OpenVINO™ documentation</a></p><h2 id="cb1915ae-1b8f-4369-bf5f-88b78d44f8fc" class=""><strong>Age and Gender Recognition via REST API</strong></h2><p id="c152916b-13a8-4ebf-af8d-9e95269d55dc" class=""><a href="https://docs.openvino.ai/2021.4/ovms_docs_demo_age_gender_guide.html#age-and-gender-recognition-via-rest-api">Age and Gender Recognition via REST API — OpenVINO™ documentation — Version(2021.4)</a></p><h1 id="cb2820f5-d2b7-4d5b-90ad-31c81fa14ac8" class="">Clarifai Computer Vision</h1><p id="c29a4c26-e101-42b9-b1d8-bb75617d2ead" class=""><a href="https://www.clarifai.com/">The World&#x27;s AI | Clarifai Computer Vision AI &amp; Machine Learning Platform</a></p><p id="e544179f-e732-452f-af91-376dbb5a9a41" class="">
+</p><h2 id="49c9d512-9762-4e65-90cc-fa8f21863615" class=""><strong><strong>Explore state-of-the-art AI models</strong></strong></h2><p id="2b9481f9-3db6-47a3-9049-74caaa37dba1" class=""><a href="https://clarifai.com/explore/models?page=1&amp;perPage=24">Explore state-of-the-art AI models (clarifai.com)</a></p><h2 id="b242066f-f682-4a9a-9c57-015ad1d0a091" class="">Image recognition</h2><figure id="198b4693-8618-48ca-9b3d-b862a3f9a07c" class="image"><a href="Untitled%20198.png"><img style="width:1767px" src="Untitled%20198.png"/></a></figure><h2 id="030508e1-c2c8-4324-9a1e-f0e411c073cf" class="">Age and Gender Recognition</h2><figure id="fae98952-c34c-4968-9f36-db1d78941d5c" class="image"><a href="Untitled%20199.png"><img style="width:1360px" src="Untitled%20199.png"/></a></figure><figure id="6ad9e6fd-f93d-4afb-bd7a-820559a29701" class="image"><a href="Untitled%20200.png"><img style="width:1396px" src="Untitled%20200.png"/></a></figure><h1 id="062bf2d2-a1e9-446a-ba70-f8c0d7a2637d" class="">EVA servomotors (AX-12A)</h1><h3 id="7ab5b1b6-eced-41f4-b893-647f7172eff3" class="">Control Servomotors manually of Eva from Home Assistant App (<a href="http://158.97.91.177:8123/">http://158.97.91.177:8123/</a>)</h3><p id="2508eb9b-774f-4499-a7ba-4e8d42af3f30" class="">Publish topic: <strong>eva/head/animation </strong></p><pre id="9f52fedc-de43-491c-ac05-238a5d16a014" class="code"><code>{
+	&quot;onInit&quot;: {},
+	&quot;onExec&quot;: {
+		&quot;unlimited&quot;: true,
+		&quot;frames&quot;: [{
+				&quot;dynamixel_id&quot;: 2,
+				&quot;grades&quot;: 0,
+				&quot;speed&quot;: 512,
+				&quot;degrees&quot;: true,
+				&quot;time&quot;: 0
+			},
+			{
+				&quot;dynamixel_id&quot;: 2,
+				&quot;grades&quot;: 45,
+				&quot;speed&quot;: 512,
+				&quot;degrees&quot;: true,
+				&quot;time&quot;: 0
+			},
+			{
+				&quot;dynamixel_id&quot;: 2,
+				&quot;grades&quot;: 90,
+				&quot;speed&quot;: 512,
+				&quot;degrees&quot;: true,
+				&quot;time&quot;: 0
+			}
+		]
+	},
+	&quot;onDestroy&quot;: {}
+}</code></pre><h3 id="3b899511-115b-453c-ab20-46ceea1f97f2" class="">Specifications</h3><p id="1f06ba85-e1e2-491c-b7d0-b6f32d706f83" class=""><a href="https://emanual.robotis.com/docs/en/dxl/ax/ax-12a/">AX-12A (robotis.com)</a></p><figure id="df561545-89a9-432f-9ae4-31468cb18494" class="image"><a href="Untitled%20201.png"><img style="width:1350px" src="Untitled%20201.png"/></a></figure><h1 id="3878b175-1481-40da-b05c-d7225717125b" class="">Queue system analysis. What is the user experience of the Eva System? How can we improve their experience?</h1><h1 id="8376ce54-f2ed-4196-a78f-bd7b5cdaff75" class="">Ideas</h1><p id="8db45a0d-8e21-473d-8b60-0d95b46093a3" class=""><span class="user">@Ernesto Adrian Lozano De la Parra</span> </p><p id="e5b40567-118f-433f-9a7b-c880e6e7147b" class=""><a href="https://github.com/Significant-Gravitas/Auto-GPT">AutoGPT</a></p><p id="fe048287-5a56-491e-b9fd-c0a37ac859bc" class=""><a href="https://teachablemachine.withgoogle.com/">https://teachablemachine.withgoogle.com/</a></p><p id="ed3412d2-d837-41b6-a285-27250447342d" class="">ChatGPT4 API supports Favela’s idea.</p><figure id="9bd87501-1b26-4543-b165-7bdbcb09ef9e" class="image"><a href="Untitled%20202.png"><img style="width:677px" src="Untitled%20202.png"/></a><figcaption><a href="https://openai.com/product/gpt-4">https://openai.com/product/gpt-4</a></figcaption></figure></div></article></body></html>

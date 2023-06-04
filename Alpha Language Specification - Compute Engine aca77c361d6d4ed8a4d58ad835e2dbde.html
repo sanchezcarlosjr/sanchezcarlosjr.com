@@ -1,0 +1,721 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Alpha Language Specification - Compute Engine</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="aca77c36-1d6d-4ed8-a4d5-8ad835e2dbde" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🔱</span></div><h1 class="page-title">Alpha Language Specification - Compute Engine</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="f9d4d6e6-76d2-4fca-ab73-42828ac1bba5" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#466713c1-6849-40c0-b640-7f3e495e8e4d">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#75ff086a-ecca-4b9a-a446-71d420688d10">Types</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#363519ba-46cb-4ca8-946b-95e9ea1c3968">Expressions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c8c75db1-855c-435c-8b60-edb65e529d46">Some expressions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c0df568d-fd67-42bc-af58-f085eb13779f">Comments</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fe3b7724-5721-4d99-b165-8ba11f1f5617">Declarations and assignments</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bf1a9fe0-5f1c-4fda-91cd-0c3fdfb35996">Expressions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3717a786-e4a0-4fe4-8b9d-1ca83808ee57">Functions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8f1c4a25-2808-4557-8957-92ef93531f54">Pattern matching</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#753f8a70-0623-45eb-b537-21b6c450dc71">Regular expressions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4b1289cd-b829-4c19-abd4-b9c5fbe1bffb">Program</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#379d33df-c792-4027-a01e-fd41dcebc4f3">Streams, composition, and pipes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#aa5e456e-6af4-4893-b402-be3b309072ae">Lexical Structure</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#59a3a890-3c9c-4841-aec5-dfbb6f021177">Syntax</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a5a7a29f-16c2-482b-9a5d-697c0098dfa9">Type rules</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4c2b9a09-14d6-49ab-b118-c234236aa376">Operational semantics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5318ccc5-8983-44b3-967a-1e2d099d6769">Environment</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1032b469-41ce-4b41-bd46-08e0bfb1d546">Commands</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7a620e43-c8ce-4c72-9ea9-6ced125ec09d">Examples</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3580260d-e028-4a6f-83cd-6a59707cecf1">Grammar</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f00b372f-05cb-41bc-bdbd-8c21d8ee23d1"><strong>Read–eval–print loop and notebook</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1190f5d0-6db8-4900-a68e-163161399f91">Kernels</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0b7165b2-eaf1-4e99-ab88-c0fed5e2ccb9">Modes</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ebf921f9-c23e-4def-a771-d07c769673bd">References</a></div></nav><h1 id="466713c1-6849-40c0-b640-7f3e495e8e4d" class="">Introduction</h1><p id="d12b6e3d-1dd2-4830-9071-98a74e6b577e" class="">What is the best way to express and deliver our ideas?</p><h2 id="75ff086a-ecca-4b9a-a446-71d420688d10" class="">Types</h2><p id="a1c48f33-511d-4aad-a90f-45e3e50978e5" class="">Complex Number. Real number. Rational number. Integer number. Natural number. <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>:</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">x:X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span></span><span>﻿</span></span> such that <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mo stretchy="false">{</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">X=\{...\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">...</span><span class="mclose">}</span></span></span></span></span><span>﻿</span></span>, <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">x\in  X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span></span><span>﻿</span></span>. Char. Array.</p><p id="d98e67af-7072-4491-ab61-af97a3ed8aca" class="">All types are <em>first-class.</em></p><h1 id="363519ba-46cb-4ca8-946b-95e9ea1c3968" class="">Expressions</h1><p id="5fbccea9-ac37-44d3-9607-3c6e4aa072d3" class="">Should expressions admit whitespaces in names?</p><p id="e58a207b-3cf9-49eb-8aa6-324b0d80fb57" class="">Closure.</p><h2 id="c8c75db1-855c-435c-8b60-edb65e529d46" class="">Some expressions</h2><pre id="4d0d734a-e3e3-4fc2-a8da-9c96ef621b02" class="code"><code>$ +(||(0.7,0.2)-(0.2,0.3)||_2)</code></pre><p id="56356b1f-c354-4396-a5ca-75d8702fcb19" class="">
+</p><pre id="60644b76-a8b3-4323-a7a9-ea712bbbe9b3" class="code"><code>$ + . ||(0.7,0.2)-(0.2,0.3)||_2</code></pre><p id="b1001196-ad36-4c82-b4e7-d5f2bbb0ebb8" class="">
+</p><pre id="583d5a4c-013b-449c-87f6-556137754da0" class="code"><code>$ ||(0.7,0.2)-(0.2,0.3)||_2 | +</code></pre><p id="33940439-1514-4cc1-8380-3b01f1dedc45" class="">
+</p><pre id="700c6a94-77d3-4725-98c0-143af1612ea3" class="code"><code>$ (x =&gt; x+1)(1)
+1</code></pre><p id="000c42cb-d57d-4945-bd55-202b5f6ef9b7" class="">
+</p><pre id="00cad889-463b-4bc6-a9eb-896d4f8332f0" class="code"><code>$ interval(1000) | reduce(p =&gt; [p[1],p[0]+p[1]],[0,1])</code></pre><p id="5af940bf-443f-48a0-a927-6853a6ee5aa9" class="">
+</p><pre id="432d2592-61f5-40c2-80ca-1c8137fbbb8b" class="code"><code>$ connect(protocol=WebRTC) | chat
+abc</code></pre><p id="d1bf3173-5098-4fd6-80f3-3959ee89a87a" class="">
+</p><pre id="44a3692c-a469-48fe-9a6e-6aa5321493ff" class="code"><code>connect(protocol=WebRTC, key=&quot;abc&quot;) | 
+interval(1000) | 
+reduce(p =&gt; [p[1],p[0]+p[1]],[0,1]) | 
+echo</code></pre><p id="9e982d03-59ad-4292-a65b-9062059b88df" class="">
+</p><p id="3731deff-6ef8-4319-a4f3-7302ebc51251" class="">
+</p><h2 id="c0df568d-fd67-42bc-af58-f085eb13779f" class="">Comments</h2><h2 id="fe3b7724-5721-4d99-b165-8ba11f1f5617" class="">Declarations and assignments</h2><p id="6c9e41ab-1f6c-40a7-8325-0e0e5ab5b476" class="">You can declare new terms but alpha doesn’t allow assignments.</p><h2 id="bf1a9fe0-5f1c-4fda-91cd-0c3fdfb35996" class="">Expressions</h2><p id="574944b4-49b9-4152-a5bc-822fb2015278" class="">Alpha follows the convention that every expression has a value. The declarations or definitions return their references such that</p><pre id="a83bed90-3b2f-4d54-9388-83ce0375ee03" class="code"><code>x=6
+// x
+f(x)=x
+// f</code></pre><h2 id="3717a786-e4a0-4fe4-8b9d-1ca83808ee57" class="">Functions</h2><p id="973ad9a9-0536-4f88-ab37-01f468ab3e9a" class="">The type of argument is by default real numbers.</p><pre id="0e79719b-9245-4800-b252-ec43a44f3cf9" class="code"><code>f(x)=x^2</code></pre><p id="226f886e-ba92-44dd-824b-7886735979d6" class="">
+</p><pre id="75881bcf-9a06-4999-a535-d4e06cd382bc" class="code code-wrap"><code>f (a,b,c) = (x1, x2) where 
+   expressions</code></pre><h2 id="8f1c4a25-2808-4557-8957-92ef93531f54" class="">Pattern matching</h2><h2 id="753f8a70-0623-45eb-b537-21b6c450dc71" class="">Regular expressions</h2><p id="92547b6b-b25e-4f7f-a465-97171c66c67d" class="">a ~ /REGULAR_EXPRESSION/g</p><h1 id="4b1289cd-b829-4c19-abd4-b9c5fbe1bffb" class="">Program</h1><p id="666d0202-d0fe-4658-b80b-63ce3ea6cc51" class="">UTF-8</p><p id="78bed0af-46a2-41a0-a4ec-1249368d7ef7" class="">Programs are not evaluated on the fly. </p><p id="80483f6d-e6d7-4efd-bc61-7549894f43ba" class="">Every expression can ask about itself (quine and operational quine).</p><pre id="5d5a709f-a606-411c-b978-5e587e09d52a" class="code"><code>f(x) = x^2
+f.self
+// f(x)=x^2 : self
+f.self.body.self
+// x^2 : self
+f.self.body.self.evaluate({&quot;x&quot;: 1})
+// 1^2
+f.self.body.self.evaluate({&quot;x&quot;: 1}).apply()
+// 1</code></pre><h1 id="379d33df-c792-4027-a01e-fd41dcebc4f3" class="">Streams, composition, and pipes</h1><p id="b6c09e13-e285-4d81-8535-ca5a4a96c42f" class="">The means of combinations are streams, composition (<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi mathvariant="normal">.</mi><mi>g</mi></mrow><annotation encoding="application/x-tex">f.g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span></span><span>﻿</span></span>), and pipes (g|f).</p><p id="002a9236-5385-455b-a0c7-ef4b19daab88" class="">
+</p><h1 id="aa5e456e-6af4-4893-b402-be3b309072ae" class="">Lexical Structure</h1><p id="08068e83-c9f9-4c0d-b05d-6b38f5cfa5ee" class="">id: Unicode symbols</p><h1 id="59a3a890-3c9c-4841-aec5-dfbb6f021177" class="">Syntax</h1><h1 id="a5a7a29f-16c2-482b-9a5d-697c0098dfa9" class="">Type rules</h1><h1 id="4c2b9a09-14d6-49ab-b118-c234236aa376" class="">Operational semantics</h1><h2 id="5318ccc5-8983-44b3-967a-1e2d099d6769" class="">Environment</h2><h1 id="1032b469-41ce-4b41-bd46-08e0bfb1d546" class="">Commands</h1><h1 id="7a620e43-c8ce-4c72-9ea9-6ced125ec09d" class="">Examples</h1><h2 id="3580260d-e028-4a6f-83cd-6a59707cecf1" class="">Grammar</h2><pre id="cb8e49cf-0f4b-4a53-85f8-011232808bf2" class="code"><code>Consider a grammar G4 where its production rules are
+S: `X`*
+what is its type?</code></pre><p id="7de4f940-3e2b-4101-848f-5be86d5c367f" class="">
+</p><pre id="82471a7f-2426-4a9e-ab55-571a9bd5135a" class="code"><code>Consider G4:Grammar where its production rules are
+S: X*
+what is its type?</code></pre><p id="e648ab0e-ab62-4727-adcb-9d6fad0118ef" class="">
+</p><pre id="15f7286b-25ab-4b08-91e5-57ad0026594f" class="code"><code>Consider G4:Grammar where we have a environment e and its production rules are
+S: X* {x=$$1}
+
+W</code></pre><pre id="f407e42a-a60b-451b-8b38-75d4bbebe0c7" class="code"><code>graph TD
+  G --&gt; Expr
+  Expr --&gt; Expr+Expr
+  Expr+Expr --&gt; Expr
+  Expr+Expr --&gt; Expr
+  Expr --&gt; 1</code></pre><p id="2473301e-1e8b-4cbb-8704-6e240ff11e3d" class="">G —&gt; Expr —&gt; 1</p><p id="22fffb29-c894-4aad-951f-233e2fbde97e" class="">G —&gt; Expr —&gt; Expr+Expr —&gt; </p><h1 id="f00b372f-05cb-41bc-bdbd-8c21d8ee23d1" class=""><strong>Read–eval–print loop and notebook</strong></h1><h2 id="1190f5d0-6db8-4900-a68e-163161399f91" class="">Kernels</h2><pre id="36b8ab74-e72c-479b-a8c9-42f51f37be6f" class="code"><code>%% html
+%% prolog
+%% alpha</code></pre><h2 id="0b7165b2-eaf1-4e99-ab88-c0fed5e2ccb9" class="">Modes</h2><p id="7655f4c9-5e5a-4755-99b8-bd957d59dbca" class="">Authoring</p><p id="9f4af940-350f-47f2-9853-ba859780f7d0" class="">Interactive</p><h2 id="ebf921f9-c23e-4def-a771-d07c769673bd" class="">References</h2><p id="8b0af1c5-6cc5-4cb4-8463-605ebe45e132" class=""><a href="https://xtermjs.org/">https://xtermjs.org/</a></p><p id="3cb4028a-69e1-405e-9866-62b7118c84f7" class=""><a href="https://www.npmjs.com/package/react-terminal#features">https://www.npmjs.com/package/react-terminal#features</a></p><p id="1ffbc17a-6088-45fa-ab8a-e31d415be3f4" class="">
+</p><figure id="ee4b780d-32b1-4e28-a5b1-c63a6cc6fbb6" class="image"><a href="Untitled%2038.png"><img style="width:501px" src="Untitled%2038.png"/></a></figure><p id="10812468-792f-411d-a64b-29d522930797" class="">
+</p><figure id="0bcc019f-b767-4b90-90d1-5263cea0ddbd" class="image"><a href="Untitled%2039.png"><img style="width:1200px" src="Untitled%2039.png"/></a><figcaption><a href="https://mljar.com/mercury/">https://mljar.com/mercury/</a></figcaption></figure><p id="af3f0254-927f-419f-a18d-e04c5fa8be27" class="">
+</p><p id="9c953a73-9c39-434f-be3f-9ca729a19c12" class="">Jupyter</p><figure id="4a23495f-17ad-431f-bdbf-8fcb3a337e29" class="image"><a href="Untitled%2040.png"><img style="width:960px" src="Untitled%2040.png"/></a></figure><p id="f3829176-e239-4078-b444-e00b37808a6c" class="">
+</p><p id="b3261c00-77b2-4749-9cc0-de3417607692" class="">Wolfram Alpha</p><figure id="0db46a49-a5d4-411e-b89e-dc721c107150" class="image"><a href="Untitled%2041.png"><img style="width:1312px" src="Untitled%2041.png"/></a></figure><p id="25de0fd9-3792-452d-a2db-2a435caba4a3" class="">
+</p></div></article></body></html>

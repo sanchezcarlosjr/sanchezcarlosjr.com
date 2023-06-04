@@ -1,0 +1,722 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>EvaSIM - The EVA Robot Simulator Software</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="49e940d6-ce2a-4785-ac4b-39498df736c1" class="page sans"><header><img class="page-cover-image" src="evasim-captura-exp%201.png" style="object-position:center 52.33%"/><h1 class="page-title">EvaSIM - The EVA Robot Simulator Software</h1><p class="page-description"></p></header><div class="page-body"><p id="9fb63dc9-ee63-4cb8-9eeb-d81c4d014df1" class=""><strong>The use of software simulators has a long tradition in robotics, allowing the rapid prototyping of behaviors thus saving time and cost. In recent years there has been an increased interest in the development of social robots, designed to interact with humans, and Socially Assistive Robots (SARs), aimed at aiding humans through social interaction. This work describes the development and evaluation of a simulator software for the EVA robot, named EvaSIM. The EVA (Embodied Voice Assistant) robot is an open-source robotics platform created to support research in human-robot interaction. It has been successfully applied in the development of therapeutic interventions for people with dementia. The EvaSIM simulator can interpret the codes of the scripts generated with the EVA visual programming language (VPL) as well as the codes generated with the EvaML
+language, an XML-based language for developing interactive sessions for the EVA robot. EvaSIM is capable of simulating the robot’s multimodal interaction capabilities, emphasizing its social affordances.</strong></p><h1 id="3b211378-d222-4708-aefa-fabb1fe1465c" class="">1. EvaSIM</h1><h2 id="84f76bb6-f97f-41da-8472-d5e9d99b1809" class="">1.1 The User Interface</h2><p id="71ccaa3b-66a8-4e9d-baa4-11d7cc772529" class="">In order to provide a test environment for EvaML scripts, we developed a software that simulates the EVA robot, which is called EvaSIM. The simulator was developed in Python and uses some extra modules.</p><p id="c6fe12f2-9d87-4e51-b77b-27cf511ba509" class="">
+</p><figure id="6178bf41-5862-41e5-9a24-b9585e3e6cc3" class="image"><a href="eva-interface-com-tab.png"><img style="width:1600px" src="eva-interface-com-tab.png"/></a><figcaption><strong>Figure 1</strong>: EvaSIM - User Interface</figcaption></figure><p id="42979b03-e2a3-49e4-ac57-6ef201a86557" class="">
+</p><p id="6af85d8c-03f4-4952-91cb-be979fa0ab3f" class="">As we can see in <strong>Figure 1</strong>, the simulator for EvaML script language, EvaSIM, tries to imitate, in a simplified way, the robot system. All the elements in its user interface will be described as follows: the EVA robot figure (<strong>1</strong>), the representation of the Matrix Voice board RGB LEDs (<strong>2</strong>), the smart bulb (<strong>3</strong>), the Amoled 5.5 touch display (<strong>4</strong>), the webcam (<strong>5</strong>), buttons to import, turn on/off, and control the execution of EvaML script (<strong>6</strong>), a terminal emulator where some important information is presented, such as: the actions being performed by the robot, details of operations with variables, colors and states of the smart bulb, the text that the robot is speaking and some alert messages and possible script error messages (<strong>7</strong>), the itens (<strong>8</strong>) and (<strong>9</strong>) indicate the memory map tables. These two tables are intended to dynamically show the system and user variable values during the execution of the script. The upper table shows the system variable values that stores the responses obtained from user interaction processes, such as voice capture and facial expression recognition. This variable set also holds the values generated by the VPL random number generation command. Those system variables are indexed using the &quot;\$&quot; character. Since the robot memory is full of values from different sources, the upper table has, in addition to the index and content columns, an extra column that shows the source of this variable value. The second table presents the variables created by the script developer, with their names and their respective values.</p><p id="ddd6d866-2548-454b-9b67-91ccc41044c3" class="">
+</p><h3 id="30209a27-a4f0-4c48-b360-3ee2069ddf3c" class="">1.1.2 Listening Simulation</h3><p id="22bc341d-7a51-42ab-8823-3eff2c5d5a6f" class="">EVA can communicate with the user through voice interaction, capturing the audio of the answers and transforming it into text (using Google cloud API). In order to facilitate this process, within the simulator, this type of multimodal interaction was represented by a text box, where the user can answer using written text instead of speech. We can see, in <strong>Figure 2</strong>, the simulation of the listening process of the robot.</p><p id="3df03327-fb18-43b4-874d-ff53ab0e59ad" class="">
+</p><figure id="18d050c3-81df-4554-b8fb-dd28404ecd7d" class="image"><a href="evasim-listen.png"><img style="width:1500px" src="evasim-listen.png"/></a><figcaption><strong>Figure 2</strong>: EvaSIM - Listening Command Simulation</figcaption></figure><p id="1f4dfce9-6c77-4bda-9239-e288530a787f" class="">
+</p><h3 id="39e8b266-f202-4d73-bdbb-5ec6825d28c8" class="">1.1.3 Facial Expression Recognition Simulation</h3><p id="82978a06-3e57-4b20-bd6a-6f07d3f3aa4b" class="">In <strong>Figure 3</strong>, EvaSIM simulates the facial recognition process. This function was implemented in the EVA simulator using a window with facial expressions represented by Emojis. In the simulator, the answers that can be provided through the window representing the user&#x27;s facial expressions are: &quot;NEUTRAL&quot;, &quot;HAPPY&quot;, &quot;ANGRY&quot;, &quot;SAD&quot;, &quot;SURPRISED&quot;.
+The execution of the <mark class="highlight-pink">&lt;userEmotion&gt;</mark> command, which is responsible for capturing the user&#x27;s expression through the webcam, opens a window with a set of facial expressions. The user, through the mouse, can indicate his/her facial expression. This answer is processed by the simulator in the same way as the physical robot. We have a short <a href="https://youtu.be/OfGelKZIA9c">https://youtu.be/OfGelKZIA9c</a> showing the simulation of the Imitation Game (<a href="https://link.springer.com/chapter/10.1007/978-3-030-99194-4_25">https://link.springer.com/chapter/10.1007/978-3-030-99194-4_25</a>) in EvaSIM. </p><p id="77c1166e-6031-4c3f-bd1f-6cfe59ee3cf2" class="">
+</p><figure id="17ef917d-b4ea-4070-9d56-f552922b89a2" class="image" style="text-align:center"><a href="evasim-captura-exp.png"><img style="width:672px" src="evasim-captura-exp.png"/></a><figcaption><strong>Figure 3</strong>: EvaSIM - Listening Command Simulation</figcaption></figure><p id="e15da463-a12a-4cfa-b99d-ac44f6d8a9b0" class="">
+</p><blockquote id="d0374718-91eb-45a9-8f9c-73c368b7197f" class="">The EVA robot simulator works with only 5 types of expressions, while the physical robot’s facial recognition module can return up to 7 types of facial expressions.</blockquote><p id="555cbe3a-a25d-4fa1-932f-5f8f54010ff5" class="">
+</p><p id="bdfc1eb0-d6bb-4a88-8114-1506b8c8b66e" class="">
+</p><h3 id="f0541363-7fea-491d-8c5b-1691a62c8105" class="">1.1.4 Head Movement Simulation</h3><p id="b3655790-f4e9-4ab8-88f2-58abe706ac74" class="">EvaSIM was designed to be a lightweight tool that required low computational power to run. Therefore, no sophisticated animations were implemented in this 2D version of the simulator. The physical robot can move its head. This movement used in conjunction with other elements can increase the robot&#x27;s expressiveness. When executing a script for the robot and finding a <mark class="highlight-pink">&lt;motion&gt;</mark> element, EvaSIM uses the terminal to indicate that a movement is being executed, also indicating the type of movement performed. <strong>Figure 4</strong> shows an example of the message indicating the execution of the <mark class="highlight-pink">&lt;motion&gt;</mark> element and the value of the <mark class="highlight-blue">&lt;type&gt;</mark> attribute.</p><p id="2ffb5d8e-f410-4443-a0de-3a78caa87ae8" class="">
+</p><figure id="0adfac92-70a5-4760-8b05-240b9e0a3197" class="image" style="text-align:center"><a href="head-mov-terminal.png"><img style="width:672px" src="head-mov-terminal.png"/></a><figcaption><strong>Figure 4</strong>: Head Movement Messages in Terminal</figcaption></figure><p id="bd2d933a-2959-448a-83ea-a0c72935a686" class="">
+</p><h3 id="2a8cb741-b6bd-4a13-b7a6-c6cf7a26728b" class="">1.1.5 Importing and Executing an EvaML or JSON Script</h3><p id="f467548e-564a-4ad9-a079-ff2aba45849d" class=""><strong>Figure 5</strong> shows the image of the simulator interface buttons. To start using EvaSIM you need to click on button &quot;Power On&quot; (<strong>1</strong>). EvaSIM will speak a greeting text and wait for a script to be loaded into its memory. A script can be loaded by pressing button &quot;Import Script File...&quot; (<strong>2</strong>), which will open the file open dialog. After importing the file, the script can be run by clicking button &quot;Run&quot; (<strong>3</strong>). Button &quot;Stop&quot; (<strong>4</strong>), if clicked, stops the script execution and button &quot;Clear Term.&quot; (<strong>5</strong>) clears the EvaSIM terminal emulator.</p><p id="03557e73-189a-4960-ad69-5d7dbb96c2e4" class="">
+</p><figure id="8dc34854-1e29-4db5-8f58-d50d765ff170" class="image"><a href="buttons2.png"><img style="width:528px" src="buttons2.png"/></a><figcaption><strong>Figure 5</strong>: Operating the EvaSIM</figcaption></figure><p id="0f3590ad-e9ad-4084-925e-f665bd6ad9fa" class="">
+</p><p id="95f82534-1388-4fde-97bf-6ed0705e42fc" class=""><strong>Figure 6</strong> shows the terminal emulator after executing script &quot;script01_EvaML.xml&quot;. It presents the emulation of a terminal where some important information is presented, such as: the actions being performed by the robot, details of operations with variables, colors and states of the smart bulb, the text that the robot is speaking and some alert messages and possible script error messages. We can see the voice selection, the smart bulb state and color being set, the texts being spoken, the capture of the username via the <mark class="highlight-pink">&lt;listen&gt;</mark> command, and the manipulation of the <em>x</em> variable.</p><p id="55c4a03a-6ded-447e-99aa-f450fad501dd" class="">
+</p><figure id="37804f9b-45f6-4e89-b2c4-da9425eb1b2e" class="image"><a href="terminal.png"><img style="width:576px" src="terminal.png"/></a><figcaption><strong>Figure 6</strong>: EvaSIM - Terminal Emulator</figcaption></figure><p id="88692a12-a57c-476e-9ae2-d1cfabdd524a" class="">
+</p><h2 id="97e22a90-7bed-4227-a9f3-2b40c39546b9" class="">1.2 How EvaSIM Works</h2><p id="62578bd6-a826-420d-9e2c-b55f40c81ed3" class="">EvaSIM uses some extra modules that can be installed easily using the Python package manager <em>pip</em>, which are: <em>Ibm-watson</em> module to access the Text-To-Speech API from <em>IBM Watson</em>, the <em>Playsound</em> module to allow audio files to be played and the <em>Tkinter</em> module used for creating the simulator GUI.</p><h3 id="9737e9da-dbc1-4327-847d-27ca23488002" class="">1.2.1 Visual Programming Language</h3><p id="cf813d25-5a43-419f-b070-0c1a9ab677f6" class="">The EVA platform includes a component for designing and deploying interactive sessions. The user can create interaction scripts using a visual programming language (VPL), defining the script flow using sequences, conditions and loops.</p><p id="ad9d4da6-d731-4c90-9b6a-29ffb4985790" class="">The VPL has several elements that can be used to create interaction scripts, some of which include: an element to define the language to be used by the STT and TTS components, an element to control the expression of the robot&#x27;s gaze, voice recognition, recognition of user&#x27;s facial expressions using the webcam, control of light sensory effects using the smart bulb. <strong>Figure 1.2.1</strong> shows a sample interaction that was constructed using the VPL.</p><p id="14abce9c-7b4e-41fc-ac74-0b01e74e3978" class="">
+</p><figure id="53af3110-1237-40f4-8822-95f8aad17b92" class="image"><a href="vplimg.png"><img style="width:192px" src="vplimg.png"/></a><figcaption><strong>Figure 7</strong>: An example of a VPL small script</figcaption></figure><p id="3bc39c74-2992-4c38-9ba1-a4cf22b00395" class="">
+</p><p id="e7d5212c-c1d9-496e-95db-9feead63b104" class="">The flow of execution of a script in the VPL occurs from top to bottom and in the case of conditional elements, from left to right. A script in VPL is represented by a graph where the nodes are the language elements (robot capabilities) and the edges indicate the sequence of the execution flow. Through the use of conditional elements it is possible to change the course of script execution depending on a condition. As can be seen in <strong>Figure 7</strong>, the script represented in the image has five distinct elements, the <em>Voice</em> element, which is used to configure the language and voice timbre used in TTS and STT. There is the <em>Random</em> element, which generates a random natural number within a range specified in its parameters. Next, it shows two <em>Condition</em> elements that evaluate the number randomly generated by the previous command, depending on the result, the script execution flow can follow the left or right path. The element that follows the left path is <em>Light</em>, which controls the smart bulb, its state (on or off) and its color. The element that follows the right path is <em>Talk</em>, which makes EVA speak the text specified as a parameter. Each VPL element has a set of parameters that are configured at the moment of its insertion in the script.</p><p id="4fcdfb51-61c5-406d-a82a-f712958f2284" class="">
+</p><figure id="21ee67dd-2ac8-4a73-8df3-f5e167784e14" class="image"><a href="table-vpl.png"><img style="width:288px" src="table-vpl.png"/></a><figcaption><strong>Table 1</strong>: VPL Commands Simulated by EvaSIM</figcaption></figure><p id="cfde9f32-ed44-4123-838c-85a41eb10f97" class="">
+</p><p id="645a845b-e37f-4b52-b830-23d58403db20" class=""><strong>Table 1</strong> shows the VPL commands that can be simulated by EvaSIM and their parameters. The following is a brief description of each of them. The <em>Voice</em> command selects the voice tone and language that will be used in the script. The <em>Random</em> command generates random numbers in a user-defined range. The <em>Wait</em> command causes the script to pause for a specified amount of time. The <em>Talk</em> command causes text to be turned into audio and then spoken by the simulator. The <em>Light</em> command controls the smart bulb. The <em>evaEmotion</em> command determines the expression in the robot&#x27;s face. The <em>Audio</em> command can play sounds and music specified in its <em>source</em> attribute. The <em>Led</em> command controls the simulation of the LEDs on the board that is on the robot&#x27;s chest. The <em>Counter</em> command allows creating variables and performing mathematical operations on them. The <em>Condition</em> command evaluates the result of a logical expression and can change the script execution flow. The <em>Listen</em> command makes the robot capture the user&#x27;s speech converting it to text and, finally, the <em>userEmotion</em> command that uses the webcam to identify the user&#x27;s facial expression. These last two commands, <em>Listen</em> and <em>userEmotion</em>, are simulated in EvaSIM as follows. For <em>Listen</em>, a window with a text box opens and the user enters the information in text format, for the <em>userEmotion</em> command, it opens a window with five facial expressions in the form of an <em>emoji </em>allowing the user to choose the desired facial expression. The window with options for the <em>userEmotion</em> command can be seen in <strong>Figure 3 (9)</strong>.</p><p id="584cb18c-033d-42e8-9ffd-130b22721a74" class="">
+</p><h3 id="a16c6c53-9163-4bf2-91dd-31a2babcf71c" class="">1.2.2 EvaSIM - General Architecture</h3><p id="6cd97184-a902-4cf7-9d24-bde9576f872b" class=""><strong>Figure 8</strong> shows the general architecture of EvaSIM divided into three main modules. The Parser module receives as input a code from the VPL editor (in JSON format) doing the parsing process of the robot&#x27;s script. This process outputs a new representation of the VPL code structure, now transformed into an XML file. The XML file is passed to the Execution module, which is responsible for traversing the XML tree structure, identifying the nodes that represent the language commands and emitting a series of signals of various types that are sent to the next module. The last module of the simulator architecture is the Graphical User Interface (GUI) module that controls the GUI elements of the simulator.</p><p id="60036624-e9d8-469b-b724-b8a92f12f2c0" class="">
+</p><figure id="560434db-eb47-472d-bb47-653849a32b29" class="image"><a href="evasim-genarch.png"><img style="width:480px" src="evasim-genarch.png"/></a><figcaption><strong>Figure 8:</strong> EvaSIM general architecture</figcaption></figure><p id="e6a5cf91-b04f-4cbb-83fe-2a8a41da98fb" class="">
+</p><p id="338a9503-b502-4afa-b83f-063bd2a2492b" class="">To understand the entire process of interpreting a VPL script and the simulation process as a whole, it is necessary to first understand how the coding of a script developed with the VPL is constructed. As shown in <strong>Figure 7</strong>, the graphic representation of a script in the VPL is represented as a graph. The graph nodes represent the robot&#x27;s capabilities (language elements) and edges (which from now on will be called links) indicate the script execution flow. This encoding is done through a file in JSON format. <strong>Figure 9</strong> shows code snippets that represent: (a) the structure of an empty script, (b) an example of a <em>Condition</em> node, and (c) an example of a link with its <em>from</em> and <em>to</em> attributes.</p><p id="c4fd1a98-b355-4556-b733-351e64bb7242" class="">
+</p><figure id="8e206be2-9163-4c1a-910b-a4da2e5c0e2d" class="image"><a href="json-vpl.png"><img style="width:336px" src="json-vpl.png"/></a><figcaption><strong>Figure 9</strong>: (a) The structure of an empty VPL script. (b) A sample of a Condition type node. (c) An example of representing an edge (link)</figcaption></figure><p id="6850538f-654a-410c-8242-3b1d2ff76312" class="">
+</p><p id="fd599bf2-9ca0-431d-90fe-cd68c107a884" class=""><strong>Figure 10</strong> illustrates the VPL code processing and simulation using EvaSIM in detailed. As previously discussed, and illustrated in <strong>Figure 8</strong>, there are two main steps involved in running a VPL script before sending commands to the graphical user interface. The first step parses a VPL JSON script, called JSON Data Mapping, and the second step runs the script, called EvaSIM XML Code Processing, which are discussed as follows.</p><p id="f15df817-fef7-4982-9cdf-b820e9b47f33" class="">
+</p><figure id="01bc1b6d-61f6-4faa-bf91-e7a345367e2b" class="image"><a href="vpl-process.png"><img style="width:1108px" src="vpl-process.png"/></a><figcaption><strong>Figure 10</strong>: VPL Code Processing and Simulation with EvaSIM</figcaption></figure><p id="90bc21ba-a04d-4d3e-8892-fdb3111e0dc4" class="">
+</p><p id="8d0ed1ac-fb27-4a5e-ad7c-79fbb21abc13" class=""><strong>JSON Data Mapping</strong> - To start the simulation process, you need to run the EvaSIM using Python 3. The application starts and to control it you must use the control buttons that are located in the top center of the EvaSIM GUI. When clicking on the <em>Power On</em> button, the robot&#x27;s display lights up and the simulator speaks a presentation text showing its status in the terminal emulator. At this point the robot&#x27;s memory module is initialized. The next step is to import a VPL script in JSON format. For this you must use the <em>Import Script File</em> button, at which time a <em>file opening dialog</em> window will open and the JSON file can be selected.</p><p id="3a8e90cf-145e-44f8-b858-210d5ba163b6" class="">The robot&#x27;s memory module in EvaSIM is responsible for storing the variables created by the user, storing the <em>key</em> and <em>value </em>pair in a dictionary, and is also responsible for managing the robot&#x27;s special memory that stores the responses from the <em>Listen</em> and <em>userEmotion</em> interaction commands. These values are stored in this memory in the order in which they are generated, and can be accessed through an index that is used together with the &quot;$&quot; character. For example, if during the execution of a script, three facial recognition commands are executed, the first response can be accessed using &quot;$1&quot;, the second one can be accessed using &quot;$2&quot; and the third response using &quot;$3&quot;. To access the last information obtained, just use &quot;$&quot;. The &quot;$&quot; character always refers to the last information obtained, either by capturing audio (<em>Listen</em> command), by facial expression recognition (<em>userEmotion</em> command) or by the command to generate random numbers (<em>Random</em> command). It is also possible to access the penultimate answer using the notation &quot;$-1&quot; and so on.</p><p id="9e5719d7-345e-435a-b87a-19a2630fc47e" class="">After loading the JSON file, a data mapping process begins. As shown in <strong>Figure 9(a)</strong>, an encoded VPL script is composed of three attributes, the <em>_id</em> attribute that is a code that uniquely identifies the script in the robot’s database, the attribute <em>name</em> and an attribute called <em>data</em> that contains two arrays, an array of node objects and another array of link objects. As previously mentioned, a node represents a command of the EVA language, and as can be seen in <strong>Figure 9(b)</strong>, a node has a set of <em>key</em> and <em>value</em> pairs that represent, at the same time, the graphic element of the VPL, such as the <em>color</em> and <em>name</em> attributes, and information that relates to the language command being represented, such as the <em>type</em>, <em>key</em> and <em>text</em> attributes. Each VPL element has its specific set of attributes. The <em>Voice</em> element has an attribute that allows the user to define the voice timbre and the language that the application will recognize in the TTS and STT processes. The <em>Light</em> element, for example, has an attribute that determines its color and another that determines whether the bulb should be turned on or off. The attribute selection process reads the list of nodes from the JSON file, selecting for each node type the attributes that are relevant for its execution in the simulator. Each node has a type which is indicated by the <em>type</em> attribute. Some robot code attributes come in the form of a composite string, that is, there is more than one attribute within the string. These composite attributes are passed to the part of the code that uses regular expressions to decompose the string into individual attributes. As an example, the attribute <em>text</em> of the <em>Condition</em> command, represents the boolean expression &quot;$ == 2&quot; containing two operands and a relational operator. The expression, after being sent to the decomposition function, returns three attributes, an attribute called <em>var</em>, which contains the &quot;$&quot;, another attribute called <em>value</em>, which contains number &quot;2&quot;, and another attribute called <em>op</em> which contains the relational equality operator.</p><p id="53e0d5f2-b350-429f-b989-0e249b04b6e8" class="">The output of the JSON Data Mapping step is an XML file used as input for the following step, which effectively runs the EVA script, as illustrated in <strong>Figure 10</strong>.</p><p id="ef4ad20f-6a7a-4154-89d1-955db43422cf" class="">
+</p><p id="3a178382-1a35-49c9-9140-0eeeaf61f2fd" class=""><strong>EvaSIM XML Code Processing</strong> - This processing step takes as input an XML file resulting from the previous step. The XML code formatted for EvaSIM can be seen in <strong>Listing 1</strong>. The <mark class="highlight-pink">&lt;script&gt;</mark> section of the XML code contains as child elements the nodes that represent the robot language commands. The <mark class="highlight-pink">&lt;links&gt;</mark> section contains the links that determine the script execution flow. As can be seen in <strong>Listing 1</strong>, when compared to <strong>Figure 9</strong>, the mapping and conversion of the JSON file to XML brought more readability to the code since the graphic properties of the VPL elements were discarded and the composite elements, in the case of the logical expression of the <em>Condition</em> element, were decomposed into three XML attributes: var=&quot;$&quot;, op=&quot;eq&quot;, and value=&quot;2&quot;. Relational operators &quot;==&quot;, &quot;&gt;&quot;, &quot;&lt;&quot;, &quot;&gt;=&quot;, &quot;&lt;=&quot; and &quot;!=&quot; correspond to &quot;eq&quot;, &quot;gt&quot;, &quot;lt&quot;, &quot;gte&quot;, &quot;lte&quot;, &quot;ne&quot; <em>op</em> attribute values respectively.</p><p id="2bda7845-fbcb-41b1-b7c7-3c2d6657c847" class="">
+</p><pre id="8eda2add-f8b1-4c98-8bf4-cb77772f20d9" class="code"><code>&lt;?xml version=&#x27;1.0&#x27; encoding=&#x27;utf8&#x27;?&gt;
+&lt;evaml  name=&quot;script01&quot;&gt;
+	&lt;script&gt;
+		&lt;voice  key=&quot;1646387240212&quot; tone=&quot;en-US_AllisonV3Voice&quot;/&gt;
+		&lt;random key=&quot;1646387248220&quot; min=&quot;1&quot; max=&quot;2&quot;/&gt;
+		&lt;case   key=&quot;1646387260007&quot; op=&quot;eq&quot; value=&quot;1&quot; var=&quot;$&quot;/&gt;
+		&lt;case   key=&quot;1646387268473&quot; op=&quot;eq&quot; value=&quot;2&quot; var=&quot;$&quot;/&gt;
+		&lt;light  key=&quot;1646387289446&quot; state=&quot;on&quot; color=&quot;#00b0ff&quot;/&gt;
+		&lt;talk   key=&quot;1646387340575&quot;&gt;Hello!&lt;/talk&gt;
+	&lt;/script&gt;
+	&lt;links&gt;
+		&lt;link from=&quot;1646387240212&quot; to=&quot;1646387248220&quot;/&gt;
+		&lt;link from=&quot;1646387248220&quot; to=&quot;1646387260007&quot;/&gt;
+		&lt;link from=&quot;1646387248220&quot; to=&quot;1646387268473&quot;/&gt;
+		&lt;link from=&quot;1646387260007&quot; to=&quot;1646387289446&quot;/&gt;
+		&lt;link from=&quot;1646387268473&quot; to=&quot;1646387340575&quot;/&gt;
+	&lt;/links&gt;
+&lt;/evaml&gt;</code></pre><p id="85fb67fc-5bf3-48b7-988d-a28da5460be6" class="">
+</p><p id="b9da771e-db54-42ee-9df6-750489ec3fcd" class="">The EvaSIM XML Code processing step searches and selects one or more links in the list of links, and  inserts them in the Link Queue. The Link Queue is then processed recursively until it is empty. Queue processing begins with the removal of the first link. The value of the key contained in the <em>from</em> attribute of the link is passed to the function that performs a lookup on the list of nodes (VPL commands) in the <mark class="highlight-pink">&lt;script&gt;</mark> section of the XML code. The function searches for a node by its <em>key</em> attribute. After the node is found, it is sent to the function responsible for processing the nodes. The node type (language element) is obtained through the name of the corresponding XML element. The command is then executed and can communicate with the elements of the EvaSIM graphical interface sending some types of information, such as: animation commands, which generate some kind of graphical animation on the robot figure and its components, status messages and error messages, which are information sent to the EvaSIM terminal emulator, and variable values, which are information related to the robot memory module variables and which are sent to the memory map tables in the EvaSIM window. The script execution ends when the value of the key contained in the <em>to</em> attribute of a link, after the link search process, does not match any value of the key of <em>from</em> attribute of a link in the list of links. This indicates that the element referenced by the key in the <em>to</em> attribute of the link being processed corresponds to a leaf node of the XML tree. The key contained in the <em>to</em> attribute is passed to the node search function. Then, the node is found and processed, terminating the script.</p><p id="ba578a61-03bd-44ad-be83-d605ea64f031" class="">
+</p></div></article></body></html>

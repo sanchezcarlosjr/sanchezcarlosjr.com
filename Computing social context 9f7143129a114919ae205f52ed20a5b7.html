@@ -1,0 +1,877 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Computing social context</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="9f714312-9a11-4919-ae20-5f52ed20a5b7" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/met_henri_tl_1892.jpg" style="object-position:center 26.280000000000005%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🪕</span></div><h1 class="page-title">Computing social context</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-orange">Computer science</span><span class="selected-value select-value-color-orange">Computing</span><span class="selected-value select-value-color-pink">Culture</span><span class="selected-value select-value-color-brown">Economies of Computing</span><span class="selected-value select-value-color-red">Social Issues and Professional Practice</span><span class="selected-value select-value-color-orange">Story</span><span class="selected-value select-value-color-gray">Sustainability</span></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Created</th><td><time>@December 14, 2022 9:09 AM</time></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Updated</th><td><time>@April 10, 2023 11:07 AM</time></td></tr></tbody></table></header><div class="page-body"><nav id="585af8f3-3d0f-4248-864a-b205156af3d0" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f40bfe85-00bd-4406-a5b3-7f038f259a80">Preface</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3fffced3-06ed-4b1f-ac92-d079d235451e">Prerequisites</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#49586b9a-4b7d-45f2-8f1c-47d130d71808"><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#615073c7-de8a-4fcc-aca5-858585c2b4a4">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2dd137ab-2a6d-487e-910b-12afecac347a">What is Computing social context?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#11bff6dd-9e4e-4059-a23c-d2497ee4d001">Why does Computing social context matter to you?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e473bd97-6cad-48e6-94b1-0a66e9278a52">Research</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3fea3385-ca4a-4fe1-94d4-289a8ca54ab6">Ecosystem</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0c058fc1-27e3-4203-9773-fd93746d77fa">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c74b593-0e4c-4260-8f35-06b011d60c7d">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3a8b62b4-a7c9-4b15-a108-d2ca1be249cf">0. Computers, People, and Programming</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ee9a63de-aef4-475d-b39f-10ae6da4f1e8">Myths</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c297555f-1fcd-496a-b9e8-aea0cb186502">You’re a genius because you’re a programmer</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fe3d89f0-3253-4b14-9dc5-da76d7cc05f1">Open source</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dd14fa63-9207-4609-b81a-3a2705fddf45">Military industry</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d5894372-a993-4760-818f-116bb0988bf4">Fun?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#74c598ce-8e15-41b9-8eb6-118b7bb49efc">Hacking</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2d5522d2-4a79-414d-bf85-8c9477cd3b1a">Cybernetics</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0f0c4c0c-2ae8-4521-833d-5595267f9ff3">Patents</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b0e02ddc-0b61-4199-8949-34cc21e44cba">Story</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e9b1bd3a-3d92-4bf1-a520-7476f096ed7c">Subsection</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cebf38bb-f382-4d40-bd94-e9b430a75575">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a81bde2d-5f6f-459b-bb0b-9648bf9609aa">URRS </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3a86c8a9-545e-4002-b2b2-29262ab2497e">Microstories</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#80cb0bf0-3499-4bf7-868e-b0b9d27c00e8">Exercises</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#25b18f2b-88f1-4b0e-b913-01a2f241b120">Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7f4bb4f4-6232-4444-88b4-840874cb118f">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2b19bd89-790a-4b61-801d-18aa915050b4">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#be482c07-14b8-4940-8570-c255be115570">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#847a0bae-98c1-428b-95c1-1979ad2d5b33">Digital economy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9b892a2b-a4b3-422a-b544-290faf874d38">Cases of study</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d81f6dfb-92b0-4226-99ec-ea98e522b52f">Computing + X</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33467ecd-25be-45cb-9fb9-8b2432e11015">Operation research relationship</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#88ccce47-0910-4faa-900e-a9f134dbfd5d">Computing Culture</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8a40c129-756b-4374-b93f-cb03d603d920">Ethics</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4b4fc5e5-bdbc-4402-ad9a-e8a74fa4b3ce">Conventions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2ee2ee19-bf23-4091-a906-eb6a1aa7ea62">Money and business: be Alfa or Beta</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ccbb5187-216e-4563-a965-c91cd058401c"><strong>The Top 8 Tech Companies to Intern at in 2022</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2a4cd053-473a-4a1c-8f06-c463dbd3f43c"><strong>World War II, Operation  research, logic, and Hilbert</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#730a0fa1-6683-4410-b567-7579bbad346e">Characters</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#49c76398-8e89-4db5-86d7-41abcda0f692">Computer science culture</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#411f9030-dbfc-4b34-ac4b-fd6ff6d40f60">References</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#418688f5-1e72-469c-8a50-d019545b2d7c">When tools are deprecated</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5fdc538c-5d53-4510-acc6-d4ca3cee964a">Next steps</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a083e09a-9e66-4a29-8b5c-40e07eebc4b5">Chapter notes</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6b5690b1-8892-4c51-a160-a6cf286e0881">0.18 Jobs and Paths</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a5cf21a2-ff81-41a5-b11e-cef5fb240fd6">0.19 Standards</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5dbd92bf-c8df-486f-9a5c-d99b19b722fb"><strong>Idioms</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#75407d36-d8d5-49d3-a938-85e5986f1b89">0.20 Technology Sector and what is your society&#x27;s role as a computer scientist?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#101d7d4b-3144-4e2e-a1f3-4bbb191d5e8e">0.2 Maquinaria y automatización (Marx) | ¿Las máquinas crean valor? ¿Qué es el General Intellect?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#aeae9d91-2da2-4fc0-955a-053c91b7bcf4">0.21 Cyberpunk y la etica</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9a7f8411-9599-4517-b0c2-7d67ce2cb044">0.22 Es un trabajo de mierda? Hay un suficiente trabajo? Debemos crear products obsolentes?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2f933f71-976e-43a8-b46f-bac6bd7ab806">Problem set</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fd19e136-3d4a-458f-814f-1f14c9d2f494">References</a></div></nav><h1 id="f40bfe85-00bd-4406-a5b3-7f038f259a80" class="">Preface</h1><h2 id="3fffced3-06ed-4b1f-ac92-d079d235451e" class="">Prerequisites</h2><h2 id="49586b9a-4b7d-45f2-8f1c-47d130d71808" class=""><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></h2><h1 id="615073c7-de8a-4fcc-aca5-858585c2b4a4" class="">Introduction</h1><h2 id="2dd137ab-2a6d-487e-910b-12afecac347a" class="">What is Computing social context?</h2><h2 id="11bff6dd-9e4e-4059-a23c-d2497ee4d001" class="">Why does Computing social context matter to you?</h2><h2 id="e473bd97-6cad-48e6-94b1-0a66e9278a52" class="">Research</h2><h2 id="3fea3385-ca4a-4fe1-94d4-289a8ca54ab6" class="">Ecosystem</h2><p id="75469162-2616-4d9d-bda4-7c8c71656bf0" class="">Standards, jobs, industry, roles, … </p><h2 id="0c058fc1-27e3-4203-9773-fd93746d77fa" class="">FAQ</h2><h2 id="2c74b593-0e4c-4260-8f35-06b011d60c7d" class="">Worked examples</h2><h1 id="3a8b62b4-a7c9-4b15-a108-d2ca1be249cf" class="">0. Computers, People, and Programming</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="93487ba0-f75b-4184-a487-aab83fdfa9a3"><div style="font-size:1.5em"><span class="icon">👉🏼</span></div><div style="width:100%">&quot;Our society runs on software&quot;—programming -- Principles and Practice Using C++, Stroustrup.
+</div></figure><p id="2d3852df-e267-4389-a5ed-f9c5f5420ace" class="">Software might be everywhere; it could manage our society. </p><h2 id="ee9a63de-aef4-475d-b39f-10ae6da4f1e8" class="">Myths</h2><h3 id="c297555f-1fcd-496a-b9e8-aea0cb186502" class="">You’re a genius because you’re a programmer</h3><p id="1ba76513-aa2f-4c8e-b024-3cacacf1bc33" class=""><a href="https://www.youtube.com/watch?v=KEkrWRHCDQU&amp;ab_channel=LaserUnicorns">https://www.youtube.com/watch?v=KEkrWRHCDQU&amp;ab_channel=LaserUnicorns</a></p><h2 id="fe3d89f0-3253-4b14-9dc5-da76d7cc05f1" class="">Open source</h2><p id="c4b3a786-83b3-47f7-baa2-30ec2779d7df" class=""><strong>Google Summer of Code</strong></p><h2 id="dd14fa63-9207-4609-b81a-3a2705fddf45" class="">Military industry</h2><p id="3e395748-9278-4879-b582-2a64918aefcd" class=""><a href="https://governmentciomedia.com/next-generation-soldiers-will-be-software-engineers">https://governmentciomedia.com/next-generation-soldiers-will-be-software-engineers</a></p><h2 id="d5894372-a993-4760-818f-116bb0988bf4" class="">Fun?</h2><p id="2bda9adb-09bd-4799-b3af-7107b4a85c92" class=""><a href="https://www.youtube.com/user/BostonDynamics">https://www.youtube.com/user/BostonDynamics</a></p><p id="dc0e07df-123d-41b9-829c-364bd68e9e3d" class=""><a href="https://www.youtube.com/watch?v=y3RIHnK0_NE">https://www.youtube.com/watch?v=y3RIHnK0_NE</a></p><h2 id="74c598ce-8e15-41b9-8eb6-118b7bb49efc" class="">Hacking</h2><h2 id="2d5522d2-4a79-414d-bf85-8c9477cd3b1a" class="">Cybernetics</h2><h1 id="0f0c4c0c-2ae8-4521-833d-5595267f9ff3" class="">Patents</h1><p id="8af77bc0-b6bc-4204-8943-ad427bf3e78c" class="">Patents Trolls</p><p id="47db2169-d219-4c97-ae9c-587c76ac3d6a" class="">Google Patents. (2023, April 10). Retrieved from <a href="https://patents.google.com/">https://patents.google.com</a></p><h1 id="b0e02ddc-0b61-4199-8949-34cc21e44cba" class="">Story</h1><h2 id="e9b1bd3a-3d92-4bf1-a520-7476f096ed7c" class="">Subsection</h2><h3 id="cebf38bb-f382-4d40-bd94-e9b430a75575" class="">Subsubsection</h3><h2 id="a81bde2d-5f6f-459b-bb0b-9648bf9609aa" class="">URRS </h2><h2 id="3a86c8a9-545e-4002-b2b2-29262ab2497e" class="">Microstories</h2><h2 id="80cb0bf0-3499-4bf7-868e-b0b9d27c00e8" class="">Exercises</h2><ol type="1" id="6275abbd-db5b-4924-be2f-7e19ff2ab708" class="numbered-list" start="1"><li>Logic. Mathematics. Code. Automatic Verification such as Lean Proven or Frama-C.</li></ol><ol type="1" id="2fa104a4-668c-4871-bfac-33650a02e8f4" class="numbered-list" start="2"><li>Languages in Anki.</li></ol><h2 id="25b18f2b-88f1-4b0e-b913-01a2f241b120" class="">Projects</h2><h2 id="7f4bb4f4-6232-4444-88b4-840874cb118f" class="">Summary</h2><h2 id="2b19bd89-790a-4b61-801d-18aa915050b4" class="">FAQ</h2><h2 id="be482c07-14b8-4940-8570-c255be115570" class="">Reference Notes</h2><h1 id="847a0bae-98c1-428b-95c1-1979ad2d5b33" class="">Digital economy</h1><p id="0130613a-ae6b-4bff-81bd-4ec23e782a36" class="">The Digital Economy: Promise and Peril in the Age of Networked (1995) Don Tapscott</p><p id="75e8d2d2-207c-4117-9644-0bb152d01823" class="">New Rules For the New Economy Kevin Kelly</p><p id="88b082e8-3bbc-4a86-ad9c-aeee831f3a8e" class="">e-business</p><p id="24155961-eeb0-45c8-9fff-f29713a610db" class="">e-commerce</p><p id="f56e28e0-0624-4c6f-8866-abdd80d33b4e" class="">Unicorns</p><p id="c7cebbaf-32aa-48fe-8b1a-a56070ab0a43" class="">Metrics</p><p id="892976e3-a4b6-4612-ab6d-3726fa00171c" class="">Crowdfunding</p><p id="3213e0f8-0d40-4d84-9f15-f34def011b09" class="">Crowdsourcing</p><p id="a675f560-6564-47b1-b519-18ca7c290a38" class="">Internet</p><p id="2f6f3403-fea5-4322-a9cb-a707e3763765" class=""><strong>Long tail</strong></p><p id="3feb241f-f2a4-41b4-a869-8c6bc51f1353" class=""><strong>Power law</strong></p><p id="d7ca2aa0-c5c9-4f9d-9754-e5383bd4a323" class="">Shared economy</p><h2 id="9b892a2b-a4b3-422a-b544-290faf874d38" class="">Cases of study</h2><p id="6560ecd1-f515-4ba8-929d-e8d2c38d82a7" class="">TODO: App metrics, Global App record</p><p id="7fc9291e-2985-4830-a8e9-10fee9ff1043" class="">X on demand and address</p><p id="1a441924-ea11-4b88-b429-9dc202c9f7c4" class=""><a href="http://www.provectus.co/">http://www.provectus.co/</a></p><p id="487374f6-78d2-4b95-9774-25453b1198b2" class="">coworking</p><p id="bc2198b3-1b9b-4476-ad22-fb7c7e8b5c17" class="">spacebee</p><p id="2ec4f71d-9666-41b3-98e2-2fe7bc30921f" class="">Lavadero</p><p id="0cdcac76-4da7-436d-bce0-d68b7183e508" class="">MOOC</p><p id="de3430ea-f554-4e51-bec9-058a242426ed" class="">Social media</p><p id="4349c750-ccda-4b82-8482-53f87a0804e6" class="">Ads and Digital marketing</p><p id="9d644afb-a96f-4134-a4f2-1aa85b3a84a7" class="">Quality of experience</p><p id="334c47de-4b4c-498a-8abb-009dc72bb8d8" class="">stylebee</p><p id="d0b8d8b4-4f9d-462a-95c3-41b2308abce2" class=""><a href="http://www.dispach.me/">http://www.dispach.me/</a></p><p id="1629081a-e9c6-4d83-bb8c-3c203981b65d" class="">swifto</p><p id="ac71de8a-23dd-44a4-9735-dbae82de103d" class=""><a href="https://lempio.mx/">https://lempio.mx/</a></p><p id="1af7d186-f5d9-4201-b8e6-950a34bb4c56" class=""><a href="https://www.zaarly.com/">https://www.zaarly.com/</a></p><p id="5038d4a1-0a21-46c2-ae8b-06238064d89a" class=""><a href="https://dogvacay.com/">https://dogvacay.com/</a></p><p id="a6e6e67e-7c46-419f-8e8a-0e56e39b38f3" class=""><a href="https://www.blablacar.co.uk/">https://www.blablacar.co.uk/</a></p><h1 id="d81f6dfb-92b0-4226-99ec-ea98e522b52f" class="">Computing + X</h1><h3 id="33467ecd-25be-45cb-9fb9-8b2432e11015" class="">Operation research relationship</h3><h1 id="88ccce47-0910-4faa-900e-a9f134dbfd5d" class="">Computing Culture</h1><h1 id="8a40c129-756b-4374-b93f-cb03d603d920" class="">Ethics</h1><h1 id="4b4fc5e5-bdbc-4402-ad9a-e8a74fa4b3ce" class="">Conventions</h1><h2 id="2ee2ee19-bf23-4091-a906-eb6a1aa7ea62" class="">Money and business: be Alfa or Beta</h2><pre id="4c11c78c-542d-424a-9d70-c4b127d22010" class="code"><code>There’s more to computer science jobs than software engineering.</code></pre><p id="4b468a7d-00f1-4f25-b7df-dc3bc5e57083" class=""><a href="https://blog.edx.org/computer-science-careers">https://blog.edx.org/computer-science-careers</a></p><p id="7286abf7-e1ed-4f46-9865-d42b68d86748" class=""><a href="https://www.bls.gov/ooh/computer-and-information-technology/home.htm">https://www.bls.gov/ooh/computer-and-information-technology/home.htm</a></p><p id="ce3749ad-4d22-49c4-b804-7d73493c684a" class=""><a href="https://www.youtube.com/watch?v=ILYtS8DtBI8&amp;ab_channel=%C3%93scarVara">https://www.youtube.com/watch?v=ILYtS8DtBI8&amp;ab_channel=ÓscarVara</a></p><h2 id="ccbb5187-216e-4563-a965-c91cd058401c" class=""><strong>The Top 8 Tech Companies to Intern at in 2022</strong></h2><h3 id="2a4cd053-473a-4a1c-8f06-c463dbd3f43c" class=""><strong>World War II, Operation  research, logic, and Hilbert</strong></h3><p id="40918523-8a11-4d14-b60d-4fbe04def33a" class="">NATO and software</p><p id="317f0637-6549-44a1-b092-a863efc1c0f3" class="">University story</p><p id="badd61d8-9307-4eab-9d26-706fa7c47358" class=""><a href="https://es.quora.com/Est%C3%A1-el-grado-en-Ciencias-de-la-Computaci%C3%B3n-sobrevaluado">https://es.quora.com/Está-el-grado-en-Ciencias-de-la-Computación-sobrevaluado</a></p><h2 id="730a0fa1-6683-4410-b567-7579bbad346e" class="">Characters</h2><figure id="0cf7b741-47f1-44de-ba8c-6ffac8e12d14" class="link-to-page"><a href="Computing%20Characters%20People%200cf7b74147f144deba8c6ffac8e12d14.html"><span class="icon">🎎</span>Computing Characters. People.</a></figure><h2 id="49c76398-8e89-4db5-86d7-41abcda0f692" class="">Computer science culture</h2><figure id="b035bcdd-eabc-4148-86a6-835782fae581" class="link-to-page"><a href="Computing%20Culture%20b035bcddeabc414886a6835782fae581.html"><span class="icon">🏓</span>Computing Culture</a></figure><p id="139ab7b7-b501-4402-9d9e-f75cccb1b73c" class=""><a href="https://www-cs-faculty.stanford.edu/~knuth/retd.html">By Knuth:</a></p><p id="088863d3-072f-4fb7-89ce-c3c65a64d113" class="">Fiction:
+<a href="http://www.amazon.com/gp/product/0375507256/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0375507256&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=ZKZAMFQCTL7SZ3KR">Cloud Atlas: A Novel</a>
+-
+<a href="http://www.amazon.com/gp/product/0156027321/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0156027321&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=DCVISEJESZUDI5GF">Life of Pi</a>
+-
+<a href="http://www.amazon.com/gp/product/0062204092/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0062204092&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=EUZKNMY6PPYANPEK">A Prayer for Owen Meany: A Novel</a>
+-
+<a href="http://www.amazon.com/gp/product/1476746583/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1476746583&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=HUYV4U64776LR6FB">All the Light We Cannot See</a>
+-
+<a href="http://www.amazon.com/gp/product/0375842209/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0375842209&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=X67UQJXUD6RCI5T5">The Book Thief</a>
+-
+<a href="http://www.amazon.com/gp/product/014242417X/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=014242417X&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=E7JAOXWAMKPGSEB2">The Fault in Our Stars</a>
+-
+<a href="http://www.amazon.com/gp/product/0812984250/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0812984250&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=63XH2LT6KCJXHDC5">Tenth of December: Stories</a>
+-
+<a href="http://www.amazon.com/gp/product/0385491204/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0385491204&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=J3OD3MXBDFGP7FOW">If I Don&#x27;t Six</a>
+-
+<a href="http://www.amazon.com/gp/product/0553593714/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0553593714&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=ZAYNNMPXWOQ45CG3">A Game of Thrones</a>
+-
+<a href="http://www.amazon.com/gp/product/0446310786/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0446310786&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=DR72JNDRE3IZWMR2">To Kill a Mockingbird</a>
+-
+<a href="http://www.amazon.com/gp/product/159463193X/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=159463193X&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=NP3ABJBE6ZLRFZRO">The Kite Runner</a>
+-
+<a href="http://www.amazon.com/gp/product/0812550706/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0812550706&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=TUXVKMYJBOWFQ6GI">Ender&#x27;s Game</a>
+-
+<a href="http://www.amazon.com/gp/product/0553293354/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0553293354&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=BZRQNNMXD6BFTQRF">Foundation</a>
+-
+<a href="http://www.amazon.com/gp/product/0440180295/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0440180295&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=E7N2DABAVHT6MXT3">Slaughterhouse-Five</a>
+-
+<a href="http://www.amazon.com/gp/product/0143034901/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0143034901&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=BSPDO76HKZB5LT4W">The Shadow of the Wind</a>
+-
+<a href="http://www.amazon.com/gp/product/0156030306/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0156030306&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=XU3EKPFEOI6ULFAR">Flowers for Algernon</a>
+-
+<a href="http://www.amazon.com/gp/product/0440414806/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0440414806&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=CLPO7NMAVGGTNI7C">Holes</a>
+-
+<a href="http://www.amazon.com/gp/product/038572179X/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=038572179X&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=ZRFZTJEPNC2BCWIN">Atonement</a>
+-
+<a href="http://www.amazon.com/gp/product/0756404746/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0756404746&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=MFUPAT7DB3ID2TVG">The Name of the Wind</a>
+-
+<a href="http://www.amazon.com/gp/product/1400033411/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1400033411&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=QI6FFIOEP7YK5C6R">Beloved</a>
+-
+<a href="http://www.amazon.com/gp/product/0684803356/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0684803356&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=QILLNCSDWW7NM2GF">For Whom the Bell Tolls</a>
+-
+<a href="http://www.amazon.com/gp/product/0451167538/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0451167538&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=S2SO354RYWWOH6MJ">Different Seasons</a>
+-
+<a href="http://www.amazon.com/gp/product/0441569595/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0441569595&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=BXUPQGVZQDL6SNFH">Neuromancer</a>
+-
+<a href="http://www.amazon.com/gp/product/0553380958/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0553380958&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=7L2HQZ5USYCUPIZZ">Snow Crash</a>
+-
+<a href="http://www.amazon.com/gp/product/0060512806/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0060512806&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=TKMYZAAGUV6VU3KF">Cryptonomicon</a>
+-
+<a href="http://www.amazon.com/gp/product/0312330537/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0312330537&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=XDUPUXQUV6QOC6TP">Shantaram</a>
+-
+<a href="http://www.amazon.com/gp/product/1482694573/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1482694573&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=QMZYOO6EJR34HFSH">A Room with a View</a>
+-
+<a href="http://www.amazon.com/gp/product/0486452433/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0486452433&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=OIDTUB73NH5CWWKJ">Jude the Obscure</a>
+-
+<a href="http://www.amazon.com/gp/product/0099427869/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0099427869&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=ZTNT7TLXPZLP3YTX">Illusions: The Adventures of a Reluctant Messiah</a>
+-
+<a href="http://www.amazon.com/gp/product/0060892994/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0060892994&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=OR3U64T2O6OOET2P">A Canticle for Leibowitz</a>
+-
+<a href="http://www.amazon.com/gp/product/0547773749/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0547773749&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=KY5VBA26NSCNYG4I">A Wizard of Earthsea</a>
+-
+<a href="http://www.amazon.com/gp/product/0812974018/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0812974018&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=B4ASBCYQZR2FE2V4">Black Swan Green</a>
+-
+<a href="http://www.amazon.com/gp/product/1876963468/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1876963468&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=TRC25Z25YDU3TGVE">The Stars My Destination</a>
+-
+<a href="http://www.amazon.com/gp/product/031624662X/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=031624662X&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=AWAQS2EEBXDJKV4W">Ancillary Justice</a>
+-
+<a href="http://www.amazon.com/gp/product/1609450787/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1609450787&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=ZG7EZNINJKMGDIZL">My Brilliant Friend</a>
+-
+<a href="http://www.amazon.com/gp/product/037575931X/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=037575931X&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=DAJ6DDTEWZSPV377">Crossing to Safety</a>
+-
+<a href="http://www.amazon.com/gp/product/0679735909/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0679735909&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=SKHEFHUKOXPBURGF">Possession</a>
+-
+<a href="http://www.amazon.com/gp/product/0143117351/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0143117351&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=57FHOLM4SLTAFU3R">The Selected Works of T.S. Spivet</a>
+-
+<a href="http://www.amazon.com/gp/product/0962344745/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0962344745&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=3L5G7AWS725R3OGQ">Essential Ellison</a>
+-
+<a href="http://www.amazon.com/gp/product/1596879882/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1596879882&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=FXUCKXUNNH56MWBD">The Demolished Man</a>
+-
+<a href="https://amzn.to/2M1vVRK"> The Nightingale</a>
+-
+<a href="https://www.amazon.com/Overstory-Novel-Richard-Powers/dp/039363552X/ref=as_li_ss_tl?s=books&amp;ie=UTF8&amp;qid=1533580294&amp;sr=1-1&amp;keywords=the+overstory&amp;linkCode=ll1&amp;tag=opesysthrea0a-20&amp;linkId=1d25c9926098f5f8b27a7e33a2eab965&amp;language=en_US"> The Overstory</a>
+-
+<a href="https://amzn.to/2nfGQIw"> The Windup Girl</a>
+-
+<a href="https://amzn.to/2LXiNwV"> The Water Knife</a>
+
+Non-fiction:
+<a href="http://www.amazon.com/gp/product/0449005615/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0449005615&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=TBQJLHAW3ST6Y7K4">Seabiscuit: An American Legend</a>
+-
+<a href="http://www.amazon.com/gp/product/0812974492/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0812974492&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=2RNXXOEYURHDPRYW">Unbroken</a>
+-
+<a href="http://www.amazon.com/gp/product/0393316041/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0393316041&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=2ZT7ZYLZEUPGQXVM">Surely You&#x27;re Joking, Mr. Feynman!</a>
+-
+<a href="http://www.amazon.com/gp/product/0805078533/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0805078533&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=4OVFNPZCWBSSWRTW">On Intelligence</a>
+-
+<a href="http://www.amazon.com/gp/product/0061336467/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0061336467&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=4F2UE5N3ZVWMVBKJ">The Language Instinct</a>
+-
+<a href="http://www.amazon.com/gp/product/0061339202/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0061339202&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=AUNYVHELQZUQQWEI">Flow</a>
+-
+<a href="http://www.amazon.com/gp/product/0393317552/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0393317552&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=GISBBEVE2RUIGPYG">Guns, Germs, and Steel</a>
+-
+<a href="http://www.amazon.com/gp/product/0199291152/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0199291152&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=6NCHRWJZW24PV5XO">The Selfish Gene</a>
+-
+<a href="http://www.amazon.com/gp/product/0375725784/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0375725784&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=UDMG7GKIKQST3KJE">A Heartbreaking Work of Staggering Genius</a>
+-
+<a href="http://www.amazon.com/gp/product/0743296281/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0743296281&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=DZOMLI4INDEJ22FR">Lies My Teacher Told Me</a>
+-
+<a href="http://www.amazon.com/gp/product/0060731338/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0060731338&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=FAA3MI6HFRE3T5IS">Freakonomics</a>
+-
+<a href="http://www.amazon.com/gp/product/0385418493/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0385418493&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=RBJZ6VWF6GCQ7GDM">How the Irish Saved Civilization</a>
+-
+<a href="http://www.amazon.com/gp/product/0140275010/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0140275010&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=U3HIG4I3BZMEKLJ2">Cod</a>
+-
+<a href="http://www.amazon.com/gp/product/0375725601/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0375725601&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=TXNICNDRY7INUZTQ">The Devil in the White City</a>
+-
+<a href="http://www.amazon.com/gp/product/0393343405/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0393343405&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=3LQOCO3VMY3EALMA">The Swerve: How the World Became Modern</a>
+-
+<a href="http://www.amazon.com/gp/product/0307275175/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0307275175&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=E6LOGFEIWQKDFHCL">The Drunkard&#x27;s Walk</a>
+-
+<a href="http://www.amazon.com/gp/product/0961392142/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0961392142&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=J7IF4P4ER3NMGP53">The Visual Display of Quantitative Information</a>
+-
+<a href="http://www.amazon.com/gp/product/1592402038/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1592402038&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=BBGKEIX3M7SRN7GM">Eats, Shoots &amp; Leaves</a>
+-
+<a href="http://www.amazon.com/gp/product/020530902X/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=020530902X&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=WHRCF5SAP7NDMGZQ">The Elements of Style</a>
+-
+<a href="http://www.amazon.com/gp/product/0465067107/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0465067107&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=NSXWP7LMX65XSTPW">The Design of Everyday Things</a>
+-
+<a href="http://www.amazon.com/gp/product/0812980557/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0812980557&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=6VSP3WPAQNHBL3PU">Mountains Beyond Mountains</a>
+-
+<a href="http://www.amazon.com/gp/product/0316491977/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0316491977&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=4A4IJMCTYKYP5LGP">The Soul of A New Machine</a>
+-
+<a href="http://www.amazon.com/gp/product/069116472X/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=069116472X&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=5T6AXIPMGOWEUJHX">Alan Turing: The Enigma</a>
+-
+<a href="http://www.amazon.com/gp/product/0316013323/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0316013323&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=YSNPSOPXUODWNN3R">Consider the Lobster</a>
+-
+<a href="http://www.amazon.com/gp/product/0679728058/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0679728058&amp;linkCode=as2&amp;tag=opesysthrea0a-20&amp;linkId=YLI7SXJYHMHA6SCU">The Vintage Guide to Classical Music</a></p><ul id="671a5ae1-d5ab-40f9-9a7c-d4a2b7d345c1" class="bulleted-list"><li style="list-style-type:disc">Lifeline Rule
+
+by Doug Nufer
+(the rule: parity to vowel; an awesome conovowel opus)</li></ul><ul id="15472278-ff56-4608-bc10-8c1827ab09e5" class="bulleted-list"><li style="list-style-type:disc">Inventing the Future
+
+by Albert Cory
+(a novel way to explain how advances in software require lots of time and lots of complementary skills)</li></ul><ul id="6ff9cd30-169e-4760-9e68-7875fe6519a4" class="bulleted-list"><li style="list-style-type:disc">Stravinsky in Pictures and Documents
+
+by Vera Stravinsky and Robert Craft
+(proving again the great value of access to original sources and ephemera)</li></ul><ul id="bf94498e-e4a9-466a-85c0-0fabc10d48cb" class="bulleted-list"><li style="list-style-type:disc">Life A Users Manual
+by Georges Perec (perhaps the greatest 20th century novel)
+(<a href="http://escarbille.free.fr/vme/">see Willy Wauquaire&#x27;s superb webpages about it</a>)</li></ul><ul id="574cfe8c-bb39-4241-93c9-fe77e7113193" class="bulleted-list"><li style="list-style-type:disc">Gaudy Night
+by Dorothy L Sayers (captures Oxford high-table small-talk wonderfully)</li></ul><ul id="6bfcd0ef-9dc1-45a1-94b8-c5597cec89b8" class="bulleted-list"><li style="list-style-type:disc">An Instance of the Fingerpost
+by Iain Pears (also Oxford but in the 1660s)</li></ul><ul id="94cd8a97-3f91-4223-9ead-8cdadd0546a8" class="bulleted-list"><li style="list-style-type:disc">Death of a Salesperson
+by Robert Barnard (who is at his best in short stories like these)</li></ul><ul id="0fa84e71-226c-4c49-832b-8cfade291c90" class="bulleted-list"><li style="list-style-type:disc">The Haj
+
+by Leon Uris (great to read on a trip to Israel)</li></ul><ul id="dda07bb4-5d03-4a0c-ba52-4c87ef50226f" class="bulleted-list"><li style="list-style-type:disc">Marjorie Morningstar
+
+by Herman Wouk (in-depth characters plus a whole philosophy)</li></ul><ul id="6db3cc4b-c34d-403a-a631-e5eabff101c5" class="bulleted-list"><li style="list-style-type:disc">On Food and Cooking
+
+by Harold McGee (applied biochemistry in the kitchen)</li></ul><ul id="a8895b5e-bde7-4929-b454-52ef6b19c70d" class="bulleted-list"><li style="list-style-type:disc">Food
+
+by Waverley Root (his magnum opus, a wonderful history of everything delicious)</li></ul><ul id="7758e780-c876-44ce-a2ed-5dcda57d3ed9" class="bulleted-list"><li style="list-style-type:disc">The Golden Gate
+
+by Vikram Seth (the Great California Novel, entirely in 14-line sonnets)</li></ul><ul id="acb42a67-b3fb-494c-a31e-17539b8053b9" class="bulleted-list"><li style="list-style-type:disc">The Age of Faith
+
+by Will Durant (volume 4 of his series, covers the years 325--1300)</li></ul><ul id="9c828d58-b999-4ee9-b795-1564a7bdae62" class="bulleted-list"><li style="list-style-type:disc">Efronia
+
+by Stina Katchadourian (diaries and letters of a remarkable Armenian woman)</li></ul><ul id="4f402545-649c-4ef9-a42e-b2ee7da39139" class="bulleted-list"><li style="list-style-type:disc">The Man Who Knew Infinity
+
+by Robert Kanigel (biographies of Ramanujan and Hardy)</li></ul><ul id="1271ead9-ee58-4323-bd9f-36e7492c2a75" class="bulleted-list"><li style="list-style-type:disc">Hackers
+
+by Steven Levy (incredibly well written tale of our times)</li></ul><ul id="57eaa06c-aeeb-4f16-b758-22899b321a99" class="bulleted-list"><li style="list-style-type:disc">The Abominable Man
+
+by Maj Sjöwall and Per Wahlöö (one of their brilliantly Swedish detective novels)</li></ul><ul id="17a0a914-63ce-44ec-bde0-fcabade74dc7" class="bulleted-list"><li style="list-style-type:disc">Blasphemy
+
+by Douglas Preston (the best novel to deal with &quot;science versus religion&quot; that I&#x27;ve ever encountered)</li></ul><ul id="4d5bb42b-104c-43b6-90be-f6897756164d" class="bulleted-list"><li style="list-style-type:disc">Blacklist
+
+by Sara Paretsky (a brilliant characterization of the tragic state of politics
+and class relations in America that also happens to be an action-packed murder mystery)</li></ul><ul id="bcd1cc1e-3aa2-4bc3-ada2-45bc6e575614" class="bulleted-list"><li style="list-style-type:disc">The Travels of Ibn Battutah
+
+edited by Tim Mackintosh-Smith (fascinating and eye-opening journal by a 14th-century Muslim scholar)</li></ul><ul id="c0395b98-9ce3-4cca-8c6b-ca4ff6c226c8" class="bulleted-list"><li style="list-style-type:disc">Murder in the Museum of Man
+
+by Alfred Alcorn (delicious caricature of academic follies)</li></ul><ul id="a27d5c7a-83ce-4ef8-b98a-1c69bb7a9863" class="bulleted-list"><li style="list-style-type:disc">America (The Book): Teacher&#x27;s Edition
+
+“A Citizen&#x27;s Guide to Democracy Inaction”
+by Jon Stewart et al (has graffiti even better than the marginal notes in
+<a href="https://www-cs-faculty.stanford.edu/~knuth/gkp.html">Concrete Mathematics</a>)</li></ul><ul id="b1c533cb-ffa1-46d9-9117-8c7b4fcb6e2e" class="bulleted-list"><li style="list-style-type:disc">Feynman
+
+by Jim Ottaviani and Leland Myrick
+(vivid, witty, hilarious, poignant: I laughed, I cried, I learned;
+demonstrates the unreasonable effectiveness of a graphic novel)</li></ul><ul id="70378fc4-037b-4e2a-9010-64e63db1edd4" class="bulleted-list"><li style="list-style-type:disc">Mountains Beyond Mountains
+
+by Tracy Kidder
+(about how Paul Farmer&#x27;s local and global life combined theory and practice)</li></ul><ul id="88788a78-1fb2-4e5d-8733-cb4724c47c12" class="bulleted-list"><li style="list-style-type:disc">A Dual Autobiography
+
+by Will and Ariel Durant (superbly written, a great story about how a
+man and woman can work creatively and sustainably together despite the
+mysteries of the human sex drive)</li></ul><ul id="e13e7c2d-dd85-437f-9eac-3f0b9e8d984b" class="bulleted-list"><li style="list-style-type:disc">The Hornet&#x27;s Nest
+
+by Jimmy Carter
+(a revolutionary novel about the Revolutionary War at all levels)</li></ul><h1 id="411f9030-dbfc-4b34-ac4b-fd6ff6d40f60" class="">References</h1><p id="6f08a3cc-eb6d-418f-894c-94bda19e9812" class="">We order cites from foundational to advance.</p><h1 id="418688f5-1e72-469c-8a50-d019545b2d7c" class="">When tools are deprecated</h1><p id="416c745f-8824-4d8f-9e30-63fc4ae42633" class="">The Death of a Technical Skill by John J. Horton  and Prasanna Tambe</p><p id="a93cf0fa-793d-4669-a2f0-115405fb4b67" class=""><a href="https://news.ycombinator.com/item?id=1304310">https://news.ycombinator.com/item?id=1304310</a></p><p id="6f02ce46-5bc7-4dc6-af85-47522516913c" class=""><a href="https://john-joseph-horton.com/papers/schumpeter.pdf">https://john-joseph-horton.com/papers/schumpeter.pdf</a></p><h1 id="5fdc538c-5d53-4510-acc6-d4ca3cee964a" class="">Next steps</h1><h2 id="a083e09a-9e66-4a29-8b5c-40e07eebc4b5" class="">Chapter notes</h2><p id="2463daf5-f508-48e7-9e51-cd25f47e6898" class=""><strong>Things a Computer Scientist Rarely Talks About </strong><a href="https://www-cs-faculty.stanford.edu/~knuth/things.html">https://www-cs-faculty.stanford.edu/~knuth/things.html</a> <a href="http://web.stanford.edu/group/cslipublications/cslipublications/pdf/1575863278.pdf">http://web.stanford.edu/group/cslipublications/cslipublications/pdf/1575863278.pdf</a></p><p id="14aeac45-69c0-4954-9e91-e40a04d12170" class=""><a href="https://www.theatlantic.com/technology/archive/2017/03/aristotle-computer/518697/">HOW ARISTOTLE CREATED THE COMPUTER</a></p><h2 id="6b5690b1-8892-4c51-a160-a6cf286e0881" class="">0.18 Jobs and Paths</h2><h2 id="a5cf21a2-ff81-41a5-b11e-cef5fb240fd6" class="">0.19 Standards</h2><h2 id="5dbd92bf-c8df-486f-9a5c-d99b19b722fb" class=""><strong>Idioms</strong></h2><p id="3c020171-5f5b-4969-8771-212a297210e9" class=""><a href="https://kotlinlang.org/docs/idioms.html">https://kotlinlang.org/docs/idioms.html</a></p><h2 id="75407d36-d8d5-49d3-a938-85e5986f1b89" class="">0.20 Technology Sector and what is your society&#x27;s role as a computer scientist?</h2><p id="cb74e15b-ccdf-45e9-ab0b-c4f4bd718ff3" class="">What is the technology sector and what sector would like you to work for?</p><p id="f4124586-a1a4-481e-bef2-1f7d270e4871" class="">semiconductors, software, networking and Internet, and hardware.</p><ul id="85535762-ff5b-46ea-be29-db028e249041" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.valuepenguin.com/sectors/information-technology#software">Software and services</a></li></ul><ul id="4b89538e-dc34-4ad6-a1b1-0fc8bfef6224" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.valuepenguin.com/sectors/information-technology#hardware">Technology hardware and equipment</a></li></ul><ul id="a738b13c-2793-4a69-8e79-291422559d4c" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.valuepenguin.com/sectors/information-technology#semiconductor">Semiconductors and semiconductor equipment</a></li></ul><ul id="34e4feae-f0bf-4fff-802b-6eeeb9af0670" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.valuepenguin.com/sectors/information-technology#funds">Information technology sector ETFs and mutual funds</a></li></ul><h3 id="101d7d4b-3144-4e2e-a1f3-4bbb191d5e8e" class="">0.2 Maquinaria y automatización (Marx) | ¿Las máquinas crean valor? ¿Qué es el General Intellect?</h3><p id="0d0193c0-b744-4169-b087-0cb9b0fe7638" class=""><a href="https://www.youtube.com/watch?v=OBt_8MopVGg&amp;ab_channel=Di%C3%A1logoMarxista">https://www.youtube.com/watch?v=OBt_8MopVGg&amp;ab_channel=DiálogoMarxista</a></p><h3 id="aeae9d91-2da2-4fc0-955a-053c91b7bcf4" class="">0.21 Cyberpunk y la etica</h3><p id="e09d6127-7070-40d5-a10b-40f0c9e02252" class=""><a href="https://www.youtube.com/watch?v=Re7ZEDodXtU">https://www.youtube.com/watch?v=Re7ZEDodXtU</a></p><p id="932994eb-bdcb-4289-8868-87fd85863437" class=""><a href="https://www.youtube.com/watch?v=O00Yc1TdYJA">https://www.youtube.com/watch?v=O00Yc1TdYJA</a></p><p id="1748130e-f297-4445-a86e-fb99e0fff512" class=""><a href="https://www.youtube.com/watch?v=Ep1Vf2Vv2Gc&amp;t=344s">https://www.youtube.com/watch?v=Ep1Vf2Vv2Gc&amp;t=344s</a></p><h2 id="9a7f8411-9599-4517-b0c2-7d67ce2cb044" class="">0.22 Es un trabajo de mierda? Hay un suficiente trabajo? Debemos crear products obsolentes?</h2><p id="693826d9-14a0-4ead-a23f-d130d67b899c" class="">Trabajo de mierda. David Graeber</p><p id="1009f7d2-eae2-4875-bf41-159c50213b10" class="">
+</p><p id="22361954-528b-4c57-96d3-ecc380cc374e" class=""><a href="https://www.youtube.com/watch?v=f2JL1rdQYog&amp;ab_channel=AlexVogager">https://www.youtube.com/watch?v=f2JL1rdQYog&amp;ab_channel=AlexVogager</a></p><h2 id="2f933f71-976e-43a8-b46f-bac6bd7ab806" class="">Problem set</h2><p id="5b5d94b5-870d-4618-a04f-6d79e813c134" class="">
+</p><h3 id="fd19e136-3d4a-458f-814f-1f14c9d2f494" class="">References</h3><p id="d5158bce-8f37-4470-8af3-22449711a29d" class="">[1] Forouzan, B., 2017. Foundations of Computer Science: 4th Edition. Andover: Hampshire: Cengage Learning EMEA.</p><p id="9776b34e-0bdf-4ec1-93e7-a4dc2114ed0f" class="">[2] Denning, P. J., Comer, D. E., Gries, D., Mulder, M. C., Tucker, A., Turner, A. J., &amp; Young, P. R. (1989). <a href="https://sci-hub.se/10.1145/63238.63239">Computing as a discipline</a>. Communications of the ACM, 32(1), 9–23. doi:10.1145/63238.63239</p><p id="0c4d3b18-9f45-4414-8441-d2bfe3537693" class="">[3] MIT OpenCourseWare. (2022, December 21). MIT OpenCourseWare. Retrieved from <a href="https://ocw.mit.edu/courses/sts-035-the-history-of-computing-spring-2004/pages/syllabus">https://ocw.mit.edu/courses/sts-035-the-history-of-computing-spring-2004/pages/syllabus</a></p><p id="a6e5039e-4714-4452-875e-cd5c10440411" class=""><a href="http://mmc.geofisica.unam.mx/femp/Herramientas/Lenguajes/Java/JavaBasico/Libro.pdf">http://mmc.geofisica.unam.mx/femp/Herramientas/Lenguajes/Java/JavaBasico/Libro.pdf</a></p><p id="a7485272-c1c3-4b4f-a03f-30b1f13ecaf3" class=""><a href="http://infolab.stanford.edu/~ullman/focs/ch01.pdf">http://infolab.stanford.edu/~ullman/focs/ch01.pdf</a></p><p id="8189d9a2-734e-41e5-8a82-a2df402b4875" class=""><a href="http://infolab.stanford.edu/~ullman/focs/ch02.pdf">http://infolab.stanford.edu/~ullman/focs/ch02.pdf</a></p><p id="4af79df1-3bda-45ef-96f9-94cbe2917f6e" class="">Structured Programming by Edsger W. Dijkstra, Ole-Johan Dahl, and Tony Hoare <a href="https://seriouscomputerist.atariverse.com/media/pdf/book/Structured%20Programming.pdf">https://seriouscomputerist.atariverse.com/media/pdf/book/Structured Programming.pdf</a></p><p id="3afa042b-085c-4b90-aaea-3b7c72177847" class="">Programming: Principles and Practice Using C++,<strong> </strong>: <a href="https://www.google.com/search?client=firefox-b-d&amp;sxsrf=ALiCzsaN6r2bicIKd-LrwinsE0XKy87wag:1651510271253&amp;q=Bjarne+Stroustrup&amp;stick=H4sIAAAAAAAAAOPgE-LVT9c3NEyrsEwyiY_PVuLQz9U3MDRPStGSyU620k_Kz8_WLy_KLClJzYsvzy_KtkosLcnIL1rEKuiUlViUl6oQXFKUX1pcUlRasIOVcRc7EwcDAEfsMMFVAAAA&amp;sa=X&amp;ved=2ahUKEwjikb6Yo8H3AhVFDkQIHQdkC-cQmxMoAXoECEEQAw">Bjarne Stroustrup</a></p><p id="57d025d7-6395-4e1a-8566-9ddcf9e2104e" class=""><a href="https://www.gwern.net/docs/math/1973-knuth.pdf">https://www.gwern.net/docs/math/1973-knuth.pdf</a></p><p id="c51091ab-cabf-4eef-874e-c93a5a38c383" class=""><a href="https://www.cs.yale.edu/homes/aspnes/pinewiki/C(2f)FunctionPointers.html">https://www.cs.yale.edu/homes/aspnes/pinewiki/C(2f)FunctionPointers.html</a></p><p id="0acb6d40-faba-4c43-a435-0d0644df5088" class=""><a href="https://computingthehumanexperience.com/">https://computingthehumanexperience.com</a></p><p id="07655458-dca9-4eda-b974-509a4fc2bd19" class="">Computational Artifacts, towards a philosophy of computer science. Towards a Philosophy of Computer Science. Raymond Turner</p><p id="bacd4686-b953-4b50-9c9b-ae76ea6543cc" class="">
+</p><p id="01b19201-628f-4e47-b5de-fa78eb62eda9" class="">
+</p></div></article></body></html>

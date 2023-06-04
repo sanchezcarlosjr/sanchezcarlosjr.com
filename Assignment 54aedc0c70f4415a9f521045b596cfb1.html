@@ -1,0 +1,688 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Assignment</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="54aedc0c-70f4-415a-9f52-1045b596cfb1" class="page sans"><header><h1 class="page-title">Assignment</h1><p class="page-description"></p></header><div class="page-body"><p id="f6c004b0-3078-49b3-8f04-0f59b5487151" class=""><strong>What do you understand about the concept of &quot;technology&quot;?</strong></p><p id="04c40074-e374-4668-b4e3-2018cecdb4cf" class="">“Technology” means massive reproducible tools, devices, structures, methods, and systems based on scientific knowledge for purposeful goals whose dimensions are instrumentality and productivity. </p><p id="f341c3d5-a4c6-4eea-94d0-1f40d83e1beb" class="">Craftsmanship (i.e. technic) and technology are different terms, the former is not based on scientific knowledge, but the latter is. The people who design technology are engineers or technologists, and those who make craftsmanships are artisans or craftspersons, whereas those who aim to create a unique piece are artists. However, we are immersing in technology since the industrial revolution, the late 19th century, and the early 20th century, when we abandoned craftsmanship to cover human needs, “the age of transformation”.</p><p id="b496edcf-cf65-4c65-b94f-b3106e5a5ca9" class="">Some people hate technology and others love it. Neo-Luddites are those who hate or resist technology whereas geeks, technophiles, or techies love it.</p><p id="663c2851-bc10-4037-92e8-c4cdba45cc3e" class="">
+</p><p id="11c017ee-0ff3-482a-b0e4-a796bd75f344" class=""><strong>What do you know about the concept of ICT (Information and Communication Technologies)?</strong></p><p id="20d9b885-14cb-4d63-b4a5-dfe50ba8ce15" class="">ICT refers to the use of digital technologies for collecting, processing, storing, transmitting, and presenting information, in short, electronics, computation, and telecommunications</p><p id="2f14acc0-ca13-46b8-ad37-c942f3206027" class="">.</p><p id="8737a148-311c-49c2-a4c2-ae5e620f6d89" class=""><strong>What is the mission of technology in our daily activities?</strong></p><p id="71769666-bc75-4f9f-8877-b29ba523f1fa" class="">The mission of technology in daily activities is to automate tasks, facilitate communication, increase efficiency, and enhance quality of life.</p><p id="da4188aa-c58e-46a9-bf4c-a6782746cadc" class="">
+</p><p id="3be85702-a1fa-4e6e-ac16-44f0de5391b9" class=""><strong>What are the risks of relying on technology? What happens, for example, if the electricity goes out?</strong></p><p id="94a94822-ec83-4797-89b0-7be6ae514bdb" class="">Risks of relying on technology include cybersecurity threats, data breaches, job loss due to automation, and dependence on technology during power outages.</p><p id="d42fa89f-ea31-4a7f-bfe5-1a5b81f4a852" class="">
+</p><p id="4a73bcb4-e6ca-46a3-9835-4d03c8b6d1fe" class=""><strong>Mention 5 applications of technology in the Health area.</strong></p><p id="810781bf-7e5c-40d5-8a3d-ce36e1a5117b" class="">Applications of technology in the health area include telemedicine, electronic health records, medical imaging, remote monitoring, and digital health platforms.</p><p id="28fe63ef-fa7d-4eff-9303-a4a6403abe1f" class="">
+</p><p id="b4264d62-9831-44da-849b-31bc1989e8c5" class=""><strong>Mention 5 applications of technology in the Education area.</strong></p><p id="d3d658fb-66c5-4e40-8511-1be3bd067b1d" class="">Applications of technology in education include online learning platforms, educational software, virtual reality, smartboards, and mobile devices.</p><p id="104d4fc6-e791-45e3-b903-25c0f8f58df3" class="">
+</p><p id="0a7d1764-0e6e-4f71-ad69-73230adfa075" class=""><strong>Define in your own words the term &quot;disruptive technology&quot;.</strong></p><p id="d068e1e3-1ba9-4dbd-b298-1b1f704ffe52" class="">Disruptive technology refers to innovation that fundamentally changes an existing market or industry, often making older technologies obsolete.</p><p id="8fdad313-39a2-43d3-859f-3f51d9f918dc" class="">
+</p><p id="630b8701-3e74-4264-bbe8-5bcae698cfe7" class=""><strong>Mention 5 examples of technologies that were displaced by others.</strong></p><p id="ad8a0228-a741-4bb4-9f47-b4dff541fb46" class="">Examples of technologies that were displaced by others include VHS tapes by DVDs and later streaming, flip phones by smartphones, and analog cameras by digital cameras.</p><p id="b85dbdb6-d913-4c69-8a4e-4266994ba43c" class="">
+</p><p id="abba53c9-cce9-44c4-bc60-6c9e7cfa0720" class=""><strong>What could the company of rolls and cameras, Kodak, have done to avoid bankruptcy?</strong></p><p id="4219f616-5643-4f8c-92e3-37a4560b3b23" class="">Kodak could have avoided bankruptcy by investing in digital photography technology and shifting its business model to align with the digital revolution.</p><p id="168f5e63-df29-4c79-8633-c3e06c2d4f87" class="">
+</p><p id="8f4c761a-849f-4539-9e7b-50da082cf63c" class=""><strong>What did Netflix do to continue evolving as a company?</strong></p><p id="d3cc6201-1342-4bbb-b512-ca984a0f259d" class="">Netflix evolved as a company by pivoting from DVD rental-by-mail to a streaming service and later producing original content.</p><p id="7ce6d6aa-26a6-4312-a30e-7027e07985fd" class="">
+</p><p id="c3e98b02-3440-4006-8ee0-da21790de77e" class=""><strong>What do you understand by &quot;Technological Obsolescence&quot;?</strong></p><p id="8bb4449b-0be9-4f02-93ff-7c44169a2f0b" class="">Technological obsolescence refers to the state where technology is outdated and no longer used or relevant that happens when the demand preferences, law, science, or optimization change or when a new product is more general.</p><p id="2da258b2-b170-4602-b995-4388681b8467" class="">
+</p><p id="e202985d-b8e3-464e-969c-1dd33ae71b38" class=""><strong>What was the mistake of GoPro that led to layoffs?</strong></p><p id="91cfdc8e-513d-4779-af57-b8380b733036" class="">GoPro&#x27;s mistake that led to layoffs was the company&#x27;s inability to adapt to changing market demands and a lack of diversification in its product offerings.</p><p id="9e2261c3-5abb-4a29-9225-c07d073975ea" class="">
+</p><p id="c1d3e7bc-ab56-4703-9bf4-f0e90afd1a05" class=""><strong>What do you know by Disruptive Innovation?</strong></p><p id="7ff327b3-a9d2-4432-b555-84e78f371df1" class="">Disruptive innovation refers to a new innovation that creates a new market and ruptures an existing market.</p><p id="b83771df-c39f-4f70-aa5d-46a8cf50ec77" class="">
+</p><p id="8be17ea4-c303-478b-a155-88bfa4236e96" class=""><strong>What is the purpose of the &quot;Technology Lifecycle&quot; (Hype Cycle), proposed by the consulting company Gartner?</strong></p><p id="e82330ff-030f-4a58-8367-6e48231fccc9" class="">Gartner Hype Cycle provides a visual representation of the maturity, adoption, and business application of Emerging Information and Communication Technologies attempting to capture the market state every year. Its goals are reducing the risk of investments, separating hype from real advances, and understanding technology’s business value, in short, it answers the “Is the Hype real?”</p><p id="67d1d307-066c-42e0-84c1-8bfbd4f210d7" class="">Nowadays, it represents a historical document for science and technology too. For example, we’ve observed that past concepts have been reinvented with new names, especially when they didn’t work such as Intelligent Agents called Chatbots today. Lots of technologies die. It’s difficult to make predictions.</p><p id="5fbc3fac-a368-47d6-a2c3-3cf03f962db0" class="">
+</p><p id="d422c2c3-b8f4-4472-b46c-245ca6ee527c" class=""><strong>What are the success/failure factors of a technology, product, or service?</strong></p><p id="ff5c12e2-138c-4c17-b509-4a3464e2fbbf" class="">Success or failure factors of a technology, product, or service include market demand and preferences, cost-effectiveness, cash flow, laws, innovation, and commercialization.</p><p id="223ef266-4b08-4bd6-acfc-339d23c94fb8" class="">
+</p><p id="aaf72631-b843-4a71-8662-295a646df921" class=""><strong>Mention why the Apple iPod was very successful compared to similar audio players.</strong></p><p id="8c2119df-e669-4d22-915d-7f5d4ba58604" class="">The Apple iPod was successful compared to similar audio players due to its sleek design, user-friendly interface, and integration with the iTunes ecosystem.</p><p id="20450b0a-d344-4657-baa8-6b32907c0dc4" class="">
+</p><p id="6296d4b0-8685-4d5a-8611-0e52adaf5c36" class=""><strong>Why is it essential for professionals to understand technology?</strong></p><p id="6c3999a9-06d6-4728-8f5e-e598264251db" class="">It is essential for professionals to understand maturate key technologies since technology literacy is a key skill in the market.</p><h1 id="1dae57f7-a0bd-4840-ae66-c001897cd62d" class="">References</h1><p id="b449ca97-86b0-450e-ab60-352643ab6a87" class="">Franssen, Maarten, et al. &quot;Philosophy of Technology.&quot; 20 Feb. 2009, <a href="http://plato.stanford.edu/entries/technology">plato.stanford.edu/entries/technology</a>.</p><p id="f4b231b2-dd30-448b-b8d5-8b59b625c50a" class="">Opencourseware, Mit. &quot;1. Introduction, Course Overview, What is Technology?&quot; 27 Sept. 2012, <a href="http://www.youtube.com/watch?v=YfmVSPS7EFI&amp;list=PL7590BF3B139A354D&amp;ab_channel=MITOpenCourseWare">www.youtube.com/watch?v=YfmVSPS7EFI&amp;list=PL7590BF3B139A354D&amp;ab_channel=MITOpenCourseWare</a>.</p></div></article></body></html>

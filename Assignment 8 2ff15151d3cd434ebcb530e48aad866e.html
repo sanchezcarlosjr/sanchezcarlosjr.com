@@ -1,0 +1,702 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Assignment 8</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2ff15151-d3cd-434e-bcb5-30e48aad866e" class="page sans"><header><h1 class="page-title">Assignment 8</h1><p class="page-description"></p></header><div class="page-body"><p id="3128000b-5640-4b7b-ab17-4b6d4079de36" class="">Dependable systems are often required to provide a high degree of security.
+Why?</p><p id="73a2a94a-82f0-4a3e-b686-c20a6cfddfb6" class="">The clients trusts on server since it provides high availability with no malicious code.</p><p id="75cf255e-4855-473d-813c-31afdaf11f0e" class="">
+</p><p id="f7b16cac-3102-42ba-af88-0ff4f9f0d8bd" class="">What makes the fail-stop model in the case of crash failures so difficult to implement?</p><p id="e692b7f0-65f5-428f-ae66-0e2b33332413" class="">We might not know if the failure is caused by conditional exceptions, the slownesses server or temporal communication failures.</p><p id="ae557425-2045-4425-817e-bad96e621f41" class="">
+</p><p id="363d0bdf-e58b-47ef-a408-464dee04d672" class="">Consider a Web browser that returns an outdated cached page instead of a more recent one that had been updated at the server. Is this a failure, and if so, what kind of failure?</p><p id="f4cd0903-7dc2-481c-8403-4861124250c7" class="">It depends on the the consistency we want, if we increases the consistency we are going to decrease the performance and inversely.</p><p id="ff84b95f-0d9a-4fe6-9e07-2159a5a8c7e4" class="">
+</p><p id="ad27907b-a84f-4ef2-a992-4560af8fbadb" class="">Can the model of triple modular redundancy described in the text handle Byzantine failures?</p><p id="5cb6ef3f-5983-4a3b-a007-58e28210dc29" class="">Yes, because triple modular redundancy ensures fault-tolerance against arbitrates failures. </p><p id="ae406ec0-1cb9-46e9-ae89-c44553436862" class="">
+</p><p id="38fa4199-690b-4e8d-8e9c-47c139cf969a" class="">How many failed elements (devices plus voters) can Fig. 8-2 handle? Give an example of the worst case that can be masked.</p><p id="1505f1b5-477b-41d1-aeb5-6ee5a5bcd1c0" class="">The circuit can mask one device and one voter by group. So, it can support 2 of 3 failures, that is, the circuit can survive 6 failures.</p><p id="eb60e0d5-42bc-43f7-84fd-b2355b23517e" class="">
+</p><p id="b0cc719f-c0f2-49ff-9241-5060fd1096be" class="">Does TMR generalize to five elements per group instead of three? If so, what properties does it have?</p><p id="72740538-4963-45e2-949e-3ca3b6634903" class="">Similar to previous one, the circuit can mask two faults per group.</p><p id="524d2875-6024-47be-a332-2a5fe59c0973" class="">
+</p><p id="2982f202-273a-476a-9ac7-c431445c7c0f" class="">For each of the following applications, do you think at-least-once semantics or at most once semantics is best? Discuss.</p><p id="bf73b343-4e9c-4149-9166-887f28a8fe3e" class="">(a) Reading and writing files from a file server.
+(b) Compiling a program.
+(c) Remote banking.</p><p id="cce617a4-9edb-4d3d-93cd-e6ab41561ee5" class="">Generally speaking, users prefer that a and b at-least-once semantics by performance. However, remote banking is the best at most once semantics because people want guarantee the recover failures in banking transactions. </p><p id="d6cb7597-1749-4b0c-83fd-ef32adc6e77a" class="">
+</p><p id="044cc35e-5173-470c-b1bd-46737edae04b" class="">With asynchronous RPCs, a client is blocked until its request has been accepted by the server. To what extent do failures affect the semantics of asynchronous RPCs?</p><p id="4ef33bb2-79f5-49d1-aa29-5b528d47bab6" class="">Their behavior is similar to ordinary RPCs. However, the client is blocked and the server don&#x27;t process the request because it has to accept the request first.</p><p id="0de62b5b-a5d1-4b47-902f-ac5b6060e589" class="">
+</p><p id="79580b18-7162-4e0e-95cb-165d46e5d94d" class="">Give an example in which group communication requires no message ordering at all.</p><p id="a800a555-e7f1-4173-9700-d5888b47b0c5" class="">Multicasting a spreadsheet in chunks, where the chucks contains the row and column in each message.</p><p id="5f80611f-81cd-41d4-bb14-70b31b36cecb" class="">
+</p><p id="5677b353-9a4b-4b07-8281-63792c4ded94" class="">In reliable multicasting, is it always necessary that the communication layer keeps a copy of a message for retransmission purposes?</p><p id="90657da8-6f86-46a0-b789-9333e52f3d52" class="">No. For example, if you share a big video, you don’t need an retransmission. </p><p id="58b9acf5-88f6-4e04-93c2-8beb271a9e24" class="">
+</p><p id="5d98b1da-a721-4d04-a46a-dfc06d324deb" class="">To what extent is scalability of atomic multicasting important?</p><p id="b962108c-9417-4bb8-af59-fc819df4c4cb" class="">There is a inverse relation between atomic multi-casting and scalability, since the former obligates some degree of replication.</p><p id="e0b7a4fe-7a6f-4c8b-b0c0-0c436d68c81e" class="">
+</p><p id="40b92861-69ea-4866-a2b6-5714265c999f" class="">In the text, we suggest that atomic multicasting can save the day when it comes to performing updates on an agreed set of processes. To what extent can we guarantee that each update is actually performed?</p><p id="a83124a1-1d42-475d-936b-a69f3652f374" class="">It’s not possible give such guarantees since we can’t guarantee an operation is actually performed even though an acknowledgement message have sent.</p><p id="cdc10668-4f71-495f-b42a-2acddf69b13d" class="">
+</p><p id="2eec8238-4d63-43fa-9d3f-94d96ddd3275" class="">Virtual synchrony is analogous to weak consistency in distributed data stores, with group view changes acting as synchronization points. In this context, what would be the analog of strong consistency?</p><p id="13c67910-2e4f-4a58-8dd6-943d8d561622" class="">The individual multicast and its synchronization process since it is FIFO ordered.</p><p id="637dccb4-b3af-4f70-8e15-894ab677ef8f" class="">
+</p><p id="c7a53ece-9230-4784-8113-b0b0789bd160" class="">What are the permissible delivery orderings for the combination of FIFO and total-ordered multicasting in Fig. 8-15?</p><table id="37167181-1495-41a7-8250-4c5fda0f808b" class="simple-table"><tbody><tr id="82e72151-cf52-4858-b961-d211b494224c"><td id="IHgg" class="" style="width:99.66666666666667px">Order 1</td><td id="wlw:" class="" style="width:99.66666666666667px">Order 2</td><td id="rrUA" class="" style="width:99.66666666666667px">Order 3</td><td id="]~&gt;V" class="" style="width:99.66666666666667px">Order 4</td><td id="zGp?" class="" style="width:99.66666666666667px">Order 5</td><td id="FlEC" class="" style="width:99.66666666666667px">Order 6</td></tr><tr id="ae77d3a3-8d04-42bc-a911-366e832b2175"><td id="IHgg" class="" style="width:99.66666666666667px">m1</td><td id="wlw:" class="" style="width:99.66666666666667px">m1</td><td id="rrUA" class="" style="width:99.66666666666667px">m1</td><td id="]~&gt;V" class="" style="width:99.66666666666667px">m3</td><td id="zGp?" class="" style="width:99.66666666666667px">m3</td><td id="FlEC" class="" style="width:99.66666666666667px">m3</td></tr><tr id="50ea3a67-ad08-45d7-b40d-7143c836dc9a"><td id="IHgg" class="" style="width:99.66666666666667px">m2</td><td id="wlw:" class="" style="width:99.66666666666667px">m3</td><td id="rrUA" class="" style="width:99.66666666666667px">m3</td><td id="]~&gt;V" class="" style="width:99.66666666666667px">m1</td><td id="zGp?" class="" style="width:99.66666666666667px">m1</td><td id="FlEC" class="" style="width:99.66666666666667px">m4</td></tr><tr id="c61a36aa-35c8-4c55-b031-aa19973592e0"><td id="IHgg" class="" style="width:99.66666666666667px">m3</td><td id="wlw:" class="" style="width:99.66666666666667px">m2</td><td id="rrUA" class="" style="width:99.66666666666667px">m4</td><td id="]~&gt;V" class="" style="width:99.66666666666667px">m2</td><td id="zGp?" class="" style="width:99.66666666666667px">m4</td><td id="FlEC" class="" style="width:99.66666666666667px">m1</td></tr><tr id="0e77b7c8-6f61-44d2-898b-4006c6bea1fa"><td id="IHgg" class="" style="width:99.66666666666667px">m4</td><td id="wlw:" class="" style="width:99.66666666666667px">m4</td><td id="rrUA" class="" style="width:99.66666666666667px">m2</td><td id="]~&gt;V" class="" style="width:99.66666666666667px">m4</td><td id="zGp?" class="" style="width:99.66666666666667px">m2</td><td id="FlEC" class="" style="width:99.66666666666667px">m2</td></tr></tbody></table><p id="76150b35-4dc1-4443-9f8d-d1474da24c79" class="">
+</p><p id="39dffa5b-dec4-4555-8ee9-96b62d12fdb4" class=""><strong>Adapt the protocol for installing a next view G i+1 in the case of virtual syn-
+chrony so that it can tolerate process failure</strong></p><p id="e5b1d587-2c38-4acd-b6d0-3efd91cd18c8" class="">
+</p><p id="97888efb-b49f-4719-8539-971c0ce6d8ad" class="">
+</p><p id="2aca4a71-e4c6-4bed-9ce3-034029e7c6cb" class="">In the two-phase commit protocol, why can blocking never be completely
+eliminated, even when the participants elect a new coordinator?</p><p id="57ab0eb4-7438-4293-a47b-2d9651b07971" class="">Because the coordinator may be crash as well, so a new votation is started. </p><p id="649e3f6c-7558-4c40-b376-4dc96925d5e0" class="">
+</p><p id="62b615c8-6aa9-47d2-84cf-038b712e82d0" class="">In our explanation of three-phase commit, it appears that committing a
+transaction is based on majority voting. Is this true?</p><p id="10e498d6-7057-41ac-9beb-27e06fbafa20" class="">No since a cohort member will recover to a consistent state if it will needed such as a abortion. </p><p id="83ff396f-89f8-429e-a02b-3b8708de3fe8" class="">
+</p><p id="d71c2869-1d2c-4269-b237-89d8e6b59423" class="">In a piecewise deterministic execution model, is it sufficient to log only messages, or do we need to log other events as well?</p><p id="ea5c0692-a4ef-449a-9abc-ab28f054ed75" class="">We need to log every nondeterministic events such as local system calls or network calls. </p><p id="20a5a4f2-2500-4165-a65b-e44b9b7862b3" class="">
+</p><p id="5e54260e-9735-4a03-b1a4-232d28e44380" class="">Explain how the write-ahead log in distributed transactions can be used to
+recover from failures.</p><p id="2c59fd7a-2172-452d-b0c3-9b26edead743" class="">Because the log contains each read and write in transaction, we can replay the transaction to last operation.</p><p id="b70f6464-242a-4770-9937-cac10cdf05d6" class="">
+</p><p id="6f7c91a6-bf96-4b39-b6a5-9c3795f64daa" class="">Does a stateless server need to take checkpoints?</p><p id="86faf82f-5aa1-4e44-ad5d-1d1682b7910d" class="">Yes if we need local recovering.</p><p id="54d7045c-def6-42a4-a32c-858a8c144f2c" class="">
+</p><p id="fc140593-6f1c-4755-96f5-27aaf0b97ed3" class="">Receiver-based message logging is generally considered better than sender-
+based logging. Why?</p><p id="066ab382-7a83-40ea-ae2f-4351483c16a7" class="">Because the recovery depends on local data instead of the senders such that the local node doesn’t need to contact them.  </p></div></article></body></html>

@@ -1,0 +1,674 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Moral, Ethics and Politics</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="875a03f3-22ed-49ed-8aa8-26dc5c341b07" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/woodcuts_5.jpg" style="object-position:center 100%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🍀</span></div><h1 class="page-title">Moral, Ethics and Politics</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-pink">Culture</span><span class="selected-value select-value-color-pink">community</span><span class="selected-value select-value-color-red">ethics</span><span class="selected-value select-value-color-gray">moral</span></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Created</th><td><time>@December 12, 2022 1:26 PM</time></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Updated</th><td><time>@May 28, 2023 1:49 PM</time></td></tr></tbody></table></header><div class="page-body"><nav id="104dfc95-b78b-40cf-816a-27275e70d149" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ebb71506-89f8-4b01-abc5-6543006b58f4">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1810c14b-4148-4145-8752-c2194979c2b3">What is Moral? What is Ethics? What is Politics?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5eaeef18-2c97-49cb-b98b-e5bc12a6ed22">Why does Moral matter to you?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3f04d1e9-356e-4918-98f9-79d8c6ff7a21">Research</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b0c2155d-b162-4528-b576-c866689be59b">Ecosystem</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#57a5fb1a-f1e5-4ae7-9a95-1a2ec7a8a549">Story</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b5fa0f88-d886-4be6-a3c8-2bccc9ee7ebe">abc</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d2cc10a1-2d61-4944-babf-d5a07f8a24a5">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2118fd0e-4beb-4399-ae58-5a17754d546c">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6e45daf8-6d71-4b5e-9bfd-8b7fca414e54">Exercises or Projects</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b2e040aa-d3dc-4f3f-8525-17e81e4581e1">Leadership</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#12fb0e09-dd17-4568-b413-87eab22d61a3"><strong>Codes of conduct</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8d8ae059-0ecd-44e6-bc99-853c140c9ff3">Learning ethics and intellectual integrity </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f078b66e-1584-41a9-83c6-630651d7a18c"><strong>Collaboration</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f80f5391-4f59-440b-bfad-dce309571387"><strong>Citizenship</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b0b246be-9e27-4fb2-b5b6-3294928f3c8f">TODO</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bdd09f78-b9ac-48ee-b024-af34ed93cefb">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#147c3822-a433-46ad-a5cb-0062424e5156">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7301e0a4-5160-4345-8771-8115758631d0">Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#dabb1935-a73f-4610-b0da-380c61cb13ef"><strong>Professional Conduct. Focus on computing.</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#db64be5a-b53c-4a0a-9e39-cff79deb6f19">Planned obsolescence</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2bf4919d-7b98-44ba-a667-1231684335a6">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d0489ce5-8719-4e93-9135-fdffb08ab29e">Blockchain</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#88494f09-64ea-49ae-897c-5f0425e8b9f4">Licenses</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#129b1847-6ebb-43ce-bacc-a4ecf47c9891"><strong>Inclusion</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ee5cf2e4-0377-481c-87fd-1b59a93f021c">Organizations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#633720b8-f250-4852-9ffd-b868b6780d9a">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#542904ff-7a85-464b-b568-f1a02e0a50e9">State</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8de7d52d-349a-4be4-984d-61d55b7124e1">Narcotraffic</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5c04a084-3f68-497a-b7b1-7321f99b0d01">Privacy</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#81c945ec-2169-45e2-a954-8a0bf3b826bd">Corporations</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#47649ad0-4c83-4c99-987d-768df18929ca">War</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#63e385ab-2303-436c-a771-c0548abd0d74">References</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9b6ed091-7a32-49b4-b5b0-cc91cf6f88c4">Next steps</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0c649cd5-8a99-4f8b-96eb-3e08b41e3a21">TODO</a></div></nav><h1 id="ebb71506-89f8-4b01-abc5-6543006b58f4" class="">Introduction</h1><h2 id="1810c14b-4148-4145-8752-c2194979c2b3" class="">What is Moral? What is Ethics? What is Politics?</h2><h2 id="5eaeef18-2c97-49cb-b98b-e5bc12a6ed22" class="">Why does Moral matter to you?</h2><p id="fc5a1e8f-8998-4995-b003-8b0eb655630a" class="">It is not about to be ”moral high ground”.</p><h2 id="3f04d1e9-356e-4918-98f9-79d8c6ff7a21" class="">Research</h2><h2 id="b0c2155d-b162-4528-b576-c866689be59b" class="">Ecosystem</h2><p id="3bc2e913-6ea1-43e6-8b43-bc5b0c4010de" class="">Standards, jobs, industry, roles, … </p><h2 id="57a5fb1a-f1e5-4ae7-9a95-1a2ec7a8a549" class="">Story</h2><ul id="9259ed6c-5af2-4197-9bdd-c1ae0ef7d03f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">A</span><div class="indented"></div></li></ul><ul id="8366e871-2f96-475f-8b1d-1aea7d4582df" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">B</span><div class="indented"></div></li></ul><ul id="4e278c3f-1f38-4620-bfbf-42f96a64b50d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">C</span><div class="indented"></div></li></ul><p id="84d7e713-5695-4d34-82e4-e2d2a02f5bbf" class="">agaga</p><h2 id="b5fa0f88-d886-4be6-a3c8-2bccc9ee7ebe" class="">abc</h2><p id="cdaddc8a-0692-4160-ab15-f26cb8235f30" class="">
+</p><h2 id="d2cc10a1-2d61-4944-babf-d5a07f8a24a5" class="">FAQ</h2><h2 id="2118fd0e-4beb-4399-ae58-5a17754d546c" class="">Worked examples</h2><h2 id="6e45daf8-6d71-4b5e-9bfd-8b7fca414e54" class="">Exercises or Projects</h2><h1 id="b2e040aa-d3dc-4f3f-8525-17e81e4581e1" class="">Leadership</h1><p id="07ee30ba-ff79-4bda-9742-cdd6392c3c3c" class="">Not everyone is a leader, some people are contributors. </p><h1 id="12fb0e09-dd17-4568-b413-87eab22d61a3" class=""><strong>Codes of conduct</strong></h1><p id="4e48a8c7-b5c7-473d-bd53-7a19c6649354" class="">Right, wrong, and ok acts.</p><p id="c564ab66-ffb0-4bc9-9df2-6f3d025c4e49" class="">There is nothing wrong with doing honest, productive work even though some people are worse off.</p><h1 id="8d8ae059-0ecd-44e6-bc99-853c140c9ff3" class="">Learning ethics and intellectual integrity </h1><p id="b6435add-3dc3-45af-b49e-0124102ee609" class=""><strong>Honor Code [1] [5]</strong></p><p id="b06f5d9b-5508-4b7f-a037-63793e0cdb79" class="">[6] [7]</p><h2 id="f078b66e-1584-41a9-83c6-630651d7a18c" class=""><strong>Collaboration</strong></h2><h2 id="f80f5391-4f59-440b-bfad-dce309571387" class=""><strong>Citizenship</strong></h2><h2 id="b0b246be-9e27-4fb2-b5b6-3294928f3c8f" class="">TODO</h2><p id="d18617f4-d5b5-43e3-aef6-09f1857ca5a1" class=""><a href="https://cs61a.org/articles/about/">https://cs61a.org/articles/about/</a></p><h2 id="bdd09f78-b9ac-48ee-b024-af34ed93cefb" class="">Worked examples</h2><ol type="1" id="ac79c370-9fff-4610-9a6e-1d26aa3ffa2e" class="numbered-list" start="1"><li>Mathematics or Code. Automatic Verification such as Testing or Lean Proven?</li></ol><ol type="1" id="eedc14ed-1804-471f-903c-5aa36c9a2208" class="numbered-list" start="2"><li>Languages in Anki.</li></ol><h2 id="147c3822-a433-46ad-a5cb-0062424e5156" class="">FAQ</h2><h2 id="7301e0a4-5160-4345-8771-8115758631d0" class="">Notes</h2><h1 id="dabb1935-a73f-4610-b0da-380c61cb13ef" class=""><strong>Professional Conduct. Focus on computing.</strong></h1><p id="df46f978-9309-4a9e-8546-625f534e11e2" class="">[8]</p><h2 id="db64be5a-b53c-4a0a-9e39-cff79deb6f19" class="">Planned obsolescence</h2><h2 id="2bf4919d-7b98-44ba-a667-1231684335a6" class="">Worked examples</h2><figure id="54aedc0c-70f4-415a-9f52-1045b596cfb1" class="link-to-page"><a href="Assignment%2054aedc0c70f4415a9f521045b596cfb1.html">Assignment</a></figure><h2 id="d0489ce5-8719-4e93-9135-fdffb08ab29e" class="">Blockchain</h2><p id="0e2526ac-7506-4ce4-ae3d-fc37db3dedb0" class="">ISO 5001</p><figure id="fe7a2892-1ca6-41d3-8f65-82ac131db2ce" class="link-to-page"><a href="Tarea%202%201%20fe7a28921ca641d38f6582ac131db2ce.html">Tarea 2.1</a></figure><figure id="425c8883-9599-415e-aac6-389cb6b57578" class="link-to-page"><a href="Assignment%202%202%20Fracking%20425c88839599415eaac6389cb6b57578.html">Assignment 2.2 Fracking</a></figure><figure id="df94057b-82f6-4134-9b04-144b7dacd433" class="link-to-page"><a href="Assignment%202%203%20The%20end%20of%20oil%20df94057b82f641349b04144b7dacd433.html">Assignment 2.3 The end of oil</a></figure><figure id="8ac659a1-1a59-4fbf-ba06-eb9c7b316b3f" class="link-to-page"><a href="Assignment%202%204%20E-waste%208ac659a11a594fbfba06eb9c7b316b3f.html">Assignment 2.4 E-waste</a></figure><figure id="e322cc1b-4ff0-42c7-b6ac-7901fe1dca12" class="link-to-page"><a href="TAREA%20#%203%201%20%E2%80%93%20Seguridad%20y%20Privacidad%20de%20la%20Informa%20e322cc1b4ff042c7b6ac7901fe1dca12.html">TAREA # 3.1 – Seguridad y Privacidad de la Información</a></figure><figure id="c31dcc94-ceca-4b14-a36f-8b9dfa2389bb" class="link-to-page"><a href="TAREA%20#%203%203%20%E2%80%93%20Ana%CC%81lisis%20del%20documental%20%E2%80%93%20zero%20days%20c31dcc94ceca4b14a36f8b9dfa2389bb.html">TAREA # 3.3 – Análisis del documental – zero days</a></figure><p id="b30ec4a9-d110-440b-8625-d2ffa68b9a2c" class="">España, Ciucre. &quot;¡Copiad malditos! (Documental RTVE).&quot; YouTube, 18 Apr. 2011, <a href="http://www.youtube.com/watch?v=YY0i4xJss9c&amp;ab_channel=CIUCREESPA%C3%91A">www.youtube.com/watch?v=YY0i4xJss9c&amp;ab_channel=CIUCREESPAÑA</a>.</p><figure id="ab22c4d6-7f26-4e68-8138-1667cbefd261" class="link-to-page"><a href="Resumen%20y%20opiniones%20de%20%C2%A1Copiad%20malditos!%20ab22c4d67f264e6881381667cbefd261.html">Resumen y opiniones de ¡Copiad malditos!</a></figure><figure id="6c3ecf83-9420-4192-92e7-48b25c6509b2" class="link-to-page"><a href="La%20guerra%20de%20las%20patentes%206c3ecf839420419292e748b25c6509b2.html">La guerra de las patentes</a></figure><figure id="9df292a4-3aaa-4f45-b227-734d2edcb364" class="link-to-page"><a href="E%CC%81tica%20de%20la%20computacio%CC%81n%209df292a43aaa4f45b227734d2edcb364.html">Ética de la computación</a></figure><figure id="9af38e1e-739a-47fd-adf0-1833d773ce0f" class="link-to-page"><a href="Sobre%20%C2%ABEs%20La%20Hora%20de%20Opinar%20Inteligencia%20Artificia%209af38e1e739a47fdadf01833d773ce0f.html">Sobre «Es La Hora de Opinar: Inteligencia Artificial, su avance, así como sus mitos y realidades.»</a></figure><h2 id="88494f09-64ea-49ae-897c-5f0425e8b9f4" class="">Licenses</h2><p id="d3c0b81e-2db9-45cd-a49b-61582fb6b3a7" class="">Programming Language and ecosystem</p><p id="7c46527d-ecc8-4ed3-8c3a-b376508643a1" class="">API licenses</p><p id="cfaba839-00f7-4f57-8e50-1dbdcc348d0c" class="">Software Package Data Exchange</p><p id="e878dc4c-e967-41e0-91e9-e5d0b1b8dbe9" class="">Machine Learning models</p><p id="b6aaf1d4-16b9-4afa-8fa5-621ad3a9b790" class="">Data</p><p id="da228dd5-ffa7-44c8-a31e-d6b3bf0132d1" class="">Industry considerations</p><p id="fee8de66-affa-4ba7-85d1-f6229c020072" class=""><a href="https://medium.com/@vovabilonenko/licenses-of-npm-dependencies-bacaa00c8c65">Packages licences</a></p><p id="c2a6a33c-e648-430a-a544-79c3ec4d20ae" class="">Open source</p><figure id="ac1872ab-ce90-4cad-8e98-bc30882faad3" class="link-to-page"><a href="Software%20libre%20y%20licencias%20de%20software%20ac1872abce904cad8e98bc30882faad3.html">Software libre y licencias de software</a></figure><figure id="3d23b55c-bb11-4978-adbb-070e62a954f0" class="link-to-page"><a href="The%20Code%203d23b55cbb114978adbb070e62a954f0.html">The Code</a></figure><p id="ecd8ec43-3aa7-48f0-bc94-8c7c13ba127f" class=""><strong>Robert Kearns</strong></p><p id="0b27772b-a047-40a3-aa85-143d40f2d650" class=""><strong>Non-obviousness in United States patent law</strong></p><h1 id="129b1847-6ebb-43ce-bacc-a4ecf47c9891" class=""><strong>Inclusion</strong></h1><h1 id="ee5cf2e4-0377-481c-87fd-1b59a93f021c" class="">Organizations</h1><h2 id="633720b8-f250-4852-9ffd-b868b6780d9a" class="">FAQ</h2><p id="68956c80-2b86-4037-89e6-b09894ce739a" class=""><strong>Are Corporations Moral Agents?</strong></p><p id="1e979ea6-1cf8-45fb-8f56-d5a38a1c6eef" class=""><a href="https://blog.practicalethics.ox.ac.uk/2015/12/are-corporations-moral-agents/">https://blog.practicalethics.ox.ac.uk/2015/12/are-corporations-moral-agents/</a></p><h1 id="542904ff-7a85-464b-b568-f1a02e0a50e9" class="">State</h1><h2 id="8de7d52d-349a-4be4-984d-61d55b7124e1" class="">Narcotraffic</h2><h1 id="5c04a084-3f68-497a-b7b1-7321f99b0d01" class="">Privacy</h1><p id="ab9d00a2-6f7a-4270-87b9-c183f0401cfe" class="">ISO 27000</p><p id="de2c0012-14f5-4ac1-9611-5953c856eb00" class=""><strong>Zimmermann Telegram</strong></p><p id="232b94b7-b48c-4afd-bf49-e6fd8dbf16c5" class="">GDPR</p><p id="efc4a8d9-ac49-45d8-a734-61fc2ea2ec91" class="">CCPA</p><p id="a102064b-7e81-4672-9d58-c704c56c5537" class="">INAI</p><p id="4bb6261b-c598-4980-898a-b2121229aab9" class=""><strong>1:30min</strong> - IoT dentro de tu casa [CES]</p><p id="c2757d6b-e503-4891-b556-fffe4cbaa969" class=""><strong>6:25min</strong> - IoT dentro de tu cuerpo (Kegg [Kristina Cahojova ], Apnea del Sueño [Eric Umansky]</p><p id="74fd01ce-d905-4873-a05b-06ba21e2fa18" class=""><strong>13:00min</strong> IoT y la violencia doméstica y abuso tecnológico [Ferial Nijem])</p><p id="2a43df1c-3096-4ef9-8e3e-a60060aede3a" class=""><strong>22:24min</strong> - Sistema de crédito social [China]</p><p id="892aed96-a7ce-4be2-941d-b4a8566a1863" class=""><strong>25:40min</strong> - Policia Predictiva [Vancouver, Los Angeles]</p><p id="e5210f6d-f06e-45db-8721-3c0f4021a39c" class=""><strong>32:15min</strong> - Sidewalk Labs [Google]</p><p id="b1c456d3-709e-4104-8653-44725f6182f8" class=""><strong>37:40min</strong> - FAB LAB Smart Citizen [Barcelona]</p><figure id="9c14d966-c984-41f1-a5a5-5547d70b93b2" class="link-to-page"><a href="The%20Internet%20of%20Everything%209c14d966c98441f1a5a55547d70b93b2.html">The Internet of Everything</a></figure><p id="94655502-490a-4556-8973-aafd433e85ac" class="">Jabiertzo. &quot;PROBANDO el SISTEMA de CRÉDITO SOCIAL de CHINA.&quot; 22 May. 2019, <a href="http://www.youtube.com/watch?v=Zj2d1xesbRI&amp;t=567s&amp;ab_channel=Jabiertzo">www.youtube.com/watch?v=Zj2d1xesbRI&amp;t=567s&amp;ab_channel=Jabiertzo</a>.</p><h1 id="81c945ec-2169-45e2-a954-8a0bf3b826bd" class="">Corporations</h1><p id="87bff2dc-e1a6-4bf4-b28b-6d7e494b1374" class=""><strong>Smedley Butler</strong></p><p id="4550d3f9-fba2-46eb-81d7-99dc16d5a54a" class=""><strong>Business Plot</strong></p><h1 id="47649ad0-4c83-4c99-987d-768df18929ca" class="">War</h1><p id="4d9f0e8b-0ea0-4956-a2e8-0a2fc141f804" class=""><em><strong>War Is a Racket</strong></em></p><h1 id="63e385ab-2303-436c-a771-c0548abd0d74" class="">References</h1><p id="e080f3a0-3749-4d1c-8dd5-be444e436bbe" class="">[1] Policies. (2022, December 07). Retrieved from <a href="https://inst.eecs.berkeley.edu/~cs188/fa22/policies/#prerequisites">https://inst.eecs.berkeley.edu/~cs188/fa22/policies/#prerequisites</a></p><p id="4365db47-ca3f-41a0-8366-e3ddf04911a3" class="">[2] Fridman, L. (2022, December 12). Ed Calderon: Mexican Drug Cartels | Lex Fridman Podcast #346. Youtube. Retrieved from <a href="https://www.youtube.com/watch?v=9PIOoJMMptA&amp;ab_channel=LexFridman">https://www.youtube.com/watch?v=9PIOoJMMptA&amp;ab_channel=LexFridman</a></p><p id="8b8715f4-f4e5-4abc-ba60-5c446ea82992" class="">[3] Fridman, L. (2020, July 08). Peter Singer: Suffering in Humans, Animals, and AI | Lex Fridman Podcast #107. Youtube. Retrieved from <a href="https://www.youtube.com/watch?v=llh-2pqSGrs&amp;ab_channel=LexFridman">https://www.youtube.com/watch?v=llh-2pqSGrs&amp;ab_channel=LexFridman</a></p><p id="bd284483-f6e0-4ea0-bfaa-b3366a83ec26" class="">[4] Honor Code &amp; Community Standards. (2023, January 02). Retrieved from <a href="https://www.deans.caltech.edu/HonorCode">https://www.deans.caltech.edu/HonorCode</a></p><p id="64ca267f-ce36-4ae8-8b73-54a3c322a1b4" class="">[5] Principles of Community | Diversity, Equity, Inclusion, Belonging, &amp; Justice. (2023, January 02). Retrieved from <a href="https://diversity.berkeley.edu/principles-community">https://diversity.berkeley.edu/principles-community</a></p><p id="df73f534-fa8f-4a8c-aca1-c287b9702fed" class="">[6] 6.009 Spring 2019. (2023, January 13). Retrieved from <a href="https://py.mit.edu/spring19/information">https://py.mit.edu/spring19/information</a></p><p id="cefad921-cbfc-4282-ab89-eb6951d431fb" class="">[7] What is Academic Integrity? | Academic Integrity at MIT. (2023, January 13). Retrieved from <a href="https://integrity.mit.edu/">https://integrity.mit.edu</a></p><p id="f23e0bba-8ffa-49ea-818a-170b635adb85" class="">[8] ACM Code of Ethics and Professional Conduct. (2023, January 13). Retrieved from <a href="https://ethics.acm.org/#h-1.-general-ethical-principles">https://ethics.acm.org/#h-1.-general-ethical-principles</a>.</p><p id="3258cba9-a82b-48e6-9999-9a877827efbf" class="">[9] A Gift of Fire: Social, Legal, and Ethical Issues for Computing Technology by Sara Baase.</p><p id="93d81714-8296-40cb-b1b6-7bccce1f78e6" class="">Deontology or the Science of Morality,Jeremy Bentham.</p><p id="f0adf28c-68d2-4bda-985b-7f93d742d836" class=""><a href="https://ethicsunwrapped.utexas.edu/glossary/deontology">https://ethicsunwrapped.utexas.edu/glossary/deontology</a></p><p id="884e6895-0120-4a10-bc42-5f577f510396" class="">Ethics Unwrapped - Beyond Business Ethics - UT Austin. (2023, February 20). Retrieved from <a href="https://ethicsunwrapped.utexas.edu/">https://ethicsunwrapped.utexas.edu</a></p><p id="8b0a836f-88b0-4b3c-9d76-04d8ab9b7deb" class=""><a href="https://link.springer.com/content/pdf/10.1007/0-387-23120-X_9.pdf">https://link.springer.com/content/pdf/10.1007/0-387-23120-X_9.pdf</a></p><h1 id="9b6ed091-7a32-49b4-b5b0-cc91cf6f88c4" class="">Next steps</h1><h1 id="0c649cd5-8a99-4f8b-96eb-3e08b41e3a21" class="">TODO</h1><p id="25ae8afb-4533-4079-9ce3-b0ed690c0d6d" class="">[2] “Nobody is against you. They are for themselves. Don’t take things personally.” </p><p id="062661e8-9a07-416b-b371-5398dbff78f9" class="">[3] “How willing you are to do the right thing when the cost is high or the benefit is great?”</p><p id="bd64f342-5d22-4b52-8b02-1aeb652fff81" class="">If we believe some X is true and good, should we fight with others when they doing no X?</p><p id="52304a7a-aece-4777-95a5-2b090ecbcc8c" class="">Tribus and communities. </p><p id="d2137a91-0761-4adb-b9d9-2b54957c50fb" class=""><strong>Therac-25</strong></p><p id="1e04c920-b9cc-4668-a0b7-0d88d2312dee" class=""><a href="https://www.youtube.com/watch?v=l7tWoPk25yU&amp;ab_channel=KyleHill">https://www.youtube.com/watch?v=l7tWoPk25yU&amp;ab_channel=KyleHill</a></p></div></article></body></html>

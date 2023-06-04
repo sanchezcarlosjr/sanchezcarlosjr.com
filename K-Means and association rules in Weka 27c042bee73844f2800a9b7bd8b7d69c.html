@@ -213,7 +213,7 @@ ul > li {
 }
 
 ul.to-do-list {
-	text-indent: -1.7em;
+	padding-inline-start: 0;
 }
 
 ul.to-do-list > li {
@@ -281,6 +281,10 @@ ol > li {
 .collection-title {
 	display: inline-block;
 	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
 }
 
 .simple-table {
@@ -641,7 +645,7 @@ blockquote {
 .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
 .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
 .select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
 .select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
 .select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
 .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
@@ -666,7 +670,7 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="27c042be-e738-44f2-800a-9b7bd8b7d69c" class="page sans"><header><h1 class="page-title">K-Means and association rules in Weka</h1></header><div class="page-body"><nav id="f5232361-71e3-4707-995d-ee597313da12" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9dfb6a30-e839-4de4-ae60-111a30c6bb35">K-Means</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d24ef411-4d06-489b-afc0-92e46dd95b07">Association rules</a></div></nav><h1 id="9dfb6a30-e839-4de4-ae60-111a30c6bb35" class="">K-Means</h1><p id="5d5b692d-23a0-4bec-983d-e49e85033728" class="">We analyze agricultural datasets from New Zealand with K-Means (<a href="https://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar">https://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar</a>), in particular, we will group the eucalyptus dataset.</p><pre id="58872540-b6dc-414c-a6a2-08daf1c7785c" class="code"><code>% Attribute Information:
+</style></head><body><article id="27c042be-e738-44f2-800a-9b7bd8b7d69c" class="page sans"><header><h1 class="page-title">K-Means and association rules in Weka</h1><p class="page-description"></p></header><div class="page-body"><nav id="f5232361-71e3-4707-995d-ee597313da12" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9dfb6a30-e839-4de4-ae60-111a30c6bb35">K-Means</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d24ef411-4d06-489b-afc0-92e46dd95b07">Association rules</a></div></nav><h1 id="9dfb6a30-e839-4de4-ae60-111a30c6bb35" class="">K-Means</h1><p id="5d5b692d-23a0-4bec-983d-e49e85033728" class="">We analyze agricultural datasets from New Zealand with K-Means (<a href="https://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar">https://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar</a>), in particular, we will group the eucalyptus dataset.</p><pre id="58872540-b6dc-414c-a6a2-08daf1c7785c" class="code"><code>% Attribute Information:
 %  1.  Abbrev - site abbreviation - enumerated
 %  2.  Rep - site rep - integer
 %  3.  Locality - site locality in the North Island - enumerated
@@ -685,8 +689,8 @@ blockquote {
 %  16. Ins_res - insect resistance - real
 %  17. Stem_Fm - stem form - real
 %  18. Crown_Fm - crown form - real
-%  19. Brnch_Fm - branch form - real</code></pre><p id="d542c78c-f4f1-42ef-b763-362157b5be84" class="">Since K-Means’ input are continuous features, our analysis starts by choosing the best diameter base height (DBH) and height (Ht) features. However, they have different units and missing values first, we’ll apply the filter “remove missing values”, “a mathematical expression” and “normalization” in order to keep away bad results.</p><figure id="7260bb27-6972-4468-a9ee-b9cf97e13042" class="image"><a href="Untitled%20238.png"><img style="width:1357px" src="Untitled%20238.png"/></a><figcaption>DBH to meters</figcaption></figure><p id="abfcb4c3-6c0a-4b9e-be76-2007b9128a81" class=""><strong>Analysis</strong></p><figure id="f8456835-d4b7-4be1-afd3-6be8a66822b7" class="image"><a href="Untitled%20239.png"><img style="width:1357px" src="Untitled%20239.png"/></a></figure><p id="78ffc014-de1e-43f5-b596-1234461eb57b" class="">
-</p><figure id="76a234bd-873c-44db-b27a-2a85004ee3b3" class="image"><a href="Untitled%20240.png"><img style="width:1357px" src="Untitled%20240.png"/></a><figcaption>HT and DBH </figcaption></figure><p id="d3972061-ed34-446e-ac58-410a44b4a5a4" class="">69% of clustered instances belong to cluster 1 and 31% of clustered instances belong to cluster 0, but our plot said another thing, instances are really close, so, a simple K-Means algorithm is unuseful, it doesn’t help to segment instances.</p><h1 id="d24ef411-4d06-489b-afc0-92e46dd95b07" class="">Association rules</h1><p id="b1532e35-c36d-4aa9-a505-eebeb6dfafff" class="">We start from zero opening again our dataset. </p><p id="ecd2340d-9acd-4dee-912b-28b4830bf48c" class="">Association rules algorithms’ inputs are categorical variables, so we discretize first. </p><figure id="77f432ea-3f99-42f5-b3e1-aae942e222f9" class="image"><a href="Untitled%20241.png"><img style="width:1357px" src="Untitled%20241.png"/></a></figure><p id="4c089132-ac0d-48eb-8ebb-2f6c6223a804" class="">We’re associating attributes by choosing the <strong>Apriori</strong> algorithm.</p><figure id="aec34442-68b4-4689-9d50-2faa935c18a6" class="image"><a href="Untitled%20242.png"><img style="width:1357px" src="Untitled%20242.png"/></a></figure><p id="418c0075-9bf8-44cd-ae45-0f9ab3a96879" class="">The rules are the following:</p><pre id="884a5f4a-15ac-4295-b4e2-9ce3d0e627fd" class="code"><code>1. Frosts=&#x27;(-inf--2.9]&#x27; 430 ==&gt; Rep=&#x27;(-inf-3.1]&#x27; 430    &lt;conf:(1)&gt; lift:(1) lev:(0) [0] conv:(0.58)
+%  19. Brnch_Fm - branch form - real</code></pre><p id="d542c78c-f4f1-42ef-b763-362157b5be84" class="">Since K-Means’ input are continuous features, our analysis starts by choosing the best diameter base height (DBH) and height (Ht) features. However, they have different units and missing values first, we’ll apply the filter “remove missing values”, “a mathematical expression” and “normalization” in order to keep away bad results.</p><figure id="7260bb27-6972-4468-a9ee-b9cf97e13042" class="image"><a href="Untitled%20216.png"><img style="width:1357px" src="Untitled%20216.png"/></a><figcaption>DBH to meters</figcaption></figure><p id="abfcb4c3-6c0a-4b9e-be76-2007b9128a81" class=""><strong>Analysis</strong></p><figure id="f8456835-d4b7-4be1-afd3-6be8a66822b7" class="image"><a href="Untitled%20217.png"><img style="width:1357px" src="Untitled%20217.png"/></a></figure><p id="78ffc014-de1e-43f5-b596-1234461eb57b" class="">
+</p><figure id="76a234bd-873c-44db-b27a-2a85004ee3b3" class="image"><a href="Untitled%20218.png"><img style="width:1357px" src="Untitled%20218.png"/></a><figcaption>HT and DBH </figcaption></figure><p id="d3972061-ed34-446e-ac58-410a44b4a5a4" class="">69% of clustered instances belong to cluster 1 and 31% of clustered instances belong to cluster 0, but our plot said another thing, instances are really close, so, a simple K-Means algorithm is unuseful, it doesn’t help to segment instances.</p><h1 id="d24ef411-4d06-489b-afc0-92e46dd95b07" class="">Association rules</h1><p id="b1532e35-c36d-4aa9-a505-eebeb6dfafff" class="">We start from zero opening again our dataset. </p><p id="ecd2340d-9acd-4dee-912b-28b4830bf48c" class="">Association rules algorithms’ inputs are categorical variables, so we discretize first. </p><figure id="77f432ea-3f99-42f5-b3e1-aae942e222f9" class="image"><a href="Untitled%20219.png"><img style="width:1357px" src="Untitled%20219.png"/></a></figure><p id="4c089132-ac0d-48eb-8ebb-2f6c6223a804" class="">We’re associating attributes by choosing the <strong>Apriori</strong> algorithm.</p><figure id="aec34442-68b4-4689-9d50-2faa935c18a6" class="image"><a href="Untitled%20220.png"><img style="width:1357px" src="Untitled%20220.png"/></a></figure><p id="418c0075-9bf8-44cd-ae45-0f9ab3a96879" class="">The rules are the following:</p><pre id="884a5f4a-15ac-4295-b4e2-9ce3d0e627fd" class="code"><code>1. Frosts=&#x27;(-inf--2.9]&#x27; 430 ==&gt; Rep=&#x27;(-inf-3.1]&#x27; 430    &lt;conf:(1)&gt; lift:(1) lev:(0) [0] conv:(0.58)
 2. Frosts=&#x27;(-inf--2.9]&#x27; 430 ==&gt; DBH=&#x27;(-inf-4209.022]&#x27; 430    &lt;conf:(1)&gt; lift:(1) lev:(0) [0] conv:(0.58)
 3. Frosts=&#x27;(-inf--2.9]&#x27; DBH=&#x27;(-inf-4209.022]&#x27; 430 ==&gt; Rep=&#x27;(-inf-3.1]&#x27; 430    &lt;conf:(1)&gt; lift:(1) lev:(0) [0] conv:(0.58)
 4. Rep=&#x27;(-inf-3.1]&#x27; Frosts=&#x27;(-inf--2.9]&#x27; 430 ==&gt; DBH=&#x27;(-inf-4209.022]&#x27; 430    &lt;conf:(1)&gt; lift:(1) lev:(0) [0] conv:(0.58)

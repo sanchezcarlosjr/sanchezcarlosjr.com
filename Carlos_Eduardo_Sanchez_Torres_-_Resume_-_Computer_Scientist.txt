@@ -1,0 +1,98 @@
+Carlos Eduardo  Sánchez Torres
+Computer Scientist
+
+Ensenada
+
+I'm an experienced computer scientist with expertise in web-based software development. Skilled at making critical decisions and collaborating with teams to deliver high-quality software. Passionate about using my skills to advance human knowledge.
+
+PERSONAL INFORMATION
+  Address: , Ensenada, 
+  Date of birth:  
+  Nationality: 
+  Driving License: 
+  Hobbies: I enjoy reading books on computer science, mathematics, and epistemology.
+
+SOCIAL PROFILES
+  * LinkedIn: https://x.sanchezcarlosjr.com/linkedin
+  * GitHub: https://x.sanchezcarlosjr.com/github
+  * YouTube: https://x.sanchezcarlosjr.com/youtube
+  * Web: https://sanchezcarlosjr.com/
+  * Computer science notes: https://x.sanchezcarlosjr.com/computer-science
+
+LANGUAGES
+  ★★★★☆ English B2
+
+SKILLS
+  Node.js
+  React
+  JavaScript
+  HTML & CSS
+  Docker
+  C++
+  SQL
+  Linux
+  Git
+  Software Engineering
+  Object-oriented design
+  Algorithm design
+  Data structures
+  Bash
+
+WORK EXPERIENCE
+  * January 2023 – June 2023
+    Intern at CICESE, Ensenada
+      Spearheaded the development of Eva Notebook, a novel peer-to-peer browser notebook.
+
+  Aimed at enabling agile AI system development.
+  The project was instrumental in empowering distributed agents to manipulate their environment.
+  Facilitated the exploration and testing of innovative ideas.
+
+Code, Demo.
+
+  * January 2023 – June 2023
+    Intern at Hospital General de Ensenada, Ensenada
+      Played a pivotal role in creating MexicanPACS, a unique software solution.
+
+
+  Played a pivotal role in creating MexicanPACS, a unique software solution.
+  Equipped doctors with the ability to predict breast cancer risk in patients.
+  Utilized the DICOM standard, Deep Learning, and Image Processing for accurate estimates.
+
+Docs.
+
+  * November 2020 – July 2021
+    Software engineer at  UABC, Remote work
+      Collaborated with Dr. Kubo to architect a business intelligence system.
+
+  Aimed at delivering valuable research insights for UABC.
+  Employed technologies such as Laravel, React, GraphQL, Docker, and PostgreSQL.
+  Demonstrated versatility and adaptability in design and execution.
+
+
+Demo, Code, and Docs.
+
+
+EDUCATION
+  * July 2019 – Present
+    UABC, Ensenada B.Sc. Computer science
+
+    
+
+  Successfully accomplished comprehensive coursework encompassing key areas such as data structures, algorithms, and computer systems, strengthening foundational knowledge and technical acumen.
+  Developed a thorough and insightful thesis offering significant contributions to Investment Portfolio. The thesis can be accessed here.
+
+  * July 2022 – August 2022
+    CINESTAV, Mexico City Research summer, Evolutionary algorithms
+
+    
+  Actively participated in the prestigious Programa Delfín at CINESTAV in 2022, under the guidance of Dr. Carlos Coello.
+  Delved into the complexities of Evolutionary Algorithms with a focus on leveraging them to tackle optimization problems effectively.
+  Developed a demonstrative application to showcase the practical usage of these algorithms.
+
+
+Demo.
+
+SIDE-PROJECTS
+  * Projects and research in a nutshell, , June 2020 – Present
+
+    Demos, docs, and code.

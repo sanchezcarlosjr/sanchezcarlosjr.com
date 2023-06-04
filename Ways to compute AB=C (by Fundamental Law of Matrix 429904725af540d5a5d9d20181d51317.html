@@ -213,7 +213,7 @@ ul > li {
 }
 
 ul.to-do-list {
-	text-indent: -1.7em;
+	padding-inline-start: 0;
 }
 
 ul.to-do-list > li {
@@ -281,6 +281,10 @@ ol > li {
 .collection-title {
 	display: inline-block;
 	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
 }
 
 .simple-table {
@@ -641,7 +645,7 @@ blockquote {
 .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
 .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
 .select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
 .select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
 .select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
 .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
@@ -666,4 +670,4 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="42990472-5af5-40d5-a5d9-d20181d51317" class="page sans"><header><h1 class="page-title">Ways to compute AB=C (by Fundamental Law of Matrix Multiplication and dot product).The entry in row i and column j of AB is (row i of A)*(row j of B).             If A and B are n by n, so is AB. It contains n^2 dot products, rows of A times column of B. Each               dot product needs n multiplications, so the computation of AB uses n^3 multiplications. Matrix A times every column of B (the column picture of AB) A[b1...bn]= [Ab1..Abn]Every row of A times matrix B [row i of A]B = [row i of AB].Columns multiply rows. AB = (col 1)(col 2) + (col 2)(row 2) + (col 3)(row 3)</h1></header><div class="page-body"></div></article></body></html>
+</style></head><body><article id="42990472-5af5-40d5-a5d9-d20181d51317" class="page sans"><header><h1 class="page-title">Ways to compute AB=C (by Fundamental Law of Matrix Multiplication and dot product).The entry in row i and column j of AB is (row i of A)*(row j of B).             If A and B are n by n, so is AB. It contains n^2 dot products, rows of A times column of B. Each               dot product needs n multiplications, so the computation of AB uses n^3 multiplications. Matrix A times every column of B (the column picture of AB) A[b1...bn]= [Ab1..Abn]Every row of A times matrix B [row i of A]B = [row i of AB].Columns multiply rows. AB = (col 1)(col 2) + (col 2)(row 2) + (col 3)(row 3)</h1><p class="page-description"></p></header><div class="page-body"></div></article></body></html>

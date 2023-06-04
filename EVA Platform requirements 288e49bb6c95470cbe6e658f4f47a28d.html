@@ -1,0 +1,673 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>EVA Platform requirements</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="288e49bb-6c95-470c-be6e-658f4f47a28d" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/webb3.jpg" style="object-position:center 50%"/><h1 class="page-title">EVA Platform requirements</h1><p class="page-description"></p></header><div class="page-body"><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesPerson"><path d="M10.9536 7.90088C12.217 7.90088 13.2559 6.79468 13.2559 5.38525C13.2559 4.01514 12.2114 2.92017 10.9536 2.92017C9.70142 2.92017 8.65137 4.02637 8.65698 5.39087C8.6626 6.79468 9.69019 7.90088 10.9536 7.90088ZM4.4231 8.03003C5.52368 8.03003 6.42212 7.05859 6.42212 5.83447C6.42212 4.63843 5.51245 3.68945 4.4231 3.68945C3.33374 3.68945 2.41846 4.64966 2.41846 5.84009C2.42407 7.05859 3.32251 8.03003 4.4231 8.03003ZM1.37964 13.168H5.49561C4.87231 12.292 5.43384 10.6074 6.78711 9.51807C6.18628 9.14746 5.37769 8.87231 4.4231 8.87231C1.95239 8.87231 0.262207 10.6917 0.262207 12.1628C0.262207 12.7974 0.548584 13.168 1.37964 13.168ZM7.50024 13.168H14.407C15.4009 13.168 15.7322 12.8423 15.7322 12.2864C15.7322 10.8489 13.8679 8.88354 10.9536 8.88354C8.04492 8.88354 6.17505 10.8489 6.17505 12.2864C6.17505 12.8423 6.50635 13.168 7.50024 13.168Z"></path></svg></span>Assign</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesStatus"><path d="M8.75488 1.02344C8.75488 0.613281 8.41309 0.264648 8.00293 0.264648C7.59277 0.264648 7.25098 0.613281 7.25098 1.02344V3.11523C7.25098 3.51855 7.59277 3.86719 8.00293 3.86719C8.41309 3.86719 8.75488 3.51855 8.75488 3.11523V1.02344ZM3.91504 5.0293C4.20215 5.31641 4.69434 5.32324 4.97461 5.03613C5.26855 4.74902 5.26855 4.25684 4.98145 3.96973L3.53906 2.52051C3.25195 2.2334 2.7666 2.21973 2.47949 2.50684C2.19238 2.79395 2.18555 3.28613 2.47266 3.57324L3.91504 5.0293ZM10.9629 4.01758C10.6826 4.30469 10.6826 4.79688 10.9697 5.08398C11.2568 5.37109 11.749 5.36426 12.0361 5.07715L13.4854 3.62793C13.7725 3.34082 13.7725 2.84863 13.4785 2.55469C13.1982 2.27441 12.7061 2.27441 12.4189 2.56152L10.9629 4.01758ZM15.0234 8.78906C15.4336 8.78906 15.7822 8.44727 15.7822 8.03711C15.7822 7.62695 15.4336 7.28516 15.0234 7.28516H12.9385C12.5283 7.28516 12.1797 7.62695 12.1797 8.03711C12.1797 8.44727 12.5283 8.78906 12.9385 8.78906H15.0234ZM0.975586 7.28516C0.56543 7.28516 0.223633 7.62695 0.223633 8.03711C0.223633 8.44727 0.56543 8.78906 0.975586 8.78906H3.07422C3.48438 8.78906 3.83301 8.44727 3.83301 8.03711C3.83301 7.62695 3.48438 7.28516 3.07422 7.28516H0.975586ZM12.0361 10.9902C11.749 10.71 11.2568 10.71 10.9629 10.9971C10.6826 11.2842 10.6826 11.7764 10.9697 12.0635L12.4258 13.5127C12.7129 13.7998 13.2051 13.793 13.4922 13.5059C13.7793 13.2256 13.7725 12.7266 13.4854 12.4395L12.0361 10.9902ZM2.52051 12.4395C2.22656 12.7266 2.22656 13.2188 2.50684 13.5059C2.79395 13.793 3.28613 13.7998 3.57324 13.5127L5.02246 12.0703C5.31641 11.7832 5.31641 11.291 5.03613 11.0039C4.74902 10.7168 4.25684 10.71 3.96973 10.9971L2.52051 12.4395ZM8.75488 12.9658C8.75488 12.5557 8.41309 12.207 8.00293 12.207C7.59277 12.207 7.25098 12.5557 7.25098 12.9658V15.0576C7.25098 15.4609 7.59277 15.8096 8.00293 15.8096C8.41309 15.8096 8.75488 15.4609 8.75488 15.0576V12.9658Z"></path></svg></span>Status</th></tr></thead><tbody><tr id="c522e4e3-edca-49ec-9dd8-f07140e0bd89"><td class="cell-title"><a href="Filesystem%20decentralized%20c522e4e3edca49ec9dd8f07140e0bd89.html">Filesystem decentralized</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="368d32a7-ea30-4f8c-9452-c7a1aeea8f5d"><td class="cell-title"><a href="Block%20changes%20on%20a%20block%20368d32a7ea304f8c9452c7a1aeea8f5d.html">Block changes on a block</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="db71b617-8d35-42cf-8670-638922919bc1"><td class="cell-title"><a href="AutoGPT%20+%20Eva%20db71b6178d3542cf8670638922919bc1.html">AutoGPT + Eva</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>In progress</span></td></tr><tr id="8f27a6a0-d204-4695-9522-9ca84b7af53b"><td class="cell-title"><a href="Image%20base64%20to%20Array%20Bytes%208f27a6a0d204469595229ca84b7af53b.html">Image base64 to Array Bytes</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="41c91cb8-fa43-4e38-b0d6-7c88db937cad"><td class="cell-title"><a href="Instead%20of%20MQTT,%20using%20WebRTC%20or%20Real%20Time%20Streami%2041c91cb8fa434e38b0d67c88db937cad.html">Instead of MQTT, using WebRTC or Real Time Streaming Protocol to send files</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="6bb63286-db3b-4a54-9270-9a32c94fd459"><td class="cell-title"><a href="WebAssembly%206bb63286db3b4a5492709a32c94fd459.html">WebAssembly</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="36c946ab-4784-4ad6-8adf-ee8f7ead8c8f"><td class="cell-title"><a href="Implement%20other%20languages%2036c946ab47844ad68adfee8f7ead8c8f.html">Implement other languages</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="f11aa0a0-c87b-4a9a-985f-71355cc27936"><td class="cell-title"><a href="Twilio%20to%20some%20open-source%20alternative%20f11aa0a0c87b4a9a985f71355cc27936.html">Twilio to some open-source alternative</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="0329645e-e207-4d6e-b6f5-615338dde37a"><td class="cell-title"><a href="Matrix%20replication%200329645ee2074d6eb6f5615338dde37a.html">Matrix replication</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="502d6578-e611-4df1-850e-7873d3afc5dc"><td class="cell-title"><a href="Transform%20notebook%20into%20extensible%20knowledge%20base%20%20502d6578e6114df1850e7873d3afc5dc.html">Transform notebook into extensible knowledge base with same principles</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="d46c3b6d-89bd-44f7-b82f-a57424097755"><td class="cell-title"><a href="Led%20animation%20d46c3b6d89bd44f7b82fa57424097755.html">Led animation</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="5a0cb78a-2e93-4c29-9a6f-0c6659eeb5fc"><td class="cell-title"><a href="Wizard%20of%20Oz%20control%20panel%205a0cb78a2e934c299a6f0c6659eeb5fc.html">Wizard of Oz control panel</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="5a6956e0-c9cd-4c80-9cdc-109934a7702e"><td class="cell-title"><a href="Improve%20developer%20experience%20with%20JSON%20forms%205a6956e0c9cd4c809cdc109934a7702e.html">Improve developer experience with JSON forms</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="f4ffd6e5-0c1d-4ce7-8aff-aab86831ea90"><td class="cell-title"><a href="Integrate%20correctly%20Angular%20Material%20f4ffd6e50c1d4ce78affaab86831ea90.html">Integrate correctly Angular Material</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="bce3707d-3202-4b0c-8ac3-d405cc4f1e03"><td class="cell-title"><a href="Notebook%20Table%20of%20contents%20bce3707d32024b0c8ac3d405cc4f1e03.html">Notebook Table of contents</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="89411bd7-ba1f-4e90-9384-c5ee097cf5ae"><td class="cell-title"><a href="It%20must%20support%20raw%20sockets%2089411bd7ba1f4e909384c5ee097cf5ae.html">It must support raw sockets</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="ac0ca633-3be8-44fa-ba46-986ee9fc05b1"><td class="cell-title"><a href="QUIC%20protocol%20ac0ca6333be844faba46986ee9fc05b1.html">QUIC protocol</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="91546e65-e363-44e4-8a47-a7ef9064dffe"><td class="cell-title"><a href="Web%20bluetooth%20protocol%2091546e65e36344e48a47a7ef9064dffe.html">Web bluetooth protocol</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="40f7cb20-6db1-4c9c-8669-f2d68a84a05c"><td class="cell-title"><a href="SSL%20Broker%2040f7cb206db14c9c8669f2d68a84a05c.html">SSL Broker</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="2e4ad09f-e47d-4eff-8a26-4a13216e9d8e"><td class="cell-title"><a href="Unit%20Testing%20evaluation%202e4ad09fe47d4eff8a264a13216e9d8e.html">Unit Testing evaluation</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="debe6e9e-8ba9-4b51-86dc-c3df8bec7468"><td class="cell-title"><a href="Button%20grid%20in%20form%20debe6e9e8ba94b5186dcc3df8bec7468.html">Button grid in form</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="0cb22aca-2cd7-44b7-ab99-d235ac2b599f"><td class="cell-title"><a href="Khan%20Academy%20-%20Evaluation%200cb22aca2cd744b7ab99d235ac2b599f.html">Khan Academy - Evaluation</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="7d8b1602-c123-4716-88b0-52191b4adfe2"><td class="cell-title"><a href="We%20can%20use%20previous%20work%20with%20docker%20Adrian%207d8b1602c123471688b052191b4adfe2.html">We can use previous work with docker. Adrian.</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="77918ebd-9161-4058-9ea0-10756986e849"><td class="cell-title"><a href="Download%20replication%2077918ebd916140589ea010756986e849.html">Download replication</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="b1444887-0554-4d92-b2ad-728160e7a9fd"><td class="cell-title"><a href="Gist%20replication%20b144488705544d92b2ad728160e7a9fd.html">Gist replication</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="197eb249-dc44-4009-a9b6-85150f619481"><td class="cell-title"><a href="People%20want%20custom%20diagrams%20197eb249dc444009a9b685150f619481.html">People want custom diagrams</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="50695df2-ed1f-453b-ae7b-16c23b0b90cc"><td class="cell-title"><a href="Support%20custom%20languages%2050695df2ed1f453bae7b16c23b0b90cc.html">Support custom languages</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="7ac39448-6ce2-4611-8af2-ce255f4d6150"><td class="cell-title"><a href="Tailawnd%20css%20styles%207ac394486ce246118af2ce255f4d6150.html">Tailawnd css styles</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="d01c924c-1968-449a-ab71-820ee19847b8"><td class="cell-title"><a href="Custom%20global%20styles%20d01c924c1968449aab71820ee19847b8.html">Custom global styles</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="b08e3a86-c29c-4a08-ab46-28fef16e18b2"><td class="cell-title"><a href="It%20must%20checkpoint%20iframe%20form%20b08e3a86c29c4a08ab4628fef16e18b2.html">It must checkpoint iframe form</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="9931be18-161f-4adf-851d-367ab36d9781"><td class="cell-title"><a href="Save%20face%20and%20say%20user%20name%209931be18161f4adf851d367ab36d9781.html">Save face and say user name</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="dfd14cc6-0178-4fde-ad6e-9b9f0dcca96e"><td class="cell-title"><a href="Face%20Follower%20dfd14cc601784fdead6e9b9f0dcca96e.html">Face Follower</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="07b87efd-0a3d-4ca2-8a40-457a0d87930f"><td class="cell-title"><a href="Face%20with%20Evaluation%2007b87efd0a3d4ca28a40457a0d87930f.html">Face with Evaluation</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="751884b7-26b4-4c25-9ebb-0149fe974eb5"><td class="cell-title"><a href="Machine%20Learning%20Model%20Accuracy%20751884b726b44c259ebb0149fe974eb5.html">Machine Learning Model Accuracy</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="f518e9b9-1fc9-4e39-b9fe-d60cd3c6593f"><td class="cell-title"><a href="OpenStreetMap%20f518e9b91fc94e39b9fed60cd3c6593f.html">OpenStreetMap</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="cd6af639-9269-4968-b6cb-1acea46baecb"><td class="cell-title"><a href="EvaNotebook%20should%20support%20TCP%20Connections%20cd6af63992694968b6cb1acea46baecb.html">EvaNotebook should support TCP Connections</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="68b89032-60e4-40e4-8f91-0c6ae35155e1"><td class="cell-title"><a href="Untitled%2068b8903260e440e48f910c6ae35155e1.html">Untitled</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="54e58e3b-07ed-480b-b6c8-a866cf4e096a"><td class="cell-title"><a href="EvaNotebook%20should%20support%20Protocol%20Buffers%2054e58e3b07ed480bb6c8a866cf4e096a.html">EvaNotebook should support Protocol Buffers</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="5b623448-4c11-4a2f-85f1-e74caa53bbd6"><td class="cell-title"><a href="EvaNotebook%20should%20support%20SSH%20Protocol%205b6234484c114a2f85f1e74caa53bbd6.html">EvaNotebook should support SSH Protocol</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="858dce58-2610-43bb-85bd-a1fc1de2036d"><td class="cell-title"><a href="WebRTC%20858dce58261043bb85bda1fc1de2036d.html">WebRTC</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="66ac357f-fa9d-43b2-875f-584f1299cc52"><td class="cell-title"><a href="Webhook%20and%20Zapier%20connections%2066ac357ffa9d43b2875f584f1299cc52.html">Webhook and Zapier connections</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="1bef4e82-635a-41a1-871c-025d1e1174bc"><td class="cell-title"><a href="Runtime%20modes%201bef4e82635a41a1871c025d1e1174bc.html">Runtime modes</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="2211944d-f555-4961-b3d2-45d3563ddf81"><td class="cell-title"><a href="IPFS%20Deployment%202211944df5554961b3d245d3563ddf81.html">IPFS Deployment</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="92a5b419-846e-4b09-bfd6-e1a71a3db201"><td class="cell-title"><a href="Vim%20mode%2092a5b419846e4b09bfd6e1a71a3db201.html">Vim mode</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="3b1c74e0-6eeb-49d4-b763-3297740846a3"><td class="cell-title"><a href="Notebook%20should%20redirect%20its%20checkpoint%20to%20any%20use%203b1c74e06eeb49d4b7633297740846a3.html">Notebook should redirect its checkpoint to any user choice</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="2727b95c-769a-434d-94bb-f6d534ac0aa5"><td class="cell-title"><a href="Latex%20support%202727b95c769a434d94bbf6d534ac0aa5.html">Latex support</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="aceca285-180a-4eb3-af83-1929ad1f9bba"><td class="cell-title"><a href="Write%20documentation%20aceca285180a4eb3af831929ad1f9bba.html">Write documentation</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="55958dc3-988f-4a3a-8376-aa0aedad0adb"><td class="cell-title"><a href="Implement%20Home%20Assistant%2055958dc3988f4a3a8376aa0aedad0adb.html">Implement Home Assistant</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="aa49d634-8701-4e5b-9ff5-bc11e10f2e4a"><td class="cell-title"><a href="%5BIdea%5D%20Notebook%20should%20support%20Node-RED%20json%20aa49d63487014e5b9ff5bc11e10f2e4a.html">[Idea] Notebook should support Node-RED json</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="2a8f06cb-f74e-4a50-9b70-d1e4d48c58f1"><td class="cell-title"><a href="Notebook%20must%20support%20shared%20memory%202a8f06cbf74e4a509b70d1e4d48c58f1.html">Notebook must support shared memory</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="63c54d5a-8fb3-4d94-83cb-dc5fc855405e"><td class="cell-title"><a href="%5BIdea%5D%20Virtual%20Reality%2063c54d5a8fb34d9483cbdc5fc855405e.html">[Idea]  Virtual Reality</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="27502b03-a0b2-4c4b-bede-f98c11d0a247"><td class="cell-title"><a href="Blazor%2027502b03a0b24c4bbedef98c11d0a247.html">Blazor</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="e731777a-044b-4138-a95c-527bdd31e478"><td class="cell-title"><a href="EvaLanguage%20over%20MQTT%20e731777a044b4138a95c527bdd31e478.html">EvaLanguage over MQTT</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="925f68e4-f37f-4387-9302-2688cd830a9d"><td class="cell-title"><a href="Connect%20Matrix%20Voice%20to%20MQTT%20925f68e4f37f438793022688cd830a9d.html">Connect Matrix Voice to MQTT</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="1341a2ec-75a2-4689-aac4-2ff105a00869"><td class="cell-title"><a href="Errors%20management%201341a2ec75a24689aac42ff105a00869.html">Errors management</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="8048a3ad-c6d1-4d59-9dd8-657938a7bacf"><td class="cell-title"><a href="%5BIdea%5D%20Notebook%20should%20support%20script%20automation%20f%208048a3adc6d14d599dd8657938a7bacf.html">[Idea] Notebook should support script automation from Home Assistant</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="2c2a65ca-f338-4622-8916-f94153eec526"><td class="cell-title"><a href="Set%20up%20Cloudflare%20tunnel%20for%20secure%20connections%202c2a65caf33846228916f94153eec526.html">Set up Cloudflare tunnel for secure connections</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Done</span></td></tr><tr id="f659b14d-1a62-4e18-8f25-5e055b6cdab2"><td class="cell-title"><a href="S3%20MinIO%20f659b14d1a624e188f255e055b6cdab2.html">S3 MinIO</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="fd2ddab5-5e5b-4eb7-8e67-84c880a6309f"><td class="cell-title"><a href="Monitor%20Tool%20Uptime%20Kuma%20fd2ddab55e5b4eb78e6784c880a6309f.html">Monitor Tool. Uptime Kuma</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="8e3131d8-e825-4095-83bd-fdb2b35c5f80"><td class="cell-title"><a href="Descentralized%20Checkpoint%208e3131d8e825409583bdfdb2b35c5f80.html">Descentralized Checkpoint</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="aeeb788b-42d4-4e0c-bbad-e62ee8e970c1"><td class="cell-title"><a href="Blockchain%20aeeb788b42d44e0cbbade62ee8e970c1.html">Blockchain?</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="7c7410ca-98fa-4fc7-a46e-09b511ad5e53"><td class="cell-title"><a href="Custom%20machine%20learning%20models%207c7410ca98fa4fc7a46e09b511ad5e53.html">Custom machine learning models</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="689fe3a3-d5ec-422d-85f0-f89cb58c7124"><td class="cell-title"><a href="MapReaduce%20Threads%20689fe3a3d5ec422d85f0f89cb58c7124.html">MapReaduce Threads</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="0bcf95da-acd9-41a8-a397-a995d0ae55d9"><td class="cell-title"><a href="Test%20voices%200bcf95daacd941a8a397a995d0ae55d9.html">Test voices</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="7408115d-3eaa-4191-873a-dc33d4fc2284"><td class="cell-title"><a href="Video%201%20minute%207408115d3eaa4191873adc33d4fc2284.html">Video 1 minute</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="953eeb6c-33da-4547-8bd4-9ce9ac973b7d"><td class="cell-title"><a href="Code%20Editor%20953eeb6c33da45478bd49ce9ac973b7d.html">Code Editor</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Done</span></td></tr><tr id="0e66b917-33e6-49e1-8eb0-f3e6b5548884"><td class="cell-title"><a href="SQL%200e66b91733e649e18eb0f3e6b5548884.html">SQL</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="a0b44d6f-556e-4082-9882-8d36f061a17f"><td class="cell-title"><a href="Prolog%20a0b44d6f556e408298828d36f061a17f.html">Prolog</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="7ac50997-30eb-4c03-a472-9650b3b106c6"><td class="cell-title"><a href="MermaidJS%207ac5099730eb4c03a4729650b3b106c6.html">MermaidJS</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="56d33876-bbd8-4b3c-8763-9404edeed71d"><td class="cell-title"><a href="Share%20video%20and%20audio%2056d33876bbd84b3c87639404edeed71d.html">Share video and audio</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="59834905-b604-4b68-bad5-52f1f7c6c510"><td class="cell-title"><a href="Mathematics%2059834905b6044b68bad552f1f7c6c510.html">Mathematics</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="83c691db-6d46-4b85-bed4-549e27abbe59"><td class="cell-title"><a href="ChatGPT%20open%20source%20alternatives%2083c691db6d464b85bed4549e27abbe59.html">ChatGPT open source alternatives</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="babaf0e2-1a5d-48ab-98c3-35242052aa99"><td class="cell-title"><a href="ChatGPT%20Plugin%20babaf0e21a5d48ab98c335242052aa99.html">ChatGPT Plugin</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="ba8bf7d5-27ac-42df-bdb2-13aac4f57861"><td class="cell-title"><a href="Markdown%20support%20ba8bf7d527ac42dfbdb213aac4f57861.html">Markdown support</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="61264e8d-cf02-4e13-ac9a-258afe12e48a"><td class="cell-title"><a href="Share%20notebook%20with%20users%20in%20different%20modes%2061264e8dcf024e13ac9a258afe12e48a.html">Share notebook with users in different modes</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="2c9adbb3-dbc3-42e5-b4bc-911ab5e4eb3b"><td class="cell-title"><a href="Offline%20Notebook%20Notebook%20must%20work%20with%20no%20Intern%202c9adbb3dbc342e5b4bc911ab5e4eb3b.html">Offline Notebook. Notebook must work with no Internet.</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="9d691fe3-b9fa-4476-bd5a-91ff8cee53eb"><td class="cell-title"><a href="Users%20want%20to%20see%20code%20when%20it%20selects%20the%20noteboo%209d691fe3b9fa4476bd5a91ff8cee53eb.html">Users want to see code when it selects the notebook</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="26653393-0632-42d5-84e5-20cdde1af525"><td class="cell-title"><a href="Interactive%20Art,%20Games%20and%20Simulations%2026653393063242d584e520cdde1af525.html">Interactive Art, Games and Simulations</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="6507d612-4b62-4779-8660-508ff65350a4"><td class="cell-title"><a href="Share%20memory%20between%20threads%206507d6124b6247798660508ff65350a4.html">Share memory between threads</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="b0335b7f-7610-418e-8074-76a21054f475"><td class="cell-title"><a href="Make%20a%20Component%20dynamically%20instead%20of%20eval%20or%20ne%20b0335b7f7610418e807476a21054f475.html">Make a Component dynamically instead of eval or new Function. Custom Compiler.</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="8a683f9e-056c-422f-8e59-0365b9dacd43"><td class="cell-title"><a href="Forms%20based%20on%20JSON%20SCHEMA%20and%20new%20cell%20architectu%208a683f9e056c422f8e590365b9dacd43.html">Forms based on JSON SCHEMA and new cell architecture</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Done</span></td></tr><tr id="88302a23-1cb0-48bf-b847-bb085dc013b7"><td class="cell-title"><a href="Custom%20WordFace%2088302a231cb048bfb847bb085dc013b7.html">Custom WordFace</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Done</span></td></tr><tr id="d823fde0-5c5b-4fa3-84a1-1316d158f6d3"><td class="cell-title"><a href="Peer-to-peer%20Collaborative%20Notebook%20d823fde05c5b4fa384a11316d158f6d3.html"><span class="icon">👁️‍🗨️</span>Peer-to-peer Collaborative Notebook</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>In progress</span></td></tr><tr id="23a87cba-99ea-43bc-9991-b94312e84319"><td class="cell-title"><a href="Run%20Python%20on%20Browser%2023a87cba99ea43bc9991b94312e84319.html">Run Python on Browser</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>In progress</span></td></tr><tr id="e74250c2-362a-432a-987e-ec974beb8bf5"><td class="cell-title"><a href="%5BIdea%5D%20Plotting%20e74250c2362a432a987eec974beb8bf5.html">[Idea] Plotting</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Done</span></td></tr><tr id="9bf60815-3151-4525-8dc4-133abf6def7e"><td class="cell-title"><a href="Notebook%209bf60815315145258dc4133abf6def7e.html">Notebook</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Done</span></td></tr><tr id="aefb264f-060b-410b-b61f-5f9fb774f8d9"><td class="cell-title"><a href="MQTT%20Protocol%20aefb264f060b410bb61f5f9fb774f8d9.html">MQTT Protocol</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Done</span></td></tr><tr id="7fc47aa7-58c6-42c1-abd7-823713a5f487"><td class="cell-title"><a href="Python%20support%207fc47aa758c642c1abd7823713a5f487.html">Python support</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="5c849b70-9679-4404-8048-598ca585006c"><td class="cell-title"><a href="Code%20Component%205c849b70967944048048598ca585006c.html">Code Component</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="cc9a9ef3-d569-46ab-aeb9-5c06d0029ab7"><td class="cell-title"><a href="Typescript%20support%20cc9a9ef3d56946abaeb95c06d0029ab7.html">Typescript support</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="12995795-2572-4ca4-8bd7-7beb93594b75"><td class="cell-title"><a href="await%20async%20inline%201299579525724ca48bd77beb93594b75.html">await/async inline</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="26ed049f-3729-4b4e-8c54-7730fe1d987d"><td class="cell-title"><a href="Automatic%20installation%20when%20people%20import%20inline%2026ed049f37294b4e8c547730fe1d987d.html">Automatic installation when people import inline</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="29922afb-ba96-464f-a3d8-cbead84f4ee5"><td class="cell-title"><a href="Danfo%20js%2029922afbba96464fa3d8cbead84f4ee5.html">Danfo.js</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="2b8147b3-2ca2-489c-a61f-fbcd1352395e"><td class="cell-title"><a href="Format%20button%202b8147b32ca2489ca61ffbcd1352395e.html">Format button</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="29f622d4-adda-4186-a3af-d117ebe949da"><td class="cell-title"><a href="Visualise%20arrays%20and%20objects,%20similar%20to%20the%20Chrom%2029f622d4adda4186a3afd117ebe949da.html">Visualise arrays and objects, similar to the Chrome object inspector.</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="dcb01a74-b481-473c-b457-30ca3bcac4d9"><td class="cell-title"><a href="Shortcuts%20dcb01a74b481473cb45730ca3bcac4d9.html">Shortcuts</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="cc9da814-09f6-4edb-bc34-a28907ddeeea"><td class="cell-title"><a href="Untitled%20cc9da81409f64edbbc34a28907ddeeea.html">Untitled</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="24573fde-a9e0-4ff2-8104-48ea4f3f2cef"><td class="cell-title"><a href="https%20github%20com%20amitjans%20Eva3D_2%200%2024573fdea9e04ff2810448ea4f3f2cef.html">https://github.com/amitjans/Eva3D_2.0</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="0bee6e17-2b80-4b13-b05d-9534b5196d54"><td class="cell-title"><a href="https%20github%20com%20eva-social-robot%203dmodels%200bee6e172b804b13b05d9534b5196d54.html">https://github.com/eva-social-robot/3dmodels</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="ee8f572f-6723-4e9a-b48a-834dce535999"><td class="cell-title"><a href="Blender%20models%20ee8f572f67234e9ab48a834dce535999.html">Blender models</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="2b47d661-c819-430d-a559-429f1f674a8c"><td class="cell-title"><a href="3D%20models%202b47d661c819430da559429f1f674a8c.html">3D models</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="3c486087-6d90-4168-87af-1ebb78c604ca"><td class="cell-title"><a href="Python%20and%20blender%203c4860876d90416887af1ebb78c604ca.html">Python and blender</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="43615f0b-2c9c-453d-a7ea-bd8796c2b203"><td class="cell-title"><a href="You%20can%20design%20with%20Blender%203D%20meshes%20We%20print%20usi%2043615f0b2c9c453da7eabd8796c2b203.html">You can design with Blender 3D meshes. We print using the .stl format one mesh at a time, but no colors, lights, or other fancy stuff.</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="168c27c9-8b61-49b8-9786-255337ccf95c"><td class="cell-title"><a href="Blender%20and%203D%20impression%20notes%20168c27c98b6149b89786255337ccf95c.html">Blender and 3D impression notes</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="ca7640c1-2022-467b-9113-7fca07b74c6c"><td class="cell-title"><a href="Evabot%20design%20on%20Blender%20ca7640c12022467b91137fca07b74c6c.html">Evabot design on Blender</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr><tr id="92012b24-869e-4cf3-85b5-be0dcbc3db54"><td class="cell-title"><a href="Evanotebook%20should%20support%20bittorrent%2092012b24869e4cf385b5be0dcbc3db54.html">Evanotebook should support bittorrent</a></td><td class="cell-=~tp"></td><td class="cell-vA@]"><span class="status-value"><div class="status-dot"></div>Not started</span></td></tr></tbody></table></div></article></body></html>

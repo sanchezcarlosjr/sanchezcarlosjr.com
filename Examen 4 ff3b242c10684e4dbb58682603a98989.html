@@ -213,7 +213,7 @@ ul > li {
 }
 
 ul.to-do-list {
-	text-indent: -1.7em;
+	padding-inline-start: 0;
 }
 
 ul.to-do-list > li {
@@ -281,6 +281,10 @@ ol > li {
 .collection-title {
 	display: inline-block;
 	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
 }
 
 .simple-table {
@@ -641,7 +645,7 @@ blockquote {
 .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
 .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
 .select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
 .select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
 .select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
 .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
@@ -666,7 +670,7 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="ff3b242c-1068-4e4d-bb58-682603a98989" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/nasa_multi-axis_gimbal_rig.jpg" style="object-position:center 80%"/><h1 class="page-title">Examen 4</h1></header><div class="page-body"><nav id="e53a4ebf-b3ab-4252-8bc8-885c900d15cf" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#38266b08-ec03-41c1-9e13-8b576a4e09bb">Describa las principales secciones de la memoria asignada a un programa durante su ejecución.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9923cbfe-cc59-469c-9153-603b5072ecff">La respuesta: Típicas secciones de la memoria en tiempo de ejecución</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cb4e085f-f86d-49c8-844b-28fb7acb25c2">Contexto</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#90beed90-f06d-4598-bcba-178936ac76ce">Mencione qué es un “Activation Record” y para qué se utiliza.</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f3ec4a31-7696-4385-8c6c-30563564c159">Explique las ventajas de utilizar “Stack Machine” como modelo de evaluación. </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d0d618c6-e68a-4fa7-b473-9d079fe36972">Suponga que queremos agregar la siguiente expresión condicional a COOL: </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b2bc7584-1b11-493b-9984-1b96c8dd3e45">Considere las siguientes clases: </a></div></nav><h1 id="38266b08-ec03-41c1-9e13-8b576a4e09bb" class="">Describa las principales secciones de la memoria asignada a un programa durante su ejecución.</h1><h2 id="9923cbfe-cc59-469c-9153-603b5072ecff" class="">La respuesta: Típicas secciones de la memoria en tiempo de ejecución</h2><pre id="cd7799ec-3c14-433f-bbb4-3af0ef74b9dc" class="code"><code>+--------------+ Direcciones bajas.
+</style></head><body><article id="ff3b242c-1068-4e4d-bb58-682603a98989" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/nasa_multi-axis_gimbal_rig.jpg" style="object-position:center 80%"/><h1 class="page-title">Examen 4</h1><p class="page-description"></p></header><div class="page-body"><nav id="e53a4ebf-b3ab-4252-8bc8-885c900d15cf" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#38266b08-ec03-41c1-9e13-8b576a4e09bb">Describa las principales secciones de la memoria asignada a un programa durante su ejecución.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9923cbfe-cc59-469c-9153-603b5072ecff">La respuesta: Típicas secciones de la memoria en tiempo de ejecución</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cb4e085f-f86d-49c8-844b-28fb7acb25c2">Contexto</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#90beed90-f06d-4598-bcba-178936ac76ce">Mencione qué es un “Activation Record” y para qué se utiliza.</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f3ec4a31-7696-4385-8c6c-30563564c159">Explique las ventajas de utilizar “Stack Machine” como modelo de evaluación. </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d0d618c6-e68a-4fa7-b473-9d079fe36972">Suponga que queremos agregar la siguiente expresión condicional a COOL: </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b2bc7584-1b11-493b-9984-1b96c8dd3e45">Considere las siguientes clases: </a></div></nav><h1 id="38266b08-ec03-41c1-9e13-8b576a4e09bb" class="">Describa las principales secciones de la memoria asignada a un programa durante su ejecución.</h1><h2 id="9923cbfe-cc59-469c-9153-603b5072ecff" class="">La respuesta: Típicas secciones de la memoria en tiempo de ejecución</h2><pre id="cd7799ec-3c14-433f-bbb4-3af0ef74b9dc" class="code"><code>+--------------+ Direcciones bajas.
 |              | El tipo de archivo (por ejemplo .ELF), librerías estáticas, ...
 |    Code      | Donde las instrucciones de nuestro programa viven.
 |   Static     | Constantes. Datos generados por el compilador.
@@ -757,5 +761,5 @@ m3() : Object { ... };
 a4 : Int;
 m2() : Object { ... };
 m3() : Object { ... };
-};</td></tr></tbody></table><p id="8d01f470-e826-4ff3-a8b4-58720bb9a635" class="">Ilustre la estructura de los objetos de tipo A, B y C, incluyendo tablas de dispatch.</p><figure id="ba189a99-e64b-48bf-9c32-0f9b38027a75" class="image"><a href="Untitled%20229.png"><img style="width:361px" src="Untitled%20229.png"/></a></figure><p id="a82c6c6b-9fa8-41ef-9ce6-4ba82d0d0a7a" class="">
+};</td></tr></tbody></table><p id="8d01f470-e826-4ff3-a8b4-58720bb9a635" class="">Ilustre la estructura de los objetos de tipo A, B y C, incluyendo tablas de dispatch.</p><figure id="ba189a99-e64b-48bf-9c32-0f9b38027a75" class="image"><a href="Untitled%20325.png"><img style="width:361px" src="Untitled%20325.png"/></a></figure><p id="a82c6c6b-9fa8-41ef-9ce6-4ba82d0d0a7a" class="">
 </p></div></article></body></html>

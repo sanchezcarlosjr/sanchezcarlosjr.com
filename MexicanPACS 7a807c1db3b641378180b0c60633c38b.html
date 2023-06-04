@@ -1,0 +1,727 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>MexicanPACS</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="7a807c1d-b3b6-4137-8180-b0c60633c38b" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/nasa_earth_grid.jpg" style="object-position:center 30.000000000000004%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🦀</span></div><h1 class="page-title">MexicanPACS</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="12f37bf4-9fc2-4763-a316-3984c3d61574" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#43b63beb-c0c5-499a-8291-7a7ee136c0d1">Abstract</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f8d57c38-fd7c-4d0b-9a74-30a41a3f18b5">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b084ed30-8c60-48d6-9d10-48a92c2b0b42">Problem</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bb557919-1f64-43d5-b39d-f7f059508e9d">Related work</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4c0af7d5-6b81-49ca-b79a-defcc0c7efd6">Methodology</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d3586fe1-f51d-447c-b3c2-00ca1ebd51f7">DICOM</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f450342b-8c48-4ba7-88a9-59aca06aa624">Development</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5c3ae216-5a06-4734-8758-daece1928244">Functional requirements</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#09c7d4ca-9961-44fc-a5e0-84413ff3a4a5">Server Hospital</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#02a96d22-17f7-4d8f-acd9-be9cd0feecb2">Constraints</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a80f1fc5-fd0b-4d55-9d80-888249b24cac">Distributed computing</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b69dccd8-e245-4bbc-addd-9465ad4f31ee">Preprocessing</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c263f076-9d77-4327-875f-c9a903a3e387">Ray</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3219a9a1-a559-4179-b742-efe6e068cd12">Download images</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cb025573-70fb-4bb5-8a7a-967fa838595a">Dataset description</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7d2b0b0a-0206-4339-875d-d58dee6617ef">Exploratory data analysis</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4e902e3d-c885-4107-9cb3-6612cfdee85e">Prediction algorithms</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9dc837d7-2486-430d-b998-d9f98725e864">Preprocessing images</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4e447a34-b94c-4d96-b3dd-d870e67f9a55">ljpeg for Python 3</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d8ecd9c2-a053-4800-8d4a-774ffdf68bcf">System</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b45b90a1-9a06-4ca9-9256-e231c66f6dbc">Results</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0e0c44ad-25b3-4823-8da0-2d26c77c8f88">Conclusions and limitations</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#08ee6ae6-ed4d-4d61-9db9-021a58f36d1e">References</a></div></nav><h1 id="43b63beb-c0c5-499a-8291-7a7ee136c0d1" class="">Abstract</h1><p id="00ad2c1f-b95c-4fb6-b85a-4a44f0a0bf52" class="">We predict the BIRADS by applying a Convolutional neural network.</p><p id="c99c8f55-a951-45f0-b2c1-da4e51d48310" class="">Intelligent BIRADS lights in support of the diagnosis of breast cancer in Baja California.</p><h1 id="f8d57c38-fd7c-4d0b-9a74-30a41a3f18b5" class="">Introduction</h1><div id="8b4b42a5-693b-4970-b701-4e78931166d9" class="column-list"><div id="d768b951-d0ee-48b5-8050-44e90443e756" style="width:43.75%" class="column"><p id="be1fe655-0890-415e-8ebe-c1548a2cd30a" class="">abc</p></div><div id="9294b04d-a869-40de-a603-174ce37d708f" style="width:56.25%" class="column"><p id="d1d8bfa3-a4a5-4cdf-83e6-ef04205f9645" class="">def</p><p id="74b76a1f-a9e6-42f2-86fc-f728d690547e" class="">
+</p></div></div><h2 id="b084ed30-8c60-48d6-9d10-48a92c2b0b42" class="">Problem</h2><p id="71444092-4d4f-4bdf-8600-5a81042f5568" class="">Since breast cancer is the first dead cause in Mexico among women it became a big public health problem —in fact, 2.26 million cases worldwide. In other words, is a type of cancer with the highest incidence and mortality in women: every day at least 14 women, chiefly between 50 to 69 years, die. Indeed, as we can see in the below figure, breast cancer is an increasing tendency compared to other cancers.</p><figure id="50fc4856-492a-4be7-bc9e-7c38e1abf4d4" class="image"><a href="1-s2.0-S1470204512702462-gr1.jpg"><img style="width:937px" src="1-s2.0-S1470204512702462-gr1.jpg"/></a></figure><p id="a2787fb4-0cdc-45b8-95c4-8b31c49e18ca" class="">Nowadays, doctors carried out analyses using Traditional 2D mammograms from patient requests at public Mexican hospitals. In Ensenada, doctors request private external assistance. Oncologists annotate medical images, and they chiefly say what is the patient&#x27;s BI-RADS score. &quot;BI-RADS&quot; means Breast Imaging Reporting and Database System, and it&#x27;s scoring standard radiologists and oncologists use to describe mammogram results. We&#x27;ll explain further BI-RADS in the section. </p><p id="ba39b53e-d5a0-4d3f-837c-1472aac7adac" class="">Our goals are to build data mining models that understand mammograms and predict breast cancer developing risk, continuing works. Since our model output is a person&#x27;s future healthy situation, we&#x27;ll do descriptive and predictive methods, indeed we&#x27;re going to apply Machine Learning algorithms to datasets. Of course, we don&#x27;t expect to replace medical doctors but assist them. We know other computer-aided detection systems have been developed for breast cancer detection but no one applies them to regional cities and they are not free.</p><p id="2bb07ea4-eeac-49db-8f53-eed9093d2081" class="">We expect our project can help thousands of women in quick cancer detection because data mining is faster and cheaper than humans, therefore we&#x27;re contributing to the decrease in the death rate.</p><h1 id="bb557919-1f64-43d5-b39d-f7f059508e9d" class="">Related work</h1><pre id="e0364ce6-3113-438e-839c-a9065bace5bb" class="code"><code>@startuml
+
+actor Paciente
+actor Recepción
+actor TecnólogoRadiología
+actor Radiólogo
+actor HIS
+note left HIS: Hospital Information System
+database DICOM
+actor Modelo
+actor PACS
+note left PACS: Picture Archiving and Communication System
+actor Oncólogo
+actor Proveedor
+actor ProgramaDeCancer
+
+Paciente -&gt; Recepción : Solicita mamografía
+Recepción -&gt; HIS : Registra solicitud
+HIS --&gt; TecnólogoRadiología : Confirma solicitud
+TecnólogoRadiología -&gt; Paciente : Realiza mamografía
+TecnólogoRadiología -&gt; PACS : Envía imágenes de mamografía
+PACS --&gt; TecnólogoRadiología : Confirma recepción de imágenes
+PACS --&gt; Proveedor: Emite imágenes a proveedor
+PACS -&gt; Radiólogo : Notifica disponibilidad de nuevas imágenes
+Proveedor -&gt; PACS : Revisa e interpreta imágenes
+PACS -&gt; ProgramaDeCancer: Muestra resultados
+ProgramaDeCancer -&gt; Paciente: Emite veridicto sobre biopsia
+
+@enduml</code></pre><p id="5e1cdceb-4c04-4be5-9eec-b5bc91471d34" class="">
+</p><figure id="d9ac7c52-780c-4691-9a6e-30965108e240" class="image"><a href="HGE-proceso-de-mamogramias.png"><img style="width:1154px" src="HGE-proceso-de-mamogramias.png"/></a></figure><p id="c1c6556d-7d21-4cde-9f0b-31c3f95673b3" class="">
+</p><p id="1c5d38f8-8ae8-4efd-aa00-8926ff3b654c" class="">
+</p><h1 id="4c0af7d5-6b81-49ca-b79a-defcc0c7efd6" class="">Methodology</h1><ol type="1" id="c161867c-0de0-4d93-b5de-0624f1e11d35" class="numbered-list" start="1"><li>Key concepts</li></ol><ol type="1" id="60030427-fa17-4901-bf87-059e829bac32" class="numbered-list" start="2"><li>DICOM VIEW</li></ol><ol type="1" id="30db4bec-4a85-4cea-8901-3c5e1d4b4e32" class="numbered-list" start="3"><li>Preprocessing DDSM</li></ol><ol type="1" id="85f6883f-bcf1-4e88-95f1-3b8b3751d69a" class="numbered-list" start="4"><li>Engineering process</li></ol><h2 id="d3586fe1-f51d-447c-b3c2-00ca1ebd51f7" class="">DICOM</h2><p id="5d1a1802-775f-4697-8425-9fcfc69ed16c" class="">Dicom Web</p><h2 id="f450342b-8c48-4ba7-88a9-59aca06aa624" class="">Development</h2><h3 id="5c3ae216-5a06-4734-8758-daece1928244" class="">Functional requirements</h3><p id="b7bfb74a-60e3-4da2-a647-9148ac42e66c" class="">Those functional requirements ordered by priority are authenticated users, showing a list of patients, adding patients, adding new Screening Studies, viewing screening tests, confirming cancer diagnosis or not in the screening test, listing screening tests, managing users, and calculating the suspicion of breast cancer.</p><p id="f79091ca-7664-47c6-9891-e6aec43867f2" class="">Imagenes (4 mastografias) en formato DCM almacenadas en carpetas de Windows  1…N cuyo directorio son expendientes ID (no vinculado con el servicio web). </p><p id="ec45cb35-bfdd-4c49-9baf-fb4a5ea46d82" class="">Vincular las carpetas y el expendiente electrónico HTML y CSS y también en formato PDF.</p><p id="e6205f95-236b-405c-8b6f-87c2e18d6889" class="">Precesamiento de imagenes con OpenCV.</p><p id="5d2139ab-4fef-495e-b73d-850820e0089f" class="">BIRDS y posibles caracteristicas.</p><p id="c29e4ab0-749c-45c2-8c5e-5d50e09954fd" class="">&quot;Expediente ID con mastografía&quot;.</p><pre id="9692b0a2-efde-4ed8-bf6a-97b11f298d91" class="code"><code>graph TD
+  Radiologo --&gt; Servidor</code></pre><p id="5592796a-0aa3-4cd8-b595-d26a305d3e6c" class="">Expect results.</p><p id="78274df3-77ee-48ed-9b56-ca8ccdf2a395" class="">CRUD.</p><p id="23100298-2e6e-44ee-8e2e-00b33bc79e0d" class="">Image. </p><p id="c4632e77-774d-42ce-bf8e-b7353a89b3ae" class="">After sending neuronal networks that send a BIRDS and identify the parts, preprocessing by mammograms.</p><p id="6892964d-167c-495b-8415-85b49e46be6b" class="">Get BIRDS. </p><p id="a9739042-a0cf-4818-ad2f-677e5bf6a7d7" class="">Identify warning zones.</p><p id="9ec7c581-cfe0-4d1c-b7e4-355bdb85730e" class="">Get interpretation. </p><p id="c9f6696e-974b-4bfb-b4fa-e9ceb307d0ae" class="">Interpretation and BIRADS.</p><p id="007ef2d6-211c-4e6b-9369-c9e2c25a3607" class="">Help to radiology.</p><ul id="b7e59f6d-d977-4324-89dd-802f1df94052" class="toggle"><li><details open=""><summary>Proceso</summary><pre id="f50d31fa-8877-4fc1-be79-0822eb34fa3b" class="code"><code>@startuml
+start
+#yellow: Entendimiento de los procesos hospitalarios;
+#yellow: Entendimiento, selección y preparación de mamografías y metadatos;
+: Preparación de los datos;
+: Modelado y entrenamiento de IA (redes neuronales convolucionales profundas);
+: Evaluación del modelo;
+#yellow: Despliegue del modelo sobre DICOM Web (KPACS a OHIF);
+stop
+@enduml</code></pre></details></li></ul><h2 id="09c7d4ca-9961-44fc-a5e0-84413ff3a4a5" class="">Server Hospital</h2><p id="6d13dfb3-0ada-48e5-a80c-1fc6a0a8f1f0" class=""><a href="https://github.com/marcelvanherk/Conquest-DICOM-Server">ConQuest DICOM server 1.5.0b HGESRVRRX1</a></p><p id="f4239d09-d351-4581-b1b2-f60befeb4d00" class="">Date of this release 20201101</p><p id="4b5cf0eb-1ce0-4779-830f-b39a0cc67ade" class="">University of California at David (Personal PACS)</p><p id="ca0303dc-dec3-420e-9517-887be8c2aaf5" class="">Delphi TCP/IP connection</p><p id="58d46866-174f-49de-a269-3441107ee09c" class="">Francios Piette</p><p id="105388d5-237b-40d1-81ba-0b7a662c2980" class="">Lua scripting </p><p id="76ebb9e1-9e7a-4ab2-86aa-e7079a73b80a" class="">sqlite database </p><p id="c92face8-abf6-473e-9856-3ce08b441e69" class="">UPACS NT PACS System</p><p id="51795b8c-89ae-4170-9953-5206131bc89a" class="">DCM Standard</p><p id="50350015-7f34-4efb-b381-4dc109f159a7" class="">8 BSD</p><p id="41e3328c-e5db-42dd-8084-d2aecf5f427a" class="">
+</p><h3 id="02a96d22-17f7-4d8f-acd9-be9cd0feecb2" class="">Constraints</h3><p id="5c664b6c-863b-439d-9fc8-a4adfaf33f13" class="">Web system.</p><p id="1c6f7001-cb58-4744-b551-b6237be3acfb" class="">Image Format.</p><p id="465a8489-7204-4b56-a7fb-bb609ab4cd56" class="">Innovation.</p><p id="b23e8215-3540-4896-9cf3-0eb5274e2b6f" class="">Secretary of Health.=</p><p id="a65cc5c7-00d1-43f1-aa82-4deef936184c" class="">What are the operating system and another operating system we have to deploy? Windows. </p><p id="27d069ad-3e26-4a25-ace4-f8653e6690f3" class="">Can we use whatever technology we like? Yes.</p><p id="50bb3a12-680e-4144-b850-7e0e2cec694f" class="">What are the conditions we must consider to?</p><p id="cbfe89e2-c1de-4a51-954e-7d51543e4cd9" class="">What are system resources?</p><p id="0a230649-3236-47ad-a483-be82030351ff" class="">Will the system access people’s hospitals or hospitals’ LANs?</p><p id="cb944477-a76e-4845-9306-eb10ae032051" class="">Are there some user interface guidelines? and Where can I consult for? Yes.</p><p id="d41b8f32-e4e5-4936-9918-b69f004af210" class="">Every patient has n studies and every study has n images.</p><p id="8cf81f70-06f6-483e-8697-f76a8dfd2c98" class="">Every patient </p><h2 id="a80f1fc5-fd0b-4d55-9d80-888249b24cac" class="">Distributed computing</h2><p id="b07b57c5-74b7-4421-b41e-761e73217108" class="">Everything is ok with cloud platforms except when the time to pay come to.</p><figure id="f614ee9f-ebb8-45d9-96b7-78a4a81467ab" class="image"><a href="Untitled%2031.png"><img style="width:1360px" src="Untitled%2031.png"/></a><figcaption>We’ve used Minio instead of S3 or another closed plataforms.</figcaption></figure><h3 id="b69dccd8-e245-4bbc-addd-9465ad4f31ee" class="">Preprocessing</h3><figure id="be3cf1af-6d66-4efa-a2ed-7c0eaca0703b" class="image"><a href="original-image.jpg"><img style="width:1024px" src="original-image.jpg"/></a></figure><p id="5cb618f2-74eb-4bf6-9535-1448e79143ba" class="">
+</p><figure id="c9f5d909-7a92-4c5d-9dfd-c5c4b9daa2ef" class="image"><a href="Untitled%2032.png"><img style="width:1360px" src="Untitled%2032.png"/></a><figcaption>Propro</figcaption></figure><h2 id="c263f076-9d77-4327-875f-c9a903a3e387" class="">Ray</h2><p id="dc05e50a-72b3-4b54-a6e1-7b99c15ac160" class=""><a href="https://docs.ray.io/en/latest/data/pipelining-compute.html#pipelining-datasets">https://docs.ray.io/en/latest/data/pipelining-compute.html#pipelining-datasets</a></p><p id="4ee2ca03-7c47-4391-837e-2e580177c2b2" class=""><a href="https://docs.ray.io/en/latest/data/api/doc/ray.data.read_images.html#ray.data.read_images">https://docs.ray.io/en/latest/data/api/doc/ray.data.read_images.html#ray.data.read_images</a></p><p id="fddc982b-9729-484e-b19a-41b02beffcdc" class=""><a href="https://docs.ray.io/en/latest/data/examples/ocr_example.html">https://docs.ray.io/en/latest/data/examples/ocr_example.html</a></p><h3 id="3219a9a1-a559-4179-b742-efe6e068cd12" class="">Download images</h3><pre id="cf728d1b-f549-4e53-9768-0b75730db6f7" class="code"><code>cat index.txt | parallel -j+0 &quot;wget -r {}&quot;</code></pre><h1 id="cb025573-70fb-4bb5-8a7a-967fa838595a" class="">Dataset description</h1><h1 id="7d2b0b0a-0206-4339-875d-d58dee6617ef" class="">Exploratory data analysis</h1><h1 id="4e902e3d-c885-4107-9cb3-6612cfdee85e" class="">Prediction algorithms</h1><h2 id="9dc837d7-2486-430d-b998-d9f98725e864" class="">Preprocessing images</h2><figure id="4482f6ab-28bc-490e-a059-348c11a484ef" class="image"><a href="Untitled%2033.png"><img style="width:1388px" src="Untitled%2033.png"/></a></figure><p id="089aba88-b254-4ae4-8436-49cb888c66c3" class="">TwoViewDensityNet: Two-View Mammographic Breast Density Classification Based on Deep Convolutional Neural Network Mariam Busaleh 1 , Muhammad Hussain 1,* , Hatim A. Aboalsamh 1 , Fazal-e-Amin 2 and Sarah A. Al Sultan 3</p><h2 id="4e447a34-b94c-4d96-b3dd-d870e67f9a55" class="">ljpeg for Python 3</h2><p id="e97445f2-c404-4a72-b799-08e41e35a6e7" class=""><a href="https://github.com/sanchezcarlosjr/ljpeg">https://github.com/sanchezcarlosjr/ljpeg</a></p><h2 id="d8ecd9c2-a053-4800-8d4a-774ffdf68bcf" class="">System</h2><p id="2791fcd1-5d2a-45d4-9472-5a5e8df63b69" class="">PACS over the web</p><p id="be94ebee-954a-436f-9848-3faee4d8cfa9" class="">DICOM image viewer</p><p id="8828fbf6-6a4a-4008-834b-ba98ff6c7370" class=""><strong>DICOMweb</strong></p><p id="9331d11f-a99d-47d4-bf4b-f099fcfe0731" class=""><a href="https://otechimg.com/publications/pdf/dicomweb_white_paper.pdf">https://otechimg.com/publications/pdf/dicomweb_white_paper.pdf</a></p><p id="c2542faa-cbb8-4116-bba4-e3f45d0ccdee" class=""><a href="https://www.dicomstandard.org/using/dicomweb">https://www.dicomstandard.org/using/dicomweb</a></p><ul id="4740a92c-a119-45e8-af14-296d5aae5ab5" class="toggle"><li><details open=""><summary>Code</summary><pre id="7ae4df7a-248d-4064-9cb5-271b695666bb" class="code"><code>@startuml
+ExpendienteElectronicoWeb -&gt; EstudiosDeRayosX: iframe /?id=1.2.4.2807152 
+EstudiosDeRayosX --&gt; EstudiosDeRayosXServer: /1.2.4.2807152
+EstudiosDeRayosXServer --&gt; HospitalServerFTP: read directory 1.2.4.2807152 and subdirectories
+EstudiosDeRayosXServer --&gt; DB: ToDo
+EstudiosDeRayosXServer --&gt; EstudiosDeRayosX: {images: [], ...}
+EstudiosDeRayosX --&gt; EstudiosDeRayosX: visualize thumbnails
+EstudiosDeRayosX --&gt; EstudiosDeRayosXServer: visualize /:directory/:subdirectory  example /1.2.4.2807152/2807152.1
+EstudiosDeRayosXServer --&gt; EstudiosDeRayosX: image
+@enduml</code></pre></details></li></ul><figure id="f4449127-a40e-47f1-b0db-9df9e1164054" class="image"><a href="system.svg"><img style="width:1239px" src="system.svg"/></a></figure><h1 id="b45b90a1-9a06-4ca9-9256-e231c66f6dbc" class="">Results</h1><h1 id="0e0c44ad-25b3-4823-8da0-2d26c77c8f88" class="">Conclusions and limitations</h1><h1 id="08ee6ae6-ed4d-4d61-9db9-021a58f36d1e" class="">References</h1><p id="1bf13d2c-a23b-4b6f-9504-218fac3dee00" class=""><a href="https://github.com/OHIF/Viewers">https://github.com/OHIF/Viewers</a></p><p id="729a6c5b-da4f-4bc2-b573-9d56e7f0e010" class=""><a href="https://pubs.rsna.org/doi/10.1148/radiol.211105">https://pubs.rsna.org/doi/10.1148/radiol.211105</a></p><p id="83e69157-4d7d-4e24-80ef-695ead94bb13" class=""><a href="https://github.com/sanchezcarlosjr/Breast-Cancer-risk-estimation-system">https://github.com/sanchezcarlosjr/Breast-Cancer-risk-estimation-system</a></p><p id="ea2954ac-efe9-410a-a984-a89b76f5d8d0" class=""><a href="https://siim.org/">https://siim.org/</a></p><p id="7100871d-c273-4a63-893d-579baaa8d459" class="">BI-RADS Terminology for Mammography Reports: What Residents Need to Know. (2023, May 10). Retrieved from <a href="https://pubs.rsna.org/do/10.1148/rg.2019180068.pres/full">https://pubs.rsna.org/do/10.1148/rg.2019180068.pres/full</a></p><p id="1b2c19f1-f0bf-4a03-bef9-f7a13d45e00d" class=""><a href="https://github.com/sanchezcarlosjr/breast-cancer-pipeline">https://github.com/sanchezcarlosjr/breast-cancer-pipeline</a></p><p id="94281ce5-a22e-4e54-b8fa-53404390c4be" class=""><a href="https://github.com/fjeg/ddsm_tools/blob/master/ddsm_tools/ddsm_util.py">https://github.com/fjeg/ddsm_tools/blob/master/ddsm_tools/ddsm_util.py</a></p><p id="2d27f827-3330-45b4-be7e-430ee70d4b06" class=""><a href="https://github.com/fjeg/ddsm_tools/blob/89074b444c54972207f1601fc706939ba9735151/ddsm_tools/ddsm_classes.py#L190">https://github.com/fjeg/ddsm_tools/blob/89074b444c54972207f1601fc706939ba9735151/ddsm_tools/ddsm_classes.py#L190</a></p><figure id="4b649abb-5b4f-4c4d-aab1-a35c6b13a657" class="link-to-page"><a href="Breast%20cancer%20estimation%20using%20data%20mining%20techniq%204b649abb5b4f4c4daab1a35c6b13a657.html">Breast cancer estimation using data mining techniques at a public Mexican hospital</a></figure><p id="df708319-af3b-4471-9763-537656504f9a" class="">
+</p></div></article></body></html>

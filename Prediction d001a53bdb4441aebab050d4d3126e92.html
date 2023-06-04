@@ -213,7 +213,7 @@ ul > li {
 }
 
 ul.to-do-list {
-	text-indent: -1.7em;
+	padding-inline-start: 0;
 }
 
 ul.to-do-list > li {
@@ -281,6 +281,10 @@ ol > li {
 .collection-title {
 	display: inline-block;
 	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
 }
 
 .simple-table {
@@ -641,7 +645,7 @@ blockquote {
 .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
 .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
 .select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
 .select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
 .select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
 .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
@@ -666,7 +670,7 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="d001a53b-db44-41ae-bab0-50d4d3126e92" class="page sans"><header><h1 class="page-title">Prediction</h1></header><div class="page-body"><p id="21226840-4995-43c0-b929-65b715d250de" class="">We predict utility from New Zealand’s agricultural dataset  (<a href="https://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar">https://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar</a>) with the Naive Bayes algorithm, particularly, we will group the eucalyptus dataset.</p><p id="4dda186f-4caf-4cba-b1c7-fbc9bfe90ffd" class="">The utility has the values “none”, “low”, “average”, “good”, and “best”, so we need a classifier algorithm such as the Naive Bayes algorithm.</p><p id="e958c278-5f3c-4dbd-abd0-c359ac90a885" class="">We choose it on Weka, we test the model using 10 folds cross-validation.</p><figure id="7a31fa2c-fad7-443b-96d3-d3bd42ad4ec5" class="image"><a href="Untitled%20243.png"><img style="width:1360px" src="Untitled%20243.png"/></a></figure><p id="b7de5364-1cec-4f77-97fd-e9e568170526" class="">
+</style></head><body><article id="d001a53b-db44-41ae-bab0-50d4d3126e92" class="page sans"><header><h1 class="page-title">Prediction</h1><p class="page-description"></p></header><div class="page-body"><p id="21226840-4995-43c0-b929-65b715d250de" class="">We predict utility from New Zealand’s agricultural dataset  (<a href="https://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar">https://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar</a>) with the Naive Bayes algorithm, particularly, we will group the eucalyptus dataset.</p><p id="4dda186f-4caf-4cba-b1c7-fbc9bfe90ffd" class="">The utility has the values “none”, “low”, “average”, “good”, and “best”, so we need a classifier algorithm such as the Naive Bayes algorithm.</p><p id="e958c278-5f3c-4dbd-abd0-c359ac90a885" class="">We choose it on Weka, we test the model using 10 folds cross-validation.</p><figure id="7a31fa2c-fad7-443b-96d3-d3bd42ad4ec5" class="image"><a href="Untitled%20221.png"><img style="width:1360px" src="Untitled%20221.png"/></a></figure><p id="b7de5364-1cec-4f77-97fd-e9e568170526" class="">
 </p><p id="ae088eeb-28fa-4ecf-be36-30053b0a0bf3" class="">In summary, our model has an accuracy of 55.5707%. </p><p id="efa36832-3141-40b7-b95a-db754d8af1dc" class="">
 </p><h2 id="8b9efa77-42eb-484c-8ae7-a567c9d30315" class="">Discussion</h2><p id="bee39cac-f83c-4d4b-8e69-f0f6a4d71689" class="">The Naive Bayes algorithm will help us to classify utility using attributes, however, its accuracy is too low to be used in production or real-world environments, since it should be greater than 90%, it is acceptable. </p><p id="a299354b-7817-43b1-9267-1b3271f8a855" class="">
 </p></div></article></body></html>

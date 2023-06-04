@@ -1,0 +1,795 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Socially-Assistive Robots for Dementia Care on Embodied Voice Assistant (Eva)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="9aade1eb-ef99-48ac-afba-73d834b19d0b" class="page sans"><header><img class="page-cover-image" src="header-eva-bg.png" style="object-position:center 31.589999999999996%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🤖</span></div><h1 class="page-title">Socially-Assistive Robots for Dementia Care on Embodied Voice Assistant (Eva)</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="14c20fd0-17c8-4bdb-8677-e40e06c5777e" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a9b62573-0340-4ba7-b9f0-a0fdc50f5b80">Overview</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a6a46e58-4c5a-45ec-9629-90ee361473f7">Keywords</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#11e50899-ced8-451a-b243-99184d59a830">Getting started</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#70d380db-052e-41db-beb9-f8f023331ea8">Installation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ebb0ff85-0a47-4a79-b1b5-26c0348347ef">Goals</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9839c2b2-a78e-47bb-9a66-7cfbe3413086">Methodology</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bd640dbe-e451-4057-b579-7a7c76951a11">Theory</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7a3f7cbe-19ff-4e32-bddf-98a63c762f95">HCI</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a036aad7-be8e-4d8e-b84d-d5b6a3f35658">Computer simulations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19553768-b423-4fa4-ba26-4d806116d8ad">Robots as therapy</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d704a7cb-f32e-4891-ba33-0e92d5da590a">Serious games</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6ef2e30d-daf7-4783-bdee-d5d21e9655ea">Eva Language</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8d15e9d0-7d96-435d-baf5-5c6f570c5d9b">VPL Blocks</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0de1bebc-7ed4-4c9b-a973-5a0b7cb3004a">Eva Sim</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1f2020f7-e208-4be7-96c1-f26218e03471">Manuals</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a923ea29-5fd8-4cfe-9aa5-04c41a94087b">Mockups</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e13da9f2-b003-4458-8d30-5fe08ac71c7f">Project vision</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#79e99fd6-7a9b-4103-8fb0-2e06bf0273a7">Observations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#222b96b8-e41a-4aba-93f5-922808e2bb8c">Prototypes</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#adf8f481-aa56-4a72-b909-1f8ae5b829fd">v1</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#500b6f31-0b5b-4373-8b44-8ef5302057ef">v3</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4e4ee0eb-b0be-4888-86d6-c7ed84a7e115">Construction. Team versions.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f80c722a-fff7-4095-beef-f7f3bf2d2e13">Ecosystem</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dbe9af2f-5a41-45cd-bad5-04c338cf9654">CICESE</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c1a9b1ee-a50e-42ae-b3f3-46f5de09a7e2">Fluminense Federal University (UFF) </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#00b88c38-f1f4-4252-8466-be1b7bc9167b"><strong>Universidad de Castilla-La Mancha</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bf552aa8-3665-4642-8b71-3053e28362b3">UCSD</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ef78ea75-7aff-40e6-856b-04e77e450ad0">Requirements</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7d25698d-1f9d-4180-8900-5470cad6ee95">Continuous integration</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#061769af-87ef-449f-8e4b-371dc0381ea0">Testing and evaluations</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7c0e32cc-c5dd-47ca-9ce5-b0ade9fb229d">Conclusions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a1eb7cb8-f08a-4e83-8acf-30615e0e03f1">References</a></div></nav><h1 id="a9b62573-0340-4ba7-b9f0-a0fdc50f5b80" class="">Overview</h1><pre id="e074f99f-3e6c-4f72-b226-622e2db43528" class="code"><code>graph TD
+  Mermaid --&gt; Diagram</code></pre><p id="a9799c06-feb9-4af4-8e76-901b30f7d1d1" class="">
+</p><div id="56ae6ba5-e0d8-47c8-9e5b-a6225ed5552e" class="column-list"><div id="b6bab749-86cb-4b0e-9a37-af35dfd767a4" style="width:50%" class="column"><p id="b69ded5f-32f4-46e8-8409-1f7436094032" class="">Eva platform is an open-source social robotics platform that provides you with the resources to build a social robot and its interactions cheaply, fast, and easily.</p><p id="c2a9e7fb-3b59-4e17-a5b7-b18c1b6893c0" class="">
+</p></div><div id="21a52b5b-f34d-4fca-8478-c79f6156867c" style="width:50%" class="column"><figure id="5850295f-d679-4070-a1f2-f34db1eeaf90" class="image"><a href="Untitled%2034.png"><img style="width:192px" src="Untitled%2034.png"/></a><figcaption>Evabot</figcaption></figure><p id="74a39e5e-d5af-42d0-93ac-1c78603330a1" class="">
+</p></div></div><h2 id="a6a46e58-4c5a-45ec-9629-90ee361473f7" class="">Keywords</h2><p id="01782068-8a6c-4b3e-a1f9-0250a06144a7" class="">EVA-SIM, multimodal data, dementia, HCI, HRI, Embodied Voice Assistant (EVA)</p><h1 id="11e50899-ced8-451a-b243-99184d59a830" class="">Getting started</h1><p id="66896904-2161-4376-a949-3911b00ca852" class="">Welcome to EvaPlatform! We&#x27;re thrilled that you&#x27;ve decided to join our community. Our goal is to provide you with an exceptional experience every time you use our platform. Don&#x27;t hesitate to reach out if you have any questions or feedback.</p><p id="f69a9c69-ad49-4510-a72d-e4ca57bd524e" class="">Build your IoT prototypes faster with JavaScript and no servers <a href="https://notebook.sanchezcarlosjr.com/">here</a>. You can find some interesting and useful notebooks on <a href="https://github.com/sanchezcarlosjr/javascript-notebook/issues/1">GitHub</a> or full experiments on <a href="https://github.com/sanchezcarlosjr/evastore">EvaStore</a>. Test your amazing ideas with <a href="https://evasim.sanchezcarlosjr.com/">Evasim</a>. Ready? Build your own Evabot following the instructions on <a href="https://github.com/eva-social-robot/Eva">Eva official repository.</a></p><p id="a41289c8-9dfa-4f61-a094-0925f1d76e5a" class="">Would you like to contribute to the project(s)?</p><p id="f66225f1-8f96-4bf2-8fe1-32ef4deb3246" class=""><a href="https://github.com/sanchezcarlosjr/evasim/">https://github.com/sanchezcarlosjr/evasim/</a></p><p id="c7dcfb46-88a1-48ff-a719-96ceba042ac6" class=""><a href="https://github.com/sanchezcarlosjr/javascript-notebook">https://github.com/sanchezcarlosjr/javascript-notebook</a></p><h2 id="70d380db-052e-41db-beb9-f8f023331ea8" class="">Installation</h2><p id="28d1dd23-a86f-4fd1-bb04-6e26966b8bcd" class=""><strong>Issues.</strong></p><p id="1a9c48fd-8719-42ce-8d7c-dbb57ca9757a" class="">Code mobility</p><p id="dac0f873-4783-4167-ae48-fb835290766e" class="">Naming</p><p id="88603ad4-1941-4810-b80a-7010282d5a8e" class="">Database</p><p id="6af17ca4-8250-4b02-aa12-523cf09ab4a0" class="">Communication</p><h1 id="ebb0ff85-0a47-4a79-b1b5-26c0348347ef" class="">Goals</h1><p id="5d3eba16-4dbc-4cae-89ab-2dec14e24e58" class="">Our main goal is to create an EVA platform to aid patients with dementia. To achieve this, we are currently focused on developing an EVA simulator using research from papers [5] and [6], as well as utilizing tools such as Blender, 3D printing, WebGL, and other relevant technologies. Because researchers strive for smart improvements, we bring out EvaSim [7], a simulator that enhances fast prototyping.</p><p id="30f6d866-ba67-4486-9ab9-d54ea4c1cf10" class="">The development of the simulator will be followed by rigorous testing and evaluation of our system to ensure its efficacy in aiding dementia patients.</p><h1 id="9839c2b2-a78e-47bb-9a66-7cfbe3413086" class="">Methodology</h1><p id="83b51583-ac7f-467f-853a-ca666e5a1ea1" class="">The software development process of this project is user-centered and RUP-based, this involves understanding the human beings who use our systems and their needs before writing a single line of code.</p><p id="fdfcf6c9-597a-4189-be67-892944ebff9b" class="">We’re going to find user needs by understanding the discourse of the domain, observing the user behavior in the current workflow, and prototyping insofar as we have uncertainty or doubts.</p><p id="21979b9e-b706-4d08-851a-dd898b4e21d7" class="">So, our goals are to understand the language from the available literature focused on HCI, Ambient Intelligence, and Social Assistance; print and build a robot model to identify improvement opportunities using the 3D printer and Blender; document the available software; write down the system requirements; develop the Eva-SIM [7] [8] —which has been built in Brazil; and work with other interested groups.</p><p id="4af736c1-ea03-422e-8cd6-abef06c31a6b" class="">We propose the following work plan, with activities starting on 01-18-2023 and ending on 07-30-2023.</p><figure id="e8e54fe0-3148-496f-8da1-7d3a1f0ec91d" class="link-to-page"><a href="Estudios%20en%20Interaccio%CC%81n%20Humano-%20Computadora%20y%20Hum%20e8e54fe03148496f8da17d3a1f0ec91d.html">Estudios en Interacción Humano- Computadora y Humano-Robot para la asistencia a adultos mayores con demencia usando EVA</a></figure><figure id="0996c67f-f8d7-4428-bb72-5c4f676a9ed0" class="link-to-page"><a href="Informe%20trimestral%200996c67ff8d74428bb725c4f676a9ed0.html">Informe trimestral</a></figure><div id="69ad0eb7-fb0a-48e3-ba6d-904512753352" class="collection-content"><h4 class="collection-title">Work plan</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M3.29688 14.4561H12.7031C14.1797 14.4561 14.9453 13.6904 14.9453 12.2344V3.91504C14.9453 2.45215 14.1797 1.69336 12.7031 1.69336H3.29688C1.82031 1.69336 1.05469 2.45215 1.05469 3.91504V12.2344C1.05469 13.6973 1.82031 14.4561 3.29688 14.4561ZM3.27637 13.1162C2.70898 13.1162 2.39453 12.8154 2.39453 12.2207V5.9043C2.39453 5.30273 2.70898 5.00879 3.27637 5.00879H12.71C13.2842 5.00879 13.6055 5.30273 13.6055 5.9043V12.2207C13.6055 12.8154 13.2842 13.1162 12.71 13.1162H3.27637ZM6.68066 7.38086H7.08398C7.33008 7.38086 7.41211 7.30566 7.41211 7.05957V6.66309C7.41211 6.41699 7.33008 6.3418 7.08398 6.3418H6.68066C6.44141 6.3418 6.35938 6.41699 6.35938 6.66309V7.05957C6.35938 7.30566 6.44141 7.38086 6.68066 7.38086ZM8.92285 7.38086H9.31934C9.56543 7.38086 9.64746 7.30566 9.64746 7.05957V6.66309C9.64746 6.41699 9.56543 6.3418 9.31934 6.3418H8.92285C8.67676 6.3418 8.59473 6.41699 8.59473 6.66309V7.05957C8.59473 7.30566 8.67676 7.38086 8.92285 7.38086ZM11.1582 7.38086H11.5547C11.8008 7.38086 11.8828 7.30566 11.8828 7.05957V6.66309C11.8828 6.41699 11.8008 6.3418 11.5547 6.3418H11.1582C10.9121 6.3418 10.8301 6.41699 10.8301 6.66309V7.05957C10.8301 7.30566 10.9121 7.38086 11.1582 7.38086ZM4.44531 9.58203H4.84863C5.09473 9.58203 5.17676 9.50684 5.17676 9.26074V8.86426C5.17676 8.61816 5.09473 8.54297 4.84863 8.54297H4.44531C4.20605 8.54297 4.12402 8.61816 4.12402 8.86426V9.26074C4.12402 9.50684 4.20605 9.58203 4.44531 9.58203ZM6.68066 9.58203H7.08398C7.33008 9.58203 7.41211 9.50684 7.41211 9.26074V8.86426C7.41211 8.61816 7.33008 8.54297 7.08398 8.54297H6.68066C6.44141 8.54297 6.35938 8.61816 6.35938 8.86426V9.26074C6.35938 9.50684 6.44141 9.58203 6.68066 9.58203ZM8.92285 9.58203H9.31934C9.56543 9.58203 9.64746 9.50684 9.64746 9.26074V8.86426C9.64746 8.61816 9.56543 8.54297 9.31934 8.54297H8.92285C8.67676 8.54297 8.59473 8.61816 8.59473 8.86426V9.26074C8.59473 9.50684 8.67676 9.58203 8.92285 9.58203ZM11.1582 9.58203H11.5547C11.8008 9.58203 11.8828 9.50684 11.8828 9.26074V8.86426C11.8828 8.61816 11.8008 8.54297 11.5547 8.54297H11.1582C10.9121 8.54297 10.8301 8.61816 10.8301 8.86426V9.26074C10.8301 9.50684 10.9121 9.58203 11.1582 9.58203ZM4.44531 11.7832H4.84863C5.09473 11.7832 5.17676 11.708 5.17676 11.4619V11.0654C5.17676 10.8193 5.09473 10.7441 4.84863 10.7441H4.44531C4.20605 10.7441 4.12402 10.8193 4.12402 11.0654V11.4619C4.12402 11.708 4.20605 11.7832 4.44531 11.7832ZM6.68066 11.7832H7.08398C7.33008 11.7832 7.41211 11.708 7.41211 11.4619V11.0654C7.41211 10.8193 7.33008 10.7441 7.08398 10.7441H6.68066C6.44141 10.7441 6.35938 10.8193 6.35938 11.0654V11.4619C6.35938 11.708 6.44141 11.7832 6.68066 11.7832ZM8.92285 11.7832H9.31934C9.56543 11.7832 9.64746 11.708 9.64746 11.4619V11.0654C9.64746 10.8193 9.56543 10.7441 9.31934 10.7441H8.92285C8.67676 10.7441 8.59473 10.8193 8.59473 11.0654V11.4619C8.59473 11.708 8.67676 11.7832 8.92285 11.7832Z"></path></svg></span>Date</th><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th></tr></thead><tbody><tr id="ff46c69f-dcc3-487b-b8aa-cec4364940b5"><td class="cell-title"><a href="Understand%20the%20language%20from%20the%20available%20literat%20ff46c69fdcc3487bb8aacec4364940b5.html">Understand the language from the available literature focused on HCI, Ambient Intelligence, and Social Assistance</a></td><td class="cell-q@zm"><time>@January 18, 2023 → January 30, 2023</time></td><td class="cell-]MX_"></td></tr><tr id="275f136b-ec89-41b5-aedb-742abfd2c581"><td class="cell-title"><a href="Print%20and%20build%20a%20robot%20model%20to%20identify%20improvem%20275f136bec8941b5aedb742abfd2c581.html">Print and build a robot model to identify improvement opportunities using the 3D printer and Blender</a></td><td class="cell-q@zm"><time>@January 30, 2023 → February 13, 2023</time></td><td class="cell-]MX_"></td></tr><tr id="909812e9-926d-4e6f-8927-887bc6c6fe75"><td class="cell-title"><a href="Document%20the%20available%20software%20909812e9926d4e6f8927887bc6c6fe75.html">Document the available software</a></td><td class="cell-q@zm"><time>@January 18, 2023 → February 13, 2023</time></td><td class="cell-]MX_"></td></tr><tr id="d2f8c821-f270-4531-9505-71e37314895c"><td class="cell-title"><a href="EVASIM%20prototypes%20and%20observations%20d2f8c821f2704531950571e37314895c.html">EVASIM prototypes and observations</a></td><td class="cell-q@zm"><time>@February 27, 2023 → March 6, 2023</time></td><td class="cell-]MX_"></td></tr><tr id="866a1ab0-1364-4c3c-9783-db0cc5add398"><td class="cell-title"><a href="Simulator%20requirements%20866a1ab013644c3c9783db0cc5add398.html">Simulator requirements</a></td><td class="cell-q@zm"><time>@March 6, 2023 → March 12, 2023</time></td><td class="cell-]MX_"></td></tr><tr id="a1894b3b-283c-4545-95d0-b505d25efe03"><td class="cell-title"><a href="Quarterly%20report%20writing%20a1894b3b283c454595d0b505d25efe03.html">Quarterly report writing</a></td><td class="cell-q@zm"><time>@March 5, 2023</time></td><td class="cell-]MX_"></td></tr><tr id="e9a094e3-64bb-46b7-bf29-a178b8c5c840"><td class="cell-title"><a href="Final%20report%20writing%20e9a094e364bb46b7bf29a178b8c5c840.html">Final report writing</a></td><td class="cell-q@zm"><time>@June 30, 2023</time></td><td class="cell-]MX_"></td></tr><tr id="15cc7cc6-3048-4171-a371-be6febd7261c"><td class="cell-title"><a href="Software%20construction%2015cc7cc630484171a371be6febd7261c.html">Software construction</a></td><td class="cell-q@zm"><time>@March 13, 2023 → June 30, 2023</time></td><td class="cell-]MX_"></td></tr><tr id="b7b28172-3f51-4888-8503-73c8e0e0b74c"><td class="cell-title"><a href="Acceptance%20tests%20b7b281723f514888850373c8e0e0b74c.html">Acceptance tests</a></td><td class="cell-q@zm"><time>@June 18, 2023 → June 30, 2023</time></td><td class="cell-]MX_"></td></tr></tbody></table></div><h1 id="bd640dbe-e451-4057-b579-7a7c76951a11" class="">Theory</h1><h2 id="7a3f7cbe-19ff-4e32-bddf-98a63c762f95" class="">HCI</h2><figure id="451cf4d9-d365-40b0-8ac0-914b1e765acd" class="link-to-page"><a href="Human-Computer%20Interfaces%20451cf4d9d36540b08ac0914b1e765acd.html"><span class="icon">👁️‍🗨️</span>Human-Computer Interfaces</a></figure><h2 id="a036aad7-be8e-4d8e-b84d-d5b6a3f35658" class="">Computer simulations</h2><figure id="612f58f2-e590-4def-b1dc-9127a619c650" class="link-to-page"><a href="Computer%20Simulations%20612f58f2e5904defb1dc9127a619c650.html"><span class="icon">🖌️</span>Computer Simulations</a></figure><h2 id="19553768-b423-4fa4-ba26-4d806116d8ad" class="">Robots as therapy</h2><p id="ce6e2bef-cc11-40b7-bacf-fe3b61696474" class="">We use robots to assist people, we call such robots Socially Assistive Robots (SARs). Eva is a low-cost hardware SAR that assists dementia and geriatric cognitive disorder patients with non-pharmacological interventions. Nowadays, Evabot has become an Eva platform referring to the open-source social robotics platform that builds around it —EvaSim, Evabot, Eva Language, Evaweb, and so on.</p><p id="64fbd054-269a-4b89-af79-ec004b118ae1" class="">Some of the multimodal interaction Evabot capabilities are Text-To-Speech (e.g. you choose vendors such as Google Cloud or IBM Watson), facial expression recognition, controlling light sensory effects, Wizard and Oz approach, and connecting IoT devices.</p><h3 id="d704a7cb-f32e-4891-ba33-0e92d5da590a" class="">Serious games</h3><p id="c5e26dc9-409d-4fab-93c0-42e9d9e10960" class=""><strong>The imitation game</strong></p><figure id="7817b419-f00d-4581-b164-3b9c36f2c075"><div class="source"><a href="https://www.youtube.com/watch?v=uDkwUEX8IeA&amp;ab_channel=ProdutorMarceloRocha">https://www.youtube.com/watch?v=uDkwUEX8IeA&amp;ab_channel=ProdutorMarceloRocha</a></div><figcaption>The imitation game by Marcelo Rocha.</figcaption></figure><p id="8196b458-3241-4812-b414-77792f18c251" class=""><strong>Game of Colors</strong></p><figure id="6f49e5dc-205c-4187-9edb-6aa9a4754651"><div class="source"><a href="https://www.youtube.com/watch?v=uDkwUEX8IeA&amp;ab_channel=ProdutorMarceloRocha">https://www.youtube.com/watch?v=uDkwUEX8IeA&amp;ab_channel=ProdutorMarceloRocha</a></div><figcaption>The game of colors by Marcelo Rocha.</figcaption></figure><p id="58664c62-8460-4836-b109-81344ea6d4ff" class=""><strong>The game of emotions</strong></p><figure id="4530a9ee-c420-4cb4-8236-3a124f277c71"><div class="source"><a href="https://www.youtube.com/watch?v=b79Fs-KRdug&amp;ab_channel=ProdutorMarceloRocha">https://www.youtube.com/watch?v=b79Fs-KRdug&amp;ab_channel=ProdutorMarceloRocha</a></div><figcaption>The game of emotions by Marcelo Rocha.</figcaption></figure><h2 id="6ef2e30d-daf7-4783-bdee-d5d21e9655ea" class="">Eva Language</h2><p id="99f20d51-352d-4704-ae1f-99b2c223d5ce" class="">Eva Language is a visual scripting language (VPL) built using Google Bloocky whose purpose is that non-technical people generate new interactions in the Eva language.</p><p id="8b1bb1e3-f9b8-43c9-bcd2-a1951d35cffc" class="">The language should include what is shown such that Eva Sim can show custom interfaces.</p><figure id="379a5f6f-faa5-45ad-8521-674658623d13" class="image"><a href="Untitled%2035.png"><img style="width:1357px" src="Untitled%2035.png"/></a></figure><p id="f9a57259-74ca-45b1-90a7-37ec36bfc5a1" class="">
+</p><pre id="b09c5e9d-2967-457e-a36a-2e594559b6cb" class="code"><code>function NumericComparison({ A, B, OP }) {
+    let value1 = parseInt(A);
+    let value2 = parseInt(B);
+    if (OP === &#x27;EQ&#x27;) {
+        return value1 == value2;
+    } else if (OP === &#x27;NEQ&#x27;) {
+        return value1 != value2;
+    } else if (OP === &#x27;LT&#x27;) {
+        return value1 &lt; value2;
+    } else if (OP === &#x27;LTE&#x27;) {
+        return value1 &lt;= value2;
+    } else if (OP === &#x27;GT&#x27;) {
+        return value1 &gt; value2;
+    } else if (OP === &#x27;GTE&#x27;) {
+        return value1 &gt;= value2;
+    }
+}</code></pre><p id="b2ad934c-c1c8-4699-b47c-dbe4159b3b6c" class="">
+</p><p id="62e0ba35-37f5-4020-928a-42e099346b26" class="">
+</p><pre id="0a2de986-08eb-42b0-91e8-abf4f42787c7" class="code"><code>const ProcessCounterNode = function ({ ops, count, value, first, second }) {
+    let temp = getCounter();
+    if (ops === &#x27;ADD&#x27;) {
+        temp[count] = getValue(first, temp) + getValue(second, temp);
+    } else if (ops === &#x27;MINUS&#x27;) {
+        temp[count] = getValue(first, temp) - getValue(second, temp);
+    } else if (ops === &#x27;MULTIPLY&#x27;) {
+        temp[count] = getValue(first, temp) * getValue(second, temp);
+    } else if (ops === &#x27;DIVIDE&#x27;) {
+        temp[count] = getValue(first, temp) / getValue;
+    } else if (ops === &#x27;DIVIDE&#x27;) {
+        temp[count] = getValue(first, temp) / getValue(second, temp);
+    } else if (ops === &#x27;POWER&#x27;) {
+        temp[count] = Math.pow(getValue(first, temp), getValue(second, temp));
+    } else if (ops === &#x27;assign&#x27;){
+        temp[count] =  value;
+    } else if (ops === &#x27;random&#x27;){
+        temp[count] =  generarNumeroRandom(parseInt(first), parseInt(second));
+    }
+    setCounter(temp);
+}</code></pre><p id="a4c522e8-72f3-403d-a5ef-632b68a9731b" class="">
+</p><p id="a8bf3f72-5d66-46e4-abe3-52fcdff60a96" class="">Interaction consists of code, script, and assets.</p><pre id="583576fc-e900-4107-abb3-1af3c2514dc7" class="code"><code>name.json
+script/name.json
+assets/image1.png</code></pre><p id="647cd1d5-2dba-4b64-bb4a-99ece6093e24" class="">An example is “Pasalabra”</p><pre id="fcf6038f-0db6-42eb-be78-f31141994801" class="code"><code>Pasapalabra.json
+script/Rosco-Pasapalabra 20220404.json
+sonidos/acierto.wav</code></pre><p id="ee462e98-7827-4cff-8dc2-27028ce556c5" class="">We check out the <code>Pasapalabra.json</code></p><p id="8739e4a3-782a-4bc3-8e73-e7f762364319" class=""><a href="https://codebeautify.org/jsonviewer/y2313d691">https://codebeautify.org/jsonviewer/y2313d691</a></p><p id="3a555e6e-d92e-4def-a8b6-3481234a4596" class=""><a href="https://blockly-demo.appspot.com/static/demos/code/index.html">https://blockly-demo.appspot.com/static/demos/code/index.html</a></p><h3 id="8d15e9d0-7d96-435d-baf5-5c6f570c5d9b" class="">VPL Blocks</h3><p id="f4df8842-b8b3-4e1d-98d4-c3619bf1e710" class=""><a href="https://rhasspy.readthedocs.io/en/latest/">https://rhasspy.readthedocs.io/en/latest/</a></p><p id="9a7c9660-df05-4b66-8b39-d53a112fb62d" class=""><a href="https://github.com/matrix-io/matrixio-models/blob/master/matrix-voice/matrix-voice.stl">https://github.com/matrix-io/matrixio-models/blob/master/matrix-voice/matrix-voice.stl</a></p><h2 id="0de1bebc-7ed4-4c9b-a973-5a0b7cb3004a" class="">Eva Sim</h2><p id="dc7e86ae-2c81-499e-9f6f-c30a6bba0bae" class="">Due to the risk of damaging the assembled robot and a slow feedback loop, Marcelo Marques da Rocha proposed a simulator that interprets the Eva language and emulates the capabilities of Eva [7] [11]. This simulator is intended for use by developers, HRI researchers, and enthusiasts who need to safely and quickly test their real-world scenarios, enabling better training.</p><p id="98511892-6217-4023-8163-5a2b143a7068" class="">To summarize, the goal of the Eva Sim project, and therefore our goal, is to develop a simulator that allows Eva developers to prototype, learn, and iterate more quickly.</p><pre id="ab494204-3d29-4c3d-bff9-b424af9370e6" class="code"><code>graph LR
+  JSON[&quot;JSON (Eva Language)&quot;] --&gt; EvaSimParser[&quot;Eva Sim x Parser&quot;]
+  EvaSimParser[&quot;Eva Sim Parser&quot;] --&gt; XML
+  XML --&gt; EvaSimModule[&quot;EvaSim Execution Module&quot;]
+  EvaSimModule --&gt; UserInterface</code></pre><p id="b754be0f-f74e-4d6f-ad28-2525bea0f207" class="">For example, on the simulator, you can run Serious games such as The Imitation Game (not the movie), Game of Colors, and Game of Emotions easily and with the same behavior as in the Evabot.</p><p id="05bd214a-1dec-431d-99d6-4e833e6650c0" class="">You can only visualize what is going on, but you cannot program on EvaSim. </p><p id="09f40c29-6623-4469-9fbd-30286a599d7b" class="">TODO: Eva Sim user experience evaluation.</p><figure id="f2e55844-689a-498f-9e45-4bb2ce6ee9bc"><div class="source"><a href="https://www.youtube.com/watch?v=OfGelKZIA9c&amp;ab_channel=ProdutorMarceloRocha">https://www.youtube.com/watch?v=OfGelKZIA9c&amp;ab_channel=ProdutorMarceloRocha</a></div><figcaption>EvaSim Demo</figcaption></figure><p id="da87e2e4-2ae0-4c5b-ab4b-74bd568c74d6" class=""><strong>EvaML (EVA Markup Language)</strong></p><p id="d0beba97-0831-4c63-80c4-706ac5c7980a" class="">EvaML is an XML vocabulary in the Eva language domain that is obtained from another system by JSON. <strong>EvaML is deprecated.</strong></p><h3 id="1f2020f7-e208-4be7-96c1-f26218e03471" class="">Manuals</h3><p id="f8591a7e-1537-412f-b1ec-5c1403b6f8a8" class=""><a href="https://github.com/midiacom/eva-robot">https://github.com/midiacom/eva-robot</a></p><h1 id="a923ea29-5fd8-4cfe-9aa5-04c41a94087b" class="">Mockups</h1><h2 id="e13da9f2-b003-4458-8d30-5fe08ac71c7f" class="">Project vision</h2><p id="2cbe5927-e677-403a-a5fb-5423afa08a29" class="">We would like to enhance EVA researchers in training, programming, and testing new interactions.</p><h2 id="79e99fd6-7a9b-4103-8fb0-2e06bf0273a7" class="">Observations</h2><p id="08949451-207e-44f0-bbc0-def989c80490" class=""><strong>What is the current workflow for researchers to develop new interactions?</strong></p><p id="bae665d2-316d-4f39-a5e1-6bac6a385a34" class="">Without a server or broker, the current performance of the system is slow, leading to user frustration. To improve the user experience, faster prototyping is essential. Additionally, users interact more frequently with computer vision, computer voice, and gestures, making it necessary to optimize the system for these interactions. </p><p id="86fd5a65-ded7-493d-a05a-b2b6eb463323" class="">Although the system could support multiple programming languages, we’ve chosen VPL due to its ease of use for developers.</p><h2 id="222b96b8-e41a-4aba-93f5-922808e2bb8c" class="">Prototypes</h2><h3 id="adf8f481-aa56-4a72-b909-1f8ae5b829fd" class="">v1</h3><p id="74fde4ff-f3ca-4602-b4e1-043bf0516d62" class=""><a href="https://www.figma.com/file/w63waPDDeIInLPiUpxQtM9/EVA?node-id=0%3A1&amp;t=4USALfnKimt3aYEr-1">https://www.figma.com/file/w63waPDDeIInLPiUpxQtM9/EVA?node-id=0%3A1&amp;t=4USALfnKimt3aYEr-1</a></p><figure id="7af0d168-6cb8-4e19-b0cb-825302256f46"><div class="source">https://www.figma.com/file/w63waPDDeIInLPiUpxQtM9/EVA?node-id=0%3A1&amp;t=4USALfnKimt3aYEr-1</div></figure><h3 id="500b6f31-0b5b-4373-8b44-8ef5302057ef" class="">v3</h3><figure id="364583ba-dbfc-4e14-bb34-e45f89aba700" class="link-to-page"><a href="Notebooks%20and%20secrets%20364583badbfc4e14bb34e45f89aba700.html">Notebooks and secrets</a></figure><h1 id="4e4ee0eb-b0be-4888-86d6-c7ed84a7e115" class="">Construction. Team versions.</h1><h2 id="f80c722a-fff7-4095-beef-f7f3bf2d2e13" class="">Ecosystem</h2><ul id="73c690d3-e298-48ab-bf09-574d404a2a5e" class="toggle"><li><details open=""><summary>WBS</summary><pre id="24dfe5e9-f400-44f4-90b8-624119cbb21b" class="code"><code>@startwbs
+* Eva Platform
+** User-Centered Design Process
+*** RUP
+*** Prototypes
+** Teams
+*** CICESE
+*** Universidade Federal Fluminense (UFF)
+*** Universidad de Castilla-La Mancha (mamilab)
+*** USCD
+** EvaNotebook
+*** No servers. Please don&#x27;t confuse it with serverless.
+*** Angular
+*** EditorJS
+*** Capabilities
+**** Send emails
+**** Send SMS
+**** Call people
+**** Control EVA and environment
+**** Connect to ChatGPT
+**** Connect to APIs
+**** Web Workers
+**** Collaborative notebook
+**** WebAssembly
+**** Blockchain?
+**** Decentralized database
+**** Observable Plot
+*** Protocols
+**** MQTT
+**** WebSockets
+**** HTTP
+**** WebRTC
+** EvaSim
+*** Unity
+*** 3D
+*** WebRTC
+** EvaLanguage
+*** Visual Programming Language
+*** Google Blockly
+*** JSON Domain-Specific Language
+** Evabot
+*** 3D impression
+**** Blender
+*** Software components
+**** New  version
+***** MQTT
+***** Rhasspy
+**** MEAN stack.
+***** MongoDB
+***** Express
+***** AngularJS
+***** NodeJS
+***** PM2 (i.e. Process manager)
+***** Interactions by VPL
+**** Computer vision
+***** Mediapipe
+**** Voice and natural language processing
+***** IBM Watson
+***** Dialogflow by Google
+***** Telegram API
+***** The Wizard of Oz
+*** Hardware components
+**** Amoled Touch Display
+**** Raspberry PI 4
+****  ArbotiX-M
+**** Two servomotors
+**** Bluetooth speaker
+**** Matrix voice
+**** Webcam
+**** Smart Bulb
+@endwbs</code></pre></details></li></ul><figure id="1e825ac1-b85d-448a-808b-7b81d4fddf67" class="image"><a href="ecosystem.svg"><img style="width:1847px" src="ecosystem.svg"/></a></figure><h2 id="dbe9af2f-5a41-45cd-bad5-04c338cf9654" class="">CICESE</h2><p id="75653875-2277-4d27-b9b0-0334bdb62414" class=""><strong>Capabilities</strong></p><ul id="f89de7ba-4a26-41bc-b45e-5d5ab3668b7a" class="bulleted-list"><li style="list-style-type:disc"><a href="https://notebook.sanchezcarlosjr.com/">EvaNotebook.</a> Build your scenarios faster with no servers.</li></ul><ul id="20a7cef8-21dd-47e2-acb4-b3204d988b96" class="bulleted-list"><li style="list-style-type:disc"><a href="https://evasim.sanchezcarlosjr.com/">EvaSim 3D.</a> Prototype your scenarios on a platform that works right out of the box.</li></ul><ul id="dbffb35d-94ab-4445-bebd-a33f0c1a0f76" class="bulleted-list"><li style="list-style-type:disc">EvaLanguage. Control everything with custom scenarios.</li></ul><ul id="3974986d-527d-482e-b6a2-0b7b1d424b34" class="bulleted-list"><li style="list-style-type:disc"><a href="https://github.com/sanchezcarlosjr/evastore">EvaStore.</a> Share your ideas and experiments.</li></ul><ul id="6f7b8fcf-9a16-4e66-ae1c-dc807ae05cb4" class="bulleted-list"><li style="list-style-type:disc"><a href="https://github.com/sanchezcarlosjr/eva-broker">EvaBot</a>. Build a Smart and Affective Assistance with no pain.</li></ul><figure id="41dfdf0c-7734-4076-9acd-825af98546a4" class="link-to-page"><a href="EvaNotebook%2041dfdf0c773440769acd825af98546a4.html"><span class="icon">🛗</span>EvaNotebook</a></figure><figure id="a6e9a664-a1f1-4e06-949a-37561bb195db" class="link-to-page"><a href="EvaSim%203D%20a6e9a664a1f14e06949a37561bb195db.html">EvaSim 3D</a></figure><figure id="13276d34-7d9e-49ee-97db-9602a90a741b" class="link-to-page"><a href="EvaBot%2013276d347d9e49ee97db9602a90a741b.html">EvaBot</a></figure><figure id="44459c4a-d40d-49ad-971e-1b403709cc4b" class="link-to-page"><a href="EvaPlatform%2044459c4ad40d49ad971e1b403709cc4b.html"><span class="icon">🧧</span>EvaPlatform</a></figure><h2 id="c1a9b1ee-a50e-42ae-b3f3-46f5de09a7e2" class="">Fluminense Federal University (UFF) </h2><p id="290f1257-4026-452a-bbfd-559bf9abb349" class="">[11]</p><p id="2313a333-abc7-4077-af78-860eb39c7def" class=""><strong>Capabilities</strong></p><figure id="49e940d6-ce2a-4785-ac4b-39498df736c1" class="link-to-page"><a href="EvaSIM%20-%20The%20EVA%20Robot%20Simulator%20Software%2049e940d6ce2a4785ac4b39498df736c1.html">EvaSIM - The EVA Robot Simulator Software</a></figure><figure id="65b6a2bd-5873-4f83-a8bb-dfa78e0e3715" class="link-to-page"><a href="EvaML%20An%20XML-Based%20Language%20for%20the%20Specification%20%2065b6a2bd58734f83a8bbdfa78e0e3715.html">EvaML: An XML-Based Language for the Specification of Interactive Sessions with the Social Robot EVA</a></figure><figure id="8a5168d7-b7fb-4ab3-bfdd-ea4f01046553" class="link-to-page"><a href="Installing%20Python%20and%20Dependencies%20(EvaML%20and%20EvaS%208a5168d7b7fb4ab3bfddea4f01046553.html">Installing Python and Dependencies (EvaML and EvaSIM)</a></figure><h2 id="00b88c38-f1f4-4252-8466-be1b7bc9167b" class=""><strong>Universidad de Castilla-La Mancha</strong></h2><p id="ae9de576-7ca5-4a13-b45c-b23e606d4a03" class="">[12]</p><figure id="2ae2657b-94d9-4e88-befc-16866350ec47" class="link-to-page"><a href="Universidad%20de%20Castilla-La%20Mancha%202ae2657b94d94e88befc16866350ec47.html">Universidad de Castilla-La Mancha</a></figure><h2 id="bf552aa8-3665-4642-8b71-3053e28362b3" class="">UCSD</h2><h1 id="ef78ea75-7aff-40e6-856b-04e77e450ad0" class="">Requirements</h1><p id="bcb7ac4e-61e5-455b-9471-b356abb256e4" class="">We are migrating the current version of EvaSim to the Unity platform on the Web. This will eliminate the need for researchers to go through an installation process, allowing for immediate use. Faster feedback from patients is crucial for research purposes.</p><p id="7f4258c1-0069-4ccc-a870-fc08c8271604" class="">Researchers require the ability to visualize the 3D robot and execute interactions in their preferred programming language. Additionally, they need to load customized environments, including keys for services such as Dialogflow, IBM Watson, ChatGPT, and others. EvaSim must support all features available on Evabot.</p><p id="142b5f36-6c46-445c-8b10-91190c27632a" class="">Researchers aim to connect to EvaSim through automation tasks such as &quot;The Game of Emotions&quot; and execute interactions automatically. However, due to cost and performance considerations, external servers are not allowed, and therefore EvaSim must run entirely on the client side. To meet these constraints, we propose using a Terminal with WebRTC and WebSockets, which enables EvaSim to operate without user interaction and run entirely on the client side.</p><figure id="288e49bb-6c95-470c-be6e-658f4f47a28d" class="link-to-page"><a href="EVA%20Platform%20requirements%20288e49bb6c95470cbe6e658f4f47a28d.html">EVA Platform requirements</a></figure><h2 id="7d25698d-1f9d-4180-8900-5470cad6ee95" class="">Continuous integration</h2><p id="a2baab55-3360-4e3b-b570-33bb81ab68c1" class=""><a href="https://game.ci/docs/github/activation">https://game.ci/docs/github/activation</a></p><h1 id="061769af-87ef-449f-8e4b-371dc0381ea0" class="">Testing and evaluations</h1><h1 id="7c0e32cc-c5dd-47ca-9ce5-b0ade9fb229d" class="">Conclusions</h1><h1 id="a1eb7cb8-f08a-4e83-8acf-30615e0e03f1" class="">References</h1><p id="0f573b2c-e807-4748-94fa-aac75c319f0a" class="">[1] Dix, Alan J., Janet E. Finlay, et al. <em>Human-Computer Interaction</em>. 2nd ed. Prentice Hall, 1998. ISBN: 9780132398640.</p><p id="02cdb45e-bbf2-42d2-95ab-c8681a3cb98b" class="">[2] Olsen, Dan R. <em>Developing User Interfaces (Interactive Technologies)</em>. Morgan Kaufmann, 1998. ISBN: 9781558604186.</p><p id="fdd23690-1a63-444d-a189-019f1df4434f" class="">[3] Cook, Albert M., and Jan Miller Polgar. <em>Cook &amp; Hussey’s Assistive Technologies: Principles and Practice</em>. 3rd ed. Mosby Elsevier, 2007. ISBN: 9780323039079.</p><p id="1dba407e-208d-4d8a-bfb4-fd86adf53a4f" class="">[4] Item 1007/3283 | Repositorio CICESE. (2020, August 06). Retrieved from <a href="https://cicese.repositorioinstitucional.mx/jspui/handle/1007/3283">https://cicese.repositorioinstitucional.mx/jspui/handle/1007/3283</a></p><p id="b04bf940-309e-4b8c-9e4c-1a0d559ef962" class="">[5] Raskin, Jef. <em>The Humane Interface: New Directions for Designing Interactive Systems</em>. Addison-Wesley Professional, 2000. ISBN: 9780201379372.</p><p id="b80a1a5e-79f9-4edf-ae57-105ad1f3fb5d" class="">[6] D. Cruz-Sandoval and J. Favela, &quot;A Conversational Robot to Conduct Therapeutic Interventions for Dementia,&quot; in <em>IEEE Pervasive Computing</em>, vol. 18, no. 2, pp. 10-19, 1 April-June 2019, doi: 10.1109/MPRV.2019.2907020.</p><p id="b559da06-3999-482a-a304-b27a93346799" class="">[7] M. Marques da Rocha, D. Cruz-Sandoval, J. Favela and D. C. Muchaluat-Saade, &quot;EvaSIM: a Software Simulator for the EVA Open-source Robotics Platform,&quot; <em>2022 31st IEEE International Conference on Robot and Human Interactive Communication (RO-MAN)</em>, Napoli, Italy, 2022, pp. 714-721, doi: 10.1109/RO-MAN53752.2022.9900561.</p><p id="ead781d8-2c2e-4474-b11c-99626b3c5e80" class="">[8] EVA - An open-source social robotics platform. (2022, December 20). Retrieved from <a href="https://eva-social-robot.github.io/">https://eva-social-robot.github.io</a></p><p id="c6b8bec6-cdf7-4b9f-958d-00f47f6c2629" class="">[9] google. &quot;mediapipe.&quot; GitHub, 23 Jan. 2023, <a href="http://github.com/google/mediapipe">github.com/google/mediapipe</a>.</p><p id="9dc8e0a3-9b45-4c38-b658-aa9205924152" class="">[10] Technologies, Unity. &quot;Unity - Manual: Building your WebGL application.&quot; 20 Jan. 2023, <a href="http://docs.unity3d.com/Manual/webgl-building.html">docs.unity3d.com/Manual/webgl-building.html</a>.</p><p id="334c07fa-8ac4-4ed3-b636-3dabde6a1169" class="">[11] midiacom. &quot;eva-robot.&quot; GitHub, 29 Jan. 2023, <a href="http://github.com/midiacom/eva-robot">github.com/midiacom/eva-robot</a>.</p><p id="2ec09c4b-0255-4dbf-9c2e-0559134560d1" class="">[12] Villa, L., Hervás, R., Dobrescu, C.C., Cruz-Sandoval, D., Favela, J. (2022). Incorporating Affective Proactive Behavior to a Social Companion Robot for Community Dwelling Older Adults. In: Stephanidis, C., Antona, M., Ntoa, S., Salvendy, G. (eds) HCI International 2022 – Late Breaking Posters. HCII 2022. Communications in Computer and Information Science, vol 1655. Springer, Cham. <a href="https://doi.org/10.1007/978-3-031-19682-9_72">https://doi.org/10.1007/978-3-031-19682-9_72</a></p></div></article></body></html>

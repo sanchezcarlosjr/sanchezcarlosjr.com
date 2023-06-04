@@ -1,0 +1,708 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Actividad 2</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c75e7f23-adcf-4f02-b2e8-dde1e3df1030" class="page sans"><header><h1 class="page-title">Actividad 2</h1><p class="page-description"></p></header><div class="page-body"><nav id="3f5d169d-1f11-454c-af68-746607f96305" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9b76236a-2687-45eb-9a19-f193ec09b77d">Ensayo</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c5816c49-6625-48b5-8f8d-b005b34ec817">Cuestionario</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#87867cb6-7c0d-49af-9255-6a62c0a9fb0e">Referencias</a></div></nav><h1 id="9b76236a-2687-45eb-9a19-f193ec09b77d" class="">Ensayo</h1><p id="d2c1a3ab-975c-4c7e-a860-be0e1913e350" class="">La Reingeniería de Procesos, también conocida como Business Process Reengineering (BPR), es una estrategia de gestión empresarial que tiene como objetivo mejorar drásticamente el rendimiento de una empresa a través del rediseño radical de sus procesos. Fue introducida por Michael Hammer y James Champy en 1990 y se hizo popular a través de su libro &quot;Manifiesto para la Revolución de los Negocios&quot; en 1993 (Hammer &amp; Champy, 1993).</p><p id="1cfbf719-a7f5-4a12-a4ec-31e9680b6266" class="">
+Los antiguos principios de la gestión directiva, establecidos hace más de 200 años, ya no funcionan en el mundo actual debido a las fuerzas de &quot;Clientes, Competencia y Cambio&quot; o las &quot;3C&quot;. La creciente demanda de los clientes, la intensificación de la competencia y el rápido ritmo de cambio han aumentado la necesidad de una reevaluación de los enfoques de gestión.</p><p id="aa2271bc-0d35-4635-aff1-7a4161e319fa" class="">
+La BPR propone una alternativa a los antiguos principios de gestión, cuyo objetivo final es la efectividad en satisfacer a los clientes proponiendo unos nuevos principios, herramientas y estrategias para su implementación en una organización, destacando el papel de las tecnologías de la información o infotecnología, y el cambio radical y fundamental en los procesos siempre considerando que <strong>Automatización no es lo mismo que la Reingeniería</strong>.</p><p id="8c9c0f2a-cff1-47e5-800e-920c0a8a5f5b" class="">
+En resumen, el presente ensayo introduce el concepto de Reingeniería de Procesos o BPR y destaca su importancia en un entorno empresarial cambiante y competitivo.</p><p id="0d3956b9-4a37-46d2-862b-a2fad71f2fd3" class="">
+</p><p id="035bbe93-d7b5-4476-bb6c-df977c61d212" class="">Para comprender en profundidad la esencia de la BPR es necesario considerar tres conceptos clave: fundamental, radical y espectacular.</p><p id="b8a9e7f3-f971-4759-b97f-a515cec7c6e1" class="">
+</p><p id="1c7187ed-4f92-426c-a8ed-a66aea40d281" class="">En primer lugar, la Reingeniería de Procesos es fundamental, ya que obliga a los líderes a cuestionar los supuestos básicos sobre los que se asienta su negocio y a revisar todas las normas preestablecidas. La BPR busca el qué y el cómo debe hacerlo. Es importante evitar el error de centrarse exclusivamente en los actuales procesos sin considerar la posibilidad de realizar actividades completamente nuevas. <strong>La Reingeniería se concentra en lo que una organización &quot;debe ser&quot; y no en lo que &quot;es&quot;.</strong></p><p id="dc3fbd5c-6ca7-49db-bd13-c57955aa8971" class="">
+</p><p id="63702042-746c-4666-a67b-011046f8d019" class="">En segundo lugar, el rediseño planteado por la BPR debe ser radical, abandonando lo viejo y llegando a la raíz de las acciones de la organización: una reinvención completa del negocio, no de un intento de mejorar o modificar lo que ya está instalado. La Reingeniería implica el descarte de todas las estructuras y procedimientos existentes para llegar a maneras absolutamente distintas de trabajar por enfocarse en los resultados más que en las tareas. BPR es contrario al Incrementalismo.</p><p id="607e129a-6e7c-4016-86eb-c4eb332fa25b" class="">
+</p><p id="ca7b0774-8c0f-41bd-9c89-d2cb2b6cd747" class="">Es decir, la Reingeniería de Procesos es una estrategia que implica una revisión fundamental y un rediseño radical de los procesos con el objetivo de alcanzar mejoras espectaculares en el rendimiento de la empresa. La BPR requiere cuestionar los supuestos más básicos, abandonar lo viejo y buscar soluciones drásticas y no superficiales. Es una estrategia ideal para empresas que quieran lograr mejoras significativas en su rendimiento. Las cuáles podemos clasificar, según Hammer y Champy, como «Sobrevivencia Urgente», «Prevención temprana» y «Ventaja competitiva».</p><p id="07654df4-4a8e-46f7-9cc3-986e4b48b4ad" class="">
+</p><p id="b65df7af-1215-43a8-b187-56d2640a5f31" class="">El primer tipo son aquellas que se encuentran en graves problemas de subsistencia y necesitan mejoras inmensas para seguir en el mercado y evitar ser eliminadas por la competencia.  Además, la Reingeniería permite a las empresas transformar sus procesos de negocio para mejorar su eficiencia y efectividad, aumentar la satisfacción de los clientes y reducir costos. Esto se logra a través de la identificación y eliminación de procesos obsoletos o innecesarios, y la creación de nuevos procesos más eficientes que utilizan la tecnología de manera innovadora.</p><p id="6909104f-7c80-4975-9889-52a1097e0f83" class="">
+</p><p id="5059b9ed-7e26-4650-ae3e-07fcdbbac0be" class="">Empresas con «Prevención temprana» son aquellas que aún no tienen dificultades pero cuyos sistemas administrativos les permiten anticiparse a posibles crisis. Estas empresas deciden emprender la BPR de manera preventiva, antes de que las cosas empiecen a ponerse mal. </p><p id="4bd60e47-d265-4543-880f-4fdd8c549fdc" class="">
+</p><p id="e7ed9e1c-ffde-4d03-b008-90be79934e61" class="">Por último, están las que la emprenden para obtener una ventaja competitiva incluso aunque estén en óptimas condiciones y ven la BPR como una oportunidad de alcanzar nuevas alturas. Esta es más una actitud proactiva que una respuesta a situaciones desesperadas. En palabras de  Hammer y Champy «empresas de verdadero éxito».</p><p id="040469df-ae36-4bf3-b303-9697f4da78a2" class="">
+</p><p id="8b523d12-4785-4da3-9c5b-6de4fd9d4007" class="">La Ingeniería de Procesos es un concepto innovador que ha revolucionado la manera en que las empresas operan. Sin embargo, el papel de la <em>infotecnología</em> en su implementación aún es un tema pendiente que merece una atención especial. La tecnología es una herramienta poderosa para la BPR, ya que le permite a los directivos, y en general a todos los empleados de empleados, adelantarse a las necesidades del cliente y obtener ventaja sobre sus competidores.</p><p id="e9e8a121-5254-4bb3-8a9a-e73b8b4c5150" class="">
+</p><p id="7e5e9540-a0e3-442d-9d1a-320ca7cb8cbb" class="">La BPR implica un cambio de mentalidad en cuanto a la tecnología, ya que los gerentes deben asumir que deben ir por delante de las necesidades del cliente. En lugar de responder a una solicitud, la idea es adelantarse a un problema y solucionarlo antes de que el cliente lo requiera. La tecnología es un instrumento clave en este proceso, ya que permite a las empresas romper con las normas tradicionales y crear nuevas formas de actuación.</p><p id="5d4d4d05-56d4-4330-b444-925e3ac2002d" class="">
+</p><p id="a9f76973-f339-41f5-a715-8ae1b5e4a80a" class="">La importancia de la tecnología en un entorno rediseñado condicionará la forma en que se realiza el trabajo en las empresas. Estas empresas tendrán características muy diferentes a las empresas tradicionales, y los empleados deben adaptarse rápidamente para no fracasar en la BPR. En el &quot;nuevo mundo del trabajo&quot;, la tecnología juega un papel fundamental en la forma en que se hacen las cosas.</p><p id="f8e5a14c-c82b-43c6-81cc-840cb05f9600" class="">
+</p><p id="fd0e79df-cbec-4952-b52a-5f96b7476f43" class="">Es importante mencionar el diamante del sistema de negocios, un esquema desarrollado por Hammer y Champy que explica la relación de dependencia entre los elementos más importantes de una empresa y su relación con la BPR. Estos elementos incluyen aspectos tangibles e intangibles, como los recursos humanos, las tecnologías de la información, los procesos y la estructura organizativa. La comprensión de esta relación es fundamental para una implementación exitosa de la BPR y también puede permitir a las empresas tener una visión más clara de sus objetivos y estrategias, lo que a su vez les permite enfocarse en las áreas más importantes de su negocio y mejorar su desempeño en el mercado.</p><p id="fe3a3a4f-3b11-4d14-9d2a-fe5c532d2873" class="">
+</p><p id="84735836-d704-406c-bb52-51785e013d8f" class="">La infotecnología es un componente clave en la Reingeniería de Procesos, ya que permite a las empresas adelantarse a las necesidades del cliente, crear nuevas formas de actuación y adaptarse al &quot;nuevo mundo del trabajo&quot;. </p><p id="e45ca56f-c487-4f4c-9762-f532e7937bf8" class="">
+</p><p id="6f964a6c-e70a-45cf-b41d-5a6c6ff94163" class="">La comprensión de la relación entre la tecnología y la BPR es fundamental para una implementación exitosa y para obtener ventaja sobre los competidores. Donde está no tiene como fin último automatizar (una evolución), sino más bien encontrar el núcleo de las procesos (una revolución) y no dejarse engañar por los fenómenos, esto es, los problemas que acontecen. En otras palabras, no se busca ser más eficientes en lo mismo, sino contestar ¿Cómo usamos la tecnología para conseguir resultados superiores y distintos?</p><p id="923253e9-f229-4071-9ff5-202e9f876e34" class="">
+</p><p id="7fd3f20a-40b0-4849-a852-ad6066fec538" class="">Para esto, los directivos deben pensar inductivamente, mas que deductivamente: encontrar una solución, lenguaje o tecnología poderosa tal que nos lleve a lugares nuevos y más placenteros, debido a que eliminan problemas que no sabían que tenían o sencillamente porque consiguen una ventaje competitiva. Pensar de esta manera es distinto y por tanto cuesta adaptarse.</p><p id="3db520f8-cd5a-448d-825f-059eb92579ba" class="">
+</p><p id="3122f1c9-83df-434e-8b78-d3acf6f40ac1" class="">Para esto, los autores proponen algunos casos de estudio para ver al patrón tras la idea “tecnología disruptiva”, encontrar las nuevas reglas de los negocios y abandonar las viejas. Algunas maneras de encontrar y evaluar dichas tecnologías es entender los procesos internos de la organización y ver las tendencias del mercado vía consultoras como Gardner.</p><p id="f81a0f0c-c7eb-4523-b40e-1e652864384d" class="">
+</p><p id="026767a0-48ac-4953-a0bc-9f0d128ec7d1" class="">Una posible clasificación de las tecnologías de la información:</p><ul id="9d07e1c0-68f5-41d1-8c7f-8ad0e7a105ec" class="bulleted-list"><li style="list-style-type:disc">ERP</li></ul><ul id="079fe20e-2499-4449-8e99-81add6d8f410" class="bulleted-list"><li style="list-style-type:disc">CRM</li></ul><ul id="bf84a7bd-402b-45cb-96fe-e5a51e2211ab" class="bulleted-list"><li style="list-style-type:disc">Ecommerce</li></ul><ul id="d24c19b8-8def-4774-a5fb-86cb87d15e4d" class="bulleted-list"><li style="list-style-type:disc">E-purchasing</li></ul><ul id="467c7b0c-b28e-45c6-bd64-af11714ee5ea" class="bulleted-list"><li style="list-style-type:disc">SCM</li></ul><ul id="13653e16-46f5-48af-a16d-2084225e7081" class="bulleted-list"><li style="list-style-type:disc">Supply Chain Management</li></ul><p id="be2a47d7-a045-4213-acae-d7f4997e92da" class="">
+</p><p id="f020b521-a134-431b-9457-d536abda2c6d" class="">Estos sistemas conviven en un ecosistema fuertemente relacionado al negocio y dirigido por el valor al cliente. En este ecosistema, ciertas tecnologías particulares cambian el paradigma: cambian lo que es posible. Por supuesto, el cambio es constante. Por ejemplo, antes tú debías descubrir dónde están las cosas, ahora tenemos sistemas como Google Maps, donde ahora las cosas nos dicen dónde están. </p><p id="468e9dd4-6a65-438d-9cfc-a716eaad4710" class="">
+</p><p id="9a22d249-2451-43b3-ad6b-d1017fcd2cbc" class="">A la tecnología, debemos sumarle la nueva cultura organizacional (el nuevo mundo del trabajo): </p><p id="5ae27166-77fc-40c4-84c4-df5dbf8699de" class="">de departamentos funcionales a equipos de proceso, es decir, la organización es guiada por aquellos equipos que realizan un proceso completo;</p><p id="1de7b8a9-536f-4dd4-bff5-faa66bc70d35" class="">de tareas simples a trabajo multidimensional, los empleados realizan mucho más que tareas simples y repetitivas (lo opuesto a la especialización, industrialización y a la teoría de Adam Smith); </p><p id="6f30a391-ac5d-4e3a-bff0-b557204cdaa5" class="">de controlado a facultado, el personal, especialmente el de primera línea, puede y debe tomar sus propias decisiones; </p><p id="4324704d-4185-425c-904a-dbc4349db406" class="">de entrenamiento a educación, las organizaciones buscan personal capaz de aprender por sí mismo y la organización enseña sobre comprender el oficio; </p><p id="16e8e7c3-ad14-4063-8b00-8ae45b60e438" class="">de actividades o esfuerzo a resultados y habilidades, los trabajadores son evaluados por resultados y ascendidos por sus habilidades; </p><p id="d09f46f2-f396-409c-87a0-984d56200099" class="">ejecutivos de supervisores a entrenadores, los gerentes en vez de capacitar buscan facilitar el trabajo.</p><p id="b2a6ff2e-97a4-4aa5-8c36-6630d55240cb" class="">
+</p><p id="add698bf-c12a-4ca6-90eb-e6c199a0060e" class="">En resumen, Reingeniería de Procesos es una estrategia organizacional guiada por datos, inteligencia y infotecnología destinada a mejorar los resultados al enfocar los procesos de negocio, los oficios y estructuras, sistemas de admnistración y medición, valores y creencias de los empleados y de los proveedores hacia servir mejor a los clientes: un círculo virtuoso o un diamente de sistema de negocios.  </p><p id="b3c41f0d-2a42-4c85-8f02-886aee20116d" class="">
+</p><h1 id="c5816c49-6625-48b5-8f8d-b005b34ec817" class="">Cuestionario</h1><p id="4d69a893-d3bb-4ae0-afb7-e08f67e1685b" class="">Investigar 3 tecnologías disruptivas actuales y contestar las siguientes preguntas para cada una de ellas en la siguiente área de texto:</p><p id="059d3b64-c8b4-417b-8943-956bf537995c" class="">a) ¿Cuál fue la regla anterior a su llegada?</p><p id="5a9e5358-05df-44ce-863e-d0dc996f22d8" class="">b) ¿Cuál es la nueva regla?</p><p id="ba484e94-b3be-4d1a-b216-2dd174762d25" class="">c) ¿Cuál ha sido su impacto en el mundo?</p><p id="fdf98eaa-2c50-484b-9d32-7913d75d2b21" class="">1. Inteligencia Artificial (IA)
+a) La regla anterior a la llegada de la IA era el uso de software y algoritmos tradicionales para realizar tareas repetitivas y predictivas.
+b) La nueva regla es el uso de algoritmos de aprendizaje automático y de deep learning para realizar tareas más complejas y personalizadas.
+c) El impacto de la IA en el mundo es significativo, ya que está transformando una amplia variedad de industrias, incluyendo la fabricación, el transporte, la salud y la banca, entre otras. La IA está permitiendo una automatización más avanzada, una mejora en la eficiencia y una personalización más precisa de los productos y servicios.
+2. Blockchain
+a) La regla anterior a la llegada de Blockchain era el uso de intermediarios centralizados para verificar y registrar transacciones financieras.
+b) La nueva regla es la eliminación de intermediarios y la utilización de una base de datos distribuida y segura para verificar y registrar transacciones financieras.
+c) El impacto de Blockchain en el mundo es significativo, ya que está revolucionando la forma en que se realizan transacciones financieras y se transfieren activos digitales. Además, está permitiendo una mayor transparencia, seguridad y eficiencia en las transacciones financieras.
+3. Realidad Aumentada y Virtual (RA y RV)
+a) La regla anterior a la llegada de la RA y la RV era el uso de imágenes y videos estáticos para representar productos o experiencias.
+b) La nueva regla es el uso de tecnologías de RA y RV para crear experiencias inmersivas y personalizadas que combinan elementos virtuales y reales.
+c) El impacto de la RA y la RV en el mundo es significativo, ya que están transformando la forma en que los consumidores experimentan y aprenden sobre productos y servicios. Además, están revolucionando la forma en que se realizan entretenimiento, juegos y entrenamiento.</p><h1 id="87867cb6-7c0d-49af-9255-6a62c0a9fb0e" class="">Referencias</h1><p id="233dc376-01ad-4c8b-b241-894549bd6bbd" class="">&quot;Index of /~fsaez/intl.&quot; 12 Feb. 2023, <a href="http://dit.upm.es/~fsaez/intl">dit.upm.es/~fsaez/intl</a>.</p><p id="62c06fc7-c1b7-438b-a97a-9a66b592a69e" class="">REINGENIERÍA DE PROCESOS (y II): IMPORTANCIA DE LA TECNOLOGÍA Y EL TRABAJO REDISEÑADO. Capítulo 6.</p><p id="0627d60a-4363-43f8-aae0-06ce9205536f" class="">REINGENIERÍA DE PROCESOS (I): CARACTERÍSTICAS, PRINCIPIOS Y HERRAMIENTAS DE APLICACIÓN. Capítulo 5.</p><p id="543bd120-549a-4dd9-a4f8-254b7b80150d" class="">Reengineering the corporation: A manifesto for business revolution Michael Hammer and James Champy Business Horizons, 1993, vol. 36, issue 5, 90-91</p><p id="a4557a69-6ea9-4768-a5f3-266bb922a79f" class="">
+</p></div></article></body></html>

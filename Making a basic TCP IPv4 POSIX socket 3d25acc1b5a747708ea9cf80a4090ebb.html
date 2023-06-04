@@ -213,7 +213,7 @@ ul > li {
 }
 
 ul.to-do-list {
-	text-indent: -1.7em;
+	padding-inline-start: 0;
 }
 
 ul.to-do-list > li {
@@ -281,6 +281,10 @@ ol > li {
 .collection-title {
 	display: inline-block;
 	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
 }
 
 .simple-table {
@@ -641,7 +645,7 @@ blockquote {
 .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
 .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
 .select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
 .select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
 .select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
 .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
@@ -666,9 +670,9 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="3d25acc1-b5a7-4770-8ea9-cf80a4090ebb" class="page sans"><header><h1 class="page-title">Making a basic TCP IPv4 POSIX socket</h1></header><div class="page-body"><h1 id="c35b99e7-a7a2-4c44-9ab8-d4eab7a93e0a" class="">Getting started</h1><p id="e167d6a6-4244-466d-babb-03d0bfba7034" class="">We suppose the server and client are on LAN.</p><h2 id="ebcbb11c-db40-4792-a281-4ef0ecce79d8" class="">On server</h2><ol type="1" id="683a15b5-7f60-4d6c-b939-9a2b32da7260" class="numbered-list" start="1"><li>Search your local IP</li></ol><pre id="bd9826bc-b94a-43ca-81ee-dce90dea6fec" class="code code-wrap"><code>ip address show
+</style></head><body><article id="3d25acc1-b5a7-4770-8ea9-cf80a4090ebb" class="page sans"><header><h1 class="page-title">Making a basic TCP IPv4 POSIX socket</h1><p class="page-description"></p></header><div class="page-body"><h1 id="c35b99e7-a7a2-4c44-9ab8-d4eab7a93e0a" class="">Getting started</h1><p id="e167d6a6-4244-466d-babb-03d0bfba7034" class="">We suppose the server and client are on LAN.</p><h2 id="ebcbb11c-db40-4792-a281-4ef0ecce79d8" class="">On server</h2><ol type="1" id="683a15b5-7f60-4d6c-b939-9a2b32da7260" class="numbered-list" start="1"><li>Search your local IP</li></ol><pre id="bd9826bc-b94a-43ca-81ee-dce90dea6fec" class="code code-wrap"><code>ip address show
 </code></pre><ol type="1" id="40444ede-b7c9-44f6-8930-2d4cdc9f4381" class="numbered-list" start="1"><li>Compile</li></ol><pre id="c8b249cc-0f1f-4c0f-b423-dc4a98d9c513" class="code code-wrap"><code>make server
 </code></pre><ol type="1" id="1ce1eb1a-5149-48e0-b1bd-558b6b64cabe" class="numbered-list" start="1"><li>On listening. [PORT] must replace to an available port. We recommend PORT=8080. But, port 7 is commonly used to <code>echo</code> sockets.</li></ol><pre id="91d418e3-c0e2-41cc-ba39-a600a810ca30" class="code code-wrap"><code>./server.out [PORT]
-</code></pre><figure id="edbb7aee-cfd7-4cd8-8b50-9eaed899e87e" class="image"><a href="Untitled%20191.png"><img style="width:1359px" src="Untitled%20191.png"/></a><figcaption>Server demo</figcaption></figure><h1 id="cd2bd08b-46e0-4c52-99c4-fcbf13e295c3" class="">On client</h1><ol type="1" id="f5c34c4b-f77c-468a-9f6a-c8a546f714c1" class="numbered-list" start="1"><li>Compile</li></ol><pre id="b9bc4454-966e-406f-bacc-51e146119430" class="code code-wrap"><code>make client
-</code></pre><ol type="1" id="5663b9e7-237e-449c-9b53-01d2bfabf402" class="numbered-list" start="1"><li>The client connects to the server.</li></ol><pre id="68450130-a621-47dc-8381-c9c6e2334aa4" class="code code-wrap"><code>./client.out &lt;SERVER ADDRESS IPv4&gt; &lt;ECHO WORD&gt; [&lt;SERVER PORT&gt;]</code></pre><figure id="cfb14c48-36e2-4123-9b7b-272f5fbb1c90" class="image"><a href="Untitled%20192.png"><img style="width:1591px" src="Untitled%20192.png"/></a><figcaption>The client sends a message to the server.</figcaption></figure><h2 id="d87d1fbc-22c8-44b0-b1c3-a06bbf942bc7" class="">The server receives the client&#x27;s message</h2><figure id="6c3668eb-334e-4b40-b3f7-f488147a6f34" class="image"><a href="Untitled%20193.png"><img style="width:1360px" src="Untitled%20193.png"/></a><figcaption>Server receives message</figcaption></figure><h1 id="354b0946-05f1-4605-a7a3-4ee63a42aaac" class=""><strong>Peer-to-peer socket magic</strong></h1><p id="31f49e38-412c-4338-bd6f-01b719cc2455" class="">Spork CLI tool. (2022, September 27). Retrieved from <a href="https://spork.sh/">https://spork.sh</a></p><h1 id="337595dc-7c41-45aa-94fd-fc5329f445dd" class="">Code</h1><p id="4d1f3c71-13a7-46ea-b842-7868f1f8f877" class="">sanchezcarlosjr. (2022, September 26). operating-systems. Retrieved from <a href="https://github.com/sanchezcarlosjr/operating-systems/tree/main/posix_basic_tcp_ipv4_sockets">https://github.com/sanchezcarlosjr/operating-systems/tree/main/posix_basic_tcp_ipv4_sockets</a></p><h1 id="ca22d895-3538-49aa-94f0-1c4d7f088149" class="">References</h1><p id="c2b1b370-f5c3-4675-9486-44f80921bb3b" class=""><a href="Operating%20system%2015eb76da565541019161db7cdf167601.html">Sockets in POSIX</a> </p><p id="79ca8ebd-d545-4d3f-b353-282a5d339b1b" class="">
+</code></pre><figure id="edbb7aee-cfd7-4cd8-8b50-9eaed899e87e" class="image"><a href="Untitled%20292.png"><img style="width:1359px" src="Untitled%20292.png"/></a><figcaption>Server demo</figcaption></figure><h1 id="cd2bd08b-46e0-4c52-99c4-fcbf13e295c3" class="">On client</h1><ol type="1" id="f5c34c4b-f77c-468a-9f6a-c8a546f714c1" class="numbered-list" start="1"><li>Compile</li></ol><pre id="b9bc4454-966e-406f-bacc-51e146119430" class="code code-wrap"><code>make client
+</code></pre><ol type="1" id="5663b9e7-237e-449c-9b53-01d2bfabf402" class="numbered-list" start="1"><li>The client connects to the server.</li></ol><pre id="68450130-a621-47dc-8381-c9c6e2334aa4" class="code code-wrap"><code>./client.out &lt;SERVER ADDRESS IPv4&gt; &lt;ECHO WORD&gt; [&lt;SERVER PORT&gt;]</code></pre><figure id="cfb14c48-36e2-4123-9b7b-272f5fbb1c90" class="image"><a href="Untitled%20293.png"><img style="width:1591px" src="Untitled%20293.png"/></a><figcaption>The client sends a message to the server.</figcaption></figure><h2 id="d87d1fbc-22c8-44b0-b1c3-a06bbf942bc7" class="">The server receives the client&#x27;s message</h2><figure id="6c3668eb-334e-4b40-b3f7-f488147a6f34" class="image"><a href="Untitled%20294.png"><img style="width:1360px" src="Untitled%20294.png"/></a><figcaption>Server receives message</figcaption></figure><h1 id="354b0946-05f1-4605-a7a3-4ee63a42aaac" class=""><strong>Peer-to-peer socket magic</strong></h1><p id="31f49e38-412c-4338-bd6f-01b719cc2455" class="">Spork CLI tool. (2022, September 27). Retrieved from <a href="https://spork.sh/">https://spork.sh</a></p><h1 id="337595dc-7c41-45aa-94fd-fc5329f445dd" class="">Code</h1><p id="4d1f3c71-13a7-46ea-b842-7868f1f8f877" class="">sanchezcarlosjr. (2022, September 26). operating-systems. Retrieved from <a href="https://github.com/sanchezcarlosjr/operating-systems/tree/main/posix_basic_tcp_ipv4_sockets">https://github.com/sanchezcarlosjr/operating-systems/tree/main/posix_basic_tcp_ipv4_sockets</a></p><h1 id="ca22d895-3538-49aa-94f0-1c4d7f088149" class="">References</h1><p id="c2b1b370-f5c3-4675-9486-44f80921bb3b" class=""> </p><p id="79ca8ebd-d545-4d3f-b353-282a5d339b1b" class="">
 </p></div></article></body></html>

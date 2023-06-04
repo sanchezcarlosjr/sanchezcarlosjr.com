@@ -1,0 +1,698 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Assignment 4</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="9313aa6b-c1dd-47f2-8c05-a57d9270b008" class="page sans"><header><h1 class="page-title">Assignment 4</h1><p class="page-description"></p></header><div class="page-body"><ol type="1" id="2c853eba-8a11-471a-8f4b-1684b2f63dd6" class="numbered-list" start="1"><li>In many layered protocols, each layer has its own header. Surely it would be more efficient to have a single header at the front of each message with all the control in it than all these separate headers. Why is this not done?</li></ol><p id="23a36d81-a7ca-49ff-b3dc-49acbecbab63" class="">Because something can go wrong when we merge headers, for example, some processes might write in the wrong direction, it is harder to detect errors and higher layers must care about how works lower layers. So, it destroys transparency.</p><p id="9ca482d8-d37f-4fdb-b1f9-de0725f6cafa" class="">
+</p><ol type="1" id="98bd8074-cd02-4f7b-8138-cb87a6b61d49" class="numbered-list" start="2"><li>Why are transport-level communication services often inappropriate for building distributed applications?</li></ol><p id="4850785d-8fb1-492e-ab68-8066ba5087ee" class="">Since it doesn&#x27;t offer a good API to build distribution transparency, developers are required to pay attention to lower protocols and that is undesirable.</p><p id="48e0f61b-93c5-4f84-8d60-7fd42d8ad615" class="">
+</p><ol type="1" id="7a8fcf6f-f549-489f-aae8-4460ad71826b" class="numbered-list" start="3"><li>A reliable multicast service allows a sender to reliably pass messages to a collection of receivers. Does such a service belong to a middleware layer, or should it be part of a lower-level layer?</li></ol><p id="ff2f9c33-fcfd-4336-aec5-7bda8602a1de" class="">You could implement a multicast service in transport layers or lower-level layers, but it doesn’t offer custom services that would be necessary for software requirements or its scalability, so a middleware layer is a better idea.</p><p id="cb874e17-039c-41af-9d69-1be154a77f02" class="">
+</p><ol type="1" id="43a6bf68-2fc2-45c9-ad2b-4b07453a75a4" class="numbered-list" start="4"><li>Consider a procedure <code>incr</code> with two integer parameters. The procedure adds one to each parameter. Now suppose that it is called with the same variable twice, for example. as <code>incr(i, i)</code>. If i is initially 0. What value will it have afterward if call-by-reference is used? How about if copy/restore is used?</li></ol><p id="9ad265e1-36bb-49ec-8cb6-2585116bd999" class="">If we call <code>incr</code> with values by reference, the procedure increases twice <code>i</code>, so the value is <code><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">i=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></span><span>﻿</span></span></code>. We’ll get 1 if we apply the copy/restore procedure because first, we copy values, apply operations in separate variables, then restore them with value <code>1</code>.</p><p id="3d97c853-9eaf-4744-b535-9719d8fdb4d5" class="">
+</p><ol type="1" id="bb9d59dc-c9d3-4ef0-b917-390a34eeb703" class="numbered-list" start="5"><li>C has a construction called a union, in which a field of a record (called a struct in C) can hold any one of several alternatives. At run time, there is no surefire way to tell which one is in there. Does this feature of C have any implications for remote procedure calls? Explain your answer.</li></ol><p id="dadd230b-796b-494d-9c7d-2d8e659e8737" class="">We introduce an overhead because we have to verify responses and meanwhile we must keep transparency. Errors and bugs are harder to detect because serializing cannot be done correctly. </p><p id="947b157c-35bb-44d6-bb86-4438731bb3b6" class="">
+</p><ol type="1" id="d2483934-c88e-4393-914a-2a5c2fe48291" class="numbered-list" start="6"><li>One way to handle parameter conversion in RPC systems is to have each machine send parameters in its native representation, with the other one doing the translation, if need be. The native system could be indicated by a code in the first byte. However, since locating the first byte in the first word is precisely the problem, can this work?</li></ol><p id="784f903a-e6cf-4663-9b81-6f002c85420d" class="">We can reduce this problem to agree by using a fixed format for the first byte. A computer sends a byte 0 with the code padding and the receiver reads the location of the code. For example, a big-endian sends 1000000 otherwise 0000000. The receiver reads the first bit and that work independently of the endianness. This is called Byte Order Mark (BOM).</p><p id="b1f9afbc-7d76-40cf-a0fc-5404807cd3b2" class="">However, communication protocols define and enforce their endianness. So, heterogeneous nodes have a guarantee the endianness or other representations. For example, the Internet Protocol (TCP/IP) suite is defined to be big-endian. Another way is having a broker or proxy that knows the end-node representations and does the conversion correctly. </p><p id="93df155a-2225-485c-becd-e91f6a5f3c81" class="">
+</p><ol type="1" id="7c1d8233-abd5-458e-9cb7-e8c4e199359c" class="numbered-list" start="7"><li>Assume a client calls an asynchronous RPC to a server and subsequently waits until the server returns a result using another asynchronous RPC. Is this approach the same as letting the client execute a normal RPC? What if we replace the asynchronous RPCs with asynchronous RPCs?</li></ol><p id="74ae0292-c509-4518-ae8c-1be98793ff21" class="">Those methods are different because the asynchronous RPC sends messages across the network, so more RPCs are not the same if we don’t provide reliable communication.</p><p id="b6a8dc0f-2423-41cd-a3aa-cd54d824c13c" class="">
+</p><ol type="1" id="d44f0840-7e66-4cec-bf33-935d93382ff6" class="numbered-list" start="8"><li> Instead of letting a server register itself with a daemon as in DCE, we could also choose to always assign it to the same endpoint. That endpoint can then be used in references to objects in the server’s address space. What is the main drawback of this scheme?</li></ol><p id="5146311d-2a7f-4ef1-89d8-48eb5b3cd067" class="">It becomes harder to maintain when you are allocating objects dynamically.  </p><p id="74d81f7b-8af1-4184-a34b-3410f71a48a9" class="">
+</p><ol type="1" id="e844a335-f97c-46fa-b708-a86b116a308e" class="numbered-list" start="9"><li> Would it be useful to also make a distinction between static and dynamic RPCs?</li></ol><p id="43ae24df-3c00-4192-80a5-bae80667ed3a" class="">Because we get more flexibility but dynamic binding causes some transparency distribution loss.</p><p id="a565d6a1-9456-4a5f-bb9a-246cc0660b0a" class="">
+</p><p id="48bd4984-c086-498f-9869-1b7e902476b4" class="">10.  Describe how connectionless communication between a client and a server proceeds when</p><p id="624e09a8-b349-436c-aede-5c2629b85811" class="">using sockets.</p><p id="4d9f09cc-0e32-4d5b-ba0a-b0b4b0cc521e" class="">Both sides make a socket, but the server only binds to a local address and blocks itself waiting for incoming data from clients. The client calls the server when is available, otherwise, it blocks.</p><p id="b71eb4ed-1116-463f-8422-0247d9872e0b" class="">
+</p><ol type="1" id="abd2d079-9ebb-4b74-a939-4a452f5751cb" class="numbered-list" start="11"><li> Explain the difference between the primitives <code>mpi_bsend</code> and <code>mpi_isend</code> in</li></ol><p id="9554648a-77d4-47f8-87e0-aeb0188ff6ab" class="">MPI.</p><p id="8f3d307b-f850-41ee-8d59-a37fa59e38fd" class="">We describe the differences between the primitives in MPI with a table.</p><table id="07b8f02e-bd28-4ed6-840f-b24d39ded45e" class="simple-table"><tbody><tr id="6ddbf1e2-27fe-498d-b943-deae2584a538"><td id="I_cN" class="" style="width:349px">mpi_bsend</td><td id="N^ue" class="" style="width:349px">mpi_isend</td></tr><tr id="13d2a0b4-7baa-4609-890b-93f9aaac7368"><td id="I_cN" class="" style="width:349px">It sends a buffering message to the local MPI  runtime.</td><td id="N^ue" class="" style="width:349px">It uses a pointer to the message in the local MPI runtime</td></tr><tr id="4ee3ea29-c7cb-47bf-971e-f9e6d92abe9d"><td id="I_cN" class="" style="width:349px">MPI copies to a local buffer after the call has been completed.</td><td id="N^ue" class="" style="width:349px">MPI doesn’t copy to a local buffer. The caller is responsible for that. </td></tr></tbody></table><p id="16030891-64f9-467a-89b6-22b16849b99f" class="">
+</p><ol type="1" id="5b968a23-cdf1-4aee-bd1f-3018204f736b" class="numbered-list" start="12"><li> Suppose that you could make use of only transient asynchronous communication primitives, including only an asynchronous receive primitive. How would you implement primitives for transient synchronous communication?</li></ol><p id="1d69ecb8-64b6-4a08-acb3-b553965b65b7" class="">We could use the message queue from Operating System such that it blocks our process until the income data arrives (the poll operation).   </p><p id="a1f88472-a921-4b68-8b66-7a4f0a58da12" class="">
+</p><ol type="1" id="b9d15455-ddaa-404b-a177-2528d07f49a9" class="numbered-list" start="13"><li> Suppose that you could make use of only transient synchronous communication primitives. How would you implement primitives for transient asynchronous communication?</li></ol><p id="93cbd5ec-a6d8-4095-bff0-118665832f71" class="">We can share some buffer (for example, an event loop) with the caller and a listener. The caller pushes an event in the event loop, the event loop dispatches it to some receivers removes the event, and the listeners receive the event (the incoming messages).</p><p id="b29f37fd-558a-468a-8075-fe27a1016d9d" class="">
+</p><ol type="1" id="cdd4930e-b159-464f-bbf3-c45435c37898" class="numbered-list" start="14"><li> Does it make sense to implement persistent asynchronous communication by means of RPCs?</li></ol><p id="e6f78c20-41a0-4b48-ad82-6f3c74130a6d" class="">Yes, but only if you want to control the flow of data by means of RPCs. For example, sharing the state in multiple buffers (e.g. queues). </p><p id="196ce1cb-90e7-4fb4-b3ce-a6d93258f307" class="">
+</p><ol type="1" id="c4af475b-dab0-4f9b-9b67-06bb33ab29cd" class="numbered-list" start="15"><li>In the text, we stated that in order to automatically start a process to fetch messages from an input queue, a daemon is often used that monitors the input queue. Give an alternative implementation that does not make use of a daemon.</li></ol><p id="bfd7d069-df3c-4675-8fae-4a3d7ea07794" class="">An alternative implementation is the receiver processes manage internally its own queue.</p><p id="245a831a-3f7c-47f2-9858-c9dc8f32bae5" class="">
+</p><ol type="1" id="6f224ebd-bd1e-4dae-8e0c-3d0f88ab4e12" class="numbered-list" start="16"><li>Routing tables in IBM WebSphere, and in many other message-queuing systems, are configured manually. Describe a simple way to do this automatically.</li></ol><p id="b7d8cc5d-060f-426c-b827-ab6b825f9ea7" class="">A centralized process can register the current topology and calculate the best routing, meanwhile routing tables are generated. </p><p id="0bab3a44-0ff5-4fd5-a061-8b5a1cc3852d" class="">
+</p><ol type="1" id="1127e311-54e0-4c82-b591-1c418b52f366" class="numbered-list" start="17"><li>With persistent communication, a receiver generally has its own local buffer where messages can be stored when the receiver is not executing. To create such a buffer, we may need to specify its size. Give an argument why this is preferable, as well as one against the specification of the size.</li></ol><p id="9f0532fc-ed47-4be1-b71d-bf1c577ef431" class="">The first method is easier to implement but it is not flexible and some messages may be lost. So, the alternative is growing buffers as need be with <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> space, but it is harder to implement.</p><p id="4232bdb9-09ed-499e-bc64-c60a8a78c563" class="">
+</p><ol type="1" id="614c11e5-f8f3-4739-a58a-8b7961ec9afc" class="numbered-list" start="18"><li>Explain why transient synchronous communication has inherent scalability problems, and how these could be solved.</li></ol><p id="992f76f3-3240-4992-b7ce-b56934cdf040" class="">Since the geographical scalability is limited, the speedup is limited. So, the synchronous calls take a long time when machines are far away from each other. A possible solution is changing the synchronous communication to asynchronous communication.</p><p id="357cd7b1-9a20-4731-bd92-1dfada9aa22e" class="">
+</p><ol type="1" id="d3834d78-7a8e-42ae-8c3a-e3c10ee18388" class="numbered-list" start="19"><li>Give an example where multicasting is also useful for discrete data streams.</li></ol><p id="7af7125a-837d-4b61-9f30-15366366b21f" class="">A noncritical real-time monitoring system in a factory that uses multicasting to transmit data from sensors to multiple recipients.</p><p id="3734df37-7f40-4a47-9a10-a6d08fe07ce6" class="">
+</p><ol type="1" id="f4af0394-16e2-429c-af22-4ddce8d3b766" class="numbered-list" start="20"><li> Suppose that in a sensor network measured temperatures are not timestamped by the sensor but are immediately sent to the operator. Would it be enough to guarantee only a maximum end-to-end delay?</li></ol><p id="2dafccfd-768f-4cc6-981d-c00d0315ea37" class="">No, we need when the measurement took place. However, if we know the minimum end-to-end delay we can derive it by attaching a received timestamp.</p><p id="ddf8c120-1f47-44c8-b597-1b33ccc73c56" class="">
+</p><ol type="1" id="e95991b3-aad4-4c4c-94e4-b6ce540d3eaa" class="numbered-list" start="21"><li>How could you guarantee a maximum end-to-end delay when a collection of computers is organized in a (logical or physical) ring?</li></ol><p id="59075bce-4507-4888-b097-47784f2c932b" class="">We guarantee a maximum end-to-end delay, circulating a one-direction token in which each node holds for maximum <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span></span><span>﻿</span></span> time. </p><p id="dfbc6521-84f5-4480-bb47-601dc96279fc" class="">
+</p><ol type="1" id="d805758e-826b-45cd-b76c-2887e8710910" class="numbered-list" start="22"><li> How could you guarantee a minimum end-to-end delay when a collection of computers is organized in a (logical or physical) ring?</li></ol><p id="d3a8e147-9034-4c18-91ca-9da7513b5664" class="">We guarantee a minimum end-to-end delay, circulating packets as long as necessary. </p><p id="9b8f77d3-f800-4c1f-9716-4e404f86f9d8" class="">
+</p><ol type="1" id="9726388b-55ca-4fe5-b251-c19d50ca46dc" class="numbered-list" start="23"><li> Despite that multicasting is technically feasible, there is very little support to deploy it on the Internet. The answer to this problem is to be sought in down-to-earth business models: no one really knows how to make money out of multicasting. What scheme can you invent?</li></ol><p id="eb6c1e45-a2f0-4482-b4cf-cd20afa5eff3" class="">Today, we need IoT devices that need support for intensive multicasting, so nowadays ISP has incentives to make it. </p><p id="27c969a5-5635-4e6c-a48d-5ea236603233" class="">
+</p><ol type="1" id="25a7e2bf-51cb-4fdd-b6d6-99011e97cc40" class="numbered-list" start="24"><li>Normally, application-level multicast trees are optimized with respect to stretch, which is measured in terms of delay or hop counts. Give an example where this metric could lead to very poor trees.</li></ol><p id="380eb366-1808-4b90-8749-76c633293d4c" class="">When we care about availability the performance pass to the background,  for example, in video or audio broadcasting. </p><p id="63d73481-4cd6-4c7d-ba5f-7f9fc594e10f" class="">
+</p><ol type="1" id="2ba8dc34-e8a2-472f-bdf2-ffc9c6de505e" class="numbered-list" start="25"><li>When searching for files in an unstructured peer-to-peer system, it may help to restrict the search to nodes that have similar files as yourself. Explain how gossiping can help to find those nodes.</li></ol><p id="1d2b6b2f-7a8d-4c6b-b028-e3246ef247ee" class="">During gossiping the peers can share metadata for example authorization or membership. </p><p id="1ff84f8b-ff0e-464d-85d9-7ed28b236407" class="">
+</p></div></article></body></html>

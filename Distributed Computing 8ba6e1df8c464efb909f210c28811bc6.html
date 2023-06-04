@@ -1,0 +1,1527 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Distributed Computing</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="8ba6e1df-8c46-4efb-909f-210c28811bc6" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1566443280617-35db331c54fb?ixlib=rb-4.0.3&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🌐</span></div><h1 class="page-title">Distributed Computing</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-orange">Computer science</span><span class="selected-value select-value-color-brown">Network system</span></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Created</th><td><time>@January 20, 2023 6:31 PM</time></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Updated</th><td><time>@May 31, 2023 6:30 PM</time></td></tr></tbody></table></header><div class="page-body"><nav id="3e6d0600-8433-4d90-be3e-6b324f21da44" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cd483b60-b2b4-44da-a9dd-05f9542ffdd7">Preface</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#060faab1-20e4-44a4-b703-0d03e918aa09">Prerequisites</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e5a0241d-2994-4ce0-999d-5cc82bf540b5"><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cb3e7f49-a233-4181-bd1c-0b7be3a645f7">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#68fab78a-68dc-4b54-80d0-82473fc8922d">What is Distributed Computing?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7e26f4ee-cf63-4033-89e7-e5d1668194f0">Types of distribution transparency</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9269017c-c659-42d2-84b4-c5e181291d9e">Pitfalls</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1d6d540c-15bb-43fc-9712-c77cf8a9b475">Types of distributed systems</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8ca8f2e5-d0bb-43fd-b84d-18e9766d2c2c">Distributed information systems</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5f1aebe8-9a32-4b84-82d1-039c7ddccf09">Pervasive systems</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4068f627-247d-4dff-a8dc-97028afc2f09">Why does Distributed Computing matter to you?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1e8185d2-1b5b-48bf-8589-2e49427ad4ec">Research</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#416afb47-c74d-436b-9eee-5d88d1176552">Ecosystem</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4fd17ea6-ffbd-4c1d-9e98-a9beded28ef3">Story</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6f0b4c13-d098-404d-ba55-62fe782cf245">Case of study</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7a00b0b7-daf5-465e-a5c6-e26cfb0936a6">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cdefd4ec-c707-4d96-9404-e4b267264053">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8a7f719f-f59c-4455-8f26-0090b10e8acb">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b394e84d-0378-4fb6-9cea-35381f9757d0">Concurrent and Parallel Principles</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c33b64bb-8575-4b18-936e-e0b42cc9a6d8">Key concepts</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2268d35d-d613-498a-b917-123f6da75c1e">Case of study. JavaScript.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7405a6c6-6efb-49ba-8740-5eb7d2d3acb5">Case of study. Python.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#edec416c-6600-4a9a-b45f-755c1ba7bc26">Case of study. Go.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c3e11b6e-2b63-44d5-881b-149b6bdc503a">Case of study. C and C++.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0cf6acea-b51c-49b5-8d7d-8158d62bec99">Case of study. Java.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#afacb25e-5567-4e8d-84f7-da41e63de5d7">Case of study. Haskell.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2660a835-e9f1-405c-a69f-e0337287f7a1">Case of study. Erlang.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5824edc5-2c4b-40d3-95ea-d1b0745964e7">Coroutines</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#03eeb335-2f25-419d-9a2a-17bb3505a55b">Foundations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#782cd9d1-a8dd-4e0e-acde-c0b1354c758f">Timed Input/Output Automaton (TIOA)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5414a445-772c-45c6-9022-a7019ac6b10f">Distributed algorithms</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a62aff68-ea86-48a4-914d-fd6ed312d710"><strong>Process calculus</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bd8973fd-4354-4a8d-95d3-1a7ef48f41f8">References</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7875d230-b982-4bca-a368-7c55bb1e7646">Architectures</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c63cf5ca-3e35-4e55-ae17-fc4278fcb003">Architectural styles</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d01ff2d5-13cb-42a0-b6b8-e28154bbf853">Application layering</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f3597de3-1d51-4419-b7e6-3e95fbdb21d6">Object-based and service-oriented architectures</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8088f3d6-5b2a-40e7-8ad4-bb793cb98021">Microservices</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#802effb9-d171-4d9b-a1ec-3dcf3ba796df">Resources-based architectures</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1f4e0331-56f6-48f7-9775-e3cc777fb254">Middleware organization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4300d72f-5641-42b1-96e3-a509bcb8b5c3">System architecture</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ea0185d7-f347-42fa-a4f1-b37c364f6cc5">Decentralized organizations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#98db7767-c85c-4392-a3a3-52ed06c728cc">System design</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ad02e7f4-8d7e-4be7-8d45-baf882c58f57">Algorithms</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3a9a57b9-5c4e-4ebe-87c6-463bf8b81906">Case of study</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#92285527-c69a-4666-b8c8-e74d5d95e275">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9c2813af-ec08-4b2f-ad2a-0f8fd2ff61d9">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6b116f23-d300-4d73-ac77-0c2dfb11f12e">Processes</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6638aa5a-ba44-4433-8912-5e5889da7452">Threads in distributed systems</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dc8b5d0f-c641-4ded-83a2-63a519518704">Virtualization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a4ef796d-1ea9-4b0f-a545-a0a0c565bd00">Clients</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4bfde8e5-b38d-484d-94ce-dfa701a2b3bc">Replicated calls from a client</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f9c51baf-b72f-4210-90cf-090e80b918b8">Web browser</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d803b945-2427-41bf-b6d5-0c021eed3b91">Servers</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0482f490-0a0d-4487-b6d6-fa53ae6d5937">Window X</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#899b6784-4e3e-41e0-9086-84ffa4ce206c">Code migration</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#179513b0-0804-46cd-99fc-eb555c46e51e">Checkpoint and restore </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#75e34519-6114-47fe-8925-9ab71d4e555a">Parallel and concurrent process</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bb320ad1-754e-4ba8-80c3-68405300e9dc"><strong>Asynchronous and synchronous Programming</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a27307c1-f183-4970-9521-be2a654df4ee">Queue system analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#27422c49-0457-40eb-b09b-106dd46e91a9">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4e9286a2-f38d-4c0d-927d-768f387ee2cd">Exercises</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6fbe6701-211c-4d36-805d-388c9e5215dd">Communication</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#845c4409-9b21-4b5c-a8b8-c64d1ba99b40">Protocols</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d722d087-d401-432b-b18e-a2d70de17b63">Routing algorithms</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#26fc10af-9f49-4f78-aa61-76e173738af5">Deadlock-free packet switching</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#dc16c6e0-5492-4aa3-8521-915a8f47060a">Wave and Traversal Algorithms</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#286d8575-26e9-4c6c-a576-5de0ed49908c">Election algorithms</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3c8ac2ef-07a8-4bbe-9bf2-137d0421e083">Termination detection</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#86b97652-ca28-4459-833b-5b35d496dee7">Anonymous Networks</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#273e9209-1664-4cc9-b86b-988c6cc0ea9d">Snapshots</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#138d3756-52ba-45f4-84ad-20adec965f8f">Sense of direction and orientation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0b960d50-1ace-476b-984d-27aba66e0c1a">Synchrony in networks</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f8002fa6-13b8-462a-8805-380c5bd5b6b3">Remote procedure call (RPC)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#522be722-0470-4e00-8086-a1943d9c80c6">Message-oriented communication</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2e8cbe63-2319-4f3f-9723-6abd3aac4374">Multicast communication</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#238d8912-10cc-415c-81f6-cbc3be17c75c">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a9ed020e-d3dc-4de1-bd8f-3698f317d3d8">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3e163b88-50d8-48d1-b894-938bd7ad888d">Naming</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3a15104f-a133-4a93-9de8-b1ae05b297cc">Flat naming</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#12660c14-4ade-42cd-aaea-7b9476cfacf1">Structured naming</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#89cc42d8-c899-4a7a-9dcf-c11ffb832411">Attribute-based naming</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c25d08de-7034-4dd6-9107-44856fa453bd">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#04bde161-881e-489f-9461-9eda8acc426d">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#29b934b0-19bc-4132-bec7-8e29d2e97714">Coordination</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c0fc7152-9193-4271-8d41-21d2300b24e5">Clock synchronization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9e9c2724-a4a1-44ff-bd38-dcdc24aa1452">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2056c85f-7c0b-4070-95b8-be4dbd1674fd">Questions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5c38fe78-02d6-4c6a-b316-c5b72578f652">Stateless and stateful</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#37d5397e-cd86-40c4-8938-3defd2776c43">Atomic objects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f70cef88-c4ae-4d40-8bde-63209736c87e">Case of study</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d538b5d9-5ba9-4be9-9898-c8b098bf4f42">Questions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c844e130-be09-49f3-8c4e-0ad05ed6658d">Fault tolerance</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cd6f6821-6c79-4d3b-bfa0-a3c9a73196ed">Fault tolerance in Asynchronous systems</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f81759d2-9d77-4ed0-9125-158e65011228">Fault tolerance in Synchronous systems</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#62482637-c9e8-40f8-b0ae-aec485090a06">Failure detection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#30fbaf3e-8417-451a-90c3-a526cff169c7">Stabilization </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cf9326b9-c6d6-4565-b093-1ed41c571947">Process resilience</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#de4b9999-6d4b-44e5-85b4-58c03ff7b294">Reliable client-server communication</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e9365a8b-a43a-4441-a3ea-f8046f99bba4">Distributed commit </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#991d7ace-766d-4792-a2e8-b74ef20b65e9">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2a5f9867-1f53-4bec-84ca-1ce2cf945531">Security</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#230f13bb-6afd-4b2d-89e1-0900d6aaf5fe">Tutorials and assignments</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7b846011-6525-4142-834b-d5b74259a9e8"><strong>The “&amp;” operator</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f6e66aa0-23d6-4267-91a6-33c5dc2904a1"><strong>GNU parallel</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bda23144-a5d0-4895-9495-5cce975f9e05">xargs</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3405b575-a899-4ea7-bd29-accecb47e620">Ray</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a77674f3-9ce6-49fe-905c-adf51ce909ff"><strong>Network File System</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#41e87bf7-1bff-48cc-bf63-4db32add1747">Hadoop or Spark</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#30e33a66-3ec6-455d-85b4-3b18314d48dc"><strong>Open MPI</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0927b674-5b0e-4254-a10f-00580e1d70e4">LibP2P</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4c199503-9aaf-47c4-a327-abd43bdd7093">Queue messaging</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#72111eec-cfac-4e48-8b8e-b9909e5424b1">Your own map-reducer</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#27c868db-9551-4192-a384-4d2db1564d89">Other Alternatives</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4841152f-b8bf-4dc9-bb87-8252f781ca5f">Simulations</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#407af96a-3dfa-4954-8bed-8bea028da1dc">Next steps</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9862a9e4-df51-46cc-9ada-2efa58cd4d02">References</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3c9a159b-196b-4234-9898-b2a3fe024ada">IPFS and libp2p</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#51b91765-d89d-4241-b47f-384da3e2c98c">TODO</a></div></nav><h1 id="cd483b60-b2b4-44da-a9dd-05f9542ffdd7" class="">Preface</h1><h2 id="060faab1-20e4-44a4-b703-0d03e918aa09" class="">Prerequisites</h2><h2 id="e5a0241d-2994-4ce0-999d-5cc82bf540b5" class=""><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></h2><h1 id="cb3e7f49-a233-4181-bd1c-0b7be3a645f7" class="">Introduction</h1><h2 id="68fab78a-68dc-4b54-80d0-82473fc8922d" class="">What is Distributed Computing?</h2><p id="af5f8b0b-761c-418e-b786-debfd42fc12d" class="">Characteristics.</p><p id="58bc59d2-b35e-4510-b8cb-24f2c52ea98b" class="">Transparency. </p><p id="bd7792e9-51e2-4e1f-8b7e-525e477e2a45" class="">Global Scheduler. </p><p id="e6a265ba-26ba-4842-a04d-7aabe31a5734" class="">Design. Interfaces. Open-close principle.</p><p id="0d4002a6-ad99-43e9-8aad-4fb714cc6c19" class="">High-performance distributed computing.</p><p id="5ad94706-62f8-4b0b-8e53-64c45cbb5e6a" class="">Pervasive systems (<strong>Supranet</strong>)</p><p id="7b4a9860-408d-4cc0-a379-958225dbd790" class="">The model</p><p id="640c9c2c-70ad-4d9a-aad6-f17acdc8b4ae" class="">A misconception is that distributed systems are microservices, indeed the latter is an implementation of the former.</p><h3 id="7e26f4ee-cf63-4033-89e7-e5d1668194f0" class="">Types of distribution transparency</h3><p id="6440129f-b93a-483e-86a3-603b6b365d84" class="">Access</p><p id="3a6dd835-2308-4756-aa4a-206a50e5c973" class="">Location</p><p id="1c227ce4-d3c2-4958-a572-d86982f9b1a6" class="">Relocation</p><p id="6561b7ad-2294-4c04-b4b8-eefb10d83b6e" class="">Migration</p><p id="e29957e8-b7c3-4225-9a90-5613970c646a" class="">Replication</p><p id="a979dc43-2377-4556-b973-257bcb6d3913" class="">Concurrency</p><p id="86c5ad85-7dd6-4877-9a42-bf3ecd859582" class="">Failure.</p><h3 id="9269017c-c659-42d2-84b4-c5e181291d9e" class="">Pitfalls</h3><h3 id="1d6d540c-15bb-43fc-9712-c77cf8a9b475" class="">Types of distributed systems</h3><p id="bb2b7800-530d-454a-a77b-938304058fdf" class="">Grid computing.</p><p id="dce38b82-8bac-4679-8b6f-02d7bebaeabb" class="">Cloud computing.</p><p id="e0ec437f-d33e-4e48-9fa6-c0fc96c585f6" class="">Cluster computing.</p><h3 id="8ca8f2e5-d0bb-43fd-b84d-18e9766d2c2c" class="">Distributed information systems</h3><p id="58aafd8a-c162-4919-ac08-5b3b525f8aed" class="">Enterprise Application Integration</p><p id="5f0005cc-4bc9-4042-80b9-b9ce44e57d85" class="">Primitives.</p><p id="c3c11fa9-d3b5-468c-b022-55382434353b" class="">ACID properties.</p><h3 id="5f1aebe8-9a32-4b84-82d1-039c7ddccf09" class="">Pervasive systems</h3><p id="19d01b04-db44-4f3c-801e-e8bce7ff201b" class="">Mobile systems</p><p id="8ce60d79-bf66-4c66-9ae9-1b3ae5737ae3" class="">Embedded Devices<div class="indented"><p id="131f6108-75af-47de-bdf2-d020aa7c6076" class="">Sensor Networks</p></div></p><h2 id="4068f627-247d-4dff-a8dc-97028afc2f09" class="">Why does Distributed Computing matter to you?</h2><p id="79f39f90-d2be-40c8-b822-b320fb10e2d7" class="">If you have performance issues where the process is parallelizable, you have intensive IO operations, or you need a reliable system you must check out distributed computing.</p><h2 id="1e8185d2-1b5b-48bf-8589-2e49427ad4ec" class="">Research</h2><h2 id="416afb47-c74d-436b-9eee-5d88d1176552" class="">Ecosystem</h2><p id="9a1bb61d-4b36-42c9-9bd6-531223c8baf7" class="">Standards, jobs, industry, roles, … </p><p id="f6942e07-b19a-4a3a-912c-989a9f517087" class="">Clouds</p><p id="7fd517f0-9c54-4a94-9e26-f1a7f7a70961" class="">Hadoop</p><p id="c67d9a9f-7038-4cab-93c8-870bf3e9d097" class="">Docker</p><h2 id="4fd17ea6-ffbd-4c1d-9e98-a9beded28ef3" class="">Story</h2><h2 id="6f0b4c13-d098-404d-ba55-62fe782cf245" class="">Case of study</h2><p id="82b823c5-fc4b-48c7-9b51-a10ad940233d" class="">Google File System (GFS)</p><h2 id="7a00b0b7-daf5-465e-a5c6-e26cfb0936a6" class="">Summary</h2><ul id="3c468584-50c8-4c06-b50d-7d63b7ac1f78" class="toggle"><li><details open=""><summary>Code</summary><pre id="a4471fd5-cbc0-47a6-8c61-6eb2de222025" class="code"><code>@startuml
+!theme crt-amber
+class ComputerSystem
+class User
+
+package &quot;Overlay networks&quot; &lt;&lt;Cloud&gt;&gt; {
+class Node {
+   location
+   data
+   status
+   software process
+   hardware device
+   resources
+  +process(message: Message)
+  +send(message: Message)
+  +receive(message: Message)
+}
+package Middleware &lt;&lt;Frame&gt;&gt; {
+class &quot;Middleware&quot; as MW {
+   reliability
+   networked environment
+   communicate()
+   transact()
+   security(service)
+   account(service)
+   compose(service: Service)
+}
+
+package &quot;Application 1&quot; &lt;&lt;Node&gt;&gt; {
+  class &quot;Computer 1&quot; {
+     local operating system
+  }
+}
+package &quot;Application 2&quot; &lt;&lt;Node&gt;&gt; {
+  class &quot;Computer 2&quot; {
+     local operating system
+  }
+  class &quot;Computer 3&quot; {
+     local operating system
+  }
+}
+
+package &quot;Application 3&quot; &lt;&lt;Node&gt;&gt; {
+  class &quot;Computer 4&quot; {
+     local operating system
+  }
+}
+}
+}
+note left of Middleware: Operating system : Computer :: Middleware :: Distributed system 
+
+class &quot;Distributed system&quot; as DS {
+  trade-offs
+ sufficiently are suffienclythe  spread across network.
+  false assumptions by Peter Deutsch, = [
+     the network is reliable, secure, homogenous,
+     the topology does not change,
+     latency is zero,
+     bandwidth is infinite,
+     transport cost is zero,
+     there is one administrator
+  ]
+  distribution transparencies based on user needs and performance = 
+[
+{degree of  grade: Float, type: &#x27;Access&#x27;}, 
+{degree of  grade: Float, type: &#x27;Location&#x27;},
+{degree of  grade: Float, type: &#x27;Relocation&#x27;},
+{degree of  grade: Float, type: &#x27;Migration&#x27;},
+{degree of  grade: Float, type: &#x27;Replication&#x27;},
+{degree of  grade: Float, type: &#x27;Replication&#x27;},
+{degree of  grade: Float, type: &#x27;Concurrency&#x27;},
+{degree of  grade: Float, type: &#x27;Failure&#x27;}
+]
+  exploit parallelism()
+}
+note right: A transparent system is Unix-like in which everything is a file
+
+class &quot;Good Distributed system&quot; as GoodDS {
+   goals = [supporting resource sharing, being open, being scalable, flexibility]
+   scalability dimensions = [size, geographical, administrative] // scalability means that X factor increases the amount of work the system keeps the same performance.
+   opposed to a monolithic system i.e. microservices.
+   hide(resource across a network)
+   support(resource sharing for all kinds of groupware)
+   separate policy from mechanism()
+   offer(): Components based on Interface Definition Language //openess = completeness+ neutrality+interoperability+composability+etensibility
+   scaling up()
+   scaling out(technique: Hiding communication latencies and bandwidth restrictions | Partitioning and distribution | Replication )
+   span multiple administrative domains()
+}
+
+class DistributedInformationSystems {
+  stable
+  wealth of networked applications
+  difficult interoperability
+  entrprise-wide information
+}
+
+class Transaction {
+  types = [&quot;system call&quot;, &quot;library procedure&quot;, &quot;language&quot;]
+  atomic
+  consistent
+  isolated
+  durable
+  begin()
+  end()
+  abort()
+  read()
+  write()
+  call() //follow logical divisions
+}
+
+Transaction --&gt;&quot;parallel&quot; Transaction
+
+Database --&gt;&quot;old days, request/reply behavior&quot; TransactionProcessingMonitor
+
+class Database
+DistributedInformationSystems &lt;|--&quot;tp monitor&quot; Database
+DistributedInformationSystems &lt;|--&quot;exchange information directly&quot; EnterpriseApplicationIntegration
+EnterpriseApplicationIntegration --&gt;&quot;coupling&quot; RemoteProcedureCall
+EnterpriseApplicationIntegration --&gt;&quot;coupling&quot; RemoteMethodInvocation
+EnterpriseApplicationIntegration --&gt;&quot;publish/subscribe&quot; MessageOrientedMiddleware
+MessageOrientedMiddleware ..|&gt; RSS
+
+
+DistributedInformationSystems  *-- Server
+Clients --&gt;&quot;distributed transactions&quot; Server
+
+class PervasiveSystems {
+  unstable
+  users and system are closer
+  unobtrusive
+  no system administrator.
+  small, battery-powered, mobile nodes
+  nodes often have a wireless connection
+  ad hoc fashion
+  a lot of sensors
+  a lot of actuators
+}
+
+note right: Internet of Things is its marketing name
+class UbiquitousComputing {
+   transparency is crucial
+   continuously present
+   unobtrusiveness is crucial
+   user has more interaction, and more implicit actions, our system hides interfaces
+   context awareness is any relevant information between the user and the system
+   autonomy from human intervention
+   artificial intelligence in an open environment
+}
+
+class MobileSystems {
+  use wireless communication
+  location change over time
+  disruption-tolerant networks: connectivity is not guaranteed
+  redundant communication
+}
+class SensorNetworks {
+  ten to hundreds or thousands of small nodes with each other
+  limited resources
+  power consumption is critical
+  operator&#x27;s site or network datask queries
+  askQueries(abstract query)
+}
+
+SensorNetworks --|&gt; TinyDB
+SensorNetworks --|&gt; SpecialNodes
+
+MobileSystems  --|&gt; GPS
+MobileSystems  --|&gt; CarEquipment
+MobileSystems  --|&gt; MANET
+
+PervasiveSystems  &lt;|-- UbiquitousComputing
+PervasiveSystems  &lt;|-- MobileSystems
+PervasiveSystems  &lt;|-- SensorNetworks
+
+PervasiveSystems *-- Mobile
+PervasiveSystems *-- EmbeddedDevices
+
+class HighPerfomance {
+  stable
+}
+class ClusterComputing {
+  homogeneity
+  nodes = [...similar nodes (hardware and OS) closely connected in LAN]
+  use(parallel and compute-intensive program)
+}
+ClusterComputing *-- MasterNode
+ClusterComputing *-- ComputeNode
+class GridComputing {
+  federation of nodes in form the virtual organization = [...different nodes (hardware, OS, and networks)]
+  worldwide
+}
+
+GridComputing  *-- Applications
+Applications  --&gt; CollectiveLayer
+CollectiveLayer  --&gt; ConnectivityLayer
+CollectiveLayer  --&gt; ResourceLayer
+ConnectivityLayer  --&gt; FabricLayer
+ResourceLayer  --&gt; FabricLayer
+
+class CloudComputing {
+   nodes = [...outsource()]
+   vendors = [Google, Amazon, Azure]
+   utility computing
+   virtualized resources
+   outsource(): grid nodes
+   provide facilities()
+}
+
+CloudComputing --&gt;&quot;Software-as-a-service (Saas)&quot; Applications
+Applications --&gt;&quot;Platform-as-a-service (Paas)&quot; Platforms
+Platforms --&gt;&quot;Infrastructure-as-service (IaaS)&quot; Infrastructure
+Infrastructure --&gt; Hardware
+
+
+
+DS &lt;|-- HighPerfomance
+DS &lt;|-- DistributedInformationSystems
+DS &lt;|-- PervasiveSystems
+HighPerfomance &lt;|-- GridComputing
+HighPerfomance &lt;|-- ClusterComputing
+GridComputing &lt;|-- CloudComputing
+
+note right: Why? Because it is easy for users to access, share, collaborate, and exchange remote resources.
+
+class Communication
+class &quot;Synchronous communication&quot; as sc
+class &quot;Asynchronous communication&quot; as asc
+
+class &quot;Batch-processing system&quot; as batch
+class &quot;Stream system&quot; as stream
+class &quot;Parallel work&quot; as parallel
+batch --&gt; asc
+parallel --&gt; asc
+
+
+ComputerSystem &lt;|--&quot;autonomous&quot; DS
+DS &lt;|-- GoodDS
+Communication &lt;|-- sc
+Communication &lt;|-- asc
+Node &lt;|-- &quot;Computer 1&quot;
+Node &lt;|-- &quot;Computer 2&quot;
+Node &lt;|-- &quot;Computer 3&quot;
+Node &lt;|-- &quot;Computer 4&quot;
+DS *-- Node: Nodes operate as a whole the same way, no matter where, when, and how.
+User -right--&gt; &quot;single coherent system&quot; DS
+Node --&gt; Communication
+Communication --&gt; Node
+Node --&gt; batch
+Node --&gt; stream
+Node --&gt; parallel
+
+GridComputing ..|&gt; MOSIX
+DS .|&gt; ContentDeliveryNetwork
+
+ComputerSystem &lt;|-- DecentralizedSystem
+class DecentralizedSystem{
+ resources are necessarily spread aa cross the network.
+}
+DecentralizedSystem ..|&gt; Blockchain
+@enduml</code></pre></details></li></ul><figure id="47d8a13f-12a2-41c6-b9b6-6314d184ae92" class="image"><a href="summary-c1.svg"><img style="width:6947px" src="summary-c1.svg"/></a></figure><h2 id="cdefd4ec-c707-4d96-9404-e4b267264053" class="">FAQ</h2><h2 id="8a7f719f-f59c-4455-8f26-0090b10e8acb" class="">Worked examples</h2><figure id="a63b5555-08b3-4438-9a8b-a01b549b18c6" class="link-to-page"><a href="Activity%201%201%20a63b555508b344389a8ba01b549b18c6.html">Activity 1.1</a></figure><h1 id="b394e84d-0378-4fb6-9cea-35381f9757d0" class="">Concurrent and Parallel Principles</h1><h2 id="c33b64bb-8575-4b18-936e-e0b42cc9a6d8" class="">Key concepts</h2><ul id="7f15d091-449d-456f-947a-135ec2e3934c" class="bulleted-list"><li style="list-style-type:disc">Concurrency</li></ul><ul id="946bf12c-a446-4735-ac56-72115764962b" class="bulleted-list"><li style="list-style-type:disc">Parallelism</li></ul><ul id="bcff2592-93d2-43e1-916a-ca667ba1d41a" class="bulleted-list"><li style="list-style-type:disc">Load Balancing. Load Shedding:</li></ul><ul id="a3e7786f-3c16-4a96-ad5b-7252cd2cf134" class="bulleted-list"><li style="list-style-type:disc">Synchronic operation is one such that the callee blocks the caller until it is done.</li></ul><ul id="ef3c18d4-fdde-416e-8076-74782969d206" class="bulleted-list"><li style="list-style-type:disc">An asynchronous operation is one where the callee doesn’t block the caller until it is done. It can be done with a big single-thread finite-state machine that records an interruption or event listener in the underlying platform. The sequential process model is lost. Coroutines. Event Loop.</li></ul><ul id="5233294d-5888-413e-93a2-5c444bdb55a8" class="bulleted-list"><li style="list-style-type:disc">isochronous</li></ul><ul id="89d74e70-928a-4b33-b797-3cb660a2c25e" class="bulleted-list"><li style="list-style-type:disc">Deadlocks</li></ul><ul id="62cb425e-5039-49f5-8b78-253b4dbb9669" class="bulleted-list"><li style="list-style-type:disc">Reactive systems vs Deliberative systems</li></ul><ul id="46bed33b-c348-4f63-a034-748837502c45" class="bulleted-list"><li style="list-style-type:disc">Logging and distributed management</li></ul><ul id="bebe5201-88ae-4d8a-8002-1866eda1cc3b" class="bulleted-list"><li style="list-style-type:disc">Push-Pull vs Subscribe</li></ul><ul id="29e742c4-1196-46b9-836a-a12d0a49faf8" class="bulleted-list"><li style="list-style-type:disc">throughput</li></ul><ul id="847f55e8-634a-4111-a83d-e67d183a4f8a" class="bulleted-list"><li style="list-style-type:disc">Overlay Network</li></ul><ul id="7545b829-e904-4cbe-9eb6-83539c25b8d1" class="bulleted-list"><li style="list-style-type:disc">Latency</li></ul><ul id="653c81ba-7a1f-4184-b6df-b36cd5158e60" class="bulleted-list"><li style="list-style-type:disc">Patterns of communication. Shared memory vs Message passing. </li></ul><ul id="6d84afd1-19b5-4e89-8f54-56261b6d2b19" class="bulleted-list"><li style="list-style-type:disc">Idempotent. The property operation whereby can be repeated multiple times without changing the initial application. You always are going to get the same result if nobody changes the state.</li></ul><p id="83d83c39-78e5-4a3e-b1e5-197da6d34983" class="">Formally, we said the <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>o</mi><mi>p</mi><mi>e</mi><mi>r</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">operation</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span></span></span></span></span><span>﻿</span></span> to be <em>idempotent </em>if <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>o</mi><mi>p</mi><mi>e</mi><mi>r</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">operation(x,x)=x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span></span><span>﻿</span></span> for all <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">x \in X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span></span><span>﻿</span></span>.<em> </em></p><p id="94e862b6-27ea-41e7-870c-ce639749fa07" class="">For example, suppose the operation <code>consults the money in my bank account</code> you could ask for it a lot of times but always you have the same amount, so it is idempotent. However, <code>transfer $3145 from my bank account</code> is not idempotent because you’re changing the state. </p><table id="25ebcf4d-ecfe-4bb3-bf4f-be4d38aa9afb" class="simple-table"><tbody><tr id="9d5b806a-2fdf-42ea-8c51-d8a30607ba5c"><td id="aQA~" class="" style="width:199.33333333333334px">Model</td><td id="abHw" class="" style="width:199.33333333333334px">Properties</td><td id="euD&lt;" class="" style="width:199.33333333333334px">Example</td></tr><tr id="49f41525-a1bc-40cc-8f31-ad90f190599f"><td id="aQA~" class="" style="width:199.33333333333334px">Multi-threading</td><td id="abHw" class="" style="width:199.33333333333334px">Parallelism, blocking system calls</td><td id="euD&lt;" class="" style="width:199.33333333333334px">Worker in the browsers
+</td></tr><tr id="f47b6914-6f8b-490d-b01b-f77dbaeb4aa6"><td id="aQA~" class="" style="width:199.33333333333334px">Single-threaded process</td><td id="abHw" class="" style="width:199.33333333333334px">No parallelism, blocking system calls</td><td id="euD&lt;" class="" style="width:199.33333333333334px">Typical synchronous function</td></tr><tr id="213610f3-bd61-47e8-a79a-411974586a57"><td id="aQA~" class="" style="width:199.33333333333334px">Finite-state machine</td><td id="abHw" class="" style="width:199.33333333333334px">Parallelism, nonblocking system calls, Asynchronous operation</td><td id="euD&lt;" class="" style="width:199.33333333333334px">Event loop in the browser. </td></tr></tbody></table><ul id="6a7cfc0d-e6d4-455a-9267-920d922192c5" class="bulleted-list"><li style="list-style-type:disc">Starvation: This refers to a situation in which a task is prevented from accessing a resource that it needs, due to the actions of other tasks.</li></ul><ul id="38c98aed-efe5-4cf9-a144-10bf10b51d01" class="bulleted-list"><li style="list-style-type:disc">Threads and processes.</li></ul><h2 id="2268d35d-d613-498a-b917-123f6da75c1e" class="">Case of study. JavaScript.</h2><h2 id="7405a6c6-6efb-49ba-8740-5eb7d2d3acb5" class="">Case of study. Python.</h2><h2 id="edec416c-6600-4a9a-b45f-755c1ba7bc26" class="">Case of study. Go.</h2><h2 id="c3e11b6e-2b63-44d5-881b-149b6bdc503a" class="">Case of study. C and C++.</h2><h2 id="0cf6acea-b51c-49b5-8d7d-8158d62bec99" class="">Case of study. Java.</h2><p id="0e7e72bb-5239-477f-9cb7-825310a61740" class=""><a href="https://replit.com/@sanchezcarlosjr/distributed-systems-2023-1">https://replit.com/@sanchezcarlosjr/distributed-systems-2023-1</a></p><h2 id="afacb25e-5567-4e8d-84f7-da41e63de5d7" class="">Case of study. Haskell.</h2><p id="9134c52c-8df5-4850-aa00-1a56cfe06d79" class="">We classify programming languages as stateful and stateless to abstract the concurrent and parallel principles, even though people have named the in different ways over the years. Stateful languages are those that encourage us to <strong>assign</strong> variables, on another hand, stateless languages are those that don’t encourage us to assign variables. JavaScript, Go, and C is stateful languages meanwhile Haskell and Erlang are stateless. Immutability. Mutability.</p><p id="bdd5b1d1-8253-4004-a5c3-0b7e2c283564" class="">Semigroups and monoids</p><p id="f6f9b52f-da89-4870-a175-f50ea588ed0c" class="">Group theory in cryptography</p><h2 id="2660a835-e9f1-405c-a69f-e0337287f7a1" class="">Case of study. Erlang.</h2><h2 id="5824edc5-2c4b-40d3-95ea-d1b0745964e7" class="">Coroutines</h2><p id="4fab520d-1a87-43ad-8b9f-2bca320b959b" class="">
+</p><h1 id="03eeb335-2f25-419d-9a2a-17bb3505a55b" class="">Foundations</h1><h2 id="782cd9d1-a8dd-4e0e-acde-c0b1354c758f" class="">Timed Input/Output Automaton (TIOA)</h2><h2 id="5414a445-772c-45c6-9022-a7019ac6b10f" class="">Distributed algorithms</h2><h2 id="a62aff68-ea86-48a4-914d-fd6ed312d710" class=""><strong>Process calculus</strong></h2><p id="c69bf6db-ec02-4d7d-80fd-cfb365ccb2d3" class="">Process Algebra</p><p id="32bac32f-05a6-4c2c-9127-18d49dd865d1" class="">Algebraic Theory of Processes</p><p id="64388361-26b9-4459-9f8d-2dc74141cee1" class="">π-calculus</p><h2 id="bd8973fd-4354-4a8d-95d3-1a7ef48f41f8" class="">References</h2><p id="9ade3433-bb91-479c-9104-99346c2c1648" class=""><a href="https://ocw.mit.edu/courses/6-852j-distributed-algorithms-fall-2009/">Distributed Algorithms</a></p><p id="bfa8d1ed-e26b-47cb-a59e-74ef3cf552fd" class=""><a href="https://en.wikipedia.org/wiki/Benjamin_C._Pierce">Pierce, Benjamin</a> (1996-12-21). &quot;Foundational Calculi for Programming Languages&quot;. <em>The Computer Science and Engineering Handbook</em>. CRC Press. pp. 2190–2207. <a href="https://en.wikipedia.org/wiki/ISBN_(identifier)">ISBN</a> <a href="https://en.wikipedia.org/wiki/Special:BookSources/0-8493-2909-4">0-8493-2909-4</a>.</p><p id="4304f83e-9ef0-422c-adec-2abad7adcaa1" class="">MIT OpenCourseWare. (2023, January 27). MIT OpenCourseWare. Retrieved from <a href="https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-20-asynchronous-distributed-algorithms-shortest-paths-spanning-trees">https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/resources/lecture-20-asynchronous-distributed-algorithms-shortest-paths-spanning-trees</a></p><p id="8d22038c-3858-42ba-ace6-b1dca0c1d321" class=""><a href="http://profesores.elo.utfsm.cl/~agv//elo330/">http://profesores.elo.utfsm.cl/~agv//elo330/</a></p><h1 id="7875d230-b982-4bca-a368-7c55bb1e7646" class="">Architectures</h1><h2 id="c63cf5ca-3e35-4e55-ae17-fc4278fcb003" class="">Architectural styles</h2><p id="fb845545-e7f0-462a-892a-56638ef69a2d" class="">Architectural styles have two main views the software and hardware organization such that the style are a set of components connected to each other and how these are configured into a system. A component is a replaceable modular <strong>unit</strong> with <strong>interfaces</strong> [OMG, 2004b] where “replaceable” means during that system operation you can change the implementation or interface to another one, but you must consider changing interfaces is a pain in the ass. You connect them by “connector”, a mechanism that mediates communication, coordination, or cooperation among them. Some of them are remote procedure calls, message passing, or streaming data.</p><p id="99bd41f5-cc1e-41f5-9b41-bea30c8a0cf8" class="">Now, we focus on software architecture, that is, the logical organization into software components of which the most important architectural styles are layered architecture, object-based architecture, and resource-centered architecture.</p><p id="a0315dfd-5caf-44ca-ab45-42e86b0cdfd2" class=""><a href="https://www.youtube.com/watch?v=nH4qjmP2KEE&amp;ab_channel=ByteByteGo">https://www.youtube.com/watch?v=nH4qjmP2KEE&amp;ab_channel=ByteByteGo</a></p><h2 id="d01ff2d5-13cb-42a0-b6b8-e28154bbf853" class="">Application layering</h2><h2 id="f3597de3-1d51-4419-b7e6-3e95fbdb21d6" class="">Object-based and service-oriented architectures</h2><h3 id="8088f3d6-5b2a-40e7-8ad4-bb793cb98021" class="">Microservices</h3><ul id="04ee3c6b-3cd7-4843-9d49-cc0bedba60b8" class="toggle"><li><details open=""><summary>Microservices</summary><pre id="924d5ba4-37d8-4f7d-8a2f-66a847ca38a5" class="code"><code>@startuml
+component Service1 {
+    node Machine1
+    node Machine2
+    node Machine3
+    interface interface1
+    folder code1
+    database service1
+}
+
+component Service2 {
+    node Machine4
+    node Machine5
+    node Machine6
+    folder code2
+    interface interface2
+    database service2
+}
+
+component Service3 {
+    node Machine7
+    node Machine8
+    node Machine9
+    folder code3
+    interface interface3
+    database service3
+}
+
+component SomeFrontOffice&lt;&lt;Mashup&gt;&gt; {
+ interface UserInterface
+}
+note right: For example, a Web app
+
+component AnotherFrontEnd {
+ interface UserInterface2
+}
+
+note right: For example, a Mobile app or Desktop
+
+cloud CloudVendor
+
+actor        &quot;User&quot;
+
+UserInterface --&gt; interface1
+UserInterface --&gt; interface2
+UserInterface --&gt; interface3
+UserInterface --&gt; CloudVendor
+
+User --&gt; UserInterface
+User --&gt; UserInterface2
+UserInterface2 --&gt; interface1
+
+@enduml</code></pre></details></li></ul><figure id="0e78ed85-4e7a-4f90-b4cc-916f9a45754e" class="image"><a href="microservices.svg"><img style="width:1350px" src="microservices.svg"/></a></figure><h2 id="802effb9-d171-4d9b-a1ec-3dcf3ba796df" class="">Resources-based architectures</h2><h2 id="1f4e0331-56f6-48f7-9775-e3cc777fb254" class="">Middleware organization</h2><h2 id="4300d72f-5641-42b1-96e3-a509bcb8b5c3" class="">System architecture</h2><h2 id="ea0185d7-f347-42fa-a4f1-b37c364f6cc5" class="">Decentralized organizations</h2><h2 id="98db7767-c85c-4392-a3a3-52ed06c728cc" class="">System design</h2><h3 id="ad02e7f4-8d7e-4be7-8d45-baf882c58f57" class="">Algorithms</h3><figure id="af68b972-3029-49d9-a4f5-bc0cb15e8830" class="image"><a href="Untitled%20100.png"><img style="width:384px" src="Untitled%20100.png"/></a><figcaption><a href="https://twitter.com/bytebytego">https://twitter.com/bytebytego</a></figcaption></figure><h2 id="3a9a57b9-5c4e-4ebe-87c6-463bf8b81906" class="">Case of study</h2><p id="fd934146-3bbd-45fc-96fd-6fd22cffdfa5" class="">Astrolabe</p><p id="04050006-c70e-4155-82ae-78bffeb53177" class="">Robbert Van Renesse, Kenneth P. Birman, and Werner Vogels. 2003. Astrolabe: A robust and scalable technology for distributed system monitoring, management, and data mining. ACM Trans. Comput. Syst. 21, 2 (May 2003), 164–206. https://doi.org/10.1145/762483.762485</p><p id="5057236b-bf34-4ba7-a2a3-93dda0948d4a" class="">Globule</p><p id="ffe9b1b5-08d5-4f6c-863c-91b93de53542" class="">Globule – Scalable Web application hosting. (2023, February 09). Retrieved from <a href="http://www.globule.org/">http://www.globule.org</a></p><p id="4bd6b846-deac-46a5-9a05-9ddab7d0def7" class="">Jade</p><p id="983d7362-2dea-4aeb-9b6c-647a8da080bb" class="">Jade Site | Java Agent DEvelopment Framework. (2023, February 09). Retrieved from <a href="https://jade.tilab.com/">https://jade.tilab.com</a></p><h2 id="92285527-c69a-4666-b8c8-e74d5d95e275" class="">Summary</h2><ul id="711e77ef-9c70-4e09-8bb5-d39f2cd7659b" class="toggle"><li><details open=""><summary>Code</summary><pre id="bf81f909-08b3-4e6f-8400-4b359ed1d83d" class="code"><code>@startmindmap
+!theme superhero
+* Architectures
+** What it is?
+*** Software and hardware components, their organization, and connection.
+*** Component is a modular unit with an interface replaceable.
+**** The interface ought to be replaceable in runtime.
+*** Connection is a set of mechanisms that coordinates components. 
+** Why?
+*** Because it is a universal principle subdividing a complex system into different layers and components.
+** Who is a system designer or architect? and what does?
+*** She or he chooses, organizes and implements key
+**** Protocols
+**** Interfaces
+**** Services
+**** States (e.g. databases)
+**** Components
+**** Orchestration
+** Architectural styles
+*** Layered architectures
+**** What?
+***** Components on a level or layer i call lower-level layers j, that is, j &lt; i
+***** It can be async or sync communication
+***** Monolith
+***** Vertical distribution
+**** Why?
+***** It is the most popular architecture.
+***** Simple to develop.
+***** Simple to deploy.
+***** Simple testing.
+**** Challenges
+***** Strong dependency among layers
+***** Hard to scale
+***** Redeploy the entire 
+**** Whether it is?
+***** Communication-protocol stacks
+****** Standard Protocols with different implementations
+***** The Web
+***** Application layering
+****** Multitiered architectures
+****** Simple client-server architecture. 
+******* Request-reply behavior
+***** Sun Microsystem’s Network File System (NFS)
+****** Traditional MVC
+******* User-interface level or views
+******* Processing level or controllers
+******* Models or data level
+*** Service-oriented architectures
+**** What?
+***** Organization into separate, independent entities that encapsulates a service. 
+***** independent processes
+***** independent threads
+**** Why?
+***** Loose dependency among services
+**** Whether it is?
+***** Services
+***** Objects
+****** OOP approach based on network, that is distributed objects and proxies.
+****** Technologies
+******* SOAP
+******* RPC
+******* CORBA
+***** Microservices
+****** What is it?
+******* A lot of small, mutually independent, and encapsulated services.
+******** Size does matter!
+******* Each of them runs on a separate network and process.
+******* Modularization is key
+****** Why?
+******* Better scaling
+******* New technologies
+******* Frequent releases
+****** Challenges
+******* Slower deployment
+******* Service discovery
+******* Complex configs
+****** Technologies
+******* Docker
+******* Kubernetes
+******* Openshift
+******* Istio
+***** Coarse-grained service composition
+****** What is it?
+******* A kind of microservice architecture
+******** But some services may not belong to the same organization
+****** Why?
+******* Our organization serves a Service composition based on a cloud provider.
+****** Challenges
+******* Service harmony
+****** Whether it is?
+******* Cloud computing
+***** Resource-based architectures
+****** What is it?
+*******  A collection of resources managed by remote components by CRUD operations
+****** Whether it is?
+******* GraphQL
+******** Queries and Mutations
+******** Types
+******* Representational State Transfer (REST)
+******** PUT, POST, GET, DELETE
+******** Users identify resources by a single naming scheme
+******** Services offer the same interface as the four operations
+******** Messages are fully self-described
+******** Stateless execution, that is, after an operation, the component forgets the caller.
+******** Based on HTTP
+*** Publish-subscribe architectures
+**** What is it?
+***** Strong separation between processing and coordination
+***** The system is a collection of autonomous processes.
+***** Temporal dimension
+***** Processes must be running at the same time.
+***** Referential dimension
+****** Exists reference between processes such as name or an identifier
+**** Whether it is?
+***** Topic-based publish-subscribe systems
+***** Content-based publish-subscribe systems
+***** Event bus systems
+***** RSS
+***** Mailbox
+***** Shared data space
+****** Linda (coordination language)
+****** Qlib-Server
+***** Map-Reducers schemes
+****** GFS
+****** Hadoop
+***** Reactive schemes
+****** RXJS
+***** Stream schemes
+****** Cell phones
+** Middleware
+*** Goal
+**** Achieve the open-close principle
+*** Design patterns
+**** Wrappers or Adapters
+***** What it is?
+****** Special component that offers an acceptable interface.
+****** It solves the problem of incompatible interfaces.
+**** Why?
+***** Allow the construction of adaptive software.
+***** Whether it is?
+****** A broker that centralizes wrappers. O(n) wrappers.
+****** A wrapper by each client. O(n^2) wrappers.
+**** Interceptors
+***** What is it?
+****** A software that breaks the flows and executes another software.
+***** Whether it is?
+****** Proxy JavaScript
+** Symmetrically distributed architectures
+*** What is?
+**** Horizontal distribution
+**** Peer is a client and server at the same time, that is, a servant.
+*** Structured peer-to-peer systems
+**** Attempt to maintain a specific, deterministic overlay network.
+**** Distributed hash tables and hypercubes
+*** Unstructured peer-to-peer systems
+**** Each node maintains an ad hoc list of neighbors.
+**** Random graph
+***** Flooding
+***** Random walks
+*** Hierarchically organized peer-to-peer networks
+**** Supernodes and leader election problem
+**** Whether it is?
+***** BitTorrent
+** Hybrid system architectures
+*** Cloud computing
+**** Outsourcing local computing
+***** Contrary to on-promise services
+**** Service-level agreements
+*****  Hardware
+*****  Infrastructure (IaaS)
+*****  Platform (PaaS)
+*****  Function (FaaS)
+*****  Application (SaaS)
+*** The edge-cloud architecture
+**** Internet-of-Things (IoT)
+*** Blockchain architecture
+**** The principle operation of a blockchain
+***** A node broadcasts a transaction
+***** A validator collects transactions into a block
+***** A single validated block is broadcast of all the nodes
+@endmindmap</code></pre></details></li></ul><figure id="0a427c03-ced7-450b-b704-b78eb25ed22d" class="image"><a href="unit2.svg"><img style="width:2147px" src="unit2.svg"/></a></figure><h2 id="9c2813af-ec08-4b2f-ad2a-0f8fd2ff61d9" class="">Worked examples</h2><figure id="a7541b16-66ff-49ba-85b3-bc9071b9600c" class="link-to-page"><a href="Assignment%202%20a7541b1666ff49ba85b3bc9071b9600c.html">Assignment 2</a></figure><h1 id="6b116f23-d300-4d73-ac77-0c2dfb11f12e" class="">Processes</h1><p id="f2ce8905-86f9-473e-9169-1d3153f56e83" class=""> </p><h2 id="6638aa5a-ba44-4433-8912-5e5889da7452" class="">Threads in distributed systems</h2><p id="5c6ea4fc-135d-422b-80f2-3ca0c676bb0d" class="">The most important thread property is allowing blocking system calls but not blocking the entire process in which the thread is running because it makes it much easier to express multiple logical connections at the same time.</p><h2 id="dc8b5d0f-c641-4ded-83a2-63a519518704" class="">Virtualization</h2><p id="76f4dbef-7646-4e18-88bd-fc26cff90b67" class="">Examples are Docker, Virtual Machines, and Emulators.</p><p id="da84cfd9-6809-4a88-993c-8ba0e783b3ad" class=""><a href="http://www.docker.com/">Docker</a>,<a href="http://openvz.org/">OpenVZ</a>/<a href="http://virtuozzo.com/">Virtuozzo</a>,and <a href="https://linuxcontainers.org/">LXC/LXD</a>.</p><h2 id="a4ef796d-1ea9-4b0f-a545-a0a0c565bd00" class="">Clients</h2><p id="fd3493c0-a233-42a2-9bc2-aaff8076b1a1" class="">If you must establish a high degree of distribution transparency on the client side, that is, you should hide the communication latencies, then the most common is to initiate the communication right off the bat, display something quickly to users, and not block the user interface. All together can be done via threads.</p><h3 id="4bfde8e5-b38d-484d-94ce-dfa701a2b3bc" class="">Replicated calls from a client</h3><p id="d3a8fceb-2b55-4bda-aff9-1790c865f4ce" class="">A replicate call is a remote procedure call (RPC) between a node and the replicas, that is, the other nodes in the system that holds a copy of the data or chunk being requested, where a response may or may not be received due to system design or network problems. </p><p id="b5fba7f2-bb70-4f22-88cd-26b53f211fee" class="">Typically, a replicated call refers to a situation where multiple replicas of a server-side application are involved in processing a client&#x27;s request.</p><ul id="16626230-07c5-42ee-a169-8b64c93ba003" class="toggle"><li><details open=""><summary>Code</summary><pre id="304d9ba0-1f76-4d8b-b122-8e59143ee822" class="code"><code>@startuml
+title Replicated Calls
+
+actor Client
+entity &quot;Proxy, request-level interceptor&quot; as Proxy
+database Replica1
+database Replica2
+database Replica3
+note over Replica1, Replica2: A replica is a node that holds a copy of data or a chunk of it.
+
+Client-&gt;Proxy: B.request(query,data) // read or write the data
+group n replicated calls
+Proxy-&gt;Replica1: Forward request
+Proxy-&gt;Replica2: Forward request
+Proxy-&gt;Replica3: Forward request
+end
+Replica1-&gt;Proxy: Send response
+Replica2-&gt;Proxy: Send response
+Replica2-&gt;Proxy: Send response
+Proxy-&gt;Client: It applies a pipe() to responses, for example, it could send either the first response, or the last response, or combines all responses if you need agreement or chunks from replicas. 
+@enduml</code></pre></details></li></ul><figure id="0cef90a3-1884-4bc7-b1fb-c97199585ccf" class="image"><a href="replicated-calls.svg"><img style="width:1615px" src="replicated-calls.svg"/></a></figure><h3 id="f9c51baf-b72f-4210-90cf-090e80b918b8" class="">Web browser</h3><h2 id="d803b945-2427-41bf-b6d5-0c021eed3b91" class="">Servers</h2><h3 id="0482f490-0a0d-4487-b6d6-fa53ae6d5937" class="">Window X</h3><figure id="c3e30b9c-c7c5-4234-9029-9a8a9e06e0af" class="image"><a href="Untitled%20101.png"><img style="width:192px" src="Untitled%20101.png"/></a></figure><p id="fda546cb-2ca5-4fbe-bbe5-2faeeff745ed" class="">Window X designates a user’s terminal as hosting the server, while the application is known as the client. It makes sense because on one hand there is a limited resource and $n$ applications wanting to access them, so the Windows X server coordinates the clients and resource interruptions.</p><h2 id="899b6784-4e3e-41e0-9086-84ffa4ce206c" class="">Code migration</h2><p id="9cd20416-f22a-4abd-8d87-869fd20a8081" class=""><strong>Webhook</strong></p><h3 id="179513b0-0804-46cd-99fc-eb555c46e51e" class="">Checkpoint and restore </h3><p id="b9985af1-d18f-4f52-b566-46f51124dd4b" class=""> </p><h2 id="75e34519-6114-47fe-8925-9ab71d4e555a" class="">Parallel and concurrent process</h2><h2 id="bb320ad1-754e-4ba8-80c3-68405300e9dc" class=""><strong>Asynchronous and synchronous Programming</strong></h2><h2 id="a27307c1-f183-4970-9521-be2a654df4ee" class="">Queue system analysis</h2><p id="d206848b-cb51-445c-9d7c-968d559cca0d" class=""><a href="https://www.youtube.com/watch?v=z611FLLR3_8&amp;ab_channel=GeoffreyMessier">https://www.youtube.com/watch?v=z611FLLR3_8&amp;ab_channel=GeoffreyMessier</a></p><p id="12ae7c30-e648-45cf-a05a-9a49cc4d45af" class=""><a href="https://www.youtube.com/watch?v=Hda5tMrLJqc&amp;ab_channel=USENIX">https://www.youtube.com/watch?v=Hda5tMrLJqc&amp;ab_channel=USENIX</a></p><p id="74dd50f9-d1a5-44e9-bd1c-95b42f1915f4" class=""><a href="https://www.youtube.com/watch?v=oQGreeij-OE&amp;ab_channel=8thLightInc">https://www.youtube.com/watch?v=oQGreeij-OE&amp;ab_channel=8thLightInc</a>.</p><h2 id="27422c49-0457-40eb-b09b-106dd46e91a9" class="">Summary</h2><ul id="2d00876a-47ef-4bba-84e1-31a5aee93d1f" class="toggle"><li><details open=""><summary>Code</summary><pre id="48649729-c98e-490b-8c8f-fc8703205558" class="code"><code>@startmindmap
+* Processes
+** What is it?
+*** A program in execution
+** How can we develop cooperative programs?
+*** IPC
+** Important advantage over threads
+*** Processes don&#x27;t share the data space
+** Threads
+*** Why?
+**** We require hiding blocking operations
+**** We must exploit a multicore system
+**** Threads offer easier communication to each other and performance than process
+*** When the operating system execute them?
+**** Context Switching
+**** Thread Switching
+**** User space
+*** Model
+**** 1 process: N user-space threads: M kernel space threads: U cores
+** Virtualization
+*** What?
+**** A proxy that mimics the behavior of another system interface
+***** Instruction set architecture (ISA)
+***** System calls
+***** Application programming interface (API)
+***** The software environment
+*** Why?
+**** Portability
+***** Isolation
+***** You&#x27;re decoupling hardware and software
+***** Reproducible
+**** Maintain legacy projects
+**** Flexibility to change underlying systems
+*** Whether it is?
+**** A process virtual machine
+***** Runtime system
+****** Java
+***** Emulation
+****** Wine Linux
+**** A native virtual machine monitor
+**** A hosted virtual machine monitor
+**** Containers
+***** Unix mechanisms
+****** chroot
+****** namespaces
+****** union file system
+****** control groups
+***** Docker+Kubernetes
+***** Linux containers (LXC)
+***** PlanetLab (Vservers)
+**** Nix
+** Client architecture
+*** Networked user interfaces
+**** Users interact with remote servers
+***** by a specific protocol
+***** by an independent protocol
+**** Whether it is?
+***** X Window System
+*** Virtual desktop environment
+**** The user has software to access the virtual desktop environment
+**** Whether it is?
+***** Chrome OS
+***** Web Browser
+*** Client-side software for distribution transparency
+** Server architecture
+*** It waits for incoming requests and takes care of them.
+*** General design issues
+**** Synchronization
+*****  Iterative or sync
+*****  Concurrent or async
+**** Contacting
+**** Interrupting
+**** State
+***** Stateless
+***** Stateful
+*** Object servers
+**** The server provides an interface to invoke local objects
+***** Activation policies
+***** Mechanism, Object adapter
+**** Whether it is?
+***** The Ice Runtime system
+***** The Apache Web Server
+*** Server clusters
+**** A set of machines connected through a network
+** Code migration
+*** An process is moved from one node to another.
+*** Reasons
+**** Performance
+**** Privacy and security
+**** Flexibility
+*** Models
+**** Sender-initiated migration
+**** Receiver-initiated migration
+*** Migration in heterogeneous systems
+**** Process virtual machine
+
+@endmindmap</code></pre></details></li></ul><figure id="f0aee946-fea6-4bc2-a4b2-5a9530cfb189" class="image"><a href="3-procceses.svg"><img style="width:1273px" src="3-procceses.svg"/></a></figure><h2 id="4e9286a2-f38d-4c0d-927d-768f387ee2cd" class="">Exercises</h2><figure id="da9992d2-3df3-44d5-9f6b-9ace5749eebd" class="link-to-page"><a href="Assignment%203%20da9992d23df344d59f6b9ace5749eebd.html">Assignment  3</a></figure><h1 id="6fbe6701-211c-4d36-805d-388c9e5215dd" class="">Communication</h1><h2 id="845c4409-9b21-4b5c-a8b8-c64d1ba99b40" class="">Protocols</h2><h3 id="d722d087-d401-432b-b18e-a2d70de17b63" class="">Routing algorithms</h3><h3 id="26fc10af-9f49-4f78-aa61-76e173738af5" class="">Deadlock-free packet switching</h3><h3 id="dc16c6e0-5492-4aa3-8521-915a8f47060a" class="">Wave and Traversal Algorithms</h3><h3 id="286d8575-26e9-4c6c-a576-5de0ed49908c" class="">Election algorithms</h3><h3 id="3c8ac2ef-07a8-4bbe-9bf2-137d0421e083" class="">Termination detection</h3><h3 id="86b97652-ca28-4459-833b-5b35d496dee7" class="">Anonymous Networks</h3><h3 id="273e9209-1664-4cc9-b86b-988c6cc0ea9d" class="">Snapshots</h3><h3 id="138d3756-52ba-45f4-84ad-20adec965f8f" class="">Sense of direction and orientation</h3><p id="6dcf375c-f020-42de-96b1-7d5c863e7be9" class="">
+</p><h2 id="0b960d50-1ace-476b-984d-27aba66e0c1a" class="">Synchrony in networks</h2><h2 id="f8002fa6-13b8-462a-8805-380c5bd5b6b3" class="">Remote procedure call (RPC)</h2><p id="2da999e1-3a42-404f-a9c6-b7ba53b87143" class=""><strong>Webhook</strong></p><p id="47b6d882-de00-48cd-9865-0fb22b975827" class="">A <strong>remote procedure call</strong> is a transparent function or method call that internally sends and receives data from remote processes. It must hide the message-passing nature of network communication. You can find a lot of RPC examples such as REST, SOAP, gRPC, Ajax in Web Browsers, graphQL, CORBA, and Trihft. </p><h2 id="522be722-0470-4e00-8086-a1943d9c80c6" class="">Message-oriented communication</h2><h2 id="2e8cbe63-2319-4f3f-9723-6abd3aac4374" class="">Multicast communication</h2><h2 id="238d8912-10cc-415c-81f6-cbc3be17c75c" class="">Worked examples</h2><figure id="9313aa6b-c1dd-47f2-8c05-a57d9270b008" class="link-to-page"><a href="Assignment%204%209313aa6bc1dd47f28c05a57d9270b008.html">Assignment 4</a></figure><p id="e53518b9-49cd-4fc3-9cf0-e26dd98cbfda" class="">
+</p><h2 id="a9ed020e-d3dc-4de1-bd8f-3698f317d3d8" class="">Summary</h2><pre id="1191de68-03a0-436d-b0c2-10d8a95bff03" class="code"><code>@startmindmap
+!theme materia
+* Communication
+** OSI Model
+*** What is it?
+**** Communication protocols
+***** Application, Presentation, Session, Transport, Network, Data link, Physical
+***** Message = payload + header for each protocol
+**** Middleware protocols
+***** What is it?
+****** General-purpose protocols that warrant their own layer
+***** Examples
+****** DNS
+****** Authentication and authorization protocols
+*** Why?
+**** It allows thinking about open systems to communicate with each other
+*** Examples
+**** Connectionless services
+***** Email
+**** Connection-oriented communication
+***** Telephone
+** Remote procedure call
+*** Why?
+**** Achieve transparency
+*** What is it?
+**** The real implementation is executed in another node over a network
+*** Examples
+**** API REST
+**** GraphQL
+**** gRPC
+**** CORBA
+**** Ajax in browsers
+*** How?
+**** Local stub communicates with the server via passing messages
+**** Transport Procedure Call
+**** Transparent calls
+**** Marshaling and Serialization
+**** Interface Definition Language (IDL)
+***** Issue
+****** Code migration and references
+** Message-oriented communication
+*** Issues
+**** Does the communication persist?
+**** Is the communication synchronous?
+***  How?
+**** Async communication
+**** Sync communication
+**** Technologies
+***** Socket interfaces
+***** Blocking calls
+*** Solution
+****  Design Patterns
+***** Pipeline pattern
+***** Publish-subscribe pattern
+***** Request-reply pattern
+***** Message-queuing systems
+***** Message brokers
+**** Message-oriented middleware
+***** When?
+******  When the RPCs are not appropriate.
+***** Examples
+****** MQTT
+****** ZeroMQ
+****** The Message-Passing Interface (MPI)
+** Multicast comunication
+*** What is it?
+**** Disseminate information across multiple subscribers.
+**** Examples
+***** IPFS
+*** How?
+**** Peer-to-peer system
+***** Structured overlay network
+***** Every peer sets up a tree
+***** Distributed hash table (DHT), Distributed data
+**** Flooding messages across the network
+**** Epidemic protocols
+***** Simple
+***** Robust
+@endmindmap</code></pre><figure id="937ba710-3be4-4b64-8c7b-710b323fec9e" class="image"><a href="ds4.svg"><img style="width:1319px" src="ds4.svg"/></a></figure><h1 id="3e163b88-50d8-48d1-b894-938bd7ad888d" class="">Naming</h1><h2 id="3a15104f-a133-4a93-9de8-b1ae05b297cc" class="">Flat naming</h2><h2 id="12660c14-4ade-42cd-aaea-7b9476cfacf1" class="">Structured naming</h2><h2 id="89cc42d8-c899-4a7a-9dcf-c11ffb832411" class="">Attribute-based naming</h2><h2 id="c25d08de-7034-4dd6-9107-44856fa453bd" class="">Worked examples</h2><figure id="0ff703b1-845d-41b5-9743-f8257f94ebf5" class="link-to-page"><a href="Assignment%205%200ff703b1845d41b59743f8257f94ebf5.html">Assignment 5</a></figure><h2 id="04bde161-881e-489f-9461-9eda8acc426d" class="">Summary</h2><ul id="77ad8a35-6460-4fb0-857b-9ff9143ff561" class="toggle"><li><details open=""><summary>Code</summary><pre id="d0958f6e-415f-4338-8f99-a16ee66ded7b" class="code"><code>mindmap
+  root((Naming))
+    (Names)
+      What?
+         It identifies entities
+      Whether it is?
+          Processes
+          Users
+          Network connections
+      How?
+         Naming system
+         ::icon(fa fa-ear-listen)
+         Access point or address
+         Location independent
+         ::icon(fa fa-location-dot)
+    (Flat naming)
+      What?
+         Names are random bit strings
+         Good for machines
+      How?
+        Broadcasting
+        Multicasting
+        Forwarding pointers
+        (Home-based approaches)
+        Distributed hash tables
+        Exploting network proximity
+        Hierachical approaches
+        Secure flat naming
+    (Structured naming)
+      What?
+        Good for humans
+        Naming systems
+      How?
+        Name spaces
+        ::icon(fa fa-diagram-project)
+        Name resolution
+        Closure mechanism
+        Linking and mounting
+        Name space distribution
+      Whether it is?
+        DNS
+    (Attribute-based naming)
+      What?
+        Search based on a description
+        (&quot;(Attribute, value)&quot;)
+       How?
+        Directory services
+        Decentralzied implementations
+        (Space-filling curves)
+       Whether it is?
+        Resource Description Framework
+        Lightweight Directory Acess Protocol
+      Mermaid
+    (Named-data networking)
+      What?
+        (Information-centric networking)
+        Get a copy to access it locally 
+      How?
+        New routing</code></pre></details></li></ul><h1 id="29b934b0-19bc-4132-bec7-8e29d2e97714" class="">Coordination</h1><h2 id="c0fc7152-9193-4271-8d41-21d2300b24e5" class="">Clock synchronization</h2><h2 id="9e9c2724-a4a1-44ff-bd38-dcdc24aa1452" class="">Summary</h2><ul id="95361719-424e-400f-8c2d-cbc6b758f7ee" class="toggle"><li><details open=""><summary>Code</summary><pre id="8ead97bf-946e-49e0-83f4-5847b9dc1e96" class="code"><code>mindmap
+  root((Coordination))
+    [Clock synchronization]
+      What?
+        It&#x27;s doing the right thing at the right time
+      Why?
+        Data synchronization
+        Process synchronization
+        Time is so basic to the way people think
+      Examples
+        File timestamps
+        Financial brokerage
+        Security auditing
+        Collaborative sensing
+        Real time systems
+    [Physical clocks]
+      What?
+        A computer timer made by machined quartz crystal
+        Counter, Holding and Clock Ticks
+        CMOS RAM
+      Issues
+        Leap second
+        Clock skew
+      Examples
+        Coordinated Universal Time
+        Exchaning clock values
+    [Logical clocks]
+      What?
+         It&#x27;s unnecessary knowing the absolute time, but
+         Related events at different procceses happen in the correct order
+      How?
+        Each event e, is assigned an unique timestamp C e
+      Examples
+         Lamport clocks
+         Vector tunestano
+    [Mutual exclusion]
+      What?
+        At most one process at a time has access to a shared resource.
+      How?
+        It can be achieved easily with a coordinator.
+        A fully distributed algorithms exist, but it can go wrong.
+    [Election algorithms]
+      What?
+        Election algorithm choose a new leader in a DS.
+      Why?
+        If the coordinator is not fixed, it is necessary choose a coordinator.
+        When the coordinator crash, you must choose a new leader.
+    [Gossip-based coordination]
+      What?
+        Coordinate a peer to peer system.
+      How?
+        Choose another peer randomly from an entire overlay.
+        Partial view is refreshed regularly and randomly. 
+      Examples
+        Routing
+        Tribler
+    [Distributed event matching]
+      What?
+         To route notifications to proper subscribers.
+      How?
+         One to one comparisons by topic
+         Content based matching
+      Examples 
+        Publish subscribe systems
+    [Location systems]
+      What?
+        Take proximity into account
+      Examples
+        Global Positioning System
+        Logical positioning of nodes
+        Network coordinate system
+        Wigle database
+        Centralized positioning
+        Decentralized positioning</code></pre></details></li></ul><figure id="58172f57-37a1-4f2b-95cd-a7875b7cdb59" class="image"><a href="mermaid-diagram-2023-04-18-085002.png"><img style="width:951px" src="mermaid-diagram-2023-04-18-085002.png"/></a></figure><h2 id="2056c85f-7c0b-4070-95b8-be4dbd1674fd" class="">Questions</h2><figure id="d0e5551a-1377-41a2-8fc5-7e99a3b583b4" class="link-to-page"><a href="Assignment%206%20d0e5551a137741a28fc57e99a3b583b4.html">Assignment 6</a></figure><p id="ae59dce5-c1f0-43aa-9939-632890b570f2" class=""><div class="indented"><h1 id="7685d87d-5035-4abd-a15c-349c9abc461b" class="">Consistency and replication</h1></div></p><h2 id="5c38fe78-02d6-4c6a-b316-c5b72578f652" class="">Stateless and stateful</h2><h2 id="37d5397e-cd86-40c4-8938-3defd2776c43" class="">Atomic objects</h2><p id="33e542bf-07e6-4544-9c74-14a3c75a4bfc" class="">Fault tolerance</p><p id="a7ac24c1-e2ee-4f91-bfd0-04919cbb6d91" class="">Fault Tolerance in Distributed systems</p><h2 id="f70cef88-c4ae-4d40-8bde-63209736c87e" class="">Case of study</h2><p id="c465fdf3-4749-450d-8b05-62d2bb006cf7" class="">VMware FT</p><p id="2b72af8b-7fa5-4ab4-9f9c-01f74f5193f1" class=""><strong>Circuit Breaker Design Pattern</strong></p><h2 id="d538b5d9-5ba9-4be9-9898-c8b098bf4f42" class="">Questions</h2><figure id="45746a3d-647a-4dc6-bfaa-2f7294fc220a" class="link-to-page"><a href="Assignment%207%2045746a3d647a4dc6bfaa2f7294fc220a.html">Assignment 7</a></figure><h1 id="c844e130-be09-49f3-8c4e-0ad05ed6658d" class="">Fault tolerance</h1><h2 id="cd6f6821-6c79-4d3b-bfa0-a3c9a73196ed" class="">Fault tolerance in Asynchronous systems</h2><h2 id="f81759d2-9d77-4ed0-9125-158e65011228" class="">Fault tolerance in Synchronous systems</h2><h2 id="62482637-c9e8-40f8-b0ae-aec485090a06" class="">Failure detection</h2><h2 id="30fbaf3e-8417-451a-90c3-a526cff169c7" class="">Stabilization </h2><h2 id="cf9326b9-c6d6-4565-b093-1ed41c571947" class="">Process resilience</h2><h2 id="de4b9999-6d4b-44e5-85b4-58c03ff7b294" class="">Reliable client-server communication</h2><h2 id="e9365a8b-a43a-4441-a3ea-f8046f99bba4" class="">Distributed commit </h2><h2 id="991d7ace-766d-4792-a2e8-b74ef20b65e9" class="">Summary</h2><figure id="2ff15151-d3cd-434e-bcb5-30e48aad866e" class="link-to-page"><a href="Assignment%208%202ff15151d3cd434ebcb530e48aad866e.html">Assignment 8</a></figure><h1 id="2a5f9867-1f53-4bec-84ca-1ce2cf945531" class="">Security</h1><figure id="9f3149a7-4d3f-4102-8386-29df593d1721" class="link-to-page"><a href="Intelligence%209f3149a74d3f4102838629df593d1721.html"><span class="icon">📯</span>Intelligence</a></figure><h1 id="230f13bb-6afd-4b2d-89e1-0900d6aaf5fe" class="">Tutorials and assignments</h1><p id="3d17edc1-e603-4a02-b03b-5bd3cf44858b" class="">We will explore some alternatives to perform distributed computing, both locally and in a network, starting from the most basic approaches and progressing to the use of the most feature-rich libraries.</p><h3 id="7b846011-6525-4142-834b-d5b74259a9e8" class=""><strong>The “&amp;” operator</strong></h3><pre id="d7750784-ea36-49a4-b516-3dcc36d6380b" class="code"><code>(sleep 1 &amp;&amp; echo &quot;abc&quot;) &amp; (sleep 2 &amp;&amp; echo &quot;def&quot;) &amp; (echo &quot;efg&quot;)</code></pre><figure id="f8523ddc-c5f6-41fe-873f-322fffb5f2f6" class="image"><a href="Untitled%20102.png"><img style="width:1356px" src="Untitled%20102.png"/></a></figure><h2 id="f6e66aa0-23d6-4267-91a6-33c5dc2904a1" class=""><strong>GNU parallel</strong></h2><p id="3902ce6d-f38b-4d29-a32f-dc2777ee2d8f" class="">In my opinion, GNU Parallel works well for complex tasks when run locally, but it can be difficult to use on a cluster. You can see for yourself using <a href="https://www.msi.umn.edu/support/faq/how-can-i-use-gnu-parallel-run-lot-commands-parallel">https://www.msi.umn.edu/support/faq/how-can-i-use-gnu-parallel-run-lot-commands-parallel</a>.</p><p id="b6415996-9fb1-4e63-bbe7-d03aa669471c" class="">Examples</p><pre id="fa02335c-a8ae-4221-b11a-afbeb1bab45f" class="code"><code>cd /tmp/ &amp;&amp; touch {1..5}.my_random_file | find . -type f -name &#x27;*.my_random_file&#x27; | parallel gzip --best</code></pre><pre id="11374b69-0993-466e-af16-42bf0b7e4bfc" class="code"><code>parallel echo ::: 😀 😃 😄 😁 😆 😅 😂 🤣 🥲 done!</code></pre><pre id="3463a914-3130-45fc-81fb-48791bb33bb2" class="code"><code>touch images.txt &amp;&amp; parallel printf &#x27;https://picsum.photos/200/300\\n%.0s&#x27; ::: {1..1000} | parallel -j+0 -k &quot;echo {} | tee -a images.txt&quot; &amp;&amp; cat images.txt | parallel wget</code></pre><pre id="b930ae7c-1714-4580-a2c4-fa2511703f8d" class="code"><code>touch images.txt &amp;&amp; parallel -j+0 &quot;printf &#x27;https://picsum.photos/200/300\\n%.0s&#x27;&quot; ::: {1..2} | parallel -j+0 &quot;echo {} &gt;&gt; images.txt&quot; &amp;&amp; parallel -a images.txt -j+0 wget</code></pre><h2 id="bda23144-a5d0-4895-9495-5cce975f9e05" class="">xargs</h2><pre id="d8108eec-6ab8-4344-99ec-547a13cf89df" class="code"><code>cat images.txt | xargs -n 1 -P 10 curl -s | gawk &#x27;{print $1}&#x27;</code></pre><h2 id="3405b575-a899-4ea7-bd29-accecb47e620" class="">Ray</h2><p id="c88973fb-4e03-4023-a6d7-caf5b3de7acb" class="">On the other hand, Ray performs well for complex tasks on an on-premise cluster, but when used locally, it can be overwhelming.</p><p id="55f18a87-7dc6-4403-8c5c-0c4deec0f5e0" class=""><a href="https://www.ray.io/">https://www.ray.io/</a></p><p id="37ffad7e-6c99-493c-a5e3-d8394f839bce" class="">A distributed <a href="https://github.com/sanchezcarlosjr/telecommunications/tree/main/distributed_computing/e1_parallel_tasks_with_ray_python">Hello World</a> program</p><h2 id="a77674f3-9ce6-49fe-905c-adf51ce909ff" class=""><strong>Network File System</strong></h2><h2 id="41e87bf7-1bff-48cc-bf63-4db32add1747" class="">Hadoop or Spark</h2><h2 id="30e33a66-3ec6-455d-85b4-3b18314d48dc" class=""><strong>Open MPI</strong></h2><p id="be231c6e-e872-4858-b16e-d8c9c163dc26" class="">Low-level alternative</p><h2 id="0927b674-5b0e-4254-a10f-00580e1d70e4" class="">LibP2P</h2><p id="1efdf0ae-a285-4581-96b3-9e1f8ceb749f" class="">Location-addressing approach vs content addressing</p><p id="22d16c96-3076-4d64-9ab3-71b9e6c74464" class="">Content identifier</p><p id="3d41eceb-4b59-4372-8901-7645e5b42633" class="">Peer. A participant in a decentralized network that is equally privileged.</p><h2 id="4c199503-9aaf-47c4-a327-abd43bdd7093" class="">Queue messaging</h2><p id="46fde35b-78d9-4dfb-8ccd-93525c74375c" class=""><a href="https://mqtt.org/">https://mqtt.org/</a></p><p id="09c706f5-0583-4fd3-80db-c6829e8391bd" class=""><strong>MQTT</strong></p><p id="6bd5d3ae-dcd0-4ef4-99b2-2c04df0c9519" class=""><strong>Message broker</strong></p><p id="da906855-ad88-4b69-afa1-2d5b617d067e" class=""><strong>Quality of service</strong></p><p id="6f8dad2c-b402-42d2-9708-e4dd246ce012" class=""><strong>OASIS (organization)</strong></p><p id="c5b7c555-b7a7-4370-a696-b9b4475fdfe1" class=""><strong>ZeroMQ</strong></p><p id="0affe42d-d603-4c0f-9a05-e8d9acacdb9c" class=""><a href="https://zeromq.org/">https://zeromq.org/</a></p><p id="059f83d0-9df1-4283-8be8-c3d5baf2fa86" class=""><strong>Quality of service</strong></p><p id="c8e1a129-4259-44d5-adf5-d2cd9cf4e639" class=""><strong>Message-oriented middleware</strong></p><p id="ebefa94d-0502-471d-94ef-f0486134e1f8" class=""><strong>Message queuing service</strong></p><h2 id="72111eec-cfac-4e48-8b8e-b9909e5424b1" class="">Your own map-reducer</h2><p id="b100ccfc-a994-4212-adb1-21df6fcbc18b" class=""><a href="https://pdos.csail.mit.edu/6.824/labs/lab-mr.html">https://pdos.csail.mit.edu/6.824/labs/lab-mr.html</a></p><h2 id="27c868db-9551-4192-a384-4d2db1564d89" class="">Other Alternatives</h2><p id="1364d16f-7e1d-4a9c-9c68-1221ab642299" class="">Object storage</p><p id="52fa79ac-f004-4541-9ba5-d987fb723717" class="">1. Network Attached Storage (NAS) - a file-level storage architecture that allows multiple users to access shared files over a network. 
+2. Distributed File System (DFS) - a protocol that allows users to access files on multiple servers as if they were on a single shared drive.
+3. iSCSI (Internet Small Computer System Interface) - a protocol used for connecting storage devices over a network as if they were directly attached to a computer.
+4. Remote Direct Memory Access (RDMA) - a protocol used for direct memory access between servers over a network, often used for high-performance computing and data-intensive applications.
+6. AFS (Andrew File System) - a distributed file system designed for large-scale collaboration and data sharing built by Carnegie Mellon University<strong>.</strong>
+8. GlusterFS - a distributed file system designed for scalability and high availability, often used for cloud computing and big data applications.
+9. Lustre - a parallel distributed file system designed for high-performance computing and scientific applications.</p><p id="c4c8d268-9e54-48ec-b82a-ad79268008a0" class="">10. File Transfer Protocol (FTP) and Secure File Transfer Protocol (SFTP) - a protocol used for transferring files over a network, often used for website hosting.</p><pre id="485ec116-32a4-43bd-87f5-af950e9f2ad9" class="code"><code>version: &#x27;3&#x27;
+
+services:
+  sftp:
+    image: atmoz/sftp
+    ports:
+      - &quot;2222:22&quot;
+    environment:
+      SFTP_USERS: sftpuser:pass:1001:/data
+    volumes:
+      - /path/to/sftpdata:/data</code></pre><p id="1897daa2-a3ef-4a21-9f4a-f24edd6573a9" class="">11. WebNative FileSystem (WNFS)</p><ol type="1" id="b45206ce-e7fe-48a1-93c4-42a3c89618f0" class="numbered-list" start="1"><li>MinIO - an open-source, self-hosted cloud-based object storage service that can be deployed on-premises or in a cloud environment.</li></ol><ol type="1" id="18aed961-b0c5-4ee5-b8d2-3f1a066dcf9c" class="numbered-list" start="2"><li>Ceph - an open-source, software-defined storage system that can be used to create a distributed object store.</li></ol><ol type="1" id="83ae9c27-b1d5-4171-bd1a-bce5243ab0ae" class="numbered-list" start="3"><li>OpenStack Swift - an open-source object storage system that can be used to create a scalable and highly available object-store.</li></ol><ol type="1" id="5e9992ee-e5ae-4eb2-a08b-48acd85fbc3b" class="numbered-list" start="4"><li>Apache Cassandra - a distributed NoSQL database system that can be used to store and retrieve large amounts of data.</li></ol><ol type="1" id="376717ca-58b7-4c1e-9d87-2b556e97ac79" class="numbered-list" start="5"><li>GlusterFS - an open-source, distributed file system that can be used to create a scalable and highly available object store.</li></ol><ol type="1" id="a96a3404-b290-4c9d-b32a-13a3f9457fc2" class="numbered-list" start="6"><li>Riak KV - an open-source, distributed NoSQL database system that can be used to store and retrieve large amounts of data.</li></ol><ol type="1" id="b5a5bbbf-1531-4da9-9f28-13ef091ffa11" class="numbered-list" start="7"><li>OpenIO - an open source, object storage, and data management platform that can be used to store and retrieve large amounts of data.</li></ol><ol type="1" id="a7909b0c-4547-419a-95bf-26810749b73d" class="numbered-list" start="8"><li>Scality Ring - an open-source, distributed storage system that can be used to create a highly available and scalable object store.</li></ol><ol type="1" id="abe0996b-ad74-4cd6-83dc-400804bf0368" class="numbered-list" start="9"><li>SwiftStack - an open-source, software-defined storage system that can be used to create a distributed object store.</li></ol><ol type="1" id="b57730a6-e536-42de-86ef-88ef8dac3f3f" class="numbered-list" start="10"><li>Nextcloud Object Storage - an open-source, self-hosted cloud storage system that includes an object storage component that can be used to store and retrieve large amounts of data.</li></ol><ol type="1" id="74ab9a2a-3709-41cf-b92c-04b847378654" class="numbered-list" start="11"><li>SSH and RSYNC over SSH</li></ol><p id="6b0f393a-8bf4-4c89-82f3-405d2f37ff58" class=""><a href="https://hub.docker.com/r/linuxserver/openssh-server">https://hub.docker.com/r/linuxserver/openssh-server</a></p><pre id="9f2fcf37-2926-4853-aec6-143904839a57" class="code"><code>---
+version: &quot;2.1&quot;
+services:
+  openssh-server:
+    image: lscr.io/linuxserver/openssh-server:latest
+    container_name: openssh-server
+    hostname: openssh-server #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./config:/config
+    ports:
+      - 2222:2222
+    restart: unless-stopped</code></pre><ol type="1" id="c93189ce-0a31-4b8e-8f9d-7773b959c0e0" class="numbered-list" start="12"><li>Network File System</li></ol><ol type="1" id="bfcae8a5-0392-4457-9fa2-cad0e75dfb0f" class="numbered-list" start="13"><li><a href="https://en.wikipedia.org/wiki/Server_Message_Block">Server Message Block</a> (SMB) and CIFS/SMB</li></ol><ol type="1" id="4c97fea0-119b-4c8d-bbd0-58b1b61feac9" class="numbered-list" start="14"><li>BitTorrent Sync</li></ol><ol type="1" id="32520604-1386-4680-bb7b-48856d6bc8d0" class="numbered-list" start="15"><li>Atom (web standard)</li></ol><ol type="1" id="69e81e15-e198-4f99-8385-07dbb5aed03f" class="numbered-list" start="16"><li>Content Management Interoperability Services</li></ol><ol type="1" id="5daee9cf-7ff1-48a4-9596-382363fe6069" class="numbered-list" start="17"><li>Linked Data Platform</li></ol><ol type="1" id="3b922b04-4ce0-45ed-bbf3-65abfc2e7c20" class="numbered-list" start="18"><li>Unison File Synchronizer <a href="https://github.com/bcpierce00/unison">https://github.com/bcpierce00/unison</a></li></ol><ol type="1" id="ac3c9738-15b0-4ec2-9c32-78516f444f43" class="numbered-list" start="19"><li>netcat (nc)</li></ol><pre id="cfbd1769-8f05-4a83-bd25-9736e17a3c73" class="code"><code>nc -lk 1234 &lt; ~/shared</code></pre><h2 id="4841152f-b8bf-4dc9-bb87-8252f781ca5f" class="">Simulations</h2><p id="72e7430c-dfe0-468e-9f73-fa45477929e3" class="">Simgrid</p><p id="6dad2231-416b-4cb4-9944-eabad704bf94" class="">OverSim</p><h1 id="407af96a-3dfa-4954-8bed-8bea028da1dc" class="">Next steps</h1><h1 id="9862a9e4-df51-46cc-9ada-2efa58cd4d02" class="">References</h1><p id="2c679d36-8c1f-41c5-9969-04079c02590c" class="">Tanenbaum, Andrew S.; Steen, Maarten van (2002). <a href="https://www.distributed-systems.net/index.php/books/ds3/"><em>Distributed systems: principles and paradigms</em></a>. Upper Saddle River, NJ: Pearson Prentice Hall. <a href="https://wiki.alquds.edu/?query=ISBN_(identifier)">ISBN</a> <a href="https://wiki.alquds.edu/?query=Special:BookSources/0-13-088893-1">0-13-088893-1</a>. <a href="https://web.archive.org/web/20200812174339/https://www.distributed-systems.net/index.php/books/ds3/">Archived</a> from the original on 2020-08-12. Retrieved 2020-08-28.</p><p id="7087fb23-db18-441d-b30b-fc5b94e5bfd6" class="">6.5840 Home Page: Spring 2023. (2023, January 19). Retrieved from <a href="https://pdos.csail.mit.edu/6.824">https://pdos.csail.mit.edu/6.824</a></p><p id="0cbde9a7-8ed9-4b77-ad27-b3276d8b8aa1" class="">&quot;Distributed Programs&quot;. <em>Texts in Computer Science</em>. London: Springer London. 2010. pp. 373–406. <a href="https://wiki.alquds.edu/?query=Doi_(identifier)">doi</a>:<a href="https://doi.org/10.1007%2F978-1-84882-745-5_11">10.1007/978-1-84882-745-5_11</a>. <a href="https://wiki.alquds.edu/?query=ISBN_(identifier)">ISBN</a> <a href="https://wiki.alquds.edu/?query=Special:BookSources/978-1-84882-744-8">978-1-84882-744-8</a>. <a href="https://wiki.alquds.edu/?query=ISSN_(identifier)">ISSN</a> <a href="https://www.worldcat.org/issn/1868-0941">1868-0941</a>.</p><p id="2ed491f1-7b0e-4f93-b94e-466a57a2ff01" class="">Lynch, Nancy. <em>Distributed Algorithms</em>. Burlington, MA: Morgan Kaufmann, 1996. ISBN:9781558603486.</p><p id="fed4f806-9836-4b73-9561-5a9196d66bbb" class="">Attiya, Hagit, and Jennifer Welch. <em>Distributed Computing: Fundamentals, Simulations, and Advanced Topics</em>. 2nd ed. New York, NY: Wiley-Interscience, 2004. ISBN: 9780471453246.</p><p id="ea72e26d-59b2-4a60-9a91-6370abfdb2b5" class="">Herlihy, Maurice, and Nir Shavit. <em>The Art of Multiprocessor Programming</em>. Burlington, MA: Morgan Kaufmann, 2008. ISBN: 9780123705914.</p><p id="70686b55-f067-45f9-8190-9e0b1026551a" class="">Guerraoui, Rachid, and Michal Kapalka. <em>Transactional Memory</em>: <em>The Theory.</em> San Rafael, CA: Morgan and Claypool, 2010. ISBN: 9781608450114.</p><p id="9338567c-2590-4a49-973e-8c958f913720" class="">Dolev, Shlomi. <em>Self-Stabilization</em>. Cambridge, MA: MIT Press, 2000. ISBN:9780262041782.</p><p id="8809bb0b-862a-45bd-878e-ab9b22936a7d" class="">Kaynar, Disun, Nancy Lynch, Roberto Segala, and Frits Vaandrager. <em>The Theory of Timed I/O Automata</em>. 2nd ed. San Rafael, CA: Morgan and Claypool, 2010. ISBN:9781608450022. <a href="https://groups.csail.mit.edu/tds/papers/Lynch/Monograph-second-edition.pdf">https://groups.csail.mit.edu/tds/papers/Lynch/Monograph-second-edition.pdf</a></p><p id="b8fc248b-4141-4bb4-baaa-b312fcfdc626" class="">MIT 6.033</p><p id="b8e76113-9f33-4712-9603-381a8acf5b58" class="">MIT 6.5840</p><p id="cf4263b3-abcd-42a4-9a92-86dc90032006" class="">MIT 6.824. (2023, January 27). MIT OpenCourseWare. Retrieved from <a href="https://ocw.mit.edu/courses/6-824-distributed-computer-systems-engineering-spring-2006">https://ocw.mit.edu/courses/6-824-distributed-computer-systems-engineering-spring-2006</a></p><p id="4aebaadb-65c0-4386-a486-25ff88f63ef3" class="">Systems, Mit 6. 824: Distributed. &quot;Lecture 1: Introduction.&quot; YouTube, 6 Feb. 2020, <a href="http://www.youtube.com/watch?v=cQP8WApzIQQ&amp;list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB&amp;ab_channel=MIT6.824%3ADistributedSystems">www.youtube.com/watch?v=cQP8WApzIQQ&amp;list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB&amp;ab_channel=MIT6.824%3ADistributedSystems</a>.</p><p id="58155c90-8617-44c7-9493-de18b0165cbf" class="">Saltzer and Kaashoek&#x27;s <a href="https://ocw.mit.edu/resources/res-6-004-principles-of-computer-system-design-an-introduction-spring-2009/"><em>Principles of Computer System Design: An Introduction</em></a> (Morgan Kaufmann
+2009).</p><p id="6bfa8671-4a19-4fb2-bc01-a51a71e8222a" class=""><a href="http://theory.lcs.mit.edu/~lynch">Nancy Lynch,</a> Michael Merritt, William Weihl, and Alan Fekete. <strong>Atomic Transactions.</strong> Morgan Kaufmann Publishers, 1994.</p><p id="c67fc2c6-1438-44f2-8f0d-e7650ca87df1" class="">MIT OpenCourseWare. (2023, January 27). MIT OpenCourseWare. Retrieved from <a href="https://ocw.mit.edu/courses/6-852j-distributed-algorithms-fall-2009">https://ocw.mit.edu/courses/6-852j-distributed-algorithms-fall-2009</a></p><p id="a845831e-dfd4-40f5-a56b-d8f7d9cf858b" class="">cs6234-16-pds <a href="https://www.comp.nus.edu.sg/~rahul/allfiles/cs6234-16-pds.pdf">https://www.comp.nus.edu.sg/~rahul/allfiles/cs6234-16-pds.pdf</a></p><p id="23a1d547-5456-46d2-94fd-b88e1bb827bc" class="">Stevens, W. Richard, Bill Fenner, and Andrew M. Rudoff. <em>UNIX Network Programming, Vol. 1: The Sockets Networking API</em>. 3rd ed. Reading, MA: Addison-Wesley Professional, 2003. ISBN: 9780131411555.</p><p id="5fd4a198-c218-42bc-852e-9abcda03ee47" class="">McKusick, Marshall Kirk, Keith Bostic, Michael J. Karels, and John S. Quarterman. <em>The Design and Implementation of the 4.4 BSD Operating System</em>. Reading, MA: Addison-Wesley Professional, 1996. ISBN: 9780201549799.</p><p id="6e4de198-d08b-4a9e-bab2-55084a9cb33f" class="">Stevens, W. Richard, and Stephen Rago. <em>Advanced Programming in the UNIX Environment</em>. 2nd ed. Reading, MA: Addison-Wesley Professional, 2005. ISBN: 9780201433074.</p><p id="3077a6e8-710d-4e2f-8e3e-c7212054f8b2" class="">. &quot;Distributed Systems lecture series.&quot; YouTube, 31 Jan. 2023, <a href="http://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB">www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB</a>.</p><p id="3625f9bb-c60a-4be3-a7bb-7aafd6ab9f4d" class=""><a href="https://ki.pwr.edu.pl/lemiesz/info/Tel.pdf">https://ki.pwr.edu.pl/lemiesz/info/Tel.pdf</a></p><p id="9fb41f9b-23bf-46ef-8cc0-7f712bb3b248" class=""><a href="http://bafybeiemcaemivgxkzkuqq2kvvfmyo32joipgp6pivk2ea32la2stnmkwm.ipfs.localhost:8080/?filename=Maarten%20van%20Steen%2C%20Andrew%20S.%20Tanenbaum%20-%20Distributed%20Systems_%20Principles%20and%20Paradigms-Maarten%20van%20Steen%20(2023).pdf">http://bafybeiemcaemivgxkzkuqq2kvvfmyo32joipgp6pivk2ea32la2stnmkwm.ipfs.localhost:8080/?filename=Maarten van Steen%2C Andrew S. Tanenbaum - Distributed Systems_ Principles and Paradigms-Maarten van Steen (2023).pdf</a></p><p id="0eadf76b-975e-4f46-9aff-25c9d4fb1683" class=""><a href="https://www.youtube.com/@DistributedSystems">https://www.youtube.com/@DistributedSystems</a></p><p id="73d8704f-7923-4a30-b679-e4d27997edaa" class=""><a href="https://www.youtube.com/@lindseykuperwithasharpie">https://www.youtube.com/@lindseykuperwithasharpie</a></p><p id="941ccbd2-ce5f-4e25-a5d9-2a431a627354" class=""><a href="https://www.youtube.com/@rbdiwate626">https://www.youtube.com/@rbdiwate626</a></p><h1 id="3c9a159b-196b-4234-9898-b2a3fe024ada" class="">IPFS and libp2p</h1><h1 id="51b91765-d89d-4241-b47f-384da3e2c98c" class="">TODO</h1><p id="5342f18d-e757-4c1f-86b7-67c97cd900c6" class="">
+</p></div></article></body></html>
