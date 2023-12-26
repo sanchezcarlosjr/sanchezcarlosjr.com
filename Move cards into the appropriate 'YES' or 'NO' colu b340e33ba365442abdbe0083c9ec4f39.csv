@@ -1,0 +1,11 @@
+﻿Name,Priority,Status,Submitted to work
+"All the information the user needs at a particular point is visually available and thus shouldn't be remembered              ",High,,No
+Website navigation is similar to the navigation on other websites,High,,No
+The main navigation items are always available and not hidden behind the menu button,High,,No
+Logo in the header is displayed on every page and leads to the main page,High,,No
+Links look like a blue text with an underscore,Middle,,No
+"If it's possible, the names of menu items are specific and do not include common names (smth like 'catalogue' or 'goods')",Middle,,No
+"If the menu contains sub-items, it's visually clear",Middle,,No
+Icons match the mental model and are intuitive (e.x. search icon is represented by a magnifying glass),Middle,,No
+Field name is always available,Middle,,No
+Icons have captions,Middle,,No

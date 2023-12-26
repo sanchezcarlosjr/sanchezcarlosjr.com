@@ -1,0 +1,6 @@
+﻿Name,Priority,Status,Submitted to work
+"When users confirm password entering it for the second time, the field shows that the passwords match",High,,No
+"Users can register via social networks, Google account or mail in one click",High,,No
+"When creating a password, users can see its requirements: the number of characters, numbers, special characters etc",High,,No
+Users are able to read terms and conditions. ‘I agree...' checkbox is located next to the registration button,Middle,,No
+"Fields are checked for correctness instantly, not after users finish registration",Middle,,No

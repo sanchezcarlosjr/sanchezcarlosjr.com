@@ -1,0 +1,10 @@
+﻿Name,Priority,Status,Submitted to work
+Users can skip or start onboarding from the beginning,High,,No
+"Before performing potentially dangerous actions (e.x. deleting files), the website asks for user confirmation and explains the consequences of deletion (for non-recoverable data)",High,,No
+"In case users can't find the answer to their question, an option to ask a new question should be available (or there should be hotline contacts, email, etc.)",Middle,,No
+Users can resume work where they have left off after receiving help and come back to help page if necessary (e.x. help page opens in a new tab),Middle,,No
+"Instructions, hints, help blocks should be visually seen",Middle,,No
+"The FAQ page should be user-friendly: divided into categories, searchable",Middle,,No
+"New users receive help, while instructions and features are presented gradually (e.x. advanced features are not displayed by default)",Middle,,No
+There is a live chat on every page of the site or application,Low,,No
+Important explanations remain displayed on the screen as long as the user needs them. The user shouldn't write down explanations anywhere,Low,,No

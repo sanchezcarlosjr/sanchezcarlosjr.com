@@ -1,0 +1,18 @@
+﻿Contents of memory,Unsigned,Sign-and-magnitude,Two's complement,One's complement
+0000,0,0,+0,0
+0001,1,1,+1,1
+0010,2,2,+2,2
+0011,3,3,+3,3
+0100,4,4,+4,4
+0101,5,5,+5,5
+0110,6,6,+6,6
+0111,7,7,+7,7
+1000,8,-0,-8,-7
+1001,9,-1,-7,-6
+1010,10,-2,-6,-5
+1011,11,-3,-5,-4
+1100,12,-4,-4,-3
+1101,13,-5,-3,-2
+1110,14,-6,-2,-1
+1111,15,-7,-1,-0
+Notes,,"The leftmost bit defines the sign. If is 0, the integer is positive else negative.","The leftmost bit defines the sign. If is 0, the integer is positive else negative. ","The leftmost bit defines the sign. If is 0, the integer is positive else negative. This has two 0."

@@ -1,0 +1,23 @@
+﻿Name,Description
+creditFromInfonavit,"number
+Monto de credito a otorgar. 
+Moneda mexicana. "
+housingSubAccountBalance,"number
+Monto del Saldo de la Subcuenta de Vivienda. 
+Moneda mexicana."
+operatingExpenses,"number
+Monto de gastos de titulación, financieros y de operación. 
+Moneda mexicana."
+total,"number
+Total aproximado de crédito. 
+Moneda mexicana. 
+total = creditFromInfonavit + housingSubAccountBalance -operatingExpenses"
+monthlySalaryDiscount,"number
+El descuento mensual de su salario para el fondo de protección de pago, la cuota de administración, el pago de ecotecnologías, el monto de seguro y seguro de danos.
+Moneda mexicana."
+creditForEcotechnologies,"number
+Monto máximo de crédito para ecotecnologías. 
+Moneda mexicana."
+product,"string
+CI, CII
+Numero de credito"

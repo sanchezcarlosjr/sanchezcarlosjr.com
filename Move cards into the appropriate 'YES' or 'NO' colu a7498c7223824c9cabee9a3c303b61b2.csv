@@ -1,0 +1,8 @@
+﻿Name,Priority,Status,Submitted to work
+"When an error is found, the required field is highlighted and the cursor is placed there.",High,,No
+When the button is not active there is a hint why.,Middle,,No
+Tips without user criticism.,Middle,,No
+"The text of the error states the possible cause and the following actions (if the user cannot correct the error) for example: ""We are updating the server. Try in 2 hours""",Middle,,No
+Error pages 404 and 503 tell the user what to do next.,Middle,,No
+The use of an exclamation mark (!) in errors is avoided.,Low,,No
+All errors are written in the same style and Tone of Voice.,Low,,No

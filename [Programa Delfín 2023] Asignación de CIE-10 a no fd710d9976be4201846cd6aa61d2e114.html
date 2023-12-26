@@ -1,0 +1,681 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[Programa Delfín 2023] Asignación de CIE-10 a notas médicas en Español </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="fd710d99-76be-4201-846c-d6aa61d2e114" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/met_canaletto_1720.jpg" style="object-position:center 100%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">⚕️</span></div><h1 class="page-title">[Programa Delfín 2023] Asignación de <strong>CIE-10</strong> a notas médicas en Español </h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="46d26a11-d884-492c-86b3-208e98e5dd64" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#56fc3fe1-41e8-4281-aec2-1e9ea4f9c591">Autores</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f208838f-e2f5-4422-9ce6-1bcbaaf60788">Resumen</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4d5529b9-3a49-4d69-a6c1-72c9b42ed8d2">Introducción</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a4cf6c81-5aee-45ea-aa72-6197de2e9661">Problemática</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#73da75ac-01cc-4a85-907a-bd4b5c47846e">Trabajos relacionados</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bd3e1785-fa2b-4449-8485-f468fa2b64a2">Metodología</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#58fafa99-9b4c-4d89-9e3e-934c609841a7">Descripción del conjunto de datos</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7e64d021-a0bc-43e2-b319-993707df6b2c">Análisis exploratorio</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#70bed30f-4c65-4d1e-9977-c1754e7cd189">Algoritmos de aprendizaje</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ec8624e8-3fa4-4ab0-b952-445d5bd620c3">Resultados</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#95b63441-83ae-4035-8580-7252290ce126">Conclusiones y trabajo futuro</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d8ee6f77-3b9a-4343-893f-25ef7f49d342">Referencias</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bd21573d-00c8-4db4-9035-e4b18ca3d973">Anexo</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#516be795-6b48-4119-bfbb-965e8f6e2df6">Plan de trabajo</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fc8b0707-d09e-40c6-bf33-e72ffe1e6e9c">Objetivos</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#37f8e979-9cc5-4957-b7ba-fc4c3319d635">Datasets</a></div></nav><figure id="e85a3884-45bf-4c01-96bb-d306850af41c" class="image"><a href="DALLE_2023-06-17_19.46.33_-_A_photo_that_diseases_with_medical_professionals_digital_art_anime.png"><img style="width:288px" src="DALLE_2023-06-17_19.46.33_-_A_photo_that_diseases_with_medical_professionals_digital_art_anime.png"/></a></figure><h1 id="56fc3fe1-41e8-4281-aec2-1e9ea4f9c591" class="">Autores</h1><p id="ae70eb15-6664-486c-bf4d-d7d2e27e088e" class="">Jacqueline Sámano Martínez , Universidad Mexiquense del Bicentenario</p><p id="953ddc4e-d444-4123-ba95-08044103d57d" class="">Gallego Rojo Laura Sophia, Universitaria Agustiniana Uniagustiniana, Colombia</p><p id="e0200388-db81-4f5f-813c-c5ef998a8c86" class="">Sequeda Castillo Kevin, Universidad de Investigación y Desarrollo, Colombia</p><p id="84bddb84-5eba-4827-b930-fd7920ea1638" class="">José Ángel González Fraga, UABC</p><p id="a95f309b-2f74-416a-9b6d-27266f5528bb" class="">Carlos Eduardo Sánchez Torres, UABC</p><h1 id="f208838f-e2f5-4422-9ce6-1bcbaaf60788" class="">Resumen</h1><p id="78ef7f1f-4f4f-4971-bdcc-e6170f5f1c39" class="">Utilizando técnicas de procesamiento del lenguaje natural, Tensorflow y las API provistas por OpenIA, asignaremos los códigos CIE-10 (Clasificación Internacional de Enfermedades versión 10) a las interpretaciones que los médicos escriben en el sistema de información hospitalario cuando atienden a un paciente. Tradicionalmente, este es un proceso que se realiza manualmente y puede ser tanto laborioso como susceptible de errores. Este clasificador no solo ahorraría tiempo al personal médico, sino que también mejoraría la gestión de los datos de salud, facilitando análisis epidemiológicos y estudios de salud poblacional. Aunque el proyecto presenta desafíos significativos, como la complejidad y especificidad de la jerga médica y las consideraciones de privacidad de los datos, se espera que la implementación exitosa de este clasificador tenga un impacto considerable en la administración sanitaria.</p><h1 id="4d5529b9-3a49-4d69-a6c1-72c9b42ed8d2" class="">Introducción</h1><p id="ffb604a9-8516-4a84-92bf-1f936baa52c0" class="">
+</p><h2 id="a4cf6c81-5aee-45ea-aa72-6197de2e9661" class="">Problemática</h2><p id="806fb676-cb13-4353-9257-4948158587e9" class="">TODO: Redactar una introducción. ¿Quién necesita la información? ¿Por qué? ¿Qué proponemos?</p><p id="23f5c0ac-2cf9-4247-8e5e-f5e54802813f" class="">Desde su inicio la CIE ha sido de apoyo en los centros hospitalarios en distintos países, para la elaboración de estadísticas de morbilidad y mortalidad. Haciendo posible la obtención de información precisa sobre las enfermedades existentes y anteriormente identificadas, con el fin de conocer, evaluar e identificar enfermedades y contrarrestar posibles epidemias. Sin embargo, durante la aplicación de la CIE-10 (Clasificación Estadística Internacional de Enfermedades, Décima Revisión) en función de la asignación de codificadores para los diagnósticos médicos resultan laboriosos y expuesto a errores debido a la complejidad de codificación, ya que este proceso es realizado de manera tradicional, es decir, manualmente. De tal manera que, durante el proceso de evaluación médica en los sistemas hospitalarios conllevan retrasos, a fin de tomar mejores consultas en términos diagnósticos. Por consecuencia, se propone el desarrollo de un clasificador mediante la utilización de técnicas de procesamiento del lenguaje natural, Tensorflow y las API provistas por OpenIA, que mejore la gestión de los datos de salud, facilitando análisis epidemiológicos y estudios de salud poblacional. Esto con fin de ahorrar tiempo al personal médico en la elaboración y documentación precisa y con mayor calidad asistencial, monitorizar condiciones de salud pública y el establecimiento de políticas sanitarias.</p><p id="60e3499f-c571-4771-a050-629babc9d88b" class="">
+</p><h1 id="73da75ac-01cc-4a85-907a-bd4b5c47846e" class="">Trabajos relacionados</h1><p id="58d7de12-bcd3-4741-a41d-a5390ed4c60c" class="">Perotte et al. (2014) titulado &quot;<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3932472/">Diagnosis Code Assignment: Models and Evaluation Metrics</a>&quot;. En este estudio, los investigadores construyeron modelos de clasificación para asignar automáticamente los códigos de diagnóstico ICD-9, un predecesor de la CIE-10, a las notas de alta médica. Utilizaron principalmente SVM con distintas variantes con métricas «F-measure», «precision» y «recall» 27.6%, 86.7% y 16.4% respectivamente (SVM plano).</p><p id="1b7b6583-5b55-4d46-beaf-f911556336de" class="">Otro estudio relevante es el de Kavuluru et al. (2015) &quot;<a href="https://www.sciencedirect.com/science/article/abs/pii/S0933365715000482">An empirical evaluation of supervised learning approaches in assigning diagnosis codes to electronic medical records</a>&quot;. Este estudio examinó la aplicación de la similitud semántica y el aprendizaje automático para mejorar la precisión de la codificación de diagnósticos.</p><p id="aeeedb12-5c98-419a-8441-1faf62249cc2" class="">El proyecto cTAKES (<a href="https://ctakes.apache.org/">Clinical Text Analysis and Knowledge Extraction System</a>) mantenido por la APACHE Software Foundation es un ejemplo relevante en el ámbito de la extracción de información de las notas médicas. cTAKES es una herramienta de código abierto que utiliza técnicas de NLP para extraer información clínica relevante de las notas médicas en inglés.</p><p id="a7d32834-1ed7-4451-bdb3-25ba59d51f22" class="">Cada uno de estos trabajos proporciona información y enfoques valiosos que pueden darnos inspiración para desarrollar nuestro clasificador de notas médicas de acuerdo a la CIE-10.</p><h1 id="bd3e1785-fa2b-4449-8485-f468fa2b64a2" class="">Metodología</h1><p id="f8d5c0af-eadb-42de-a3b0-96fcb7db0d24" class="">TODO: Este es un proyecto de minería de datos con enfásis en procesamiento del lenguaje natural y sistemas de salud.  Describe el flujo de trabajo con el marco de trabajo crisp-dm.</p><figure id="8563a877-5852-4a99-8870-cd97861591a4" class="image"><a href="flujo-de-trabajo.svg"><img style="width:868px" src="flujo-de-trabajo.svg"/></a><figcaption>Flujo de trabajo propuesto</figcaption></figure><h1 id="58fafa99-9b4c-4d89-9e3e-934c609841a7" class="">Descripción del conjunto de datos</h1><p id="5b634928-c593-41ec-af3a-c3963b89a090" class="">TODO: Convertir esta brevísima descripción en algo con mayor color y detalles: texto descriptivo. ¿Qué es el CIE? ¿Cuándo nació? ¿Qué usan los médicos para encontrar el CIE? ¿Usan alguna aplicación?  ¿Cómo los médicos determinan la interpretación? ¿Qué es una conclusión compatible?</p><p id="43c8f98e-952a-439c-aef0-70c35aeb8732" class="">Interpretación. Texto abierto con las observaciones de los estudios y conclusiones compatibles por parte de un médico especialista. </p><p id="c699318b-6550-43a7-9adf-dfedee16db2a" class="">CIE. Código de Clasificación Internacional de Enfermedades versión 10, que sigue la forma <code>Capítulo Categoría Grupo Subcategoría.</code></p><figure id="0d857676-350c-47ae-9b8c-1e5001b1828b" class="image"><a href="Untitled%20286.png"><img style="width:270px" src="Untitled%20286.png"/></a></figure><p id="1e0919ab-4e5d-4d47-a7e4-57f326720627" class="">
+</p><p id="0f5167f7-1241-44bc-8582-1c4d406b5485" class="">
+</p><h1 id="7e64d021-a0bc-43e2-b319-993707df6b2c" class="">Análisis exploratorio</h1><p id="e9a5c588-ec1b-4392-9e85-6dc151ac6806" class="">TODO: Como este es un proyecto de NLP, el objetivo es mostrar gráficos representativos que incluye la frecuencia de palabras (removiendo <em>stopwords</em>), longitudes del texto (total de caracteres, oraciones, párrafos), análisis de n-gramas y medidas de legibilidad (Flesch-Kincaid, Gunning Fog y Dale-Chall.) así como comentarios o interpretaciones interesantes sobre los gráficos. </p><h1 id="70bed30f-4c65-4d1e-9977-c1754e7cd189" class="">Algoritmos de aprendizaje</h1><p id="b23114e6-fc48-41cb-8e8f-6878361617e7" class="">TODO: Probar distintas alternativas tales como los embeedings de OpenIA, LangChain, públicos y entrenar los propios con TensorFlow para clasificar las interpretaciones. ¿Qué es un embeeding? ¿Cómo funciona la API de OpenIA? ¿Cómo es posible conectar ChatGPT a Internet gracias LangChain y dar mejores resultados? ¿Es posible usar embeedings open source?</p><p id="b6d474b1-0264-47aa-86f8-3c455440d15a" class=""><strong><strong>What are embeddings?: </strong></strong><a href="https://platform.openai.com/docs/guides/embeddings/what-are-embeddings">https://platform.openai.com/docs/guides/embeddings/what-are-embeddings</a></p><p id="abd14ace-f23d-45d5-9bce-960ce7e8edfa" class=""><strong>Semantic text search using embeddings: </strong><a href="https://github.com/openai/openai-cookbook/blob/main/examples/Semantic_text_search_using_embeddings.ipynb">https://github.com/openai/openai-cookbook/blob/main/examples/Semantic_text_search_using_embeddings.ipynb</a></p><p id="2dc1ee8d-3d71-4a39-a87d-eb93dcf05a2d" class=""><strong>Classification using embeddings: </strong><a href="https://github.com/openai/openai-cookbook/blob/main/examples/Classification_using_embeddings.ipynb">https://github.com/openai/openai-cookbook/blob/main/examples/Classification_using_embeddings.ipynb</a></p><p id="32d5b0fd-8e67-4b87-ad44-86aec0241a51" class=""><strong>Clasificadores</strong>: <a href="https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html">https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html</a></p><h1 id="ec8624e8-3fa4-4ab0-b952-445d5bd620c3" class="">Resultados</h1><p id="3290cc67-2ca9-4576-a126-06b39ef499d4" class="">TODO: Calcular y Mostrar las métricas. Compararse con los trabajos relacionados.</p><h1 id="95b63441-83ae-4035-8580-7252290ce126" class="">Conclusiones y trabajo futuro</h1><p id="8e4b9d6f-7a6d-40b8-9688-703f8364ef07" class="">TODO: Hablar si se logro el objetivo, limitaciones y trabajo futuro</p><h1 id="d8ee6f77-3b9a-4343-893f-25ef7f49d342" class="">Referencias</h1><p id="f19b4308-567f-461f-bf40-5bcd2367cfb2" class="">Practical Natural Language Processing by Sowmya Vajjala, Bodhisattwa Majumder, Anuj Gupta, Harshit Surana</p><p id="647ecafc-ba12-46e5-87a4-c2972f9a0414" class=""><a href="https://www3.paho.org/hq/index.php?option=com_content&amp;view=article&amp;id=3561:2010-clasificacion-internacional-enfermedades-cie&amp;Itemid=2560&amp;lang=en#gsc.tab=0">https://www3.paho.org/hq/index.php?option=com_content&amp;view=article&amp;id=3561:2010-clasificacion-internacional-enfermedades-cie&amp;Itemid=2560&amp;lang=en#gsc.tab=0</a></p><p id="922dff47-fef8-4fb2-aff6-8101572d011b" class=""><a href="https://eciemaps.mscbs.gob.es/ecieMaps/browser/index_10_mc.html">https://eciemaps.mscbs.gob.es/ecieMaps/browser/index_10_mc.html</a></p><p id="36fad5b6-c898-4d9a-8476-f60c8348644c" class=""><a href="https://ais.paho.org/classifications/chapters/pdf/volume1.pdf">https://ais.paho.org/classifications/chapters/pdf/volume1.pdf</a></p><p id="6698b8d3-01f1-4889-a864-6c033acbde40" class=""><a href="https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/IA/SSA/cie10-cie11.pdf">https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/IA/SSA/cie10-cie11.pdf</a></p><p id="fea7a9da-cc69-42d9-a996-4077b393f282" class=""><a href="http://gobi.salud.gob.mx/">http://gobi.salud.gob.mx/</a></p><p id="d04c70ac-912f-4af0-a477-231f8225b589" class=""><a href="http://www.dgis.salud.gob.mx/contenidos/intercambio/diagnostico_gobmx.html">http://www.dgis.salud.gob.mx/contenidos/intercambio/diagnostico_gobmx.html</a></p><p id="b4b142bb-24e7-4fb8-ab3c-070337c1f389" class=""><a href="http://gobi.salud.gob.mx/gobi/descargas/manuales/Manual_Carga_Masiva_20220126.pdf?v=2022.06.01">http://gobi.salud.gob.mx/gobi/descargas/manuales/Manual_Carga_Masiva_20220126.pdf?v=2022.06.01</a></p><p id="d2a4bdc7-ad42-4c62-9b0b-fdbb34a909b1" class=""><a href="https://www.youtube.com/playlist?list=PL5uSCzf1azhA0crlSVCYMPqMUWd4mXc4x">https://www.youtube.com/playlist?list=PL5uSCzf1azhA0crlSVCYMPqMUWd4mXc4x</a></p><p id="ecdf966d-d1a9-4e40-adbd-b9a24869f3fc" class=""><a href="https://www.mdpi.com/2076-3417/10/15/5262">https://www.mdpi.com/2076-3417/10/15/5262</a></p><p id="e1d0c3b8-7fb8-42f3-aadb-d1fdc8d66d34" class=""><a href="https://temu.bsc.es/codiesp/index.php/2019/09/19/datasets/">https://temu.bsc.es/codiesp/index.php/2019/09/19/datasets/</a></p><p id="76b0eb28-964b-4a7e-a7b2-b3f1724cd5cc" class=""><a href="https://drive.google.com/drive/folders/1fdSWpTTfxOS2PwXQNFggUjd_2SliiVXU">https://drive.google.com/drive/folders/1fdSWpTTfxOS2PwXQNFggUjd_2SliiVXU</a></p><p id="37becad6-a1a0-4a62-8f65-23f4c18bae4e" class=""><a href="https://colab.research.google.com/drive/1NfIylTcKDNyPtXHWtkJrz6m6IIziJvzB">https://colab.research.google.com/drive/1NfIylTcKDNyPtXHWtkJrz6m6IIziJvzB</a></p><p id="9783fd3c-4b6f-4d1f-b43b-c3fde2abef8e" class=""><a href="https://arxiv.org/abs/2304.10513">https://arxiv.org/abs/2304.10513</a></p><p id="e1608631-3848-452e-a84c-b7008a924869" class=""><a href="https://www.pinecone.io/learn/series/langchain/langchain-intro/">https://www.pinecone.io/learn/series/langchain/langchain-intro/</a></p><p id="2cdec58d-2b13-4e99-af6c-2d0cd37d365e" class=""><a href="https://www.pinecone.io/">https://www.pinecone.io/</a></p><h1 id="bd21573d-00c8-4db4-9035-e4b18ca3d973" class="">Anexo</h1><h2 id="516be795-6b48-4119-bfbb-965e8f6e2df6" class="">Plan de trabajo</h2><h3 id="fc8b0707-d09e-40c6-bf33-e72ffe1e6e9c" class="">Objetivos</h3><ol type="1" id="a0f94e56-254b-4457-b34e-e244588a00cd" class="numbered-list" start="1"><li>Crear un modelo de aprendizaje con un “accuracy” mayor o igual al 80%.<ol type="a" id="581ba5ee-18ff-4f1f-ad2b-39c0895294e9" class="numbered-list" start="1"><li>Realizar un análisis exploratorio de los datos. Usar Python, Google Colab (privado).</li></ol><ol type="a" id="27d3199e-cce8-49ef-8395-ab0f0f4a5826" class="numbered-list" start="2"><li>Utilizar los embeddings de OpenIA y calcular la distancia entre la interpretación y el CIE. Aunque el servicio actualmente es de paga, nosotros le proporcionaremos la API Key a los servicios de OpenIA.</li></ol><ol type="a" id="29c10cd3-8f17-4709-82dd-f7f68236f618" class="numbered-list" start="3"><li>Buscar embeddings gratuitos y realizar lo mismo que el inciso b.</li></ol><ol type="a" id="734b9bc9-8ad6-4ef1-9682-3b3fcdbcfd7b" class="numbered-list" start="4"><li>Crear un modelo con Tensorflow.</li></ol><ol type="a" id="3556fac8-63d9-44e2-a22a-d2fabfc0db80" class="numbered-list" start="5"><li>Evaluar y proponer alternativas.</li></ol></li></ol><p id="06517a68-6e9b-4949-a654-660339bd5b52" class="">Puntos extras: Despliegue del modelo.</p><ol type="1" id="eb0c84bd-4b34-40f5-838e-3ea80d40c9d1" class="numbered-list" start="1"><li>Crear una API REST que consuma el modelo en local. No está permitido subir el modelo a la nube.<ol type="a" id="58841457-e5b2-4144-85f2-499b103cb476" class="numbered-list" start="1"><li>Usar FastAPI y CloudFlare.</li></ol><ol type="a" id="5b94a491-94c7-4833-b6f9-d5f75ad034af" class="numbered-list" start="2"><li>La API REST debe recibir una interpretación y debe devolver el CIE correspondiente.</li></ol></li></ol><ol type="1" id="18457faf-7108-48e0-ac4b-f86e91783390" class="numbered-list" start="2"><li>Crear una interfaz gráfica que consuma dicha API REST.<ol type="a" id="ccd1d509-f52d-4ee0-8a3c-f8066184ff59" class="numbered-list" start="1"><li>Usar Gradio o EvaNotebook.</li></ol><ol type="a" id="76dd17e0-b12f-4ebc-997f-0830480dc89e" class="numbered-list" start="2"><li>El médico ingresa su interpretación y el sistema muestra en un «select» el CIE el cual puede ser modificado por el usuario.</li></ol></li></ol><p id="c1795fcf-39e2-4d91-af5d-8b347ef46fca" class="">Punto extra:</p><ol type="1" id="89dd2063-dadf-4744-82e6-4c67bffa7b45" class="numbered-list" start="1"><li>Generar texto recomendado en tiempo real de la nota médica.</li></ol><figure id="7cfffd53-48df-486e-b7df-c470794b68b7" class="image"><a href="https://cdn.hashnode.com/res/hashnode/image/upload/v1636371451755/wFMUXz4WR.gif?w=1600&amp;h=840&amp;fit=crop&amp;crop=entropy&amp;auto=format,compress&amp;gif-q=60&amp;format=webm"><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1636371451755/wFMUXz4WR.gif?w=1600&amp;h=840&amp;fit=crop&amp;crop=entropy&amp;auto=format,compress&amp;gif-q=60&amp;format=webm"/></a></figure><h2 id="37f8e979-9cc5-4957-b7ba-fc4c3319d635" class="">Datasets</h2><p id="ebddc6c9-8876-4c92-8c44-e3d6f0deeed6" class=""><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3932472/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3932472/</a></p><p id="92f5ebcd-17e8-4ed6-aff6-7c4a4dbc31bb" class="">Nosotros le proporcionaremos un dataset con las características «interpretación« y una variable objetivo «CIE».</p><p id="c943d8eb-6129-4653-86e0-ee40f3c3ddf8" class=""><a href="https://zenodo.org/record/3837305#.XsZFoXUzZpg">https://zenodo.org/record/3837305#.XsZFoXUzZpg</a></p><p id="3146a422-a16e-422b-8df0-01ce8f1bb38c" class=""><a href="https://temu.bsc.es/codiesp/index.php/2019/09/19/datasets/">https://temu.bsc.es/codiesp/index.php/2019/09/19/datasets/</a></p><p id="8cfb739d-4a18-4763-b35f-93c10aad8ef9" class=""><a href="https://www.mdpi.com/2076-3417/10/15/5262">https://www.mdpi.com/2076-3417/10/15/5262</a></p><p id="47aba080-3731-41cd-b22e-ffb9aeaea06e" class=""><a href="https://www.mdpi.com/2076-3417/10/15/5262">https://www.mdpi.com/2076-3417/10/15/5262</a></p><p id="70caa41e-6bca-4a94-a929-22e9e8ac74a4" class=""><a href="https://physionet.org/content/mimiciii/1.4/">https://physionet.org/content/mimiciii/1.4/</a></p><p id="1eab51a6-680e-4460-916d-277f073c0abd" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

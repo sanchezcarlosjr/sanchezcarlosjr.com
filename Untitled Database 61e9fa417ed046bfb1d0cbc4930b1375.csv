@@ -1,0 +1,6 @@
+﻿Typical surface,Coefficient of static friction,Coefficient of kinematic friction
+Wood,0.25 - 0.5,0.2
+Glass,0.4 - 1,0.4
+Steel,0.2,0.6
+Rubber,1,0.8
+Teflon,0.04,0.04

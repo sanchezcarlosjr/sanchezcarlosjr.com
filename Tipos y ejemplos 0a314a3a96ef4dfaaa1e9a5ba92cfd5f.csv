@@ -1,0 +1,10 @@
+﻿Tipo,Ejemplo1,Ejemplo2
+Deduccion,"Todos los ratones son roedores.
+Speedy González es un ratón.
+Speedy González es un roedor.",
+Induccion,"Speedy González es un ratón.
+Speedy González es un roedor.
+Todos los ratones son roedores.",
+Abduccion,"Speedy González es un roedor.
+Todos los ratones son roedores.
+Speedy González es un ratón.",

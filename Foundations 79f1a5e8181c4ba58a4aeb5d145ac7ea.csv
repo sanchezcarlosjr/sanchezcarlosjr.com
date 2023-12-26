@@ -1,0 +1,52 @@
+﻿Name,Tags
+"Compilers, principles, techniques, and tools by Alfred V. Aho, Monica S. Lam, Ravi Sethi, and Jeffrey D. Ullman","Field-defining textbook, The purple dragon book, book"
+Compilers by Stanford and EDX,"Alex Aiken, EDX, Stanford, course"
+http://www.craftinginterpreters.com/contents.html,"dsl, free, interpreter"
+"Modern Compiler Implementation in ML, Andrew W. Appel","The tiger book, book"
+CS 421: Programming Languages and Compilers,course
+CSEP501: Compiler Construction by Washington University,course
+"Compiler Design Analysis And Transformation by Helmut Seidl, Reinhard Wilhelm, and Sebastian Hack Springer",book
+Understanding and Writing Compilers A do-it-yourself guide by https://link.springer.com/book/10.1007/978-1-349-16178-2#author-0-0,book
+"Engineering: A Compiler: Cooper, Keith D., Torczon, Linda",book
+"Modern Compiler Design by Dick Grune, Kees van Reeuwijk, Henri E. Bal, Ceriel J.H. Jacobs, Koen Langendoen. Springer",book
+CS143 Compilers by Stanford,course
+https://inst.eecs.berkeley.edu/~cs164/fa21/ by CS 164 @ UC Berkeley,course
+"Engineering a compiler. Second
+edition",
+Writing a C CompilerBuild a Real Programming Language from Scratchby Nora Sandler,
+"LOUDEN, Kenneth C. 
+Compiler Construction. Principles and Practice
+U.S.A.
+Thompson Learning, 1997",
+"PITTMAN, Thomas, PETERS, James 
+The Art of Compiler Design; Theory and Practice
+Englewood cliffs New Jersey USA
+Prentice Hall, 1992",
+"TREMBLAY, Jean-Paul, SORENSON, Paul G. 
+The Theory and practice of compiler writing
+U.S.A.
+Mc. Graw-Hill, 1985",
+"BENNETT, J. P. 
+Introduction to Compiling Techniques. A first Course using
+Ansi C, LEX and YACC
+U.S.A.
+Mc. Graw-Hill. Book Company Europe, 1996",
+"SCHREINER A. T. ; FRIEDMAN H. G.
+Introduction to compiler construction with Unix
+EU, 2nd edition, Prentice - Hall 1990",
+"LEMONE, KAREN A. Fundamentos de compiladores. México, Cecsa, 2000",
+"LLORCA, SANCHIS
+Compiladores. Teoría y Construcción
+España, Paraninfo, 1991.",
+CS 164. Programming Languages and Compilers,course
+"COMS W4115
+Programming Languages and Translators 
+Spring 2015",
+"Andrew W. Appel Modern Compiler Implementation in Java, second editionCambridge University Press, 2002",
+"Keith D. Cooper and Linda TorczonEngineering a Compiler, Second EditionMorgan Kaufmann, 2012",
+"Michael L. ScottProgramming Language Pragmatics, Third EditionMorgan Kaufman, 2009",
+"Robert W. SebestaConcepts of Programming Languages, Tenth EditionPearson/Addison-Wesley, 2012",
+6.035. Computer Language Engineering MIT,course
+Art of programming. Volume 7 – Compiler Techniques. Knuth,
+"Compiler Design in C; Holub,",
+Princeton COS 320: Compiling Techniques,course

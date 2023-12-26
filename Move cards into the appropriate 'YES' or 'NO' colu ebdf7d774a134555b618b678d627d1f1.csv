@@ -1,0 +1,29 @@
+﻿Name,Priority,Status,Submitted to work
+Alert messages are consistent,High,,No
+Visual hierarchy leads users to the required action,High,,No
+There is progress indicator for multi-step workflows,High,,No
+The primary actions differ visually from the secondary actions,High,,No
+"Confirmation of form submission is visually distinct ",High,,No
+Information on the page is arranged according to F- or Z- pattern,High,,No
+The most important items are on top of the visual hierarchy,High,,No
+"The contrast of the main text is not less than 4,5:1",High,,No
+Website demonstrates proximity and alignment,Middle,,No
+Interactive elements are familiar to users,Middle,,No
+"It is visually clear which menu blocks the menu elements belong to ",Middle,,No
+"There is a strict hierarchy of headings, subheadings and main text",Middle,,No
+Alert messages stand out visually,Middle,,No
+There is enough space between information blocks,Middle,,No
+There are no more than 3 font sizes on the page,Middle,,No
+"On any page, users can see the most relevant information without scrolling",Middle,,No
+"Website content (fonts, images, illustrations) looks integral and reflects a certain idea",Middle,,No
+Foreground elements (like content and controls) stand out from the background,Middle,,No
+Similar information and functions are grouped in blocks,Middle,,No
+Too long or too shot lines are not used,Middle,,No
+The font which is used on the website is readable,Middle,,No
+"Hierarchy, content or functionality are conveyed not only through color",Middle,,No
+Capital letters (CAPS) are not overused,Middle,,No
+There are no more than 3 typefaces (including title) per page,Middle,,No
+The size of clickable elements and the distance between them are enough to prevent accidental clicks,Middle,,No
+There are no more than three primary colors on the page,Middle,,No
+"Active objects are visually clickable, while inactive ones don't prompt to click",Low,,No
+Names of fields and text in the fields are visually different,Low,,No

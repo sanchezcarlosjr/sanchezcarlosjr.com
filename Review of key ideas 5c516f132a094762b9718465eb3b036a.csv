@@ -1,0 +1,6 @@
+﻿Review of key ideas,Gauss Elimination Idea
+Definition. The inverse is unique.,
+The equation that tests for invertibility is,
+The algebra test for invertibility is the determinant,
+The algorithm to text invertibility is the elimination,
+The Gauss idea is to solve AA^-1 = I. finding each column of A^-1:,

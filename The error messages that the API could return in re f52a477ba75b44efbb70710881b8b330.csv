@@ -1,0 +1,6 @@
+﻿Error Type,Error detail,Description
+forbidden (400),forbidden,api key not found
+internalError (500),internalError,
+PersonWithoutCreditError (401),Person without credit,"Examples:
+""nss no registrado en infonavit"",
+""sin relacion laboral vigente en el tercer bimestre del 2020"", ""trabajador no tiene las ultimas aportaciones registradas"","

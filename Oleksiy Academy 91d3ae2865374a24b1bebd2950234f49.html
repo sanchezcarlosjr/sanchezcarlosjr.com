@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Oleksiy Academy</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="91d3ae28-6537-4a24-b1be-bd2950234f49" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/met_frederic_edwin_church_1871.jpg" style="object-position:center 30.000000000000004%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🕹️</span></div><h1 class="page-title"><strong><strong>Oleksiy Academy</strong></strong></h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="27b6c4a3-98fa-4855-91e5-3f85966dc0b0" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b31e0019-c828-4633-b38e-671a3474b2e0">Overview</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ad6f42-2052-4e58-a977-880b45f55871">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#71f40e82-450a-472c-80b4-d89d80529551">Requirements</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f909b49e-2743-42d9-af8d-a6068767c061">Games</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7b89e92b-6e6b-44ab-b9d4-fdf14be12f61">Basics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d8ebed31-5f59-4e89-99cb-516fd04d8648">Logic</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#acba3ef4-e968-4c5d-8267-06462b7489ca">Pacman</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8adeddd3-b0b1-4c46-9cb6-d60e9778ac97">Distributed systems</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e587857f-af9f-4d0e-af09-c606f4d0a425">Geometry</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#27e3bdd1-09a6-47d9-a072-fcea4e4536e0"><strong>Digital image processing</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#91ce449b-9c15-4e8c-9929-316518abed60">Physics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d6b94f03-7152-408e-b76c-1e7f3941da2c">Audio image processing</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#876dd23a-602f-4196-b758-e06a5422d67a">Simulations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#24f724da-2011-4595-9054-2c335f3cae19">Compiler</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#053b8362-8721-4d07-9dbd-917e57d1ffe0">Tetris</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5dfb75bf-a4ca-493b-8f3a-c4f975711fad">Snake</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7636f12a-6081-415a-8da5-196433048b8d">Chess</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f7210b0c-b406-469b-90d3-5a2850b879dc">Space invaders</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6334cd02-9522-4a95-a240-b52db9d6f8cb">Virus</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6c1ead0a-11c6-4df4-b2a1-c8ff505cb10e">Fractals</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3470366f-6e74-412f-8ba8-9e9abbf23678">Cellular automata</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0814fa93-4e97-4f38-a353-adc8a2cd0b95">Figures from primitives</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#560d14e3-c4ec-4506-893b-d24564735336">Rubik&#x27;s cube</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fb5a5dab-4cd0-4431-a5c5-d05dba62a252">Text and Image Generation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#735cc173-c1d3-4fb1-bf3e-5f91296a2e4c">Operating systems</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#be99a583-f284-4b22-b1c9-bfb295239883">Proofs</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f30c450f-af70-4591-98c3-a1a7fa5576d9">Background</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b7b35c16-ef28-4e73-b433-95d74e721082"><strong>Combinatorial search problems</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e9b043bc-580c-4b07-90e2-0bd88df95431">SAT solver</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b2ba69ff-d7d5-4960-ad00-d6d0580f64e5">References</a></div></nav><figure id="458d390c-cfd4-47be-b04a-7d9274d51acf" class="image"><a href="DALLE_2023-06-11_13.43.22_-_a_place_where_you_solve_different_problems_with_programming_graphics_and_interaction..png"><img style="width:1024px" src="DALLE_2023-06-11_13.43.22_-_a_place_where_you_solve_different_problems_with_programming_graphics_and_interaction..png"/></a></figure><h1 id="b31e0019-c828-4633-b38e-671a3474b2e0" class="">Overview</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1a69cba2-7263-4f25-b470-4c1d2b0dafa1"><div style="font-size:1.5em"><span class="icon">👉🏼</span></div><div style="width:100%">“if you can not make the computer do it, you don’t know what you are talking about”. </div></figure><p id="192fb5ac-ab71-438f-97e0-76cae4bcc79d" class="">We present you Oleksiy Academy, a place where you learn how to solve different problems with programming, graphics, and interaction.</p><p id="e274207d-8ea9-4426-90ec-23e89f357db1" class=""><a href="https://github.com/sanchezcarlosjr/evatutor/tree/main">https://github.com/sanchezcarlosjr/evatutor/tree/main</a></p><h2 id="18ad6f42-2052-4e58-a977-880b45f55871" class="">Introduction</h2><p id="6f9414e9-6bdd-46cd-8f38-4b1ef5ed37ea" class=""><a href="https://www.youtube.com/watch?v=hJP5GqnTrNo">https://www.youtube.com/watch?v=hJP5GqnTrNo</a></p><h2 id="71f40e82-450a-472c-80b4-d89d80529551" class="">Requirements</h2><p id="5b2e0166-37ba-41eb-8afe-6a31ce7f2057" class="">The student’s code owns themselves, so it must save in GitHub.</p><figure id="526a7145-fbe3-4958-a462-ad368f26b8ce" class="image"><a href="Untitled%20261.png"><img style="width:1341px" src="Untitled%20261.png"/></a></figure><h1 id="f909b49e-2743-42d9-af8d-a6068767c061" class="">Games</h1><h2 id="7b89e92b-6e6b-44ab-b9d4-fdf14be12f61" class="">Basics</h2><h2 id="d8ebed31-5f59-4e89-99cb-516fd04d8648" class="">Logic</h2><p id="3fd7d450-3654-458c-a2e5-e93a5d2ded1f" class=""><a href="https://www.metalevel.at/prolog/puzzles">https://www.metalevel.at/prolog/puzzles</a></p><p id="6bd7fce3-7ac5-4a1c-9971-1c4f23c9fc18" class="">Password combinations</p><p id="9bbd1dce-a2ad-497a-987e-6dd18448a31b" class="">Logic puzzles</p><p id="720c98ce-d289-4ea2-b20d-70df26482c86" class="">Cryptoarithmetic puzzles</p><h2 id="acba3ef4-e968-4c5d-8267-06462b7489ca" class="">Pacman</h2><p id="73773986-d802-4160-8678-f8ad8af5fbe2" class="">Graph Theory. Maze.</p><p id="ed4516a1-eb90-4406-88b7-2e79aa13d66a" class="">Different algorithms.</p><ol type="1" id="728dbb57-62ae-405f-b481-314f2cec2e7e" class="numbered-list" start="1"><li>The shortest path between two points.</li></ol><ol type="1" id="c5451403-ee65-4084-b884-7a04370de76e" class="numbered-list" start="2"><li>The longest path between two points.</li></ol><ol type="1" id="4a3c13a6-2b7a-44dd-ae09-198040dd7be7" class="numbered-list" start="3"><li>MST.</li></ol><ol type="1" id="b1df53ca-6da7-4e29-8d3f-b0dd5ce8a546" class="numbered-list" start="4"><li>Minimax.</li></ol><ol type="1" id="21d17951-5af3-474b-8022-0cb9e0f01c77" class="numbered-list" start="5"><li>Utility.</li></ol><ol type="1" id="39ab9a7c-b98e-43e1-b97c-500bcc4289fe" class="numbered-list" start="6"><li>Euler path.</li></ol><ol type="1" id="6e06ffaf-a70d-4170-97eb-5d6d08ac5220" class="numbered-list" start="7"><li>Hamilton path.</li></ol><ol type="1" id="8c43d96d-e59b-49fb-bdb8-d83ae7e223a2" class="numbered-list" start="8"><li>Salesperson problem.</li></ol><ol type="1" id="e1cf7da8-01e2-4a81-b654-37d2787cb8b7" class="numbered-list" start="9"><li>Functions. Distance between two points with constraints in <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> space.</li></ol><h2 id="8adeddd3-b0b1-4c46-9cb6-d60e9778ac97" class="">Distributed systems</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2f244fb5-b007-4fd2-aaa8-86bae0aa6603"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Web Simulator of Distributed algorithms</div></figure><p id="c332a0f4-7821-45ab-99a3-3a3171c12120" class="">Find the best location.</p><p id="8280dd2f-3045-4e35-9607-e7a4455db148" class="">Leader election.</p><p id="15e95731-4599-4059-a3b7-03d418d5aae8" class="">Visualize the flow of data.</p><p id="5768d194-88f7-4527-b551-8a3b52b2169a" class="">EasySim, Peersim.</p><h2 id="e587857f-af9f-4d0e-af09-c606f4d0a425" class="">Geometry</h2><p id="fabc8315-0b69-41b6-99ec-5046c498fc84" class="">Find the centroid.</p><p id="36a22654-8220-43a9-a2c0-a9cf946541cc" class="">Find the curve that passes from all points.</p><p id="88b9ff2b-d212-46a2-aeac-20152ca9f653" class="">Find the length from a curve.</p><p id="1e95eddc-0001-46b2-95f5-d7fdb16464b5" class="">Find the volume form.</p><p id="a8712a6e-f061-4ae7-b8bd-258e3c3c54ed" class="">Find the area from a curve.</p><p id="1734f34a-7991-4007-b654-358d6876c685" class="">What is a centroid from a figure inside another figure?</p><p id="2f7c5605-0a3c-461d-9531-c6f51e2a0c88" class="">Find the recursive ladder.</p><p id="ea457e6b-f055-4a73-a138-5211e6c501cc" class="">Find a norm between a point and figure.</p><p id="38c39532-475b-4363-9107-9a0b0762acee" class="">Find a norm between a objects and objects.</p><p id="472a1cf2-370d-41db-85c7-8f360fdf3446" class="">Find the max norm between a objects and objects.</p><p id="729e2f0a-7927-4841-8c37-52f6b5e1bf09" class="">Content-addressable network</p><p id="beac60bb-f803-4890-a485-d40106005405" class="">Find the angle from a triangle.</p><p id="2f0cce06-9995-4bab-ba70-758171e2a2a1" class="">Find the shortest path from two points in <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> and <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">R^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> with constraints. </p><p id="e90236ea-b3f9-4796-9622-ec3f9c8ebae7" class="">Convex hull</p><p id="92d0c063-3522-4ec1-9d73-3484106a2fa7" class="">Gerrymandering</p><h2 id="27e3bdd1-09a6-47d9-a072-fcea4e4536e0" class=""><strong>Digital image processing</strong></h2><p id="8628cdb4-8acc-49c4-9d3f-b7f6229a0531" class="">Take a photo and remove the background</p><p id="7913ef6d-ad92-400f-9b21-98762946999f" class="">Take a photo and find the convex hull</p><h2 id="91ce449b-9c15-4e8c-9929-316518abed60" class="">Physics</h2><p id="184487b4-c1a0-422d-89f5-06fd3183384e" class="">Given the laws of classical mechanics and two points, find the curve.</p><h2 id="d6b94f03-7152-408e-b76c-1e7f3941da2c" class="">Audio image processing</h2><h2 id="876dd23a-602f-4196-b758-e06a5422d67a" class="">Simulations</h2><h2 id="24f724da-2011-4595-9054-2c335f3cae19" class="">Compiler</h2><h2 id="053b8362-8721-4d07-9dbd-917e57d1ffe0" class="">Tetris</h2><h2 id="5dfb75bf-a4ca-493b-8f3a-c4f975711fad" class="">Snake</h2><h2 id="7636f12a-6081-415a-8da5-196433048b8d" class="">Chess</h2><h2 id="f7210b0c-b406-469b-90d3-5a2850b879dc" class="">Space invaders</h2><h2 id="6334cd02-9522-4a95-a240-b52db9d6f8cb" class="">Virus</h2><h2 id="6c1ead0a-11c6-4df4-b2a1-c8ff505cb10e" class="">Fractals</h2><h2 id="3470366f-6e74-412f-8ba8-9e9abbf23678" class="">Cellular automata</h2><h2 id="0814fa93-4e97-4f38-a353-adc8a2cd0b95" class="">Figures from primitives</h2><h2 id="560d14e3-c4ec-4506-893b-d24564735336" class="">Rubik&#x27;s cube</h2><h2 id="fb5a5dab-4cd0-4431-a5c5-d05dba62a252" class="">Text and Image Generation</h2><h2 id="735cc173-c1d3-4fb1-bf3e-5f91296a2e4c" class="">Operating systems</h2><h2 id="be99a583-f284-4b22-b1c9-bfb295239883" class="">Proofs</h2><h1 id="f30c450f-af70-4591-98c3-a1a7fa5576d9" class="">Background</h1><figure id="6a93fe4b-c4ca-4260-b89c-571848249c2c" class="link-to-page"><a href="Artificial%20Intelligence%206a93fe4bc4ca4260b89c571848249c2c.html"><span class="icon">🧠</span>Artificial Intelligence</a></figure><h1 id="b7b35c16-ef28-4e73-b433-95d74e721082" class=""><strong>Combinatorial search problems</strong></h1><figure id="3f6989ee-a370-4b2a-87d1-c261211b6722" class="link-to-page"><a href="Pathfinder%20environment%20with%20mazes%203f6989eea3704b2a87d1c261211b6722.html"><span class="icon">💢</span>Pathfinder environment with mazes</a></figure><h1 id="e9b043bc-580c-4b07-90e2-0bd88df95431" class="">SAT solver</h1><ul id="3b620157-63ca-4fac-8abf-458591000b7a" class="bulleted-list"><li style="list-style-type:disc">CNF format to DIMACS format.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1b695c40-73c6-40b5-bb74-3628780265b2" class="code code-wrap"><code class="language-Plain Text">@inproceedings{imms-sat18,
+  author    = {Alexey Ignatiev and Antonio Morgado and Joao Marques{-}Silva},
+  title     = {{PySAT:} {A} {Python} Toolkit for Prototyping with {SAT} Oracles},
+  booktitle = {SAT},
+  pages     = {428--437},
+  year      = {2018},
+  url       = {https://doi.org/10.1007/978-3-319-94144-8_26},
+  doi       = {10.1007/978-3-319-94144-8_26}
+}</code></pre><p id="3ecd0fa8-49fb-4aca-bfb0-4e7d9c7aaa75" class="">pycosat. (2022, November 12). Retrieved from <a href="https://pypi.org/project/pycosat">https://pypi.org/project/pycosat</a></p><h1 id="b2ba69ff-d7d5-4960-ad00-d6d0580f64e5" class="">References</h1><p id="c33cfd19-b44b-4870-91fe-50e32b13998b" class="">&quot;Blockly Games.&quot; 23 Jan. 2023, blockly.games.</p><p id="9cb5be17-d20d-4bdb-ba1d-a4a89c492a78" class=""><a href="https://skilltreeplatform.dev/overview/#what-is-it">https://skilltreeplatform.dev/overview/#what-is-it</a></p><p id="5dd7f0d4-ea3b-4f03-b069-7b0f657a97bd" class="">&quot;Source Academy.&quot; 23 Jan. 2023, <a href="http://sourceacademy.org/sicpjs/foreword02">sourceacademy.org/sicpjs/foreword02</a>.</p><p id="68fb06c1-9732-4851-962c-99310ef15440" class=""><a href="https://adam.math.hhu.de/#/g/hhu-adam/NNG4">https://adam.math.hhu.de/#/g/hhu-adam/NNG4</a></p><p id="5f28884c-ad61-4114-bef6-41f1f25237a6" class="">“42 school”</p><p id="2660451d-ec67-490e-a145-04665f02c3f7" class="">Unity</p><p id="6ee3c148-8e09-4854-912f-ac89d6c6007c" class="">Netlogo</p><p id="00dc4341-bfa8-4ca7-9da4-5e1531628a26" class=""><a href="https://github.com/Khan/perseus">https://github.com/Khan/perseus</a></p><p id="caf29c09-cc29-4c74-8e7b-3313fd58f9c7" class=""><a href="https://github.com/AnubisLMS/Anubis/tree/main">https://github.com/AnubisLMS/Anubis/tree/main</a></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,4 @@
+﻿Error Type,Error detail,Description
+forbidden (401),forbidden,api key not found
+badRequest (400),bad RFC format,Remember to follow instructions by call
+internalError (500),internalError,

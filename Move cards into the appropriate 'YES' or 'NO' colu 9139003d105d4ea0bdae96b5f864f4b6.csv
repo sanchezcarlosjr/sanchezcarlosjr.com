@@ -1,0 +1,8 @@
+﻿Name,Priority,Status,Submitted to work
+There is a 'Log In' or 'Sign In' heading,High,,No
+"The 'Login' page has also 'Create an account' option ",High,,No
+Users can log in/sign in via social networks,High,,No
+The 'Forgot password' option is present on the login screen,High,,No
+Entered password characters can be seen using the 'eye button',Middle,,No
+There is a product logo on the login page,Middle,,No
+A ‘Remember me' checkbox is present on the 'Login' page,Low,,No

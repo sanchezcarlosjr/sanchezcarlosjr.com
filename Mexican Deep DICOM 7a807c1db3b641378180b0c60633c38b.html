@@ -1,0 +1,697 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Mexican Deep DICOM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="7a807c1d-b3b6-4137-8180-b0c60633c38b" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1674574124473-e91fdcabaefc?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 0%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🦀</span></div><h1 class="page-title">Mexican Deep DICOM</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="12f37bf4-9fc2-4763-a316-3984c3d61574" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#43b63beb-c0c5-499a-8291-7a7ee136c0d1">Abstract</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b4a87f56-ce66-4c02-8808-2d960f99fdcd">Code</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3cc9a676-97a9-43ea-825f-da5a57b8a8ef">Spanish slides</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b084ed30-8c60-48d6-9d10-48a92c2b0b42">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bb557919-1f64-43d5-b39d-f7f059508e9d">Related work</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4c0af7d5-6b81-49ca-b79a-defcc0c7efd6">Methodology</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d3586fe1-f51d-447c-b3c2-00ca1ebd51f7">Domain Understanding</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#13a2da62-892b-4821-b088-3b3cadd709b8"><strong>Screening and basal</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9cfaad4b-beb0-4fbf-b0d9-e9385535af5a">Mammography</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1e9de830-e447-4827-a9c9-de2d9e45d8e5">Calcificaciones típicamente benignas</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#95478e8a-78b6-44d3-94d5-c31332ee0676">Calcificaciones malignas</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6d499dd6-8820-440e-bde7-57603f58ae3c">Risk factors</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0a77ebc2-ef9c-493f-bf35-ba3576f5855f"><strong>Fisica medica</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a47c30cf-b6f0-4540-9cdf-349f0540a68b">Previous work</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a5dca476-ef9d-4a77-a6cc-b467d46fe756">Datasets</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b69dccd8-e245-4bbc-addd-9465ad4f31ee">Big Data</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7d2b0b0a-0206-4339-875d-d58dee6617ef">Exploratory data analysis</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ee0fb38e-af67-432f-a854-5f2607f53d08">Data labeling</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ca667c5b-6744-40ed-8442-522dc877bbbf">Formats</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#072ed718-769d-4ee1-86b5-c1a717e544ae">Tools</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fece9343-89bb-4a40-ba71-6ac8cb60d950">Labeling pipeline</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#dbb8fb31-9561-4d70-8485-4e5ebb775235">Pipeline experiments</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9e0c6ddc-cc73-4d54-9fc4-5a7b4829f650">TwoViewDensityNet</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3751301b-04e7-4b59-9223-f421b5f2ab89">Preprocessing images</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a1c77726-3e06-46a8-803b-e156eef2d0cb">Architecture</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#de3c2fa4-506a-4079-9343-6d701b27ad2a">Results</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#853780de-8f5e-4bc3-b936-99eef0c69dda">Train a neural network without processed data and without the final layers.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0fbf863a-8cde-4e90-9f74-64d23c019c8a"><br/>Train TwoViewDensityNetwith new preprocessing steps, including SAM<br/></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1b7486a1-4c74-465b-82c5-172b70c60d76">Preprocessing</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#882b71e2-efa6-45c0-9764-72280acc254f">Fine tuning</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aaffaf88-70a8-46c2-9be6-2f1a616fd36f"><br/>Use EfficientNet instead of ResNet50<br/></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#66d8b2c4-e94d-4492-bfe9-de61f7418a4a"><br/>Train the neural network with preprocessing, SAM, transformers, and four views<br/></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6e4edbf0-5319-4ec2-bfb1-44bce681a548"><br/>Test the best-performing network on a hospital dataset.<br/></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6a4116dd-a345-4b34-8224-682bcc84d257">Metrics</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7f2ee2af-b601-4b5c-91cb-a92cb7e86145">Deployment</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#974ddfa7-5a2c-44a9-aa71-5b916cc73c22">Current Hospital Process</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5d1a1802-775f-4697-8425-9fcfc69ed16c">DICOM</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0a5bf6de-da2c-405d-a540-31de232b37bb">Conclusions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#70d5ecd9-4ee4-48a6-9fbc-3f7492b81c77">References</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18d44cca-0ebd-48fa-94f4-287c48562818">Annexes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d7c2fa53-5b4d-4d4a-acb1-f7c610e7d14d">Management</a></div></nav><h1 id="43b63beb-c0c5-499a-8291-7a7ee136c0d1" class="">Abstract</h1><p id="ed8bed5b-5a24-4654-a65b-e36b5a53cc81" class="">Transform the diagnostic delivery process in Mexican public hospitals by identifying and understanding the different stages of the process, with the goal of deploying intelligent traffic light signaling to support the diagnosis of breast cancer using convolutional neural networks and mammograms in a real-world environment.</p><h2 id="b4a87f56-ce66-4c02-8808-2d960f99fdcd" class="">Code</h2><p id="8ad2820b-8a1f-4b64-8829-7a5503b83de3" class=""><a href="https://github.com/sanchezcarlosjr/breast-cancer-pipeline">https://github.com/sanchezcarlosjr/breast-cancer-pipeline</a></p><h2 id="3cc9a676-97a9-43ea-825f-da5a57b8a8ef" class="">Spanish slides</h2><figure id="497f5733-ff12-4238-bff3-b6e58c3b45b0"><div class="source"><a href="UABC_hge_mammograms-8.pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/216f8740-552a-4091-a68d-44b42403f538/UABC_hge_mammograms-8.pdf</a></div></figure><h1 id="b084ed30-8c60-48d6-9d10-48a92c2b0b42" class="">Introduction</h1><p id="71444092-4d4f-4bdf-8600-5a81042f5568" class="">Since breast cancer is the first dead cause in Mexico among women it became a big public health problem —in fact, 2.26 million cases worldwide. In other words, is a type of cancer with the highest incidence and mortality in women: every day at least 14 women, chiefly between 50 to 69 years, die. Indeed, as we can see in the below figure, breast cancer is an increasing tendency compared to other cancers.</p><figure id="50fc4856-492a-4be7-bc9e-7c38e1abf4d4" class="image"><a href="1-s2.0-S1470204512702462-gr1.jpg"><img style="width:937px" src="1-s2.0-S1470204512702462-gr1.jpg"/></a></figure><p id="a2787fb4-0cdc-45b8-95c4-8b31c49e18ca" class="">Nowadays, doctors carried out analyses using Traditional 2D mammograms from patient requests at public Mexican hospitals. In Ensenada, doctors request private external assistance. Oncologists annotate medical images, and they chiefly say what is the patient&#x27;s BI-RADS score. &quot;BI-RADS&quot; means Breast Imaging Reporting and Database System, and it&#x27;s scoring standard radiologists and oncologists use to describe mammogram results. We&#x27;ll explain further BI-RADS in the section. </p><p id="ba39b53e-d5a0-4d3f-837c-1472aac7adac" class="">Our goals are to build data mining models that understand mammograms and predict breast cancer developing risk, continuing works. Since our model output is a person&#x27;s future healthy situation, we&#x27;ll do descriptive and predictive methods, indeed we&#x27;re going to apply Machine Learning algorithms to datasets. Of course, we don&#x27;t expect to replace medical doctors but assist them. We know other computer-aided detection systems have been developed for breast cancer detection but no one applies them to regional cities and they are not free.</p><p id="2bb07ea4-eeac-49db-8f53-eed9093d2081" class="">We expect our project can help thousands of women in quick cancer detection because deep learning is faster and cheaper than humans if we get good metrics, therefore we&#x27;re contributing to the decrease in the death rate. PACS means <strong>Picture archiving and communication system.</strong></p><h1 id="bb557919-1f64-43d5-b39d-f7f059508e9d" class="">Related work</h1><p id="75f92a76-984a-4d76-8f4d-722f94cc5d6b" class="">The body of work related to breast cancer diagnostics using mammograms and convolutional neural networks is expansive. Various resources provide complementary perspectives, techniques, and tools.</p><p id="63c1931f-322b-46b3-bc57-7b0b3fdf00c7" class="">For instance, the Open Health Imaging Foundation (OHIF) provides an open-source DICOM Viewer available on GitHub. The viewer is a zero-footprint medical image viewer provided as a Meteor package (OHIF, n.d.). It enables practitioners to visualize and navigate medical imaging data directly, enhancing understanding and improving diagnosis accuracy.</p><p id="970d3a7d-c49f-4567-8b26-5a084b8b0ef3" class="">The Radiological Society of North America (RSNA) has published numerous papers discussing the importance of certain mammographic findings and terminologies. In one of these papers, they delve into the BI-RADS terminology for mammography reports, explaining what medical residents need to know (RSNA, 2023). This work informs the interpretation and communication of mammography results, which is a crucial step in diagnosing breast cancer.</p><h1 id="4c0af7d5-6b81-49ca-b79a-defcc0c7efd6" class="">Methodology</h1><p id="ae643f92-cc07-4199-80d9-9e09465b2943" class="">The first step in understanding the methodology for machine learning is familiarizing oneself with the key concepts. Data science is essentially the process of extracting meaningful insights and patterns from large and destructured datasets. This process leverages various techniques such as machine learning, neural networks, and statistical methodologies to decipher raw data, which can often be vast and complex.</p><p id="dfd6beb0-9c79-4f99-9dda-ad3fd1bed679" class="">An important tool in this context is the Digital Imaging and Communications in Medicine, or DICOM. DICOM is a standard protocol used for the transmission, storage, retrieval, and sharing of medical images. This protocol aids in the visualization and analysis of these images, enabling the identification of potential patterns or traits that might be of particular interest. In the world of data mining, this step is often referred to as &quot;DICOM View.&quot;</p><p id="05779ff2-abdf-478f-bc16-97956c93b339" class="">In the context of mammography analysis, one might utilize the Digital Database for Screening Mammography, or DDSM. DDSM is one of the largest publicly available collections of mammograms. As part of the preprocessing step, the mammograms from DDSM can be analyzed and preprocessed to identify and potentially remove any noise or inconsistencies in the data. This process might involve data cleaning, normalization, transformation, and other techniques to prepare the data for further analysis.</p><p id="56c56e6f-ecf5-4e18-9db9-84c09b97602d" class="">Finally, the methodology wraps up with the engineering process. This is where you design and implement your deep learning or machine learning models based on the preprocessed data. This can involve creating different deep learning architechtures and preprocessing tasks. After training the model, you can then validate and test it on a separate dataset to ensure its reliability and effectiveness.</p><p id="a8160a4f-31f6-4b5c-8eb3-0bc46dfbd40e" class="">In this process, each step feeds into the next, creating a continuous flow from initial data understanding through to final model creation and evaluation. This framework allows for efficient handling and processing of complex and large-scale medical image data such as mammograms.</p><h1 id="d3586fe1-f51d-447c-b3c2-00ca1ebd51f7" class="">Domain Understanding</h1><p id="13b66c8d-4b48-49ee-89d9-1985479ca1f3" class="">Breast cancer is a disease characterized by the abnormal and uncontrolled proliferation of cells, often leading to metastasis. It is commonly classified using the TNM staging system, which considers the size and extent of the tumor (T), the involvement of lymph nodes (N), and the presence of metastasis (M). The stage of the cancer is inversely related to survival rates; higher stages generally indicate a shorter lifespan, while lower stages are associated with longer survival.</p><p id="97b5d945-2dc7-4b5b-82a3-f8ae27ba7ce7" class="">Early diagnosis is crucial for improving outcomes, and various methods such as regular mammograms, self-exams, and awareness of risk factors are employed for this purpose. Speaking of risk factors, they can range from lifestyle choices like diet and obesity to chronic conditions, as well as environmental, familial, hereditary, benign, hormonal, and reproductive factors.</p><p id="ab269099-1706-42bc-8894-c0d313fa492d" class="">Additionally, the HER2 gene (Human Epidermal Growth Factor Receptor 2) can play a significant role in the development of breast cancer. Treatments targeting HER2 have been developed and are particularly effective for cases of HER2-positive breast cancer.</p><p id="1f83bc1d-1f5a-4d3f-942f-6033151cd31e" class="">
+</p><p id="0fb10238-6516-46d9-80d1-3ea5cde63e14" class="">The mammography is the best technique to capture mammary microcalcifications.</p><h2 id="13a2da62-892b-4821-b088-3b3cadd709b8" class=""><strong>Screening and basal</strong></h2><p id="9f8d09ff-ef00-4bcb-9f0e-76c6818eea96" class="">Mujeres asintomaticas con tumores en estadio precoces.</p><p id="5856b49d-9c87-4805-ae8d-0d97f677f5d4" class=""><a href="https://medicina.uc.cl/publicacion/10646/">https://medicina.uc.cl/publicacion/10646/</a></p><h2 id="9cfaad4b-beb0-4fbf-b0d9-e9385535af5a" class="">Mammography</h2><p id="4308204c-0823-4c21-81e8-3b8f8778819b" class="">Craneo-caudal + ublicua medio lateral típicamente no benignas.</p><p id="79504a9b-e27b-4824-b7cb-80dcf16f4a15" class="">La mamografia con magnificación + lateral y/o focalización y/o tangencial. El objetivo es evaluar las lesiones pequenas, distorsiones y microcalcificaciones. El base a incidencias ortogonales, el radiologo indicara la zona a magnificar.</p><p id="37b26902-c58d-4016-801a-6f98a34494cf" class="">
+</p><figure id="1b51db7a-ee97-4ffe-9f59-d111fe76e289" class="image"><a href="Untitled%20228.png"><img style="width:432px" src="Untitled%20228.png"/></a><figcaption>http://med_physics.i-do.science/topics/diagnose_breast/</figcaption></figure><p id="962a6673-e62c-41ae-9aaa-a96787dfa5cb" class="">
+</p><p id="dd700a42-6f7b-4014-a28f-4309875c7d4b" class="">Amplacion radiologica.</p><figure id="4afc972c-20d6-4b65-8f2c-85e0e7e8e816" class="image"><a href="Untitled%20229.png"><img style="width:258px" src="Untitled%20229.png"/></a><figcaption>Portachasis especial: aumenta la distancia entre la mama y la placa.. <a href="https://www.youtube.com/watch?v=-louFNyRJhw">https://www.youtube.com/watch?v=-louFNyRJhw</a></figcaption></figure><figure id="0ec6b011-5e72-4550-9ee3-627d8c8c6b95" class="image"><a href="Untitled%20230.png"><img style="width:480px" src="Untitled%20230.png"/></a></figure><p id="b648c64e-4934-435d-81e0-87ec761d777f" class="">
+</p><p id="fdb5f841-0080-4c10-a4b6-3a9345b9e755" class="">Una calcificacion es una acumulación de calcio en el tejido corporal, haciendo que dicho tejido se endurezca (tiene capacidad para formar hueso).</p><p id="a6fd2e9e-2c42-4a51-ba2d-a8706732cbc8" class="">Calficaciones mamarias, que evaluar tamano, localizacion, morfologia, distribucion. Los ultimos son descriptores BIRADS.</p><p id="9d1f3f86-6f3f-4e52-8e32-a8399ecf0d58" class="">Las Ca+ asociadas al CDIS son en general microcalcificaciones: &lt;0.5 mm.</p><table id="5dd70653-7044-479c-ab59-e61feffed6a8" class="simple-table"><tbody><tr id="218ec2b1-09fb-439e-ae64-971dd547abae"><td id="hsot" class=""></td><td id="@CG@" class=""></td><td id=":HsS" class=""></td></tr><tr id="87a6f5d9-ca08-40c8-a1b7-7a6d139ffcca"><td id="hsot" class="">Calcificaciones</td><td id="@CG@" class="">Típicamente benignas</td><td id=":HsS" class="">Cutaneas<br/>Vasculares<br/>Groseras<br/>Lineales gruesas<br/>Redondeadas<br/>Anulares<br/>Distroficas<br/>Lecha calcica<br/>Hilos de sutura<br/></td></tr><tr id="4d36f5b5-91a5-4deb-9aaf-f1b3791a7ccf"><td id="hsot" class=""></td><td id="@CG@" class="">Morfologia sospechosa</td><td id=":HsS" class="">Amorfas<br/>Groseras heterogénas<br/>Finas pleomórficas<br/>Linenales finas o lineales finas ramificadas<br/></td></tr><tr id="9bb246f4-5b0d-4f6a-b481-1e02f2e96ad8"><td id="hsot" class=""></td><td id="@CG@" class="">Distribucion</td><td id=":HsS" class=""></td></tr></tbody></table><h3 id="1e9de830-e447-4827-a9c9-de2d9e45d8e5" class="">Calcificaciones típicamente benignas</h3><p id="ef1245ea-6de7-4cd8-8c68-dd709e9934ff" class=""><strong>Vasculares</strong></p><figure id="9862e730-1245-49f4-a69e-f91ab67cba0e" class="image"><a href="Untitled%20231.png"><img style="width:294px" src="Untitled%20231.png"/></a></figure><p id="779399be-8f2b-4b6f-8439-75ccff732e93" class=""><strong>Groseras o en “pop corn”</strong></p><p id="5053550a-65b4-427a-9edb-ce2ac3364869" class="">Grandes, densas, &gt;2-3 mm de diámetro</p><p id="382bc9cb-64b9-4a96-b65b-f9c57701c120" class="">Fibroadenoma en involución</p><div id="6268d62a-188a-44f2-bd33-9f27976b2b62" class="column-list"><div id="d77dfdb1-ddad-49d5-a176-ffad38981c0a" style="width:50%" class="column"><figure id="4bee67c2-6ed8-47b7-9eba-e4f66aabc1ca" class="image"><a href="Untitled%20232.png"><img style="width:177px" src="Untitled%20232.png"/></a></figure></div><div id="6f1d972f-ea89-4d17-9763-ef830a3cb1b1" style="width:50%" class="column"><figure id="b3b4e716-e886-4b30-abbb-8314ea8735ed" class="image"><a href="Untitled%20233.png"><img style="width:173px" src="Untitled%20233.png"/></a></figure></div></div><p id="3e2e9195-2a8b-4a94-a22e-ed7f44fe77e2" class="">
+</p><p id="ac1311eb-f13d-4b97-84c1-6de03e563da6" class=""><strong>Lineales gruesas</strong></p><p id="1a68d5ab-519e-408d-95cf-0148a6d47869" class="">Miden más de 1 mm, ectasia ductal, enf secretora o mastitis de células plasmáticas, intraductales, bilaterales, periductules.</p><figure id="e929db0c-ae66-49af-87e3-b0e5c018971d" class="image"><a href="Untitled%20234.png"><img style="width:99px" src="Untitled%20234.png"/></a></figure><p id="0918de2a-7673-4b43-b46d-a69cc960154c" class=""><strong>Redondeadas o puntiformes</strong></p><figure id="307c6902-219d-41cb-95f3-ec928f32099e" class="image"><a href="Untitled%20235.png"><img style="width:679px" src="Untitled%20235.png"/></a></figure><p id="ebdba994-565d-47b1-b757-606a21e9be5d" class=""><strong>Anulares</strong></p><figure id="ba5b3bef-bba4-4421-9950-e61ed8312a5d" class="image"><a href="Untitled%20236.png"><img style="width:470px" src="Untitled%20236.png"/></a></figure><p id="03eecc4f-bc31-4ac5-8f7f-360c185f30b4" class=""><strong>Leche cálcica</strong></p><p id="7f2d1512-c2a3-43ad-9800-36847f38840f" class="">Sedimento de Ca en macro-microquistes</p><h3 id="95478e8a-78b6-44d3-94d5-c31332ee0676" class="">Calcificaciones malignas</h3><p id="3966a3fb-40b1-4e4a-8519-3e4f0b8ede24" class="">
+</p><h2 id="6d499dd6-8820-440e-bde7-57603f58ae3c" class="">Risk factors</h2><p id="588bb07c-89dd-4bf5-817a-9f9dd030f742" class="">Factores de riesgo tales como dieta, estilo de vida (obesidad, </p><p id="403f264b-aa3c-4edc-a1ec-de748c67fd4a" class="">estado crónico), ambientales, familiares, hereditarios, <code>c</code>ondiciones benigma, hormonales y reproductivos.</p><p id="ecbafeb0-387c-4114-9c20-6795d4e90807" class="">HER2 (<strong>human epidermal growth factor receptor 2</strong>) is a gene that can play a role in the development of breast cancer.</p><p id="a85324ba-f3e9-4afd-b322-ede1dcdfaf7f" class="">Gail model.</p><p id="7cbc5d6b-1bc5-4ef9-86df-b050e652e493" class="">BCRA1, BRCA2, PALB2, ATM, CHECK2</p><p id="6bc47d3d-81a5-4da0-a932-7789587d52b2" class="">Carcinoma Lobullilar, Ductual in situ, hiperplasia atipica ductual, lobulillar.</p><p id="ab6f5308-9a02-4436-a93e-758914a85569" class="">Tamoxifeno 20 mg en premenospausia</p><p id="335c931c-379b-413b-a12d-d5f820d35a93" class="">Raloxifeno 60 mg en post menopausicas por 5 años</p><p id="83ac25e5-9318-41af-b8fc-4fe4e1db02fd" class="">Inhibiedores de Aromatasa, exemestano, evidencia MAP-33, IBIS II6</p><p id="1e9622a8-16b9-4129-aaa9-d27131cd1d98" class="">Diagnostico temprano: tamizaje, autoexamen mensual a partir de los 18 años, aprox. día 10. Examen clínico anual a partir de los 25 años. Mastografía anual de tamizaje a partir de los 40 años. Consenso mexicano sobre diagnostico y tratamiento del cancer mamario. Decima reunion colima 2023.</p><p id="0ef7b372-5e96-4d06-9506-04ad5e8ea64e" class="">La edad de corte (40 años), densidad de la mama debido a las limitaciones tecnologías.Tejido fibroboso.</p><p id="253bbbb0-969e-4419-921a-16e9f45041b6" class="">Ultrasonido mamario a menos de 40 años con patología mamaria. Mastografía y ultra sonido son estudios complementarios, sensidibilidad 87%. </p><p id="1259e759-657b-460d-9cf7-d24ef901a3e3" class="">No, menos 25 años, pero 1 relacion directa 10 años. </p><figure id="a2aaf4e1-bda7-4667-8ac4-1add543165b6" class="image"><a href="Untitled%20237.png"><img style="width:451px" src="Untitled%20237.png"/></a><figcaption>La mastografía identifica de 2 a 8 casos por 1000 estudios. Sensibilidad de mastografía: Mama densa <strong>30-64%</strong>, mama grasa: <strong>98%</strong>.</figcaption></figure><p id="505a96f6-2d99-4971-ba4d-7f51a412a8c8" class="">Biopsia.</p><p id="c6f7b843-851b-47e5-af7e-2a0148dcd317" class="">Norma Oficial Mexicana 041. American Cancer Society.</p><figure id="d59da1bc-cbba-4c4f-b94c-b3cd04498f71" class="image"><a href="Untitled%20238.png"><img style="width:561px" src="Untitled%20238.png"/></a></figure><p id="f82b3531-16c2-49e1-975c-0ce0903dee94" class="">
+</p><p id="526a7a70-9263-43c9-93a8-e873ccf6b6b2" class="">
+</p><figure id="2e9ff3fe-9335-4e4b-b362-982cfa62b26f" class="image"><a href="Untitled%20239.png"><img style="width:593px" src="Untitled%20239.png"/></a></figure><p id="d24e2fa0-30e0-4060-8e3c-ba1ce7cd3cbc" class="">Tendencia/Riesgo</p><figure id="894660db-06f1-47b4-8f4c-af1e60847a88" class="image"><a href="Untitled%20240.png"><img style="width:593px" src="Untitled%20240.png"/></a><figcaption>Telemastografía, mastrografía con tomosíntesis, mastografía sintetizada, …</figcaption></figure><p id="fa9280c8-a7ed-4eb3-ae65-4934cce90ad8" class="">Conceptos claves de oncología. Un oncólogo es el médico que trata el cáncer y brinda atención médica para una persona diagnosticada con cáncer.</p><p id="cb69c153-de89-424a-bfa7-d654f0c54165" class="">El experto en evaluar mastografías y otras imagenes son Radiologos. BIRADS es un lenguaje comun entre el radiologo y el oncologo. Nota: BIRADS es una historia antes del cancer. El cancer es una «siembra». Calcificaciones, morfología,…. Mastografía digital, ultrasonido mamario, resonancia magnética (casos especiales).  Prevención y detección temprana. </p><p id="3a402e80-93bd-478d-9e1e-740d15dc6a34" class="">La posibilidad de vivir es directamente proporcional con la Etapa clínica al DX, la posibilidades de Tto y la biología de la enfermedad.</p><figure id="d5aab2f1-513f-48ba-b671-a6f2658a1ab8" class="image"><a href="Untitled%20241.png"><img style="width:695px" src="Untitled%20241.png"/></a></figure><p id="59b2fa0e-7252-4804-b861-c27a045375b9" class="">Sobrevida global.</p><p id="38d3c265-188e-4ad9-9e3b-016121faa8c1" class="">Sobrevida libre de progresión.</p><p id="9daa26d0-b60c-49d7-9caf-ce3bcb8d18f1" class=""><strong>Benign tumors are noncancerous.</strong> <strong>Malignant tumors are cancerous</strong>.</p><p id="c91c90a9-9a38-4970-b7f6-a1894cac1d13" class="">ERBB3, <strong><strong>HER2</strong></strong></p><p id="19d78c36-84f0-4a08-883c-54bc65bf0845" class=""><a href="https://www.cancer.org/es/cancer/tipos/cancer-de-seno/comprension-de-un-diagnostico-de-cancer-de-seno/estado-de-her2-del-cancer-de-seno.html">https://www.cancer.org/es/cancer/tipos/cancer-de-seno/comprension-de-un-diagnostico-de-cancer-de-seno/estado-de-her2-del-cancer-de-seno.html</a></p><h2 id="0a77ebc2-ef9c-493f-bf35-ba3576f5855f" class=""><strong>Fisica medica</strong></h2><p id="fd633d5a-14c4-4163-9e2c-86424e4f10da" class="">Radioterapia</p><p id="1da5ab7c-8b4d-439f-82f9-63bd00a9d6f0" class="">Acelerador de particulas</p><p id="2cf1c909-ddfa-4bcd-b793-f758eb348d0f" class="">Cobalto</p><p id="1dff90e3-0c1d-46d7-a5e5-0d3ee941fc2c" class="">quimioterapia</p><h1 id="a47c30cf-b6f0-4540-9cdf-349f0540a68b" class="">Previous work</h1><h2 id="a5dca476-ef9d-4a77-a6cc-b467d46fe756" class="">Datasets</h2><p id="bb62563a-ad90-43ba-8452-8301bc034772" class="">DDSM</p><p id="32c0a668-7d96-4e28-8734-e61afc50a437" class="">CBIS-DDSM</p><h2 id="b69dccd8-e245-4bbc-addd-9465ad4f31ee" class="">Big Data</h2><p id="d7a73952-5fc9-4645-9c00-023efcf88b88" class="">Updating the ljpeg library was a crucial step in our workflow to download <a href="http://www.eng.usf.edu/cvprg/mammography/database.html">DDSM</a> (Digital Database for Screening Mammography) images and other images in the LJPEG format for further algorithmic processing. The ljpeg library allows you to efficiently handle and decode images encoded in the LJPEG format.</p><p id="9c570ba4-336d-429d-a14a-4799ab817294" class="">By updating the library, we ensure that you have the latest version with any bug fixes or performance improvements.</p><p id="e97445f2-c404-4a72-b799-08e41e35a6e7" class=""><a href="https://github.com/sanchezcarlosjr/ljpeg">https://github.com/sanchezcarlosjr/ljpeg</a></p><h2 id="7d2b0b0a-0206-4339-875d-d58dee6617ef" class="">Exploratory data analysis</h2><p id="be103267-8b4d-4502-bbed-03b1676a483a" class="">In our exploratory analysis of BIRADS cases (our label), we observe that the majority of cases fall into BIRADS 1 and 2, with 9371 and 15013 cases, respectively. BIRADS 3 and 4 have a relatively lower number of cases, with 1342 and 282 cases, respectively. BIRADS 5 has the lowest number of cases, with only 61 instances. BIRADS 0 represents a moderate number of cases, with 1806 instances.</p><figure id="27b10113-117d-41a3-a7e7-f90b680051e9" class="image"><a href="Histogram_of_Cases.svg"><img style="width:610px" src="Histogram_of_Cases.svg"/></a><figcaption>Hospital General Dataset</figcaption></figure><figure id="d8ae014f-5966-40c5-9298-b588820817c6" class="image"><a href="Untitled%20242.png"><img style="width:1137px" src="Untitled%20242.png"/></a><figcaption>DDSM</figcaption></figure><h2 id="ee0fb38e-af67-432f-a854-5f2607f53d08" class="">Data labeling</h2><p id="1969215a-d886-4c40-8e37-44c6ab209f5a" class="">We annotate data to define the ground truth, which is used to train the models. This process requires manual work. The task at hand dictates what must be annotated.</p><ul id="e7d552de-4585-4013-b963-40e5fb285971" class="bulleted-list"><li style="list-style-type:disc"><strong>Bounding boxes.</strong> This task aims to identify objects by rectangular boxes which locates the target object. We may represent those rectangular boxes by either <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mo separator="true">,</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{(x_1,y_1),(x_2,y_2)\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)}</span></span></span></span></span><span>﻿</span></span> or <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>w</mi><mi>e</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi><mo separator="true">,</mo><mi>h</mi><mi>e</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{(x_1,y_1),weight,height\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">e</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">h</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">h</span><span class="mord mathnormal">t</span><span class="mclose">}</span></span></span></span></span><span>﻿</span></span>.</li></ul><figure id="667f4008-0a46-48aa-b031-57879cef7abd" class="image"><a href="Untitled%20243.png"><img style="width:720px" src="Untitled%20243.png"/></a><figcaption>Bounding box for detected cars (Original Photo by <a href="https://unsplash.com/@jekkilicious?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Patricia Jekki</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>)</figcaption></figure><ul id="9d553880-1c0b-4289-9d0d-44db0095b1d8" class="bulleted-list"><li style="list-style-type:disc"><strong>Polygonal segmentation.</strong> This task aims to detect objects with polygons.</li></ul><figure id="020ddb15-a36a-4447-8f11-f60f130abedc" class="image"><a href="Untitled%20244.png"><img style="width:240px" src="Untitled%20244.png"/></a><figcaption>Polygonal segmentation of images from COCO dataset (<a href="http://cocodataset.org/#explore">Source</a>)</figcaption></figure><ul id="e550c320-3ee0-4dee-9bb8-6d2ff24e740e" class="bulleted-list"><li style="list-style-type:disc"><strong>Semantic segmentation. </strong>This task aims to classify every pixel in order to detect objects accurately. <strong> </strong></li></ul><figure id="eacec857-2f8a-4401-9e30-32bf968bf8c5" class="image"><a href="Untitled%20245.png"><img style="width:480px" src="Untitled%20245.png"/></a><figcaption>Semantic segmentation of images from Cityscapes Dataset (<a href="https://www.cityscapes-dataset.com/examples/#coarse-annotations">Source</a>)</figcaption></figure><ul id="bc0189b3-a0a8-49dc-ab6c-05163117ff1f" class="bulleted-list"><li style="list-style-type:disc"><strong>3d cuboids. </strong>Similar to bounding boxes, they provide depth information.</li></ul><figure id="53a90636-c0e3-4ea1-9c6b-773b50760c57" class="image"><a href="Untitled%20246.png"><img style="width:384px" src="Untitled%20246.png"/></a><figcaption>3D Cuboid annotation on image (Original Photo by <a href="https://unsplash.com/@jocac?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jose Carbajal</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>)</figcaption></figure><ul id="80767c11-bfae-4980-94bc-22e72db348e6" class="bulleted-list"><li style="list-style-type:disc"><strong>Key-Point and Landmarks. </strong>The task aims to locate key parts of objects in an image. Keypoints are the independent parameters that define the configuration of the mechanical system.</li></ul><figure id="a0a37e19-8f48-463e-a878-437d04acdb18" class="image"><a href="Untitled%20247.png"><img style="width:480px" src="Untitled%20247.png"/></a><figcaption>Key-point annotation examples from COCO dataset (<a href="http://cocodataset.org/images/keypoints-splash-big.png">Source</a>)</figcaption></figure><ul id="ae74adc0-2ad6-4519-a254-e26cc201c47d" class="bulleted-list"><li style="list-style-type:disc"><strong>Lines and Splines. </strong>Its purpose is detect curves in a image.</li></ul><figure id="0cffdd68-0ef9-43fb-be4c-43eadfb33254" class="image"><a href="Untitled%20248.png"><img style="width:528px" src="Untitled%20248.png"/></a><figcaption>Line annotation on road (Original Photo by <a href="https://unsplash.com/@karsten_wuerth?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Karsten Würth</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>)</figcaption></figure><h3 id="ca667c5b-6744-40ed-8442-522dc877bbbf" class="">Formats</h3><p id="bbfb59ae-52f2-4b0d-aea5-3bf9aefb088d" class="">Because no standard format has been established, today we have various formats for annotating images, such as COCO, Pascal VOC, YOLO, TensorFlow TFRecord, and PyTorch txt.</p><h3 id="072ed718-769d-4ee1-86b5-c1a717e544ae" class="">Tools</h3><p id="ba56af23-574e-43ef-a18f-6b1a607f9681" class="">We’ve segmented on Labelme, a graphical annotation tool written in Python that renders its graphical interface with Qt.</p><div id="e40a11a0-0468-4f84-9846-6ba75cbf40f2" class="column-list"><div id="1a409c2d-e9b0-4b36-8166-5daca83482c0" style="width:37.5%" class="column"><figure id="1e8dfc89-a99c-4c25-8d82-e1d164e31d8f" class="image" style="text-align:right"><a href="Untitled%20249.png"><img style="width:200px" src="Untitled%20249.png"/></a></figure></div><div id="5b161756-2abe-4d14-b3cb-e505d2480987" style="width:62.5%" class="column"><figure id="82c00e10-8a42-4c83-8e6e-b33f47f39309" class="image" style="text-align:left"><a href="Untitled%20250.png"><img style="width:288px" src="Untitled%20250.png"/></a></figure></div></div><p id="9b377bbc-c633-4d67-8e12-e8f086f23422" class="">When we open the directory that holds the mammograms, we can work with those images and segment them manually.</p><figure id="40e5ab50-70d8-4fc2-ba2b-ccf406303b10" class="image"><a href="Untitled%20251.png"><img style="width:624px" src="Untitled%20251.png"/></a></figure><figure id="90f3e95d-7362-4a2c-8eb5-d259fb8a4a39" class="image"><a href="Untitled%20252.png"><img style="width:624px" src="Untitled%20252.png"/></a></figure><p id="b380e66e-fc17-4ca3-a058-c528f975c8a7" class="">
+</p><p id="e95658b0-07ae-4f50-9e9e-f876bb82aff9" class="">Labelme automatically saves the segmented images in a JSON format, which makes it possible to reconstruct the segmented image with the command <code>labelme_draw_json &lt;PathToJSONFile&gt;:</code></p><figure id="ce1c6a3b-10b4-4e43-88cf-353852ff0afd" class="image"><a href="Figure_1.png"><img style="width:640px" src="Figure_1.png"/></a></figure><p id="a44dca99-5b51-4e4a-9b23-99a12e9cc44f" class="">Following this procedure with other images:</p><figure id="67792847-d910-4bb6-adca-ee42d3793a20" class="image"><a href="Adan.png"><img style="width:990px" src="Adan.png"/></a></figure><p id="b27001b7-bd8e-4fd4-988f-a9348bf1bafb" class="">
+</p><h3 id="fece9343-89bb-4a40-ba71-6ac8cb60d950" class="">Labeling pipeline</h3><p id="26a43980-a698-4c4f-9dee-38b051b6f109" class="">SAM</p><p id="dd09def6-942c-4128-8485-155cc5f505ea" class=""><a href="https://github.com/wkentaro/labelme/tree/main">https://github.com/wkentaro/labelme/tree/main</a></p><p id="43798708-68f4-4c67-8296-0ad57e537bbd" class=""><a href="https://github.com/HumanSignal/awesome-data-labeling">https://github.com/HumanSignal/awesome-data-labeling</a></p><p id="e1cdaea2-53f0-41f0-b7dc-8ad43f3d5ad8" class=""><a href="https://github.com/wkentaro/labelme">https://github.com/wkentaro/labelme</a></p><h1 id="dbb8fb31-9561-4d70-8485-4e5ebb775235" class="">Pipeline experiments</h1><p id="79e1a6b9-8c32-4432-b89b-84832dd736db" class="">In below experiments, various configurations and methods are explored to train a neural network. The experiments range from basic setups without data preprocessing to more advanced configurations involving various techniques like SAM, transformers, and different architectures like EfficientNet. Finally, the network that performs the best is further tested on a hospital dataset to evaluate its applicability in a real-world setting.</p><h2 id="9e0c6ddc-cc73-4d54-9fc4-5a7b4829f650" class="">TwoViewDensityNet</h2><p id="2b907721-c3e4-41cb-a4e0-17e12fcccbec" class="">We’ve reproduced the workflow proposed by [1] on a <a href="https://github.com/sanchezcarlosjr/breast-cancer-pipeline/blob/main/two-view-density-net.ipynb">notebook</a>.</p><h3 id="3751301b-04e7-4b59-9223-f421b5f2ab89" class="">Preprocessing images</h3><p id="d777f2c4-0644-445d-baed-9b89d2ca3920" class="">Our preprocessing workflow is inspired by the approach used in the TwoViewDensityNet research. Their method, which delivers promising results on the Digital Database for Screening Mammography (DDSM), involves applying a binary mask, cropping the image, applying the magma colormap, and resizing the image to a dimension of 336x224.</p><figure id="4482f6ab-28bc-490e-a059-348c11a484ef" class="image"><a href="Untitled%20253.png"><img style="width:1388px" src="Untitled%20253.png"/></a><figcaption>TwoViewDensityNet preprocessing approach</figcaption></figure><p id="f8fc625b-ec86-45a8-9efa-531c5031f7a7" class="">We segment semantically with <a href="https://segment-anything.com/">SAM</a> to overlay mammae because it promises zero-shot learning, that is, a few annoted images are needed to get good results. The TIFF images are annotated with the COCO format and the <a href="https://github.com/abreheret/PixelAnnotationTool">PixelAnnotationTool</a>. This approach can lead to a more detailed and comprehensive understanding of the mammography image by identifying and categorizing every single element in the image.</p><p id="040a11dd-e92e-4059-9914-78fd3cc7378b" class="">The next step is to apply morphological operations, a set of operations that process an image based on its shape. These operations can help eliminate noise, fill holes, or isolate individual elements.</p><p id="e46cf557-cb55-4f04-b94c-c2ad430c8df7" class="">Following that, we apply the mask to the image. The mask allows us to focus on the relevant part of the image and ignore the rest.</p><p id="37c3ef18-a30e-4780-bd7d-afe445a244a9" class="">Then we apply the magma colormap again, which helps to visualize the image in a different color scheme that might bring out certain details better.</p><p id="aef22ba3-5069-43c0-8d43-b575dd918c11" class="">Finally, we resize the image, which can be necessary to standardize the input for our model, to ensure consistent results and to reduce computational demand.</p><figure id="3d528aff-23bd-48a1-abfa-0e7c31d6291c" class="image"><a href="Untitled%20254.png"><img style="width:885px" src="Untitled%20254.png"/></a></figure><p id="5e9dcb66-41a2-4dab-a1c5-3751545bcf6e" class="">These enhancements to the preprocessing stage aim to provide a more accurate representation of the data, improve the performance of subsequent analysis steps, and potentially lead to more reliable breast cancer detection results.</p><p id="b6084d96-d6d0-481e-9a8b-017c53b8ed5d" class="">Including preprocessing with Ray for distributed processing was a significant addition to the workflow. By leveraging Ray, a distributed computing framework, we distribute the preprocessing tasks across multiple nodes or machines, enabling parallel processing and potentially reducing the overall processing time.</p><figure id="0230b90d-0652-4aa5-94fc-d63178e7ce9b" class="image"><a href="Untitled%20255.png"><img style="width:1920px" src="Untitled%20255.png"/></a></figure><h3 id="a1c77726-3e06-46a8-803b-e156eef2d0cb" class="">Architecture</h3><p id="b5783dad-045d-4cb4-8ea0-9fb6c1ef5c8a" class="">
+</p><figure id="bcf73ebc-a72d-4f5b-a675-439b6f0b3066" class="image"><a href="Untitled%20256.png"><img style="width:816px" src="Untitled%20256.png"/></a><figcaption>TwoViewSideNet</figcaption></figure><h3 id="de3c2fa4-506a-4079-9343-6d701b27ad2a" class="">Results</h3><p id="7894421a-ffb0-4719-9250-a300a84578d3" class="">We got bad results even though we experiment with different loss functions as suggested in the paper.</p><h2 id="853780de-8f5e-4bc3-b936-99eef0c69dda" class="">Train a neural network without processed data and without the final layers.</h2><h2 id="0fbf863a-8cde-4e90-9f74-64d23c019c8a" class=""><br/>Train TwoViewDensityNetwith new preprocessing steps, including SAM<br/></h2><h3 id="1b7486a1-4c74-465b-82c5-172b70c60d76" class="">Preprocessing</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d0e3dea7-58eb-4b2f-97a1-6b319a559612" class="code"><code class="language-Mermaid">graph TD
+  RawImage --&gt; findCentroid
+  findCentroid --&gt; SAM
+  RawImage --&gt; Overlay
+  SAM --&gt;|mask| Overlay
+  Overlay --&gt; applyMagma
+  applyMagma --&gt; OutputImage</code></pre><figure id="c06e5cbe-f8e6-438e-b8e4-e8c3b675503b" class="image"><a href="Untitled%20257.png"><img style="width:718px" src="Untitled%20257.png"/></a></figure><p id="461197df-d2f3-4e0c-8169-82ac56422291" class="">
+</p><p id="146b154c-e04d-4099-9f17-2dd550c70881" class="">
+</p><h2 id="882b71e2-efa6-45c0-9764-72280acc254f" class="">Fine tuning</h2><p id="92d01587-7583-4391-a78f-047701ba1f88" class="">Because raw SAM was not enough, we’re going to do fine tuning.</p><h2 id="aaffaf88-70a8-46c2-9be6-2f1a616fd36f" class=""><br/>Use EfficientNet instead of ResNet50<br/></h2><p id="7c59cc48-7a1b-4a0a-a51c-8f5e37aee4f1" class="">We must switch from the Gradient Stochastic Descent optimizer to ADAM and the most modern solution EfficientNet.</p><h2 id="66d8b2c4-e94d-4492-bfe9-de61f7418a4a" class=""><br/>Train the neural network with preprocessing, SAM, transformers, and four views<br/></h2><h2 id="6e4edbf0-5319-4ec2-bfb1-44bce681a548" class=""><br/>Test the best-performing network on a hospital dataset.<br/></h2><h2 id="6a4116dd-a345-4b34-8224-682bcc84d257" class="">Metrics</h2><p id="08a4954d-585d-4f87-b264-c3925417051b" class="">IoU score</p><p id="3f2c3055-ae18-49c7-aab7-4cc2b0faa815" class="">Accuracy</p><h1 id="7f2ee2af-b601-4b5c-91cb-a92cb7e86145" class="">Deployment</h1><h3 id="974ddfa7-5a2c-44a9-aa71-5b916cc73c22" class="">Current Hospital Process</h3><p id="6eb66057-7492-4048-9bdb-4d1cb9ae062a" class="">The current process for breast cancer detection in hospitals involves performing a mammogram, where the patient is fitted with a band for the study. Then, the image is sent to the the open-source application K-PACS, installed throughout the hospital. This system currently does not allow for quickly sharing studies with other hospitals or doctors, and there is a plan to implement a national-level electronic record called SINBA to centralize information.</p><figure id="ea2dd4ea-c3bc-40d0-a582-781ef0e4aa04" class="image"><a href="process.svg"><img style="width:960px" src="process.svg"/></a><figcaption>We propose this process to deploy our model</figcaption></figure><p id="c3c8f80f-ca21-458e-a311-dbad51e5dade" class=""><br/>Patients cannot consult the information in the data repository, which includes medical notes, and a unique population registration identity code (CURP) is required to access it. The images are automatically sent in a ZIP file to an external provider which evaluates them and delivers the results (BERAX). The hospitals pay this provider for the service. <br/></p><p id="f4568424-ce2c-4c4f-bd29-c60989845d3f" class=""><br/>There is a proposal to replace the sending of ZIP files with uncompressed images to speed up the process. Currently, the results can take between 1 and 6 days to be delivered, which can cause delays in the diagnosis and treatment of cancer. Patients need the results as quickly as possible so that they can undergo biopsies and additional tests.<br/></p><p id="bb82abe5-1cc3-4539-8089-57b049b2074c" class=""><br/>We propose to implement a traffic light system for the status of the analyses, allowing users to know when the results are available. Additionally, work could be done on the implementation of an artificial intelligence (AI) project to improve the image analysis process, although this is not foreseen in the short or medium term.<br/></p><p id="97c7768f-3b95-4699-a092-074e4e3556f9" class="">
+</p><figure id="262b1b32-39b4-483a-bb71-2a95bcf3a7a1" class="image"><a href="Untitled%20258.png"><img style="width:910px" src="Untitled%20258.png"/></a><figcaption>Prototype</figcaption></figure><p id="a0aec196-eda0-44a2-880b-72af2a655748" class=""><br/>The success of the AI project could attract funding and support for other similar projects in the future. To achieve this, it is important that specific responsibilities are identified and assigned to the people who will feed the necessary information into the system.<br/></p><p id="6575ae0a-f68d-46c1-8871-5d4de8757381" class="">
+</p><h2 id="5d1a1802-775f-4697-8425-9fcfc69ed16c" class="">DICOM</h2><p id="02d1b794-2b50-4e21-98b5-7a982a95ebe9" class="">DICOM stands for Digital Imaging and Communications in Medicine. It&#x27;s a global standard for handling, storing, printing, and transmitting information in medical imaging. The standard was created by the National Electrical Manufacturers Association (NEMA) and is widely used in hospitals globally. It includes a file format and a network communications protocol, and it defines data structures for medical images and related information like patient data, image acquisition parameters, and diagnostic findings.</p><p id="d08bc3c5-bee4-4076-829c-66de2b05165f" class="">DICOM enables the integration of scanners, servers, workstations, printers, and network hardware from multiple manufacturers into a picture archiving and communication system (PACS). The different devices come with DICOM conformance statements that state how they support the DICOM standard.</p><p id="67786b85-4127-444b-b9f5-f6066ca9efa3" class="">DICOMWeb, on the other hand, is a term used to denote the family of DICOM RESTful web services. These web services are defined as part of the DICOM standard and provide access to a set of fundamental DICOM functions using familiar web technologies. They are an HTTP-based API for the DICOM protocol, making it more accessible to web-based applications.</p><p id="61332db7-28d3-4fd7-8b94-23fe23b47036" class="">There are several services defined under the DICOMWeb umbrella, but we’ve implemented QIDO (Query based on ID for DICOM Objects) with ConQuest DICOM server 1.5.0c and OHIF Viewer.</p><p id="c050f592-a6ab-4e0b-854b-823315abc4d7" class="">ConQuest DICOM server released in 1995 by Marcel Van Herk, is a widely used, versatile DICOM server. This server can be found on <a href="https://github.com/marcelvanherk/Conquest-DICOM-Server">GitHub</a> and the client <a href="https://github.com/sanchezcarlosjr/MexicanPACS">https://github.com/sanchezcarlosjr/MexicanPACS</a>.</p><figure id="1515b11b-1e3e-4bf9-84c8-e4bae3a35ea3" class="image"><a href="Untitled%20259.png"><img style="width:576px" src="Untitled%20259.png"/></a><figcaption>ConQuest DICOM</figcaption></figure><p id="9ba35170-3ec4-4cfa-b0db-87927b4436b5" class="">This version of the server was used by the University of California at Davis for their Personal PACS (Picture Archiving and Communication System). PACS is essential in modern healthcare since it allows for the storage and convenient access of medical images. Personal PACS systems can provide substantial benefits to healthcare professionals by enabling access to patient images and related data from their personal devices.</p><p id="5b8947c5-0f91-42da-9739-5866df8dc89c" class="">The ConQuest DICOM server uses a Delphi TCP/IP connection for network communication. Delphi is a programming language and software development kit that supports Windows APIs, including those for establishing and managing TCP/IP connections.</p><p id="c3ed54aa-fab0-41aa-98b8-5fc388c4345e" class="">The server software also includes Lua scripting. Lua is a lightweight and efficient scripting language commonly used for extending applications. It provides the capability to incorporate advanced logic into the server&#x27;s operation without modifying the server&#x27;s source code.</p><p id="c9966731-b0e3-49ed-898d-242c1a4b0058" class="">Overall, the ConQuest DICOM server is an essential tool for managing medical imaging data, particularly in research and clinical contexts where flexibility and customizability are paramount.</p><p id="db939528-0559-4da4-a78f-9929ba97ed07" class="">On the another hand, medical doctors who wish to analyze mammographies are using DICOM Viewer. In our case, we’ll customize OHIF Viewer.</p><figure id="3a529627-c196-40a3-92b5-3fb77e39cbd4" class="image"><a href="Untitled%20260.png"><img style="width:480px" src="Untitled%20260.png"/></a><figcaption>Default OHIF Viewer</figcaption></figure><p id="13f4b633-61a0-486e-beb2-f135cf1f9285" class="">Our model is going to be deployed over Gradio such that some background service can call our model as API REST.</p><h1 id="0a5bf6de-da2c-405d-a540-31de232b37bb" class="">Conclusions</h1><h1 id="70d5ecd9-4ee4-48a6-9fbc-3f7492b81c77" class="">References</h1><p id="31deea5c-4a41-4ec7-8d62-66b454a8856a" class=""><a href="https://www.tensorflow.org/tutorials/load_data/images">Load and preprocess images  |  TensorFlow Core</a></p><p id="089aba88-b254-4ae4-8436-49cb888c66c3" class="">[1] TwoViewDensityNet: Two-View Mammographic Breast Density Classification Based on Deep Convolutional Neural Network Mariam Busaleh 1 , Muhammad Hussain 1,* , Hatim A. Aboalsamh 1 , Fazal-e-Amin 2 and Sarah A. Al Sultan 3</p><p id="fae1880a-257d-46c3-b2b2-6a93198d654b" class="">Open Health Imaging Foundation. (n.d.). OHIF/Viewers. GitHub. Retrieved June 13, 2023, from <a href="https://github.com/OHIF/Viewers">https://github.com/OHIF/Viewers</a></p><p id="035a1e87-4707-4437-a12b-1fb54da05e73" class="">Radiological Society of North America. (n.d.). Radiol.211105. RSNA Journals. Retrieved June 13, 2023, from <a href="https://pubs.rsna.org/doi/10.1148/radiol.211105">https://pubs.rsna.org/doi/10.1148/radiol.211105</a></p><p id="f811b5d2-1d77-4247-bea7-96435689ae5f" class="">Sanchez Carlos Jr. (n.d.). Breast-Cancer-risk-estimation-system. GitHub. Retrieved June 13, 2023, from <a href="https://github.com/sanchezcarlosjr/Breast-Cancer-risk-estimation-system">https://github.com/sanchezcarlosjr/Breast-Cancer-risk-estimation-system</a></p><p id="1704cffc-fd12-4a6b-b677-ea40a5156fd3" class="">Society for Imaging Informatics in Medicine. (n.d.). SIIM. Retrieved June 13, 2023, from <a href="https://siim.org/">https://siim.org/</a></p><p id="e18ad21c-9c49-44de-9b74-fe83c4b6a58c" class="">Ray Project. (n.d.). Pipelining Datasets. Ray Documentation. Retrieved June 13, 2023, from <a href="https://docs.ray.io/en/latest/data/pipelining-compute.html#pipelining-datasets">https://docs.ray.io/en/latest/data/pipelining-compute.html#pipelining-datasets</a></p><p id="09906ed4-2d74-4c9b-8ce8-47f94c773ac9" class="">Ray Project. (n.d.). ray.data.read_images. Ray Documentation. Retrieved June 13, 2023, from <a href="https://docs.ray.io/en/latest/data/api/doc/ray.data.read_images.html#ray.data.read_images">https://docs.ray.io/en/latest/data/api/doc/ray.data.read_images.html#ray.data.read_images</a></p><p id="634b2436-6301-4808-bc69-ad2503f180a3" class="">Ray Project. (n.d.). OCR Example. Ray Documentation. Retrieved June 13, 2023, from <a href="https://docs.ray.io/en/latest/data/examples/ocr_example.html">https://docs.ray.io/en/latest/data/examples/ocr_example.html</a></p><p id="93b1484f-eeac-4acf-8609-c331d4baa415" class="">Radiological Society of North America. (2023, May 10). BI-RADS Terminology for Mammography Reports: What Residents Need to Know. RSNA Journals. Retrieved June 13, 2023, from <a href="https://pubs.rsna.org/do/10.1148/rg.2019180068.pres/full">https://pubs.rsna.org/do/10.1148/rg.2019180068.pres/full</a></p><p id="4f83b965-b21c-4d78-be73-86951494023e" class="">Sanchez Carlos Jr. (n.d.). breast-cancer-pipeline. GitHub. Retrieved June 13, 2023, from <a href="https://github.com/sanchezcarlosjr/breast-cancer-pipeline">https://github.com/sanchezcarlosjr/breast-cancer-pipeline</a></p><p id="6214e2b8-3d74-4faa-aa27-92fda4a2f8cb" class=""><a href="https://github.com/Adamouization/Breast-Cancer-Detection-Mammogram-Deep-Learning-Publication">https://github.com/Adamouization/Breast-Cancer-Detection-Mammogram-Deep-Learning-Publication</a></p><p id="e0c6ed1f-4e7a-4147-8286-1cb9ebdb6f19" class=""><a href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(23)00153-X/fulltext">https://www.thelancet.com/journals/landig/article/PIIS2589-7500(23)00153-X/fulltext</a></p><p id="2e518fde-f8d8-4582-a434-fda4eb33d091" class=""><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0280841">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0280841</a></p><p id="2efccb8f-7b17-42c0-bfd5-a786648fe0b8" class=""><a href="https://github.com/Project-MONAI/MONAI">https://github.com/Project-MONAI/MONAI</a></p><p id="9c705e41-8cfc-4315-8634-5f2c8628ebdc" class=""><a href="https://www.youtube.com/@residenciaimageneshigasanm7739">https://www.youtube.com/@residenciaimageneshigasanm7739</a></p><p id="b6763a7a-e1a6-41f7-87d3-2a41d0481d1c" class=""><a href="https://www.youtube.com/watch?v=-KGaoQX6OVQ">https://www.youtube.com/watch?v=-KGaoQX6OVQ</a></p><p id="0f5185fe-13e7-4838-8d8e-2baf4de8a491" class=""><a href="https://github.com/SysCV/sam-hq">https://github.com/SysCV/sam-hq</a></p><p id="f8fdd38f-59b4-4b51-a715-9820a3454ab5" class=""><a href="https://www.imss.gob.mx/sites/all/statics/guiasclinicas/240GRR.pdf">https://www.imss.gob.mx/sites/all/statics/guiasclinicas/240GRR.pdf</a></p><figure id="23c28b53-76cf-438e-9608-9cd475c662ed"><div class="source">https://github.com/luca-medeiros/lang-segment-anything</div></figure><h1 id="18d44cca-0ebd-48fa-94f4-287c48562818" class="">Annexes</h1><figure id="0b717ff1-5044-41bc-9f0f-d6015b72c63c" class="link-to-page"><a href="Apoyo%20a%20la%20deteccio%CC%81n%20de%20ca%CC%81ncer%20de%20mama%20usando%20re%200b717ff1504441bc9f0fd6015b72c63c.html"><span class="icon">🩸</span>Apoyo a la detección de cáncer de mama usando redes neuronales, transformadores, mamografías</a></figure><figure id="721d84d2-7ab7-4b63-991e-334332e43498" class="link-to-page"><a href="Preprocesamiento%20de%20mamografi%CC%81as%20para%20segmentar%20la%20721d84d27ab74b63991e334332e43498.html"><img class="icon" src="https://www.notion.so/icons/photo-landscape_lightgray.svg"/>Preprocesamiento de mamografías para segmentar la mama</a></figure><h1 id="d7c2fa53-5b4d-4d4a-acb1-f7c610e7d14d" class="">Management</h1><figure id="ddf11da0-68e5-424e-8b1d-e690d6467794" class="link-to-page"><a href="Support%20tasks%20ddf11da068e5424e8b1de690d6467794.html">Support tasks</a></figure><figure id="7d74b059-20ad-4fee-bf17-182ff26eec1f"><div class="source">https://docs.google.com/spreadsheets/d/1LXtAHa2-vy6tN6js6I8G5nJPY0BiCTNP7Isl7vLHX8A/edit?usp=sharing</div></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

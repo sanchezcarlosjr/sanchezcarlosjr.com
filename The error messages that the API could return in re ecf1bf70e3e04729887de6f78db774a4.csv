@@ -1,0 +1,5 @@
+﻿Error Type,Error detail,Description,Solution
+forbidden (400),apiKeyNotFound,There is no user record corresponding to the provided identifier.,Get your API Key https://sanchezcarlosjr.com/tabs/api.
+notFound (400),curpNotFound,CURP 'xxx' not found,
+badRequest (400),badCURPFormat,'TOJO81020503H500' is an invalid curp,
+internalError (500),internalError,,

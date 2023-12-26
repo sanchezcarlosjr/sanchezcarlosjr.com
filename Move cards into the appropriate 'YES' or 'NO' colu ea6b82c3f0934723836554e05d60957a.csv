@@ -1,0 +1,10 @@
+﻿Name,Priority,Status,Submitted to work
+"Systems speak users' language with familiar words, phrases, and concepts rather than system-oriented terms.",High,,No
+Navigation is located in the familiar for users place: at the top,High,,No
+The system is designed with user habits in mind,High,,No
+Icons clearly reflect the essence of the element (e.x. search icon is represented by a magnifying glass),Middle,,No
+"All questions, if they refer to users, should be concise and unambiguous",Middle,,No
+Metaphors unambiguously reveal the meaning,Middle,,No
+"Hints help users perform an action, they don't explain it",Low,,No
+"The system does some part of work for users: offers ready currency signs, country mobile codes, division of numbers into threes (9,999,999)",Low,,No
+All abbreviations and acronyms are deciphered (e.x. 4AD*),Low,,No

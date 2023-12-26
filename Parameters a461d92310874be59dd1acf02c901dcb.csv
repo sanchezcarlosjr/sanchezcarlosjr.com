@@ -1,0 +1,16 @@
+﻿Name,Description
+fatherName,string
+motherName,string
+name,string
+gender,"string
+Valid values for this property are:
+0 = Not known; 1 = Male; 2 = Female; 9 = Not applicable.
+https://en.wikipedia.org/wiki/ISO/IEC_5218"
+birthday,"string
+Date and time in UTC: YYYY-MM-DDT00:00:00Z
+https://en.wikipedia.org/wiki/ISO_8601"
+birthState,"string
+https://www.iso.org/obp/ui/#iso:code:3166:MX"
+apiKey,"string
+You need to sign up on https://sanchezcarlosjr.com/ for you to get it."
+,

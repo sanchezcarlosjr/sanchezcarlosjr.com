@@ -1,0 +1,9 @@
+﻿Name,Que es?
+Shell,Interface de usuario para los servicios del sistema operativo.
+Terminal,Interface software para comunicarse a un servidor.
+Consola,Interface hardware para comunicarase a un servidor.
+CLI,"Shell por comandos. No graficos. "
+prompt,Ubicacion actual dentro del sistema de archivos dentro de un CLI. Con base en las configuraciones puede aportar distinta informacion (git)
+multiplexer,Varias sesiones de inicio de sesion. con pseudo-terminales dentro de una sola teminal.
+screen o demus,Comando para abrir una nueva terminal de un servidor externo. (multiplexer)
+,

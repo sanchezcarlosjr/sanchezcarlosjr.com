@@ -1,0 +1,32 @@
+﻿Name,Description
+curp,"string
+The ID that the Mexican government uses to uniquely identify the people."
+fatherName,string
+motherName,string
+name,string
+gender,"string
+Valid values for this property are:
+0 = Not known; 1 = Male; 2 = Female; 9 = Not applicable.
+https://en.wikipedia.org/wiki/ISO/IEC_5218"
+birthday,"string
+Date and time in UTC: YYYY-MM-DDT00:00:00Z
+https://en.wikipedia.org/wiki/ISO_8601"
+birthState,"string
+https://www.iso.org/obp/ui/#iso:code:3166:MX"
+statusCurp,"[Business]
+string
+AN = alta normal,
+AH= Alta con homonimia, 
+CRA = Curp reactivado, 
+RCN=registro de cambio no afectando a curp,
+RCC= registro de cambio afectando a curp, 
+BD= Baja por defuncion, 
+BDA=Baja por duplicidad,
+BCC=Baja por cambio en curp,
+BCN=Baja no afectando a curp"
+nationality,"string
+MEXICO"
+probatoryDocument,"number
+1 = “Birthday act”"
+probatoryDocumentData,
+pdf,string

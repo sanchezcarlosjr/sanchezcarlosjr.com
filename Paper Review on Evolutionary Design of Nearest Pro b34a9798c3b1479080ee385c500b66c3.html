@@ -641,7 +641,7 @@ blockquote {
 .block-color-red_background {
 	background: rgba(253, 235, 236, 1);
 }
-.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
 .select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
 .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
 .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
@@ -652,6 +652,8 @@ blockquote {
 .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
 .select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
 .select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
 
 .checkbox {
 	display: inline-flex;
@@ -671,13 +673,13 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="b34a9798-c3b1-4790-80ee-385c500b66c3" class="page sans"><header><h1 class="page-title">Paper Review on <strong>Evolutionary Design of Nearest Prototype Classifiers</strong></h1><p class="page-description"></p></header><div class="page-body"><p id="58da2edb-960e-426b-a936-e7e35266a723" class="">The following algorithm finds prototypes with high accuracy in all the tested domains [1]. First, we check out lead concepts.</p><h1 id="a9271cae-dd97-41d3-83b1-871a51897cbf" class="">Evolutionary learning</h1><p id="7ba5b38f-7379-4d1a-8264-d9a004d7c8c4" class="">Evolutionary Algorithms are bio-inspired algorithm that uses evolution as a metaphor. I show you an outline below.</p><pre id="c09a789a-eeee-4b95-bb7c-f3aeb065f7e0" class="code"><code>EvolutionaryLearning()
+</style></head><body><article id="b34a9798-c3b1-4790-80ee-385c500b66c3" class="page sans"><header><h1 class="page-title">Paper Review on <strong>Evolutionary Design of Nearest Prototype Classifiers</strong></h1><p class="page-description"></p></header><div class="page-body"><p id="58da2edb-960e-426b-a936-e7e35266a723" class="">The following algorithm finds prototypes with high accuracy in all the tested domains [1]. First, we check out lead concepts.</p><h1 id="a9271cae-dd97-41d3-83b1-871a51897cbf" class="">Evolutionary learning</h1><p id="7ba5b38f-7379-4d1a-8264-d9a004d7c8c4" class="">Evolutionary Algorithms are bio-inspired algorithm that uses evolution as a metaphor. I show you an outline below.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c09a789a-eeee-4b95-bb7c-f3aeb065f7e0" class="code"><code class="language-Python">EvolutionaryLearning()
 initialize-population
     while the termination criterion is not true
      do
          select-parents-for-the-next-generation
          crossover
-         mutate</code></pre><p id="55916b2d-34e3-4b23-b2cf-4e19e1aa82ac" class="">Every generation approximates to the best solution.</p><h1 id="74622a5a-2000-4f45-91a9-c3d8cc2fbb33" class="">Prototype and criticisms</h1><p id="29af0f31-0543-40ca-8385-699ef9de7ec5" class="">ENPC finds prototypes, but what do prototypes mean? Prototypes are representative data instances from all data or reflect data class. Criticisms are data that is not represented by the prototypes.  </p><h1 id="1973b3c0-932f-4b16-8efd-5668c9173344" class="">Classifier design</h1><p id="2f29c0fc-40f9-4034-92d0-a87377e98a0b" class="">Finding prototypes is typically a classifier problem, some solving techniques are K-means clustering, learning vector quantization (LVQ), and Gaussian mixtures.</p><p id="67d45fc0-72a2-4809-bc42-a63ab9e7624f" class="">In fact, this problem is NP-hard, so in order to increase time performance, we use heuristics algorithms but decrease the performance of the solution.</p><h1 id="2c8891e2-5a0a-4f0b-b901-f2ae86c6333f" class="">Evolutionary Nearest Neighbour Classifier (ENPC)</h1><p id="01687235-d8d1-4969-9e81-9adf0c555ad9" class="">ENPC is a heuristic algorithm that finds prototypes, but it doesn’t decrease the performance of the solution. Below is shown an outline.</p><pre id="7cef0060-5b3a-4368-87e1-13249a394dde" class="code"><code>EvolutionaryLearning()
+         mutate</code></pre><p id="55916b2d-34e3-4b23-b2cf-4e19e1aa82ac" class="">Every generation approximates to the best solution.</p><h1 id="74622a5a-2000-4f45-91a9-c3d8cc2fbb33" class="">Prototype and criticisms</h1><p id="29af0f31-0543-40ca-8385-699ef9de7ec5" class="">ENPC finds prototypes, but what do prototypes mean? Prototypes are representative data instances from all data or reflect data class. Criticisms are data that is not represented by the prototypes.  </p><h1 id="1973b3c0-932f-4b16-8efd-5668c9173344" class="">Classifier design</h1><p id="2f29c0fc-40f9-4034-92d0-a87377e98a0b" class="">Finding prototypes is typically a classifier problem, some solving techniques are K-means clustering, learning vector quantization (LVQ), and Gaussian mixtures.</p><p id="67d45fc0-72a2-4809-bc42-a63ab9e7624f" class="">In fact, this problem is NP-hard, so in order to increase time performance, we use heuristics algorithms but decrease the performance of the solution.</p><h1 id="2c8891e2-5a0a-4f0b-b901-f2ae86c6333f" class="">Evolutionary Nearest Neighbour Classifier (ENPC)</h1><p id="01687235-d8d1-4969-9e81-9adf0c555ad9" class="">ENPC is a heuristic algorithm that finds prototypes, but it doesn’t decrease the performance of the solution. Below is shown an outline.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7cef0060-5b3a-4368-87e1-13249a394dde" class="code"><code class="language-Python">EvolutionaryLearning()
 initialize-population # One random of prototype.
  # number of iterations, accuracy, any combination of previous approaches.
  while the termination criterion is not true
@@ -688,4 +690,4 @@ initialize-population # One random of prototype.
          move
          die</code></pre><p id="2d1091a6-8e06-45a4-8bb6-e782fb199f8f" class="">
 </p><p id="3fdaa620-e07f-467c-b638-b33c69eae6f7" class="">[1] Fernández, F., Isasi, P. Evolutionary Design of Nearest Prototype Classifiers. <em>Journal of Heuristics</em> <strong>10</strong>, 431–454 (2004). https://doi.org/10.1023/B:HEUR.0000034715.70386.5b</p><p id="24a5e4b5-8e72-4e08-9249-bc0ed3e0f83c" class="">
-</p></div></article></body></html>
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

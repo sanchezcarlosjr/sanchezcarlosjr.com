@@ -1,0 +1,705 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Natural Language</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="9c30f2d6-2f0b-4500-95d0-f70f8573572e" class="page sans"><header><h1 class="page-title">Natural Language</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="f94d23e3-d9d3-47fc-85a2-791dbff06030" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3f446a17-1299-4cfc-a246-a66c775e8c1c">Preface</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f4893854-3a4f-48fc-aec2-89c696b33de9">Prerequisites</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0b003ddc-7b26-4422-ac47-c4877c3d7e91"><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5ca27f56-d098-41bc-97fc-6ab9b15ba276">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#78899086-2046-4223-aeec-4cd90adec9c5">What is X?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#819b146e-7317-48cb-a7b6-c483a85a5b4d">Why does X matter to you?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2fd1a030-de80-4987-b72b-96f751c4cc9f">Research</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#71d28820-aff8-4ad2-ab81-a3339ca6963e">Ecosystem</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8c21a06c-101a-46a8-ba50-c7f8ee6510d1">Story</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#48400fa0-dac8-4a4c-934d-fda75582e95a">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#45c77e80-68fb-49e5-b420-fb78565f8ac8">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d8073204-5388-46c3-ad15-9ccf293462ec"><strong>Fundamental Algorithms</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#04c2e904-25e0-4566-a516-be8e0cd4d32f">Formal approaches</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e71b9567-9e27-47f1-9e15-a0a175cb5353">Regex</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9f72e09b-6bc6-4615-b42a-abcb45a70916">Lexers and Parsers</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#564d9f32-6da4-4a2e-bd2c-fd4146c7b7c7"><strong>Approximate string matching</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#138ad432-0a06-46da-94ca-f4421b011ada">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9ef3af7a-f25f-4e1e-8e83-90112c2954da">N-grams</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0674bcb2-7aa4-437f-8845-95add18aaddf">Exercises</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2147ee60-3b9d-43de-b6e5-b63018f6ade7">Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10f105e1-b62b-43d3-bb88-5f6d996e837f">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8b018db0-e751-4e2b-9ba4-55ae3f49b5b2">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b9696834-119c-4a79-b58d-cffafdad6467">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6f39c910-40dc-401a-aa7b-5d725a511ded">Next steps</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#48d82b42-8c95-40a1-9aa4-7e365dd03b1f">References</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5551e40c-0357-452f-9033-fddd83df272e">The dimensions of language</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#62794f53-58ed-4200-8dc3-f31a4dab44a5"><strong>Speech recognition</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b95b7b90-352f-4734-9c3a-a06c8a1b7512">Machine translation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d6785b9a-4b94-4ebd-9532-6903e1d44769">References</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c8f67ec1-ddf9-4ebe-90a7-036c7237b721">MACTI</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#69cea76f-1134-49a1-8e7e-9e03796a4b89">Natural Language for Communication</a></div></nav><h1 id="3f446a17-1299-4cfc-a246-a66c775e8c1c" class="">Preface</h1><h2 id="f4893854-3a4f-48fc-aec2-89c696b33de9" class="">Prerequisites</h2><h2 id="0b003ddc-7b26-4422-ac47-c4877c3d7e91" class=""><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></h2><h1 id="5ca27f56-d098-41bc-97fc-6ab9b15ba276" class="">Introduction</h1><h2 id="78899086-2046-4223-aeec-4cd90adec9c5" class="">What is X?</h2><p id="56f525cb-9767-4a1b-8b4f-88954f70f3ca" class="">phonetic similarity, transliteration, nicknames, missing spaces or hyphens, titles and honorifics, truncated name components, missing name components, out-of-order name components, initials, names split inconsistently across database fields, same name in multiple languages, semantically similar names, and semantically similar names across language.<br/>2<br/></p><p id="c1468d41-50c4-4552-9d40-0d72430f8763" class="">Named Entity Recognition</p><p id="8cd6bf20-7a12-4b2d-acc2-12307b533f3f" class="">
+</p><p id="0302abff-2831-42b0-bb4f-78598f3e1b9a" class="">
+</p><h2 id="819b146e-7317-48cb-a7b6-c483a85a5b4d" class="">Why does X matter to you?</h2><h2 id="2fd1a030-de80-4987-b72b-96f751c4cc9f" class="">Research</h2><p id="01f3e5eb-4e87-4b4c-acb7-0fdd0dd793de" class=""><a href="https://www.deepmind.com/blog/rt-2-new-model-translates-vision-and-language-into-action?utm_source=twitter&amp;utm_medium=social&amp;utm_campaign=rt2">https://www.deepmind.com/blog/rt-2-new-model-translates-vision-and-language-into-action?utm_source=twitter&amp;utm_medium=social&amp;utm_campaign=rt2</a></p><h2 id="71d28820-aff8-4ad2-ab81-a3339ca6963e" class="">Ecosystem</h2><p id="2a343472-374d-4a93-bfe5-c9b29a5637bb" class="">Standards, jobs, industry, roles, … </p><ul id="7a660406-5d78-4579-bcf5-0f0dc992ae31" class="bulleted-list"><li style="list-style-type:disc">El <a href="https://sites.google.com/view/iberlef-2023/tasks?authuser=0">Iberlef</a> es una campaña de evaluación compartida de los sistemas de procesamiento<br/>del lenguaje natural en español y otras lenguas ibéricas.<br/></li></ul><ul id="d2ffdaaa-4f1d-46a8-9109-08984786d473" class="bulleted-list"><li style="list-style-type:disc">El <a href="https://clef2023.clef-initiative.eu/index.php?page=Pages/labs.html">CLEF</a> consiste en una conferencia sobre una amplia gama de temas en PLN, y un conjunto de laboratorios y talleres diseñados para probar diferentes aspectos de los sistemas de recuperación de información.</li></ul><ul id="5ef31fca-7776-48db-aa1e-ad5770304d55" class="bulleted-list"><li style="list-style-type:disc"><a href="https://semeval.github.io/SemEval2023/tasks.html">SEMEVAL</a> es una serie de talleres internacionales de investigación de procesamiento del lenguaje natural (PNL) cuya misión es avanzar en el estado actual<br/>de la técnica en el análisis semántico.<br/></li></ul><p id="1923eb4b-63e4-4f30-a926-4f857a294762" class="">Gensim: <a href="https://radimrehurek.com/gensim/models/word2vec.html">https://radimrehurek.com/gensim/models/word2vec.html</a></p><p id="322536b4-130b-4b1d-a5b1-84987af2bf31" class="">Spacy: <a href="https://spacy.io/">https://spacy.io/</a></p><p id="6b97feec-a9f9-4de9-8eb1-cfa21e11ef05" class=""><a href="https://es.dbpedia.org/">https://es.dbpedia.org/</a></p><p id="ae7c61cb-5230-4a0c-8f82-6b25b4934d15" class="">NLTK: <a href="https://www.nltk.org/">https://www.nltk.org/</a></p><p id="84cebefb-e6c5-47ba-a144-c78ec9e709dd" class=""><strong>spaCy</strong></p><p id="be81e970-b755-4e8d-885d-0fef84f30200" class=""><a href="https://www.rosette.com/">https://www.rosette.com/</a></p><p id="80516eba-c456-41f7-a774-5aa22d3ac4ef" class="">lucene /solr</p><p id="fa240626-e99c-419b-bbab-3f931cd1fe25" class="">elastic search</p><p id="4e3d5740-673f-408b-8a03-746c70e3b040" class=""><a href="https://stanfordnlp.github.io/CoreNLP/">https://stanfordnlp.github.io/CoreNLP/</a></p><p id="8590580f-d7ce-4000-ba90-9f2ab4aaa04d" class="">algolia</p><p id="03942734-db46-4679-a669-a7c1dc884b36" class=""><strong>General Architecture for Text Engineering</strong></p><p id="dc9a8749-e8c2-40d8-ac7f-3402dd926a97" class=""><strong>Apache OpenNLP</strong></p><p id="a8fec233-1f28-483e-9947-b8d4d19c617f" class=""><a href="https://explosion.ai/software#prodigy">https://explosion.ai/software#prodigy</a></p><h2 id="8c21a06c-101a-46a8-ba50-c7f8ee6510d1" class="">Story</h2><h2 id="48400fa0-dac8-4a4c-934d-fda75582e95a" class="">FAQ</h2><h2 id="45c77e80-68fb-49e5-b420-fb78565f8ac8" class="">Worked examples</h2><h1 id="d8073204-5388-46c3-ad15-9ccf293462ec" class=""><strong>Fundamental Algorithms</strong></h1><h2 id="04c2e904-25e0-4566-a516-be8e0cd4d32f" class="">Formal approaches</h2><h3 id="e71b9567-9e27-47f1-9e15-a0a175cb5353" class="">Regex</h3><h3 id="9f72e09b-6bc6-4615-b42a-abcb45a70916" class="">Lexers and Parsers</h3><h2 id="564d9f32-6da4-4a2e-bd2c-fd4146c7b7c7" class=""><strong>Approximate string matching</strong></h2><p id="76e7a1fa-2da9-4cfa-b647-df034c1a1a36" class=""><a href="https://www.youtube.com/watch?v=s0YSKiFdj8Q">https://www.youtube.com/watch?v=s0YSKiFdj8Q</a></p><h3 id="138ad432-0a06-46da-94ca-f4421b011ada" class="">Subsubsection</h3><h2 id="9ef3af7a-f25f-4e1e-8e83-90112c2954da" class="">N-grams</h2><h2 id="0674bcb2-7aa4-437f-8845-95add18aaddf" class="">Exercises</h2><ol type="1" id="00363142-9165-4f69-8c1d-684659849578" class="numbered-list" start="1"><li>Logic. Mathematics. Code. Automatic Verification such as Lean Proven or Frama-C.</li></ol><ol type="1" id="3799eaef-0ce5-4ee5-8d5e-a2840cca0dfd" class="numbered-list" start="2"><li>Languages in Anki.</li></ol><h2 id="2147ee60-3b9d-43de-b6e5-b63018f6ade7" class="">Projects</h2><h2 id="10f105e1-b62b-43d3-bb88-5f6d996e837f" class="">Summary</h2><h2 id="8b018db0-e751-4e2b-9ba4-55ae3f49b5b2" class="">FAQ</h2><h2 id="b9696834-119c-4a79-b58d-cffafdad6467" class="">Reference Notes</h2><h1 id="6f39c910-40dc-401a-aa7b-5d725a511ded" class="">Next steps</h1><h1 id="48d82b42-8c95-40a1-9aa4-7e365dd03b1f" class="">References</h1><h1 id="5551e40c-0357-452f-9033-fddd83df272e" class="">The dimensions of language</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1c826d5b-9c17-468f-a90d-64bf17512125" class="code"><code class="language-Mermaid">graph TD
+  Phonology --&gt; Lexer
+  Lexer --&gt; Parser
+  Parser --&gt; Semantics
+  Semantics --&gt; Pragmatic
+  Pragmatic --&gt;  Phonology</code></pre><p id="ba768e79-08b2-43ba-b703-50447211d5d2" class="">
+</p><figure id="23d57480-729f-461a-9d5f-1fbc77edf9cc" class="image"><a href="Untitled%20138.png"><img style="width:638px" src="Untitled%20138.png"/></a></figure><p id="f39b6163-707b-49a3-aa06-b6760ac5ddf6" class="">
+</p><p id="2f23bcea-0490-497d-8bc6-43ac39d2a592" class="">arquitectura seq2seq</p><p id="dfaa66ca-a0aa-443d-9a40-cb02efb22893" class="">Evaluation metrics</p><p id="43156ab6-bc20-4fcc-9123-b45e85b44920" class="">Parametrics</p><h2 id="62794f53-58ed-4200-8dc3-f31a4dab44a5" class=""><strong>Speech recognition</strong></h2><h1 id="b95b7b90-352f-4734-9c3a-a06c8a1b7512" class="">Machine translation</h1><h2 id="d6785b9a-4b94-4ebd-9532-6903e1d44769" class="">References</h2><p id="b3df5775-bd0c-492f-888a-c80c45ef3483" class="">Speech and Language Processing by <a href="http://web.stanford.edu/people/jurafsky/"><strong>Dan Jurafsky</strong></a><strong> and </strong><a href="http://www.cs.colorado.edu/~martin/"><strong>James H. Martin</strong></a></p><p id="d02af611-087f-4590-93cc-d5d4804b21c9" class=""><a href="https://ipfs.io/ipfs/QmdVkKvX5JBSNTWjNBW5LdbPFTT8wLQb1vCJtUzXRppXbg?filename=nlp.pdf">https://ipfs.io/ipfs/QmdVkKvX5JBSNTWjNBW5LdbPFTT8wLQb1vCJtUzXRppXbg?filename=nlp.pdf</a></p><p id="a020eb8c-95f7-4268-9e45-05b0668584c1" class=""><strong>Libro</strong></p><ul id="504f1403-ba07-435d-94f3-cc43cb4d2c59" class="bulleted-list"><li style="list-style-type:disc">Speech and Language Processing: capítulo 6, secciones 3-8: <a href="https://web.stanford.edu/~jurafsky/slp3/6.pdf">https://web.stanford.edu/~jurafsky/slp3/6.pdf</a></li></ul><ul id="b5438c77-5a39-4a3e-9e95-d26cc9d35804" class="bulleted-list"><li style="list-style-type:disc"></li></ul><p id="44611510-9121-4c3b-94e9-24e959409b76" class=""><strong>Artículos</strong></p><ul id="23a6e6a9-1924-4733-b3a8-e1e78acc465b" class="bulleted-list"><li style="list-style-type:disc">Paper original de Word2Vec: <a href="https://arxiv.org/abs/1301.3781">Efficient Estimation of Word Representations in Vector Space</a></li></ul><ul id="103c0add-9b62-482c-b368-6ed2acfb6963" class="bulleted-list"><li style="list-style-type:disc">Paper donde se discuten los sesgos que pueden existir en los embeddings: <a href="https://papers.nips.cc/paper/2016/file/a486cd07e4ac3d270571622f4f316ec5-Paper.pdf">Man is to Computer Programmer as Woman is to Homemaker? Debiasing Word Embeddings</a></li></ul><ul id="ec332cb6-bdb2-45af-b635-ea3bef3cd774" class="bulleted-list"><li style="list-style-type:disc"><a href="https://unipython.com/como-aprender-y-cargar-incrustaciones-de-palabras-word-embbeddings-en-keras/">https://unipython.com/como-aprender-y-cargar-incrustaciones-de-palabras-word-embbeddings-en-keras/</a></li></ul><ul id="256accf7-4523-46ff-b549-4b2097462e10" class="bulleted-list"><li style="list-style-type:disc"><a href="https://github.com/somosnlp/nlp-de-cero-a-cien/tree/main">https://github.com/somosnlp/nlp-de-cero-a-cien/tree/main</a></li></ul><ul id="68ede714-dffc-40a6-abb1-e8fc794c5fbd" class="bulleted-list"><li style="list-style-type:disc"><a href="https://colab.research.google.com/drive/1g4ppk-6zjNhqj38fXUsGPV7ixdT5Seii?usp=sharing">https://colab.research.google.com/drive/1g4ppk-6zjNhqj38fXUsGPV7ixdT5Seii?usp=sharing</a></li></ul><ul id="2544e404-59a0-431a-8d03-6a7c7007bd05" class="bulleted-list"><li style="list-style-type:disc"><a href="https://huggingface.co/learn/nlp-course/chapter0/1?fw=tf">https://huggingface.co/learn/nlp-course/chapter0/1?fw=tf</a></li></ul><p id="24468235-58d1-48ee-8e8b-01803bc1c950" class="">
+</p><p id="0d430eef-977b-4bb8-884e-936b30f0a8fd" class="">
+</p><p id="3456a096-4fb9-49f0-bf72-b17f12d3c476" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c98881f3-86e0-4121-a0b2-7b319949f115" class="code code-wrap"><code class="language-Plain Text">@inproceedings{bender-koller-2020-climbing,
+    title = &quot;Climbing towards {NLU}: {On} Meaning, Form, and Understanding in the Age of Data&quot;,
+    author = &quot;Bender, Emily M.  and
+      Koller, Alexander&quot;,
+    booktitle = &quot;Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics&quot;,
+    month = jul,
+    year = &quot;2020&quot;,
+    address = &quot;Online&quot;,
+    publisher = &quot;Association for Computational Linguistics&quot;,
+    url = &quot;https://aclanthology.org/2020.acl-main.463&quot;,
+    doi = &quot;10.18653/v1/2020.acl-main.463&quot;,
+    pages = &quot;5185--5198&quot;,
+    abstract = &quot;The success of the large neural language models on many NLP tasks is exciting. However, we find that these successes sometimes lead to hype in which these models are being described as {``}understanding{&#x27;&#x27;} language or capturing {``}meaning{&#x27;&#x27;}. In this position paper, we argue that a system trained only on form has a priori no way to learn meaning. In keeping with the ACL 2020 theme of {``}Taking Stock of Where We{&#x27;}ve Been and Where We{&#x27;}re Going{&#x27;&#x27;}, we argue that a clear understanding of the distinction between form and meaning will help guide the field towards better science around natural language understanding.&quot;,
+}
+</code></pre><p id="71111227-da27-4af9-ad61-dd07d20e010e" class="">
+</p><p id="a4c38e05-3836-4993-a3bf-b8de49110ede" class="">
+</p><h1 id="c8f67ec1-ddf9-4ebe-90a7-036c7237b721" class="">MACTI</h1><p id="ab178b1f-7e83-4165-9bc5-27f959a33964" class=""><a href="https://www.youtube.com/watch?v=D_R3swIzLP0">https://www.youtube.com/watch?v=D_R3swIzLP0</a></p><p id="ea60c742-9803-4cee-a180-c1221a0ce322" class=""><a href="https://www.youtube.com/watch?v=dCdGFHURx5g">https://www.youtube.com/watch?v=dCdGFHURx5g</a></p><p id="3fb24757-a91f-4fc8-8b3d-fc61d6e01d22" class=""><a href="https://www.youtube.com/watch?v=Z6GCalIGnSc">https://www.youtube.com/watch?v=Z6GCalIGnSc</a></p><p id="34737a75-3835-4fd8-b7a5-48ee7afa3871" class=""><a href="https://www.youtube.com/watch?v=ruiCm5SGtYg">https://www.youtube.com/watch?v=ruiCm5SGtYg</a></p><p id="56c82fce-2cfe-4a91-969d-184f9f0a0ee2" class=""><a href="https://www.youtube.com/watch?v=iu3XkI6-RvE">https://www.youtube.com/watch?v=iu3XkI6-RvE</a></p><p id="f5bec6dd-64aa-4f56-87c3-d3971100b654" class=""><a href="https://drive.google.com/drive/folders/1G6-5yUlqDAKHJX14sZ0L3MeZ6iA4LsHm?usp=sharing">https://drive.google.com/drive/folders/1G6-5yUlqDAKHJX14sZ0L3MeZ6iA4LsHm?usp=sharing</a></p><h1 id="69cea76f-1134-49a1-8e7e-9e03796a4b89" class="">Natural Language for Communication</h1><p id="d7b4dafe-3f98-48a4-8718-d48d6523e047" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

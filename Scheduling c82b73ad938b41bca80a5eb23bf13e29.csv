@@ -1,0 +1,25 @@
+﻿Name,Date,Status
+[Thesis Outline] 3.1 Theory - Portfolio investment,"August 4, 2023 → August 11, 2023",In progress
+[Thesis Outline] 2. Introduction,"October 28, 2023 → November 2, 2023",Not started
+[Thesis Outline] 1. Abstract,"October 28, 2023 → November 2, 2023",Not started
+[Thesis Outline] 3.2 Theory - Genetic algorithms and optimization,"August 11, 2023 → August 24, 2023",Not started
+[Thesis Outline] 3.3 Theory - WASM on EvaNotebook,"September 1, 2023 → September 7, 2023",Not started
+[Thesis Outline] 3.4 Theory - Transformers,"September 7, 2023 → September 21, 2023",Not started
+[Thesis Outline] 3.5 Theory (Overview),"September 3, 2023 → September 7, 2023",Not started
+"[Thesis Outline] 4 Methodology ","September 22, 2023 → October 19, 2023",In progress
+[Thesis Outline] 5 Conclusions and Results,"October 20, 2023 → October 26, 2023",Not started
+"[Development and Experiments]  Learn Rust , WASM Version","August 4, 2023 → August 15, 2023",
+[Admnistrative task] Request the thesis committee member record,"August 7, 2023",Not started
+[Admnistrative task] Request thesis review to committe,"November 3, 2023",Not started
+[Admnistrative task] Change the thesis format to UABC standards,"October 21, 2023",Completed
+[Thesis Outline] 2.1 Problem Description and Statement,"October 28, 2023 → November 2, 2023",Not started
+[Thesis Outline] 2.2 Goals,"October 28, 2023 → November 2, 2023",Not started
+"[Development and Experiments]  Combine Genetic Algorithm, Transformer and API in a suitable user interface","October 11, 2023 → October 31, 2023",Not started
+"   [Development and Experiments]  Propose a Genetic Algorithm configuration in RUST WASM","August 30, 2023 → September 6, 2023",Not started
+[Development and Experiments]  Explorator analysis the BMV based on API REST,"August 20, 2023",In progress
+[Development Experiments] Train a Transformer to give a sentimental analysis suitable to be added Optimization model,"September 2, 2023 → September 14, 2023",Not started
+[Development Experiments] Propose a model which includes a sentimental analysis,"September 1, 2023 → September 16, 2023",Not started
+"[Development and Experiments]  Conduct tests and performance analysis of the implemented algorithms, using
+real-time stock market data.","September 15, 2023 → September 29, 2023",Not started
+[Development and Experiments]  Compare the performance of our approach with other authors,"October 1, 2023 → October 17, 2023",Not started
+[Thesis Outline] 2.3 State of art,"October 28, 2023 → November 2, 2023",Not started

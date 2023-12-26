@@ -1,0 +1,25 @@
+﻿Name,Assign,Created by,Created time,Last edited by,Last edited time,Status,Time
+Arquitectura,Carlos Sanchez,Carlos Sanchez,"August 22, 2022 6:10 PM",Carlos Sanchez,"September 26, 2022 4:21 PM",Completed,"August 22, 2022 → August 24, 2022"
+Estudio de Express & MongoDB,"Carlos Sanchez, Jorge Garcia Serrano, Miguel Angel Martinez Alonso, andres.herrera37@uabc.edu.mx",Carlos Sanchez,"August 29, 2022 5:41 PM",Carlos Sanchez,"September 5, 2022 5:32 PM",Completed,"August 29, 2022 → September 5, 2022"
+Estudio de React Admin,"Edgar Rodriguez Antillon, Carlo Alfredo Pano Flores, Francisco Javier Huerta Silva, Omar Alonso Del Río Peralta",Carlos Sanchez,"August 29, 2022 5:41 PM",Francisco Javier Huerta Silva,"September 5, 2022 5:46 PM",Completed,"August 29, 2022 → September 10, 2022"
+Crear componente de inicio de sesión y agreguen los colores institucionales.,"Carlo Alfredo Pano Flores, Francisco Javier Huerta Silva, Omar Alonso Del Río Peralta, Edgar Rodriguez Antillon",Carlos Sanchez,"September 5, 2022 4:00 PM",Carlos Sanchez,"September 7, 2022 1:42 PM",Completed,"September 6, 2022 → September 13, 2022"
+Crear consulta de inicio de sesión,"Miguel Angel Martinez Alonso, andres.herrera37@uabc.edu.mx, Jorge Garcia Serrano",Carlos Sanchez,"September 5, 2022 4:01 PM",Carlos Sanchez,"September 19, 2022 4:01 PM",Completed,"September 6, 2022 → September 13, 2022"
+Crear boilerplate del ecosistema,Carlos Sanchez,Carlos Sanchez,"September 5, 2022 4:21 PM",Carlos Sanchez,"October 3, 2022 8:26 PM",Completed,"September 7, 2022 → September 13, 2022"
+Pruebas unitarias en la capa de datos,,Carlos Sanchez,"September 5, 2022 6:05 PM",Carlos Sanchez,"December 7, 2022 12:58 PM",Completed,
+Pruebas de integración con Selenium u otro Framework,Jorge Garcia Serrano,Carlos Sanchez,"September 5, 2022 6:05 PM",Carlos Sanchez,"December 7, 2022 12:57 PM",Completed,"November 15, 2022 → November 29, 2022"
+Generación de reportes para la maestra Judith según el formato institucional,Miguel Angel Martinez Alonso,Carlos Sanchez,"September 5, 2022 6:51 PM",Carlos Sanchez,"December 7, 2022 12:58 PM",Completed,
+Agregación de datos,,Carlos Sanchez,"September 7, 2022 1:52 PM",Carlos Sanchez,"December 7, 2022 12:58 PM",Completed,
+Dashboard,,Carlos Sanchez,"September 7, 2022 1:52 PM",Carlos Sanchez,"December 7, 2022 12:58 PM",Completed,
+[Autenticación] Los usuarios inicia sesión (valida sus credenciales) y obtiene permisos,"Carlo Alfredo Pano Flores, Francisco Javier Huerta Silva, Omar Alonso Del Río Peralta, andres.herrera37@uabc.edu.mx",Carlos Sanchez,"September 7, 2022 1:57 PM",Carlos Sanchez,"December 7, 2022 12:57 PM",Completed,"November 15, 2022 → November 29, 2022"
+El usuario interactúa con el módulo de [Movilidad Académica de Entrada],,Carlos Sanchez,"September 7, 2022 2:23 PM",Carlos Sanchez,"December 7, 2022 12:57 PM",Completed,"September 7, 2022 → September 13, 2022"
+Los superadmnistradores interectuán con el módulo de [Usuarios],,Carlos Sanchez,"September 7, 2022 5:52 PM",Carlos Sanchez,"December 7, 2022 12:57 PM",Completed,"September 7, 2022 → September 7, 2022"
+El usuario interacúa con [intercambio estudiantil salida],,Carlos Sanchez,"September 12, 2022 4:11 PM",Carlos Sanchez,"December 7, 2022 1:01 PM",Completed,"September 7, 2022 → September 7, 2022"
+El usuario interacúa con [Movilidad Académica de Salida],,Carlos Sanchez,"September 12, 2022 4:11 PM",Carlos Sanchez,"December 7, 2022 1:00 PM",Completed,"September 7, 2022 → September 7, 2022"
+El usuario interectúa con [intercambio estudiantil entrada],,Carlos Sanchez,"September 12, 2022 4:12 PM",Carlos Sanchez,"December 7, 2022 12:57 PM",Completed,"September 7, 2022 → September 7, 2022"
+El usuario interactúa con [convenios],,Carlos Sanchez,"September 12, 2022 4:13 PM",Carlos Sanchez,"December 7, 2022 1:01 PM",Completed,"September 7, 2022 → September 7, 2022"
+Procedimientos para acceder a API cimarrón,"jluna@uabc.edu.mx, Carlos Sanchez",Carlos Sanchez,"September 12, 2022 5:25 PM",Carlos Sanchez,"October 13, 2022 10:06 AM",Completed,"September 7, 2022 → October 4, 2022"
+Pruebas en facultad de ingeniería,,Carlos Sanchez,"September 19, 2022 5:20 PM",Carlos Sanchez,"December 7, 2022 12:57 PM",Completed,"September 7, 2022 → September 7, 2022"
+Pruebas en facultad de ciencias,,Carlos Sanchez,"September 19, 2022 5:20 PM",Carlos Sanchez,"December 7, 2022 12:57 PM",Completed,"September 7, 2022 → September 7, 2022"
+Exportar en distintos formatos,"Francisco Javier Huerta Silva, Omar Alonso Del Río Peralta, Carlo Alfredo Pano Flores, Edgar Rodriguez Antillon",Carlos Sanchez,"October 10, 2022 4:13 PM",Carlos Sanchez,"December 7, 2022 12:58 PM",Completed,"October 4, 2022 → November 1, 2022"
+[DevOps] Continua integración,Edgar Rodriguez Antillon,Carlos Sanchez,"October 10, 2022 4:15 PM",Carlos Sanchez,"December 7, 2022 1:37 PM",Completed,"November 1, 2022 → November 29, 2022"
+Docker+VPN en desarrollo,Miguel Angel Martinez Alonso,Carlos Sanchez,"November 15, 2022 11:25 AM",Carlos Sanchez,"November 24, 2022 7:26 AM",Completed,"September 7, 2022 → November 29, 2022"

@@ -1,0 +1,112 @@
+﻿Name,Assign,Status
+Transparent backend gateway,,Not started
+Bash language,,Not started
+IPC Calls as Unix,,Not started
+Descentralzied RPC,,Not started
+Filesystem decentralized,,Not started
+Block changes on a block,,Not started
+AutoGPT + Eva,,In progress
+Image base64 to Array Bytes,,Not started
+"Instead of MQTT, using WebRTC or Real Time Streaming Protocol to send files",,Not started
+WebAssembly,,Not started
+Implement other languages,,Not started
+Twilio to some open-source alternative,,Not started
+Matrix replication,,Not started
+Transform notebook into extensible knowledge base with same principles,,Not started
+Led animation,,Not started
+Wizard of Oz control panel,,Not started
+Improve developer experience with JSON forms,,Not started
+Integrate correctly Angular Material,,Not started
+It must support raw sockets,,Not started
+QUIC protocol,,Not started
+Web bluetooth protocol,,Not started
+SSL Broker,,Not started
+Unit Testing evaluation,,Not started
+Button grid in form,,Not started
+Khan Academy - Evaluation,,Not started
+We can use previous work with docker. Adrian.,,Not started
+Download replication,,Not started
+Gist replication,,Not started
+People want custom diagrams,,Not started
+Support custom languages,,Not started
+Tailawnd css styles,,Not started
+Custom global styles,,Not started
+It must checkpoint iframe form,,Not started
+Save face and say user name,,Not started
+Face Follower,,Not started
+Face with Evaluation,,Not started
+Machine Learning Model Accuracy,,Not started
+OpenStreetMap,,Not started
+EvaNotebook should support TCP Connections,,Not started
+,,Not started
+EvaNotebook should support Protocol Buffers,,Not started
+EvaNotebook should support SSH Protocol,,Not started
+WebRTC,,Not started
+Webhook and Zapier connections,,Not started
+Runtime modes,,Not started
+IPFS Deployment,,Not started
+Vim mode,,Not started
+Notebook should redirect its checkpoint to any user choice,,Not started
+Latex support,,Not started
+Write documentation,,Not started
+Implement Home Assistant,,Not started
+[Idea] Notebook should support Node-RED json,,Not started
+Notebook must support shared memory,,Not started
+[Idea]  Virtual Reality,,Not started
+Blazor,,Not started
+EvaLanguage over MQTT,,Not started
+Connect Matrix Voice to MQTT,,Not started
+Errors management,,Not started
+[Idea] Notebook should support script automation from Home Assistant,,Not started
+Set up Cloudflare tunnel for secure connections,,Done
+S3 MinIO,,Not started
+Monitor Tool. Uptime Kuma,,Not started
+Descentralized Checkpoint,,Not started
+Blockchain?,,Not started
+Custom machine learning models,,Not started
+MapReaduce Threads,,Not started
+Test voices,,Not started
+Video 1 minute,,Not started
+Code Editor,,Done
+SQL,,Not started
+Prolog,,Not started
+MermaidJS,,Not started
+Share video and audio,,Not started
+Mathematics,,Not started
+ChatGPT open source alternatives,,Not started
+ChatGPT Plugin,,Not started
+Markdown support,,Not started
+Share notebook with users in different modes,,Not started
+Offline Notebook. Notebook must work with no Internet.,,Not started
+Users want to see code when it selects the notebook,,Not started
+"Interactive Art, Games and Simulations",,Not started
+Share memory between threads,,Not started
+Make a Component dynamically instead of eval or new Function. Custom Compiler.,,Not started
+Forms based on JSON SCHEMA and new cell architecture,,Done
+Custom WordFace,,Done
+Peer-to-peer Collaborative Notebook,,In progress
+Run Python on Browser,,In progress
+[Idea] Plotting,,Done
+Notebook,,Done
+MQTT Protocol,,Done
+Notebook Table of contents,,Done
+Python support,,Not started
+Code Component,,Not started
+Typescript support,,Not started
+await/async inline,,Not started
+Automatic installation when people import inline,,Not started
+Danfo.js,,Not started
+Format button,,Not started
+"Visualise arrays and objects, similar to the Chrome object inspector.",,Not started
+Shortcuts,,Not started
+,,Not started
+https://github.com/amitjans/Eva3D_2.0,,Not started
+https://github.com/eva-social-robot/3dmodels,,Not started
+Blender models,,Not started
+3D models,,Not started
+Python and blender,,Not started
+"You can design with Blender 3D meshes. We print using the .stl format one mesh at a time, but no colors, lights, or other fancy stuff.",,Not started
+Blender and 3D impression notes,,Not started
+Evabot design on Blender,,Not started
+Evanotebook should support bittorrent,,Not started
+WASM,,Not started

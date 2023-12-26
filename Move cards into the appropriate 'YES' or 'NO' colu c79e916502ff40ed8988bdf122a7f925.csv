@@ -1,0 +1,6 @@
+﻿Name,Priority,Status,Submitted to work
+Fonts used for the text content are at least 14px in size,High,,No
+Font size/weight is different for various content types,High,,No
+Different font styles/families are used to distinguish content from controls,Middle,,No
+"Uppercase words are used only for labels, headers, or acronyms",Middle,,No
+No more than two different font families are used,Middle,,No

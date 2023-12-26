@@ -1,0 +1,10 @@
+﻿Name,Priority,Status,Submitted to work
+The terminology of menu items is user-friendly,High,YES,No
+"If a user can select multiple options, does the system show which options are already chosen?",High,NO,No
+Each screen starts with a title that describes the page content,High,NO,No
+"If the system processes a request for more than 3 seconds, is the loader displayed & is there a hint of how much time processing will take (in seconds or visually)?",High,NO,No
+Is it clear which page you are on?,Middle,YES,No
+Are clickable elements illuminated in hover state?,Middle,,No
+"If the system 'thinks' for more than two seconds, is the loader shown?",Middle,,No
+"If the user selects or changes the order of objects, does the system illustrate it?",Low,YES,No
+The icons indicate their status,Low,YES,No

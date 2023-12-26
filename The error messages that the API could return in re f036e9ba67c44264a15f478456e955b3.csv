@@ -1,0 +1,5 @@
+﻿Error Type,Error detail,Description
+forbidden (400),forbidden,api key not found
+notFound (404),Mexican not found,Mexican not found
+badRequest (401),Bad mexican data by finder,Remember to follow instructions by call
+internalError (500),internalError,

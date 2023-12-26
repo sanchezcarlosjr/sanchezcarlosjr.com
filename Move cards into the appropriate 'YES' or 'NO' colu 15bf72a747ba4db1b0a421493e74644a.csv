@@ -1,0 +1,11 @@
+﻿Name,Priority,Status,Submitted to work
+"For complex fields (password, username), validation takes place in real-time",High,,No
+The error message indicates the corresponding error field,Middle,,No
+"The name of the field is always visible (in the filled state, too)",Middle,,No
+Users can see the limit of characters that can be entered in the field,Middle,,No
+Fields are not case-sensitive (when applicable),Middle,,No
+Fields contain default values (when applicable),Middle,,No
+"The validity of the field is checked upon completion of the entry, not at the time of filling and not by pressing the button",Middle,,No
+Users are able to preview changes if reverting them takes a long time,Middle,,No
+The input of incorrect data type in the field is blocked (e.g. typing numbers in the name input field),Middle,,No
+"In the forms with 2+ fields, the button remains inactive until users fill in all of the fields",Middle,,No

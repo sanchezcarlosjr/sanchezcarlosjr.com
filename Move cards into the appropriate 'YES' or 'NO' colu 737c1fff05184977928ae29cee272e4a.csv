@@ -1,0 +1,9 @@
+﻿Name,Priority,Status,Submitted to work
+"When users complete the action, the system doesn't require additional steps like 'submit' or 'apply'",High,,No
+Users can delete their account,High,,No
+Is there a cancellation feature if it's needed?,Middle,,No
+Users can make a backup of a current version,Middle,,No
+Users can edit information about themselves,Middle,,No
+It is possible to cancel the process,Middle,,No
+Users can skip any system issues,Middle,,No
+The site has breadcrumbs to provide navigation for multilevel processes,Middle,,No

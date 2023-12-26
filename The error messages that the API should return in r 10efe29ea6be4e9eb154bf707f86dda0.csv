@@ -1,0 +1,5 @@
+﻿Error Type,Error detail,Description,Cases
+forbidden (403),forbidden,Api key 'pT32raieZC3' not found,"'pT32raieZC3', '', '3fafafa'"
+notFound (404),curpNotFound,Return a object Null.,'TOJO81020503H5005'
+badRequest (401),badCURPFormat,'TOJO81020503H500' is a invalid curp,
+internalError (500),internalError,,

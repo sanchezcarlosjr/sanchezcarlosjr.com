@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Stochastic processes</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="7314da2a-c65a-472e-abea-02c19c26a27b" class="page sans"><header><h1 class="page-title">Stochastic processes</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="eab054ba-e99d-4577-a864-d99ea9dfdb23" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#48bbddc4-ea0b-43ca-8e25-697393788136">Preface</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e0fb99f3-53a9-4ce8-af49-023b4afe2ff2">Prerequisites</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cd4a75bd-dcca-4f8d-ba19-671ed799c6f2"><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#30fe2766-d591-4302-bd25-60bb1cfd2fe7">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#504d2d66-b4c4-45b9-82f5-396025780e4c">What is a stochastic process?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2861c00d-d2e2-4211-b924-8b86faccd2b6">Why does time serie analysis matter to you?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f73cd314-77eb-41c0-bf55-da37ef262be8">Research</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5bc920ac-e6fb-48a7-a28c-b03b07027515">Ecosystem</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e529a14f-d49b-4815-8162-bf705e957598">Python libraries</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#51160876-8781-441f-8c9e-6c456511e403">Story</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#562c572a-67d1-4aea-b40e-d9cf573e0b67">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#36a36f83-42cb-4c0f-ba08-74b9d55fbd41">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#06d5cb83-c4d7-48fb-9834-a34c05671bce">Characteristics of time series</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b4fd6630-b9ee-4440-b802-93aa3685652d">The nature of time series data</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#60dce310-1c06-4472-aa0e-d24dca8e9b9e">Classic</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f6be38ed-d8d0-40e2-ba06-a3956e3f0142">Static covariates</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#27ca5b30-e750-4adc-9fdb-d9b46e034d06">Hierarchical time series</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fb7e9673-d258-4e0d-9fa2-c4046d58e9e1">Exercises</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6bdf684c-20f3-4fbc-8276-904e34b45530">Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a43ec9ce-5ed1-44c2-903e-96b16b22bebb">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c2da5d2-face-4cd6-8cdf-cf2070b4e726">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f845b29e-1735-43b3-97ea-cfabc91d4fc0">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#648ea9cb-16e5-479a-8eea-712fb7d7bd06"> Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ce1cca04-8b7b-4e90-8e0e-91c00520adfd">Exploratory analysis</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#76da5ea6-fd78-4df0-819b-bead2fade853">Curve fitting and signal estimation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#31f678f6-24c5-4c41-a9c4-e29a80a5fb98">Function approximation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#341d5712-41c6-4e01-9c55-d9c15123d685">Time series forecasting and prediction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#122ca50f-e74f-4547-bd87-5e3863c63925">Time series classification</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f61d3bdd-f206-49db-b879-00d2bfeac976">Time series segmentation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1a52b176-ceae-409f-91ed-1e04490b558c">Next steps</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2971be1e-c894-4435-ab08-5dd13401f175">Explainable time series models</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#eb11a476-b6e3-4402-8cb7-3b36be833930">References</a></div></nav><h1 id="48bbddc4-ea0b-43ca-8e25-697393788136" class="">Preface</h1><h2 id="e0fb99f3-53a9-4ce8-af49-023b4afe2ff2" class="">Prerequisites</h2><h2 id="cd4a75bd-dcca-4f8d-ba19-671ed799c6f2" class=""><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></h2><h1 id="30fe2766-d591-4302-bd25-60bb1cfd2fe7" class="">Introduction</h1><h2 id="504d2d66-b4c4-45b9-82f5-396025780e4c" class="">What is a stochastic process?</h2><p id="80e17e0d-a70c-440d-874d-7848c9aa6b13" class="">
+</p><p id="0d2f7ed5-298c-4106-94b1-48e76a8a6708" class="">Space of states</p><p id="06c1d89a-a7a0-4e5d-81bd-3408cdae0816" class="">A time series is a stochastic process indexed by a discrete monotonic increasing set.</p><p id="cfaa55af-d167-41a8-b386-659426881d72" class="">Type of stochastic dependence between random variables</p><p id="4cbef1ec-5900-4e5d-8b95-41d1153c97b6" class="">
+</p><p id="23ac1f76-d3b3-48ef-a6ab-d44a4c54717f" class=""><a href="https://stats.stackexchange.com/questions/126791/is-a-time-series-the-same-as-a-stochastic-process">https://stats.stackexchange.com/questions/126791/is-a-time-series-the-same-as-a-stochastic-process</a></p><p id="e52b247f-a383-4f34-af13-021c185ab7e8" class="">
+</p><p id="50342453-a706-4e15-8296-4a53aefe3522" class="">1.1 La ecuación de regresión lineal simple poblacional<br/>1.2 Diagrama de dispersión<br/>1.3 Estimación de la ecuación de regresión lineal simple<br/>1.4 Confiabilidad de las predicciones<br/>1.5 Prueba de hipótesis acerca del coeficiente de regresión<br/></p><p id="33383903-6b51-4af5-8df5-963b5ffc9072" class="">
+</p><p id="0d261dfd-4f4f-4f51-a640-2047dd8feb02" class="">2.1 Modelo de regresión múltiple<br/>2.2 Notación matricial<br/>2.3 Prueba de hipótesis para los parámetros del modelo<br/></p><p id="7a87af37-db78-4c68-90b3-c3183d421088" class="">
+</p><p id="654dec15-c0be-4ea9-b724-d9638bc0a8f3" class="">3.1 Supuestos de la correlación simple<br/>3.2 Coeficiente de correlación lineal poblacional<br/>3.3 Coeficiente de correlación lineal muestral<br/>3.4 Prueba de hipótesis acerca del coeficiente de correlación lineal<br/></p><p id="a87a865f-d6c7-42d8-93aa-a4b726dc1c08" class="">
+</p><p id="474fe592-e145-47a0-94b0-b39976db7f2f" class="">4.1 Elementos de una serie de tiempo<br/>4.2 Tipos de series de tiempo<br/>4.3 Estructura de una serie de tiempo<br/>4.3.1 Tendencia<br/>4.3.2 Estacionalidad<br/>4.3.3 Movimientos cíclicos<br/>4.3.4 Variaciones inesperadas<br/>4.4 Modelos para el análisis de series de tiempo<br/>4.4.1 Modelos de media cero<br/>4.4.2 Caminata aleatoria<br/>4.4.3 Modelos de tendencia<br/>4.4.4 Modelos de estacionalidad<br/></p><h2 id="2861c00d-d2e2-4211-b924-8b86faccd2b6" class="">Why does time serie analysis matter to you?</h2><h2 id="f73cd314-77eb-41c0-bf55-da37ef262be8" class="">Research</h2><h2 id="5bc920ac-e6fb-48a7-a28c-b03b07027515" class="">Ecosystem</h2><p id="b74f4c44-4604-4919-bc7e-13cf52bee200" class="">Standards, jobs, industry, roles, … </p><h3 id="e529a14f-d49b-4815-8162-bf705e957598" class="">Python libraries</h3><p id="0156570b-ae4b-4326-b363-5ee94c15d14a" class=""><a href="https://github.com/lmmentel/awesome-time-series">https://github.com/lmmentel/awesome-time-series</a></p><p id="ef469b62-acb2-414c-9a2e-e49ee1742884" class=""><a href="https://github.com/rjt1990/pyflux">https://github.com/rjt1990/pyflux</a></p><p id="aae5a49e-febc-4e07-8d57-a3ffc9fb42ec" class=""><a href="https://github.com/facebook/prophet">https://github.com/facebook/prophet</a></p><p id="1051e2e0-fb72-438a-95c3-492ee0d4fe98" class=""><a href="https://github.com/blue-yonder/tsfresh">https://github.com/blue-yonder/tsfresh</a></p><p id="60e2cb33-8eaa-41d2-b949-9c064573ec3e" class=""><a href="https://www.aeon-toolkit.org/en/latest/">https://www.aeon-toolkit.org/en/latest/</a></p><p id="d6769bf9-7347-4101-8371-b4ec08f6b9a4" class=""><a href="https://github.com/ethanrosenthal/skits">https://github.com/ethanrosenthal/skits</a></p><p id="853503b9-5a7e-4383-b957-7bbbb6214ad3" class=""><a href="https://github.com/dmbee/seglearn">https://github.com/dmbee/seglearn</a></p><h2 id="51160876-8781-441f-8c9e-6c456511e403" class="">Story</h2><h2 id="562c572a-67d1-4aea-b40e-d9cf573e0b67" class="">FAQ</h2><h2 id="36a36f83-42cb-4c0f-ba08-74b9d55fbd41" class="">Worked examples</h2><h1 id="06d5cb83-c4d7-48fb-9834-a34c05671bce" class="">Characteristics of time series</h1><h2 id="b4fd6630-b9ee-4440-b802-93aa3685652d" class="">The nature of time series data</h2><h3 id="60dce310-1c06-4472-aa0e-d24dca8e9b9e" class="">Classic</h3><h3 id="f6be38ed-d8d0-40e2-ba06-a3956e3f0142" class="">Static covariates</h3><p id="2ace2569-d7aa-42ac-9969-b3e7da2a1939" class="">Time series can contain static data.</p><h3 id="27ca5b30-e750-4adc-9fdb-d9b46e034d06" class="">Hierarchical time series</h3><h2 id="fb7e9673-d258-4e0d-9fa2-c4046d58e9e1" class="">Exercises</h2><ol type="1" id="8684ef9a-aa81-4ea1-88b9-50e5822841a7" class="numbered-list" start="1"><li>Logic. Mathematics. Code. Automatic Verification such as Lean Proven or Frama-C.</li></ol><ol type="1" id="6c3ebab5-ebe9-4bc6-b594-b5712e2fb3c7" class="numbered-list" start="2"><li>Languages in Anki.</li></ol><h2 id="6bdf684c-20f3-4fbc-8276-904e34b45530" class="">Projects</h2><h2 id="a43ec9ce-5ed1-44c2-903e-96b16b22bebb" class="">Summary</h2><h2 id="1c2da5d2-face-4cd6-8cdf-cf2070b4e726" class="">FAQ</h2><h2 id="f845b29e-1735-43b3-97ea-cfabc91d4fc0" class="">Reference Notes</h2><h1 id="648ea9cb-16e5-479a-8eea-712fb7d7bd06" class=""> Analysis</h1><h1 id="ce1cca04-8b7b-4e90-8e0e-91c00520adfd" class="">Exploratory analysis</h1><h1 id="76da5ea6-fd78-4df0-819b-bead2fade853" class="">Curve fitting and signal estimation</h1><h1 id="31f678f6-24c5-4c41-a9c4-e29a80a5fb98" class="">Function approximation</h1><h1 id="341d5712-41c6-4e01-9c55-d9c15123d685" class="">Time series forecasting and prediction</h1><h1 id="122ca50f-e74f-4547-bd87-5e3863c63925" class="">Time series classification</h1><p id="8d43e954-ddae-481b-9b6e-34268a7287fe" class=""><a href="https://www.timeseriesclassification.com/">https://www.timeseriesclassification.com/</a></p><h1 id="f61d3bdd-f206-49db-b879-00d2bfeac976" class="">Time series segmentation</h1><h1 id="1a52b176-ceae-409f-91ed-1e04490b558c" class="">Next steps</h1><h2 id="2971be1e-c894-4435-ab08-5dd13401f175" class="">Explainable time series models</h2><p id="f6f699e8-17f4-4388-9ea3-77d99e989178" class=""><a href="https://www.youtube.com/watch?v=e5qs9PG0HFM&amp;list=PLH3Ao8RnwtkTtqDeRum-t-GD1OP0pm_kv">https://www.youtube.com/watch?v=e5qs9PG0HFM&amp;list=PLH3Ao8RnwtkTtqDeRum-t-GD1OP0pm_kv</a></p><h1 id="eb11a476-b6e3-4402-8cb7-3b36be833930" class="">References</h1><p id="002af230-fba8-4140-bd3a-657af068e59a" class="">1. Shumway, Robert H., and Stoffer, David S. <em>Time Series Analysis and Its Applications: With R Examples</em>, Third Edition. Springer Verlag. <a href="https://rads.stackoverflow.com/amzn/click/com/144197864X">Available here</a>.<br/>2. <br/>Bisgaard, Søren, and Kulahci, Murat. <em>Time Series Analysis and Forecasting by Example</em>, 1st Edition. John Wiley &amp; Sons. <a href="https://rads.stackoverflow.com/amzn/click/com/0470540648">Available here</a>.<br/>3. <br/>Beck, V.L. (2017). <em>Linear Regression: Models, Analysis, and Applications</em>. Nova Science Publishers. Available at: <a href="https://search.ebscohost.com/login.aspx?direct=true&amp;db=e000xww&amp;AN=1562876&amp;lang=es&amp;site=ehost-live">EBSCOhost</a>.<br/>4. <br/>Bingham, N. H., &amp; Fry, J. M. (2010). <em>Regression: Linear Models in Statistics</em>. Springer. Available at: <a href="https://link.springer.com/content/pdf/10.1007%2F978-1-84882-969-5.pdf">Springer Link</a> [Clásica].<br/>5. <br/>Bowerman, B.L., O&#x27;Connell, R.T., Koehler, A.B. (2007). <em>Pronósticos, series de tiempo y regresión: un enfoque aplicado</em>. Ed. Cengage Learning. [Clásico].<br/>6. <br/>Ciaburro, G. (2018). <em>Regression Analysis with R: Design and Develop Statistical Nodes to Identify Unique Relationships Within Data at Scale</em>. Packt Publishing. Available at: <a href="https://search.ebscohost.com/login.aspx?direct=true&amp;db=e000xww&amp;AN=1703784&amp;lang=es&amp;site=ehost-live">EBSCOhost</a>.<br/>7. <br/>Giuseppe, C. (2018). <em>Regression Analysis with R: Design and Develop Statistical Nodes to Identify Unique Relationships Within Data at Scale</em>. Packt Publishing. Available at: <a href="https://search.ebscohost.com/login.aspx?direct=true&amp;db=e000xww&amp;AN=1703784&amp;lang=es&amp;site=ehost-live">EBSCOhost</a>.<br/>8. <br/>Tattar, P.N. (2017). <em>Statistical Application Development with R and Python - Second Edition</em>. Vol 2nd ed. Packt Publishing.<br/>9. <br/>Stanimirović, I. (2020). <em>Correlation and Regression Analysis: Applications for Industrial Organizations</em>. Arcler Press. Available at: <a href="https://search.ebscohost.com/login.aspx?direct=true&amp;db=e000xww&amp;AN=2324305&amp;lang=es&amp;site=ehost-live">EBSCOhost</a>.<br/>10. <br/>Pal, D.A. (2017). <em>Practical Time Series Analysis</em>. Packt Publishing. Available at: <a href="https://search.ebscohost.com/login.aspx?direct=true&amp;db=e000xww&amp;AN=1607850&amp;lang=es&amp;site=ehost-live">EBSCOhost</a>.<br/>11. <br/>Montgomery, D.C., Peck, E.A., Vining, G. (2002). <em>Introducción al análisis de regresión lineal</em>. Ed. Grupo Patria Cultural. [Clásico].</p><ol type="1" id="d12031ac-6fa8-412b-b8ff-9b80c14399db" class="numbered-list" start="12"><li>Nielsen, A. (2020). <em>Practical time series analysis: Prediction with statistics and machine learning</em>. O’Reilly. </li></ol><ol type="1" id="b7d0dbae-7a1e-4b71-9ea2-dc5b6d6b1ea2" class="numbered-list" start="13"><li>Atwan, T. A. (2022). <em>Time Series Analysis with Python Cookbook: Practical Recipes for Exploratory Data Analysis, Data Preparation, Forecasting, and Model Evaluation</em>. Packt Publishing.</li></ol><p id="d74e700f-7bdc-4c8e-b5d2-a990e825d494" class="">
+</p><p id="f21fd987-7704-4849-8178-bb4fd46d7a80" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

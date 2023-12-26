@@ -1,0 +1,7 @@
+﻿Review of the key ideas
+That produces the dot product (row i of A) * x. Ax=b
+Identity matrix = I. AI = I
+"Elimination matrix = E using -L(2,1)."
+Exchange matrix = PWe can find it by exchanging rows of the I.Example: If you want to exchange row 2 and row 3.
+"Augmented MatrixIf you change b, unchanged pivots of U.E subtracts, E^-1 adds"
+EA elimination by rows. PA exchange by rows. AE elimination by columns. AP exchange by columns.

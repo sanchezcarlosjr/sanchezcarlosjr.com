@@ -1,0 +1,17 @@
+﻿T.ID,ESCENARIOS DE PRUEBA,DESCRIPCIÓN,PASO DE PRUEBA,RESULTADO ESPERADO,ESTADO
+1,Inicio de sesión válido por correo electrónico.,Probar la funcionalidad de inicio de sesión de la aplicación web para garantizar que un usuario registrado pueda iniciar sesión con correo y contraseña.,"1.Entre a la página (URL).
+2.Navegue por la página de inicio de sesión.
+3.Introduzca un correo válido.
+4.Introduzca una contraseña válida.
+5.Haga clic en el botón de inicio de sesión.","Se crea la sesión y el usuario se guarda en local, después se redirige a la bitácora de todos los experimentos de su organización",Aprobado
+2,Inicio de sesión válido por una cuenta de Google.,Probar la funcionalidad de inicio de sesión de la aplicación web para garantizar que un usuario registrado con una cuenta de Google pueda iniciar sesión.,"1.Entre a la página (URL).
+2.Navegue por la página de inicio de sesión.
+3.Haga clic en el icono de Google.
+4.Elegir una cuenta válida.","Se crea la sesión y el usuario se guarda en local, después se redirige a la bitácora de todos los experimentos de su organización.",Aprobado
+3,Funcionalidad de cierre de sesión.,Comprobar la función de cierre de sesión.,"1.Haga clic en el botón de usuario.
+2.Seleccione el botón de cierre de sesión.",El usuario debería poder cerrar la sesión y regresar la página de inicio de sesión.,Aprobado
+4,Inicio de sesión mediante una cuenta no válida de Google.,Probar la funcionalidad de inicio de sesión de la aplicación web para garantizar que un usuario no válido pueda entrar a la bitácora.,"1.Entre a la página (URL).
+2.Navegue por la página de inicio de sesión.
+3.Haga clic en el icono de Google.
+4.Elegir una cuenta no válida.
+5.Registrarse en Arsus.",Se le redirige a la página de registro para poder tener acceso a la bitácora.,Aprobado

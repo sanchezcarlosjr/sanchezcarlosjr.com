@@ -1,0 +1,4 @@
+﻿Funcionales,No funcionales
+Cuando el usuario ingrese su precio Entonces debe guardarse el precio con IVA tal queel pago de IVA es f(x)=x*1.16donde x es el precio neto del producto.,Debe usarse C++ para la API REST.
+Cuando se guarde el video Entonces el usuario debe poder ver la lista de videos guardados.,Debe usarse PostgreSQL como BD.
+Pausar video tal que el video se deje de reproducir.,El video debe tardar 50 ms en empezar desde que el usuario lo solicita.

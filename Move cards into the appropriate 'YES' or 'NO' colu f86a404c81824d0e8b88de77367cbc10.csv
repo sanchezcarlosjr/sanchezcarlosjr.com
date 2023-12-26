@@ -1,0 +1,16 @@
+﻿Name,Priority,Status,Submitted to work
+"Clickable elements have finger-friendly design ",High,,No
+"The font of the main text is responsive and more than 16 pixels ",High,,No
+"Depending on the field, the corresponding keyboard opens up to users ",High,,No
+"Buttons have finger-friendly design, too ",High,,No
+Site is well-designed for both the vertical and horizontal positions of the phone,High,,No
+The photos in the gallery are swipeable,Middle,,No
+All images are of the highest quality; no pixels are visible,Middle,,No
+All active elements can be easily reached with one hand,Middle,,No
+The product image occupies 60%-90% of the screen,Middle,,No
+"The footer displays secondary links (conditions, rules, sitemap etc) and icons of social networks",Middle,,No
+"Accesses to the phone functions are requested only in a context ",Middle,,No
+"All forms are shortened to the minimum: the fewer fields, the higher conversion",Middle,,No
+The design of the application is the same as on the screenshots from the App Store/Google Play,Low,,No
+Autocorrect does not work while users is entering data in the fields,Low,,No
+Texts on images are easy to read. They do not blend with the images,Low,,No

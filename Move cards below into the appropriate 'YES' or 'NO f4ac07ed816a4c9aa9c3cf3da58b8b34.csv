@@ -1,0 +1,14 @@
+﻿Name,Priority,Status,Submitted to work
+All fields in the form are arranged in one column,High,,No
+The buttons have 'a standard' shape that's common to users,High,,No
+The number of fields in forms is minimal,High,,No
+"Buttons stand out among all other content by their colour, size, etc",High,,No
+Responsive forms have at least 44 pixels in height. All forms should be easy to click with a finger,High,,No
+Users understand the value of the form & why it's needed,High,,No
+"The forms are grouped according to the content type that needs to be filled in: personal information, address, education, etc",Middle,,No
+The field labels are clear and familiar to the user,Middle,,No
+"The size of the field matches the size of the information entered: short fields stand for zip codes and indexes, long fields – for addresses, etc",Middle,,No
+There is enough space between the fields,Middle,,No
+"Buttons have clear CTA ",Middle,,No
+"The number of clicks is minimal: for such fields as 'address', 'date', 'time', users should be able to select the data, not enter it manually",Low,,No
+The placeholder shows users what exactly should be entered into the field,Low,,No

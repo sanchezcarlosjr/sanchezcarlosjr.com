@@ -641,7 +641,7 @@ blockquote {
 .block-color-red_background {
 	background: rgba(253, 235, 236, 1);
 }
-.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
 .select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
 .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
 .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
@@ -652,6 +652,8 @@ blockquote {
 .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
 .select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
 .select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
 
 .checkbox {
 	display: inline-flex;
@@ -687,4 +689,4 @@ blockquote {
 </p><p id="6dd0cdd6-0ac7-469c-abd6-d1179518a81a" class="">
 </p><p id="60295b86-1176-4f48-925a-9282cb9e240a" class="">A distributed system may have multiple, independent resources. Imagine that process 0 wants to access resource A and process 1 wants to access resource B. Can Ricart and Agrawala’s algorithm lead to deadlocks? Explain your answer.</p><p id="bd380722-a66a-49e7-a8ad-1e54ff44fd6d" class="">Ricart and Agrawala’s algorithm doesn’t lead to deadlocks but the processes behavior by the system design because resources are independent ones. If process 0 access resources A and then B, and process 1 in the inverse order, a deadlock happen.</p><p id="dd9808fa-2ad8-4f9e-a0ca-c478488ab059" class="">
 </p><p id="0cef6c92-d4ad-489b-ab69-13c2022620ac" class="">Suppose that two processes detect the demise of the coordinator simultaneously and both decide to hold an election using the bully algorithm. What happens?</p><p id="fe4e87e3-a2c9-4934-aa2c-eecbb7cd6ea8" class="">The election is going to proceed as expected because the second election message is ignored even though the bullies will get two election messages. When an election starts with a bully algorithm, it must finish and ignore intermediate elections. </p><p id="a4c7a9a7-641b-461d-8e34-c56c755b58b2" class="">
-</p><p id="3a8e2324-1aa5-4e43-8dd7-e904809c6374" class="">In Fig. 6-21 we have two ELECTION messages circulating simultaneously. While it does no harm to have two of them, it would be more elegant if one could be killed off. Devise an algorithm for doing this without affecting the operation of the basic election algorithm.</p><p id="a2487235-b97d-4d12-9f2e-6dc074a5f0ff" class="">On the election message reception, the process has two alternatives, if it is its own election, it turns the message as usual. Otherwise, it has other two alternatives, if it is a competitor with a lower number and sends a message before, the process discards the election.  If the competitor has a higher number, the message is forwarded as usual. </p></div></article></body></html>
+</p><p id="3a8e2324-1aa5-4e43-8dd7-e904809c6374" class="">In Fig. 6-21 we have two ELECTION messages circulating simultaneously. While it does no harm to have two of them, it would be more elegant if one could be killed off. Devise an algorithm for doing this without affecting the operation of the basic election algorithm.</p><p id="a2487235-b97d-4d12-9f2e-6dc074a5f0ff" class="">On the election message reception, the process has two alternatives, if it is its own election, it turns the message as usual. Otherwise, it has other two alternatives, if it is a competitor with a lower number and sends a message before, the process discards the election.  If the competitor has a higher number, the message is forwarded as usual. </p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,8 @@
+﻿Name,Description
+nss,"number
+11 Security social number"
+apiKey,"string
+You need to sign up on https://sanchezcarlosjr.com/ for you to get it."
+birthday,"string
+Date and time in UTC: YYYY-MM-DDT00:00:00Z
+https://en.wikipedia.org/wiki/ISO_8601"
