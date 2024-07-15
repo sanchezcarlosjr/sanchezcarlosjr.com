@@ -1,0 +1,681 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>TOEFL iBT</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="f7875405-afec-48e7-b6e0-506933413572" class="page sans"><header><h1 class="page-title">TOEFL iBT</h1><p class="page-description"></p></header><div class="page-body"><h1 id="c0499cf4-669a-4c37-b1a7-72a36ce9d9b2" class="">Overview</h1><p id="f10cfaa0-f9ca-42a6-a8ee-2096ad1817fc" class="">Two hour exam.</p><p id="6783dcbe-e8b2-42df-8252-24c898fc35c2" class="">July 25th, 2023</p><p id="d729713a-4340-4d2a-a5e5-4d802a6f5785" class="">Reading, listening, speaking, and writing occur on the same day.</p><p id="71ac90f9-68a0-47dd-8475-5723bcdd3cf6" class="">Test English of Profiency and Skills, NOT student intelligence.</p><p id="5710cefd-77bb-4f91-a469-8485f8a816fe" class="">Reading (35 minutes). 2 reading passages, 10 questions each passage. 17.5 min each.</p><p id="a906bb79-885e-4078-a9b7-ee05e6e89598" class="">Listening (36 minutes). 28 questions total.</p><p id="f45ea53f-221f-47ce-bb54-14f81cfcb2b5" class="">Speaking (16-17 min) Personal opinion, Campus Announcement</p><p id="eaa63ccf-3cde-4f68-ae3d-c666b0939e4c" class="">No </p><h3 id="19d05997-a513-42c8-97ca-a5b867805120" class="">Academic discussion</h3><p id="7195f266-28a3-4bdf-bc07-2fd0604c84fe" class="">10 minutes in total</p><p id="4c5f3c16-3cfe-482a-86d2-5bca548da42d" class="">A professor posed question(s) on an Academic Subject. </p><p id="c0519191-4fee-45aa-a8e6-1be0b38c10c5" class="">2 tasks express and support your opinion.</p><p id="ed249491-9294-4120-b88d-878eb1ac6d1a" class="">
+</p><h1 id="0d220037-6057-4025-a338-7a194e1056d3" class="">Good practice habits</h1><p id="6b4f4ef7-8dfd-4b1e-a082-62a207ce58b0" class="">Paraphrasing and Synonymous</p><p id="fee1a684-2295-4e72-ac80-9643133e45c9" class="">Wrong Answer Mistake Analysis</p><p id="e441c5f3-5b7e-4992-bb8a-280ddae6a226" class="">Vocabulary new words. </p><table id="6a82b333-9436-475a-a342-af7b11c26e82" class="simple-table"><tbody><tr id="1ef952f0-38c2-410d-becc-102dc0a942f1"><td id="T@`q" class="" style="width:345px">Word</td><td id="bDpg" class="" style="width:345px">Meaning, Context use, Synonymous </td></tr><tr id="a5038e77-8dfd-453e-a801-52169221c5f1"><td id="T@`q" class="" style="width:345px"></td><td id="bDpg" class="" style="width:345px"></td></tr><tr id="17fa7b03-a88a-4833-a388-c24dd7f87522"><td id="T@`q" class="" style="width:345px"></td><td id="bDpg" class="" style="width:345px"></td></tr></tbody></table><p id="4addcb56-6f23-4a7f-938f-e3a51905af1b" class="">Simulated with test time</p><p id="b3d8226d-37a8-415e-bf2d-eb08a7170b22" class="">Listen and note discourse exam.</p><p id="3d750026-8372-4df5-acfe-2e01abae6dd1" class="">Discourse Markers</p><p id="c1ed60e0-b760-4f45-99b5-31dea1ced95b" class="">Read and Review transcripts</p><h2 id="c1525dfa-6fac-47f7-b06f-0a44b3697dfb" class="">Re-write old essays</h2><p id="d0561521-05cd-4e8c-808a-dd9dced0284d" class="">Improve sentence variety.</p><p id="4631927d-ae91-4852-8c5d-86f287b701e9" class="">Paraphrase and Synonym verbs and nouns</p><p id="881276eb-1a39-47d8-945b-667039e0cd30" class="">Replace Weak and Replace language</p><p id="acb110f3-022c-4a5c-86a4-e1e33eeb4d10" class="">Replace weak language such as verbs, helping verbs, and also replacing basic level words.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="fe0d745a-10f4-44d2-a4e5-03bdc11b084c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">It’s better to rewrite one essay three times than to write six or seven new essays.</div></figure><p id="2f5e1c7c-96ef-470b-9a05-ecdca171ea03" class="">Grammarly. Locates and makes suggestions on all gramar and lexical mistakes. </p><p id="6ce85de2-9d74-41b9-a173-6be1af59c8a0" class="">Make your OWN corrections and then re-check if you have done it correctly.\</p><h2 id="47ddb2cf-3049-4257-a549-f34d22c2caf4" class="">Outline essay questions</h2><p id="9997f748-afd7-4a34-9f03-8c8a37d2e43a" class="">Gather a list 10-20 essay questions per week.</p><p id="ed28933e-9f43-475b-9559-408703a519c9" class="">Outline each one in under 3 minutes.</p><p id="86a6cda3-1487-4edf-8bae-17d217258942" class="">Outline includes: controlling ideas, details, and thesis statements.</p><h2 id="225e3627-de14-4cc2-88c5-27492b268705" class="">Speaking practice suggestions</h2><p id="b4291581-ae03-4776-a5a7-928168b265c4" class="">Otter.ai, Google Voice Typing, </p><h2 id="d41928c1-c389-4ba1-b696-33823c714cb8" class="">Course Lecture Notes</h2><p id="5a49cf1c-75c2-4687-92e5-a849cb1a63c0" class="">Emphasize and Organize critical ideas and information that matters to you.</p><p id="8f8288a8-09e2-44f3-ace7-13ea2b26c6f7" class="">Keep alert, engage mind</p><p id="a4f2fb1c-8bad-482b-810b-e0afa7132f95" class="">You might dedicate 80% to learning the new subject and reserving 20% to the new section.</p><p id="f3159eff-8177-4549-ada9-f00485c8af70" class="">Context Variation for studying.</p><p id="13a3a13d-407a-4494-bd68-973cd517cf8f" class="">Simulation in Environment.</p><p id="3312f9e8-2697-4470-8c81-5a7bb1ba499e" class="">Respect the Time.</p><p id="d6eaae94-02df-4d60-a2c6-260df230a7db" class="">Chunking. Short-term memory is faster but tiny.</p><h2 id="f33eb453-b3f7-4409-a91d-b7d168672707" class="">Managing anxiety</h2><p id="196e3ff3-1d43-40e1-8d76-6bfe80d55946" class="">Anxiety drops of 1-2 points on the IELTS or 3-7 points on the TOEFL iBT.</p><p id="962f2468-7853-48e2-9232-4f4f765d795e" class="">Test anxiety is a learned behavior, that is generally regarded as a “nervous feeling”.</p><p id="ed7528e7-3a27-462b-881f-d1155d5ca878" class="">Cognitive: the negative thoughts. </p><p id="35f8e928-695d-4f3a-b700-357cac9cd6bd" class="">Affective (emotional): the person’s appraisal of their physiological.</p><p id="09383d68-1831-4633-8865-40c204d6e538" class="">Any level of test anxiety is bad.</p><p id="11874d98-3b4f-4fc4-9b61-ec817a626303" class="">The anxiety of zone.</p><p id="85092514-4e31-45db-bd64-a3734c773dae" class="">The test anxiety cycle.</p><ol type="1" id="4c1240ec-2168-47c0-8b8c-5aecc347969d" class="numbered-list" start="1"><li>Test failure.</li></ol><ol type="1" id="ee2684bd-834d-40c7-9622-4c69d64f3b9e" class="numbered-list" start="2"><li>Test anxiety.</li></ol><ol type="1" id="ecdb940b-228b-4e9d-817f-28e103d25234" class="numbered-list" start="3"><li>Can’t study effectively.</li></ol><ol type="1" id="b4421d8a-27cc-43d3-bb43-f322b15461f3" class="numbered-list" start="4"><li>Under or un-prepared for the exam.</li></ol><ol type="1" id="708e0393-295a-45d1-9ad1-608bedfb01c9" class="numbered-list" start="5"><li>More test anxiety.</li></ol><p id="6b4ac605-902f-4718-976a-3343cfab4182" class="">Stress </p><p id="2e051fa0-ceae-4703-b533-1b68eb48825f" class="">High achiever students</p><p id="a5abe1f1-f0d5-44b7-8710-21a427628792" class="">Unprepared students. </p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e44f43c6-6e44-4800-bd7a-2bccd56433ef"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Stop being in the fantasy land.</div></figure><p id="3cd3091d-895d-4c39-b0ad-062261def7ce" class="">Uncommonly known causes</p><ol type="1" id="c330bae8-97d5-41a8-8a09-0e01ab3f6683" class="numbered-list" start="1"><li>Wanting to be right.</li></ol><ol type="1" id="9a4a299b-86ed-444b-a1e6-0a74042d12df" class="numbered-list" start="2"><li>Forgetting or not trusting techniques.</li></ol><ol type="1" id="d690dabb-915b-4d57-8412-1d99861dcf7b" class="numbered-list" start="3"><li>Room intimidation.</li></ol><ol type="1" id="f5f5b577-2456-4f77-ba3c-49bd90b74e19" class="numbered-list" start="4"><li>Poor study habits.</li></ol><ol type="1" id="2a5358b4-2374-4994-b3a4-2cddd6c13fd7" class="numbered-list" start="5"><li>Listening to idiots’ bad advice.</li></ol><ol type="1" id="5bdac2a0-f448-4f57-99b9-a4db3f776993" class="numbered-list" start="6"><li>Not able to let go.</li></ol><h3 id="3ce81053-b7df-40cd-b2c1-1aa1e230c2a9" class="">Anxiety causes by Listening</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c55303d2-a2e4-4a80-be16-05181f81660f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">It’s a skill test. </div></figure><table id="48127b24-bece-4110-9a0f-a3557c296005" class="simple-table"><tbody><tr id="1dc6e4d7-dba4-4fdc-a592-5a0f01e185cf"><td id="_Cz@" class="" style="width:345px">Causes</td><td id="rXjn" class="" style="width:345px">Effects</td></tr><tr id="c0fe1724-8037-4552-88b6-4226e1075c2b"><td id="_Cz@" class="" style="width:345px">Unfamiliar words and phrases<br/>Unfamiliar accents<br/>Listening and Writing Simultaneously.<br/>Lack of Vocabulary.<br/>Lack of discipline.<br/>Time pressure.<br/>No strategy for difficult questions.<br/>Needing to re-read.<br/>Unfamilar with test.<br/>Time pressure.<br/>Lack of confidence.<br/></td><td id="rXjn" class="" style="width:345px">Poor fluency<br/><br/></td></tr></tbody></table><h2 id="b838a48c-a921-4b5c-992e-c87d44928029" class="">Solutions</h2><h3 id="aa44347a-b443-4f4b-bb62-7b8db509248c" class="">Cognitive control</h3><table id="55028a1b-82d2-450b-b07c-3ccfa24788f8" class="simple-table"><tbody><tr id="6036957a-cc56-4d8e-a0ff-59e2b9142d48"><td id="RiXA" class="" style="width:345px">Technique</td><td id="&gt;:dC" class="" style="width:345px">How?</td></tr><tr id="0c666434-4dae-428a-8927-20e5550eba37"><td id="RiXA" class="" style="width:345px">Prepare well</td><td id="&gt;:dC" class="" style="width:345px"></td></tr><tr id="3fbbf70d-25e7-46b6-ae06-46297550d0f0"><td id="RiXA" class="" style="width:345px">Learn and practice good time management</td><td id="&gt;:dC" class="" style="width:345px">  </td></tr><tr id="68b0ec83-a791-4b49-8e32-e60fcbab68f0"><td id="RiXA" class="" style="width:345px">Use Active Study techniques.</td><td id="&gt;:dC" class="" style="width:345px"></td></tr></tbody></table><h3 id="b7023f91-5d58-4b1a-90fd-3e19b8b0b4e8" class="">Physical control</h3><table id="3733df17-1c56-41b6-aecc-3de2ebd6d3ac" class="simple-table"><tbody><tr id="48216a3c-858d-4361-986c-9727ffdb2d8d"><td id="pB=o" class="" style="width:345px">Technique</td><td id="|?{y" class="" style="width:345px">How?</td></tr><tr id="5ece2a93-2470-4e6a-b995-337726dc03ce"><td id="pB=o" class="" style="width:345px">Get exercise everyday</td><td id="|?{y" class="" style="width:345px"></td></tr><tr id="df0335fb-48a6-4247-b6c9-cf18652dcf4d"><td id="pB=o" class="" style="width:345px">Get enough rest and proper nutrition</td><td id="|?{y" class="" style="width:345px">  </td></tr><tr id="4171165d-3c77-4ce4-bf1c-c99b8e82f7d4"><td id="pB=o" class="" style="width:345px">Practice relation techniques, and deep breathing</td><td id="|?{y" class="" style="width:345px"></td></tr></tbody></table><h3 id="80c08f1b-f384-4234-8a0d-22682de9b72f" class="">Emotional control</h3><table id="f66b5109-bf94-4758-ba0a-32bcb57a59ee" class="simple-table"><tbody><tr id="f2ff80fd-5521-4a03-99e6-32d90f132e0b"><td id="Oec_" class="" style="width:345px">Technique</td><td id="gdci" class="" style="width:345px">How?</td></tr><tr id="3477a86f-20ae-4371-bc98-4f86ebe4b6e5"><td id="Oec_" class="" style="width:345px">Adopt creator position. NO</td><td id="gdci" class="" style="width:345px">Positive self-talk.</td></tr><tr id="cf2514df-22e8-4a43-a505-bdcba5f6f50c"><td id="Oec_" class="" style="width:345px">Know yourself and your leaning needs.</td><td id="gdci" class="" style="width:345px"></td></tr><tr id="3735aac1-870c-4256-8209-66148c22df7c"><td id="Oec_" class="" style="width:345px">Practice relation techniques.</td><td id="gdci" class="" style="width:345px"></td></tr></tbody></table><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8faff199-f083-4b69-b6e1-691581cd596b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Positive self-talk. It’s an inner monologue that makes you feel good.</div></figure><p id="a35f2501-22a9-47ba-bde9-9c9777d17163" class="">
+</p><p id="e9615786-242b-41bb-981d-d0465c2fcbe9" class="">Uncommon solutions are deep breathing, mental imagery, greet and replace negative thoughts, think of exam as game, collect points, the 80/20 rule: 80% of time on new material and 20% of time reviewing on material. The voice of reason. Choose a great seat.</p><p id="5c8f89be-1978-4f45-a274-d4c7bc6d66a4" class="">
+</p><p id="90e719c2-6c07-43ac-a61e-809f5fe10c18" class="">Watch or Read something, Calming music before test.</p><p id="75beb633-88dd-485e-834b-a39b547863d5" class="">
+</p><p id="33e74813-6512-46b0-a530-a33245e99fda" class="">Habits are not useful when you need them but they </p><h2 id="f2234068-6d23-4a71-84b2-9d48904d0fcb" class="">Top students</h2><p id="d3485577-181d-4da0-9de4-cabb55fbda7a" class="">Practice exams.</p><p id="c411044d-23b2-4c10-999c-43fe9e14c834" class="">Not “just” hard work.</p><p id="894e5abe-b03c-41f2-a6dd-173e1e15153b" class="">Self-discipline.</p><p id="fb208e0c-7490-44e6-8e16-83e0e9a1610f" class="">English level.</p><p id="b0f0fcc6-1076-493f-8f84-000ce5e2637c" class="">Learn from your test.</p><h1 id="5e99c7d7-9386-412a-9746-8f8324f7ea30" class="">Reading Questions</h1><p id="e40cca4b-d6e9-4ee1-ab57-1de9fd3fec12" class="">Synonym.</p><p id="726604fa-d6dd-4dc8-8173-9c42bd1540de" class="">Each expression that you don’t understand </p><h2 id="5dccff8f-6e72-4643-9244-813f77c353cb" class="">Synonym and Paraphrase Recognition</h2><figure id="ffea18b8-0bdc-46be-af55-7c9420e03a70" class="link-to-page"><a href="The%20history%20of%20mathematics%20ffea18b80bdc46beaf557c9420e03a70.html">The history of mathematics</a></figure><h2 id="076d7b64-db0f-4ce2-bcab-e97879e1bd47" class="">Detail Question</h2><ol type="1" id="8c76fbe2-42fe-48d1-91fc-648c18b571d5" class="numbered-list" start="1"><li>Identify keywords.</li></ol><ol type="1" id="144e324a-8a73-4628-bab4-f76ba561cd6b" class="numbered-list" start="2"><li>Scan matching sentence.</li></ol><ol type="1" id="7df974b0-6012-4e03-9c6f-43255b49f908" class="numbered-list" start="3"><li>Review sentence.</li></ol><ol type="1" id="da760d7e-5d8b-476d-8398-6e885e7127ce" class="numbered-list" start="4"><li>Eliminate (POE) &amp; Match Answer Choice</li></ol><figure id="57c30f78-f75f-4900-bbbd-0b1c2e47bf90" class="link-to-page"><a href="Testing%2057c30f78f75f4900bbbd0b1c2e47bf90.html">Testing</a></figure><figure id="c15a1d6d-3bcb-4018-97d4-a526b8154674" class="link-to-page"><a href="Detail%20question%20c15a1d6d3bcb401897d4a526b8154674.html">Detail question</a></figure><figure id="ce120337-bdc0-44d2-92b2-747839af41c3" class="link-to-page"><a href="Purpose%20question%20Strategy%20ce120337bdc044d292b2747839af41c3.html">Purpose question Strategy</a></figure><figure id="5f84febd-ae6b-46a1-ae70-e71b7d63c4e7" class="link-to-page"><a href="Inference%20Question%20Strategy%205f84febdae6b46a1ae70e71b7d63c4e7.html">Inference Question Strategy</a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

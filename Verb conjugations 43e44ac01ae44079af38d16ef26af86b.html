@@ -1,0 +1,678 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Verb conjugations</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="43e44ac0-1ae4-4079-af38-d16ef26af86b" class="page sans"><header><h1 class="page-title">Verb conjugations</h1><p class="page-description"></p></header><div class="page-body"><h3 id="8ebf952a-ba96-47ee-be2e-710f2511ee30" class="">Present Tense</h3><ol type="1" id="4a310712-4912-4dfc-a2b3-ee5677ce0224" class="numbered-list" start="1"><li><strong>Simple Present</strong><ul id="4111d8e8-4f01-4588-974a-b66b7ca2cc70" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I walk, You walk, He/She/It walks, We walk, They walk</li></ul><ul id="99eb20cd-3629-408b-97a1-a7ad0811d803" class="bulleted-list"><li style="list-style-type:disc">Negative: I do not (don&#x27;t) walk, You do not (don&#x27;t) walk, He/She/It does not (doesn&#x27;t) walk, We do not (don&#x27;t) walk, They do not (don&#x27;t) walk</li></ul><ul id="43131279-d122-474a-a300-e90ed1b20548" class="bulleted-list"><li style="list-style-type:disc">Question: Do I walk? Do you walk? Does he/she/it walk? Do we walk? Do they walk?</li></ul><ul id="c52b96a8-207a-400a-9aef-21ca58efa5a9" class="bulleted-list"><li style="list-style-type:disc">Emphatic: I do walk, You do walk, He/She/It does walk, We do walk, They do walk</li></ul></li></ol><ol type="1" id="2890d611-828b-4a04-be4d-7a07d04b0215" class="numbered-list" start="2"><li><strong>Present Continuous</strong><ul id="9700743e-9082-4c7a-8028-370aaaa3bd31" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I am walking, You are walking, He/She/It is walking, We are walking, They are walking</li></ul><ul id="cff57976-8289-4720-91a1-a6705a517691" class="bulleted-list"><li style="list-style-type:disc">Negative: I am not (I&#x27;m not) walking, You are not (aren&#x27;t) walking, He/She/It is not (isn&#x27;t) walking, We are not (aren&#x27;t) walking, They are not (aren&#x27;t) walking</li></ul><ul id="ceae25f8-fec6-4f8c-aa02-769ee809ae61" class="bulleted-list"><li style="list-style-type:disc">Question: Am I walking? Are you walking? Is he/she/it walking? Are we walking? Are they walking?</li></ul></li></ol><ol type="1" id="add2a94b-d6bf-47a2-8756-fdee452d64c1" class="numbered-list" start="3"><li><strong>Present Perfect</strong><ul id="551bb5ab-c7b0-466a-8cf0-97d5d2a83a2f" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I have walked, You have walked, He/She/It has walked, We have walked, They have walked</li></ul><ul id="fe47ca81-e628-494d-9b1b-e998fe924f08" class="bulleted-list"><li style="list-style-type:disc">Negative: I have not (haven&#x27;t) walked, You have not (haven&#x27;t) walked, He/She/It has not (hasn&#x27;t) walked, We have not (haven&#x27;t) walked, They have not (haven&#x27;t) walked</li></ul><ul id="afa4b49b-5d88-433c-9825-f5a21d2ea68d" class="bulleted-list"><li style="list-style-type:disc">Question: Have I walked? Have you walked? Has he/she/it walked? Have we walked? Have they walked?</li></ul></li></ol><ol type="1" id="7cdae280-5e58-4d33-8526-742293629fcb" class="numbered-list" start="4"><li><strong>Present Perfect Continuous</strong><ul id="8f6ddf68-f080-40ee-befc-a7ae66351801" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I have been walking, You have been walking, He/She/It has been walking, We have been walking, They have been walking</li></ul><ul id="9c66b77f-cd8c-4bfa-9452-584e8b2c6ef7" class="bulleted-list"><li style="list-style-type:disc">Negative: I have not (haven&#x27;t) been walking, You have not (haven&#x27;t) been walking, He/She/It has not (hasn&#x27;t) been walking, We have not (haven&#x27;t) been walking, They have not (haven&#x27;t) been walking</li></ul><ul id="8b5041f6-ba53-4dbd-9d12-f6a29f20b132" class="bulleted-list"><li style="list-style-type:disc">Question: Have I been walking? Have you been walking? Has he/she/it been walking? Have we been walking? Have they been walking?</li></ul></li></ol><h3 id="0919cdbe-befb-4137-830c-f5c9d195c12c" class="">Past Tense</h3><ol type="1" id="d03e9a5f-6efe-423b-b3c3-6809e8948140" class="numbered-list" start="1"><li><strong>Simple Past</strong><ul id="40cfde2e-9363-4960-b23a-fb985f796d48" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I walked, You walked, He/She/It walked, We walked, They walked</li></ul><ul id="a894906d-535d-4524-863e-58c765ff6ada" class="bulleted-list"><li style="list-style-type:disc">Negative: I did not (didn&#x27;t) walk, You did not (didn&#x27;t) walk, He/She/It did not (didn&#x27;t) walk, We did not (didn&#x27;t) walk, They did not (didn&#x27;t) walk</li></ul><ul id="cef4d539-622a-4ab8-b318-424533b333e4" class="bulleted-list"><li style="list-style-type:disc">Question: Did I walk? Did you walk? Did he/she/it walk? Did we walk? Did they walk?</li></ul><ul id="4b27f202-644c-4ed0-8639-c0709bd0dfa2" class="bulleted-list"><li style="list-style-type:disc">Emphatic: I did walk, You did walk, He/She/It did walk, We did walk, They did walk</li></ul></li></ol><ol type="1" id="ad952aca-e149-4d2c-a3b9-0e8d86499a15" class="numbered-list" start="2"><li><strong>Past Continuous</strong><ul id="73a1362a-263b-44c1-9427-24f9ed4ee3be" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I was walking, You were walking, He/She/It was walking, We were walking, They were walking</li></ul><ul id="13d967ce-6b61-4584-9f34-fb8587c1b802" class="bulleted-list"><li style="list-style-type:disc">Negative: I was not (wasn&#x27;t) walking, You were not (weren&#x27;t) walking, He/She/It was not (wasn&#x27;t) walking, We were not (weren&#x27;t) walking, They were not (weren&#x27;t) walking</li></ul><ul id="5b19cf58-0cc4-4e13-a143-63f64806612b" class="bulleted-list"><li style="list-style-type:disc">Question: Was I walking? Were you walking? Was he/she/it walking? Were we walking? Were they walking?</li></ul></li></ol><ol type="1" id="64c5a18b-7b33-4556-a9b0-0c5c18be3a47" class="numbered-list" start="3"><li><strong>Past Perfect</strong><ul id="bdf12cff-90f5-4728-85b0-6a53e5815431" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I had walked, You had walked, He/She/It had walked, We had walked, They had walked</li></ul><ul id="b67fb76a-10bc-4960-b4c2-80f4c9693aac" class="bulleted-list"><li style="list-style-type:disc">Negative: I had not (hadn&#x27;t) walked, You had not (hadn&#x27;t) walked, He/She/It had not (hadn&#x27;t) walked, We had not (hadn&#x27;t) walked, They had not (hadn&#x27;t) walked</li></ul><ul id="ad8c8e4a-44a3-4fd3-998f-a89f255f22d3" class="bulleted-list"><li style="list-style-type:disc">Question: Had I walked? Had you walked? Had he/she/it walked? Had we walked? Had they walked?</li></ul></li></ol><ol type="1" id="5cab43c5-a34d-4cdf-b279-8cb0458933b9" class="numbered-list" start="4"><li><strong>Past Perfect Continuous</strong><ul id="86ed08d2-7b40-46af-9ffe-8e98e40cba59" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I had been walking, You had been walking, He/She/It had been walking, We had been walking, They had been walking</li></ul><ul id="903ec848-1de0-47cd-925e-54fea208bb4d" class="bulleted-list"><li style="list-style-type:disc">Negative: I had not (hadn&#x27;t) been walking, You had not (hadn&#x27;t) been walking, He/She/It had not (hadn&#x27;t) been walking, We had not (hadn&#x27;t) been walking, They had not (hadn&#x27;t) been walking</li></ul><ul id="f28677d4-f685-4f47-9417-2afe970a7a45" class="bulleted-list"><li style="list-style-type:disc">Question: Had I been walking? Had you been walking? Had he/she/it been walking? Had we been walking? Had they been walking?</li></ul></li></ol><h3 id="3921048e-ccf1-453c-b3db-edffcbcc4ec4" class="">Future Tense</h3><ol type="1" id="60327a61-2c01-4823-a5ef-85398ae1a63c" class="numbered-list" start="1"><li><strong>Simple Future</strong><ul id="83f60a82-db74-4536-975b-84312319a493" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I will walk, You will walk, He/She/It will walk, We will walk, They will walk</li></ul><ul id="9b02a444-6a49-40e3-887d-4bffcaee2116" class="bulleted-list"><li style="list-style-type:disc">Negative: I will not (won&#x27;t) walk, You will not (won&#x27;t) walk, He/She/It will not (won&#x27;t) walk, We will not (won&#x27;t) walk, They will not (won&#x27;t) walk</li></ul><ul id="620695c3-d4e0-4496-a80c-e5dd378a4cb5" class="bulleted-list"><li style="list-style-type:disc">Question: Will I walk? Will you walk? Will he/she/it walk? Will we walk? Will they walk?</li></ul></li></ol><ol type="1" id="625f63dc-df9a-4947-876c-559c7c6ac209" class="numbered-list" start="2"><li><strong>Future Continuous</strong><ul id="d53bf427-4998-4fa8-8a44-6145194f0b51" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I will be walking, You will be walking, He/She/It will be walking, We will be walking, They will be walking</li></ul><ul id="ec421bdb-a6f5-4f24-9462-d5e526ebfe1d" class="bulleted-list"><li style="list-style-type:disc">Negative: I will not (won&#x27;t) be walking, You will not (won&#x27;t) be walking, He/She/It will not (won&#x27;t) be walking, We will not (won&#x27;t) be walking, They will not (won&#x27;t) be walking</li></ul><ul id="053a1304-d779-4d41-9ae4-2b63063453f8" class="bulleted-list"><li style="list-style-type:disc">Question: Will I be walking? Will you be walking? Will he/she/it be walking? Will we be walking? Will they be walking?</li></ul></li></ol><ol type="1" id="b8ec390b-140c-4a94-98f2-94fee68bae6d" class="numbered-list" start="3"><li><strong>Future Perfect</strong><ul id="cf485de3-a6f3-4536-be65-243df4771c7c" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I will have walked, You will have walked, He/She/It will have walked, We will have walked, They will have walked</li></ul><ul id="a66b099b-28c9-4f95-a1fe-00d2ac76d1cd" class="bulleted-list"><li style="list-style-type:disc">Negative: I will not (won&#x27;t) have walked, You will not (won&#x27;t) have walked, He/She/It will not (won&#x27;t) have walked, We will not (won&#x27;t) have walked, They will not (won&#x27;t) have walked</li></ul><ul id="e7535a01-4426-4762-aa45-272d3ec22ed1" class="bulleted-list"><li style="list-style-type:disc">Question: Will I have walked? Will you have walked? Will he/she/it have walked? Will we have walked? Will they have walked?</li></ul></li></ol><ol type="1" id="e6464d35-a515-40a0-ba93-b31e138641fc" class="numbered-list" start="4"><li><strong>Future Perfect Continuous</strong><ul id="ae3cc6e9-cba5-4045-9b01-49be33e58cb3" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I will have been walking, You will have been walking, He/She/It will have been walking, We will have been walking, They will have been walking</li></ul><ul id="3b730abe-4b61-4cd2-a10d-8581c6d358c8" class="bulleted-list"><li style="list-style-type:disc">Negative: I will not (won&#x27;t) have been walking, You will not (won&#x27;t) have been walking, He/She/It will not (won&#x27;t) have been walking, We will not (won&#x27;t) have been walking, They will not (won&#x27;t) have been walking</li></ul><ul id="397c01c4-6410-4818-b4eb-d337e5341918" class="bulleted-list"><li style="list-style-type:disc">Question: Will I have been walking? Will you have been walking? Will he/she/it have been walking? Will we have been walking? Will they have been walking?</li></ul></li></ol><h3 id="47ef8035-5f6c-42ec-b746-28b1fd2f0aea" class="">Imperative Mood</h3><ul id="429fd020-5149-42e4-866d-554bb9baab5a" class="bulleted-list"><li style="list-style-type:disc">Affirmative: Walk (you), Let&#x27;s walk (we)</li></ul><ul id="99d676c8-4b38-4eda-b90f-40a0925a6a90" class="bulleted-list"><li style="list-style-type:disc">Negative: Do not (don&#x27;t) walk (you), Let&#x27;s not walk (we)</li></ul><h3 id="4b88ad2e-1482-4ad1-93a1-d3210df37fec" class="">Conditional Mood</h3><ol type="1" id="b438e75a-7c21-4a13-9bd3-d999bb5bb484" class="numbered-list" start="1"><li><strong>Present Conditional</strong><ul id="792c7d26-539e-4d8d-a5cc-3634fa6f6316" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I would walk, You would walk, He/She/It would walk, We would walk, They would walk</li></ul><ul id="bd58e476-4665-45a5-89d4-865d0d39580c" class="bulleted-list"><li style="list-style-type:disc">Negative: I would not (wouldn&#x27;t) walk, You would not (wouldn&#x27;t) walk, He/She/It would not (wouldn&#x27;t) walk, We would not (wouldn&#x27;t) walk, They would not (wouldn&#x27;t) walk</li></ul><ul id="455ef307-bfec-4d78-aee4-458957241388" class="bulleted-list"><li style="list-style-type:disc">Question: Would I walk? Would you walk? Would he/she/it walk? Would we walk? Would they walk?</li></ul></li></ol><ol type="1" id="faafc18e-3d16-44bf-b00f-97feeb8476bf" class="numbered-list" start="2"><li><strong>Past Conditional</strong><ul id="07343d8c-0770-46b8-9951-1156d6ccbbd3" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I would have walked, You would have walked, He/She/It would have walked, We would have walked, They would have walked</li></ul><ul id="6c7ee6f5-3a2d-4199-9587-78250c08f593" class="bulleted-list"><li style="list-style-type:disc">Negative: I would not (wouldn&#x27;t) have walked, You would not (wouldn&#x27;t) have walked, He/She/It would not (wouldn&#x27;t) have walked, We would not (wouldn&#x27;t) have walked, They would not (wouldn&#x27;t) have walked</li></ul><ul id="eae7c8c6-4300-484b-bb3c-57d1a4e186b3" class="bulleted-list"><li style="list-style-type:disc">Question: Would I have walked? Would you have walked? Would he/she/it have walked? Would we have walked? Would they have walked?</li></ul></li></ol><h3 id="4da4ebe0-a752-45e8-9e67-1b0d997b83c2" class="">Subjunctive Mood</h3><ol type="1" id="30ccf445-67f6-4653-aff7-02530fd52ca6" class="numbered-list" start="1"><li><strong>Present Subjunctive</strong><ul id="c335cc22-298a-4c9e-81b6-d08d6e2c488a" class="bulleted-list"><li style="list-style-type:disc">Affirmative: If I walk, If you walk, If he/she/it walk, If we walk, If they walk</li></ul><ul id="3647f223-e2c1-4406-9c34-9e5ddf6eb602" class="bulleted-list"><li style="list-style-type:disc">Negative: If I do not (don&#x27;t) walk, If you do not (don&#x27;t) walk, If he/she/it does not (doesn&#x27;t) walk, If we do not (don&#x27;t) walk, If they do not (don&#x27;t) walk</li></ul><ul id="342d1bd8-cfbd-4099-80f5-718ad8469280" class="bulleted-list"><li style="list-style-type:disc">Question: (rarely used in modern English) Should I walk? Should you walk? Should he/she/it walk? Should we walk? Should they walk?</li></ul></li></ol><ol type="1" id="5f9899ef-2965-49b3-8c32-847d6111bc45" class="numbered-list" start="2"><li><strong>Past Subjunctive</strong><ul id="11836039-546a-4034-968c-0a678588a0ee" class="bulleted-list"><li style="list-style-type:disc">Affirmative: If I walked, If you walked, If he/she/it walked, If we walked, If they walked</li></ul><ul id="5dc42096-7085-4d64-b487-02c2742d9d72" class="bulleted-list"><li style="list-style-type:disc">Negative: If I did not (didn&#x27;t) walk, If you did not (didn&#x27;t) walk, If he/she/it did not (didn&#x27;t) walk, If we did not (didn&#x27;t) walk, If they did not (didn&#x27;t) walk</li></ul><ul id="8717709c-8303-4fee-ae2d-4157699326bd" class="bulleted-list"><li style="list-style-type:disc">Question: (rarely used in modern English) If I walked? If you walked? If he/she/it walked? If we walked? If they walked?</li></ul></li></ol><h3 id="60b30997-8d6d-44ae-b510-b8616766ffc8" class="">Emphatic Forms</h3><ol type="1" id="3ba8f4fb-7002-4b21-8cad-a9d16483faa9" class="numbered-list" start="1"><li><strong>Present Emphatic</strong><ul id="5e9a526b-e15a-4742-83ca-869b6d91c372" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I do walk, You do walk, He/She/It does walk, We do walk, They do walk</li></ul><ul id="801c9b64-0191-4c6b-9037-da9f06fd723f" class="bulleted-list"><li style="list-style-type:disc">Negative: I do not (don&#x27;t) walk, You do not (don&#x27;t) walk, He/She/It does not (doesn&#x27;t) walk, We do not (don&#x27;t) walk, They do not (don&#x27;t) walk</li></ul><ul id="d90b037b-77b3-4245-987e-46a7f41465a9" class="bulleted-list"><li style="list-style-type:disc">Question: Do I walk? Do you walk? Does he/she/it walk? Do we walk? Do they walk?</li></ul></li></ol><ol type="1" id="5eb63970-197f-40d5-a283-a435587fe718" class="numbered-list" start="2"><li><strong>Past Emphatic</strong><ul id="b8cf9647-1daf-4667-b553-ae3be43faa08" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I did walk, You did walk, He/She/It did walk, We did walk, They did walk</li></ul><ul id="afc8df9b-23c3-4653-885f-00f15c026eb6" class="bulleted-list"><li style="list-style-type:disc">Negative: I did not (didn&#x27;t) walk, You did not (didn&#x27;t) walk, He/She/It did not (didn&#x27;t) walk, We did not (didn&#x27;t) walk, They did not (didn&#x27;t) walk</li></ul><ul id="06fb3a44-1af5-47bc-b07c-f941ed31b8f4" class="bulleted-list"><li style="list-style-type:disc">Question: Did I walk? Did you walk? Did he/she/it walk? Did we walk? Did they walk?</li></ul></li></ol><h3 id="3ddea534-ffed-4586-a697-f4e497bb6f05" class="">Voices</h3><ol type="1" id="cf6aed2a-b54e-493e-a4ce-6e33df1a9dd3" class="numbered-list" start="1"><li><strong>Active Voice</strong><ul id="cf291908-dcd0-4b65-9ea2-37bcbd882ac0" class="bulleted-list"><li style="list-style-type:disc">Affirmative: I walk, I walked, I will walk</li></ul><ul id="c284047e-393e-4f65-8afc-149ffb573bf6" class="bulleted-list"><li style="list-style-type:disc">Negative: I do not (don&#x27;t) walk, I did not (didn&#x27;t) walk, I will not (won&#x27;t) walk</li></ul><ul id="0f88f511-754c-48ce-a495-908dc83e46d7" class="bulleted-list"><li style="list-style-type:disc">Question: Do I walk? Did I walk? Will I walk?</li></ul></li></ol><ol type="1" id="b4a59632-4734-4473-a9b0-8b760afa4da6" class="numbered-list" start="2"><li><strong>Passive Voice</strong><ul id="47084e06-8da3-44e9-b50c-40e124d953b4" class="bulleted-list"><li style="list-style-type:disc">Simple Present: I am walked, You are walked, He/She/It is walked, We are walked, They are walked</li></ul><ul id="39455dfb-b10d-4f86-b7e0-ade04d62a569" class="bulleted-list"><li style="list-style-type:disc">Simple Past: I was walked, You were walked, He/She/It was walked, We were walked, They were walked</li></ul><ul id="013d17f6-a23f-4044-94bd-569ab0cbcf34" class="bulleted-list"><li style="list-style-type:disc">Simple Future: I will be walked, You will be walked, He/She/It will be walked, We will be walked, They will be walked</li></ul><ul id="0c44959b-1641-49be-aae7-043c1422811d" class="bulleted-list"><li style="list-style-type:disc">Present Continuous: I am being walked, You are being walked, He/She/It is being walked, We are being walked, They are being walked</li></ul><ul id="d8ae4fff-68b0-493a-a413-7ebbfb30c036" class="bulleted-list"><li style="list-style-type:disc">Past Continuous: I was being walked, You were being walked, He/She/It was being walked, We were being walked, They were being walked</li></ul><ul id="498f3284-3314-419f-8278-39d21cdfd9fb" class="bulleted-list"><li style="list-style-type:disc">Present Perfect: I have been walked, You have been walked, He/She/It has been walked, We have been walked, They have been walked</li></ul><ul id="e2561b05-eb9e-4537-ba8d-49a5beef7d30" class="bulleted-list"><li style="list-style-type:disc">Past Perfect: I had been walked, You had been walked, He/She/It had been walked, We had been walked, They had been walked</li></ul><ul id="c5d785bb-eb57-48ae-afd2-c3ef4e128789" class="bulleted-list"><li style="list-style-type:disc">Future Perfect: I will have been walked, You will have been walked, He/She/It will have been walked, We will have been walked, They will have been walked</li></ul><ul id="4bd2e83c-7c97-40c1-8ac5-55baca0c523e" class="bulleted-list"><li style="list-style-type:disc">Negative: I am not (I&#x27;m not) walked, I was not (wasn&#x27;t) walked, I will not (won&#x27;t) be walked</li></ul><ul id="abe0c405-600a-4972-ad5b-d5cd3942f5a7" class="bulleted-list"><li style="list-style-type:disc">Question: Am I walked? Was I walked? Will I be walked?</li></ul></li></ol><p id="ea6778c2-5c26-4f9e-bdc6-9d0e5f35c026" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

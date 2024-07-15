@@ -1,0 +1,681 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Game development</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a581a338-aacf-4adc-bed1-19e834625612" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🎡</span></div><h1 class="page-title">Game development</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="73c4639f-42dd-4d3c-a18a-91dda50f9e9c" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0e6d54db-1a11-4b9a-8abd-f44e2fe0c1e0">Preface</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f6558c89-5fe8-4639-80b5-4ff9dc78353a">Prerequisites</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#04feac4f-9979-44f9-97c1-21045611d13d"><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4974a689-6e79-4db2-a0c2-3f45dfe1d677">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b8f5d978-b833-4977-b57c-24e0c745ef0b">What is <a href="Game%20development%20a581a338aacf4adcbed119e834625612.html"><span class="icon">🎡</span>Game development</a> ?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b0ec27eb-4500-45eb-a4ea-5a89545faf44">Why does <a href="Game%20development%20a581a338aacf4adcbed119e834625612.html"><span class="icon">🎡</span>Game development</a>  matter to you?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6eddad0a-4c3f-4750-975e-c832bd944161">Ecosystem</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#75700a8d-3090-4396-8883-c5ebc96b2aff">Story</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#eaae2025-d7db-492d-bf28-14174f2c5578">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#849709e2-6925-493c-9d5d-19b5da54e10d">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a5a3c412-d3ba-4caa-ab23-8428f6d42474">Key patterns</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#589cbbb3-4222-4b25-8b5c-a966b2e2d580">Game loop</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#52af827a-b46b-4948-9fc5-87b31024ed8e">AABB Collision detection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8d97c3fe-a7b2-49de-8088-82834b01a5ce">Animation is illusion</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fda58c0f-1e5b-44dd-a020-320769288845">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#90c14396-9808-4a73-969f-c05cab3dfeac">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dfb011b6-556a-417a-a92a-8c2c7c44835c">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dad01d12-44d5-4884-bc41-b18a2aa5cb39">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cb4d1eee-badc-4f41-9140-62dca0257453">Game engines</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9a7b95b0-3c84-4e69-b89b-3c29a01dd1f2">Fixtures</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e996d884-803d-45f1-95dc-0e6e61fb447d">User input</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c0b0d44e-5ca3-413c-9f62-1d8a1ab68dcb">State machines and State Stacks</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c47ea00-6843-4715-94d9-7cd37d3afcf3"><strong>Procedural generation</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5d31ed1e-9954-42cc-8161-3d70fec965ba">Design</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b5f818f0-8d9c-447d-afbb-ffd7942bac8c">Nodes</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8baad97d-c61b-4bfe-b528-7dab4ee11507">Animation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7c7c9f93-9060-48a5-a597-fcf4d7b904c1">Tilemap</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b60b1e50-6806-4856-9d0e-f619da4206eb">Tile collision</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d08c28c8-10a6-41ce-88f6-0a91cbfdc805">pixel-art</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b717102c-b6e3-491b-aca6-73f2acf63f73"><strong>Parallax effect</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#67af0d14-e4af-4c4d-8096-c1fec3b43b82">Marketing and business</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9aa6cf50-95f9-4124-8b36-77f13684eb63">Subsection</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4f64f60f-4d9a-4a8b-8335-bf413474fa40">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7d40c959-500d-40a9-8512-d5b520f29d71">Exercises and Projects </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c30fb24a-6b31-41fc-bb60-a80d05e01a30">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8d2d2de3-a2e4-47ee-b818-e1c0bb1f1f96">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#51d4ea28-aba5-4a8d-b4e6-d6bcd51407e2">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0256fb71-f168-4f77-9920-fda5e4c023ca">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c462c664-e7ff-415a-93be-9f5b7cd91267">Tutorials</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5180d05e-ffce-4165-8589-34c4ebef5551">Next steps</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c41004f0-1947-4b2d-aadd-d86db6ed4eb3">References</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#02ceea1c-a74d-4959-a10f-54987a0483fe">TODO</a></div></nav><h1 id="0e6d54db-1a11-4b9a-8abd-f44e2fe0c1e0" class="">Preface</h1><h2 id="f6558c89-5fe8-4639-80b5-4ff9dc78353a" class="">Prerequisites</h2><figure id="0dd2efc6-4df9-4635-9e6b-8edaa91eb947" class="link-to-page"><a href="Computer%20Graphics%20(CG)%200dd2efc64df946359e6b8edaa91eb947.html"><span class="icon">🖼️</span>Computer Graphics (CG)</a></figure><h2 id="04feac4f-9979-44f9-97c1-21045611d13d" class=""><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></h2><h1 id="4974a689-6e79-4db2-a0c2-3f45dfe1d677" class="">Introduction</h1><h2 id="b8f5d978-b833-4977-b57c-24e0c745ef0b" class="">What is <a href="Game%20development%20a581a338aacf4adcbed119e834625612.html"><span class="icon">🎡</span>Game development</a> ?</h2><h2 id="b0ec27eb-4500-45eb-a4ea-5a89545faf44" class="">Why does <a href="Game%20development%20a581a338aacf4adcbed119e834625612.html"><span class="icon">🎡</span>Game development</a>  matter to you?</h2><h2 id="6eddad0a-4c3f-4750-975e-c832bd944161" class="">Ecosystem</h2><p id="0cd3fd09-417a-42eb-bd01-44d7fa472949" class="">Standards, jobs, industry, roles, and research</p><p id="6e65a5be-c025-4906-ba85-5351a6dd9fcb" class="">Sprits</p><h2 id="75700a8d-3090-4396-8883-c5ebc96b2aff" class="">Story</h2><h2 id="eaae2025-d7db-492d-bf28-14174f2c5578" class="">FAQ</h2><h2 id="849709e2-6925-493c-9d5d-19b5da54e10d" class="">Worked examples</h2><p id="ced564e0-210e-4977-b991-bab619914156" class="">Texture Filtering</p><h1 id="a5a3c412-d3ba-4caa-ab23-8428f6d42474" class="">Key patterns</h1><h2 id="589cbbb3-4222-4b25-8b5c-a966b2e2d580" class="">Game loop</h2><p id="96dc8825-3e84-47e6-83ce-b10f7a43895b" class=""> </p><hr id="e11371af-4795-4485-964a-1b7c5afa892a"/><h2 id="52af827a-b46b-4948-9fc5-87b31024ed8e" class="">AABB Collision detection</h2><p id="fccb5961-1ee5-43d6-972f-945cadb06433" class="">Alix-aligned bounding boxes</p><p id="3c178dbe-7603-4b4b-b331-c77d023b65e9" class=""><strong>Gilbert–Johnson–Keerthi distance algorithm</strong></p><p id="6c231406-db42-49ab-bf5f-3ef5f5c95c49" class=""><strong>Separated Axis Theroem </strong></p><p id="eb964555-ffcb-4f5e-a8ca-dfa55aec66f7" class=""><a href="https://www.youtube.com/watch?v=dn0hUgsok9M">https://www.youtube.com/watch?v=dn0hUgsok9M</a></p><p id="9712428d-11a1-432d-90db-4e9a43e9b67d" class=""><a href="https://en.wikipedia.org/wiki/Hyperplane_separation_theorem">https://en.wikipedia.org/wiki/Hyperplane_separation_theorem</a></p><p id="c5f321c1-8c7b-4f68-b400-2fb2ab64bea6" class="">NO rotation.</p><p id="22f8d482-cfa4-4fb8-ac8d-b2ae187d5d96" class=""><a href="https://en.wikipedia.org/wiki/Minkowski_Portal_Refinement">https://en.wikipedia.org/wiki/Minkowski_Portal_Refinement</a></p><p id="9c172f6f-feb4-48b8-8343-8e7bfec2dc12" class=""><a href="https://cse442-17f.github.io/Gilbert-Johnson-Keerthi-Distance-Algorithm/">https://cse442-17f.github.io/Gilbert-Johnson-Keerthi-Distance-Algorithm/</a></p><p id="fbbc9b29-9e29-45a6-86ab-dde49dad03a4" class=""><a href="https://en.wikipedia.org/wiki/Gilbert%E2%80%93Johnson%E2%80%93Keerthi_distance_algorithm">https://en.wikipedia.org/wiki/Gilbert–Johnson–Keerthi_distance_algorithm</a></p><h2 id="8d97c3fe-a7b2-49de-8088-82834b01a5ce" class="">Animation is illusion</h2><h2 id="fda58c0f-1e5b-44dd-a020-320769288845" class="">Exercises and Projects</h2><p id="8ec87dc9-627c-44b0-835a-178770b075b3" class="">Summary</p><h3 id="90c14396-9808-4a73-969f-c05cab3dfeac" class="">Key decisions</h3><h2 id="dfb011b6-556a-417a-a92a-8c2c7c44835c" class="">FAQ</h2><h2 id="dad01d12-44d5-4884-bc41-b18a2aa5cb39" class="">Reference Notes</h2><p id="f8f9761f-f109-473d-aa6b-f22274d4dd63" class="">Memory efficient examples in  Shesez, Boundary Break</p><p id="74625f44-7db2-470c-b35d-da6c6f2ef8e0" class=""><a href="https://www.youtube.com/watch?v=rUFouSgVZ5Y">https://www.youtube.com/watch?v=rUFouSgVZ5Y</a></p><h1 id="cb4d1eee-badc-4f41-9140-62dca0257453" class="">Game engines</h1><h2 id="9a7b95b0-3c84-4e69-b89b-3c29a01dd1f2" class="">Fixtures</h2><p id="55eba514-d804-4e4a-81a1-548c77b8520d" class="">Shapes have densities, frictional characteristics, restitution, </p><h2 id="e996d884-803d-45f1-95dc-0e6e61fb447d" class="">User input</h2><p id="6e692792-a229-4fa6-a05f-5d8049091058" class="">Event-driven arch</p><p id="86273238-f59c-4e0e-b527-91f57b14157d" class="">Mouse Input</p><h2 id="c0b0d44e-5ca3-413c-9f62-1d8a1ab68dcb" class="">State machines and State Stacks</h2><p id="49003424-acc9-4476-b53a-7143533b658a" class="">Turn-based systems</p><p id="d9a38b2b-6155-461e-b75f-77c62a4787ae" class="">GUIs</p><p id="6c99a5c8-d8c9-46b1-a03b-1d02e1d1e42b" class="">RPG mechanics</p><p id="915e3c87-da33-4a91-be23-f324ae69edd1" class=""><a href="https://www.rpgmakerweb.com/">https://www.rpgmakerweb.com/</a></p><p id="a7f82a31-bb6c-41e2-a3d9-52ffaa659411" class=""><a href="https://howtomakeanrpg.com/">https://howtomakeanrpg.com/</a></p><h2 id="2c47ea00-6843-4715-94d9-7cd37d3afcf3" class=""><strong>Procedural generation</strong></h2><p id="f51e6a6c-169e-4ab9-8a2f-a7164a3079ff" class=""><a href="https://youtu.be/lfuGLaZ3khs?si=fk5HVPb6_S_b1jqd">https://youtu.be/lfuGLaZ3khs?si=fk5HVPb6_S_b1jqd</a></p><p id="536ecbf5-9b62-41ac-9ffe-8cebd0846601" class=""><a href="https://youtu.be/wDD7c7IEFTQ?si=TLGO9qQ9DmI80Oi9">https://youtu.be/wDD7c7IEFTQ?si=TLGO9qQ9DmI80Oi9</a></p><p id="4e518a03-4368-40b4-973b-9c03520fa3dd" class=""><a href="https://youtu.be/tfdXgiMwUBw">https://youtu.be/tfdXgiMwUBw</a></p><p id="ea8ac6c4-a8d0-43aa-9f6e-91c5bb498adb" class=""><a href="https://youtu.be/lfuGLaZ3khs?si=fk5HVPb6_S_b1jqd">https://youtu.be/lfuGLaZ3khs?si=fk5HVPb6_S_b1jqd</a></p><p id="0254c9ea-36a4-411a-b3f7-f4d2d198f593" class=""><a href="https://youtu.be/wDD7c7IEFTQ?si=TLGO9qQ9DmI80Oi9">https://youtu.be/wDD7c7IEFTQ?si=TLGO9qQ9DmI80Oi9</a></p><h1 id="5d31ed1e-9954-42cc-8161-3d70fec965ba" class="">Design</h1><p id="5e8c3d8e-1973-4a8f-bc4b-2415011ac58d" class=""><a href="https://www.youtube.com/playlist?list=PLhqJJNjsQ7KGk32ju5o_3JcZF1a7beP1d">https://www.youtube.com/playlist?list=PLhqJJNjsQ7KGk32ju5o_3JcZF1a7beP1d</a></p><p id="3396d486-25cc-449f-8318-7d9e745ddf41" class="">How does Godot allow trigger events based on the collision, during the collision, and after the collision?</p><h2 id="b5f818f0-8d9c-447d-afbb-ffd7942bac8c" class="">Nodes</h2><table id="27febd99-6462-472e-b7cd-3f81fe7a9d9c" class="simple-table"><tbody><tr id="d7310aa5-ae48-4107-adee-27d8d85dee0d"><td id="X:xd" class="" style="width:230px">Category</td><td id="?yko" class="" style="width:230px">Node Name</td><td id="k[Ae" class="" style="width:230px">Description</td></tr><tr id="15ed35dc-f9f2-42ba-bad1-94ef52c25312"><td id="X:xd" class="" style="width:230px"><strong>Scene</strong></td><td id="?yko" class="" style="width:230px">Node</td><td id="k[Ae" class="" style="width:230px">Base class for all nodes.</td></tr><tr id="00692e34-69ac-40fc-95a0-3ca08e077a44"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Spatial</td><td id="k[Ae" class="" style="width:230px">3D game object.</td></tr><tr id="d3f85b58-11af-4605-a908-9dcfd6961422"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Node2D</td><td id="k[Ae" class="" style="width:230px">2D game object.</td></tr><tr id="17022d7e-50c5-4a36-8d39-6892cf585ae2"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">CanvasItem</td><td id="k[Ae" class="" style="width:230px">Base class for all objects that can be drawn.</td></tr><tr id="3fd4ee69-699e-4bd7-8848-199487c46387"><td id="X:xd" class="" style="width:230px"><strong>Control</strong></td><td id="?yko" class="" style="width:230px">Control</td><td id="k[Ae" class="" style="width:230px">Base class for all UI-related nodes.</td></tr><tr id="d293dc10-1078-4de6-b72b-e6993ec30e11"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Button</td><td id="k[Ae" class="" style="width:230px">Button UI element.</td></tr><tr id="d695ade4-5125-4a2b-a076-c05160fa62f7"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Label</td><td id="k[Ae" class="" style="width:230px">Displays text.</td></tr><tr id="08df8c37-bc1e-4e88-b01b-fb104b3dfa2b"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">LineEdit</td><td id="k[Ae" class="" style="width:230px">Single-line text editor.</td></tr><tr id="0804be01-6534-4a54-9eeb-5e7a7568779a"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">TextEdit</td><td id="k[Ae" class="" style="width:230px">Multi-line text editor.</td></tr><tr id="5bf54891-2dee-438e-a951-57045994e9dc"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Panel</td><td id="k[Ae" class="" style="width:230px">Panel for grouping UI elements.</td></tr><tr id="d32e07ee-378a-4294-84d5-b4c75b865fbc"><td id="X:xd" class="" style="width:230px"><strong>Physics</strong></td><td id="?yko" class="" style="width:230px">PhysicsBody</td><td id="k[Ae" class="" style="width:230px">Base class for physics bodies.</td></tr><tr id="128b3aa3-0e1d-4673-a5f6-e43418f7e51a"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">RigidBody</td><td id="k[Ae" class="" style="width:230px">3D physics body.</td></tr><tr id="77a325b5-7cec-4493-a551-ec6b55582fef"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">KinematicBody</td><td id="k[Ae" class="" style="width:230px">3D physics body that can be controlled via code.</td></tr><tr id="32d2a2b4-bee9-41c7-b0e5-497109515410"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">StaticBody</td><td id="k[Ae" class="" style="width:230px">3D physics body that is static and immovable.</td></tr><tr id="30eb888b-465b-47ac-a9f9-a3bef69272e2"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Area</td><td id="k[Ae" class="" style="width:230px">Detection and influence zone.</td></tr><tr id="d8b9673b-3d81-41a5-94a3-ba8319fd0f38"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">CollisionShape</td><td id="k[Ae" class="" style="width:230px">Shape used for collision detection.</td></tr><tr id="fa7d754c-bcfa-4b29-8795-b42f831cbc28"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">RayCast</td><td id="k[Ae" class="" style="width:230px">Casts a ray for collision detection.</td></tr><tr id="634e7d7e-3409-4260-beb9-939a1a94adda"><td id="X:xd" class="" style="width:230px"><strong>2D Physics</strong></td><td id="?yko" class="" style="width:230px">PhysicsBody2D</td><td id="k[Ae" class="" style="width:230px">Base class for 2D physics bodies.</td></tr><tr id="1bc7e745-d217-434f-a67e-10b84b24796a"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">RigidBody2D</td><td id="k[Ae" class="" style="width:230px">2D physics body.</td></tr><tr id="1d2fbf40-feef-4a5c-a2a9-90125d2c7a18"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">KinematicBody2D</td><td id="k[Ae" class="" style="width:230px">2D physics body that can be controlled via code.</td></tr><tr id="e219d673-2292-4612-aeb7-fd31ba47612b"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">StaticBody2D</td><td id="k[Ae" class="" style="width:230px">2D physics body that is static and immovable.</td></tr><tr id="f062fd74-0cab-4dbe-b3d0-5ec576d95d3e"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Area2D</td><td id="k[Ae" class="" style="width:230px">2D detection and influence zone.</td></tr><tr id="79b0f18c-55f1-4dd1-be26-11b22123d59a"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">CollisionShape2D</td><td id="k[Ae" class="" style="width:230px">Shape used for 2D collision detection.</td></tr><tr id="96d7c348-ca95-41b4-bbbf-e7389ab13c14"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">RayCast2D</td><td id="k[Ae" class="" style="width:230px">Casts a ray for 2D collision detection.</td></tr><tr id="785fa571-5a01-4788-9ddd-3404810b4b40"><td id="X:xd" class="" style="width:230px"><strong>Rendering</strong></td><td id="?yko" class="" style="width:230px">MeshInstance</td><td id="k[Ae" class="" style="width:230px">Instance of a 3D mesh.</td></tr><tr id="225632aa-c131-4bf6-8360-834c338e076d"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Light</td><td id="k[Ae" class="" style="width:230px">Base class for all light types.</td></tr><tr id="fa11ed34-4332-4dca-a1fc-246cf50983e7"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Camera</td><td id="k[Ae" class="" style="width:230px">Camera for rendering 3D scenes.</td></tr><tr id="19f9c2a3-2c49-4642-af4a-7245e1abab76"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Sprite</td><td id="k[Ae" class="" style="width:230px">2D image display.</td></tr><tr id="c27eb27e-d599-40da-a7c4-3de004f27df8"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">AnimatedSprite</td><td id="k[Ae" class="" style="width:230px">2D animated image display.</td></tr><tr id="ef23b62c-bca2-43f7-bf2e-e67c6ade7e52"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">ParticleSystem</td><td id="k[Ae" class="" style="width:230px">Particle emitter for special effects.</td></tr><tr id="f2181bb8-601e-4c50-a3fe-a9886267830d"><td id="X:xd" class="" style="width:230px"><strong>Audio</strong></td><td id="?yko" class="" style="width:230px">AudioStreamPlayer</td><td id="k[Ae" class="" style="width:230px">Plays audio streams.</td></tr><tr id="048f4cb1-f892-4b52-82f3-8619c947c67c"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">AudioStreamPlayer2D</td><td id="k[Ae" class="" style="width:230px">Plays 2D positional audio streams.</td></tr><tr id="89480fea-37f4-4410-bc0b-552835292720"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">AudioStreamPlayer3D</td><td id="k[Ae" class="" style="width:230px">Plays 3D positional audio streams.</td></tr><tr id="92fc1009-56fa-43b6-b823-14af14b1b326"><td id="X:xd" class="" style="width:230px"><strong>Networking</strong></td><td id="?yko" class="" style="width:230px">NetworkedMultiplayerPeer</td><td id="k[Ae" class="" style="width:230px">Base class for networking peers.</td></tr><tr id="064af562-84df-4c22-8bc6-f8aea6213e56"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">MultiplayerAPI</td><td id="k[Ae" class="" style="width:230px">Handles multiplayer sessions.</td></tr><tr id="95173106-25a4-4894-aa63-5323315151d9"><td id="X:xd" class="" style="width:230px"><strong>Animation</strong></td><td id="?yko" class="" style="width:230px">AnimationPlayer</td><td id="k[Ae" class="" style="width:230px">Plays animations created in the editor.</td></tr><tr id="d7f479db-9d9a-478a-b24d-72fa3d283bcd"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">AnimationTree</td><td id="k[Ae" class="" style="width:230px">Controls complex animation blending.</td></tr><tr id="b21abdc0-9e0a-4df4-8d88-4d39eecda4cd"><td id="X:xd" class="" style="width:230px"><strong>Scripting</strong></td><td id="?yko" class="" style="width:230px">Script</td><td id="k[Ae" class="" style="width:230px">Base class for all scripts.</td></tr><tr id="8571e469-9a91-4be8-af36-f57c3375d232"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">GDScript</td><td id="k[Ae" class="" style="width:230px">Godot&#x27;s native scripting language.</td></tr><tr id="a826fc3b-aa5c-454e-bdf0-e2634f1d7495"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">VisualScript</td><td id="k[Ae" class="" style="width:230px">Visual scripting system.</td></tr><tr id="e1e7d17c-71df-4210-b7e9-eb6e76acc249"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">NativeScript</td><td id="k[Ae" class="" style="width:230px">Allows using compiled languages for scripting.</td></tr><tr id="2fe9ddf0-d48d-418f-b75f-08dbd6950337"><td id="X:xd" class="" style="width:230px"><strong>GUI</strong></td><td id="?yko" class="" style="width:230px">Button</td><td id="k[Ae" class="" style="width:230px">UI button.</td></tr><tr id="1bfdd8cf-3ff2-4df6-a5c8-ee99b2c70140"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">CheckBox</td><td id="k[Ae" class="" style="width:230px">Check box for boolean selection.</td></tr><tr id="5d20d815-cb19-445e-89f4-856ba5733285"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">HBoxContainer</td><td id="k[Ae" class="" style="width:230px">Horizontal box container for arranging child elements.</td></tr><tr id="9a1bda68-d5e9-4641-9d33-b39a7c8e0c0c"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">VBoxContainer</td><td id="k[Ae" class="" style="width:230px">Vertical box container for arranging child elements.</td></tr><tr id="f2f4f4a9-1a47-485b-85eb-97f78108280b"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">GridContainer</td><td id="k[Ae" class="" style="width:230px">Grid container for arranging child elements.</td></tr><tr id="fdc154c4-df36-4576-8d94-aabd4e711b9c"><td id="X:xd" class="" style="width:230px"><strong>Input</strong></td><td id="?yko" class="" style="width:230px">InputEvent</td><td id="k[Ae" class="" style="width:230px">Base class for all input events.</td></tr><tr id="2b004f60-7e04-440d-b66c-b4d3c9a2e3a6"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">InputEventKey</td><td id="k[Ae" class="" style="width:230px">Keyboard event.</td></tr><tr id="41e9bf76-079f-41a0-af60-91941b45288e"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">InputEventMouseButton</td><td id="k[Ae" class="" style="width:230px">Mouse button event.</td></tr><tr id="d03b61b6-19c0-4fed-a1ee-99ef813a4f98"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">InputEventScreenTouch</td><td id="k[Ae" class="" style="width:230px">Screen touch event.</td></tr><tr id="7cf0b49a-03e2-4902-a7a0-b8b2d92bebcc"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">InputEventJoypadButton</td><td id="k[Ae" class="" style="width:230px">Joypad button event.</td></tr><tr id="198392a6-74f3-4632-92b6-6a8966fe6889"><td id="X:xd" class="" style="width:230px"><strong>Resources</strong></td><td id="?yko" class="" style="width:230px">Resource</td><td id="k[Ae" class="" style="width:230px">Base class for all resource types.</td></tr><tr id="d53a80ab-407b-448f-b40f-c42619d07e16"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Texture</td><td id="k[Ae" class="" style="width:230px">Base class for all texture types.</td></tr><tr id="3932f4b1-6226-43b1-9fc2-792a0d0c9e0d"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Shader</td><td id="k[Ae" class="" style="width:230px">Custom shader programs.</td></tr><tr id="55700ca6-e86d-41db-b9dd-ceab16b6e361"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Mesh</td><td id="k[Ae" class="" style="width:230px">3D mesh resource.</td></tr><tr id="8650eb36-3038-412e-910c-d7fd18241628"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Material</td><td id="k[Ae" class="" style="width:230px">Defines surface properties.</td></tr><tr id="fcf2acca-d7aa-40e3-92da-bdf7960de944"><td id="X:xd" class="" style="width:230px"><strong>Navigation</strong></td><td id="?yko" class="" style="width:230px">Navigation</td><td id="k[Ae" class="" style="width:230px">Provides navigation and pathfinding.</td></tr><tr id="ac0a85c2-8acc-4cfa-b2c2-2420f36a76a0"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">NavigationMesh</td><td id="k[Ae" class="" style="width:230px">Mesh used for navigation.</td></tr><tr id="349df496-77c3-4131-8c39-9ad42291e5df"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">NavigationAgent</td><td id="k[Ae" class="" style="width:230px">Handles navigation for characters.</td></tr><tr id="9d999619-2d1f-4791-a72f-1a2384a9f623"><td id="X:xd" class="" style="width:230px"><strong>3D Nodes</strong></td><td id="?yko" class="" style="width:230px">MeshInstance</td><td id="k[Ae" class="" style="width:230px">Instance of a 3D mesh.</td></tr><tr id="1474ce88-7bc4-4e46-b113-1b4579b6d016"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Camera</td><td id="k[Ae" class="" style="width:230px">Camera for rendering 3D scenes.</td></tr><tr id="849cccf5-ba4c-41a8-b835-9255d8dd3f37"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">DirectionalLight</td><td id="k[Ae" class="" style="width:230px">Light emitting in a single direction.</td></tr><tr id="b80a4826-8419-4e89-8327-12cc829e4c1e"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">OmniLight</td><td id="k[Ae" class="" style="width:230px">Light emitting in all directions.</td></tr><tr id="205666bb-8c89-4c9f-b451-63af93534f2d"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">SpotLight</td><td id="k[Ae" class="" style="width:230px">Light emitting in a cone shape.</td></tr><tr id="c21be4c0-67ba-4684-9d25-9d0531968582"><td id="X:xd" class="" style="width:230px"><strong>2D Nodes</strong></td><td id="?yko" class="" style="width:230px">Sprite</td><td id="k[Ae" class="" style="width:230px">2D image display.</td></tr><tr id="01d7bdea-171f-4c60-93b7-099a0cf474fb"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Polygon2D</td><td id="k[Ae" class="" style="width:230px">2D polygon.</td></tr><tr id="5a45d585-1033-499b-b477-304d3027b0ca"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">Line2D</td><td id="k[Ae" class="" style="width:230px">2D line.</td></tr><tr id="9eb364bb-a12e-4696-9f05-a0ae31c7bc64"><td id="X:xd" class="" style="width:230px"></td><td id="?yko" class="" style="width:230px">NinePatchRect</td><td id="k[Ae" class="" style="width:230px">9-patch rectangle for scalable UI elements.</td></tr></tbody></table><h2 id="8baad97d-c61b-4bfe-b528-7dab4ee11507" class="">Animation</h2><h2 id="7c7c9f93-9060-48a5-a597-fcf4d7b904c1" class="">Tilemap</h2><h2 id="b60b1e50-6806-4856-9d0e-f619da4206eb" class="">Tile collision</h2><p id="13a985cc-3690-4f07-a939-39e0225abf2c" class=""><a href="https://www.youtube.com/watch?v=sw-sErHBEk4&amp;list=PLqohV6FqW2YzSxVcwLsaYavAgMN92dzGb&amp;index=23">https://www.youtube.com/watch?v=sw-sErHBEk4&amp;list=PLqohV6FqW2YzSxVcwLsaYavAgMN92dzGb&amp;index=23</a></p><p id="1e2251ba-87cb-4c30-8d37-3803ba684d37" class="">DawnBringer’s 32 color</p><p id="70a11581-b871-4667-bd0e-ac8c8a8d80e7" class=""><a href="https://lospec.com/palette-list/dawnbringer-32">https://lospec.com/palette-list/dawnbringer-32</a></p><p id="35223e58-f113-44a3-b448-89f99c323185" class="">Sprites</p><p id="0ed31d3b-70cc-4322-8af2-7d60ba6e0669" class="">a <strong>sprite</strong> is a <a href="https://en.wikipedia.org/wiki/Plane_(mathematics)">two-dimensional</a> <a href="https://en.wikipedia.org/wiki/Bitmap">bitmap</a> that is integrated into a larger scene, most often in a 2D <a href="https://en.wikipedia.org/wiki/Video_game">video game</a>. </p><p id="cec57843-5bea-4bd0-9468-26ae46856227" class=""><strong>Vector graphics</strong></p><p id="42a726f2-1374-407a-8370-4db27e919a17" class=""><strong>Full motion video</strong></p><p id="562f273e-2217-4105-b858-1e6183fafe23" class=""><strong>Top-down perspective</strong></p><p id="79213dbc-9f5d-4588-8f21-a2a059cf491b" class=""><strong>Side-scrolling game</strong></p><p id="19c0c88c-92ea-4bad-a1f0-58e783eeee9a" class=""><strong>2.5D, 3/4 perspective, and pseudo-3D</strong></p><p id="6fd3f7f8-b329-48ca-be77-25fa94ecc3d5" class=""><strong>3D</strong></p><h3 id="d08c28c8-10a6-41ce-88f6-0a91cbfdc805" class="">pixel-art</h3><figure id="ce019d14-0644-483b-bbf2-cd7ccc0dfefe" class="image"><a href="Untitled%20149.png"><img style="width:515px" src="Untitled%20149.png"/></a><figcaption><a href="https://discussions.unity.com/t/sprite-filtering-point-bilinear/90684">https://discussions.unity.com/t/sprite-filtering-point-bilinear/90684</a></figcaption></figure><div><h2 id="b717102c-b6e3-491b-aca6-73f2acf63f73" class=""><strong>Parallax effect</strong></h2><p id="85503398-0bf7-4276-92dd-5cc3649a7031" class=""><a href="https://www.youtube.com/watch?v=z9tBce8eFqE">https://www.youtube.com/watch?v=z9tBce8eFqE</a></p><p id="cc783922-5a6d-44fb-b486-b814715cf5d1" class=""><a href="https://en.wikipedia.org/wiki/Parallax_scrolling">https://en.wikipedia.org/wiki/Parallax_scrolling</a></p><p id="84cb5bf6-133b-4e84-8346-c572a75dc02a" class=""><a href="https://en.wikipedia.org/wiki/Parallax">https://en.wikipedia.org/wiki/Parallax</a></p></div><h1 id="67af0d14-e4af-4c4d-8096-c1fec3b43b82" class="">Marketing and business</h1><p id="ad3348d9-bcb4-4502-9129-369cb65f2bd4" class=""><a href="https://www.youtube.com/watch?v=4R-lM8Q2zOg&amp;list=PLqohV6FqW2YzSxVcwLsaYavAgMN92dzGb&amp;index=20">https://www.youtube.com/watch?v=4R-lM8Q2zOg&amp;list=PLqohV6FqW2YzSxVcwLsaYavAgMN92dzGb&amp;index=20</a></p><p id="8f6d3b75-3800-4daf-87ba-2868216e3223" class="">
+</p><h2 id="9aa6cf50-95f9-4124-8b36-77f13684eb63" class="">Subsection</h2><h3 id="4f64f60f-4d9a-4a8b-8335-bf413474fa40" class="">Subsubsection</h3><h2 id="7d40c959-500d-40a9-8512-d5b520f29d71" class="">Exercises and Projects </h2><h2 id="c30fb24a-6b31-41fc-bb60-a80d05e01a30" class="">Summary</h2><h3 id="8d2d2de3-a2e4-47ee-b818-e1c0bb1f1f96" class="">Key decisions</h3><p id="ab85a7a6-2213-4b06-a7a8-e946de44c768" class="">. You don’t have to self-fund.</p><h2 id="51d4ea28-aba5-4a8d-b4e6-d6bcd51407e2" class="">FAQ</h2><h2 id="0256fb71-f168-4f77-9920-fda5e4c023ca" class="">Reference Notes</h2><figure id="ae6dc05e-959b-44c2-b33a-5a7ad78c9e0b" class="link-to-page"><a href="Marketing%20ae6dc05e959b44c2b33a5a7ad78c9e0b.html"><span class="icon">⭐</span>Marketing</a></figure><p id="3cba7ad1-0606-47e1-a2d2-a027bda0429f" class="">
+</p><p id="2ba36748-8e2d-449a-aca3-ea6bab5a5e9a" class="">
+</p><h1 id="c462c664-e7ff-415a-93be-9f5b7cd91267" class="">Tutorials</h1><figure id="a002d5ab-6878-459c-b551-615c9a3dcb67" class="link-to-page"><a href="Pong%20-%20Lecture%200%20a002d5ab6878459cb551615c9a3dcb67.html">Pong - Lecture 0</a></figure><figure id="e28fd000-da39-41a5-b7a2-0a85b7a56603" class="link-to-page"><a href="Shortcuts%20e28fd000da3941a5b7a20a85b7a56603.html">Shortcuts</a></figure><h1 id="5180d05e-ffce-4165-8589-34c4ebef5551" class="">Next steps</h1><h1 id="c41004f0-1947-4b2d-aadd-d86db6ed4eb3" class="">References</h1><p id="aa1ddff4-b959-4d99-9612-e84941fd65f1" class=""><strong>The Art of Game Design </strong>- Jesse Schell</p><p id="077519fb-e928-4943-aac6-1b5f4cf8958a" class=""><strong>A Theory of Fun for Game Design - </strong>Raph Koster</p><p id="d00a2caf-76f1-48b1-a5f7-9e2183fc3df3" class=""><strong>Game Design Workshop: A Playcentric Approach for Creating Innovative Games - </strong>Tracy Fullerton</p><p id="3b6a25eb-9629-4422-b261-42e82a64851c" class=""><strong>Level Up!: The Guide to Great Video Game Design - </strong>Scott Rogers</p><p id="37552628-3ce6-41df-a54a-567b4c96a245" class=""><strong>Rules of Play: Game Design Fundamentals - </strong>Katie Salen and Eric Zimmerman</p><p id="929bbb16-6f21-4f6e-8e6f-08b344a1cf61" class=""><strong>Reality is Broken - </strong>Jane McGonigal.</p><div id="e220f67a-8525-4d21-8539-b0a6c41efcfe" class="collection-content"><h4 class="collection-title">Citation</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Cite</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th></tr></thead><tbody><tr id="b1d868c1-ec06-4168-989e-447d3f1c36d3"><td class="cell-title"><a href="CS50&#x27;s%20Introduction%20to%20Game%20Development%202018%20b1d868c1ec064168989e447d3f1c36d3.html">CS50&#x27;s Introduction to Game Development 2018</a></td><td class="cell-]WPz"><span class="selected-value select-value-color-brown">CS50</span><span class="selected-value select-value-color-green">Harvard</span></td></tr><tr id="bc6921f9-379a-4d10-b9f3-aeb2a4757188"><td class="cell-title"><a href="https%20gameprogrammingpatterns%20com%20bc6921f9379a4d10b9f3aeb2a4757188.html">https://gameprogrammingpatterns.com/</a></td><td class="cell-]WPz"></td></tr><tr id="3f3237a9-61b6-42b6-a33b-bb042188b97b"><td class="cell-title"><a href="Untitled%203f3237a961b642b6a33bbb042188b97b.html">Untitled</a></td><td class="cell-]WPz"></td></tr></tbody></table><br/><br/></div><h1 id="02ceea1c-a74d-4959-a10f-54987a0483fe" class="">TODO</h1><p id="b9933e03-02de-4e14-b2a5-b4a57bba4576" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

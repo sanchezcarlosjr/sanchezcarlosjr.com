@@ -1,0 +1,683 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Marketing</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="ae6dc05e-959b-44c2-b33a-5a7ad78c9e0b" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/met_goya_1789.jpg" style="object-position:center 80%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">⭐</span></div><h1 class="page-title">Marketing</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="4f3e75be-7b91-4f9a-a3ae-7a2192fb5949" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#eda2c349-4ec8-4bd0-bf8b-33dd035e396e">Preface</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c90ba302-c5e0-4fc8-931e-ce1d517b5b66">Prerequisites</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9b2b85d8-e91c-4b6a-8779-31df1ae04f33"><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fefffed3-049d-49c5-be1f-3047f05b36b2">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4fe9de6b-d889-4492-a599-a4711088b3c8">What is <a href="Marketing%20ae6dc05e959b44c2b33a5a7ad78c9e0b.html"><span class="icon">⭐</span>Marketing</a> ?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#379ffc09-6ae8-4ea4-ba05-ff51c33c6a3d">Why does <a href="Marketing%20ae6dc05e959b44c2b33a5a7ad78c9e0b.html"><span class="icon">⭐</span>Marketing</a>  matter to you?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9c7bf77c-533b-47ad-80a9-aa0d647954bc">Ecosystem</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8269e46f-bb77-45cf-b081-14f2c861a4cf">Story</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e1e0c5d9-9c79-4f79-aea0-5f2dd87ba405">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1245e529-e45d-42ec-9514-bd8eae3e0f69">What is difference between Sales and Marketing?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a8823de7-d181-4ffb-9d83-3d3ab7bae071">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#afaac78f-c118-431f-bb2a-2db6d600eef3">Strategy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a0513667-ae03-4df7-95ff-ef051ff726c6">Timeframe</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c3c7886e-d959-4bf9-8b26-766dd340630a">Digital Product Marketing Strategy</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a3c936d5-deef-4144-bffd-ce027aabc84a">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#42f161d9-7a6a-4a7a-b5b1-30b1b0eebd7c">Go big or go back to selling services</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a493f5ee-86e4-4af6-9c11-b5077dd0d81d">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#592be2af-bd7b-458c-9dde-5873d4b6da51">Sizing markets &amp; Sizing Demand</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cd6814ce-0b86-4e28-a8c4-f51e19e72163">Advertising</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4e41b9c1-4b33-4d62-89e2-6df8e7df0fd3">Growth</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1ef27207-9e12-4c2d-8a9e-d843d414a89e">Branding</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ed5dd436-b2e3-4023-b1b7-dc4523203bc3">Digital marketing</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#07e1371d-69c9-44ad-9175-b8ef4595ce8a">Product management</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#49ff200f-7900-415e-a273-d6872e55ec87">Product Value Propositions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9593707b-b3b9-40a0-84d4-222a59c5dc8d">Public relations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e51113a9-4fc4-402f-aa89-71ee6eb67d7f">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#400dfbf2-4e03-423c-b428-05def9ffabca">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4d371c7f-a40f-4d96-891d-be95a8882524">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#eaa306ee-eb5f-43a7-b9b6-1d5ccacb328c">Case studies</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4ca14ca4-5952-4dd2-afc1-aeee51fde928">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e79e7ac5-54a8-4230-ba61-0f5b39ded8b8">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3cdf277d-b6c0-46e5-839f-7f8f76a7000c">Lead generation and Customer/User Acquisition</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#73eda778-6521-47a7-8742-ef2104214f5f">Pipeline</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ca9eff8f-c61c-47b5-89b8-cc0d1c0213a1">B2C</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#adce0191-9d83-4bec-a54e-6776a8fd0c14">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7f0465ae-37c5-4c9f-8604-db51a3cbbc98">B2B</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1bf38b2d-05f3-434f-8e72-6f7cde260c81">Merchant Acquisition</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#aec0cd4c-0b57-40c5-988f-3d0703b03e59">B2C Copywriting</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2642b322-ae16-4283-a3c0-40dd8f5c351b">Product Led Growth</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#73986077-ccd5-4b82-95c9-c023aa86e2de">Business Development</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e3648d7f-4d29-464e-985b-0eec774ed905">Account based Marketing</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#05822e0b-f207-4f06-8b1a-6013f81aa746">Lead nurturing</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e65083d3-e062-408d-a514-6d4091dc9c61">Conversion Rate Optimization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#42a6bf0f-24ae-43f4-bd28-f4f6b335313f">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ddafbfaf-cc49-4493-ad1f-dd8440df8519">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e20cffc4-e098-4aae-adeb-e7eec75afc59">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#26334ac7-b23c-4c25-8f27-48a707bac52e">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4859889a-4b32-4224-b8bf-f0591ad0f37f">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f2f07f03-3add-4722-9a29-9c6bf7b9a9ff">Customer Psychology</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#952e5eed-ff56-4c5d-9746-b909f8e4fa47">Tactics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#758c90c9-e1d8-45fc-a643-997467e6426f">Product promotion</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#be1d9e91-75ec-4212-b216-0b9e48260b72">Pricing models</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#61d4c8a4-435f-421d-89d6-8df62d115ac5">Direct &amp; Brand marketing</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4fd5e5d6-feb3-4f20-95cf-528283ad97b6">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1508b57a-3d32-4177-ba8c-3f3f21ea513f">Copywriting</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#539db89c-bd61-479e-85e7-f8c795825b4c">Content management</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#37faff9b-487b-43ef-9125-7788022c5d46">SEO</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c57d9a09-b331-495c-8cc0-ae707dc7e29d">Word of mouth</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#884466a3-8e92-4161-8eb7-534cdac95a09">Facebook ads</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#abe06ce5-8f42-445d-8c12-eaec3f3caf4b">Google &amp; YouTube advertising</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5275c3c9-c97f-4c69-b1bd-8c71b0023e1e">Twitter Advertising</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#eb03e2a5-596b-4325-b10e-f0e033b6f5bb">Snapchat Advertising</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#beff1ce0-66f4-46a4-b6d8-4c3fff1804b6">Spotify Advertising</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c0d34e77-6b39-47f0-ba3d-29873184ae99">LinkedIn Advertising</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a36ce955-0eba-444e-a87f-69fc13659013">Amazon Advertising</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#62a5fbf9-130d-4e3a-8c9b-4750cd4451a6">Influencers</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d978729f-c081-450c-ad16-65f7087e8741">Social Media</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fdb93653-9a84-407b-8a14-9ce56ccf167a">Email marketing </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1726f807-2153-4706-84a0-a7d7c490968d">Cold calls, cold emails &amp; lists</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b77be17d-0c39-4516-918b-8e94169274d9">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#43b582da-2385-47c5-a008-dc8a31d3e3f2">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8e8ec5ce-e5cf-4a9e-925c-0e33f4534723">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f85457ba-3f28-417e-88ad-fee7a0002361">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6ff5a19b-6b6c-4fbd-ace2-14d088a4dd03">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#073cf3bf-487d-44bd-ba65-3ee8a61f9fbf">Analytics</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4baa331f-eb70-41a7-a683-1b7d2c22f9be">Technical products</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ab7fa5a5-b482-408f-8da6-02f75da3129d">Market research</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#034e22b2-76de-4666-a1a8-88d57483594d">Startup Marketing &amp;  Growth Hacking</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#75ea852c-03ea-42bb-9471-054465bf93db">Focusing to brand stuff is bad idea in early years</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#09c6620f-0abc-48b0-a003-0d675fcd5576">Management</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6070d9bc-4717-48c0-8fc7-ed1ead67723f">Investor management</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f9fa34b7-5d70-42a3-8cdd-8d3833b632d6">Sales enablement</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bd04f309-a068-4447-ac15-7028d27de22a">Chief Marketing Officer Career</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#13747b6e-c2ff-4c95-af54-f496e97d0b5c">Become a CMO</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#04139d47-0230-4a61-a3c1-0770d60e336b">Soft skills</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cdb50d81-b367-458e-8877-f0aee08f0a15">Leadership &amp; People Management</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b64cef7e-0cfa-427b-8c69-af9d4eaf3611">Interviews</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6fc12e43-085b-4483-882c-341bff8098fd">Growing your Digital Marketing Agency</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#580c9bb8-206e-4426-92a7-8b4a104f76c5">Tutorials</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#265419bc-a499-44ac-83b7-3381d2563bff">Content Generation with IA</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#05fd6e42-6cb7-4041-b053-bfa39db70c2c">Next steps</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cc350500-91a3-47ab-a6b3-80d3cbc42503">References</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ca76551d-5658-4b78-9dc8-82481c95ddba">TODO</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8bbb4efc-ee5d-43da-9c7b-20aa46c05802">Marketing plan</a></div></nav><h1 id="eda2c349-4ec8-4bd0-bf8b-33dd035e396e" class="">Preface</h1><h2 id="c90ba302-c5e0-4fc8-931e-ce1d517b5b66" class="">Prerequisites</h2><h2 id="9b2b85d8-e91c-4b6a-8779-31df1ae04f33" class=""><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></h2><h1 id="fefffed3-049d-49c5-be1f-3047f05b36b2" class="">Introduction</h1><p id="1f500576-b119-444c-81f2-a0f4776eaf24" class="">The goal of every business is becoming into a monopoly.</p><h2 id="4fe9de6b-d889-4492-a599-a4711088b3c8" class="">What is <a href="Marketing%20ae6dc05e959b44c2b33a5a7ad78c9e0b.html"><span class="icon">⭐</span>Marketing</a> ?</h2><figure id="e384959f-96b0-4c82-90a4-4d5586b5d051" class="link-to-page"><a href="1%20%C2%BFQue%CC%81%20es%20el%20marketing%20e384959f96b04c8290a44d5586b5d051.html">1. ¿Qué es el marketing?</a></figure><figure id="cf34b037-148c-4fb3-92a6-f18278934cbe" class="link-to-page"><a href="2%20Los%20clientes%20cf34b037148c4fb392a6f18278934cbe.html">2. Los clientes</a></figure><figure id="6c3bc7bc-101e-4101-b4d1-738e27cfca94" class="link-to-page"><a href="3%20El%20producto%206c3bc7bc101e4101b4d1738e27cfca94.html">3. El producto</a></figure><figure id="40800357-a511-4454-a053-9df263bc2495" class="link-to-page"><a href="4%20La%20marca%2040800357a5114454a0539df263bc2495.html">4. La marca</a></figure><figure id="da4ce541-92aa-4724-8118-fff4aa9b2b95" class="link-to-page"><a href="5%20La%20comunicacio%CC%81n%20da4ce54192aa47248118fff4aa9b2b95.html">5. La comunicación</a></figure><figure id="70688ed2-45b8-4fb3-a2d6-f4bfb9f0047b" class="link-to-page"><a href="6%20Flujo%20de%20adquisicio%CC%81n%2070688ed245b84fb3a2d6f4bfb9f0047b.html">6. Flujo de adquisición</a></figure><figure id="2d3b0810-dead-4ec8-a2ee-d93ea4f6e7a3" class="link-to-page"><a href="7%20Anali%CC%81tica%202d3b0810dead4ec8a2eed93ea4f6e7a3.html">7. Analítica</a></figure><figure id="df8f5b6c-cad9-477a-97e0-f7ae0c80b24c" class="link-to-page"><a href="8%20Estrategia%20de%20marketing%20df8f5b6ccad9477a97e0f7ae0c80b24c.html">8. Estrategia de marketing</a></figure><h2 id="379ffc09-6ae8-4ea4-ba05-ff51c33c6a3d" class="">Why does <a href="Marketing%20ae6dc05e959b44c2b33a5a7ad78c9e0b.html"><span class="icon">⭐</span>Marketing</a>  matter to you?</h2><h2 id="9c7bf77c-533b-47ad-80a9-aa0d647954bc" class="">Ecosystem</h2><p id="6dd9a248-1bd6-4dfb-a4f5-164f5e3daaf5" class="">Standards, jobs, industry, roles, and research</p><h2 id="8269e46f-bb77-45cf-b081-14f2c861a4cf" class="">Story</h2><h2 id="e1e0c5d9-9c79-4f79-aea0-5f2dd87ba405" class="">FAQ</h2><h3 id="1245e529-e45d-42ec-9514-bd8eae3e0f69" class="">What is difference between Sales and Marketing?</h3><h2 id="a8823de7-d181-4ffb-9d83-3d3ab7bae071" class="">Worked examples</h2><h1 id="afaac78f-c118-431f-bb2a-2db6d600eef3" class="">Strategy</h1><figure id="7f24ab1f-4fcb-4716-8fb3-f9275449e4ac" class="link-to-page"><a href="Marketing%20plan%207f24ab1f4fcb47168fb3f9275449e4ac.html">Marketing plan</a></figure><h2 id="a0513667-ae03-4df7-95ff-ef051ff726c6" class="">Timeframe</h2><h2 id="c3c7886e-d959-4bf9-8b26-766dd340630a" class="">Digital Product Marketing Strategy</h2><h3 id="a3c936d5-deef-4144-bffd-ce027aabc84a" class="">Subsubsection</h3><h2 id="42f161d9-7a6a-4a7a-b5b1-30b1b0eebd7c" class="">Go big or go back to selling services</h2><h3 id="a493f5ee-86e4-4af6-9c11-b5077dd0d81d" class="">Subsubsection</h3><h2 id="592be2af-bd7b-458c-9dde-5873d4b6da51" class="">Sizing markets &amp; Sizing Demand</h2><h2 id="cd6814ce-0b86-4e28-a8c4-f51e19e72163" class="">Advertising</h2><h2 id="4e41b9c1-4b33-4d62-89e2-6df8e7df0fd3" class="">Growth</h2><h2 id="1ef27207-9e12-4c2d-8a9e-d843d414a89e" class="">Branding</h2><h2 id="ed5dd436-b2e3-4023-b1b7-dc4523203bc3" class="">Digital marketing</h2><h2 id="07e1371d-69c9-44ad-9175-b8ef4595ce8a" class="">Product management</h2><p id="53aedf2f-62ac-4748-8222-462b375b9ef3" class="">Value involves than features, benefits &amp; total cost of ownership (TCO). It is the net value of using the product in the real world.</p><h3 id="49ff200f-7900-415e-a273-d6872e55ec87" class="">Product Value Propositions</h3><p id="be2ec290-4801-420d-85bb-f1bbe003ef04" class="">Points of irrelevance and Points of Negative Value</p><p id="db07af9c-38ab-4530-9451-0b3765d73eca" class="">Points of Parity</p><p id="ecefa84a-68b6-4f46-96fb-efc23bc09b45" class="">Point of difference</p><p id="6cbf05d7-ecb7-4eaa-b56c-e725dff5753a" class="">Switch costs</p><p id="c0f8e1c5-efdc-47a8-ae09-1266f5707d28" class="">Compare with status quo and next-best alternative.</p><h2 id="9593707b-b3b9-40a0-84d4-222a59c5dc8d" class="">Public relations</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6d8064d1-f650-4c96-87cb-fa082a580307"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">You do not need a unique product, but high visibility</div></figure><p id="6c549ce2-e7fb-438d-971c-7388c8f3942e" class="">Highly visible gives you a big margin for error. <a href="https://www.amazon.com/Trust-Me-Lying-Confessions-Manipulator/dp/1591846285">Trust Me, I’m Lying</a> by Ryan Holiday</p><p id="dc6433ce-ff0e-4dc7-9dd2-e3b981ace9f0" class="">
+</p><p id="acff827c-a3cf-4440-b179-752260f0fc19" class="">Exceptions are professional service, B2B strategic products, so in those make sense to apply Blue Ocean Strategy. </p><p id="8c3d0f12-f825-4ee9-bf6e-2fa1cc5724cf" class="">
+</p><h2 id="e51113a9-4fc4-402f-aa89-71ee6eb67d7f" class="">Exercises and Projects</h2><h2 id="400dfbf2-4e03-423c-b428-05def9ffabca" class="">Summary</h2><h3 id="4d371c7f-a40f-4d96-891d-be95a8882524" class="">Key decisions</h3><h2 id="eaa306ee-eb5f-43a7-b9b6-1d5ccacb328c" class="">Case studies</h2><h2 id="4ca14ca4-5952-4dd2-afc1-aeee51fde928" class="">FAQ</h2><h2 id="e79e7ac5-54a8-4230-ba61-0f5b39ded8b8" class="">Reference Notes</h2><h1 id="3cdf277d-b6c0-46e5-839f-7f8f76a7000c" class="">Lead generation and Customer/User Acquisition</h1><h2 id="73eda778-6521-47a7-8742-ef2104214f5f" class="">Pipeline</h2><ol type="1" id="f0fffbcb-c2c7-4269-94f1-7a46fc890e75" class="numbered-list" start="1"><li>Viewer.</li></ol><ol type="1" id="97ad45e3-ba62-418b-9760-ddbffbc7885c" class="numbered-list" start="2"><li>Follower.</li></ol><ol type="1" id="07f5d27c-f8cb-4990-b87d-9352c1031a1d" class="numbered-list" start="3"><li>Subscriber.</li></ol><ol type="1" id="0bec187d-7523-4262-b735-06a8580076c8" class="numbered-list" start="4"><li>Lead.</li></ol><ol type="1" id="131facd7-519b-4920-9b22-18a10c6e185f" class="numbered-list" start="5"><li>Marketing Qualified Lead.</li></ol><ol type="1" id="fbe34c74-cfad-43be-8346-72f324ab948a" class="numbered-list" start="6"><li>Sales Qualified Lead.</li></ol><ol type="1" id="dfb8bd46-8c3f-44ad-a8d6-b4374205f55b" class="numbered-list" start="7"><li>Opportunity.</li></ol><ol type="1" id="741034b2-8d6e-4478-a102-64b0ffc59f46" class="numbered-list" start="8"><li>Customer.</li></ol><ol type="1" id="956e8cd2-bbf7-40b2-b8f9-e02e5f3adf0a" class="numbered-list" start="9"><li>Evangelist.</li></ol><h2 id="ca9eff8f-c61c-47b5-89b8-cc0d1c0213a1" class="">B2C</h2><h3 id="adce0191-9d83-4bec-a54e-6776a8fd0c14" class="">Subsubsection</h3><h2 id="7f0465ae-37c5-4c9f-8604-db51a3cbbc98" class="">B2B</h2><p id="74cb0911-bd0f-4948-ab85-aac5ab8d9443" class=""><strong>Business sizes</strong></p><p id="24f17c64-834d-4e22-94de-826177281ed7" class="">Entrepreneurs</p><p id="e5c2300b-fc4b-43ad-89cd-262bc4a29e12" class="">SMB’s</p><p id="2ece87bc-3c2a-4b84-a19d-db2a9e9cfe73" class="">Larger brands</p><h3 id="1bf38b2d-05f3-434f-8e72-6f7cde260c81" class="">Merchant Acquisition</h3><h3 id="aec0cd4c-0b57-40c5-988f-3d0703b03e59" class="">B2C Copywriting</h3><p id="b6805ad6-185b-469e-973a-0a9eae87e648" class="">We leverage into SPF framework by Dekker Frase where S stands for Stages, P stands for Psychology, F stands for Funnel. </p><p id="82d1e645-a532-4575-be85-678c9e90f0e3" class="">Stages represent the different levels of individual awareness, encompassing Problem Unaware, Category Unaware, Product Unaware, and Product Aware. It is crucial to understand that each person occupies a unique stage of awareness.</p><p id="51fe35ad-d9f1-47f0-a484-54afd6c91c50" class="">Being &quot;Problem Unaware&quot; means individuals do not recognize they have an issue. For instance, when offering an automation service (whether through software, electronics, or other means), a potential client satisfied with employing staff may not see any inherent problems with their existing setup.</p><p id="a432fff7-52b0-4809-a058-a7fff200b4b8" class="">&quot;Category Unaware&quot; refers to individuals who are aware of their problem, which could potentially be solved by your offering, but are not familiar with the broader category of solutions your product falls into. For example, a potential client aware of their issue with churn might not know about chatbot solutions, thereby seeking alternative remedies.</p><p id="dbff9b86-9a3c-4d36-867e-7e30250d49cc" class="">At the &quot;Product Unaware&quot; stage, individuals are aware of the category your product belongs to but are not familiar with your product or brand specifically. They understand the type of solutions available but have not yet been introduced to what your specific product offers or how it stands out from other options in the market. Brand.</p><p id="3ea3b983-ae07-4c1f-89e0-b849b1533a58" class="">If you simplify your content strategy to focus solely on those who are &quot;Product Unaware,&quot; you risk overlooking the nuanced understanding and empathy needed to gauge where individuals stand in terms of their knowledge and awareness. Attempting to sell a product to someone who is not even aware of the broader category it belongs to is likely to result in failure. It&#x27;s essential to tailor your approach to meet people at their current stage of awareness, guiding them from recognizing their problem to understanding the category and, eventually, to seeing the value in your specific product.</p><p id="f8341f91-39c7-40f5-aa84-8441d54e2089" class="">Marketing efforts in the  Unaware stages rely heavily on educating potential customers and helping them recognize that they have a problem. In these early stages, the focus is on raising awareness and providing information rather than directly selling a product. This approach helps to gradually guide the audience from a lack of awareness to understanding the challenges they face and the existence of solutions within a specific category that can address their needs. On another hand, Marketing efforts in they Product Aware stage rely on pushing into the sales funnel with a incentive.</p><p id="c1798fc4-a680-4cd7-874b-a63fa387050b" class="">In the SPF framework, &quot;Psychology&quot; is a crucial component that focuses on crafting marketing content (ads, seo, and so on) to convince people that your product is worth purchasing. This aspect goes beyond merely informing or educating the audience; it aims to tap into the psychological triggers and motivations that influence buying decisions. By understanding the target audience&#x27;s desires, fears, and pain points, marketers can create compelling messages that resonate on a deeper level, ultimately persuading consumers that their product not only solves a problem but also adds significant value to their lives or businesses. </p><p id="b0a86048-30f5-4c58-84c5-5f34b5e95cff" class="">Reactance, Endowment, Distance, Uncertainty, Corroborating evidence.</p><p id="5ec03b43-b9df-42b8-8dfa-a2970d03bcff" class="">People&#x27;s tendency to prefer avoiding losses over acquiring equivalent gains is known as loss aversion. This principle can be a powerful tool in marketing. Instead of solely highlighting the benefits or gains of using your product, you might consider focusing on what potential customers stand to lose by not taking action. This approach can create a sense of urgency and make the decision to engage with your product feel more critical. For instance, in your messaging, you could emphasize the inefficiencies, costs, or missed opportunities that come from not using your product, thereby leveraging the psychological impact of loss aversion to motivate your audience to act.</p><p id="076dfb8f-beda-4ac6-add4-4c25438e682a" class="">hubris</p><p id="0df9f929-1121-4b6e-8cf8-2351f7dddd77" class="">The Catalyst How to change anyone’s mind by Jonah Berger. </p><p id="43c2c65a-fd53-432b-aae8-e4cbe9db8f48" class="">
+</p><h2 id="2642b322-ae16-4283-a3c0-40dd8f5c351b" class="">Product Led Growth</h2><h2 id="73986077-ccd5-4b82-95c9-c023aa86e2de" class="">Business Development</h2><h2 id="e3648d7f-4d29-464e-985b-0eec774ed905" class="">Account based Marketing</h2><h2 id="05822e0b-f207-4f06-8b1a-6013f81aa746" class="">Lead nurturing</h2><h2 id="e65083d3-e062-408d-a514-6d4091dc9c61" class="">Conversion Rate Optimization</h2><h2 id="42a6bf0f-24ae-43f4-bd28-f4f6b335313f" class="">Exercises and Projects</h2><h2 id="ddafbfaf-cc49-4493-ad1f-dd8440df8519" class="">Summary</h2><h3 id="e20cffc4-e098-4aae-adeb-e7eec75afc59" class="">Key decisions</h3><h2 id="26334ac7-b23c-4c25-8f27-48a707bac52e" class="">FAQ</h2><h2 id="4859889a-4b32-4224-b8bf-f0591ad0f37f" class="">Reference Notes</h2><h1 id="f2f07f03-3add-4722-9a29-9c6bf7b9a9ff" class="">Customer Psychology</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a31f90cf-cf61-4bec-83d3-3c996934e9c7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Customer are looking for something that does a good job of executing what they’re already looking for.</div></figure><p id="3b2f1945-8b62-41bf-ad59-b3e232c7379b" class="">Customers buy things are visible. Of course, it is a necessary condition but not enough. You’re competing for mind share and you’re competing for distribution.</p><h1 id="952e5eed-ff56-4c5d-9746-b909f8e4fa47" class="">Tactics</h1><h2 id="758c90c9-e1d8-45fc-a643-997467e6426f" class="">Product promotion</h2><h2 id="be1d9e91-75ec-4212-b216-0b9e48260b72" class="">Pricing models</h2><h2 id="61d4c8a4-435f-421d-89d6-8df62d115ac5" class="">Direct &amp; Brand marketing</h2><h3 id="4fd5e5d6-feb3-4f20-95cf-528283ad97b6" class="">Subsubsection</h3><h2 id="1508b57a-3d32-4177-ba8c-3f3f21ea513f" class="">Copywriting</h2><h2 id="539db89c-bd61-479e-85e7-f8c795825b4c" class="">Content management</h2><h2 id="37faff9b-487b-43ef-9125-7788022c5d46" class="">SEO</h2><h2 id="c57d9a09-b331-495c-8cc0-ae707dc7e29d" class="">Word of mouth</h2><p id="223e6645-2577-4755-beab-b2fcd913a346" class="">You can generate word-of-mouth through your emotional positioning. However, another approach is to excel in product and service attributes that naturally have word-of-mouth potential. This doesn&#x27;t necessarily require creating something unique or building elements intrinsic to your value proposition. Instead, it involves adding features that will prompt people to talk about them.</p><p id="adecbf5f-5252-452d-a962-0d7821f6cb2b" class=""><a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/a-new-way-to-measure-word-of-mouth-marketing">https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/a-new-way-to-measure-word-of-mouth-marketing</a></p><h2 id="884466a3-8e92-4161-8eb7-534cdac95a09" class="">Facebook ads</h2><h2 id="abe06ce5-8f42-445d-8c12-eaec3f3caf4b" class="">Google &amp; YouTube advertising</h2><figure id="4a991b62-bc90-41b6-bbe4-581235fc87cf" class="link-to-page"><a href="Google%20Ads%204a991b62bc9041b6bbe4581235fc87cf.html">Google Ads</a></figure><h2 id="5275c3c9-c97f-4c69-b1bd-8c71b0023e1e" class="">Twitter Advertising</h2><h2 id="eb03e2a5-596b-4325-b10e-f0e033b6f5bb" class="">Snapchat Advertising</h2><h2 id="beff1ce0-66f4-46a4-b6d8-4c3fff1804b6" class="">Spotify Advertising</h2><h2 id="c0d34e77-6b39-47f0-ba3d-29873184ae99" class="">LinkedIn Advertising</h2><h2 id="a36ce955-0eba-444e-a87f-69fc13659013" class="">Amazon Advertising</h2><h2 id="62a5fbf9-130d-4e3a-8c9b-4750cd4451a6" class="">Influencers</h2><h2 id="d978729f-c081-450c-ad16-65f7087e8741" class="">Social Media</h2><h2 id="fdb93653-9a84-407b-8a14-9ce56ccf167a" class="">Email marketing </h2><h2 id="1726f807-2153-4706-84a0-a7d7c490968d" class="">Cold calls, cold emails &amp; lists</h2><h2 id="b77be17d-0c39-4516-918b-8e94169274d9" class="">Exercises and Projects</h2><h2 id="43b582da-2385-47c5-a008-dc8a31d3e3f2" class="">Summary</h2><h3 id="8e8ec5ce-e5cf-4a9e-925c-0e33f4534723" class="">Key decisions</h3><h2 id="f85457ba-3f28-417e-88ad-fee7a0002361" class="">FAQ</h2><h2 id="6ff5a19b-6b6c-4fbd-ace2-14d088a4dd03" class="">Reference Notes</h2><h1 id="073cf3bf-487d-44bd-ba65-3ee8a61f9fbf" class="">Analytics</h1><p id="16ff00c9-3834-4037-a7e6-53008d61f485" class="">Quantitative Marketing</p><h1 id="4baa331f-eb70-41a7-a683-1b7d2c22f9be" class="">Technical products</h1><p id="d9c8dfb7-85a8-4bb8-96e0-c38cc900e0f4" class="">Some products need more sophistication for costumer side. </p><p id="3a9fdf25-a577-413a-9d07-b18a9a0cbc84" class="">End-user development</p><h1 id="ab7fa5a5-b482-408f-8da6-02f75da3129d" class="">Market research</h1><h1 id="034e22b2-76de-4666-a1a8-88d57483594d" class="">Startup Marketing &amp;  Growth Hacking</h1><h2 id="75ea852c-03ea-42bb-9471-054465bf93db" class="">Focusing to brand stuff is bad idea in early years</h2><p id="45ee2e2f-a3a2-4aea-8fb2-b4b3af245a0f" class="">when you’re not a celebrity, you’re not famous, and you don’t have a massive following.</p><p id="f4a8043a-2964-4c45-aaed-3b6ccee3fe85" class="">SparkToro</p><p id="d5e9e905-a0aa-48b7-afec-a716047e8d3f" class="">
+</p><h1 id="09c6620f-0abc-48b0-a003-0d675fcd5576" class="">Management</h1><h2 id="6070d9bc-4717-48c0-8fc7-ed1ead67723f" class="">Investor management</h2><h2 id="f9fa34b7-5d70-42a3-8cdd-8d3833b632d6" class="">Sales enablement</h2><h2 id="bd04f309-a068-4447-ac15-7028d27de22a" class="">Chief Marketing Officer Career</h2><h3 id="13747b6e-c2ff-4c95-af54-f496e97d0b5c" class="">Become a CMO</h3><h3 id="04139d47-0230-4a61-a3c1-0770d60e336b" class="">Soft skills</h3><h2 id="cdb50d81-b367-458e-8877-f0aee08f0a15" class="">Leadership &amp; People Management</h2><h2 id="b64cef7e-0cfa-427b-8c69-af9d4eaf3611" class="">Interviews</h2><h2 id="6fc12e43-085b-4483-882c-341bff8098fd" class="">Growing your Digital Marketing Agency</h2><h1 id="580c9bb8-206e-4426-92a7-8b4a104f76c5" class="">Tutorials</h1><h2 id="265419bc-a499-44ac-83b7-3381d2563bff" class="">Content Generation with IA</h2><h1 id="05fd6e42-6cb7-4041-b053-bfa39db70c2c" class="">Next steps</h1><h1 id="cc350500-91a3-47ab-a6b3-80d3cbc42503" class="">References</h1><div id="59d8b3f8-f0d6-4a1a-a5d1-7a08c21336de" class="collection-content"><h4 class="collection-title">Citation</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Cite</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th></tr></thead><tbody><tr id="87371ebb-ab81-4369-959a-9ac2b4a738ba"><td class="cell-title"><a href="Untitled%2087371ebbab814369959a9ac2b4a738ba.html">Untitled</a></td><td class="cell-]WPz"></td></tr><tr id="00cbd270-147f-4986-b323-34d0f9c88c4e"><td class="cell-title"><a href="https%20www%20udemy%20com%20course%20product-marketing%20refer%2000cbd270147f4986b32334d0f9c88c4e.html">https://www.udemy.com/course/product-marketing/?referralCode=C29D8A9A51F6DE7E8687</a></td><td class="cell-]WPz"></td></tr><tr id="2596681f-0c31-476a-8dff-328efd405807"><td class="cell-title"><a href="EdTeam%20curso%20de%20marketingT%202596681f0c31476a8dff328efd405807.html">EdTeam curso de marketingT</a></td><td class="cell-]WPz"></td></tr><tr id="ae83fd38-5254-4f79-8a51-0f119e64c67d"><td class="cell-title"><a href="How%20brands%20grow%20by%20Byron%20Sharp%20ae83fd3852544f798a510f119e64c67d.html">How brands grow by Byron Sharp</a></td><td class="cell-]WPz"></td></tr><tr id="cc50222a-6981-42c0-b32a-2ff9404e0deb"><td class="cell-title"><a href="https%20www%20udemy%20com%20course%20digital-marketing-b2b%20cc50222a698142c0b32a2ff9404e0deb.html">https://www.udemy.com/course/digital-marketing-b2b/</a></td><td class="cell-]WPz"></td></tr><tr id="b3bd7175-fee6-4d50-b9b8-8ccef7ab521d"><td class="cell-title"><a href="Copywriter%20handbook%20by%20Robert%20W%20Bly%20b3bd7175fee64d50b9b88ccef7ab521d.html">Copywriter handbook by Robert W. Bly</a></td><td class="cell-]WPz"></td></tr></tbody></table><br/><br/></div><h1 id="ca76551d-5658-4b78-9dc8-82481c95ddba" class="">TODO</h1><p id="b6f79a1d-e570-4e0a-8da2-91278d976181" class="">
+</p><p id="bc691fb3-0dbf-4dd9-82b4-9dc85d88d34a" class="">No estadistica.</p><figure id="3d0c04a4-a297-45f7-9185-bfc8957cc315" class="link-to-page"><a href="Marketing%20experiment%20list%203d0c04a4a29745f79185bfc8957cc315.html"><span class="icon">📈</span>Marketing experiment list</a></figure><p id="7b81e513-cc79-4a8f-918b-1cad7fb8ac4e" class=""><a href="https://first100users.com/">https://first100users.com/</a></p><p id="eff782da-607d-42f4-a818-c9504f6db36c" class="">Impact Mapping <a href="https://www.impactmapping.org/">https://www.impactmapping.org/</a></p><h2 id="8bbb4efc-ee5d-43da-9c7b-20aa46c05802" class="">Marketing plan</h2><p id="706db33a-d489-4c4d-bbdd-3080aae6640c" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,690 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Data engineering</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="9aeae58c-d99c-436c-9d87-7b8fa10455c6" class="page sans"><header><h1 class="page-title">Data engineering</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="b578bdc8-0758-4fae-84f1-b382779fbb41" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a2b756f2-ef11-4f15-b884-b2158d94ed29">Preface</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#707a3fac-47a2-46f3-874c-ccbdf3bda4a3">Prerequisites</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#776f40c2-2f54-4ece-900d-a07541fa84fd"><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#098a5504-4bfe-45f3-895f-19565819e0c4">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9dde425b-e0f2-41ba-a780-eb6c1bbe5bfd">What is Data engineering?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fa92093c-6a96-44a9-b966-b4e2c65f919f">Why does Data engineering matter to you?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#04525554-c30a-46d3-ac03-2ea0b4834bb7">Research</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#681e787d-4ea7-4f86-b968-7920f95f8ec9">Ecosystem</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7a9639ba-f3af-44e2-97af-72e17f8b2454">Story</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e090e4f9-eeb3-4b24-981e-88701da114a3">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b6488dd2-41b3-43c3-b44c-a255f7eb8a80">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1af4edb7-dc52-4b69-b624-fe4cd3317e30">Data Architecture</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a79486fe-6d03-47bf-83af-450d3c8d057f">What is Data architecture?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bc8c65ae-832d-4c78-89b8-970b89e8757e">Principles</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#76973c4a-d2d1-448e-b1d0-3ff15dafe584">Concepts</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f8cf3d66-5cc0-4fb9-970b-95d605adf8c8">Patterns</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2b1aedf7-534d-4c4c-9761-e4fe4cb208ec"><strong>Design decisions</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#298c3e5c-dcf6-4be5-9e01-531618405e80">Exercises</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6191bb94-9c5e-449a-8dbc-c1bd643dbf2c">Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#37de093e-a7f1-4125-a539-fb60e7abd336">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0c512a99-e94a-4c12-9ec8-3490e53685f4">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2c045b6d-98e8-40e8-a892-84e883d36782">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c841de0c-9fa6-4214-a1eb-53aa6169c84b">Data Lifecycle</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b9631439-f2b9-4428-a3ff-f69bb912709e">Data generation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#52b9dcd7-44f1-4f43-99ad-7e323e91ae5e">Storage</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f17160f7-230a-426a-a5a6-43f23be71881">Memory hierarchy</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#dd16e43b-9ca7-406e-af26-c6edfe1982a7">Object Storage</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#44cebe2e-0823-429c-b10a-c838278160ca">File storage</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5bd53436-1c7a-4ffc-bae6-c6bf7d425619">Block storage</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#585737d0-50dd-414d-a667-3e4006ec2fe6">Ingestion</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2f65377a-bc03-49be-934c-16da14707126">Queres, Modeling, and Transformation</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c0a9ad5a-a356-4a5e-88ae-2ac4ec787885">Spark</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3eae7809-8987-4fca-a541-8ed48a0e2349">Hadoop</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1936b434-4562-4e80-a9dd-ce3b8dcd9044">Serving Data for Analytics, Machine Learning and Reverse ETL</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3fdc5e0d-9754-4657-b901-b72f0c68ac74">Data orchestration</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#923cd68a-5da2-4cc5-8fb9-14c9c7350c55">Data Ops</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7aea6feb-8298-48a5-a0a5-591c61261ae1">Data versioning</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#39047fc2-8361-4575-846b-ba826aaab533">Tracking and observability</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#bf5487cf-ab3c-4c54-9553-188c7a53c13d">ML Serving</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bfc98c84-e514-40ec-8bb1-0553242b8c7f">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f3dec883-ada2-4903-aba2-680a620c2f56">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fab0cda8-c2cb-4142-ad49-5d5188e261d1">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#321b854e-320c-425d-b255-851f0311ca1d">Security, Privacy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#041d1a42-1bbd-4d6e-896b-660739365d5e">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c57e5885-abd6-4495-ac47-1fc6589cec65">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5a04db2c-2dbb-4832-8238-396fefb4f9bd">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ad4ea98a-18a8-400a-aa71-656aa3463a93">Next steps</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#76403e16-7d1b-4d9c-bd01-4388b162dab3">References</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#47a63acc-4df1-4ad4-9f58-b5676f773d97">TODO</a></div></nav><h1 id="a2b756f2-ef11-4f15-b884-b2158d94ed29" class="">Preface</h1><h2 id="707a3fac-47a2-46f3-874c-ccbdf3bda4a3" class="">Prerequisites</h2><h2 id="776f40c2-2f54-4ece-900d-a07541fa84fd" class=""><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></h2><h1 id="098a5504-4bfe-45f3-895f-19565819e0c4" class="">Introduction</h1><h2 id="9dde425b-e0f2-41ba-a780-eb6c1bbe5bfd" class="">What is Data engineering?</h2><p id="8b80daa0-4798-493d-b85f-ec0289088801" class="">Data engineering involves developing processes that transform raw data into high-quality information. These processes, or jobs, encompass a lifecycle that begins with data generation and includes steps such as ingestion, transformation, and serving. This lifecycle concludes with downstream use cases such as analytics, machine learning, and reverse ETL.</p><p id="2259253a-7f55-469c-a6e7-de9e3e756019" class="">Ingestion, transformation, and serving are typically conducted using ETL or ELT methodologies, which stand for extracting, loading, and transforming data. However, the sequence of these operations differs to meet specific objectives. ETL processes the data in a specific order to prepare it for a data mart, while ELT involves loading raw data into a single repository for later processing by end users.</p><p id="aeb7a5f3-bbb9-4eb2-ae6c-aa16036e122b" class="">In the field of Data Engineering, processes are referred to as jobs, and the systems that manage these jobs are known as data orchestrators. A job is conceptualized as a directed acyclic graph, where nodes represent tasks, and edges indicate dependencies between these tasks. Each job begins with an upstream data source that triggers the ingestion process, with each data source generating volume and cadence differently. Sensors act as the initial nodes, triggering downstream tasks based on stream. The stream can be a large chunk scheduled with a cron, an  event, a sequence of events or a real-time signal.</p><p id="8afe9bea-ce90-4329-8628-8a09915a6a8a" class="">Data sources have their own protocols for connection, necessitating the use of various data extraction techniques such as web scraping, APIs, and database queries to facilitate connectivity and data wrangling.</p><p id="6d49a6a2-d1df-4e3c-a2cf-aeae6f3c5f6a" class="">
+</p><p id="9a38c783-cca8-4b16-86e8-684382007105" class="">Undercurrents</p><p id="ceccd9b9-4ff5-407a-b7e8-8bae94093e16" class="">Security</p><p id="c18317f8-3a71-48a3-8ace-19c27441c5df" class="">Data Management</p><p id="9ee2a094-cad7-40c6-951b-f7ece9aa2e7d" class="">DataOps</p><p id="2b53d1e4-8242-428f-9427-bbe4c1cb5c37" class="">Data Architecture</p><p id="7d310db5-72a9-4cdd-a621-a2e1049b04dc" class="">Orchestration</p><p id="2fa9ab81-a42f-4e28-b1fe-d7fa22965125" class="">Software engineering</p><p id="687c1297-e6be-40bd-b322-2af1a7f5aa2c" class="">
+</p><p id="e513d571-d17f-40d2-982f-a708af3c5574" class="">
+</p><p id="d7ba0270-cdd0-4182-9d61-85d32c270682" class="">
+</p><p id="da3ad955-f5fb-40cb-9901-5bcef3dd986a" class=""><strong>Design decisions about batch versus stream ingestion</strong></p><h2 id="fa92093c-6a96-44a9-b966-b4e2c65f919f" class="">Why does Data engineering matter to you?</h2><h2 id="04525554-c30a-46d3-ac03-2ea0b4834bb7" class="">Research</h2><h2 id="681e787d-4ea7-4f86-b968-7920f95f8ec9" class="">Ecosystem</h2><p id="50183bed-aa12-4496-9195-13e4ee71c72f" class="">Standards, jobs, industry, roles, … </p><h2 id="7a9639ba-f3af-44e2-97af-72e17f8b2454" class="">Story</h2><h2 id="e090e4f9-eeb3-4b24-981e-88701da114a3" class="">FAQ</h2><h2 id="b6488dd2-41b3-43c3-b44c-a255f7eb8a80" class="">Worked examples</h2><h1 id="1af4edb7-dc52-4b69-b624-fe4cd3317e30" class="">Data Architecture</h1><h2 id="a79486fe-6d03-47bf-83af-450d3c8d057f" class="">What is Data architecture?</h2><h2 id="bc8c65ae-832d-4c78-89b8-970b89e8757e" class="">Principles</h2><h2 id="76973c4a-d2d1-448e-b1d0-3ff15dafe584" class="">Concepts</h2><h2 id="f8cf3d66-5cc0-4fb9-970b-95d605adf8c8" class="">Patterns</h2><h2 id="2b1aedf7-534d-4c4c-9761-e4fe4cb208ec" class=""><strong>Design decisions</strong></h2><h2 id="298c3e5c-dcf6-4be5-9e01-531618405e80" class="">Exercises</h2><h2 id="6191bb94-9c5e-449a-8dbc-c1bd643dbf2c" class="">Projects</h2><h2 id="37de093e-a7f1-4125-a539-fb60e7abd336" class="">Summary</h2><h2 id="0c512a99-e94a-4c12-9ec8-3490e53685f4" class="">FAQ</h2><h2 id="2c045b6d-98e8-40e8-a892-84e883d36782" class="">Reference Notes</h2><h1 id="c841de0c-9fa6-4214-a1eb-53aa6169c84b" class="">Data Lifecycle</h1><h2 id="b9631439-f2b9-4428-a3ff-f69bb912709e" class="">Data generation</h2><p id="057660e4-44e2-42d2-9a48-33ad543e7755" class="">Files</p><p id="811b7e63-6656-46c8-ae8d-b7cb9caecc6c" class="">APIs</p><p id="82beebc1-b7df-45da-a1b3-cc8759cd4ef7" class="">Application Databases (OLTP Systems)</p><p id="68de09a0-9188-4ac9-9e3c-79f5b639e2ed" class="">Message queues and Event-streaming plataforms</p><h2 id="52b9dcd7-44f1-4f43-99ad-7e323e91ae5e" class="">Storage</h2><h3 id="f17160f7-230a-426a-a5a6-43f23be71881" class="">Memory hierarchy</h3><p id="d365e283-a02f-471a-9ebc-59ab2f3ee17b" class=""><strong>CPU</strong></p><p id="3b4e76da-502d-4832-a971-4e96522cb3f7" class=""><strong>Magnetic Disk Drive</strong></p><p id="893c7b52-2548-4c44-9eba-5ac2a9f68d32" class=""><strong>Random Access Memory</strong></p><p id="55203c89-5d3c-4e4d-88d9-f06077928dc2" class=""><strong>Solid-State</strong></p><p id="258d86f3-e088-461e-9d87-d21f417fa959" class=""><strong>Serialization</strong></p><p id="bf5832d8-2bcf-4950-a827-8a07a0e2bd88" class="">A common problem in data engineering, especially when working with external parties, is identifying file types. An easy, but unreliable, method to do this is by using file extensions; however, this approach can lead to misleading results during the parsing step. A better method is to use the file&#x27;s binary signature and content to determine its type.</p><p id="04df1017-f12a-4132-8992-ebfb1aee2288" class="">Plain Text</p><p id="3dcc38d9-594f-4204-9c7f-80116a9d75e1" class="">Text-to-binary encoding</p><p id="14a8ccef-c998-4123-bb1b-821250e477a4" class="">Binary encoding</p><p id="a720fd36-5ae5-4857-88c8-1f42997d6a31" class="">
+</p><p id="3e32bebc-6030-4654-b695-fc6dd926a294" class="">CSV. No. </p><p id="44f3a6fd-e8de-43f0-9eda-6f63170b1cc2" class="">XML</p><p id="9d826cd8-8fb0-4c60-b878-b68442128362" class="">JSON and JSONL</p><p id="f8cd737e-8ebb-40c4-b4d2-ea2aafcf7391" class="">CueLang and JSONNet</p><p id="0c78c87e-9f42-4760-ae5c-632c512ef73e" class="">Avro</p><p id="46c437b4-7221-4fb6-92c5-a7e10b642edc" class="">uuencode or Base64</p><p id="c7f7482c-2710-4371-8913-872f9fc02902" class="">Protobuff</p><p id="c8e03cff-2ec3-4615-be40-66698d3b4fad" class="">Office files.</p><p id="33e3cad7-3352-4d8b-a8bd-caaccf70d9a9" class="">Parquet</p><p id="ae3032b1-de86-49a5-8b81-ace7404610f4" class="">ORC</p><p id="e4f3a2cc-1042-404e-91e2-7ce81cfb375e" class="">Hudi</p><p id="a1e1a457-ee7c-468e-aa99-088a4dd62043" class="">Iceberg</p><p id="4290d091-35fb-4fdd-8d80-7a45b0518557" class="">Languages offers its own way to serialize their language constructs i.e. Pickle for Python or Boost for C++.</p><p id="03451995-a81c-46f3-ab88-bd0e3cd118fd" class="">Java</p><p id="43eb0099-c183-4c47-a68f-0b945f6df337" class=""><a href="https://isocpp.org/wiki/faq/serialization">https://isocpp.org/wiki/faq/serialization</a></p><p id="3329e6c1-882a-49ca-a440-7d0960470659" class="">
+</p><p id="1e4f18d7-7a94-40ff-b054-3a6d16fa1e67" class="">
+</p><p id="8d188103-32fb-4b9b-a5b2-56deb6d63695" class=""><strong>Networking</strong></p><p id="d8c1ea3e-f7bc-448e-8a11-5dc21c78fccb" class=""><strong>Caching</strong></p><h3 id="dd16e43b-9ca7-406e-af26-c6edfe1982a7" class="">Object Storage</h3><h3 id="44cebe2e-0823-429c-b10a-c838278160ca" class="">File storage</h3><h3 id="5bd53436-1c7a-4ffc-bae6-c6bf7d425619" class="">Block storage</h3><p id="9fc20330-6f50-4da5-9d3a-78e5e9701999" class="">
+</p><p id="0c38ac4b-8d72-4dbe-98b7-41054b55253b" class="">
+</p><p id="2df8021d-ca02-43a3-a2b1-aee2ec5e3065" class="">Separation of computation, storage, code and environment</p><h2 id="585737d0-50dd-414d-a667-3e4006ec2fe6" class="">Ingestion</h2><p id="d6434bac-bc62-49e0-b943-841959ef8f5b" class="">
+</p><h2 id="2f65377a-bc03-49be-934c-16da14707126" class="">Queres, Modeling, and Transformation</h2><h3 id="c0a9ad5a-a356-4a5e-88ae-2ac4ec787885" class="">Spark</h3><h3 id="3eae7809-8987-4fca-a541-8ed48a0e2349" class="">Hadoop</h3><h2 id="1936b434-4562-4e80-a9dd-ce3b8dcd9044" class="">Serving Data for Analytics, Machine Learning and Reverse ETL</h2><h2 id="3fdc5e0d-9754-4657-b901-b72f0c68ac74" class="">Data orchestration</h2><h2 id="923cd68a-5da2-4cc5-8fb9-14c9c7350c55" class="">Data Ops</h2><h3 id="7aea6feb-8298-48a5-a0a5-591c61261ae1" class="">Data versioning</h3><h3 id="39047fc2-8361-4575-846b-ba826aaab533" class="">Tracking and observability</h3><h3 id="bf5487cf-ab3c-4c54-9553-188c7a53c13d" class="">ML Serving</h3><h2 id="bfc98c84-e514-40ec-8bb1-0553242b8c7f" class="">Summary</h2><h2 id="f3dec883-ada2-4903-aba2-680a620c2f56" class="">FAQ</h2><h2 id="fab0cda8-c2cb-4142-ad49-5d5188e261d1" class="">Reference Notes</h2><p id="78bb6fb5-1b02-4cf4-9496-ff1bcc00295d" class="">
+</p><h1 id="321b854e-320c-425d-b255-851f0311ca1d" class="">Security, Privacy</h1><h2 id="041d1a42-1bbd-4d6e-896b-660739365d5e" class="">Summary</h2><h2 id="c57e5885-abd6-4495-ac47-1fc6589cec65" class="">FAQ</h2><h2 id="5a04db2c-2dbb-4832-8238-396fefb4f9bd" class="">Reference Notes</h2><h1 id="ad4ea98a-18a8-400a-aa71-656aa3463a93" class="">Next steps</h1><p id="2ec19cf2-ee0f-4912-a070-7278185b4057" class="">The future of Data engineering</p><p id="01359aca-95f5-45c7-99e7-b34c593b08fd" class="">
+</p><h1 id="76403e16-7d1b-4d9c-bd01-4388b162dab3" class="">References</h1><p id="c7237980-f2d1-4c2f-b3a3-aeac2a2d64f7" class="">Reis, J., &amp; Housley, M. (2022). <em>Fundamentals of Data Engineering</em>. &quot; O&#x27;Reilly Media, Inc.&quot;.</p><h1 id="47a63acc-4df1-4ad4-9f58-b5676f773d97" class="">TODO</h1><p id="ff416246-d064-4dab-b34e-de8186c4bcd2" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

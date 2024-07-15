@@ -1,0 +1,788 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Computer Organization and Architecture</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="827ceef6-87b2-4e76-af86-d380b8c60f78" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/woodcuts_sekka_3.jpg" style="object-position:center 19.999999999999996%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🏗️</span></div><h1 class="page-title">Computer Organization and Architecture</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="41f03eb5-412f-485c-91cb-d2ab983517d6" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5816068a-605f-4e40-8d05-c7bb3dd8d3a3">Preface</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2d5164f4-2a75-4106-995d-b794374027cc">Prerequisites</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#95c1a973-756d-4c16-b860-b9326238a8c2"><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1f713081-b2fa-43b1-936b-ca6ef429cb4e">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18a773d6-75e2-4c52-bf6c-98ab5b9b938f">What is <a href="Computer%20Organization%20and%20Architecture%20827ceef687b24e76af86d380b8c60f78.html"><span class="icon">🏗️</span>Computer Organization and Architecture</a> ?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d6435b7e-7c1c-4605-8192-28a324b94843">Computer</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a937127a-106c-408f-8d75-9e042ed30b58">Why does <a href="Computer%20Organization%20and%20Architecture%20827ceef687b24e76af86d380b8c60f78.html"><span class="icon">🏗️</span>Computer Organization and Architecture</a>  matter to you?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8ad2d54f-e6c0-4a6c-a8d4-53db4cede9be">Ecosystem</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e2101cd3-39e3-419f-a692-459f54f68d7a">Units</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cc4f8f66-102c-41cd-8991-08bf2c4058c2">Story</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#423de628-66e3-48ba-9da2-acab66b93e68">Von Neumann Model? Mauchly model?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1b5e2492-e134-4680-8ac5-74a8da3b7317">Turing model</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#23db4a1f-09de-4647-b54c-9b2ec32d6ac9">Computer components</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6111fa54-4ec7-4fd6-8797-33ac373f971d">Store program</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#381dc526-9bab-4ce8-aae4-a7eafbdb612b">MIPS 32</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8e93a38d-4832-4ac1-a240-032e2f08e30f">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4b7171cc-ca90-44ae-ab82-483988c0a2b2">Why do computers use binary?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#04823d1f-d8e5-458f-a48f-96f445439339">Why is random access memory called random?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7fc52ee2-9c7c-4141-b93e-b1bcc40cbee5">Computer graphics and related stuff in modern computers</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#78d1c45f-86b4-4ba3-a169-3358ef472cac">Where is the ASCII table located in the memory? Which type of memory do we use to store it?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#78de1a7f-6205-4501-a4c9-444feeeb690e">How did computers understand ASCII bit? For example, 01001100 is L, not 76. Does a computer store integers according to ASCII?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#64337744-a514-47b5-a539-53b1c05d62d3">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#56e35154-8269-40da-a430-ef70d564f699">Computer Abstractions and Technology</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2cfaa08c-963c-48c0-9529-d2eaa9431288">Programmer’s point of view</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#565e12b4-8636-47ab-b045-2c247e93196f">User’s point of view</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3f0419ab-6edf-4a59-ba4d-11a0e99a2b34">O<strong>verflow</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ceeed0ed-b788-422a-9ad7-15568b5bf279">What is the first process? General boot process.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c5bcfae2-99bf-4d36-89f7-fc3dc9757c26">Motherboard</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d9cb507f-a7ed-4870-afd8-35dfafaeb7d4">Computer performance measurement</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#62089c41-3d90-4820-b5fb-c8b6d12b6f7e">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1fde9dee-0a9e-431c-b24b-4891b8c3a2d7">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d8c96b7f-6a30-4e52-a0bb-3b2e9232ef53">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ba9ebfc6-1382-4f83-b98e-70cc8993b3a0">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#80f55efe-c8b3-43aa-8219-b46149fd229b">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#026bef25-67f9-4be3-aeff-25f4063e4940">Instructions: Language and the computer</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#21977683-a493-489a-9e7c-899ae28b6895">Subsection</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#71e30e5a-b9ed-4bf0-9335-3f603d88d2ac">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#60afd232-48f7-4917-b5ee-e06fcd15e06d">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e1ca3460-1a70-4860-a349-b9da79e87614">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#95544a96-a677-46dd-8363-c6b9e7c2aef3">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#042c7f1a-49ab-4a2a-8a84-021d8d6ab6df">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#89b5e7c3-3114-419b-9e8c-f3656b7e4f4e">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f88305ba-b067-4813-8800-1f7f2c9d094c">Arithmetic for Computers</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f6304b8d-96b6-4958-a80d-5199126b9614">Subsection</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#37f7a2d1-a582-456a-90bc-0e47ef4029a9">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#50d94a79-a477-4ccf-9e27-0881ac42f87c">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#72bb6126-ae7d-42c7-adc8-95f279608c21">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7bc7daf7-ff1c-47d5-8d22-10923a2497ae">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c264f3b4-948f-49a2-a2de-9d86d229b78e">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a5b57cec-c84b-4c41-a214-c05e39a0a7d2">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ea1e9077-1bbf-4a14-b59d-f174854ff882">The processor</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#050dd004-cb3b-4e9f-9553-a3a83224c294">Subsection</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2927cfea-00c2-4c16-b197-11c099d2d0a2">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6c55baed-f040-4cc3-8964-1d488f566c61">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a4ad03d4-e94c-4f18-ba7a-35d883a41d3a">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#54ca8071-bef9-4953-a139-d6343e995370">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0474ca06-9727-4c3c-bf69-170e7dd84218">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c4ac70bd-4f80-4e3b-9888-ae8d084f1319">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ecc4a834-aa98-4ee2-b7bc-f87b4d76e5d1">Large and Fast: Exploiting Memory Hierarchy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d79d388a-6c6c-4279-9d8b-f8bd2dfb2d61">Memory Layout —RAM layout virtualization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b3eba083-0a89-4b79-81e2-84ebb09dfe60"><strong>Heap Memory</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3c99b7ad-48b7-4d16-82a7-ea563bab34bf">Memory in action</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b9a34ae3-0fa6-47a4-9642-61a7b4be1891">Integer</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c1c54bde-3cf9-4a3d-98c2-d95c1fd096c4">Char</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a37d1e4d-814f-4c3b-bc2a-658f52ff59cb">String</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#dd9b0937-0811-4bba-a672-4dd1d7aa83bf">Float</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#111b36da-4598-4d69-a9d7-9961434f2f45">Array</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3bef31a5-5b91-4fd3-9a4a-a598348f33b4">Subsection</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#64f93838-db42-422e-b1d5-9d6213d8bafd">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dd32c6f1-9679-48a7-affa-fe22c1662e47">Field-programmable gate array</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f81708c1-4fde-4ef1-8661-99b7d41c3ff3">Hardware description language</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9326bf6f-54af-4b80-928a-9ceb74057976">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c401714e-7616-45ec-adad-f16cd9bd1c8f">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1128c285-c65a-4265-9f45-0733d11fc0b5">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#545f2bf7-2c81-4fea-8740-8122069c4dc3">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#28243da0-db6f-42f9-a3ed-d7971f85910a">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4a93607d-4c5f-4ecc-bcff-3b4c6ebbc77c">IO Operations</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#719a32b9-276d-4a3d-b0a0-2435301af3b6">Subsection</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a526229b-7fbb-4718-b99b-367301ffb7c6">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4b845f54-42a4-4cdf-86f9-bf0033ac7e5d">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#22beaf13-7de1-4740-ac25-72e41840ec7d">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#268ae8b9-d1b2-4072-9957-53092afb5ade">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e6e95eeb-6bab-40e8-b504-8f6a31f11aea">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4ffa9a00-f944-46fb-9e8c-c0e992e33e9d">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#76607105-93dc-483c-9f04-e59ce1554bcc">Parallel Processors from Client to Cloud</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#eb40e857-8089-474b-b868-074378930cdb">Subsection</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cd0da306-c3b4-4242-9103-94b9c1fbc191">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#db31b592-2326-441e-91e0-0c5d227f4531">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#58429915-49a5-4043-8fec-446ee51bac74">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#949ccee5-bb15-44c8-adc4-d26f4e25352b">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aa7e3efb-c078-4c72-87e7-434069144a4c">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a2456694-e2bd-4605-a394-17b86e9164db">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#57b6fd7f-cf9e-4632-a0cd-cc0fdca7deed">The basics of Login Design</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3e2033f8-b48a-4c9a-a64c-0f90cf1fdc4a">Subsection</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5ae65193-99ec-486b-a245-c5574909cf5a">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5373fcbb-f71a-4d06-b019-ce649a42ec13">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#78220145-10fc-4adc-9e80-f4133aa75f1f">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f5e0a689-7cb4-471f-bcc1-28557380a2e5">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#93ac5377-7034-4594-b7bd-926f1cc5b5fe">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#49d1c567-c1bf-4a89-bd32-a87b66ac9f58">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2e1a5398-a960-4cfc-8b6c-2aa0b37eadd0">Graphics and Computing GPUs</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b0611b32-bc69-4697-9cf0-1a8fb55d135d">GPU</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d42903c1-9ead-414c-83f8-c2766a20695a">TPU</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#303e2444-635a-4879-b87a-5e14af9fe03c">NPU</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#214f1734-2971-4982-bf0b-6c49b6dec81c">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1af3b679-a1eb-4a7c-9691-cc084ab92ffa">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5ce9d2c6-cade-4c25-8b97-49f9ed1f4e9b">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4224fa28-4960-4e72-9738-1c861e5909ad">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1726bf76-3041-41cf-9053-e70b065af7c7">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1d5ec110-eaf3-4c52-a3c1-e4e23770bdaa">Mapping Control to Hardware</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e7618253-cb07-4e9a-946e-8895c6e216bf">Subsection</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b16c7432-67b8-453b-b4d9-2d8941467bb2">Subsubsection</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6dee6fe2-503d-4f05-9f7d-3fb537be8ba2">Exercises and Projects</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5e5ce092-1807-49cb-b0e8-6aab8f8f605e">Summary</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d2a0669c-ea86-4e57-bbb1-da1e1633fc1b">Key decisions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#953b68c1-2f99-4e53-9f23-166be9e48f5c">FAQ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#deb465af-814e-423e-ac17-2136c208f045">Reference Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#161d1060-e29d-46da-b395-fdb6c57099cf">Tutorials</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#589e95a3-5787-40fc-ab6a-babbbb707db9">Assemblers, Linkers, and the SPIM Simulator</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#30b4829e-8c08-4b85-9eea-62a20c61f529">Real Assembly. Systems based on microprocessors.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#21b3daf2-7d77-47e0-9a2c-bc2c7d97b472">References</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#976617ab-3de1-4739-a88e-45b399990d4b">RISC Architectures</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5f3df7fa-86ba-4585-ab96-43493ab33456">x86-64 Architectures</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b69fa308-d900-4f68-825c-16dc8209270b">Create a program in an assembler that calls some modern instruction</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#686ef2d2-5efd-4253-82e4-c09d1d61ce43">Special extensions in modern x86 CPUs</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e91c51e3-6f75-4490-bbbc-2c3413be3e6f">Building a computer from scratch</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#61f3bc46-03a0-4704-8d8b-be900a721599">Clock</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9c6034f7-8cef-446f-a7bc-738027a6bfee">Computer arithmetic with circuits in a datapath</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#122d439d-72db-4408-9c6e-00c0dd8ec7a4">Assembling a computer from commercial products</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ffd1ba33-d5c4-41f7-9495-f8eb2599f5c9">Discrete Optimization problem</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#651f8cbc-6d56-4a7b-97d3-98951582e099">Ram Modules</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5b92f74a-2f4e-49dd-b4d8-9fc7bb9daf6a"><strong>Bit Twiddling Hacks or Bit manipulation</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3ebc2ec4-11a2-4fa5-96cb-3ae8a5fce25b">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#56d4029c-1347-4c55-9987-bbe1a9e670ab">Core Wars</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2a3661e7-174d-4d35-87d1-76a525fe4f45">Next steps</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#27ce8ef6-3bbe-488b-933e-5d4445bdd93c">References</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#972ede96-7e8d-4aa5-97b5-b3caa889b77a">TODO</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#01d85d0d-8ee7-48d2-87bd-d3cd6765c1fe">Type Space</a></div></nav><h1 id="5816068a-605f-4e40-8d05-c7bb3dd8d3a3" class="">Preface</h1><h2 id="2d5164f4-2a75-4106-995d-b794374027cc" class="">Prerequisites</h2><h2 id="95c1a973-756d-4c16-b860-b9326238a8c2" class=""><a href="Moral,%20Ethics%20and%20Politics%20875a03f322ed49ed8aa826dc5c341b07.html">Learning ethics</a></h2><h1 id="1f713081-b2fa-43b1-936b-ca6ef429cb4e" class="">Introduction</h1><h2 id="18a773d6-75e2-4c52-bf6c-98ab5b9b938f" class="">What is <a href="Computer%20Organization%20and%20Architecture%20827ceef687b24e76af86d380b8c60f78.html"><span class="icon">🏗️</span>Computer Organization and Architecture</a> ?</h2><h3 id="d6435b7e-7c1c-4605-8192-28a324b94843" class="">Computer</h3><p id="8f6b8dcb-137a-48a4-a264-61f9afbc263c" class="">Rapaport (2018) provides a more explicit characterization of a computational system defined as any “physical plausible implementation of anything logically equivalent to a universal Turing machine”.</p><p id="1c030338-8934-4927-a797-85b400811d7f" class="">[1] N. Angius, G. Primiero, and R. Turner, “The Philosophy of Computer Science (Stanford Encyclopedia of Philosophy),” Stanford.edu, 2013. [Online]. Available: https://plato.stanford.edu/entries/computer-science/. [Accessed: 30-Aug-2021]</p><p id="df01681f-592c-42be-9018-99811fd97623" class="">Examples are:</p><p id="c6e03e52-1397-48d9-9be3-cbec8409ac8d" class="">Video game console.</p><p id="a195c0cb-9309-48fa-abaf-d295030748db" class="">Consoles.</p><h2 id="a937127a-106c-408f-8d75-9e042ed30b58" class="">Why does <a href="Computer%20Organization%20and%20Architecture%20827ceef687b24e76af86d380b8c60f78.html"><span class="icon">🏗️</span>Computer Organization and Architecture</a>  matter to you?</h2><h2 id="8ad2d54f-e6c0-4a6c-a8d4-53db4cede9be" class="">Ecosystem</h2><p id="09ccac45-a9cb-463f-8719-733fec82f4e7" class="">Standards, jobs, industry, roles, and research</p><h3 id="e2101cd3-39e3-419f-a692-459f54f68d7a" class="">Units</h3><p id="ae27e203-07ca-4239-9d9a-3358f1f8fc4a" class="">GiB or GB <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>10</mn></msup></mrow><annotation encoding="application/x-tex">2^{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span></p><p id="40c0eab0-0fdb-471f-95aa-cede9eaaa415" class="">Gbps <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span></p><h2 id="cc4f8f66-102c-41cd-8991-08bf2c4058c2" class="">Story</h2><p id="0a1bfd61-ab06-47d7-b740-c8ad36004a55" class=""><a href="https://www.youtube.com/watch?v=zXPiqk0-zDY&amp;ab_channel=FromScratch">https://www.youtube.com/watch?v=zXPiqk0-zDY&amp;ab_channel=FromScratch</a></p><p id="b3fcc336-eb05-441a-8dc1-148c89686389" class=""><a href="https://www.computerhistory.org/timeline/">https://www.computerhistory.org/timeline/</a></p><p id="0f3c048e-1ec3-46ca-8f95-11b9a151c4ca" class=""><a href="https://computerhistory.org/">https://computerhistory.org/</a></p><p id="90e94d47-4366-40e1-bef0-e9d931b51018" class=""><strong><strong>Von Neumann Architecture</strong></strong></p><p id="2881036f-4486-472a-bda8-0cc8d1765266" class=""><strong><strong>Harvard Architecture</strong></strong></p><p id="46a80724-eb23-4b28-a31d-5590670fa42c" class=""><strong><strong>Modern Architectures: Hybrids</strong></strong></p><p id="3d948891-88d4-4d79-adc4-47217a4e1af1" class=""><strong>AVR®</strong> and <strong>ARM®</strong></p><h3 id="423de628-66e3-48ba-9da2-acab66b93e68" class="">Von Neumann Model? Mauchly model?</h3><p id="8381b71c-14f0-4856-97cc-61caf11d5c0e" class="">This was teamwork, then We called EDVAC Model from “First Draft of a Report on the EDVAC”, no Von Neumann Model.</p><h3 id="1b5e2492-e134-4680-8ac5-74a8da3b7317" class="">Turing model</h3><h3 id="23db4a1f-09de-4647-b54c-9b2ec32d6ac9" class="">Computer components</h3><h3 id="6111fa54-4ec7-4fd6-8797-33ac373f971d" class="">Store program</h3><p id="31563080-e347-4971-b483-d4a48053d642" class="">Evans, D. C. A. (2017, October 10). Stored Program Computer. Youtube. Retrieved from <a href="https://www.youtube.com/watch?v=j3XikkuFDSk&amp;ab_channel=DrCraigA.Evans">https://www.youtube.com/watch?v=j3XikkuFDSk&amp;ab_channel=DrCraigA.Evans</a></p><h1 id="381dc526-9bab-4ce8-aae4-a7eafbdb612b" class="">MIPS 32</h1><p id="13856886-4b74-44ba-9648-7470e2f76e44" class="">MARS MIPS simulator - Missouri State University. (2017, December 07). Retrieved from <a href="https://courses.missouristate.edu/KenVollmar/MARS">https://courses.missouristate.edu/KenVollmar/MARS</a></p><p id="48993127-5c48-4c95-b63f-62a2d43bf60f" class=""><a href="https://gist.github.com/sanchezcarlosjr/f19edbe47ad48b93b79800a285911a81">https://gist.github.com/sanchezcarlosjr/f19edbe47ad48b93b79800a285911a81</a></p><p id="64d3c6c4-666c-4926-bd49-bb386aae972c" class=""><a href="https://godbolt.org/z/Tzoj81h6e">https://godbolt.org/z/Tzoj81h6e</a></p><p id="5d0f1db5-f545-4060-bd7e-1f8f828e7ab7" class=""><a href="https://en.wikibooks.org/wiki/MIPS_Assembly/MIPS_Details">https://en.wikibooks.org/wiki/MIPS_Assembly/MIPS_Details</a></p><p id="e524f9f8-6a75-4fe9-bd04-53bcad3ba542" class=""><a href="https://electronics.stackexchange.com/questions/136916/use-of-at-register-in-mips">https://electronics.stackexchange.com/questions/136916/use-of-at-register-in-mips</a></p><h2 id="8e93a38d-4832-4ac1-a240-032e2f08e30f" class="">FAQ</h2><h3 id="4b7171cc-ca90-44ae-ab82-483988c0a2b2" class="">Why do computers use binary?</h3><p id="7d643f40-52d0-4356-a665-c2a851d8491f" class="">Because electricity with 10 states is not the easy way. Please try to sum two numbers with electricity and ten states. Boolean algebra. Discrete signal processing.</p><p id="ddb62204-0f0c-4de0-892f-bfb42e06fd77" class=""><strong>Nibble</strong></p><h3 id="04823d1f-d8e5-458f-a48f-96f445439339" class="">Why is random access memory called random?</h3><p id="d1fd3fd5-98fc-4963-b01f-7cf4e486c9e9" class="">“Random” means that the data does not have to be stored or read in any particular sequence.  <a href="https://www.merriam-webster.com/dictionary/random">Random means lacking a definite plan, purpose, or pattern.</a> Historically called random access memory because any data word can be accessed as easily as any other.</p><p id="a94978a0-0e14-426b-a695-1d2ea54a4fc0" class=""><a href="https://www.youtube.com/watch?v=Rc6qqqFZisI&amp;ab_channel=AdamGaweda">https://www.youtube.com/watch?v=Rc6qqqFZisI&amp;ab_channel=AdamGaweda</a></p><h3 id="7fc52ee2-9c7c-4141-b93e-b1bcc40cbee5" class="">Computer graphics and related stuff in modern computers</h3><p id="ecd7e7e9-3a02-45e8-bbda-44cab489f76e" class="">Fonts are vectors when you have an operating system they are saved as files in a special location in the storage device in order to show something on the screen, you need to pass by GPU. . But, also fonts and other graphical stuff are stored in the firmware (e.g. EFI or BIOS) itself. </p><p id="00acd952-3adf-4706-b9cd-4f4f98f6fbd5" class="">Fonts, UNICODE, UTF-8, ASCII, and others.</p><p id="d1b6eb8c-cd07-4a9d-bacf-74064bed8121" class="">All are bits. But it is depending on who receives that word and then executes an operation or another one. </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5bc8ba43-9795-40dd-8c72-36efe31c6ae0" class="code"><code class="language-PowerShell">
+PRINTF(01001100) -&gt; Send to Graphics Processing Unit -&gt; PRINT A on Screen</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f1cecad3-a269-418d-a3cd-64909cf7c066" class="code"><code class="language-PowerShell">
+ADD(01001100,01001100) -&gt; Send to Proccesor -&gt; 76 + 76 and send in register. </code></pre><p id="7bba9c62-f97d-407b-aeac-522f19da62a2" class="">Levels of the answer:</p><p id="e944f1e7-400c-418e-92a2-6d5baf87bb7e" class="">Compiler, Assembler, Binary, Hardware, Formal languages.</p><p id="4f4850a7-9472-4057-b597-72504ca15749" class="">
+</p><p id="5cd687c5-cffb-4ba2-b287-95775daa6521" class=""><a href="https://stackoverflow.com/questions/41993429/what-s-the-difference-between-a-pointer-to-an-int-and-a-pointer-to-a-pointer-to">https://stackoverflow.com/questions/41993429/what-s-the-difference-between-a-pointer-to-an-int-and-a-pointer-to-a-pointer-to</a></p><p id="bfa1dd84-aeff-4eb4-8311-b5de959a7c35" class=""><a href="http://wiki.icmc.usp.br/images/4/42/Aula_20_-_memoria_harris_book.pdf">http://wiki.icmc.usp.br/images/4/42/Aula_20_-_memoria_harris_book.pdf</a></p><h3 id="78d1c45f-86b4-4ba3-a169-3358ef472cac" class="">Where is the ASCII table located in the memory? Which type of memory do we use to store it?</h3><h3 id="78de1a7f-6205-4501-a4c9-444feeeb690e" class="">How did computers understand ASCII bit? For example, 01001100 is L, not 76. Does a computer store integers according to ASCII?</h3><p id="ff9bd3ae-1aa3-4f02-8d79-9a3a134679e0" class="">
+</p><h2 id="64337744-a514-47b5-a539-53b1c05d62d3" class="">Worked examples</h2><h1 id="56e35154-8269-40da-a430-ef70d564f699" class="">Computer Abstractions and Technology</h1><h2 id="2cfaa08c-963c-48c0-9529-d2eaa9431288" class="">Programmer’s point of view</h2><p id="45bfdfb0-40f3-4333-8ca1-b2600957b9f1" class="">Domain language level</p><p id="ff0e1487-ef63-4ec2-aed4-ad25764da73d" class="">Assembly language level</p><p id="c9829cb7-6921-407a-9753-ecae388010cf" class="">Operating system machine level</p><p id="9cef812b-80ad-457d-91ec-1fec46d1ffd9" class="">Instruction set architecture level (ISA level)</p><p id="915ee959-7e56-4975-ab23-4bcdf26201b1" class="">Microarchitecture level</p><p id="99e204ee-8a45-4f9e-9c86-c032a18fbc6c" class="">Digital logic level</p><h2 id="565e12b4-8636-47ab-b045-2c247e93196f" class="">User’s point of view</h2><p id="af346ed3-4320-429d-8ad7-a077df63adef" class="">Application software </p><p id="9047d289-fe5a-450f-9222-e76e38e4ca60" class="">Operating system </p><p id="450401fb-7812-43b7-97ea-3665a9dc1c4f" class="">EFI/BIOS</p><p id="c14c2a52-a05d-4237-941f-8bebb7c0c73e" class="">Firmware</p><p id="7fed7416-8a9c-4b01-a3e8-7434f8519771" class="">Hardware</p><h2 id="3f0419ab-6edf-4a59-ba4d-11a0e99a2b34" class="">O<strong>verflow</strong></h2><h2 id="ceeed0ed-b788-422a-9ad7-15568b5bf279" class="">What is the first process? General boot process.</h2><p id="5250dba9-87d3-4877-8f9f-80e0a0dfa9a4" class="">A typical boot process for commercial computers.</p><ol type="1" id="76816271-8b4e-425a-8894-78cfb5f5a379" class="numbered-list" start="1"><li>Motherboard</li></ol><ol type="1" id="963c7015-8599-4531-8ab7-6f4281d5ec23" class="numbered-list" start="2"><li>Firmware. BIOS/EFI. Bootloader. Protected mode.</li></ol><ol type="1" id="d5abf301-2e55-4310-b31b-a2bc43f0e868" class="numbered-list" start="3"><li>Kernel.</li></ol><ol type="1" id="732f2bd0-fda7-4cd0-88b3-2cefcc2c4b65" class="numbered-list" start="4"><li>User interface.</li></ol><ol type="1" id="7511abc1-cd3c-4752-9021-76473ed2bb6b" class="numbered-list" start="5"><li>User Applications.</li></ol><p id="2339194a-34ac-4983-bacf-e6a0e18c0750" class="">So, our first problem is starting after firmware.</p><p id="f86572b2-0bd3-4714-bbe1-1af171c51028" class=""><strong>GDT Tutorial</strong></p><h2 id="c5bcfae2-99bf-4d36-89f7-fc3dc9757c26" class="">Motherboard</h2><h2 id="d9cb507f-a7ed-4870-afd8-35dfafaeb7d4" class="">Computer performance measurement</h2><p id="f9765723-a60d-4510-b587-e55376c50b52" class=""><strong>FLOPS</strong></p><p id="e2833667-5c8c-4ae3-a0cc-7c746f526ef2" class="">Bits</p><p id="556c2267-08df-487f-b86f-275f19697cd5" class=""><a href="https://www.youtube.com/watch?v=jAu0oyxsP20&amp;ab_channel=FrankStajanoExplains">https://www.youtube.com/watch?v=jAu0oyxsP20&amp;ab_channel=FrankStajanoExplains</a></p><h2 id="62089c41-3d90-4820-b5fb-c8b6d12b6f7e" class="">Exercises and Projects</h2><h2 id="1fde9dee-0a9e-431c-b24b-4891b8c3a2d7" class="">Summary</h2><h3 id="d8c96b7f-6a30-4e52-a0bb-3b2e9232ef53" class="">Key decisions</h3><h2 id="ba9ebfc6-1382-4f83-b98e-70cc8993b3a0" class="">FAQ</h2><h2 id="80f55efe-c8b3-43aa-8219-b46149fd229b" class="">Reference Notes</h2><h1 id="026bef25-67f9-4be3-aeff-25f4063e4940" class="">Instructions: Language and the computer</h1><h2 id="21977683-a493-489a-9e7c-899ae28b6895" class="">Subsection</h2><h3 id="71e30e5a-b9ed-4bf0-9335-3f603d88d2ac" class="">Subsubsection</h3><h2 id="60afd232-48f7-4917-b5ee-e06fcd15e06d" class="">Exercises and Projects</h2><h2 id="e1ca3460-1a70-4860-a349-b9da79e87614" class="">Summary</h2><h3 id="95544a96-a677-46dd-8363-c6b9e7c2aef3" class="">Key decisions</h3><h2 id="042c7f1a-49ab-4a2a-8a84-021d8d6ab6df" class="">FAQ</h2><h2 id="89b5e7c3-3114-419b-9e8c-f3656b7e4f4e" class="">Reference Notes</h2><p id="ce71b723-fb21-434e-8120-ea92a54a7144" class="">
+</p><h1 id="f88305ba-b067-4813-8800-1f7f2c9d094c" class="">Arithmetic for Computers</h1><h2 id="f6304b8d-96b6-4958-a80d-5199126b9614" class="">Subsection</h2><h3 id="37f7a2d1-a582-456a-90bc-0e47ef4029a9" class="">Subsubsection</h3><h2 id="50d94a79-a477-4ccf-9e27-0881ac42f87c" class="">Exercises and Projects</h2><h2 id="72bb6126-ae7d-42c7-adc8-95f279608c21" class="">Summary</h2><h3 id="7bc7daf7-ff1c-47d5-8d22-10923a2497ae" class="">Key decisions</h3><h2 id="c264f3b4-948f-49a2-a2de-9d86d229b78e" class="">FAQ</h2><h2 id="a5b57cec-c84b-4c41-a214-c05e39a0a7d2" class="">Reference Notes</h2><p id="b7e51555-e692-4398-b456-ad7283d76ece" class="">
+</p><h1 id="ea1e9077-1bbf-4a14-b59d-f174854ff882" class="">The processor</h1><p id="d18ba088-016f-4c9b-afa2-f1ff7ce2b0ec" class=""><strong>Microcode</strong></p><p id="82c20d4d-0951-4ad6-afb6-8e8e3df977f4" class="">We know by memory hierarchy the CPU has memory, it has registers.</p><p id="8e23b2eb-d9a8-4b46-a995-d3269ee351e9" class=""><strong>Datapath</strong></p><h2 id="050dd004-cb3b-4e9f-9553-a3a83224c294" class="">Subsection</h2><h3 id="2927cfea-00c2-4c16-b197-11c099d2d0a2" class="">Subsubsection</h3><h2 id="6c55baed-f040-4cc3-8964-1d488f566c61" class="">Exercises and Projects</h2><h2 id="a4ad03d4-e94c-4f18-ba7a-35d883a41d3a" class="">Summary</h2><h3 id="54ca8071-bef9-4953-a139-d6343e995370" class="">Key decisions</h3><h2 id="0474ca06-9727-4c3c-bf69-170e7dd84218" class="">FAQ</h2><h2 id="c4ac70bd-4f80-4e3b-9888-ae8d084f1319" class="">Reference Notes</h2><h1 id="ecc4a834-aa98-4ee2-b7bc-f87b4d76e5d1" class="">Large and Fast: Exploiting Memory Hierarchy</h1><p id="79f83d56-244f-48e2-a1d8-d58f9e55d225" class="">Memory hierarchy.</p><p id="094555a6-7b59-418a-9010-eb936b6e1690" class="">Flash, SRAM y EEPROM memory</p><p id="530828e2-d916-4e23-b1e5-a9800480614d" class="">When people say “memory” normally refers to RAM. However, today we have a memory hierarchy. We explain the memory layout in the RAM, register behavior, and communication between the RAM and the processor using MARS.  </p><p id="2b6b1527-a815-412e-8cc5-fbd18f8fbd27" class="">Word.</p><p id="2d0f7fd5-898b-4355-8900-53f7eaf37d1d" class=""><strong>Bit numbering</strong></p><p id="76c94b52-3f10-40b1-be86-a242275618ce" class=""><a href="https://www.youtube.com/watch?v=jhErugDB-34">https://www.youtube.com/watch?v=jhErugDB-34</a></p><p id="803618d8-4ac4-4c1b-a9f2-d4f29b203cb0" class=""><a href="https://www.youtube.com/watch?v=RvFRCDoj6JI">https://www.youtube.com/watch?v=RvFRCDoj6JI</a></p><p id="db92e117-f9a1-4707-8cbc-5a40fb389b72" class="">(LSB) Little Endian, (MSB) Big Endian.</p><p id="6832bfda-f97b-44e2-93d5-2a9b9bc68425" class="">LSB first.</p><p id="9eb98c3d-7909-4c83-aaf7-d14da9befce8" class="">MSB first.</p><p id="f35b7409-4802-49d9-9e4d-ec8f04b93cb7" class="">Example. <code>0x010000…00</code> (32-byte <em>one</em>, LSB first)</p><p id="42199cbf-665c-44b9-99a7-b6d18e451157" class="">The value <code>0x010000…00</code> is a hexadecimal representation of a 32-byte (or 256-bit) number where the least significant byte (LSB) comes first (little-endian format).</p><p id="40d54c70-bcca-4b8a-a7ab-a958441e07a4" class="">In little-endian format, the least significant byte is stored in the smallest address and hence comes first. So <code>0x01</code> is the least significant byte, and the rest of the bytes (31 of them, in this case) are <code>0x00</code>.</p><p id="dd99c476-76f1-48bb-8fa3-d9767fd297d1" class="">If this was a big-endian format (most significant byte first), it would represent a very large number with a value of <code>1</code> followed by 31 zero bytes.</p><p id="8591eb6a-90f7-4631-bf45-6586beab3829" class="">But as a little-endian format, it represents a small number because <code>0x01</code> is the least significant byte. It means the number is just <code>1</code> in decimal.</p><p id="60cc47b3-6c22-444d-9209-dd0c4987a37b" class="">For comparison:</p><ul id="1d9cca5d-95ec-4a73-80b6-86a6cdef8b68" class="bulleted-list"><li style="list-style-type:disc">Little-endian: <code>0x010000...00</code> (LSB first) represents 1 in decimal.</li></ul><ul id="950ac425-454e-4599-bca6-e1e69c8c0f2d" class="bulleted-list"><li style="list-style-type:disc">Big-endian: <code>0x010000...00</code> (MSB first) would represent a very large number (about 1.16e+77 in decimal).</li></ul><p id="ded4d537-e598-402e-b77d-5a6b05e3b1e7" class="">Consider a 4-byte (32-bit) integer value of <code>1</code>. In hexadecimal representation, it is <code>0x00000001</code>.</p><ul id="443e84ef-2e50-4be2-b05e-8544c38ebbd5" class="bulleted-list"><li style="list-style-type:disc">In little-endian (LSB first), this would be stored or transmitted as <code>0x01000000</code>.</li></ul><ul id="5e1bf68a-c5e3-4cd5-beed-55ded7ec0f70" class="bulleted-list"><li style="list-style-type:disc">In big-endian (MSB first), this would be stored or transmitted as <code>0x00000001</code>.</li></ul><p id="141212bf-0bb5-485b-8045-049795f306f2" class="">Consider a 4-byte (32-bit) integer value of 254. In hexadecimal representation, it is <code>0x000000FE</code>.</p><ul id="99edad0b-f812-4cf2-8279-2484da6c2e92" class="bulleted-list"><li style="list-style-type:disc">In little-endian (LSB first), this would be stored or transmitted as <code>0xFE000000</code>.</li></ul><ul id="e22f52f6-93ba-4be2-92fc-a7d1dba5fd3c" class="bulleted-list"><li style="list-style-type:disc">In big-endian (MSB first), this would be stored or transmitted as <code>0x000000FE</code>.</li></ul><p id="78f32741-b2b9-4836-a2ae-5735a642d7f0" class="">
+</p><p id="3d2279fa-85b7-47e4-b12d-b3d0927959af" class="">Arrays, Structs (or classes), numbers, and chars.  Offset.</p><p id="c1d25437-9aff-403a-9bb0-1a14953ad371" class="">List.</p><p id="595cdbbd-eae0-442b-9fdf-ae4376a28a87" class="">Type. </p><p id="523582a3-cf27-45b4-9e9d-398927d6c63c" class="">Construction. </p><p id="4e940179-5a30-4394-8028-a2202c010d80" class="">Address vs Content.</p><figure id="76fd2f33-db82-40bc-8083-4b6a818055bd" class="image"><a href="Untitled%2097.png"><img style="width:744px" src="Untitled%2097.png"/></a><figcaption>1.3.1 <strong>Bit and Byte Order</strong></figcaption></figure><p id="569b4ca9-facc-4ac2-9856-c1f3b7633191" class="">Intel® 64 and IA-32 Architectures Software Developer Manuals. (2020, December 22). Retrieved from <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html">https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html</a></p><p id="c0c70c15-8231-4132-9aa2-dc020e1efb0b" class="">Little Endian vs Big Endian</p><p id="08706e26-716a-40cc-b6a3-7db2a0a088dc" class="">TODO: In the model, we must include the stored program, the “word” concept, the “program to process” process, an array, a list, and a tree. We must include a model with electronic. </p><p id="e417e4e2-1b34-404a-9b0e-7d4d9a566d19" class="">A word is a sequence of <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> bits where a processor can operate with them in constant time <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>.</p><p id="da67609c-4e11-438b-8a3f-8723f1ee3ba9" class="">How many bits does a WORD contain in 32/64 bit OS respectively? (2023, January 15). Retrieved from <a href="https://stackoverflow.com/questions/5295903/how-many-bits-does-a-word-contain-in-32-64-bit-os-respectively">https://stackoverflow.com/questions/5295903/how-many-bits-does-a-word-contain-in-32-64-bit-os-respectively</a></p><p id="6f9e4b52-6e4d-4acb-a238-c49b141160c6" class="">So, suppose we say a word of 64 bits, it means you ca</p><p id="da3ce7bb-1e98-409b-8ab6-da397afcd0c8" class="">Learn MIPS Assembly in Y Minutes. (2023, January 15). Retrieved from <a href="https://learnxinyminutes.com/docs/mips">https://learnxinyminutes.com/docs/mips</a></p><h2 id="d79d388a-6c6c-4279-9d8b-f8bd2dfb2d61" class="">Memory Layout —RAM layout virtualization</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="422f8cb3-f04a-4ca7-b043-5f516574714e" class="code"><code class="language-Plain Text">data
+text
+heap
+stack</code></pre><h2 id="b3eba083-0a89-4b79-81e2-84ebb09dfe60" class=""><strong>Heap Memory</strong></h2><p id="fd49d946-23b5-48f0-9edc-d8bfd0c31d28" class=""><a href="https://stackoverflow.com/questions/2308751/what-is-a-memory-heap">https://stackoverflow.com/questions/2308751/what-is-a-memory-heap</a></p><p id="42de4bf9-07bc-4117-843e-58430ecbffbc" class=""><a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/HeapMem.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/HeapMem.html</a></p><h2 id="3c99b7ad-48b7-4d16-82a7-ea563bab34bf" class="">Memory in action</h2><p id="cfffbf10-9b34-490a-bff6-c7ab2fa065ba" class="">Where do you locate data in memory? What looks like a memory layout with different types?</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="783f4b63-9c74-463c-8c0c-e55394d1566c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Assembler (and computer) doesn’t have types.</div></figure><h3 id="b9a34ae3-0fa6-47a4-9642-61a7b4be1891" class="">Integer</h3><p id="4b7ba04e-9e20-4c8f-bb10-7a084f2994ae" class="">The most basic data type is an <code>int</code>. Now, we save a byte 8 bits, so the largest decimal you can save in a byte is <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>8</mn></msup><mo>−</mo><mn>1</mn><mo>=</mo><mn>255</mn></mrow><annotation encoding="application/x-tex">2^8-1=255</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">255</span></span></span></span></span><span>﻿</span></span>. You are going to experiment with it .data, so you don’t need registers. </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2e205036-8374-40c6-8ad4-dc60e18ef5e4" class="code"><code class="language-Plain Text">.data
+constant: .byte 97</code></pre><figure id="95e1a749-aba3-4241-9931-07c6319abef2" class="image"><a href="Untitled%2098.png"><img style="width:1360px" src="Untitled%2098.png"/></a><figcaption>MARS with int memory layout</figcaption></figure><p id="0c599e56-1f6a-45b5-aff4-8928452996ee" class="">Assemble it and now you can observe the memory layout in the execute tab.</p><figure id="d366f282-215e-44ce-823e-4a512889d3a7" class="image"><a href="Untitled%2099.png"><img style="width:1360px" src="Untitled%2099.png"/></a></figure><p id="9952b349-3c6b-4de0-a47c-a53755160932" class="">Congratulations! You are allocated a byte with the value 97 at the address 0x1001000.</p><p id="11a265da-1499-494d-bef2-4910720eb801" class="">
+</p><p id="de24ea09-576d-427b-a132-e18ae7b380d5" class="">Ok, maybe you are thinking that interesting happened in boundaries. That is a negative number and a considerable number —a number is out-of-range for a signed value. Managing negative numbers means you have to deal with 2 complements. It means when you allocate a byte with signed values, you can express <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>7</mn></msup><mo>−</mo><mn>1</mn><mo>=</mo><mn>127</mn></mrow><annotation encoding="application/x-tex">2^7-1=127</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">127</span></span></span></span></span><span>﻿</span></span> positive numbers and you can express <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>255</mn><mo>−</mo><msup><mn>2</mn><mn>7</mn></msup><mo>−</mo><mn>1</mn><mo>=</mo><mn>126</mn></mrow><annotation encoding="application/x-tex">255-2^7-1=126</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">255</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">126</span></span></span></span></span><span>﻿</span></span> negative numbers; therefore, a big number happened when you have a decimal number greater than <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>127</mn></mrow><annotation encoding="application/x-tex">127</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">127</span></span></span></span></span><span>﻿</span></span> and less than 256 (<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>128</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>255</mn></mrow><annotation encoding="application/x-tex">128\le x\le255</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">128</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">255</span></span></span></span></span><span>﻿</span></span>) —if you express a number greater than 255 your program will have strange behaviors.</p><p id="4494df14-a56e-44d4-be77-a230706591d8" class=""><strong>127 case.</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c5ccf530-ceee-4a59-87f1-dbf79ec9cc16" class="code"><code class="language-Plain Text">.data
+var1: .byte 127</code></pre><figure id="fd079e82-e145-4c7f-89ae-61efbc08dcf2" class="image"><a href="Untitled%20100.png"><img style="width:1360px" src="Untitled%20100.png"/></a></figure><p id="aa613d06-8ab4-417c-873f-4f8b0d42178e" class=""><strong>-1 case.</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c80fcdaf-ca2d-49c9-a479-9ed4263346ca" class="code"><code class="language-Plain Text">.data
+var1: .byte -1</code></pre><figure id="cb6a6478-c862-4278-990c-6599c47175a7" class="image"><a href="Untitled%20101.png"><img style="width:1360px" src="Untitled%20101.png"/></a></figure><p id="7c335ebf-880f-45fd-9441-3d7afce30430" class=""><strong>128 case.</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c5b595ff-f32a-47ce-94d1-876caaa374b6" class="code"><code class="language-Plain Text">.data
+var1: .byte 128</code></pre><figure id="c4fdee41-3de4-4451-8337-15b6854cf418" class="image"><a href="Untitled%20102.png"><img style="width:1360px" src="Untitled%20102.png"/></a><figcaption>line 2 column 13: &quot;128&quot; is out-of-range for a signed value and possibly truncated</figcaption></figure><p id="bf4fe095-ef34-44c7-8e18-5199250177af" class="">Word, byte, and word alignment TODO Registers.</p><p id="8062b620-4ddb-47a9-bdcc-b293a265c549" class="">
+</p><p id="10fdcafd-cdbd-4131-93dc-7e29ede5986a" class="">But, what happened if you want to save a word?</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c9ef1505-3733-44ff-829c-3c6e2d62ad45" class="code"><code class="language-Plain Text">.data
+var1: .word 100
+var2: .word 300
+var3: .word 140
+var4: .word 5000
+var5: .word 10000
+var6: .word 20000
+var7: .word 30000
+var8: .word 60000
+var9: .word 70000</code></pre><figure id="b0e58039-fe2b-41f2-aa06-851bc25729b4" class="image"><a href="Untitled%20103.png"><img style="width:1360px" src="Untitled%20103.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8d0b9f3b-f8d4-46ee-aad0-d14c728dbc9c" class="code"><code class="language-Plain Text">.data
+var1: .word 100
+var2: .word 300
+var3: .word 140
+var4: .word 5000
+var5: .word 10000
+var6: .word 20000
+var7: .word 30000
+var8: .word 60000
+var9: .word 70000</code></pre><p id="c2811dbc-c36c-4d62-9301-bbde9415912e" class="">And array?</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="30f12cdd-1925-45c0-8d2b-8eac9e11216e" class="code"><code class="language-Plain Text">.data
+var1: .word 1 2 3 4 5 6 7 8</code></pre><figure id="337e732b-1e51-49c1-a80a-0cf29ddabf2f" class="image"><a href="Untitled%20104.png"><img style="width:1360px" src="Untitled%20104.png"/></a></figure><p id="fc061b33-0f3a-4903-9c13-1b2d07f88775" class="">You want fill out the memory</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="652e4e36-8629-4e9e-99b3-d618fa190dcd" class="code"><code class="language-Plain Text">.data
+var1: .word 1 2 3 4 5 6 7 8
+var2: .word 1 2 3 4 5 6 7 8
+var3: .word 1 2 3 4 5 6 7 8
+var4: .word 1 2 3 4 5 6 7 8
+var5: .word 1 2 3 4 5 6 7 8
+var6: .word 1 2 3 4 5 6 7 8
+var7: .word 1 2 3 4 5 6 7 8
+var8: .word 1 2 3 4 5 6 7 8
+var9: .word 1 2 3 4 5 6 7 8
+var10: .word 1 2 3 4 5 6 7 8
+var11: .word 1 2 3 4 5 6 7 8
+var12: .word 1 2 3 4 5 6 7 8
+var13: .word 1 2 3 4 5 6 7 8
+var14: .word 1 2 3 4 5 6 7 8
+var15: .word 1 2 3 4 5 6 7 8
+var16: .word 1 2 3 4 5 6 7 8</code></pre><figure id="5e86decc-3c50-46d1-8ca7-233bca00185c" class="image"><a href="Untitled%20105.png"><img style="width:1360px" src="Untitled%20105.png"/></a></figure><p id="e2f1df5e-ba8d-46c6-aac5-99be1ea30ec2" class="">And what happened if you run out of memory?</p><h3 id="c1c54bde-3cf9-4a3d-98c2-d95c1fd096c4" class="">Char</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b5c4688b-9db7-4d28-808a-55d8bb26bd18" class="code"><code class="language-Plain Text">.data
+constant: .byte &#x27;a&#x27;</code></pre><h3 id="a37d1e4d-814f-4c3b-bc2a-658f52ff59cb" class="">String</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ee8a2707-79c2-4208-97c9-9de4e0e929fd" class="code"><code class="language-Plain Text">.data
+var1: .asciiz	&quot;Hello&quot;</code></pre><figure id="345def9e-bfea-4ea2-98f3-7748ee12adcf" class="image"><a href="Untitled%20106.png"><img style="width:1360px" src="Untitled%20106.png"/></a></figure><p id="a1e24ff3-3661-44f5-9967-2fb6bf8c6596" class="">
+</p><h3 id="dd9b0937-0811-4bba-a672-4dd1d7aa83bf" class="">Float</h3><h3 id="111b36da-4598-4d69-a9d7-9961434f2f45" class="">Array</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="db44cf45-53ae-4616-88d8-8fbba7c04b51" class="code"><code class="language-Plain Text">.data
+var1: .word 0x20FF 0x100019AF &#x27;0&#x27;</code></pre><h2 id="3bef31a5-5b91-4fd3-9a4a-a598348f33b4" class="">Subsection</h2><h3 id="64f93838-db42-422e-b1d5-9d6213d8bafd" class="">Subsubsection</h3><h2 id="dd32c6f1-9679-48a7-affa-fe22c1662e47" class="">Field-programmable gate array</h2><h3 id="f81708c1-4fde-4ef1-8661-99b7d41c3ff3" class="">Hardware description language</h3><h2 id="9326bf6f-54af-4b80-928a-9ceb74057976" class="">Exercises and Projects</h2><p id="ae2e5660-a296-4b40-96fd-3808094e3ddb" class="">Interleaved Memory Simulator</p><p id="7bd88acf-5f28-4cca-a2b1-24353e377349" class="">RAID</p><p id="5351258c-3d1a-4f6a-8e9e-349ef51f41a4" class="">
+</p><h2 id="c401714e-7616-45ec-adad-f16cd9bd1c8f" class="">Summary</h2><h3 id="1128c285-c65a-4265-9f45-0733d11fc0b5" class="">Key decisions</h3><h2 id="545f2bf7-2c81-4fea-8740-8122069c4dc3" class="">FAQ</h2><h2 id="28243da0-db6f-42f9-a3ed-d7971f85910a" class="">Reference Notes</h2><p id="42750b83-9abb-4deb-b93a-23c3bddd858b" class="">
+</p><h1 id="4a93607d-4c5f-4ecc-bcff-3b4c6ebbc77c" class="">IO Operations</h1><h2 id="719a32b9-276d-4a3d-b0a0-2435301af3b6" class="">Subsection</h2><h3 id="a526229b-7fbb-4718-b99b-367301ffb7c6" class="">Subsubsection</h3><h2 id="4b845f54-42a4-4cdf-86f9-bf0033ac7e5d" class="">Exercises and Projects</h2><p id="bbcb1e61-aa2b-40b8-a645-270185afb76e" class="">Cache Time Analysis</p><p id="dba2b046-d482-454d-b83f-f88b6f92cd5f" class="">Cache Simulator</p><p id="9e2fea65-0245-428d-a3ac-5c7867d82e18" class="">Multitask Cache Demonstrator</p><p id="12072707-7c15-429c-b30f-79317ab38d1a" class="">Selective Victim Cache Simulator</p><h2 id="22beaf13-7de1-4740-ac25-72e41840ec7d" class="">Summary</h2><h3 id="268ae8b9-d1b2-4072-9957-53092afb5ade" class="">Key decisions</h3><h2 id="e6e95eeb-6bab-40e8-b504-8f6a31f11aea" class="">FAQ</h2><h2 id="4ffa9a00-f944-46fb-9e8c-c0e992e33e9d" class="">Reference Notes</h2><h1 id="76607105-93dc-483c-9f04-e59ce1554bcc" class="">Parallel Processors from Client to Cloud</h1><p id="3df7def0-698a-49f7-856c-4d51aef94978" class="">Flynn&#x27;s taxonomy</p><p id="7f626b80-2abb-4de2-9ef7-0ab379637516" class="">Duncan&#x27;s taxonomy</p><p id="ff7c7ccf-f17b-423f-be8b-d732c35490ff" class="">AVX-512</p><p id="2644b23a-9bcd-4850-abc0-b1a0b15ca01e" class="">Advanced Vector Extensions</p><p id="1500b3fc-d3fa-498f-913e-acfa7cedb679" class="">Single instruction, multiple threads (SIMT)</p><p id="ca3ff297-4bbf-4290-a9da-9b999a4f9c53" class="">Single instruction, multiple data (SIMD)</p><h2 id="eb40e857-8089-474b-b868-074378930cdb" class="">Subsection</h2><h3 id="cd0da306-c3b4-4242-9103-94b9c1fbc191" class="">Subsubsection</h3><h2 id="db31b592-2326-441e-91e0-0c5d227f4531" class="">Exercises and Projects</h2><p id="4e8df838-2044-462b-8643-7f6c09ab4440" class="">Cache Time Analysis</p><p id="2bc51204-4dbc-46fa-a2f0-13bab65a448c" class="">Cache Simulator</p><p id="35593556-321f-4d78-9271-681ccdac0c62" class="">Multitask Cache Demonstrator</p><p id="e3e745b2-c33a-41cc-8042-95a300dc1b1f" class="">Selective Victim Cache Simulator</p><h2 id="58429915-49a5-4043-8fec-446ee51bac74" class="">Summary</h2><h3 id="949ccee5-bb15-44c8-adc4-d26f4e25352b" class="">Key decisions</h3><h2 id="aa7e3efb-c078-4c72-87e7-434069144a4c" class="">FAQ</h2><h2 id="a2456694-e2bd-4605-a394-17b86e9164db" class="">Reference Notes</h2><h1 id="57b6fd7f-cf9e-4632-a0cd-cc0fdca7deed" class="">The basics of Login Design</h1><h2 id="3e2033f8-b48a-4c9a-a64c-0f90cf1fdc4a" class="">Subsection</h2><h3 id="5ae65193-99ec-486b-a245-c5574909cf5a" class="">Subsubsection</h3><h2 id="5373fcbb-f71a-4d06-b019-ce649a42ec13" class="">Exercises and Projects</h2><h2 id="78220145-10fc-4adc-9e80-f4133aa75f1f" class="">Summary</h2><h3 id="f5e0a689-7cb4-471f-bcc1-28557380a2e5" class="">Key decisions</h3><h2 id="93ac5377-7034-4594-b7bd-926f1cc5b5fe" class="">FAQ</h2><h2 id="49d1c567-c1bf-4a89-bd32-a87b66ac9f58" class="">Reference Notes</h2><p id="e322eb77-0abe-46e2-bfa5-c04661eb4c93" class="">
+</p><h1 id="2e1a5398-a960-4cfc-8b6c-2aa0b37eadd0" class="">Graphics and Computing GPUs</h1><h1 id="b0611b32-bc69-4697-9cf0-1a8fb55d135d" class="">GPU</h1><p id="dacc6b29-472b-40a0-a352-331ba16bd370" class="">GPGPU (General-purpose computing on graphics processing units)</p><p id="706d06ed-012c-4438-aa1f-89c430d163d3" class="">OpenCL</p><p id="c9574908-674e-4f7e-b3f9-577917790985" class="">NVDIA and amd</p><p id="4af20bb3-70fe-4d56-9495-7707ab55d75c" class="">CUDA</p><p id="897e6a1b-4149-49b2-bc25-afd82acd113b" class="">nvcc</p><p id="ede3ee8a-cc33-47a5-a631-c1d3be6b3e7f" class="">opengl</p><p id="0d5e80d7-fe74-42a1-9be3-c75bdbd20706" class="">vulkan</p><p id="174e6a68-6149-4c9d-ac2a-7fa17cf2283e" class="">Water Cooling</p><h2 id="d42903c1-9ead-414c-83f8-c2766a20695a" class="">TPU</h2><h2 id="303e2444-635a-4879-b87a-5e14af9fe03c" class="">NPU</h2><h2 id="214f1734-2971-4982-bf0b-6c49b6dec81c" class="">Exercises and Projects</h2><h2 id="1af3b679-a1eb-4a7c-9691-cc084ab92ffa" class="">Summary</h2><h3 id="5ce9d2c6-cade-4c25-8b97-49f9ed1f4e9b" class="">Key decisions</h3><h2 id="4224fa28-4960-4e72-9738-1c861e5909ad" class="">FAQ</h2><h2 id="1726bf76-3041-41cf-9053-e70b065af7c7" class="">Reference Notes</h2><p id="4d2cc7fa-a515-4e78-973d-99d4c78f300e" class="">
+</p><h1 id="1d5ec110-eaf3-4c52-a3c1-e4e23770bdaa" class="">Mapping Control to Hardware</h1><h2 id="e7618253-cb07-4e9a-946e-8895c6e216bf" class="">Subsection</h2><h3 id="b16c7432-67b8-453b-b4d9-2d8941467bb2" class="">Subsubsection</h3><h2 id="6dee6fe2-503d-4f05-9f7d-3fb537be8ba2" class="">Exercises and Projects</h2><h2 id="5e5ce092-1807-49cb-b0e8-6aab8f8f605e" class="">Summary</h2><h3 id="d2a0669c-ea86-4e57-bbb1-da1e1633fc1b" class="">Key decisions</h3><h2 id="953b68c1-2f99-4e53-9f23-166be9e48f5c" class="">FAQ</h2><h2 id="deb465af-814e-423e-ac17-2136c208f045" class="">Reference Notes</h2><h1 id="161d1060-e29d-46da-b395-fdb6c57099cf" class="">Tutorials</h1><h2 id="589e95a3-5787-40fc-ab6a-babbbb707db9" class="">Assemblers, Linkers, and the SPIM Simulator</h2><p id="4408cde3-1d39-4a45-b558-451b80aa0652" class="">Implementation of mathematical functions in computer (no lib)</p><h3 id="30b4829e-8c08-4b85-9eea-62a20c61f529" class="">Real Assembly. Systems based on microprocessors.</h3><p id="487a896c-7391-4227-a84a-39390b35f111" class="">1. El universo digital del IBM PC, AT y PS/2. Ciriaco García de Celis, documentación</p><p id="6ee25ab6-6396-4edb-adda-04aa22db4946" class="">gratuita en la red</p><p id="5210f001-ea36-4447-b10a-d7745939f7f9" class="">2. Los microprocesadores Intel. Barry B. Brey, Ed. Prentice-Hall</p><p id="2f70a777-f5b9-41ac-8bc1-ec2e622d4632" class="">3. IBM PC &amp; XT, Assembly Language. Leo. J. Scalon, Ed. Brady</p><p id="6cf508f5-6d66-46c7-8081-b07e6581e2b4" class="">4. Arquitectura, programación y diseño de sistemas basados en microprocesadores</p><p id="d15b5eff-980e-48c3-9a16-f86b93046d12" class="">(80x86/80186/80286). Yu-Cheng Liu y Glenn A. Gibson, Ed. Anaya</p><p id="eb5340c6-8ab6-4121-b885-edf5ed3b7c54" class=""><strong>Procedures &amp; The Stack</strong></p><p id="7fecfbe3-8b99-420e-867b-8cd2f87cf83a" class=""><a href="https://courses.cs.washington.edu/courses/cse351/16sp/lectures/06-procedures_16sp.pdf">https://courses.cs.washington.edu/courses/cse351/16sp/lectures/06-procedures_16sp.pdf</a></p><h3 id="21b3daf2-7d77-47e0-9a2c-bc2c7d97b472" class="">References</h3><p id="c4950c6e-6865-433b-af41-ac006c780b21" class="">At ieee dot org, B. K. k. (2020, August 25). Programmed Introduction to MIPS Assembly Language. Retrieved from <a href="https://chortle.ccsu.edu/assemblytutorial/index.html#part1">https://chortle.ccsu.edu/assemblytutorial/index.html#part1</a></p><p id="43ccc19f-8e19-4633-a751-aeaf16517bb8" class="">
+</p><h2 id="976617ab-3de1-4739-a88e-45b399990d4b" class="">RISC Architectures</h2><h2 id="5f3df7fa-86ba-4585-ab96-43493ab33456" class="">x86-64 Architectures</h2><h3 id="b69fa308-d900-4f68-825c-16dc8209270b" class="">Create a program in an assembler that calls some modern instruction</h3><p id="8115b748-9754-47e5-baf4-a5c60ff15681" class="">SHA</p><h3 id="686ef2d2-5efd-4253-82e4-c09d1d61ce43" class="">Special extensions in modern x86 CPUs</h3><p id="8aa2e79a-2269-4b63-b56c-6b93a2d9a58b" class="">AVX</p><p id="c4b0dfd5-336e-4779-86a3-e4342e4cce58" class="">SHA</p><p id="497bb349-d76a-43ec-98b4-7c0a65f924db" class="">MMX</p><p id="be150b70-1e0d-400d-8661-94c5f690643b" class="">RdRand</p><h2 id="e91c51e3-6f75-4490-bbbc-2c3413be3e6f" class="">Building a computer from scratch</h2><p id="dbf8e169-42da-41c8-b14c-44a37ac207cd" class="">mortbopet. &quot;VSRTL.&quot; GitHub, 27 Jan. 2023, <a href="http://github.com/mortbopet/VSRTL">github.com/mortbopet/VSRTL</a>.</p><p id="3ec333d8-7480-4c67-a09a-e520d4a0e8ef" class="">Computing with Register Machines by SICP.</p><p id="17156099-c218-4b28-afd5-3cf616f8c699" class="">Nöding, Florian. &quot;How a CPU works: Bare metal C on my RISC-V toy CPU.&quot; 26 Jan. 2023, <a href="http://florian.noeding.com/posts/risc-v-toy-cpu/cpu-from-scratch">florian.noeding.com/posts/risc-v-toy-cpu/cpu-from-scratch</a>.</p><h3 id="61f3bc46-03a0-4704-8d8b-be900a721599" class="">Clock</h3><h3 id="9c6034f7-8cef-446f-a7bc-738027a6bfee" class="">Computer arithmetic with circuits in a datapath</h3><h2 id="122d439d-72db-4408-9c6e-00c0dd8ec7a4" class="">Assembling a computer from commercial products</h2><h3 id="ffd1ba33-d5c4-41f7-9495-f8eb2599f5c9" class="">Discrete Optimization problem</h3><p id="80c3b6a1-096a-448c-8196-b961fadfa4fc" class="">
+</p><p id="9105a4c2-fcff-4146-a1c6-f8c02a99a250" class="">
+</p><p id="f6a3986e-eef9-40ed-99c8-5ee414b7266a" class="">
+</p><h3 id="651f8cbc-6d56-4a7b-97d3-98951582e099" class="">Ram Modules</h3><p id="6a227e7e-94cc-49a4-94c3-f596801f9d2a" class="">DDR4 and DDR5</p><p id="9c203f96-a802-40f3-9d3d-8e9b4decb295" class="">CAS Latency</p><p id="9fe2c2a0-5263-49a5-b7e6-adab20483c16" class="">Modules vs different </p><p id="88c49689-83dc-44b6-a84b-afe90586636a" class="">Make sure that the motherboard supports the memory. It is recommended that memory of the same<br/>capacity, brand, speed, and chips be used.<br/></p><p id="f939778b-1ec1-4926-979b-fa399f79869f" class="">ECC and On-Dead ECC</p><p id="cd73de1c-5590-43ba-a066-1da4190d7b25" class="">Quad channel</p><p id="354c10f2-d08d-419b-9674-9a429312d812" class="">Dual channel</p><p id="b7c8d776-9a67-4335-a4b0-51662f905293" class="">SDR SDRAM (303)</p><p id="6c862544-b861-4f2a-a861-4deca2529425" class="">CL and Latency</p><p id="1ef5b7b5-863f-48c8-b9aa-cc9d9561bcb3" class=""><strong>SDRAM</strong></p><p id="e5bf7a81-80ce-41fb-981e-772d8d56c68b" class="">Memory frequency, also known as memory clock speed</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ae12fff9-6aab-4874-957a-c1172a4bf4b2" class="code"><code class="language-Python">Memory Device
+	Array Handle: 0x000A
+	Error Information Handle: 0x0013
+	Total Width: 64 bits
+	Data Width: 64 bits
+	Size: 32 GB
+	Form Factor: DIMM
+	Set: None
+	Locator: DIMM 1
+	Bank Locator: P0 CHANNEL A
+	Type: DDR4
+	Type Detail: Synchronous Unbuffered (Unregistered)
+	Speed: 3200 MT/s
+	Manufacturer: Kingston
+	Serial Number: 2D26B51C
+	Asset Tag: Not Specified
+	Part Number: KF3200C16D4/32GX
+	Rank: 2
+	Configured Memory Speed: 3200 MT/s
+	Minimum Voltage: 1.2 V
+	Maximum Voltage: 1.2 V
+	Configured Voltage: 1.2 V
+	Memory Technology: DRAM
+	Memory Operating Mode Capability: Volatile memory
+	Firmware Version: Unknown
+	Module Manufacturer ID: Bank 2, Hex 0x98
+	Module Product ID: Unknown
+	Memory Subsystem Controller Manufacturer ID: Unknown
+	Memory Subsystem Controller Product ID: Unknown
+	Non-Volatile Size: None
+	Volatile Size: 32 GB
+	Cache Size: None
+	Logical Size: None</code></pre><h2 id="5b92f74a-2f4e-49dd-b4d8-9fc7bb9daf6a" class=""><strong>Bit Twiddling Hacks or Bit manipulation</strong></h2><p id="5551ca8e-370a-4dc2-9068-80ce1bebdd59" class=""><a href="https://graphics.stanford.edu/~seander/bithacks.html">https://graphics.stanford.edu/~seander/bithacks.html</a></p><p id="4f91000f-4a1f-4562-a162-f2978340876d" class=""><a href="https://homolog.us/blogs/bioinfo/2014/12/04/the-entire-world-of-bit-twiddling-hacks/">https://homolog.us/blogs/bioinfo/2014/12/04/the-entire-world-of-bit-twiddling-hacks/</a></p><p id="f4cb049f-15cf-4515-b264-e6af5a2e420a" class=""><a href="https://www.fit.vutbr.cz/~ibarina/pub/bithacks.pdf">https://www.fit.vutbr.cz/~ibarina/pub/bithacks.pdf</a></p><p id="25b031f3-6f90-4c96-bd99-8bc45de9e05f" class=""><a href="https://news.ycombinator.com/item?id=17043082">https://news.ycombinator.com/item?id=17043082</a></p><p id="ef4bf72e-25ee-4246-b27f-75b332a28116" class=""><a href="https://web.stanford.edu/class/archive/cs/cs107/cs107.1216/lectures/03/Lecture03.pdf">https://web.stanford.edu/class/archive/cs/cs107/cs107.1216/lectures/03/Lecture03.pdf</a></p><p id="a3641461-29c2-4444-8b01-93e799104f0c" class=""><a href="https://docs.arduino.cc/learn/programming/memory-guide/">https://docs.arduino.cc/learn/programming/memory-guide/</a></p><p id="085cb84e-a1fc-4738-96e2-90aeec914a4d" class="">[1] S. F. Barrett and D. J. Pack, Microchip AVR® Microcontroller Primer: Programming and Interfacing, Third Edition (Synthesis Lectures on Digital Circuits and Systems), Morgan &amp; Claypool, 2019.<br/>[2] J. Y. Yiu, The Definitive Guide to Arm® Cortex®-M0 and Cortex-M0+ Processors, Second ed., Newnes, 2015.<br/></p><p id="e759e9c5-976d-41e6-a984-3e82f6a42701" class="">[3] J. Yiu, The Definitive Guide to ARM® Cortex®-M3 and Cortex®-M4 Processors, Third ed., Newnes, 2014.</p><p id="97b202f8-b24d-4722-9611-505c878db998" class=""><strong>Builtin functions of GCC compiler</strong></p><p id="550806da-08d9-4901-88d6-d10d3bed1311" class=""><a href="https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html">https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html</a></p><ul id="db3caab2-ab54-4c8f-b181-26deacace63e" class="bulleted-list"><li style="list-style-type:disc"><code>__builtin__popcount</code>(<strong>Hamming weight</strong>)</li></ul><ul id="a24078a1-a703-4111-b704-7f287dea0304" class="bulleted-list"><li style="list-style-type:disc"><code>__builtin_parity</code></li></ul><ul id="4d078e7c-7a41-4f40-9047-4f5a45e64cea" class="bulleted-list"><li style="list-style-type:disc"><code>__builtin_clz</code></li></ul><h2 id="3ebc2ec4-11a2-4fa5-96cb-3ae8a5fce25b" class="">Worked examples</h2><ul id="2b4d15e4-ece1-427f-a309-8bcb90647204" class="toggle"><li><details open=""><summary>Make a program in C++ that checks if the Sentence Is Pangram with no set/map.</summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="67ee9ba8-dff4-46ed-8161-219a982f0d39" class="code"><code class="language-C++">bool checkIfPangram(string sentence) {
+        int i = 0;
+        int set = 0;
+        while(i&lt;sentence.size() &amp;&amp; set != 67108863) {
+            int element = sentence[i]-97;
+            set = set | (1 &lt;&lt; element); // 0, 1, 11, 111, 111, 1111, ....  
+            i++;
+        }
+        return set == 67108863; // 11111111111111111111111111
+}</code></pre></details></li></ul><ul id="8c0174a9-2558-4e89-bc5e-1179016b0088" class="toggle"><li><details open=""><summary>Make a program in C++ that detects if a number is the power of 2 with no modulus.</summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="337f4a20-6412-4c62-87c7-5151ccb3226e" class="code"><code class="language-C++">bool checkIfPowerOf2(int x) {
+       return x&amp;1 == 0;
+}</code></pre></details></li></ul><ul id="a48f102f-408f-41a8-a173-d2004b58286c" class="toggle"><li><details open=""><summary>Make a classic Tic Tac Toe game that works with bit-wise operators. The board should be an integer or hex too.</summary><p id="b5e92bc3-1cdc-4edf-9fe8-69d7e04a704a" class="">Algorithm for Determining Tic Tac Toe Game Over. (2022, October 01). Retrieved from <a href="https://stackoverflow.com/questions/1056316/algorithm-for-determining-tic-tac-toe-game-over">https://stackoverflow.com/questions/1056316/algorithm-for-determining-tic-tac-toe-game-over</a></p></details></li></ul><p id="69968935-d067-4621-a181-e69ec742f4c4" class=""><a href="https://cs.wellesley.edu/~cs240/s17/slides/bits-handout.pdf">https://cs.wellesley.edu/~cs240/s17/slides/bits-handout.pdf</a></p><p id="99514271-fd93-4b73-be57-0289f8748bc7" class="">Getting 32 bit words out of 64-bit values in C/C++ and not worrying about endianness. (2023, January 15). Retrieved from <a href="https://stackoverflow.com/questions/2194310/getting-32-bit-words-out-of-64-bit-values-in-c-c-and-not-worrying-about-endian">https://stackoverflow.com/questions/2194310/getting-32-bit-words-out-of-64-bit-values-in-c-c-and-not-worrying-about-endian</a></p><h1 id="56d4029c-1347-4c55-9987-bbe1a9e670ab" class="">Core Wars</h1><p id="9b7b1813-fbe6-4b2e-8c4d-aeaf5a779a5a" class=""><a href="https://vyznev.net/corewar/guide.html#intro_what">https://vyznev.net/corewar/guide.html#intro_what</a></p><p id="832949ef-98ad-478f-bc66-42756bcc14fc" class="">
+</p><p id="2263ca6e-9506-47cb-8960-ce8bab096f3f" class="">
+</p><p id="f74a17d0-72dd-4101-851f-e2ea756073c9" class="">
+</p><h1 id="2a3661e7-174d-4d35-87d1-76a525fe4f45" class="">Next steps</h1><figure id="87e5ae53-e99a-4d63-82e4-d1f853d7f5da" class="link-to-page"><a href="Telecommunications%2087e5ae53e99a4d6382e4d1f853d7f5da.html"><span class="icon">🌏</span>Telecommunications</a></figure><figure id="15eb76da-5655-4101-9161-db7cdf167601" class="link-to-page"><a href="Operating%20system%2015eb76da565541019161db7cdf167601.html"><span class="icon">🛗</span>Operating system</a></figure><figure id="f774bbfd-dd83-4cf1-beff-da5e9e935ff8" class="link-to-page"><a href="Scientific%20Computing%20f774bbfddd834cf1beffda5e9e935ff8.html"><span class="icon">⛏️</span>Scientific Computing</a></figure><h1 id="27ce8ef6-3bbe-488b-933e-5d4445bdd93c" class="">References</h1><div id="adab99ba-3991-49ac-a369-2f32b412e7bb" class="collection-content"><h4 class="collection-title">References (1)</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Citation</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th></tr></thead><tbody><tr id="6af698c1-1ed2-4a1c-951d-d895a2196e1b"><td class="cell-title"><a href="Computer%20Organization%20and%20Design%20The%20Hardware%20Soft%206af698c11ed24a1c951dd895a2196e1b.html">Computer Organization and Design: The Hardware/Software Interface by Patterson and Hennessy, Morgan Kaufmann</a></td><td class="cell-n;X&lt;"></td></tr><tr id="8b24f458-c6cb-4fb5-ad22-0a34b328ab29"><td class="cell-title"><a href="Structured%20Computer%20Organization%20by%20Andrew%20Tanenba%208b24f458c6cb4fb5ad220a34b328ab29.html">Structured Computer Organization by Andrew Tanenbaum, Prentice Hall.</a></td><td class="cell-n;X&lt;"></td></tr><tr id="3ace256a-d4f0-43a0-8a34-61b5b3e8c5f0"><td class="cell-title"><a href="Introduction%20to%20Computing%20Systems%20From%20Bits%20and%20Ga%203ace256ad4f043a08a3461b5b3e8c5f0.html">Introduction to Computing Systems: From Bits and Gates to C and Beyond, Second Edition by Patt and Patel, McGraw-Hill.</a></td><td class="cell-n;X&lt;"></td></tr><tr id="fd09bd2c-6c24-472c-b9ee-e428fe0021a4"><td class="cell-title"><a href="Computer%20Organization%20by%20Hamacher,%20Vranesic,%20and%20Z%20fd09bd2c6c24472cb9eee428fe0021a4.html">Computer Organization by Hamacher, Vranesic, and Zaky, McGraw-Hill.</a></td><td class="cell-n;X&lt;"></td></tr><tr id="45188099-09b9-45b5-bfa3-ac6ca1a01c0c"><td class="cell-title"><a href="CS107%20Computer%20Organization%20&amp;%20Systems%204518809909b945b5bfa3ac6ca1a01c0c.html">CS107 Computer Organization &amp; Systems</a></td><td class="cell-n;X&lt;"></td></tr><tr id="4e4bb1e1-fcb1-4f5f-8536-44095826eb18"><td class="cell-title"><a href="CS24%20Introduction%20to%20Computing%20Systems%204e4bb1e1fcb14f5f853644095826eb18.html">CS24 Introduction to Computing Systems</a></td><td class="cell-n;X&lt;"></td></tr><tr id="7ec0ec3f-0a61-4f4f-98e4-5892da9e651e"><td class="cell-title"><a href="Computation%20Structures%207ec0ec3f0a614f4f98e45892da9e651e.html">Computation Structures</a></td><td class="cell-n;X&lt;"></td></tr><tr id="84cc8be5-8ad0-4d5f-8fe1-93303f04c9e7"><td class="cell-title"><a href="Harris,%20David,%20and%20Sarah%20Harris%20Digital%20design%20and%2084cc8be58ad04d5f8fe193303f04c9e7.html">Harris, David, and Sarah Harris. Digital design and computer architecture. Elsevier, 2012.</a></td><td class="cell-n;X&lt;"></td></tr><tr id="163b9258-10bf-492f-8671-a9c92d5e2933"><td class="cell-title"><a href="Logic%20and%20Computer%20Design%20Fundamentals%20by%20Charles%20%20163b925810bf492f8671a9c92d5e2933.html">Logic and Computer Design Fundamentals by Charles R. Kime and M. Morris Mano</a></td><td class="cell-n;X&lt;"></td></tr><tr id="5884e743-a383-4f48-91a2-5c04d79c5548"><td class="cell-title"><a href="Computer%20Architecture%20A%20Quantitative%20Approach%20Davi%205884e743a3834f4891a25c04d79c5548.html">Computer Architecture: A Quantitative Approach. David A. Patterson y John L. Hennessy.</a></td><td class="cell-n;X&lt;"></td></tr><tr id="d2454560-b380-45ae-95b1-d5cba2b2eca5"><td class="cell-title"><a href="The%20Elements%20of%20Computing%20Systems%20Building%20a%20Moder%20d2454560b38045ae95b1d5cba2b2eca5.html">The Elements of Computing Systems: Building a Modern Computer from First Principles. Noam Nisan y Shimon Schocken.</a></td><td class="cell-n;X&lt;"></td></tr><tr id="3791409d-a908-4cd9-aaf9-93f6539e25f3"><td class="cell-title"><a href="Essentials%20of%20Computer%20Organization%20and%20Architectu%203791409da9084cd9aaf993f6539e25f3.html">Essentials of Computer Organization and Architecture by Linda Null and Julia Lobur</a></td><td class="cell-n;X&lt;"></td></tr><tr id="c679cbee-96ba-4dc0-b08b-be9070856d67"><td class="cell-title"><a href="CS%2061C%20Great%20Ideas%20in%20Computer%20Architecture%20(Machi%20c679cbee96ba4dc0b08bbe9070856d67.html">CS 61C Great Ideas in Computer Architecture (Machine Structures)</a></td><td class="cell-n;X&lt;"></td></tr><tr id="769ce5c7-2a63-41cc-a77e-732b8189aad9"><td class="cell-title"><a href="CSE351%20The%20Hardware%20Software%20Interface%20769ce5c72a6341cca77e732b8189aad9.html">CSE351: The Hardware/Software Interface</a></td><td class="cell-n;X&lt;"></td></tr><tr id="b8a71a4c-91c9-4ff5-93d2-4c543603221b"><td class="cell-title"><a href="6%20004%20Computation%20Structures%20by%20MIT%20b8a71a4c91c94ff593d24c543603221b.html">6.004 Computation Structures by MIT</a></td><td class="cell-n;X&lt;"></td></tr><tr id="ebab2656-70c5-4514-9a6e-72f6d448352d"><td class="cell-title"><a href="Computer%20Architecture%20ebab265670c545149a6e72f6d448352d.html">Computer Architecture</a></td><td class="cell-n;X&lt;"></td></tr><tr id="10bff312-6374-4fd9-8098-1b2d3a5660e1"><td class="cell-title"><a href="Lecture%20Assembly%20Language%20&amp;%20Computer%20Architecture%2010bff31263744fd980981b2d3a5660e1.html">Lecture Assembly Language &amp; Computer Architecture</a></td><td class="cell-n;X&lt;"></td></tr><tr id="4a10e8ad-4d6a-42bb-84f8-80a74a9693a1"><td class="cell-title"><a href="Jean-Loup%20Baer%20Microprocessor%20Architecture,%20From%20S%204a10e8ad4d6a42bb84f880a74a9693a1.html">Jean-Loup Baer. Microprocessor Architecture, From Simple Pipelines to Chip Multiprocessors. Cam- bridge University Press, 2009.</a></td><td class="cell-n;X&lt;"></td></tr><tr id="2044ca66-80f9-4277-90d1-9dd437088952"><td class="cell-title"><a href="Solihin,%20Yan%20Fundamentals%20of%20parallel%20computer%20arc%202044ca6680f9427790d19dd437088952.html">Solihin, Yan. Fundamentals of parallel computer architecture. Solihin Publishing Consulting LLC, 2009.</a></td><td class="cell-n;X&lt;"></td></tr><tr id="31f457a0-a855-49c0-9960-b39dce614f97"><td class="cell-title"><a href="Iannucci,%20Robert%20A%20,%20et%20al%20,%20eds%20Multithreaded%20com%2031f457a0a85549c09960b39dce614f97.html">Iannucci,  Robert A., et al., eds. Multithreaded computer architecture: A summary of the state of the art. Vol. 281. Springer Science Business Media, 
+2012.</a></td><td class="cell-n;X&lt;"></td></tr><tr id="0d5d38c3-5b5b-4871-bfb8-202f2db25fc4"><td class="cell-title"><a href="https%20exercism%20org%20tracks%20mips%200d5d38c35b5b4871bfb8202f2db25fc4.html">https://exercism.org/tracks/mips</a></td><td class="cell-n;X&lt;"></td></tr><tr id="27e36cad-8a92-49da-9584-5fa89225d93d"><td class="cell-title"><a href="https%20godbolt%20org%2027e36cad8a9249da95845fa89225d93d.html">https://godbolt.org/</a></td><td class="cell-n;X&lt;"></td></tr><tr id="a9cc7ebf-f9ce-4568-adaa-1777208e08f7"><td class="cell-title"><a href="https%20courses%20missouristate%20edu%20kenvollmar%20mars%20a9cc7ebff9ce4568adaa1777208e08f7.html">https://courses.missouristate.edu/kenvollmar/mars/</a></td><td class="cell-n;X&lt;"></td></tr><tr id="1284e2ad-c0bb-404c-ac92-f65f7c8adc44"><td class="cell-title"><a href="https%20github%20com%20aleksa-sukovic%20mips-visualiser%201284e2adc0bb404cac92f65f7c8adc44.html">https://github.com/aleksa-sukovic/mips-visualiser</a></td><td class="cell-n;X&lt;"></td></tr><tr id="94d5044a-2a5e-434b-9c96-c34d03d0d9c4"><td class="cell-title"><a href="Lague,%20S%20(2020,%20November%2016)%20Exploring%20How%20Compute%2094d5044a2a5e434b9c96c34d03d0d9c4.html">Lague, S. (2020, November 16). Exploring How Computers Work. Youtube. Retrieved from https://www.youtube.com/watch?v=QZwneRb-zqA&amp;t=4s&amp;ab_channel=SebastianLague</a></td><td class="cell-n;X&lt;"></td></tr><tr id="7810f570-d17c-4f57-9895-a6a67bb31744"><td class="cell-title"><a href="Nand2Tetris%207810f570d17c4f579895a6a67bb31744.html">Nand2Tetris</a></td><td class="cell-n;X&lt;"></td></tr></tbody></table><br/><br/></div><h1 id="972ede96-7e8d-4aa5-97b5-b3caa889b77a" class="">TODO</h1><h2 id="01d85d0d-8ee7-48d2-87bd-d3cd6765c1fe" class="">Type Space</h2><p id="33eadf39-ceb5-47f9-8bd8-8f35d76a5fd4" class="">1 ASCII char is 1 byte</p><p id="8149c6ee-4bec-4e2a-a472-0b4abcaf6321" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

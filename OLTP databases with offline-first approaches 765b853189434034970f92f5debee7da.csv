@@ -1,0 +1,15 @@
+﻿Name,Developer,Type,Sync Central,Sync P2P,Description,License
+Couchbase Lite,Couchbase,JSON Document,Yes,Yes,"Embedded/portable database, can synchronize with multiple stationary database and/or mobile devices.",Apache 2.0 License
+InterBase,Embarcadero Technologies,Relational,Dependent,Dependent,"IoT Award-winning embedded/portable database, can synchronize with multiple stationary database and/or mobile devices using patent pending Change Views",Proprietary
+ObjectBox,ObjectBox Inc.,Object Database,Dependent,?,"Fast Edge Database for local data persistence, 10x faster than SQLite",Apache 2.0 / MIT
+Realm,MongoDB Inc.,Object Database,Dependent,No,"Portable local database, has a synchronized mode that synchronizes (real-time) with stationary database","Core Apache 2.0 License, Sync Proprietary"
+SQL Anywhere,Sybase iAnywhere,Relational,Dependent,No,"Embedded/portable database, can synchronize with stationary database",Proprietary
+DB2 Everyplace,IBM,Relational,Dependent,No,"Portable, can synchronize with stationary database",Proprietary EULA
+SQL Server Compact,Microsoft,Relational,No,No,"Small-footprint embedded/portable database for Microsoft Windows mobile devices and desktops, supports synchronization with Microsoft SQL Server",Proprietary
+SQL Server Express,Microsoft,Relational,No,No,"Embedded database, free download",Proprietary
+Oracle Database Lite,Oracle Corporation,Relational,No,No,"Portable, can synchronize with stationary database",Proprietary
+SQLite,D. Richard Hipp,Relational,No,No,C programming library,Public domain
+SQLBase,"Gupta Technologies LLC of Redwood Shores, California",,No,No,,Proprietary
+Sparksee (graph database),Sparsity Technologies,Graph Database,No,No,Graph Database. Written in C++98.,Proprietary
+RxDB,RxDB,JSON Document,Yes,Yes,"Offline-first, reactive database for JavaScript applications",Apache 2.0 License
+PouchDB,Apache Software Foundation,JSON Document,Yes,Yes,Offline-first database designed to sync with CouchDB and compatible servers,Apache 2.0 License

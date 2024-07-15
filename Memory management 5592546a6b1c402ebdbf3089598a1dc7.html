@@ -488,14 +488,14 @@ blockquote {
 	margin-top: 0.25em;
 }
 
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
 .code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
 .serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
 .mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
 .pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
 .pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
 .pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
@@ -646,7 +646,8 @@ blockquote {
 .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
 .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
 .select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
 .select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
 .select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
 .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
@@ -673,6 +674,6 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="5592546a-6b1c-402e-bdbf-3089598a1dc7" class="page sans"><header><h1 class="page-title">Memory management </h1><p class="page-description"></p></header><div class="page-body"><p id="1664d7df-3c19-4a03-9666-2a80bba0836a" class=""><strong>#define TROZO 100*1024*1024 //100 MiB</strong></p><p id="6c30116a-65c3-4010-890e-1733b8070c63" class=""><strong>#define PUNTO (10*1024*1024) //10 MiB</strong></p><figure id="ef1ad4e8-3722-4436-a32a-a62c0bb762f5" class="image"><a href="Screenshot_from_2022-11-14_12-04-30.png"><img style="width:1359px" src="Screenshot_from_2022-11-14_12-04-30.png"/></a></figure><p id="99ab31fa-33c6-48cb-ac23-9638f8e24a38" class=""><strong>#define TROZO 50*1024*1024 //50 MiB</strong></p><p id="62a06b42-08e8-4bbb-94ea-7a2101bd3ed5" class=""><strong>#define PUNTO (5*1024*1024) //5 MiB</strong></p><figure id="daee2927-34be-4d27-9134-6f64640ac950" class="image"><a href="Untitled%20302.png"><img style="width:1359px" src="Untitled%20302.png"/></a></figure><p id="85c85b79-aea7-4332-a035-84892f7b19b3" class="">
+</style></head><body><article id="5592546a-6b1c-402e-bdbf-3089598a1dc7" class="page sans"><header><h1 class="page-title">Memory management </h1><p class="page-description"></p></header><div class="page-body"><p id="1664d7df-3c19-4a03-9666-2a80bba0836a" class=""><strong>#define TROZO 100*1024*1024 //100 MiB</strong></p><p id="6c30116a-65c3-4010-890e-1733b8070c63" class=""><strong>#define PUNTO (10*1024*1024) //10 MiB</strong></p><figure id="ef1ad4e8-3722-4436-a32a-a62c0bb762f5" class="image"><a href="Screenshot_from_2022-11-14_12-04-30.png"><img style="width:1359px" src="Screenshot_from_2022-11-14_12-04-30.png"/></a></figure><p id="99ab31fa-33c6-48cb-ac23-9638f8e24a38" class=""><strong>#define TROZO 50*1024*1024 //50 MiB</strong></p><p id="62a06b42-08e8-4bbb-94ea-7a2101bd3ed5" class=""><strong>#define PUNTO (5*1024*1024) //5 MiB</strong></p><figure id="daee2927-34be-4d27-9134-6f64640ac950" class="image"><a href="Untitled%20218.png"><img style="width:1359px" src="Untitled%20218.png"/></a></figure><p id="85c85b79-aea7-4332-a035-84892f7b19b3" class="">
 </p><p id="2c6defb9-749e-42b7-8186-b86e0dce93b3" class=""><strong>Explicación.</strong></p><p id="21e929f3-060e-49d4-8b45-bc8413c65dac" class=""><code><strong>TROZO</strong></code><strong> </strong>es una constante que indica el tamaño de los nuevos segmento de memoria, mientras que <strong><code>PUNTO</code></strong> indica la velocidad de escritura (un punto por cada 10 MiB accedidos). El programa termina cuando llegamos al limite de <code>unsigned long long</code>. </p><p id="bb6103ad-1160-4893-9bd3-1eb9f6094f5e" class="">No estamos expandiendo el segmento anterior, sino que estamos creando nuevos segmentos donde <code>p</code> es un puntero a dicho segmento, por tanto deben liberarse. </p><p id="50dd3b3f-aa61-4e6c-b7e1-174fe578d4c1" class="">
 </p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

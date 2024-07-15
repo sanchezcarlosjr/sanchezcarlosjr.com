@@ -1,0 +1,7 @@
+[Unit]
+Description=Pull Workpace by notion Queue Task.
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/Workspace/sanchezcarlosjr.com
+ExecStart=%h/Workspace/sanchezcarlosjr.com/pull_workspace.sh

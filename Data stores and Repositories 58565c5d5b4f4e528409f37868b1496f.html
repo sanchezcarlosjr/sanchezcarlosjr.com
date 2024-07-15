@@ -1,0 +1,693 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Data stores and Repositories</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="58565c5d-5b4f-4e52-8409-f37868b1496f" class="page sans"><header><img class="page-cover-image" src="binary-797274_960_720.jpg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">📚</span></div><h1 class="page-title">Data stores and Repositories</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="ebf9ad8c-bc73-4494-bd04-789a5444c38b" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9247f804-0323-4cbf-b94b-68f4d88e62fe">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7cb50a63-d665-4588-a3c0-e8c366fffade">Memory hierarchy</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#83130e6b-2111-4125-b36f-08912a015dab"><strong>Single source of truth, blackboard architecture and repositories</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#939ddaf2-189c-4a97-8753-56829a818105">Why do you need a database?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f7439e71-938e-479c-9605-cb7b8cf76294">Information, data, and database</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a3bc7167-c8d0-407c-9732-79ecc8a202f8">Database</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b8548267-5504-4ded-94e6-926d293ce48c"><a href="https://www.notion.so/2bfe48a5d90d4c6fa900ade2b09acbae?pvs=21">Types</a></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4840fe0c-8edf-421e-b52e-1600a1b52db2">Data model</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#37fd46d2-d1e6-4e62-b740-1a67d3daec4f">Types of databases</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e2ea54ab-ea67-4a8d-b888-5d82d52caa63">Story</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e3e05d11-4fc2-4901-b6b5-ebb2bfac959c">Key questions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6d476ac2-2e41-49c1-a06e-141df22fe3c8">How to choose a database for your project?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#df19a90c-52f2-4cc5-9ac9-a902633878f2">Are spreadsheets -Excel-, Access, Notion,... a database?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#45f4ea54-61d8-4e74-bafc-3e4238e925fb">How can I visualize the data?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bf592ae1-1241-4562-8c77-d37df7c4687f">Why we should create an electronic database?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f35556e2-510e-4e41-8de3-5ea3a7fbebe0">Is digital more secure than paper?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ea68a01e-4ae9-4f21-8ff6-db8082e12df4">How to keep documents, images, and other blobs?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#46ae6d02-36a3-4829-93cf-2efc46f90c14"><strong>Y2K Problem</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0213ed8d-952b-4978-a264-cc0fc39fbce2">Database management system</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c017452-652d-4011-9ad9-cd01c9bf68ca">Good database model to deliver good information</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dac50c9b-1efc-498c-afb8-3347c38606cb">Transaction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c3f1c2b6-93b2-40d8-bc11-f6d34adbe1c0">Atomicity</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#82e34b04-bd4e-4f5a-a0ca-33b8bc2e4dab">Isolation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#afaab1b1-6ea0-4137-ad08-e4f3331c490a">Consistency</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1535b1e0-ab65-493c-8f09-b4537abae5e6">Durability</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#08256448-6ff5-48f1-bd4e-d153f53157c2">Eventual Consistency</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fc894ca1-8a10-4456-93ee-18140e82a5cc">User Needs and Requirements</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4f40b63f-e0df-46d1-870f-1d84c3a1e106">Data models</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e2952806-77b2-4880-ab90-2c6194bb7428">Money and other high school numeric types</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c6f69ac8-e174-40dc-ac8b-d886516cfa77">Cache</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#45c98a24-65b0-46dc-b3d4-42cad5b1aebc">i18n</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bc4788ff-1c9e-485c-a7a1-665d4794a388">Time and timezones</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10d9c9a4-99ce-4cd5-8830-7e9b0b211583">Geometry</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b0f864e3-b72d-47ab-a1be-4564c11c2e8d">Generated columns</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10500997-2ac3-4486-b2ad-34c29fd9f473">Indexing</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dc79208c-c6c8-4fd5-8abc-9c30d7403505">Primary keys</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c4e70d1d-4ac5-458f-84ec-a5f0d4cce0f8">Partitions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#75f21a72-43ad-4af4-84a3-a2e589af1a12">Horizontal scaling</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#017f81a3-4e1f-4546-bcf6-7702cf72ce3f">Hash Tables and Consistent Transactions </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#52bfa66f-f6f6-4c90-87dd-45646f6093dd">Can NULLs improve your database query performance?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bf3a5240-e7af-48fa-97e4-20ccbd649063">Relational databases and SQL</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a88dafbc-c9d2-44b9-98d6-7d99cd380b14">Performance checklist</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4248957d-c6b6-446b-aa8a-8037bfd1c6b3">Data-interchange format</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a2b4d9c0-4c98-412e-bb1d-1e16eeaa3a5e">CSV</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#be8424c4-301f-4233-998e-a3294e9d12b1">XML</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#84bd4df4-9409-451c-95e7-bc9f41efc27e">JSON</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e6775195-9243-4efc-9d0e-a4597928b05d">YAML</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#033c14c3-f137-49d1-9c79-b7f6cf9f1a5d">Arrow</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c71109b1-1da9-4bf7-b471-21e0ee194fee">Parquet</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fb12b18d-a381-4daf-b659-e94eb1e3636a">Spreadsheets</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#133167ce-2015-42d4-be28-c1917e86e136">Storage</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#24584fa8-1941-4b08-872c-dc8b7314e5bc">Flat Files</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0b0fbb64-e0c3-480f-81e5-c9ddc85840ed">Worked examples</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a05a3029-729a-4d55-84d4-d32d4643b640">Spreadsheets</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1f1ffa9e-75c5-4a35-8623-6cc48bcc56da">Hierarchical Databases</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3b0f8fb6-27a2-425e-8435-0861c99e0d2e">Geographical Information System Database</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#85d8211a-983d-4920-bebf-4f5f14f24a64">Embedded databases</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a3c4d117-8523-4c69-9496-800d92cd87de">Non-relational databases</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#04b46a16-f748-4817-b49c-646d311a4d04">Key-value store, Redis case</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#75c0f027-9c6d-453e-a516-388f6e501721">JSON-like document store, MongoDB case</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cbbaf596-e51b-4589-9f5b-b39264057ad9">Wide-column store, Cassandra case</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#68894003-7a26-452e-8fb5-f5bc979bb6cf">Graph database, Neo4j case</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7b0fa666-5d18-4b2e-9e5a-ca90019574a6">Object database</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dd29f25b-7a3b-4754-8bf6-6c5b420ec146">Tabular</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d4b2b613-dc54-44e3-951d-4dcd7045b50b">Tuple store</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#da84dc3f-e47f-424c-9e45-67ea013df928">Triple/quad store (RDF) database</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d80a809f-9e92-413e-a5ec-522eec43ee5c">Multivalue database</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1e7a91a0-e1bd-45b8-b454-e5d862c4a309">Multimodel database</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ef3aa341-302a-401b-90d4-cf65c0bf35d4">Vector embeddings database</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a5345c87-dedf-4a4a-97db-de284fb07a7d">Time series</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7bb3d213-6b35-4719-ae84-639d56a70ccf">Big data</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7db06bca-1ee7-4f6a-837f-df0eee6b994a">Data Warehouse</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#51c0e021-0032-41f3-b451-8d9e4426faa9">Big Query</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6592b9ef-d8dc-4703-ba43-927f2248217e">ETL</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#141a0fa6-277b-4f11-8aa9-73b90cb52c34">OLAP</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6a7043c4-4fc1-4244-a2ca-216b2e670e52">Schemas</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8725aa29-8dcf-4e95-8ffd-25e6d301ded6">Snowflake schema</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5e8c2bbc-f6fc-4eb8-8f55-3883f19243c0"><strong>Star schema</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#24d86470-121d-4c96-ab45-dc37e585d621">Activity schema</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b4f7b8dc-c2f6-4226-b740-915cea7e5246">References</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d66b6452-d8db-43c0-aaa5-fd8fcda30dd3">References</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#61ba3f6f-0c62-4074-8d08-445f2ccf1427">Visualization and user-friendly reports</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bfcde6e3-6363-4838-a30c-0ae355029c10">Storage</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5f1b7469-6b5b-485c-90d3-dc56e6b863a0">File storage</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cc7b2796-9077-4839-a141-a90050d4892f">Block storage</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fc0db1b2-c8cc-4e18-bdea-9529cbf8a12d">Object storage</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d36100b3-9eac-425a-8a85-8b75c19c88e6">NAS</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#19de0d35-c2e2-4a10-876c-eb8deecde141">HDFS</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#01646b82-7e73-4ea6-aba3-e65488bb3f52">IPFS</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#96aad00a-e620-4133-abdf-c1aad843f4bd">DVC</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d24ab9c3-284d-4705-9709-1d99b48e3d80">Vault</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e60fdc96-6d9d-42bb-b733-2f911ff145b6">Information Filtering and Information Retrieval</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#86b6b7a3-05cb-48a3-b714-a379ae4d3355">Database as product</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fc4d0ea3-05f8-405c-bacb-d8fb5ed7ac69">Supabase</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#32fbf412-ca32-44f2-87d0-ee66100b0a45">Discussions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9ae2868a-5c0f-4442-b8a3-0797da1d57d7">Filesystem as a source of truth</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6f52eff7-95c5-4c5e-9173-bf1ad6b81496">Is QUIC a Good Protocol for Databases?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fa40f260-8ad8-479a-a657-224cb392c017">How Spotify switched from UUID as the Primary key type</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b5a7827b-d02c-4573-9068-be13ef6607f8">Why Uber Engineering switched from Postgres to MySQL</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4122a935-4bdc-4324-9d56-e06e799b0c10">Optimistic vs Pessimistic currency control</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#923afce9-ebac-4569-b623-8bc2c0c9eb9b">Data with API REST support</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#adb9fa7a-60b0-4299-b224-5dcb540d4ff8">Write amplification explained in backend apps, database systems, and SSDs</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d0556337-d1c6-4bba-9b6d-da7a7cf76a5b">Optimistic vs Pessimistic Concurrency control</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ee2f1bab-14a8-4104-9f71-b029680446fd">Locks</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8f4cee29-5a7b-4ce9-a870-968f941b84f7">Database comparison</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bd1e6c7f-a1c3-4354-a9e4-8f7086759e9d">Next steps</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#08278e5f-c115-4fc2-b43f-04376baf6980">References</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8979184f-a795-4364-9a3c-5b6e4b896029">TODO</a></div></nav><h1 id="9247f804-0323-4cbf-b94b-68f4d88e62fe" class="">Introduction</h1><p id="5f7dde14-2339-43e2-9764-2a159846562a" class="">1.1 Conceptos básicos de bases de datos<br/>1.2 Elementos y roles que intervienen en los sistemas de bases de datos<br/>1.3 Tipos y formatos de datos<br/>1.4 Retos actuales en el manejo de bases de datos<br/>1.5 Sistemas manejadores de bases de datos<br/></p><h2 id="7cb50a63-d665-4588-a3c0-e8c366fffade" class="">Memory hierarchy</h2><h2 id="83130e6b-2111-4125-b36f-08912a015dab" class=""><strong>Single source of truth, blackboard architecture and repositories</strong></h2><h2 id="939ddaf2-189c-4a97-8753-56829a818105" class="">Why do you need a database?</h2><p id="ee3c490f-3b52-47e4-8f07-28513f41c3e7" class="">Memory vs Storage</p><p id="530f6a66-0ea8-47f1-93a8-495cb4a71d89" class="">How to think about databases. (2016, February 09). Retrieved from <a href="https://nolanlawson.com/2016/02/08/how-to-think-about-databases">https://nolanlawson.com/2016/02/08/how-to-think-about-databases</a></p><h2 id="f7439e71-938e-479c-9605-cb7b8cf76294" class="">Information, data, and database</h2><div id="4ec84bd5-6869-46f4-a7b9-42e4feb49621" class="collection-content"><h4 class="collection-title">Concepts</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Terms</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Examples</th></tr></thead><tbody><tr id="2574b25c-f036-47d1-afc2-362056a8a755"><td class="cell-title"><a href="Storage%202574b25cf03647d1afc2362056a8a755.html">Storage</a></td><td class="cell-L]Pa"></td><td class="cell-F\&gt;V"></td></tr><tr id="54cfb237-09dd-4bbb-a465-73ba9037af0a"><td class="cell-title"><a href="Noise%2054cfb23709dd4bbba46573ba9037af0a.html">Noise</a></td><td class="cell-L]Pa"></td><td class="cell-F\&gt;V"></td></tr><tr id="c0226ded-7946-42f1-a7d4-466f28cd01ce"><td class="cell-title"><a href="Data%20c0226ded794642f1a7d4466f28cd01ce.html">Data</a></td><td class="cell-L]Pa"><span class="selected-value select-value-color-gray">Assumed facts</span><span class="selected-value select-value-color-pink">Atomic datum</span><span class="selected-value select-value-color-default">Characters</span><span class="selected-value select-value-color-brown">Quantities</span><span class="selected-value select-value-color-orange">Symbols</span></td><td class="cell-F\&gt;V"></td></tr><tr id="6304c39c-8616-4d03-8c27-5f4b4ebfb66f"><td class="cell-title"><a href="Database%206304c39c86164d038c275f4b4ebfb66f.html">Database</a></td><td class="cell-L]Pa"><span class="selected-value select-value-color-gray">coherent data</span><span class="selected-value select-value-color-gray">organized data</span><span class="selected-value select-value-color-orange">recorded data</span><span class="selected-value select-value-color-yellow">storage medium</span></td><td class="cell-F\&gt;V"></td></tr><tr id="d932cbe3-9c84-4ec7-8731-f1755554fdbc"><td class="cell-title"><a href="Dataset%20d932cbe39c844ec78731f1755554fdbc.html">Dataset</a></td><td class="cell-L]Pa"><span class="selected-value select-value-color-red">unstructured information</span></td><td class="cell-F\&gt;V"></td></tr><tr id="3db76a7c-555d-4c97-add9-4b17de22dc74"><td class="cell-title"><a href="Information%203db76a7c555d4c97add94b17de22dc74.html">Information</a></td><td class="cell-L]Pa"><span class="selected-value select-value-color-default">Aggregated datasets</span><span class="selected-value select-value-color-blue">Human-readable</span><span class="selected-value select-value-color-brown">Reports</span><span class="selected-value select-value-color-purple">Synthesized database</span><span class="selected-value select-value-color-orange">contextual database</span></td><td class="cell-F\&gt;V"></td></tr><tr id="a09b8b97-d088-46b2-9810-b2c94bce378d"><td class="cell-title"><a href="Knowledge%20a09b8b97d08846b29810b2c94bce378d.html">Knowledge</a></td><td class="cell-L]Pa"><span class="selected-value select-value-color-default">Predict future from information</span></td><td class="cell-F\&gt;V"></td></tr></tbody></table><br/><br/></div><h2 id="a3bc7167-c8d0-407c-9732-79ecc8a202f8" class="">Database</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="24beaccb-77c2-456e-bd77-e01ff37ba2b7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Database means organized and atomic collections of the data from the types, structures, and constraints of his storage medium (which usually is electronic), his domain, and his management system.</div></figure><p id="faa3e3b8-4ed6-4325-afbc-b663207160b3" class="">Archaic. Data bank is an obsolete term for databases.</p><h2 id="b8548267-5504-4ded-94e6-926d293ce48c" class=""><a href="https://www.notion.so/2bfe48a5d90d4c6fa900ade2b09acbae?pvs=21">Types</a></h2><h2 id="4840fe0c-8edf-421e-b52e-1600a1b52db2" class="">Data model</h2><p id="f328dc9e-bddd-4643-aaa5-029df5df5363" class="">In the space of data modeling, we have different data models to represent data consistently. The entity-relationship model, object orientation, and graph models.</p><p id="f9561407-3eaa-4bdf-bcb6-4cee4dfa525b" class="">There are two primary paradigms in the graph model space: one based on the semantic web, where the graph consists of the subject-predicate-objects in RFD language, often referred to as “triple-store”, and the other based on labeled property graphs, which extend the directed graph paradigm with the concept of properties located on nodes and potentially on relationships.</p><p id="cdebcc0b-4ece-4027-9c12-16f116b55524" class=""><a href="https://www.youtube.com/watch?v=PEyW-MfxaEA">https://www.youtube.com/watch?v=PEyW-MfxaEA</a></p><p id="f1cf8dbd-0b54-40c8-aa2a-88033ec29a65" class=""><a href="https://www.youtube.com/watch?v=OVweE--RJqM">https://www.youtube.com/watch?v=OVweE--RJqM</a></p><p id="726936ac-eb99-415d-9384-daa04a0fce8f" class=""><a href="https://www.youtube.com/watch?v=-jrOWXkgfcU">https://www.youtube.com/watch?v=-jrOWXkgfcU</a></p><p id="9b577446-e9cc-4662-a246-45cc6ac42483" class=""><a href="https://www.dataversity.net/the-atoms-and-molecules-of-data-models/">https://www.dataversity.net/the-atoms-and-molecules-of-data-models/</a></p><p id="6a89a85a-f1ad-4b5f-9d00-5564f07f02b6" class=""><a href="https://terminusdb.com/blog/graph-database-fundamentals/">https://terminusdb.com/blog/graph-database-fundamentals/</a></p><p id="05f3fed8-50a4-4532-a093-568a74bc8be5" class="">GraphQL</p><p id="94e0757d-6195-42f5-9de6-2b63e0975ddf" class="">Gremlin</p><p id="b0b18e28-5636-41d5-9f24-ec6e80e5e59d" class="">Cypher</p><p id="91c36c64-6944-4db7-9c55-5fec35f95e7b" class="">SPARQL</p><p id="9dae6cb3-be49-44c4-b25c-0c51782a9164" class="">AQL</p><p id="c694c17a-b1d3-40ee-b50f-a44d70b5deea" class=""><a href="https://www.bbntimes.com/technology/why-graphql-will-rewrite-the-semantic-web">https://www.bbntimes.com/technology/why-graphql-will-rewrite-the-semantic-web</a></p><p id="702022ef-9650-49e2-8fc5-214cc332c061" class="">
+</p><p id="580116c2-58b1-4925-8913-ef73d80e3c0b" class="">The resource description framework (in short RFD) is a W3C standard for exchanging proposed in 1999 for exchanging data on the web.</p><p id="56c519bc-945f-4bfb-813c-58fb740d5bb8" class="">
+</p><p id="afafc1d7-911a-4239-abe6-a408fddd3c81" class="">Document data model embed data hierarchy into a single object. </p><p id="f35a6123-7ec1-4500-8363-478224e41c95" class="">
+</p><ol type="1" id="fb2482b4-85e8-4c6d-a642-915b81923ff8" class="numbered-list" start="1"><li>Structure.</li></ol><ol type="1" id="ad80877d-ffe6-48a1-9c68-75fe13f7ff68" class="numbered-list" start="2"><li>Operations.</li></ol><ol type="1" id="c1316319-3604-4c26-8527-ab10359f41c4" class="numbered-list" start="3"><li>Constraints.</li></ol><h2 id="37fd46d2-d1e6-4e62-b740-1a67d3daec4f" class="">Types of databases</h2><p id="e4f94de8-9b6e-46e5-a9c0-56adce4c7459" class="">2.1 Modelo jerárquico<br/>2.2 Modelo de redes<br/>2.3 Modelo relacional<br/>2.4 Modelo orientado a objetos<br/>2.5 Modelos no convencionales (multidimensionales, deductivos, transaccionales<br/></p><figure id="e4af27d5-0dd1-4fd8-87a5-18c11bbc7d62" class="image"><a href="Untitled%2078.png"><img style="width:528px" src="Untitled%2078.png"/></a><figcaption><a href="https://twitter.com/bytebytego/status/1676828359475744769/photo/1">https://twitter.com/bytebytego/status/1676828359475744769/photo/1</a></figcaption></figure><figure id="1ec9ec92-027f-4143-a1bb-b500b83d4089" class="image"><a href="Untitled%2079.png"><img style="width:528px" src="Untitled%2079.png"/></a><figcaption><a href="https://twitter.com/AmigosCode/status/1682758269004050432/photo/1">https://twitter.com/AmigosCode/status/1682758269004050432/photo/1</a></figcaption></figure><p id="b95f4f03-dc27-4d1e-b39e-dbba68f05d24" class="">
+</p><p id="8b780c74-dd31-4685-ad64-8e1cc4143e62" class="">Online transaction processing (OLTP) and online transaction processing (OLAP).</p><h1 id="e2ea54ab-ea67-4a8d-b888-5d82d52caa63" class="">Story</h1><h1 id="e3e05d11-4fc2-4901-b6b5-ebb2bfac959c" class="">Key questions</h1><h2 id="6d476ac2-2e41-49c1-a06e-141df22fe3c8" class="">How to choose a database for your project?</h2><h2 id="df19a90c-52f2-4cc5-9ac9-a902633878f2" class="">Are spreadsheets -Excel-, Access, Notion,... a database?</h2><p id="1aff6ced-d208-41b7-87a6-7431d0b7a164" class="">Yes, they are. But they won&#x27;t either scale very well or fit with your needs. Remember they are not real relational databases.</p><h2 id="45f4ea54-61d8-4e74-bafc-3e4238e925fb" class="">How can I visualize the data?</h2><h2 id="bf592ae1-1241-4562-8c77-d37df7c4687f" class="">Why we should create an electronic database?</h2><p id="e01ed44d-acea-4942-9879-b986d8be7d9b" class="">This is an organizational decision.</p><h2 id="f35556e2-510e-4e41-8de3-5ea3a7fbebe0" class="">Is digital more secure than paper?</h2><p id="a8305f8a-a382-4abf-96d4-3a98930793f5" class="">Yes, it is.</p><h2 id="ea68a01e-4ae9-4f21-8ff6-db8082e12df4" class="">How to keep documents, images, and other blobs?</h2><p id="4fca0ee2-7ca4-418b-9627-997777d44e89" class="">You shouldn&#x27;t use your database to keep blobs; Use a file system or object storage.</p><p id="0e18b5d2-c10b-46fe-84c4-1f0e4a7ca2aa" class="">The data has been an organizational asset since at least Egyptian times.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2791a115-0ed3-49ba-96f2-05b3117be22f"><div style="font-size:1.5em"><span class="icon">🔥</span></div><div style="width:100%">Financial industry</div></figure><p id="6ebac254-d915-41a5-bb64-244934c6a108" class=""><a href="https://wiki.postgresql.org/wiki/BinaryFilesInDB">https://wiki.postgresql.org/wiki/BinaryFilesInDB</a></p><h2 id="46ae6d02-36a3-4829-93cf-2efc46f90c14" class=""><strong>Y2K Problem</strong></h2><h1 id="0213ed8d-952b-4978-a264-cc0fc39fbce2" class="">Database management system</h1><p id="0195ad21-f39f-4721-8e7e-1bf0b7bb410b" class="">A database management system (DBMS) is a software system for defining, constructing, and sharing databases among various clients. It abstracts storage medium.</p><ul id="b0079165-a0e7-4355-8169-24ffe91e1b60" class="bulleted-list"><li style="list-style-type:disc">Defining involves specifying data types structures, and constraints in the database by a data definition language. Descriptive information is in the form of a database catalog or dictionary, which is called meta-data.</li></ul><ul id="08805c96-edcf-400a-8685-ae72ce3c6889" class="bulleted-list"><li style="list-style-type:disc">Construing is the process the storing the data by DML – Data Manipulation Language.</li></ul><h1 id="1c017452-652d-4011-9ad9-cd01c9bf68ca" class="">Good database model to deliver good information</h1><p id="c578b26d-2700-44ed-b799-e7f4184f6688" class="">Quickly, reliably, and consistently. It also won&#x27;t be useful if it is stolen, lost, or corrupted when the system crashes. ACID and constraints</p><p id="d522a142-7e55-4d48-aa5c-48feaaa2e6b4" class=""><a href="https://brandur.org/acid">https://brandur.org/acid</a></p><h2 id="dac50c9b-1efc-498c-afb8-3347c38606cb" class="">Transaction</h2><p id="6e48f4c9-1e7b-46eb-a21d-d7e1fc820a21" class="">Distributed Transaction</p><h2 id="c3f1c2b6-93b2-40d8-bc11-f6d34adbe1c0" class="">Atomicity</h2><h2 id="82e34b04-bd4e-4f5a-a0ca-33b8bc2e4dab" class="">Isolation</h2><h2 id="afaab1b1-6ea0-4137-ad08-e4f3331c490a" class="">Consistency</h2><h2 id="1535b1e0-ab65-493c-8f09-b4537abae5e6" class="">Durability</h2><h2 id="08256448-6ff5-48f1-bd4e-d153f53157c2" class="">Eventual Consistency</h2><ul id="90d4db63-baee-4715-adfd-3cf0b675fbf8" class="bulleted-list"><li style="list-style-type:disc">CRUD feature.</li></ul><ul id="b69432f0-5dae-4b63-a10b-2c336e9bb6d5" class="bulleted-list"><li style="list-style-type:disc">Retrieval</li></ul><ul id="2a4813b7-2182-4fe1-a761-03cce5141a08" class="bulleted-list"><li style="list-style-type:disc">Controlling redundancy</li></ul><ul id="17334612-4330-47b6-b569-bcee0be3ecfa" class="bulleted-list"><li style="list-style-type:disc">Persistent. </li></ul><ul id="4e6f7c8f-1819-45d6-96f7-d3e30d1f6617" class="bulleted-list"><li style="list-style-type:disc">Persistence and Backups.</li></ul><ul id="c61b4b7d-ab9c-4d07-84cb-da484e5cd71a" class="bulleted-list"><li style="list-style-type:disc">Atomicity</li></ul><ul id="b4076853-552e-482e-8b53-9932afb4cc91" class="bulleted-list"><li style="list-style-type:disc">Consistency</li></ul><ul id="ce580e3a-2100-4294-b2e4-436cc4bb26d9" class="bulleted-list"><li style="list-style-type:disc">Durability</li></ul><ul id="f4105527-eab3-453e-aa8c-a71facf643b4" class="bulleted-list"><li style="list-style-type:disc">Isolation</li></ul><ul id="b73e6fc8-027c-4d9f-8461-d7b11eea84c8" class="bulleted-list"><li style="list-style-type:disc">Low Cost and Extensibility</li></ul><ul id="9667c118-7759-47bf-9df5-9c01ec20d418" class="bulleted-list"><li style="list-style-type:disc">Sharing</li></ul><h1 id="fc894ca1-8a10-4456-93ee-18140e82a5cc" class="">User Needs and Requirements</h1><p id="bc32e661-f617-402d-af6a-8dc5bbad44d6" class="">This is no book about <a href="Software%20Engineering%20b4694f46088040f2b0e507d130691bbb.html">software engineering</a>, so we’re not able to talk about how to extract business rules -requirements-. Here we’re assuming them, that is, you’re going to learn about database paradigms, their drawbacks, their advantages, and building a Data Model such that it fits with requirements.</p><figure id="87416bfe-01c7-4a39-9b01-ab98cebda147" class="image"><a href="Untitled%2080.png"><img style="width:640px" src="Untitled%2080.png"/></a></figure><p id="784fc347-f485-414c-ab28-e26a4519a8a6" class="">Dilbert y las Hojas de Cálculo - Una divertida visión del &quot;Excel Hell&quot;. (2023, March 20). Retrieved from <a href="https://outsourceando.blogspot.com/2012/08/dilbert-y-las-hojas-de-calculo-una.html?mc_cid=385764652e&amp;mc_eid=541175b307">https://outsourceando.blogspot.com/2012/08/dilbert-y-las-hojas-de-calculo-una.html?mc_cid=385764652e&amp;mc_eid=541175b307</a></p><h1 id="4f40b63f-e0df-46d1-870f-1d84c3a1e106" class="">Data models</h1><h2 id="e2952806-77b2-4880-ab90-2c6194bb7428" class="">Money and other high school numeric types</h2><p id="857b380b-040e-4cf6-9bd8-71aee1c78b7d" class=""><strong>Decimal data type</strong></p><p id="e7aebb5d-f4cd-440e-9b41-07ca546fc1ef" class="">The standard IEEE 754</p><h2 id="c6f69ac8-e174-40dc-ac8b-d886516cfa77" class="">Cache</h2><h2 id="45c98a24-65b0-46dc-b3d4-42cad5b1aebc" class="">i18n</h2><h2 id="bc4788ff-1c9e-485c-a7a1-665d4794a388" class="">Time and timezones</h2><p id="feaca7b7-a6f9-41ae-af58-731c01457ded" class="">11:59 UTC−12:00 Anywhere on Earth</p><h2 id="10d9c9a4-99ce-4cd5-8830-7e9b0b211583" class="">Geometry</h2><h2 id="b0f864e3-b72d-47ab-a1be-4564c11c2e8d" class="">Generated columns</h2><h2 id="10500997-2ac3-4486-b2ad-34c29fd9f473" class="">Indexing</h2><p id="aec6944b-1f29-4e64-b7d6-2c485f812eaa" class="">By default, relational and documented-based databases scan the entire table sequentially to find matches. This is known as a full table scan or sequential scan. As the number of rows increases, the query becomes slower. The solution to this is to employ <strong>indexing</strong> which<strong> </strong>performs<strong> </strong>well even as the table size grows. Indexing consists of collecting, parsing, and storing data to facilitate fast and accurate exact information retrieval. So, the indexing process relies on a <strong>data structure</strong> that improves the speed of retrieval operations in a database table, at the cost of additional writes and storage space to maintain the index data structures.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8ea8bf10-21c8-44dc-9cef-f770d5f49263"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Hash-based databases such as Redix may execute the queries in <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> depending on how model <a href="https://redis.io/docs/latest/develop/interact/search-and-query/indexing/">our problem</a>. </div></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="58ddf44c-eb22-47cb-91cc-3bdf545a1bfb" class="code"><code class="language-SQL">SELECT first_name FROM people WHERE last_name = &#x27;Smith&#x27;;</code></pre><h2 id="dc79208c-c6c8-4fd5-8abc-9c30d7403505" class="">Primary keys</h2><h2 id="c4e70d1d-4ac5-458f-84ec-a5f0d4cce0f8" class="">Partitions</h2><h2 id="75f21a72-43ad-4af4-84a3-a2e589af1a12" class="">Horizontal scaling</h2><h2 id="017f81a3-4e1f-4546-bcf6-7702cf72ce3f" class="">Hash Tables and Consistent Transactions </h2><h2 id="52bfa66f-f6f6-4c90-87dd-45646f6093dd" class="">Can NULLs improve your database query performance?</h2><h1 id="bf3a5240-e7af-48fa-97e4-20ccbd649063" class="">Relational databases and SQL</h1><figure id="5021a34e-ca2a-4b6b-8d68-d5c288288e38" class="link-to-page"><a href="Relational%20database%205021a34eca2a4b6b8d68d5c288288e38.html">Relational database</a></figure><h2 id="a88dafbc-c9d2-44b9-98d6-7d99cd380b14" class="">Performance checklist</h2><p id="2a2b5918-9e05-453f-8ed2-19b70b78bdb0" class="">Prepared statements</p><p id="37bc5b69-9ce4-429e-a98b-f9928bcbb88d" class="">Indexing</p><h1 id="4248957d-c6b6-446b-aa8a-8037bfd1c6b3" class="">Data-interchange format</h1><h2 id="a2b4d9c0-4c98-412e-bb1d-1e16eeaa3a5e" class="">CSV</h2><h2 id="be8424c4-301f-4233-998e-a3294e9d12b1" class="">XML</h2><h2 id="84bd4df4-9409-451c-95e7-bc9f41efc27e" class="">JSON</h2><p id="a8798538-3380-4e07-81d0-35d2e10d36e9" class=""><a href="http://www.json.org/xml.html">http://www.json.org/xml.html</a></p><h2 id="e6775195-9243-4efc-9d0e-a4597928b05d" class="">YAML</h2><h2 id="033c14c3-f137-49d1-9c79-b7f6cf9f1a5d" class="">Arrow</h2><h2 id="c71109b1-1da9-4bf7-b471-21e0ee194fee" class="">Parquet</h2><h1 id="fb12b18d-a381-4daf-b659-e94eb1e3636a" class="">Spreadsheets</h1><h1 id="133167ce-2015-42d4-be28-c1917e86e136" class="">Storage</h1><h1 id="24584fa8-1941-4b08-872c-dc8b7314e5bc" class="">Flat Files</h1><p id="1bdaa850-8ec1-4dfc-82e4-4682ed54e8ec" class="">JSON</p><p id="af4f62ab-6e3c-43fb-903e-03395b92fd48" class="">INI Files</p><p id="fdbdeaa3-36c5-44cb-9db5-0eaed4a27005" class="">XML (XML)</p><p id="2ca96615-8a7f-4711-a22a-5c962633dbab" class="">YAML</p><p id="95b54828-81eb-4fa2-ad19-80ee9fe36e6a" class="">Facts with prolog (facts = data)</p><p id="d3a6370a-0da1-432b-be4d-f24a194d0813" class=""><a href="https://stackoverflow.com/questions/2117651/comparing-sql-and-prolog">https://stackoverflow.com/questions/2117651/comparing-sql-and-prolog</a></p><h2 id="0b0fbb64-e0c3-480f-81e5-c9ddc85840ed" class="">Worked examples</h2><p id="c93921e8-31e7-45bb-a8f5-2fa0e22cb0fb" class="">package.json</p><p id="bff2b3a7-0187-43d8-92c9-99ad7b6f6837" class=""><a href="https://timeline.knightlab.com/docs/json-format.html">timeline</a></p><p id="f0d55bbc-981b-4c9e-bfdb-222f2b82c3c0" class="">Of Prolog, T. P. (2022, April 03). A Tour of Prolog. Youtube. Retrieved from <a href="https://www.youtube.com/watch?v=8XUutFBbUrg&amp;ab_channel=ThePowerofProlog">https://www.youtube.com/watch?v=8XUutFBbUrg&amp;ab_channel=ThePowerofProlog</a></p><h1 id="a05a3029-729a-4d55-84d4-d32d4643b640" class="">Spreadsheets</h1><p id="525a1b57-ec2f-4157-a24f-079d6100f0c4" class=""><a href="https://datascience.stackexchange.com/questions/5443/do-data-scientists-use-excel">https://datascience.stackexchange.com/questions/5443/do-data-scientists-use-excel</a></p><h1 id="1f1ffa9e-75c5-4a35-8623-6cc48bcc56da" class="">Hierarchical Databases</h1><h1 id="3b0f8fb6-27a2-425e-8435-0861c99e0d2e" class="">Geographical Information System Database</h1><h1 id="85d8211a-983d-4920-bebf-4f5f14f24a64" class="">Embedded databases</h1><p id="5702d4b6-51c3-49fb-9649-da4ad4607ea4" class="">An embedded database is an in-process database management system that’s tightly integrated with the application layer.</p><p id="5f3dd374-db03-4736-9703-2946f982681f" class="">Duck DB</p><p id="61952916-a2b7-476c-bbf3-6ecc2a3f15dd" class=""><a href="https://docs.kuzudb.com/">KùzuDB</a></p><p id="24d46dc7-5361-480a-8b95-532f57d0b86c" class="">LanceDB</p><p id="36601605-3b25-4cc4-8c47-235daaa34bb7" class="">The current main drawback for embedded databases is they don’t allow collaboration by default.</p><p id="7ad1a9fd-6c99-4a9e-b68f-7a0b53d28aab" class="">You can explore OLTP  </p><h1 id="a3c4d117-8523-4c69-9496-800d92cd87de" class="">Non-relational databases</h1><p id="5fb1e298-ecb8-46d3-a5c8-dfeec231d289" class="">1.1 Evolució n de las bases de datos<br/>1.1.1 Surgimiento de las computadoras<br/>1.1.2 Bases de datos relacionales<br/>1.1.3 Bases de datos no-relacionales<br/>1.2 Almacenamiento de datos no-textuales<br/>1.3 Nuevos requerimientos de accesibilidad<br/>1.3.1 Acceso global<br/>1.3.2 Disponibilidad continua<br/>1.3.3 Datos protegidos<br/></p><p id="089d473e-5ec5-439d-8d5b-df668971dd49" class="">2.1 Explorando Medios sociales<br/>2.1.1 Tó pico tendencia (Twitter)<br/>2.1.2 Conexiones sociales (Facebook)<br/>2.1.3 Perfiles laborales (LinkedIn)<br/>2.2 Documentos de texto<br/>2.3 Datos Web<br/>2.3.1 Correos electró nicos<br/>2.3.2 Redes de intereses (GitHub)<br/>2.3.3 Páginas Web<br/>2.3.4 Microformatos<br/>2.4 Otros tipos de datos no-estructurados<br/></p><p id="a2ff45c6-5b8e-4963-b872-14f4cd99aa7c" class="">3.1 Evolució n de las bases de datos<br/>3.1.1 Surgimiento de las computadoras<br/>3.2 Conceptos NoSQL<br/>3.2.1 Teorema CAP<br/>3.2.2 Consistencia<br/>3.2.3 Concurrencia<br/>3.2.4 MapReduce<br/>3.3 Tecnología NoSQL<br/>3.3.1 Manejadores clave-valor<br/>3.3.1.1 Redis, Memcached, Oracle Coherence.<br/>3.3.2 Wide-column<br/>3.3.2.1 Apache Hadoop, HBase, Apache Kudu, Apache Druid.<br/>3.3.3 Manejadores de documentos<br/>3.3.3.1 MongoDB, CouchDB.<br/>3.3.4 Manejadores de grafos<br/>3.3.4.1 InterSystems Caché, db4o.<br/>3.3.5 Manejadores de XML<br/>3.3.5.1 BaseX, eXist.<br/>3.3.6 Manejadores de multimedia<br/>3.3.6.1 Apache Cassandra<br/></p><p id="71e3c199-08b9-442e-adfd-94769e20be61" class="">4.1 Introducció n a lagos de datos (LD)<br/>4.1.1 Entendiendo que son los LD<br/>4.1.2 Antes y después de los LD<br/>4.1.3 Retos para implementar LD<br/>4.1.4 Cuando implementar LD<br/>4.2 Arquitectura de LD<br/>4.2.1 Componentes de un arquitectura de LD<br/>4.2.2 Capas de la arquitectura (gobernanza y seguridad, informació n y metadatos)<br/>4.2.3 Niveles de la arquitectura (entrada, administració n y consumo de datos)<br/>4.3 Gobernanza de datos<br/>4.3.1 Entendiendo el concepto de gobernanza de datos (GD)<br/>4.3.2 Macro y micro GD<br/>4.3.3 Clasificació n y organizació n de datos<br/>4.3.4 Catálogo de datos y metadatos<br/>4.3.5 Administració n de calidad de los datos<br/>4.3.6 Administració n de acceso a los datos<br/>4.3.7 Auditoría de datos<br/>4.3.8 Protecció n de datos<br/></p><p id="9a0869f5-5a56-4877-8cd7-2641b6890037" class="">
+</p><p id="f29099ab-d0c5-4f89-a1b3-012eeebd72de" class="">Carpenter, J. &amp; Hewitt, E. (2020). Cassandra The Definitive Guide: Distributed Data at Web Scale. O’Reilly.<br/><br/></p><p id="91a4b082-e19c-460d-93f2-26ba51521e30" class="">Eryurek, E., Gilad, U., Lakshmanan, V., Kibunguchy, A. &amp; Ashdown, J. (2021). Data Governance: The Definitive Guide: People, Processes, and Tools to Operationalize Data Trustworthiness. O&#x27;Reilly Media</p><p id="d545bbd1-810f-45cb-86a8-1431b84fac85" class="">
+</p><p id="26efc739-1dda-44f4-9183-5ffd5efe245b" class="">Hills, T. (2016). NoSQL and SQL Data Modeling: Bringing Together Data, Semantics, and Software. Technics Publications. [Clasica].<br/><br/></p><p id="85698ce3-1066-479e-ae91-68532f914e42" class="">Pasupuleti, P. &amp; Purra, B. S. (2015) Data Lake Development with Big Data. Packt Publishing [Clásica].</p><p id="425c70c9-c80a-4f9a-bd7d-2b49f0f6b919" class="">
+</p><p id="ff756091-4a40-4455-8a58-62bb7f37bec5" class="">Harrison, G. (2015). Next Generation Databases: NoSQLand Big Data. Apress.<br/><br/></p><p id="be86a876-3533-4d91-9716-e688879aed1d" class="">Russell, M. (2019). Mining the Social Web (3rd ed.). O’Reilly Media, Inc. Singh, A. &amp; Ahmad, S. (2021). Data Modeling with NoSQL Database. Independently Published.</p><h2 id="04b46a16-f748-4817-b49c-646d311a4d04" class="">Key-value store, Redis case</h2><h2 id="75c0f027-9c6d-453e-a516-388f6e501721" class="">JSON-like document store, MongoDB case</h2><p id="7d7be65a-0a25-4880-81ea-afa944f0cd7a" class="">MongoDB is a document database which become popular with its schamaless way of saving data.</p><p id="fde670d8-5306-4eb5-8783-f424eb626ca3" class="">
+</p><p id="3fc766ba-8282-406d-96d1-1a3ab3465664" class="">
+</p><h2 id="cbbaf596-e51b-4589-9f5b-b39264057ad9" class="">Wide-column store, Cassandra case</h2><h2 id="68894003-7a26-452e-8fb5-f5bc979bb6cf" class="">Graph database, Neo4j case</h2><p id="0b750dcc-4f4c-4df3-a17f-00d3d5b26607" class=""><a href="https://neo4j.com/">https://neo4j.com/</a></p><p id="33c46723-939b-4f60-86a5-a5873e75d288" class="">SPARQL</p><h2 id="7b0fa666-5d18-4b2e-9e5a-ca90019574a6" class="">Object database</h2><h2 id="dd29f25b-7a3b-4754-8bf6-6c5b420ec146" class="">Tabular</h2><h2 id="d4b2b613-dc54-44e3-951d-4dcd7045b50b" class="">Tuple store</h2><h2 id="da84dc3f-e47f-424c-9e45-67ea013df928" class="">Triple/quad store (RDF) database</h2><h2 id="d80a809f-9e92-413e-a5ec-522eec43ee5c" class="">Multivalue database</h2><h2 id="1e7a91a0-e1bd-45b8-b454-e5d862c4a309" class="">Multimodel database</h2><h2 id="ef3aa341-302a-401b-90d4-cf65c0bf35d4" class="">Vector embeddings database</h2><h2 id="a5345c87-dedf-4a4a-97db-de284fb07a7d" class="">Time series</h2><p id="2c9ab2dd-37ae-4762-ba90-4534e689fbf1" class="">A time series is the data generated by the observations indexed by time. A more formal definition can be found on</p><figure id="7314da2a-c65a-472e-abea-02c19c26a27b" class="link-to-page"><a href="Stochastic%20processes%207314da2ac65a472eabea02c19c26a27b.html">Stochastic processes</a></figure><p id="c44afcf2-7b35-4c2f-b5c6-1112f057cf27" class="">As you might imagine, many processes are indexed by time. For instance, examples include stock prices, CPU usage, sensor data, light curves, and ECG readings.</p><p id="dc1f7368-646e-41d3-8ae5-7a472ce6abf7" class="">In this book, our main focus is on how to store time series data reliably and quickly, while minimizing the caveats for real-world applications.</p><p id="b3311f24-7d18-4526-bc38-79465e4d899c" class="">We have various alternatives for managing this kind of data, including Prometheus, Graphite, InfluxDB, TimeScaleDB, and OpenTSDB. While it&#x27;s possible to use different database systems, they may not be optimized for real-time processing or analytics. Although everyone has, at some point, added a date column to indicate when an operation occurs in the database, with typical examples being &#x27;at_update&#x27; and &#x27;at_create&#x27;, this basic approach doesn&#x27;t scale well and isn&#x27;t suitable for time series processing applications.</p><p id="af652339-f6e7-4f82-91a1-36b617cd510c" class="">As demonstrated by Timescale and others, a reliable method for persisting time series data is using PostgreSQL and its extension, TimescaleDB. Therefore, we’re going to use this as our example to illustrate a concrete case. </p><p id="c87b3972-c30c-456c-abe1-c40e75ee47a3" class=""><a href="https://www.timescale.com/blog/timescaledb-vs-influxdb-for-time-series-data-timescale-influx-sql-nosql-36489299877/">https://www.timescale.com/blog/timescaledb-vs-influxdb-for-time-series-data-timescale-influx-sql-nosql-36489299877/</a></p><p id="c4a7611e-3e09-4d39-9d01-8caa924fcb16" class=""><a href="https://www.timescale.com/blog/how-to-store-time-series-data-mongodb-vs-timescaledb-postgresql-a73939734016/">https://www.timescale.com/blog/how-to-store-time-series-data-mongodb-vs-timescaledb-postgresql-a73939734016/</a></p><p id="25dc95cc-5ee3-4acc-862e-a9ee99869039" class=""><a href="https://www.youtube.com/channel/UCPmHSkid9IOYbdN1Psh24lg">https://www.youtube.com/channel/UCPmHSkid9IOYbdN1Psh24lg</a></p><h1 id="7bb3d213-6b35-4719-ae84-639d56a70ccf" class="">Big data</h1><p id="ba6bf14a-2438-462f-a146-6f1bf079b12e" class="">Hadoop</p><p id="9f9b0b82-31f7-44ab-b84b-f0a1fc335288" class="">Spark</p><p id="f0bed80c-8a2b-43ab-a4da-ca1f8e1bf950" class="">Mainframe</p><p id="f8b99843-b7cc-4852-a9a7-aed8e220a666" class="">Supercomputers</p><h1 id="7db06bca-1ee7-4f6a-837f-df0eee6b994a" class="">Data Warehouse</h1><h2 id="51c0e021-0032-41f3-b451-8d9e4426faa9" class="">Big Query</h2><figure id="bfb42acc-2085-41b8-873d-08093c7ec4ad" class="image"><a href="Untitled%2081.png"><img style="width:3072px" src="Untitled%2081.png"/></a></figure><h2 id="6592b9ef-d8dc-4703-ba43-927f2248217e" class="">ETL</h2><h2 id="141a0fa6-277b-4f11-8aa9-73b90cb52c34" class="">OLAP</h2><h2 id="6a7043c4-4fc1-4244-a2ca-216b2e670e52" class="">Schemas</h2><p id="29613cf7-7a6c-4498-8593-d636decb0093" class=""><strong>Data mart</strong></p><p id="72641665-a703-4361-abf8-c6091575ad28" class=""><a href="http://datawarehouse.com/">dataWarehouse.com</a> | Article. (2000, July 18). Retrieved from <a href="https://web.archive.org/web/20110420134556/http://csis.bits-pilani.ac.in/faculty/goel/Data%20Warehousing/Articles/Data%20Marts/dataWarehouse_com%20%20Article_DM%20VS%20DW.htm">https://web.archive.org/web/20110420134556/http://csis.bits-pilani.ac.in/faculty/goel/Data Warehousing/Articles/Data Marts/dataWarehouse_com Article_DM VS DW.htm</a></p><h3 id="8725aa29-8dcf-4e95-8ffd-25e6d301ded6" class="">Snowflake schema</h3><h3 id="5e8c2bbc-f6fc-4eb8-8f55-3883f19243c0" class=""><strong>Star schema</strong></h3><h3 id="24d86470-121d-4c96-ab45-dc37e585d621" class="">Activity schema</h3><h2 id="b4f7b8dc-c2f6-4226-b740-915cea7e5246" class="">References</h2><p id="e6631f30-9af0-4c1b-8287-0a6e8674797b" class="">Ralph Kimball and Margy Ross, <em>The Data Warehouse Toolkit: The Complete Guide to Dimensional Modeling (Second Edition)</em></p><p id="1f75ee82-ea82-4d5e-a9fe-6950cf37f9fc" class="">
+</p><p id="4d0f2e79-7527-4f3d-8d6b-103b13770a01" class="">1.1. La economía de los datos<br/>1.2. Industria 4.0 y las tecnologías digitales<br/>1.3. Sectores pioneros en datos masivos<br/>1.4. Evolución de los sistemas de gestión de datos<br/></p><p id="c62873d6-c85f-4fbb-bf42-e851518919af" class="">2.1. Fundamentos a datos masivos<br/>2.1.1. Verdades y mitos<br/>2.1.2. Dimensionalidad y características:<br/>2.1.2.1 Sistemas distribuidos<br/>2.2. Tipos de datos<br/>2.2.1 Datos estructurados<br/>2.2.2 Bases de datos NoSQL<br/>2.3. Casos de estudio (industria, empresa, educación, etc.)<br/>2.4. Estado del arte en datos masivos<br/></p><p id="837ba3be-2658-47e8-88e8-d91e4adbef53" class="">3.1. Arquitectura de datos masivos<br/>3.1.1. Infraestructura para almacenamiento de datos<br/>3.1.2. Infraestructura para gestión<br/>3.1.3. Aplicaciones para modelado y análisis de datos<br/>3.2. Componentes tecnológicos<br/>3.2.1. Acopio de datos estructurados y no estructurados (Hive, Drill, Impala, HBase, entre otros).<br/>3.2.2. Sistemas de archivo y bases de datos distribuidas<br/>3.2.2.1 Gestión de datos distribuidos (HDFS)<br/>3.2.3. Plataformas de cómputo en la nube<br/>3.2.4. Sistemas de almacenamiento escalable<br/>3.2.5. Procesamiento masivo paralelo de datos<br/>3.2.5.1 MapReduce<br/>3.3. Gobernabilidad de los datos masivos<br/>3.4 Roles: negocios, científico de datos, IT, analista, etc.<br/></p><p id="bf4b2505-66fb-43c2-b5a1-5639e0f9e4ae" class="">4.1. Modelo de datos<br/>4.1.1 Key-value, documentos, wide-column, gráficos<br/>4.2. Herramientas de extracción, transformación y carga (ETL)<br/>4.2.1. Elementos del proceso de ETL<br/>4.2.2. Marco de trabajo para la implementación del proceso ETL<br/>4.2.2.1 Arquitectura<br/>4.2.2.2 Implementación<br/>4.2.2.3 Integración<br/>4.2.2.4 API’s para la manipulación de datos integrados<br/>4.2.2.4.1 Pig, Spark, Tableau<br/></p><p id="5f924dd6-b5db-4de4-99cf-62447fffcc24" class="">5.1. Tipos de análisis: descriptivo, diagnóstico, predictivo y prescriptivo.<br/>5.2. Proceso de descubrimiento de conocimiento en base de datos (KDD)<br/>5.3. Tecnologías emergentes de analítica<br/>5.3.1 Amazon AWS, Microsoft Azure, Google BigQuery, entre otros.<br/>5.4. Principales métodos de minado de datos<br/>5.5. Bibliotecas de consulta para el manejo de datos masivos<br/>5.6. Bibliotecas de minería de datos y aprendizaje automático<br/>5.7. Visualización<br/>5.8. Interpretación de resultados<br/></p><h2 id="d66b6452-d8db-43c0-aaa5-fd8fcda30dd3" class="">References</h2><ol type="1" id="e224a407-c80e-47f2-a681-ed9b6605b210" class="numbered-list" start="1"><li>Dean, J. (2014). <em>Big Data, Data Mining, and Machine Learning: Value Creation for Business Leaders and Practitioners</em>. John Wiley &amp; Sons. [Clásica]. Available at: <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781118691786">Wiley Online Library</a>.</li></ol><ol type="1" id="e86e4bf3-4000-41d0-8133-00823ca74418" class="numbered-list" start="2"><li>Hurwitz, J., Nugent, A., Halper, F., &amp; Kaufman, M. (2013). <em>Big Data for Dummies</em>. John Wiley &amp; Sons Inc. [Clásica].</li></ol><ol type="1" id="1a66c8d8-ede1-4996-a17a-56dce6f9d940" class="numbered-list" start="3"><li>Kleppmann, M. (2017). <em>Designing Data-Intensive Applications</em>. O&#x27;Reilly Media. Available at: <a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/">O&#x27;Reilly Media</a>.</li></ol><ol type="1" id="5f25e98f-3ae8-4cd1-b1e0-3dc2410d280a" class="numbered-list" start="4"><li>Leskovec, J., Rajaraman, A., &amp; Ullman, J. D. (2014). <em>Mining of Massive Datasets</em>. Cambridge University Press. [Clásica].</li></ol><ol type="1" id="c5cfbdca-ec1b-495f-807f-db7f33aef7c1" class="numbered-list" start="5"><li>Marz, N., &amp; Warren, J. (2015). <em>Big Data: Principles and Best Practices of Scalable Real-Time Data Systems</em>. Manning Publications Co. [Clásica].</li></ol><ol type="1" id="ed23d283-e48e-40a9-8fe5-a1c1315fab31" class="numbered-list" start="6"><li>O&#x27;Reilly Radar Team. (2014). <em>Big Data Now: Current Perspectives from O&#x27;Reilly Radar</em>. O&#x27;Reilly Media, Incorporated. [Clásica].</li></ol><ol type="1" id="5787f2b5-219b-429c-8d89-4973708bc044" class="numbered-list" start="7"><li>Wessler, M. (2016). <em>Big Data Analytics for Dummies</em>. John Wiley &amp; Sons. [Clásica].</li></ol><ol type="1" id="118700f8-91ff-4879-810e-aa4120a2065c" class="numbered-list" start="8"><li>White, T. (2012). <em>Hadoop: The Definitive Guide</em>. O&#x27;Reilly Media, Incorporated. [Clásica].</li></ol><ol type="1" id="6faad6f7-f827-4276-979f-24aa19553835" class="numbered-list" start="9"><li>Atzori, L., Iera, A., &amp; Morabito, G. (2010). The Internet of Things: A Survey. <em>Computer Networks</em>, 54(15), 2787-2805.</li></ol><ol type="1" id="36ea17d8-c5da-4f51-bb3f-b3a01ef4ae6c" class="numbered-list" start="10"><li>Li, S., Da Xu, L., &amp; Zhao, S. (2015). The Internet of Things: A Survey. <em>Information Systems Frontiers</em>, 17(2), 243-259.</li></ol><ol type="1" id="10e2dc2e-3ab1-4d87-8390-55a7c1f6677d" class="numbered-list" start="11"><li>Marwedel, P. (2021). <em>Embedded System Design: Embedded Systems Foundations of Cyber-Physical Systems, and the Internet of Things</em>. Springer Nature. Available at: <a href="https://biblioteca.uabc.mx/">UABC Library</a>.</li></ol><h1 id="61ba3f6f-0c62-4074-8d08-445f2ccf1427" class="">Visualization and user-friendly reports</h1><p id="e91dec74-07e0-414a-9509-11efab5d7a17" class="">PowerBI</p><p id="571a45fc-30c7-4280-b078-65a525ac33af" class="">Grafana</p><h1 id="bfcde6e3-6363-4838-a30c-0ae355029c10" class="">Storage</h1><h2 id="5f1b7469-6b5b-485c-90d3-dc56e6b863a0" class="">File storage</h2><p id="d4f03c21-ce3e-4b69-b8cd-ee0837f699af" class=""><a href="https://www.cs.cmu.edu/~fp/courses/15213-s07/lectures/15-filesys/index.html">https://www.cs.cmu.edu/~fp/courses/15213-s07/lectures/15-filesys/index.html</a></p><p id="abc09ae5-dcbd-4a3e-8d82-d34f9cfdd24d" class=""><a href="https://wiki.archlinux.org/title/FUSE">https://wiki.archlinux.org/title/FUSE</a></p><p id="dfb1e5b8-c168-4452-9448-17773dab806d" class="">FUSE-based file system</p><p id="9bdc21f9-e62f-47cf-968c-1ee2b1b78679" class="">NFS</p><p id="9ffede81-44f9-4cf8-b60f-c8c58c3194f2" class="">S3FS</p><h2 id="cc7b2796-9077-4839-a141-a90050d4892f" class="">Block storage</h2><h2 id="fc0db1b2-c8cc-4e18-bdea-9529cbf8a12d" class="">Object storage</h2><h2 id="d36100b3-9eac-425a-8a85-8b75c19c88e6" class="">NAS</h2><h2 id="19de0d35-c2e2-4a10-876c-eb8deecde141" class="">HDFS</h2><h2 id="01646b82-7e73-4ea6-aba3-e65488bb3f52" class="">IPFS</h2><h2 id="96aad00a-e620-4133-abdf-c1aad843f4bd" class="">DVC</h2><h1 id="d24ab9c3-284d-4705-9709-1d99b48e3d80" class="">Vault</h1><p id="b9fef36e-537d-42aa-9c4a-06654adc3fff" class="">How can you get and retrieve the secrets?</p><h1 id="e60fdc96-6d9d-42bb-b733-2f911ff145b6" class="">Information Filtering and Information Retrieval</h1><figure id="71353b9d-818a-4e6d-ae87-a8915936d7ab" class="link-to-page"><a href="Information%20retrieval%20and%20information%20filtering%2071353b9d818a4e6dae87a8915936d7ab.html">Information retrieval and information filtering</a></figure><h1 id="86b6b7a3-05cb-48a3-b714-a379ae4d3355" class="">Database as product</h1><ul id="3481c1b9-1884-4aac-8801-efa8c585d93a" class="bulleted-list"><li style="list-style-type:disc">Backup</li></ul><ul id="fa797493-3cd2-41b4-827c-e0177f0328dc" class="bulleted-list"><li style="list-style-type:disc">Visualization</li></ul><ul id="ac7a23f1-0677-499b-af82-0b218c9235f1" class="bulleted-list"><li style="list-style-type:disc">Authorization and authentication</li></ul><ul id="142fcb94-821c-4c5d-a178-b0383d447020" class="bulleted-list"><li style="list-style-type:disc">API REST</li></ul><ul id="2460d01b-29c7-41d2-b8a8-a5de3565e808" class="bulleted-list"><li style="list-style-type:disc">User Interface</li></ul><h2 id="fc4d0ea3-05f8-405c-bacb-d8fb5ed7ac69" class="">Supabase</h2><h1 id="32fbf412-ca32-44f2-87d0-ee66100b0a45" class="">Discussions</h1><h2 id="9ae2868a-5c0f-4442-b8a3-0797da1d57d7" class="">Filesystem as a source of truth</h2><h2 id="6f52eff7-95c5-4c5e-9173-bf1ad6b81496" class="">Is QUIC a Good Protocol for Databases?</h2><h2 id="fa40f260-8ad8-479a-a657-224cb392c017" class="">How Spotify switched from UUID as the Primary key type</h2><h2 id="b5a7827b-d02c-4573-9068-be13ef6607f8" class="">Why Uber Engineering switched from Postgres to MySQL</h2><h2 id="4122a935-4bdc-4324-9d56-e06e799b0c10" class="">Optimistic vs Pessimistic currency control</h2><h2 id="923afce9-ebac-4569-b623-8bc2c0c9eb9b" class="">Data with API REST support</h2><h2 id="adb9fa7a-60b0-4299-b224-5dcb540d4ff8" class="">Write amplification explained in backend apps, database systems, and SSDs</h2><h2 id="d0556337-d1c6-4bba-9b6d-da7a7cf76a5b" class="">Optimistic vs Pessimistic Concurrency control</h2><h2 id="ee2f1bab-14a8-4104-9f71-b029680446fd" class="">Locks</h2><h2 id="8f4cee29-5a7b-4ce9-a870-968f941b84f7" class="">Database comparison</h2><p id="e45cf994-0b89-4b41-b9ce-d663f1c23ca9" class="">Indexing in PostgreSQL vs MySQL</p><p id="1f4392df-682b-4785-9334-03f32f928c50" class="">
+</p><h1 id="bd1e6c7f-a1c3-4354-a9e4-8f7086759e9d" class="">Next steps</h1><p id="42caa37e-e46b-40ce-a5d1-6a3419b2387c" class="">Data Engineering</p><p id="82bececb-1f19-4a92-8dbc-2de7ed240136" class=""><a href="https://supabase.com/">https://supabase.com/</a></p><p id="48dd2024-305f-4361-b793-79b6d2af91b5" class=""><a href="https://www.cockroachlabs.com/">https://www.cockroachlabs.com/</a></p><figure id="b1218e29-bfc1-43f5-84d6-f255100463d8" class="link-to-page"><a href="Data%20mining%20Data%20analysis%20b1218e29bfc143f584d6f255100463d8.html"><span class="icon">💽</span>Data mining. Data analysis. </a></figure><p id="46b15cf7-d857-40c8-9e84-a30a9c9f89f2" class=""><a href="https://www.youtube.com/watch?v=wUaGyUpyE2E&amp;t=187s&amp;ab_channel=PeladoNerd">https://www.youtube.com/watch?v=wUaGyUpyE2E&amp;t=187s&amp;ab_channel=PeladoNerd</a></p><p id="5b9af4de-014f-4e33-bf11-960cb2b2f1e0" class="">
+</p><p id="5862336e-65e1-4080-8c59-087a87300532" class="">
+</p><h1 id="08278e5f-c115-4fc2-b43f-04376baf6980" class="">References</h1><p id="23bc6168-7bb4-46b2-9047-c8daef278268" class="">Database Internals: A Deep Dive Into How Distributed Data Systems Work <a href="https://www.databass.dev/">https://www.databass.dev/</a></p><p id="9f7fcec0-f2ff-4f8a-a971-5be07cbaa1e0" class="">
+</p><p id="3bdcd816-5225-4c68-a39c-8ec6e92ce2d5" class="">Seven Databases in Seven Weeks: A Guide to Modern Databases and the NoSQL Movement. by Eric C Redmond, Jim L. Wilson, and Luc Perkins</p><p id="f0e3afde-c764-41a6-b83e-d68d4b135591" class="">
+</p><p id="2073c236-b56a-4d91-9976-686a318f5a5c" class="">Ullman, J. and Widom, J. 2014. A first Course in Database Systems: Pearson New International Edition. Pearson Education Limited.</p><p id="0351b803-4ab4-4855-a16f-062f71d0d3f6" class=""><br/>Sumathi, S. and Esakkirajan, S. 2010. Fundamentals of relational database management systems. Springer.<br/></p><p id="a932350a-cdd2-47b7-9126-bcaf4880fb4f" class=""><br/>Stephens, R. 2009. Beginning database design solutions. Wiley Pub.<br/></p><p id="0be12049-ba56-426b-a0a4-03e8a0483df9" class=""><br/>Garcia-Molina, H., Ullman, J. and Widom, J. 2009. Database systems. Prentice Hall.<br/></p><p id="d03f0aff-a6fd-4b51-a2db-16a8a4a9e50c" class=""><br/>Ramakrishnan, Raghu, and Johannes Gehrke. Database Management Systems. 3rd ed. McGraw-Hill, 2002. ISBN: 9780072465631.<br/></p><p id="2e58a11f-4ebb-468d-ae5c-3b3ef2183dd3" class=""><br/>Database System Concepts by Henry Korth<br/></p><p id="a301d44e-335f-4119-9e8a-5783c6433c75" class="">
+</p><p id="4f197bd3-e734-4f51-a1d6-2786886b3065" class="">Hellerstein, Joseph, and Michael Stonebraker. Readings in Database Systems (The Red Book). 4th ed. MIT Press, 2005. ISBN: 9780262693141. <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-830-database-systems-fall-2010/readings/">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-830-database-systems-fall-2010/readings/ </a><a href="http://www.redbook.io/index.html">http://www.redbook.io/index.html</a></p><p id="049e946c-afae-473c-afb2-46b50abf58b4" class=""><br/>2021. Database Systems: The Complete Book -complement-. <br/><a href="http://stanford.edu/">Stanford.edu</a>. Retrieved June 29, 2021 from <a href="http://infolab.stanford.edu/~ullman/dscb.html#slides">http://infolab.stanford.edu/~ullman/dscb.html#slides</a><br/>‌<br/>2021. CS 186 - Introduction to Database Systems. <br/><a href="http://berkeley.edu/">Berkeley.edu</a>. Retrieved June 29, 2021 from <a href="https://inst.eecs.berkeley.edu/~cs186/sp08/index.html">https://inst.eecs.berkeley.edu/~cs186/sp08/index.html</a></p><p id="2cf80566-7a73-455f-be7b-0d133e26825a" class=""><br/>‌<br/><a href="https://www.udemy.com/course/database-engines-crash-course">https://www.udemy.com/course/database-engines-crash-course</a></p><h1 id="8979184f-a795-4364-9a3c-5b6e4b896029" class="">TODO</h1><p id="8aed178d-6e0e-4c39-8ff8-1098d3864c8e" class="">GenBank and sequence-similarity searches</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

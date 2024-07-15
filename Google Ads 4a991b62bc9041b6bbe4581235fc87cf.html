@@ -1,0 +1,679 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Google Ads</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="4a991b62-bc90-41b6-bbe4-581235fc87cf" class="page sans"><header><h1 class="page-title">Google Ads</h1><p class="page-description"></p></header><div class="page-body"><nav id="8fd0e290-94e7-4ae4-95f4-1b1bba3a9660" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3d3d149b-a24f-4b9b-b847-0e307c4c78b3">Proccess</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ec7d6048-72fa-4ca0-abd2-f34c22631a20"><strong>Define Your Objectives</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c618639-7c71-40b1-b208-effa9995d698"><strong>2. Understand Your Audience</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#419bedcb-b703-463b-8076-149a1b74405b"><strong>3. Conduct Keyword Research</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2e3a3c75-bf9c-448c-8c1a-2be5b2a91693"><strong>4. Set Up Your Campaigns</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ebb498fb-c454-48d2-b898-96cef171ad37"><strong>5. Create Compelling Ad Copy</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#54a268cf-6d6b-4a5b-b4ea-e072adaee467"><strong>6. Design Effective Landing Pages</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f7090a84-2fc9-444d-bc9c-9a945a20838a"><strong>7. Set Your Budget and Bids</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#89eba73e-a002-44cc-907a-95662dd134e0"><strong>8. Implement Conversion Tracking</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d44f4801-5dea-48b7-98e0-544ec174a874"><strong>9. Launch and Monitor Your Campaigns</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#970bf412-0a42-4ae1-970c-b36589fa80a8"><strong>10. Optimize and Iterate</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#93482f8d-c31c-4a49-be16-5c6b4ebdebe6"><strong>11. Utilize Advanced Features</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#16409cad-4c14-4396-bb43-7dfc218b6a98">Basics</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#218b4dfb-4339-4a49-a020-b027e6bedbb2">Keyword Research</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7b37fc5d-9a1b-4273-87c6-8a80d08307d7">Creating your ads</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#03febaae-3782-466c-b11c-004776740024">Bidding Strategies Explained</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d40ff7ec-d341-47d7-8ed9-8999c3266afa">Google Ads Dynamics</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f5e4095f-dda1-4645-892b-745984a3cf47">Ad Extensions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0ff52e38-1ff6-400b-aa39-427f9a6da5a6">Conversion Tracking</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#197b7abe-4e8c-453a-9d04-e19daf9dfb2b">Campaign Optimization</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9d7bcd36-e02d-4861-9a85-2b60426854d3">Conclusions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7245d0cb-2470-49a4-9d7d-24b29cb09076">References</a></div></nav><p id="5284f990-3099-4ac9-bfd0-8dcf18548d12" class="">
+</p><h1 id="3d3d149b-a24f-4b9b-b847-0e307c4c78b3" class="">Proccess</h1><h3 id="ec7d6048-72fa-4ca0-abd2-f34c22631a20" class=""><strong>Define Your Objectives</strong></h3><ul id="389164f5-a677-4a2f-b5f2-0d322ffa2aab" class="bulleted-list"><li style="list-style-type:disc"><strong>Clarify Your Goals:</strong> Decide what you want to achieve with your campaign.</li></ul><ul id="8d5d72af-bef3-4b1c-a59c-bf53fca864df" class="bulleted-list"><li style="list-style-type:disc"><strong>Set KPIs:</strong> Establish key performance indicators (KPIs) that align with your goals, such as click-through rate (CTR), conversion rate, or cost per acquisition (CPA).</li></ul><h3 id="1c618639-7c71-40b1-b208-effa9995d698" class=""><strong>2. Understand Your Audience</strong></h3><ul id="c4f14746-d105-4f0e-833b-ff14135da2f2" class="bulleted-list"><li style="list-style-type:disc"><strong>Identify Your Target Audience:</strong> Understand who your ideal customers are.</li></ul><ul id="c36e848e-c0d9-43d9-a417-87606c6cac08" class="bulleted-list"><li style="list-style-type:disc"><strong>Create Buyer Personas:</strong> Develop detailed personas for your target audience. This will help you tailor your messaging and ad creative more effectively.</li></ul><h3 id="419bedcb-b703-463b-8076-149a1b74405b" class=""><strong>3. Conduct Keyword Research</strong></h3><ul id="dba866e5-ddbb-4147-bf0e-c2223fca49bc" class="bulleted-list"><li style="list-style-type:disc"><strong>Find Relevant Keywords:</strong> Use tools like Google Keyword Planner to find keywords related to your API platform. Look for terms that potential customers might use when searching for solutions like yours.</li></ul><ul id="ddfb48bc-3a28-4904-b764-5644f7494cb7" class="bulleted-list"><li style="list-style-type:disc"><strong>Consider Intent:</strong> Focus on keywords with commercial or transactional intent to target users who are more likely to convert.</li></ul><h3 id="2e3a3c75-bf9c-448c-8c1a-2be5b2a91693" class=""><strong>4. Set Up Your Campaigns</strong></h3><ul id="b4437b97-fb1e-4ffb-ab7f-2a0400ecdaa9" class="bulleted-list"><li style="list-style-type:disc"><strong>Choose the Right Campaign Type</strong></li></ul><ul id="2728ea6e-99d3-4dae-8680-e0441525167f" class="bulleted-list"><li style="list-style-type:disc"><strong>Structure Your Campaigns:</strong> Organize your campaigns and ad groups logically, perhaps by API feature or use case, to keep your ads relevant and targeted.</li></ul><h3 id="ebb498fb-c454-48d2-b898-96cef171ad37" class=""><strong>5. Create Compelling Ad Copy</strong></h3><ul id="fe1dd28e-c41d-4e51-874d-8692b361bd2c" class="bulleted-list"><li style="list-style-type:disc"><strong>Highlight Benefits:</strong> Focus on how your API solves problems or adds value. Use clear, concise language that speaks to your audience&#x27;s pain points. </li></ul><ul id="133bfa1b-00d8-4725-b1e2-e2427662caa7" class="bulleted-list"><li style="list-style-type:disc"><strong>Include a Strong Call-to-Action (CTA):</strong> Encourage users to take action, whether it&#x27;s signing up for a free trial, scheduling a demo, or downloading a whitepaper.</li></ul><p id="699e8ecb-b879-4f21-b92f-6f775ea4981b" class="">Copywriting.</p><h3 id="54a268cf-6d6b-4a5b-b4ea-e072adaee467" class=""><strong>6. Design Effective Landing Pages</strong></h3><ul id="7ca5458b-f95f-478d-9ede-0eac5fa4d2b0" class="bulleted-list"><li style="list-style-type:disc"><strong>Align with Ad Content:</strong> Ensure your landing page content directly relates to your ad copy and offers a seamless user experience.</li></ul><ul id="dc69f327-e975-41b5-83af-d8528b6ee264" class="bulleted-list"><li style="list-style-type:disc"><strong>Optimize for Conversions:</strong> Include clear CTAs, benefits, and social proof (like testimonials or case studies) to encourage conversions.</li></ul><h3 id="f7090a84-2fc9-444d-bc9c-9a945a20838a" class=""><strong>7. Set Your Budget and Bids</strong></h3><ul id="9012da9b-bb1a-4248-a4bb-a3653282f7a0" class="bulleted-list"><li style="list-style-type:disc"><strong>Determine Your Budget:</strong> Decide on a daily or monthly budget based on your financial constraints and goals.</li></ul><ul id="c657ef9f-0f38-4cae-8c51-6188a10ca426" class="bulleted-list"><li style="list-style-type:disc"><strong>Choose Your Bidding Strategy:</strong> Google Ads offers various bidding strategies. For leads and conversions, consider using &quot;Maximize conversions&quot; or &quot;Target CPA.&quot;</li></ul><h3 id="89eba73e-a002-44cc-907a-95662dd134e0" class=""><strong>8. Implement Conversion Tracking</strong></h3><ul id="2df73874-6662-42e6-bb80-778f8d6e3e8b" class="bulleted-list"><li style="list-style-type:disc"><strong>Set Up Conversion Actions:</strong> Track important actions on your website, such as sign-ups, downloads, or contact form submissions, to measure the success of your campaigns.</li></ul><h3 id="d44f4801-5dea-48b7-98e0-544ec174a874" class=""><strong>9. Launch and Monitor Your Campaigns</strong></h3><ul id="7f1cea49-dbb9-48ef-9a0f-a7e85aaf75f2" class="bulleted-list"><li style="list-style-type:disc"><strong>Review Everything Before Going Live:</strong> Double-check your campaign settings, ad copy, and landing pages.</li></ul><ul id="c0a947ec-bb5a-429d-937e-404f237eb157" class="bulleted-list"><li style="list-style-type:disc"><strong>Monitor Performance Regularly:</strong> Keep an eye on your KPIs and adjust your campaigns as needed. Look for trends and patterns to understand what&#x27;s working and what isn&#x27;t.</li></ul><h3 id="970bf412-0a42-4ae1-970c-b36589fa80a8" class=""><strong>10. Optimize and Iterate</strong></h3><ul id="9104245d-3732-4b68-bfb0-f86212ec8c7f" class="bulleted-list"><li style="list-style-type:disc"><strong>Test and Learn:</strong> Use A/B testing for your ads and landing pages to see what resonates best with your audience.</li></ul><ul id="a3eaeeb8-f0c6-4a36-b6e5-7ea12d26ae99" class="bulleted-list"><li style="list-style-type:disc"><strong>Optimize for Better Performance:</strong> Regularly review your campaign&#x27;s performance and optimize your bids, ads, and keywords for better results.</li></ul><h3 id="93482f8d-c31c-4a49-be16-5c6b4ebdebe6" class=""><strong>11. Utilize Advanced Features</strong></h3><ul id="68c61a62-10e4-47d9-8e6e-a7d3f2763213" class="bulleted-list"><li style="list-style-type:disc"><strong>Explore Ad Extensions:</strong> Use ad extensions like sitelink, callout, and structured snippet extensions to provide more information and improve your ad&#x27;s visibility.</li></ul><ul id="4c7d4c89-0e86-47c4-a504-71cb3663e732" class="bulleted-list"><li style="list-style-type:disc"><strong>Consider Remarketing:</strong> Target users who have previously interacted with your website but didn&#x27;t convert. This can be a highly effective way to re-engage potential customers.</li></ul><p id="843c7ed5-1c36-4170-81d6-2bfe8f3937f9" class="">
+</p><h1 id="16409cad-4c14-4396-bb43-7dfc218b6a98" class="">Basics</h1><h1 id="218b4dfb-4339-4a49-a020-b027e6bedbb2" class="">Keyword Research</h1><h1 id="7b37fc5d-9a1b-4273-87c6-8a80d08307d7" class="">Creating your ads</h1><h1 id="03febaae-3782-466c-b11c-004776740024" class="">Bidding Strategies Explained</h1><h1 id="d40ff7ec-d341-47d7-8ed9-8999c3266afa" class="">Google Ads Dynamics</h1><h1 id="f5e4095f-dda1-4645-892b-745984a3cf47" class="">Ad Extensions</h1><h1 id="0ff52e38-1ff6-400b-aa39-427f9a6da5a6" class="">Conversion Tracking</h1><h1 id="197b7abe-4e8c-453a-9d04-e19daf9dfb2b" class="">Campaign Optimization</h1><h1 id="9d7bcd36-e02d-4861-9a85-2b60426854d3" class="">Conclusions</h1><h1 id="7245d0cb-2470-49a4-9d7d-24b29cb09076" class="">References</h1><p id="bdd59fb3-7c57-4944-b008-b13ce1c620b4" class=""><a href="https://www.udemy.com/course/google-ads-for-beginners/">https://www.udemy.com/course/google-ads-for-beginners/</a></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
